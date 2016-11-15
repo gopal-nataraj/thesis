@@ -1,0 +1,18 @@
+thesis structure suggestion
+
+frontmatter
+  title page
+  dedication
+  abstract
+  acknowledgments
+  table of contents
+  table of symbols/notation
+  list of figures
+mainmatter
+  inner chapters
+  appendices
+backmatter
+  bibliography
+  list of acronyms
+  index
+
