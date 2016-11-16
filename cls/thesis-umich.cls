@@ -166,7 +166,7 @@
 % This package is used to set line spacing.
 \RequirePackage{setspace}
 
-% This package allows conditional testing of varibles.
+% This package allows conditional testing of variables.
 \RequirePackage{ifthen}
 
 % This package is used for silly letter spacing
@@ -289,7 +289,7 @@
 \newcommand{\insertdepartment}{\@department}
 \newcommand{\insertcommittee}{\@committee}
 \newcommand{\insertchair}{\@chair}
-\newcommand{\insertcochair}{\@cochair}
+\newcommand{\insertcochairs}{\@cochair}
 \newcommand{\insertyear}{\number\year}
 
 % This redefines the title page to automatically have all of the
