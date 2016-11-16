@@ -1,10 +1,46 @@
 % thesis outline
 
+topics to discuss
+  dess model
+  dess with diffusion
+  optimized scan design
+  krr-based estimation
+  multicompart models and mwf mapping
+  ss rf pulse design
+
+omit?
+  sense multiple datasets
+
 chapters
   introduction
 	about this thesis
 	specific contributions
   background
-	add shortly
-
+	add later
+  model-based relaxometry
+	nataraJ::oms appendix
+	nataraj:14:rje
+	nataraj:14:mbe
+  scan design
+	nataraj::oms
+	nataraj:17:mwf (greedy design)
+  krr-based estimation
+	nataraj:17:dfm
+	todo: want to extend to recon
+  myelin water fraction mapping
+	multicompartmental model
+	nataraj:17:mwf (invivo results)
+	todo: compare with mse, show not MT
+  ss rf pulse design
+	notes
+	simulations
+	todo: optimal control?
+  future work
+	timeline
+	bigger projects
+appendices
+  sense multi-coil
+  dess with diffusion
+	
+	
   
