@@ -1,0 +1,38 @@
+% document prep macros
+
+% color
+\definecolor{forestgreen}{RGB}{0, 150, 0}
+\definecolor{blue(munsell)}{rgb}{0.0, 0.5, 0.69}
+\definecolor{gold}{rgb}{1.0, 0.84, 0.0}
+\definecolor{darkorange}{rgb}{1.0, 0.55, 0.0}
+\definecolor{darkred}{RGB}{196, 30, 58}
+
+% revision
+\newcommand{\edit}[1]{{\color{blue}#1}}
+\newcommand{\todo}[1]{{\color{magenta}\\todo:\,#1}}
+
+% name
+\def \Erdogan{Erdo\u{g}an}
+\def \Stocker{St\"{o}cker}
+\def \Cramer{Cram\'{e}r}
+\def \Francois{Fran\c{c}ois}
+\def \Herve{Herv\'e}
+\def \Akcakaya{Ak\c{c}akaya}
+\def \Weingartner{Weing\"artner}
+\def \Sebastien{S\'ebastien}
+
+% latin
+\def \ie{\emph{i.e.}\xspace}
+\def \eg{\emph{e.g.}\xspace}
+\def \cf{\emph{cf.}\xspace}
+
+% footnote
+\let \oldfootnote \footnote
+\def \footnote{\ifhmode\unskip\fi\oldfootnote}
+
+% trademark
+\def \matlab{MATLAB\textsuperscript{\textregistered}\xspace}
+
+% showlabel
+\renewcommand{\showlabelfont}{\footnotesize\color{blue}}
+

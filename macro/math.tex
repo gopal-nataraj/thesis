@@ -1,0 +1,75 @@
+% math macros
+
+% restore normal spacing 
+\let \originalleft \left
+\let \originalright \right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+% grouping
+\newcommand{\brac}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+
+% opt
+\newcommand{\argmin}[1]{\operatorname{arg}\,\min_{#1}\,}
+\newcommand{\argmax}[1]{\operatorname{arg}\,\max_{#1}\,}
+\newcommand{\where}{\,\, \mathrm{where}}
+
+% complex
+\newcommand{\re}[1]{\operatorname{Re}\paren{#1}}
+\newcommand{\im}[1]{\operatorname{Im}\paren{#1}}
+
+% deriv
+\newcommand{\der}[1]{\,\operatorname{d}{#1}}
+\newcommand{\del}{\partial}
+\newcommand{\gradx}{\nabla_{\mathbf{x}}}
+
+% estimator
+\newcommand{\est}[1]{\widehat{#1}}
+\newcommand{\esta}[2]{\widehat{#1}\paren{#2}}
+
+% sets
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\reals}[1]{\real^{#1}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\complexes}[1]{\complex^{#1}}
+\newcommand{\setx}{\mathbb{\bm{X}}}
+\newcommand{\setz}{\mathbb{\bm{Z}}}
+\newcommand{\hilb}{\mathbb{H}}
+
+% distributions
+\newcommand{\gauss}[2]{\mathcal{N}\paren{#1,#2}}
+\newcommand{\cgauss}[2]{\mathbb{C}\gauss{#1}{#2}}
+\newcommand{\unif}[1]{\operatorname{unif}\paren{#1}}
+
+% linear algebra
+\newcommand{\tpose}{^{\mathsf{T}}}
+\newcommand{\ctpose}{^{\dagger}}
+\newcommand{\oper}[1]{\mathcal{#1}}
+\newcommand{\opera}[2]{\oper{#1}{\paren{#2}}}
+\newcommand{\innprod}[2]{\langle #1,#2 \rangle}
+\newcommand{\inv}[1]{\paren{#1}^{-1}}
+\newcommand{\eye}[1]{\mathbf{I}_{#1}}
+\newcommand{\ones}[1]{\bm{1}_{#1}}
+
+% theorems
+\newtheorem{thm}{Theorem}
+
+% probability
+\newcommand{\expect}[2]{\operatorname{E}_{#1}\paren{#2}}
+\newcommand{\rands}[1]{\mathcal{#1}}
+\newcommand{\randv}[1]{\boldsymbol{\rands{#1}}}
+\newcommand{\dist}[1]{p_{#1}}
+
+% complexity
+\newcommand{\order}[1]{\mathcal{O}\paren{#1}}
+
+% small number
+\newcommand{\eps}{2.22 \times 10^{-16}}
+
+% trig
+\newcommand{\cosa}[1]{\cos{\paren{#1}}}
+\newcommand{\sina}[1]{\sin{\paren{#1}}}

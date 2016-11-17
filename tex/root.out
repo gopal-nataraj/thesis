@@ -4,14 +4,15 @@
 \BOOKMARK [0][-]{section*.5}{List of Abbreviations}{}% 4
 \BOOKMARK [0][-]{section*.6}{Abstract}{}% 5
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 6
-\BOOKMARK [0][-]{chapter.2}{Background}{}% 7
-\BOOKMARK [0][-]{chapter.3}{MRI Parameter Estimation \040from Likelihood Models}{}% 8
-\BOOKMARK [0][-]{chapter.4}{Optimizing MR Scan Design \040for Model-Based T1,T2 Estimation}{}% 9
-\BOOKMARK [0][-]{chapter.5}{MRI Parameter Estimation \040via Kernel Regression}{}% 10
-\BOOKMARK [0][-]{chapter.6}{Myelin Water Fraction Estimation \040from Steady-State Sequences}{}% 11
-\BOOKMARK [0][-]{chapter.7}{Steady-State RF Pulse Design}{}% 12
-\BOOKMARK [0][-]{chapter.8}{Future Work}{}% 13
-\BOOKMARK [0][-]{section*.7}{Appendices}{}% 14
-\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 15
-\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 16
-\BOOKMARK [0][-]{section*.10}{Bibliography}{}% 17
+\BOOKMARK [1][-]{section.1.1}{Thesis Overview}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 8
+\BOOKMARK [0][-]{chapter.3}{MRI Parameter Estimation \040from Likelihood Models}{}% 9
+\BOOKMARK [0][-]{chapter.4}{Optimizing MR Scan Design \040for Model-Based T1,T2 Estimation}{}% 10
+\BOOKMARK [0][-]{chapter.5}{MRI Parameter Estimation \040via Kernel Regression}{}% 11
+\BOOKMARK [0][-]{chapter.6}{Myelin Water Fraction Estimation \040from Steady-State Sequences}{}% 12
+\BOOKMARK [0][-]{chapter.7}{Steady-State RF Pulse Design}{}% 13
+\BOOKMARK [0][-]{chapter.8}{Future Work}{}% 14
+\BOOKMARK [0][-]{section*.7}{Appendices}{}% 15
+\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 16
+\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 17
+\BOOKMARK [0][-]{section*.10}{Bibliography}{}% 18
