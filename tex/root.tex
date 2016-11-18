@@ -4,9 +4,11 @@
 % packages
 \usepackage{subfiles} 	% partial compilation
 \usepackage{showlabels}	% show labels
+\usepackage{xspace}			% good spacing
 
 % macros
-\input{../macro/doc.tex}
+\input{../macro/doc}
+\input{../macro/var}
 
 % title
 \title{
@@ -97,7 +99,7 @@ proposed that results in slight improvements in convergence.}
 \label{c,relax}
 \input{c,relax}
 
-\chapter{Optimizing MR Scan Design \\ for Model-Based $T_1,T_2$ Estimation}
+\chapter{Optimizing MR Scan Design \\ for Model-Based Relaxometry}
 \label{c,scn-dsgn}
 \input{c,scn-dsgn}
 
@@ -129,6 +131,6 @@ proposed that results in slight improvements in convergence.}
 
 % bibliography
 \bibliographystyle{ieeetr}
-\bibliography{./tex/thesis-bib}
+\bibliography{../bib/master.bib}
 
 \end{document}

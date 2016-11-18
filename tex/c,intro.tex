@@ -23,9 +23,9 @@ of MRI examinations.
 
 Two reasonable measures
 of an acquisition's value
-are its \emph{sensitivity}
-to a given disorder's onset and progression
-and its \emph{specificity}
+are its sensitivity
+to a given disorder
+and its specificity
 in distinguishing it
 from others.
 The field of \emph{pathology}
@@ -33,13 +33,14 @@ seeks to ascribe physical processes
 to disorders of interest
 with high sensitivity and specificity.
 The field of \emph{quantitative MRI} (QMRI)
-seeks to build measurable MRI biomarkers
-that describe such physical processes
+seeks to build MRI biomarkers
+that measurably describe such physical processes
 and thereby provide indirect information
-about underlying conditions.
+about the onset and progression
+of underlying conditions.
 
 QMRI poses several challenges
-beyond those of MR image reconstruction,
+beyond those of commonplace anatomical MRI
 and thus remains yet to be widely adopted clinically.
 For example, latent parameter ``maps'' 
 that describe relevant physical processes
@@ -65,4 +66,130 @@ of QMRI techniques.
 \section{Thesis Overview}
 \label{s,intro,over}
 
+In this thesis,
+we seek to build a systematic framework
+towards QMRI.
+We borrow tools
+from optimization, statistics, and machine learning
+to construct time-efficient workflows
+for quantifiably characterizing
+physical processes of interest.
+We apply this framework
+to challenging QMRI problems
+that are motivated
+by pathological studies.
+Our goal is to introduce tools 
+that aid in identifying clinical tasks 
+for which QMRI should
+(or should not) be part
+of a targeted, high-value MRI examination.
+
+We consider two distinct subproblems in our framework.
+Questions in \emph{acquisition design}
+(Chapters~\ref{c,scn-dsgn},\ref{c,mwf})
+ask how to assemble 
+fast collections of scans
+that yield data 
+rich in information 
+about physical processes of interest.
+Questions in \emph{parameter estimation}
+(Chapters~\ref{c,relax},\ref{c,krr})
+ask how to quickly and reliably quantify parameters 
+associated with these relevant physical processes.
+The overall framework seeks to
+first design fast and informative scans 
+based on the application,
+and to then accurately and precisely estimate 
+application-specific parameters of interest.
+ 
+\section{Thesis Organization}
+\label{s,intro,org}
+
+The main body of this thesis is organized as follows:
+\begin{itemize}
+\item 
+	Chapter~\ref{c,bkgrd} reviews 
+	relevant background MR material
+	about DESS,SPGR,blahblah...
+\item 
+	Chapter~\ref{c,relax} discusses methods 
+	for MRI parameter estimation 
+	from likelihood models 
+	and applies these methods 
+	for model-based MR relaxometry, 
+	(\ie, estimation of relaxation parameters $\To,\Tt$),
+	of interest for many neurological applications.
+	It derives some content 
+	(especially regarding applications)
+	from conference papers 
+	\cite{nataraj:14:rje,nataraj:14:mbe}.
+\item
+	Chapter~\ref{c,scn-dsgn} introduces
+	a minimax optimization approach
+	to aid robust and application-specific 
+	MR scan selection and optimization 
+	for precise latent parameter estimation.
+	It optimizes several practical acquisitions 
+	and uses the likelihood-based estimation techniques 
+	introduced in Chapter~\ref{c,relax}
+	to assess the utility
+	of scan optimization
+	through simulations, 
+	phantom studies, 
+	and \invivo experiments.
+	It derives content
+	mainly from journal paper
+	\cite{nataraj::oms}
+	and conference paper
+	\cite{nataraj:15:amm}.
+\item 
+	Chapter~\ref{c,krr} describes 
+	MRI parameter estimation
+	using kernel ridge regression.
+	It derives content 
+	from conference paper
+	\cite{nataraj:17:dfm}.
+\item
+	Chapter~\ref{c,mwf} introduces a multi-compartmental model
+	for relevant MR pulse sequences
+	and proposes a new acquisition 
+	useful for myelin water fraction estimation,
+	of interest in white matter disorders.
+	It applies kernel-based MR parameter estimation
+	to estimate myelin water fraction,
+	in simulations and \invivo experiments.
+	It derives some content from conference paper
+	\cite{nataraj:17:mwf}.
+\item
+	Chapter~\ref{c,ss-rf} presents
+	some relatively immature ideas
+	on steady-state radiofrequency (RF) pulse design
+	as well as associated challenges.
+	This work is presently unpublished
+	and may offer avenues for further development.
+\item 
+	Chapter~\ref{c,future} summarizes several items 
+	of possible future work
+	(on both short- and long-term timescales) 
+	and presents a timeline
+	for completion of this thesis.
+\end{itemize}
+
+The appendices are organized as follows:
+\begin{itemize}
+\item
+	Appendix~\ref{a,cc-multi} proposes an algorithm
+	for combining multiple MRI datasets
+	(as is necessary for many parameter estimation problems),
+	when each dataset is acquired 
+	using multiple receiver coils.
+\item
+	Appendix~\ref{a,dess-diff} presents an analysis
+	of DESS in the presence of diffusion,
+	shows that neglecting diffusive effects
+	during $\Tt$ estimation from DESS
+	can cause significant bias,
+	and suggests acquisition modifications
+	for mitigating this bias.
+\end{itemize}
 
