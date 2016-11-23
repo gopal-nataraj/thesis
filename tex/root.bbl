@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{nataraj:14:rje}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Regularized, joint estimation
@@ -32,5 +32,22 @@ G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Myelin water fraction
   estimation from optimized steady-state sequences using kernel ridge
   regression,'' in {\em Proc. Intl. Soc. Mag. Res. Med.}, 2017.
 \newblock Submitted.
+
+\bibitem{macovski:83}
+A.~Macovski, {\em Medical imaging systems}.
+\newblock New Jersey: Prentice-Hall, 1983.
+
+\bibitem{haacke:99}
+E.~M. Haacke, R.~W. Brown, M.~R. Thompson, and R.~Venkatesan, {\em Magnetic
+  resonance imaging: {Physical} principles and sequence design}.
+\newblock New York: Wiley, 1999.
+
+\bibitem{nishimura:96:pom}
+D.~G. Nishimura, ``Principles of magnetic resonance imaging,'' 1996.
+\newblock Unpublished textbook.
+
+\bibitem{bloch:1946:ni-paper}
+F.~Bloch, ``Nuclear induction,'' {\em {Phys. Rev.}}, vol.~70, pp.~{460--74},
+  Oct. 1946.
 
 \end{thebibliography}

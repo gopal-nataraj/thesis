@@ -25,7 +25,9 @@
 % deriv
 \newcommand{\der}[1]{\,\operatorname{d}{#1}}
 \newcommand{\del}{\partial}
-\newcommand{\gradx}{\nabla_{\mathbf{x}}}
+\newcommand{\dela}[1]{\frac{\del}{\del#1}\xspace}
+\newcommand{\grad}{\nabla}
+\newcommand{\grada}[1]{\grad_{#1}}
 
 % estimator
 \newcommand{\est}[1]{\widehat{#1}}
@@ -73,3 +75,6 @@
 % trig
 \newcommand{\cosa}[1]{\cos{\paren{#1}}}
 \newcommand{\sina}[1]{\sin{\paren{#1}}}
+
+% unit vector
+\newcommand{\unit}[1]{\hat{#1}}

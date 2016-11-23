@@ -1,3 +1,165 @@
 % background
 
+This chapter focuses
+only on background information 
+pertinent to multiple subsequent chapters.
+We present further topic-specific information 
+at the beginnings 
+of corresponding chapters.
+Section~\ref{s,bkgrd,mri} places emphasis
+on reviewing necessary MR fundamentals,
+and Section~\ref{s,bkgrd,opt}
+proceeds to a shorter discussion
+regarding optimization
+as it pertains to QMRI.
 
+\section{Relevant MR Physics}
+\label{s,bkgrd,mri}
+
+This section begins
+with the fundamental Bloch equations
+and derives the signal models
+associated with 
+Spoiled Gradient-Recalled Echo (SPGR) 
+and Dual-Echo Steady-State (DESS),
+two MR pulse sequences
+used extensively in this thesis.
+Our coverage of MRI
+is far from comprehensive, 
+and omits fundamental but tangential topics
+such as signal localization.
+We refer the interested reader
+to books such as 
+\cite{macovski:83,haacke:99,nishimura:96:pom}.
+
+\subsection{Bloch Equations}
+\label{ss,bkgrd,mri,bloch}
+
+The Bloch equations
+\cite{bloch:1946:ni-paper}
+describe the magnetization dynamics
+of \emph{spins}, 
+or (loosely) atomic nuclei with nonzero 
+angular momentum
+and thus nonzero magnetic moment,
+\eg $^1$H.
+If the dominant source
+of magnetic flux 
+arises 
+(as is typical in MRI)
+from a main magnetic field
+that is oriented along the $z$-axis,
+the equations read
+\begin{align}
+	\dela{t} \mxy\prt &= i\gam\paren{\mz\prt \bxy\prt - \mxy\prt \bz\prt} -
+		\frac{\mxy\prt}{\Tt\pr} ;
+		\label{eq:bkgrd,mxy} \\
+	\dela{t} \mz\prt &= \gam\paren{\mx\prt \by\prt - \my\prt \bx\prt} - 
+		\frac{\mz\prt - \mzero\pr}{\To\pr}.
+		\label{eq:bkgrd,mz}
+\end{align}
+Here, 
+$\mxy\prt := \mx\prt + i\my\prt \in \complex$
+and
+$\mz\prt \in \real$
+are the transverse and longitudinal components 
+of the magnetization vector
+at position $\bmr \in \reals{3}$ and time $t\geq0$;
+$\bxy\prt := \bx\prt + i\by\prt \in \complex$
+and 
+$\bz\prt \in \real$
+are the transverse and longitudinal components 
+(in an inertial reference frame)
+of the applied magnetic field;
+$\To\pr$ and $\Tt\pr$
+are spin-lattice and spin-spin relaxation time constants;
+$\mzero\pr$ 
+is the equilibrium magnetization
+and is proportional to the density
+of spins per unit volume
+as well as the main field strength;
+$\gam$
+is the gyromagnetic ratio;
+and $i := \sqrt{-1}$.
+As written,
+equations \eqref{eq:bkgrd,mxy}-\eqref{eq:bkgrd,mz}
+only model dominant temporal dynamics;
+later chapters consider second-order effects
+such as multiple magnetization compartments
+(Chapter~\ref{c,mwf})
+and diffusion
+(Appendix~\ref{a,dess-diff}).
+
+It is often convenient 
+to study Bloch dynamics in a non-inertial reference frame
+rotating clockwise about the $z$-axis 
+at Larmor frequency 
+$\omzero := \gam \Bzero$,
+where 
+$\Bzero \unit{k}$
+is the (nearly uniform) main magnetic field.
+In these coordinates,
+the apparent transverse magnetic field 
+$\bxyp\prt = \bxp\prt + i\byp\prt := \bxy\prt e^{i\omzero t}$
+transforms only in phase,
+but the apparent longitudinal magnetic field
+$\bzp\prt := \bz\prt - \Bzero$
+is greatly reduced in magnitude.
+The magnetization components transform more simply as
+$\mxyp\prt = \mxp\prt + i\myp\prt := \mxy\prt e^{i\omzero t}$
+and 
+$\mzp\prt := \mz\prt$.
+Remarkably, inserting these coordinate transformations 
+into \eqref{eq:bkgrd,mxy}-\eqref{eq:bkgrd,mz} 
+does not change the form
+of the dynamical equations:
+\begin{align}
+	\dela{t} \mxyp\prt &= i\gam\paren{\mzp\prt \bxyp\prt - \mxyp\prt \bzp\prt} -
+		\frac{\mxyp\prt}{\Tt\pr} ;
+		\label{eq:bkgrd,mxyp} \\
+	\dela{t} \mzp\prt &= \gam\paren{\mxp\prt \byp\prt - \myp\prt \bxp\prt} - 
+		\frac{\mzp\prt - \mzero\pr}{\To\pr}.
+		\label{eq:bkgrd,mzp}
+\end{align}
+It thus suffices to consider 
+how (small) perturbations $\bmbp\prt$
+to main field $\Bzero \unit{k}$ 
+influence rotating-frame magnetization $\bmmp\prt$
+via Eq.~\eqref{eq:bkgrd,mxyp}-\eqref{eq:bkgrd,mzp}.
+The inertial-frame magnetization $\bmm\prt$ 
+is then easily constructed via
+$\mxy\prt = \mxyp\prt e^{-i\omzero t}$ 
+and $\mz\prt = \mzp\prt$.
+
+It is challenging
+to explicitly solve Eq.~\eqref{eq:bkgrd,mxyp}-\eqref{eq:bkgrd,mzp}
+for arbitrary field perturbations $\bmb\prt$
+and relaxation times $\To\pr$, $\Tt\pr$. 
+Relevant special cases are discussed in the following.
+
+\subsubsection{Excitation}
+\label{sss,bkgrd,mri,bloch,ex}
+
+blah
+
+\subsubsection{Precession and Relaxation}
+\label{sss,bkgrd,mri,bloch,pr}
+
+\subsection{Steady-State Sequences}
+\label{ss,bkgrd,mri,ss}
+
+\subsubsection{Spoiled Gradient-Recalled Echo (SPGR) Sequence}
+\label{sss,bkgrd,mri,ss,spgr}
+
+\subsubsection{Dual-Echo Steady-State (DESS) Sequence}
+\label{sss,bkgrd,mri,ss,dess}
+
+
+\section{Relevant Optimization Tools}
+\label{s,bkgrd,opt}
+
+\subsection{(Coping with) Non-convex Optimization}
+\label{ss,bkgrd,opt,ncvx}
+
+\subsection{Partially Linear Models and the Variable Projection Method}
+\label{ss,bkgrd,opt,vpm}
