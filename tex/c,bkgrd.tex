@@ -53,10 +53,10 @@ the equations read
 \begin{align}
 	\dela{t} \mxy\prt &= i\gam\paren{\mz\prt \bxy\prt - \mxy\prt \bz\prt} -
 		\frac{\mxy\prt}{\Tt\pr} ;
-		\label{eq:bkgrd,mxy} \\
+		\label{eq:bloch-mxy} \\
 	\dela{t} \mz\prt &= \gam\paren{\mx\prt \by\prt - \my\prt \bx\prt} - 
 		\frac{\mz\prt - \mzero\pr}{\To\pr}.
-		\label{eq:bkgrd,mz}
+		\label{eq:bloch-mz}
 \end{align}
 Here, 
 $\mxy\prt := \mx\prt + i\my\prt \in \complex$
@@ -82,7 +82,7 @@ $\gam$
 is the gyromagnetic ratio;
 and $i := \sqrt{-1}$.
 As written,
-equations \eqref{eq:bkgrd,mxy}-\eqref{eq:bkgrd,mz}
+equations \eqref{eq:bloch-mxy}-\eqref{eq:bloch-mz}
 only model dominant temporal dynamics;
 later chapters consider second-order effects
 such as multiple magnetization compartments
@@ -110,40 +110,236 @@ $\mxyp\prt = \mxp\prt + i\myp\prt := \mxy\prt e^{i\omzero t}$
 and 
 $\mzp\prt := \mz\prt$.
 Remarkably, inserting these coordinate transformations 
-into \eqref{eq:bkgrd,mxy}-\eqref{eq:bkgrd,mz} 
+into \eqref{eq:bloch-mxy}-\eqref{eq:bloch-mz} 
 does not change the form
 of the dynamical equations:
 \begin{align}
 	\dela{t} \mxyp\prt &= i\gam\paren{\mzp\prt \bxyp\prt - \mxyp\prt \bzp\prt} -
 		\frac{\mxyp\prt}{\Tt\pr} ;
-		\label{eq:bkgrd,mxyp} \\
+		\label{eq:bloch-mxyp} \\
 	\dela{t} \mzp\prt &= \gam\paren{\mxp\prt \byp\prt - \myp\prt \bxp\prt} - 
 		\frac{\mzp\prt - \mzero\pr}{\To\pr}.
-		\label{eq:bkgrd,mzp}
+		\label{eq:bloch-mzp}
 \end{align}
 It thus suffices to consider 
-how (small) perturbations $\bmbp\prt$
+how perturbations $\bmbp\prt$
 to main field $\Bzero \unit{k}$ 
 influence rotating-frame magnetization $\bmmp\prt$
-via Eq.~\eqref{eq:bkgrd,mxyp}-\eqref{eq:bkgrd,mzp}.
+via Eqs.~\eqref{eq:bloch-mxyp}-\eqref{eq:bloch-mzp}.
 The inertial-frame magnetization $\bmm\prt$ 
 is then easily constructed via
 $\mxy\prt = \mxyp\prt e^{-i\omzero t}$ 
 and $\mz\prt = \mzp\prt$.
 
 It is challenging
-to explicitly solve Eq.~\eqref{eq:bkgrd,mxyp}-\eqref{eq:bkgrd,mzp}
-for arbitrary field perturbations $\bmb\prt$
-and relaxation times $\To\pr$, $\Tt\pr$. 
-Relevant special cases are discussed in the following.
+to explicitly solve Eqs.~\eqref{eq:bloch-mxyp}-\eqref{eq:bloch-mzp}
+for arbitrary field perturbations $\bmbp\prt$. 
+We discuss relevant special cases 
+in the following.
 
-\subsubsection{Excitation}
+\subsubsection{Non-Selective Excitation}
 \label{sss,bkgrd,mri,bloch,ex}
 
-blah
+Here,
+we derive solutions 
+to Eqs.~\eqref{eq:bloch-mxyp}-\eqref{eq:bloch-mzp}
+in the case of short, spatially non-selective excitations.
+We take the following common assumptions:
+\begin{itemize}
+	\item 
+		We assume negligible spatial variation
+		in the longitudinal magnetic field, 
+		so $\bzp\prt \approx 0$. 
+		This lack of spatial variation is reason
+		for non-selective excitation.
+	\item
+		We assume that 
+		the duration $\Tp$
+		of RF excitation
+		(often $\Tp\sim$1ms)
+		is much shorter than relaxation time constants
+		(typically $\To\sim$1000ms and $\Tt\sim$50ms
+		in brain tissue)
+		and thus neglect relaxation effects
+		during excitation.
+	\item 
+		We assume the transverse field
+		separates in position and time;
+		oscillates at the Larmor frequency
+		(commonly in the radiofrequency (RF) range);
+		and aligns at initial time $t \gets t_0$ 
+		with the $x$-axis.
+		Together,
+		these assumptions restrict
+		the so-called RF excitation to take form
+		$\bxyp\prt \approx \stx\pr \bonexp\pt \unit{i} + 0\unit{j}$,
+		where $\stx\pr \in \real$ is the RF transmit coil spatial variation
+		and $\bonexp\pt \in \real$ is the RF excitation envelope.
+\end{itemize}
+Under these assumptions, 
+Eqs.~\eqref{eq:bloch-mxyp}-\eqref{eq:bloch-mzp}
+reduce to the linear system
+\begin{align}
+	\dela{t}
+	\begin{bmatrix}
+		\mxp\prt \\
+		\myp\prt \\
+		\mzp\prt
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		0 & 0 & 0 \\
+		0 & 0 & \gam \stx\pr \bonexp\pt \\
+		0 & -\gam \stx\pr \bonexp\pt & 0
+	\end{bmatrix}
+	\begin{bmatrix}
+		\mxp\prt \\
+		\myp\prt \\
+		\mzp\prt
+	\end{bmatrix}.
+	\label{eq:bloch-rot}
+\end{align}
+Eq.~\eqref{eq:bloch-rot} admits the simple solution
+(for $t\geq t_0$)
+\begin{align}
+	\begin{bmatrix}
+		\mxp\prt \\
+		\myp\prt \\
+		\mzp\prt
+	\end{bmatrix}
+	= 
+	\begin{bmatrix}
+		1 & 0 & 0 \\
+		0 & \cosa{\fliprt} & \sina{\fliprt} \\
+		0 & -\sina{\fliprt} & \cosa{\fliprt} 
+	\end{bmatrix}
+	\begin{bmatrix}
+		\mxp\prtz \\
+		\myp\prtz \\
+		\mzp\prtz
+	\end{bmatrix},
+	\label{eq:rot-sol}
+\end{align}
+where 
+$\bmmp\prtz := \brac{\mxp\prtz,\myp\prtz,\mzp\prtz}\tpose$ 
+is the initial magnetization and
+\begin{align}
+	\fliprt := \gam \stx\pr \int_{t_0}^t \bonexp\paren{\tau} \der{\tau} 
+	\label{eq:flip-def}
+\end{align}
+is the nutation (or ``flip'') angle at time $t$.
+Eq.~\eqref{eq:rot-sol} reveals 
+that on-resonance RF excitation
+causes the magnetization vector
+to rotate clockwise
+about an axis parallel to
+the direction of excitation.
+The nutation angle
+accumulated over an RF pulse 
+of duration $\Tp$
+is often decomposed as
+$\flip\prtzt{t_0+\Tp} =: \flipnom \stx\pr$,
+where $\flipnom$
+is a prescribed nominal flip angle.
 
-\subsubsection{Precession and Relaxation}
+For deriving signal models
+in later sections,
+it is convenient and intuitive
+to define matrix operators
+that summarize relevant dynamics.
+Here, we rewrite Eq.~\eqref{eq:rot-sol} as 
+\begin{align}
+	\bmmp\prt = \bmRxp{\fliprt} \bmmp\prtz,
+	\label{eq:mtx-ex}
+\end{align}
+where $\bmRxp{\fliprt}$ denotes a clockwise rotation
+of angle $\fliprt$ 
+about the $x'$-axis.
+
+\subsubsection{Free Precession and Relaxation}
 \label{sss,bkgrd,mri,bloch,pr}
+
+Next,
+we derive solutions
+to the rotating-frame Bloch equations
+when no RF excitation is present,
+\ie $\bxyp\prt \approx 0$.
+In this case,
+Eqs.~\eqref{eq:bloch-mxyp}-\eqref{eq:bloch-mzp} decouple,
+yielding separate dynamical equations
+for the transverse and longitudinal magnetization components:
+\begin{align}
+	\dela{t} \mxyp\prt &= -i\gam \mxyp\prt \bzp\prt - \frac{\mxyp\prt}{\Tt\pr} ;
+		\label{eq:bloch-free-mxyp} \\
+	\dela{t} \mzp\prt &= -\frac{\mzp\prt - \mzero\pr}{\To\pr}.
+		\label{eq:bloch-free-mzp}
+\end{align}
+Eqs.~\eqref{eq:bloch-free-mxyp}-\eqref{eq:bloch-free-mzp}
+admit simple solutions
+with no further assumptions: 
+\begin{align}
+	\mxyp\prt &= \mxyp\prtz e^{-(t-t_0)/\Tt\pr} e^{-i \phprt}; 
+		\label{eq:mxy-fp} \\
+	\mzp\prt &= \mzp\prtz e^{-(t-t_0)/\To\pr} + \mzero\pr \paren{1-e^{-(t-t_0)/\To\pr}},
+		\label{eq:mz-fp}
+\end{align}
+where $\mxyp\prtz$ and $\mzp\prtz$ 
+are the initial magnetization components and
+\begin{align}
+	\phprt := \gam \int_{t_0}^t \bzp\paren{\bmr,\tau} \der{\tau}
+	\label{eq:ph-def}
+\end{align}
+denotes the phase accumulation
+due to main field inhomogeneity
+(often called off-resonance effects).
+Eq.~\eqref{eq:mxy-fp} reveals that without RF excitations,
+the transverse magnetization $\mxyp\prt$
+relaxes to zero exponentially fast 
+with time constant $\Tt\pr$,
+while accruing phase due to off-resonance effects.
+Eq.~\eqref{eq:mz-fp} similarly reveals
+that without RF excitations,
+longitudinal magnetization $\mzp\prt$
+recovers to $\mzero\pr$ exponentially fast 
+with time constant $\To\pr$.
+
+As in Section~\ref{sss,bkgrd,mri,bloch,pr},
+we rewrite Eqs.~\eqref{eq:mxy-fp}-\eqref{eq:mz-fp}
+using matrix operators:
+\begin{align}
+	\bmmp\prt = \bmRzp{\phprt} \bmE\prtzt{t} \bmmp\prtz 
+		+ \bmmzero\prtzt{t} 
+		\label{eq:mtx-pr}
+\end{align}
+where
+$\bmmzero\prtzt{t} := \mzero\pr \paren{1-e^{-(t-t_0)/\To\pr}} \unit{k}$; 
+\begin{align}
+	\bmRzp{\phprt} :=
+	\begin{bmatrix}
+		\cosa{\phprt} & \sina{\phprt} & 0 \\
+		-\sina{\phprt} & \cosa{\phprt} & 0 \\
+		0 & 0 & 1
+	\end{bmatrix}
+	\label{eq:op-rotz}
+\end{align}
+denotes a clockwise rotation of angle $\phprt$ about the $z'$-axis; 
+and
+\begin{align}
+	\bmE{\prtzt{t}} := 
+	\begin{bmatrix}
+		e^{-(t-t_0)/\Tt\pr} & 0 & 0 \\
+		0 & e^{-(t-t_0)/\Tt\pr} & 0 \\
+		0 & 0 & e^{-(t-t_0)/\To\pr} 
+	\end{bmatrix}
+	\label{eq:op-relax}
+\end{align}
+is an exponential relaxation operator.
+Section~\ref{ss,bkgrd,mri,ss}
+(and later chapters) 
+use matrix dynamical representations
+\eqref{eq:mtx-ex} and \eqref{eq:mtx-pr}
+to succinctly describe pulse sequence
+signal models.
 
 \subsection{Steady-State Sequences}
 \label{ss,bkgrd,mri,ss}
