@@ -50,4 +50,18 @@ D.~G. Nishimura, ``Principles of magnetic resonance imaging,'' 1996.
 F.~Bloch, ``Nuclear induction,'' {\em {Phys. Rev.}}, vol.~70, pp.~{460--74},
   Oct. 1946.
 
+\bibitem{hinshaw:76:ifb}
+W.~S. Hinshaw, ``Image formation by nuclear magnetic resonance: {The} sensitive
+  point method,'' {\em {J. Appl. Phys.}}, vol.~47, p.~3709, Aug. 1976.
+
+\bibitem{scheffler:99:apd}
+K.~Scheffler, ``A pictorial description of steady-states in rapid magnetic
+  resonance imaging,'' {\em {Concepts in Magnetic Resonance}}, vol.~11, no.~5,
+  pp.~{291--304}, 1999.
+
+\bibitem{hargreaves:01:car}
+B.~A. Hargreaves, S.~S. Vasanawala, J.~M. Pauly, and D.~G. Nishimura,
+  ``Characterization and reduction of the transient response in steady-state
+  {MR} imaging,'' {\em {Mag. Res. Med.}}, vol.~46, pp.~{149--58}, July 2001.
+
 \end{thebibliography}

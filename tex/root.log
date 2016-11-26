@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  25 NOV 2016 18:24
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  26 NOV 2016 16:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -611,30 +611,30 @@ CHAPTER 2.
 (./c,bkgrd.tex [4
 
 ]
-Overfull \hbox (1.12833pt too wide) in paragraph at lines 150--156
+Overfull \hbox (1.12833pt too wide) in paragraph at lines 148--154
 []\OT1/ptm/m/n/12 We as-sume neg-li-gi-ble spa-tial vari-a-tion in the lon-gi-t
 u-di-nal mag-netic field, so $\OML/cmm/m/it/12 b[][][] \OMS/cmsy/m/n/12 ^^Y
  []
 
 [5] [6]
-Overfull \hbox (1.73587pt too wide) in paragraph at lines 291--305
+Overfull \hbox (1.73587pt too wide) in paragraph at lines 289--303
 \OT1/ptm/m/n/12 denotes the phase ac-cu-mu-la-tion due to main field in-ho-mo-g
 ene-ity (of-ten called off-resonance
  []
 
 
-Overfull \hbox (9.80157pt too wide) in paragraph at lines 291--305
+Overfull \hbox (9.80157pt too wide) in paragraph at lines 289--303
 \OT1/ptm/m/n/12 ef-fects). Eq. [] re-veals that with-out RF ex-ci-ta-tions, the
  trans-verse mag-ne-ti-za-tion $\OML/cmm/m/it/12 m[][][]$
  []
 
-) [7] [8]
+[7]) [8] [9]
 CHAPTER 3.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 99.
 
-(./c,relax.tex) [9
+(./c,relax.tex) [10
 
 ]
 CHAPTER 4.
@@ -642,7 +642,7 @@ CHAPTER 4.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 103.
 
-(./c,scn-dsgn.tex) [10
+(./c,scn-dsgn.tex) [11
 
 ]
 CHAPTER 5.
@@ -650,7 +650,7 @@ CHAPTER 5.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 107.
 
-(./c,krr.tex) [11
+(./c,krr.tex) [12
 
 ]
 CHAPTER 6.
@@ -658,34 +658,34 @@ CHAPTER 6.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 111.
 
-(./c,mwf.tex) [12
+(./c,mwf.tex) [13
 
 ]
 CHAPTER 7.
-(./c,ss-rf.tex) [13
+(./c,ss-rf.tex) [14
 
 ]
 CHAPTER 8.
-(./c,future.tex) [14
+(./c,future.tex) [15
 
 ]
 APPENDIX A.
-(./a,cc-multi.tex) [15
+(./a,cc-multi.tex) [16
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [16
+(./a,dess-diff.tex) [17
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 137.
- [17
+ [18
 
 
-]
+] [19]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 137.
  (./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 137.
@@ -695,12 +695,12 @@ Package rerunfilecheck Info: File `root.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
  ) 
 Here is how much of TeX's memory you used:
- 8007 strings out of 493489
- 114375 string characters out of 3141349
- 212190 words of memory out of 3000000
- 11139 multiletter control sequences out of 15000+200000
- 16932 words of font info for 52 fonts, out of 3000000 for 9000
+ 8038 strings out of 493489
+ 114747 string characters out of 3141349
+ 212371 words of memory out of 3000000
+ 11164 multiletter control sequences out of 15000+200000
+ 21477 words of font info for 68 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,20n,45p,267b,439s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,20n,45p,276b,439s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (24 pages, 89432 bytes).
+Output written on root.dvi (26 pages, 99220 bytes).

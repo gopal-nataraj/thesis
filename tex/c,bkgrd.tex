@@ -20,8 +20,6 @@ This section begins
 with the fundamental Bloch equations
 and derives the signal models
 associated with 
-Spoiled Gradient-Recalled Echo (SPGR) 
-and Dual-Echo Steady-State (DESS),
 two MR pulse sequences
 used extensively in this thesis.
 Our coverage of MRI
@@ -154,9 +152,9 @@ We take the following common assumptions:
 		for non-selective excitation.
 	\item
 		We assume that 
-		the duration $\Tp$
+		the duration $\TP$
 		of RF excitation
-		(often $\Tp\sim$1ms)
+		(often $\TP\sim$1ms)
 		is much shorter than relaxation time constants
 		(typically $\To\sim$1000ms and $\Tt\sim$50ms
 		in brain tissue)
@@ -236,9 +234,9 @@ about an axis parallel to
 the direction of excitation.
 The nutation angle
 accumulated over an RF pulse 
-of duration $\Tp$
+of duration $\TP$
 is often decomposed as
-$\flip\prtzt{t_0+\Tp} =: \flipnom \stx\pr$,
+$\flip\prtzt{t_0+\TP} =: \flipnom \stx\pr$,
 where $\flipnom$
 is a prescribed nominal flip angle.
 
@@ -305,6 +303,7 @@ with time constant $\To\pr$.
 
 As in Section~\ref{sss,bkgrd,mri,bloch,pr},
 we rewrite Eqs.~\eqref{eq:mxy-fp}-\eqref{eq:mz-fp}
+for $t\geq t_0$
 using matrix operators:
 \begin{align}
 	\bmmp\prt = \bmRzp{\phprt} \bmE\prtzt{t} \bmmp\prtz 
@@ -344,8 +343,97 @@ signal models.
 \subsection{Steady-State Sequences}
 \label{ss,bkgrd,mri,ss}
 
+MRI experiments
+typically involve 
+repeated cycles of (pulsed) RF excitation;
+signal localization (not discussed here);
+and transverse $\Tt$ relaxation and free precession, 
+alongside (relatively slow) longitudinal $\To$ recovery.
+We can build models 
+of the received MR signal
+by considering the magnetization dynamics
+induced by specific pulse sequences.
+
+Classical pulse sequences
+use relatively long cycle repetition times $\TR$
+to ensure near-complete $\To$ recovery
+of the magnetization vector
+back to equilibrium state $\mzero\pr \unit{k}$
+prior to the start of each RF cycle.
+For such long-$\TR$ sequences,
+it suffices 
+to approximate the magnetization
+as fully recovered 
+(\ie, $\bmmp\paren{\bmr,t_0 + n\TR} \approx \mzero\pr \unit{k}, 
+\forall n\in\set{0,1,2,\dots}$)
+just prior to each RF excitation.
+This approximation
+yields a sequence of initial conditions
+and allows computation of the magnetization
+at corresponding times of data acquisition
+via direct application of Bloch dynamics
+\eqref{eq:mtx-ex} and \eqref{eq:mtx-pr}.
+Resulting signal models
+are typically simple expressions
+of relaxation parameters $\To\pr$ and $\Tt\pr$;
+however, model accuracy often depends strongly
+on the long-$\TR$ assumption,
+which requires long acquisitions.
+
+Steady-state (SS) sequences
+\cite{hinshaw:76:ifb}
+utilize short $\TR$,
+and can thus achieve much faster scan times.
+Due to short repetition times,
+SS sequences achieve only partial $\To$ recovery
+in between RF excitations;
+thus, their magnetization responses
+do not obey the simple classical initial conditions
+(for the second RF cycle onwards).
+Although their transient magnetization dynamics
+can be complicated,
+SS sequences produce
+(under certain assumptions \cite{scheffler:99:apd})
+long-time magnetization responses
+that eventually
+\footnote{The progression to steady state takes 
+	on the order of 
+	$5\Tt/\TR$ RF cycles \cite{scheffler:99:apd},
+	typically a small but not insignificant period 
+	during which data acquisition is often foregone. 
+	This transition can
+	(in some cases) be accelerated 
+	by prepending SS sequences
+	with tailored ``magnetization-catalyzing'' modules
+	\cite{hargreaves:01:car}.
+}
+achieve a
+steady-state condition:
+\begin{align}
+	\lim_{t_0 \to \infty} \bmmp\paren{\bmr,t_0+n\TR} = \bmmp\paren{\bmr,t_0},
+	\label{eq:ss-cond}
+\end{align}
+where repetition count 
+$n \in \set{0,1,2,\dots}$
+for fixed RF excitations
+and off-resonance induced phase increments
+(as is assumed in the following).
+Subsections~\ref{sss,bkgrd,mri,ss,spgr}
+and \ref{sss,bkgrd,mri,ss,dess}
+use SS condition \eqref{eq:ss-cond}
+and Bloch equation matrix operators
+introduced in
+\eqref{eq:mtx-ex} and \eqref{eq:mtx-pr}
+to derive long-time signal models
+for Spoiled Gradient-Recalled Echo (SPGR)
+and Dual-Echo Steady-State (DESS),
+two SS pulse sequences
+useful for quantitative MRI.
+
 \subsubsection{Spoiled Gradient-Recalled Echo (SPGR) Sequence}
 \label{sss,bkgrd,mri,ss,spgr}
+
+
 
 \subsubsection{Dual-Echo Steady-State (DESS) Sequence}
 \label{sss,bkgrd,mri,ss,dess}
