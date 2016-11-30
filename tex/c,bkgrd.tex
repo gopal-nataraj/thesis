@@ -150,16 +150,6 @@ We take the following common assumptions:
 		so $\bzp\prt \approx 0$. 
 		This lack of spatial variation is reason
 		for non-selective excitation.
-	\item
-		We assume that 
-		the duration $\TP$
-		of RF excitation
-		(often $\TP\sim$1ms)
-		is much shorter than relaxation time constants
-		(typically $\To\sim$1000ms and $\Tt\sim$50ms
-		in brain tissue)
-		and thus neglect relaxation effects
-		during excitation.
 	\item 
 		We assume the transverse field
 		separates in position and time;
@@ -173,6 +163,16 @@ We take the following common assumptions:
 		$\bxyp\prt \approx \stx\pr \bonexp\pt \unit{i} + 0\unit{j}$,
 		where $\stx\pr \in \real$ is the RF transmit coil spatial variation
 		and $\bonexp\pt \in \real$ is the RF excitation envelope.
+	\item
+		We assume that 
+		the duration $\TP$
+		of RF excitation
+		(often $\TP\sim$1ms)
+		is much shorter than relaxation time constants
+		(typically $\To\sim$1000ms and $\Tt\sim$50ms
+		in brain tissue)
+		and thus neglect relaxation effects
+		during excitation.
 \end{itemize}
 Under these assumptions, 
 Eqs.~\eqref{eq:bloch-mxyp}-\eqref{eq:bloch-mzp}
@@ -364,8 +364,8 @@ For such long-$\TR$ sequences,
 it suffices 
 to approximate the magnetization
 as fully recovered 
-(\ie, $\bmmp\paren{\bmr,t_0 + n\TR} \approx \mzero\pr \unit{k}, 
-\forall n\in\set{0,1,2,\dots}$)
+(\ie, $\bmmp\paren{\bmr,t_0 + \rep\TR} \approx \mzero\pr \unit{k}, 
+\forall \rep\in\set{0,1,2,\dots}$)
 just prior to each RF excitation.
 This approximation
 yields a sequence of initial conditions
@@ -410,11 +410,11 @@ that eventually
 achieve a
 steady-state condition:
 \begin{align}
-	\lim_{t_0 \to \infty} \bmmp\paren{\bmr,t_0+n\TR} = \bmmp\paren{\bmr,t_0},
+	\lim_{t_0 \to \infty} \bmmp\paren{\bmr,t_0+\rep\TR} = \bmmp\paren{\bmr,t_0},
 	\label{eq:ss-cond}
 \end{align}
 where repetition count 
-$n \in \set{0,1,2,\dots}$
+$\rep \in \set{1,2,\dots}$
 for fixed RF excitations
 and off-resonance induced phase increments
 (as is assumed in the following).
@@ -433,7 +433,208 @@ useful for quantitative MRI.
 \subsubsection{Spoiled Gradient-Recalled Echo (SPGR) Sequence}
 \label{sss,bkgrd,mri,ss,spgr}
 
+SPGR \cite{zur:91:sot}
+is a fast pulse sequence
+that repeats cycles of 
+fixed RF excitation
+(such that $\bonexp\paren{t+\rep\TR} = \bonexp\pt,
+\forall t\in\brac{t_0,t_0+\TP}, r\in\set{1,2,\dots}$);
+data acquisition;
+relaxation and recovery;
+and residual transverse magnetization ``spoiling''
+(discussed later).
+Here we develop
+a simple and popular steady-state SPGR signal model.
 
+Let $\bmmp\prtz$ denote the magnetization
+at an initial time $t_0$ 
+selected well into the steady-state
+and just prior to excitation.
+The SPGR sequence first applies
+an RF excitation, 
+which rotates the initial magnetization
+as per \eqref{eq:mtx-ex}:
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TP} = \bmRxp{\flip\prtzt{t_0+\TP}} \bmmp\prtz.
+	\label{eq:spgr-ex}
+\end{align}
+The excited magnetization 
+then precesses and relaxes
+as per \eqref{eq:mtx-pr}
+until data acquisition,
+defined to occur at
+``echo time'' $\TE \in \brac{\TP,\TR}$
+after the (midpoint of) RF excitation:
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} &=
+	\bmRzp{\php\paren{\bmr,\frac{\TP}{2}+\TE;\TP}} 
+	\bmE\paren{\bmr,\frac{\TP}{2}+\TE;\TP} \bmmp\paren{\bmr,t_0+\TP} \nonumber \\
+	&+ \bmmzero\paren{\bmr,\frac{\TP}{2}+\TE;\TP}.
+	\label{eq:spgr-daq}
+\end{align}
+Following signal reception,
+the remaining transverse magnetization 
+is spoiled 
+\footnote{Transverse signal spoiling 
+is often (nearly) achieved in practice
+using strong induced field inhomogeneities 
+(which cause rapid transverse signal dephasing)
+in tandem with RF excitations
+that additionally impart non-constant
+(often quadratically increasing)
+transverse magnetization phase
+\cite{zur:91:sot}.
+Though the non-constant RF phase
+used in so-called ``RF-spoiling'' 
+prevents any one spin
+from reaching a true steady-state,
+the signal integrated
+over a typically-sized voxel
+achieves SS-like behavior
+\cite{denolin:05:nii}.
+}
+while the longitudinal component
+is unaffected. 
+We model an ideal spoiling operation as
+\begin{align}
+	\bmS \bmmp\paren{\bmr,\frac{\TP}{2}+\TE}, \where \qquad
+	\bmS := 
+	\begin{bmatrix}
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\
+		0 & 0 & 1
+	\end{bmatrix}.
+	\label{eq:spgr-spoil}
+\end{align}
+After spoiling, 
+the longitudinal magnetization 
+(partially) recovers
+until $t \gets t_0+\TR$:
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TR} &= 
+	\bmRzp{\php\paren{\bmr,\TR;\frac{\TP}{2}+\TE}} 
+	\bmE\paren{\bmr,\TR;\frac{\TP}{2}+\TE} \bmS \bmmp\paren{\bmr,\frac{\TP}{2}+\TE} \nonumber \\
+	&+ \bmmzero\paren{\bmr,\TR;\frac{\TP}{2}+\TE}.
+	\label{eq:spgr-pr}
+\end{align}
+In steady-state, 
+one cycle of excitation, acquisition, spoiling, and recovery 
+returns the magnetization back to its initial state.
+We enforce this through the steady-state condition
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TP} = \bmRxp{\flip\prtzt{t_0+\TP}} \bmmp\paren{\bmr,t_0+\TR}
+	\label{eq:spgr-ss}
+\end{align}
+which yields an algebraic
+system of equations.
+When it exists,
+the solution is
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TP} = 
+	\frac{1}{1-e^{-\paren{\TR-\TP}/\To\pr}\cosa{\alpha\pr}}
+	\begin{bmatrix}
+		0 \\
+		\mzero\pr \sina{\flip\pr} \paren{1-e^{-\paren{\TR-\TP}/\To\pr}}\\
+		\mzero\pr \cosa{\flip\pr} \paren{1-e^{-\paren{\TR-\TP}/\To\pr}}
+	\end{bmatrix},
+	\label{eq:spgr-bmmp-t0}
+\end{align}
+where $\flip\pr := \flip\prtzt{t_0+\TP}$ 
+is a slight abuse of notation.
+Remarkably, 
+the SPGR steady-state magnetization
+immediately after excitation
+is approximately independent
+of both off-resonance effects
+and $\Tt\pr$.
+Researchers more often cite the expression
+\begin{align}
+	\mxyp\paren{\bmr,t_0+\TP}
+	&= \mxp\paren{\bmr,t_0+\TP} + i\myp\paren{\bmr,t_0+\TP} \nonumber \\
+	&= \frac{i\mzero\pr \sina{\flip\pr} \paren{1-e^{-\TR/\To\pr}}}
+	{1-e^{-\TR/\To\pr}\cosa{\alpha\pr}}
+	\label{eq:spgr-mxyp-t0}
+\end{align}
+for the complex transverse magnetization
+as it modifies \eqref{eq:spgr-bmmp-t0}
+to include a simple first-order correction
+for unaccounted $\To$ recovery during the RF pulse.
+Substituting \eqref{eq:spgr-mxyp-t0} 
+into \eqref{eq:spgr-daq} 
+yields an expression 
+for the transverse magnetization
+at the echo time:
+\begin{align}
+	\mxyp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
+	&=
+	\mxyp\paren{\bmr,t_0+\TP} 
+	e^{-(\TE-\TP/2)/\Tt\pr} 
+	e^{-i\php\paren{\bmr,t_0+\frac{\TP}{2}+\TE;t_0+\TP}} \nonumber \\
+	&\approx
+	\mxyp\paren{\bmr,t_0+\TP} 
+	e^{-\TE/\Tt\pr} 
+	e^{-i\php\paren{\bmr,t_0+\frac{\TP}{2}+\TE;t_0+\frac{\TP}{2}}},
+	\label{eq:spgr-mxyp-te}
+\end{align}
+where the approximation
+again keeps in line 
+with literature expressions.
+
+The received signal
+is approximately proportional 
+to the integrated transverse magnetization
+over a volume $\setv$.
+To derive expressions,
+we take a few more usual assumptions:
+\begin{itemize}
+	\item We assume that
+	the signal is localized
+	to a scale over which
+	there is off-resonance phase variation,
+	but minimal variation
+	of $\mzero\pr$, $\To\pr$, $\Tt\pr$, and $\flip\pr$.
+	This assumption is reasonable
+	\footnote{Model mismatch due
+		to within-voxel spatial variation 
+		of relaxation parameters
+		can be significant,
+		especially for large voxels.
+		Chapter~\ref{c,mwf} studies 
+		so-called partial volume effects
+		and uses them for QMRI.
+	} 
+	when describing the signal 
+	arising from a typical voxel.
+	\item We assume that
+	(free-precession) off-resonance phase 
+	grows linearly with time,
+	\ie $\php\paren{\bmr,t_0+\frac{\TP}{2}+\TE;t_0+\frac{\TP}{2}} \approx \omp\pr \TE$.
+	We further assume
+	that off-resonance frequency $\omp\pr$
+	is distributed over the localized voxel
+	as $\dist{\omp} \gets \operatorname{Cauchy}\paren{\ompmed,\Rtp}$,
+	where $\ompmed\pr$ is the median off-resonance frequency
+	and $\Rtp\pr$ is the broadening bandwidth.
+\end{itemize}
+With these additional assumptions,
+the received steady-state SPGR (noiseless) signal model
+for a typically sized voxel
+centered at position $\bmr$ is
+\begin{align}
+	\spgr\pr 
+	&:= \int_{\setv\pr} \mxyp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \dercubed{\bmr} 
+		\label{eq:spgr-int} \\
+	&\approx \mxy\paren{\bmr,t_0+\TP} e^{-\TE/\Tt\pr} \int_\real e^{-i\omp \TE} 
+		\dist{\omp}\paren{\omp} \der{\omp} \nonumber \\
+	&= \mxy\paren{\bmr,t_0+\TP} e^{-\TE/\Tt\pr} e^{-\Rtp\pr\TE - i\ompmed\pr\TE} \nonumber \\
+	&= \frac{i\mzero\pr \sina{\flip\pr} \paren{1-e^{-\TR/\To\pr}}}
+	{1-e^{-\TR/\To\pr}\cosa{\alpha\pr}} e^{-\TE/\Tts\pr} e^{-i\ompmed\pr \TE},
+		\label{eq:spgr-model}
+\end{align}
+where $\Tts\pr := \inv{\frac{1}{\Tt} + \Rtp}$
+is a modified spin-spin relaxation time
+that accounts for additional transverse magnetization decay
+due to off-resonance effects.
 
 \subsubsection{Dual-Echo Steady-State (DESS) Sequence}
 \label{sss,bkgrd,mri,ss,dess}

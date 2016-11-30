@@ -64,4 +64,14 @@ B.~A. Hargreaves, S.~S. Vasanawala, J.~M. Pauly, and D.~G. Nishimura,
   ``Characterization and reduction of the transient response in steady-state
   {MR} imaging,'' {\em {Mag. Res. Med.}}, vol.~46, pp.~{149--58}, July 2001.
 
+\bibitem{zur:91:sot}
+Y.~Zur, M.~L. Wood, and L.~J. Neuringer, ``Spoiling of transverse magnetization
+  in steady-state sequences,'' {\em {Mag. Res. Med.}}, vol.~21, pp.~{251--63},
+  Oct. 1991.
+
+\bibitem{denolin:05:nii}
+V.~Denolin, C.~Azizieh, and T.~Metens, ``New insights into the mechanisms of
+  signal formation in rf-spoiled gradient echo sequences,'' {\em {Mag. Res.
+  Med.}}, vol.~54, pp.~{937--54}, Oct. 2005.
+
 \end{thebibliography}
