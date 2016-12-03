@@ -74,4 +74,14 @@ V.~Denolin, C.~Azizieh, and T.~Metens, ``New insights into the mechanisms of
   signal formation in rf-spoiled gradient echo sequences,'' {\em {Mag. Res.
   Med.}}, vol.~54, pp.~{937--54}, Oct. 2005.
 
+\bibitem{redpath:88:fan}
+T.~Redpath and R.~A. Jones, ``Fade-a new fast imaging sequence,'' {\em {Mag.
+  Res. Med.}}, vol.~6, pp.~{224--34}, Feb. 1988.
+
+\bibitem{bruder:88:ans}
+H.~Bruder, H.~Fischer, R.~Graumann, and M.~Deimling, ``A new steady-state
+  imaging sequence for simultaneous acquisition of two {MR} images with clearly
+  different contrasts,'' {\em {Mag. Res. Med.}}, vol.~7, pp.~{35--42}, May
+  1988.
+
 \end{thebibliography}

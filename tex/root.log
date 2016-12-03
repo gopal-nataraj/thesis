@@ -1,9 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  30 NOV 2016 01:48
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  3 DEC 2016 10:51
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**root.tex
+**root
 (./root.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
@@ -629,17 +628,37 @@ Overfull \hbox (9.80157pt too wide) in paragraph at lines 289--303
  []
 
 [7] [8]
-Overfull \hbox (0.19235pt too wide) in paragraph at lines 541--541
+Overfull \hbox (4.88657pt too wide) in paragraph at lines 520--520
 [] 
  []
 
-[9] [10]) [11]
+
+Overfull \hbox (0.19235pt too wide) in paragraph at lines 542--542
+[] 
+ []
+
+[9] [10] [11]
+Overfull \hbox (8.83086pt too wide) in paragraph at lines 741--741
+[] 
+ []
+
+
+Overfull \hbox (49.87589pt too wide) detected at line 754
+[]\OML/cmm/m/it/12 :
+ []
+
+
+Overfull \hbox (43.6091pt too wide) in paragraph at lines 769--769
+[] 
+ []
+
+[12] [13] [14]) [15]
 CHAPTER 3.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 100.
 
-(./c,relax.tex) [12
+(./c,relax.tex) [16
 
 ]
 CHAPTER 4.
@@ -647,7 +666,7 @@ CHAPTER 4.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 104.
 
-(./c,scn-dsgn.tex) [13
+(./c,scn-dsgn.tex) [17
 
 ]
 CHAPTER 5.
@@ -655,7 +674,7 @@ CHAPTER 5.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 108.
 
-(./c,krr.tex) [14
+(./c,krr.tex) [18
 
 ]
 CHAPTER 6.
@@ -663,34 +682,34 @@ CHAPTER 6.
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 112.
 
-(./c,mwf.tex) [15
+(./c,mwf.tex) [19
 
 ]
 CHAPTER 7.
-(./c,ss-rf.tex) [16
+(./c,ss-rf.tex) [20
 
 ]
 CHAPTER 8.
-(./c,future.tex) [17
+(./c,future.tex) [21
 
 ]
 APPENDIX A.
-(./a,cc-multi.tex) [18
+(./a,cc-multi.tex) [22
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [19
+(./a,dess-diff.tex) [23
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [20
+ [24
 
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 138.
- [21]
+ [25]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 138.
  (./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 138.
@@ -700,12 +719,12 @@ Package rerunfilecheck Info: File `root.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 138.
  ) 
 Here is how much of TeX's memory you used:
- 8073 strings out of 493489
- 115132 string characters out of 3141349
- 214321 words of memory out of 3000000
- 11199 multiletter control sequences out of 15000+200000
+ 8118 strings out of 493489
+ 115772 string characters out of 3141349
+ 215619 words of memory out of 3000000
+ 11244 multiletter control sequences out of 15000+200000
  21477 words of font info for 68 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,20n,45p,297b,463s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,20n,45p,293b,463s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (28 pages, 118852 bytes).
+Output written on root.dvi (32 pages, 153196 bytes).

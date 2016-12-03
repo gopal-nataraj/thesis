@@ -14,15 +14,15 @@
 \contentsline {subsection}{\numberline {2.1.2}Steady-State Sequences}{8}{subsection.2.1.2}
 \contentsline {subsubsection}{\numberline {2.1.2.1}Spoiled Gradient-Recalled Echo (SPGR) Sequence}{8}{subsubsection.2.1.2.1}
 \contentsline {subsubsection}{\numberline {2.1.2.2}Dual-Echo Steady-State (DESS) Sequence}{11}{subsubsection.2.1.2.2}
-\contentsline {section}{\numberline {2.2}Relevant Optimization Tools}{11}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}(Coping with) Non-convex Optimization}{11}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Partially Linear Models and the Variable Projection Method}{11}{subsection.2.2.2}
-\contentsline {chapter}{\numberline {3}MRI Parameter Estimation \\ from Likelihood Models}{12}{chapter.3}
-\contentsline {chapter}{\numberline {4}Optimizing MR Scan Design \\ for Model-Based Relaxometry}{13}{chapter.4}
-\contentsline {chapter}{\numberline {5}MRI Parameter Estimation \\ via Kernel Regression}{14}{chapter.5}
-\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation \\ from Steady-State Sequences}{15}{chapter.6}
-\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{16}{chapter.7}
-\contentsline {chapter}{\numberline {8}Future Work}{17}{chapter.8}
-\contentsline {chapter}{Appendices}{18}{section*.7}
+\contentsline {section}{\numberline {2.2}Relevant Optimization Tools}{15}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}(Coping with) Non-convex Optimization}{15}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Partially Linear Models and the Variable Projection Method}{15}{subsection.2.2.2}
+\contentsline {chapter}{\numberline {3}MRI Parameter Estimation \\ from Likelihood Models}{16}{chapter.3}
+\contentsline {chapter}{\numberline {4}Optimizing MR Scan Design \\ for Model-Based Relaxometry}{17}{chapter.4}
+\contentsline {chapter}{\numberline {5}MRI Parameter Estimation \\ via Kernel Regression}{18}{chapter.5}
+\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation \\ from Steady-State Sequences}{19}{chapter.6}
+\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{20}{chapter.7}
+\contentsline {chapter}{\numberline {8}Future Work}{21}{chapter.8}
+\contentsline {chapter}{Appendices}{22}{section*.7}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{20}{section*.10}
+\contentsline {chapter}{Bibliography}{24}{section*.10}

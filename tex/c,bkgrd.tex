@@ -480,11 +480,11 @@ is often (nearly) achieved in practice
 using strong induced field inhomogeneities 
 (which cause rapid transverse signal dephasing)
 in tandem with RF excitations
-that additionally impart non-constant
+that additionally impart nonlinear
 (often quadratically increasing)
 transverse magnetization phase
 \cite{zur:91:sot}.
-Though the non-constant RF phase
+Though the nonlinear RF phase
 used in so-called ``RF-spoiling'' 
 prevents any one spin
 from reaching a true steady-state,
@@ -513,7 +513,8 @@ until $t \gets t_0+\TR$:
 \begin{align}
 	\bmmp\paren{\bmr,t_0+\TR} &= 
 	\bmRzp{\php\paren{\bmr,\TR;\frac{\TP}{2}+\TE}} 
-	\bmE\paren{\bmr,\TR;\frac{\TP}{2}+\TE} \bmS \bmmp\paren{\bmr,\frac{\TP}{2}+\TE} \nonumber \\
+	\bmE\paren{\bmr,\TR;\frac{\TP}{2}+\TE} \bmS 
+	\bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \nonumber \\
 	&+ \bmmzero\paren{\bmr,\TR;\frac{\TP}{2}+\TE}.
 	\label{eq:spgr-pr}
 \end{align}
@@ -619,10 +620,10 @@ we take a few more usual assumptions:
 With these additional assumptions,
 the received steady-state SPGR (noiseless) signal model
 for a typically sized voxel
-centered at position $\bmr$ is
+centered at position $\bmr$ is (to within constants):
 \begin{align}
-	\spgr\pr 
-	&:= \int_{\setv\pr} \mxyp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \dercubed{\bmr} 
+	\spgr\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
+	&\propto \int_{\setv\pr} \mxyp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \dercubed{\bmr} 
 		\label{eq:spgr-int} \\
 	&\approx \mxy\paren{\bmr,t_0+\TP} e^{-\TE/\Tt\pr} \int_\real e^{-i\omp \TE} 
 		\dist{\omp}\paren{\omp} \der{\omp} \nonumber \\
@@ -639,6 +640,340 @@ due to off-resonance effects.
 \subsubsection{Dual-Echo Steady-State (DESS) Sequence}
 \label{sss,bkgrd,mri,ss,dess}
 
+DESS \cite{redpath:88:fan,bruder:88:ans}
+is a fast pulse sequence 
+that interlaces fixed, constant-phase RF excitations
+with fixed dephasing ``gradients''
+(\ie, induced main field inhomogeneities 
+that vary nearly linearly with space)
+to produce two distinct signals
+per RF excitation.
+Here we develop simple 
+steady-state DESS signal models.
+
+As in Subsection~\ref{sss,bkgrd,mri,ss,spgr},
+let $\bmmp\prtz$ denote the magnetization
+at an initial time $t_0$ 
+selected well into the steady-state
+and just prior to excitation.
+The DESS sequence first applies
+a fixed RF rotation
+$\flip\pr := \flip\paren{\bmr,t_0+\rep\TR+\TP;t_0+\rep\TR},
+\forall r \in \set{0,1,2,\dots}$:
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TP} = \bmRxp{\flip{\pr}} \bmmp\prtz.
+	\label{eq:dess-ex}
+\end{align}
+The excited transverse magnetization
+contributes to a first acquired signal;
+dephases (but does not spoil completely) 
+due to gradient dephasing
+\footnote{It is worth distinguishing 
+gradient dephasing
+(commonly 
+but somewhat misleadingly 
+referred to as gradient spoiling)
+from RF spoiling.
+Gradient dephasing
+(used in DESS)
+primarily affects magnetization phase
+and is modeled simply as precession.
+RF spoiling
+(used in SPGR)
+combines gradient dephasing 
+with nonlinear RF phase cycling
+and suppresses magnetization magnitude 
+in steady-state.
+}
+and contributes again to a second 
+(smaller, but nonzero) acquired signal.
+Since (with proper selection) 
+dephasing gradients mainly contribute 
+to off-resonance phase accrual,
+the net effect
+after data acquisition
+and gradient spoiling
+is well described 
+simply by precession and relaxation:
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TR} &= 
+	\bmRzp{\php\paren{\bmr}} \bmE\paren{\bmr,\TR;\TP} \bmmp\paren{\bmr,t_0+\TP} +
+	\bmmzero\paren{\bmr,\TR;\TP},
+	\label{eq:dess-pr}
+\end{align}
+where the abbreviation
+$\php\pr := \php\paren{\bmr,t_0+\paren{\rep+1}\TR;t_0+\rep\TR+\TP},
+\forall \rep \in \set{0,1,2,\dots}$
+implies fixed phase accrual 
+(due to gradient dephasing, 
+field inhomogeneity, 
+and other unaccounted effects)
+over each repetition cycle.
+
+In steady-state,
+one cycle of excitation,
+first acquisition, 
+gradient spoiling,
+second acquisition,
+and (partial) recovery
+returns the magnetization
+back to its initial state.
+We enforce this
+through the steady-state condition
+\begin{align}
+	\bmmp\prtz = \bmmp\paren{\bmr,t_0+\TR}
+	\label{eq:dess-ss}
+\end{align}	
+which yields an algebraic system of equations.
+When it exists, 
+the solution gives 
+the steady-state magnetization
+just prior to RF excitation:
+\begin{align}
+	\bmmp\prtz =
+	\begin{bmatrix}
+		\EtRP \sin{\flip\pr} \sin{\php\pr} \\
+		-\EtRP \sin{\flip\pr} \paren{\EtRP-\cos{\php\pr}} \\
+		1-\EtRP\cos{\php\pr} + \EtRP \cos{\flip\pr} \paren{\EtRP-\cos{\php\pr}}
+	\end{bmatrix}
+	q\paren{\bmr,\TFP},
+	\label{eq:dess-bmmp-t0}
+\end{align}
+where 
+$\TFP := \TR-\TP$ 
+is the free precession interval;
+$\Eo\paren{\bmr,t} := e^{-t/\To\pr}$ and 
+$\Et\paren{\bmr,t} := e^{-t/\Tt\pr}$
+are relaxation operators;
+and 
+$q\paren{\bmr,t} := $
+$$
+\frac{\mzero\pr \paren{1-\Eo\prt}
+}{\paren{1-\Eo\prt\cos\flip\pr} \paren{1-\Et\prt\cos\php\pr} -
+\Et\prt \paren{\Eo\prt - \cos\flip\pr} \paren{\Et\prt - \cos\php\pr}}.
+$$
+Substituting \eqref{eq:dess-bmmp-t0} 
+into \eqref{eq:dess-ex}
+produces a similar expression 
+for the steady-state magnetization
+immediately following RF excitation:
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TP} =
+	\begin{bmatrix}
+		\EtRP \sin{\flip\pr} \sin{\php\pr} \\
+		\sin{\flip\pr} \paren{1 - \EtRP \cos{\php\pr}} \\
+		\cos{\flip\pr} \paren{1 - \EtRP \cos{\php\pr}} + \EtRP \paren{\EtRP - \cos{\php\pr}}
+	\end{bmatrix}
+	q\paren{\bmr,\TFP}.
+	\label{eq:dess-bmmp-tp}
+\end{align}
+The transverse magnetizations
+before and after RF excitation are then
+\begin{align}
+	\mxyp\prtz &= 
+		-i\sin{\flip\pr} \EtR \paren{\EtR-e^{-i\php\pr}} q\paren{\bmr,\TR}
+		\label{eq:dess-mxyp-t0}; \\
+	\mxyp\paren{\bmr,t_0+\TP} &=
+		+i\sin{\flip\pr} \paren{1-\EtR e^{i\php\pr}} q\paren{\bmr,\TR},
+		\label{eq:dess-mxyp-tp}
+\end{align}
+where \eqref{eq:dess-mxyp-t0}-\eqref{eq:dess-mxyp-tp}
+include simple first-order corrections
+for yet-unaccounted relaxation and recovery
+during excitation.
+Frequently, 
+the DESS signals are acquired 
+at symmetric echo times $\TE$
+before and after the center of each RF pulse.
+Substituting \eqref{eq:dess-mxyp-tp} 
+into \eqref{eq:bloch-free-mxyp}
+gives the magnetization
+at the data acquisition time
+after RF excitation:
+\begin{align}
+	\mxyp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
+		&= \mxyp\paren{\bmr,t_0+\TP} e^{-\paren{\TE-\TP/2}/\Tt\pr} 
+			e^{-i\php\paren{\bmr,t_0+\frac{\TP}{2}+\TE;t_0+\TP}} \nonumber \\
+		&\approx \mxyp\paren{\bmr,t_0+\TP} e^{-\TE/\Tt\pr} 
+			e^{-i\php\paren{\bmr,t_0+\frac{\TP}{2}+\TE;t_0+\frac{\TP}{2}}}
+			\label{eq:dess-mxyp-te1-ph} \\
+		&\approx \mxyp\paren{\bmr,t_0+\TP} e^{-\TE/\Tt\pr} e^{-i\omp\pr\TE},	
+			\label{eq:dess-mxyp-te1}
+\end{align}
+where in \eqref{eq:dess-mxyp-te1-ph}
+we again approximately correct
+for relaxation during excitation
+and in \eqref{eq:dess-mxyp-te1}
+we assume linear off-resonance phase accrual 
+during free precession.
+To compute the magnetization
+at the acquisition time 
+before excitation,
+we consider the free precession and relaxation
+that occurs between 
+\footnote{Observe that we do not attempt
+to express the magnetization 
+prior to (the next) RF excitation
+by simply operating on the magnetization after (the current) RF excitation
+with further precession and relaxation.
+The reason is due to the intermediate dephasing gradient,
+which causes phase accrual
+in excess of off-resonance effects
+and thus forbids an approximation akin to \eqref{eq:dess-mxyp-te1}.
+}
+signal reception and excitation:
+\begin{align}
+	\mxyp\paren{\bmr,t_0} =
+		\mxyp\paren{\bmr,t_0-\paren{\TE-\frac{\TP}{2}}} e^{-\paren{\TE-\TP/2}/\Tt\pr} e^{-i\php\paren{\bmr,t_0;t_0-\paren{\TE-\frac{\TP}{2}}}}.
+		\label{eq:dess-mxyp-pr-te2}
+\end{align}
+Rearranging \eqref{eq:dess-mxyp-pr-te2} 
+and applying approximations
+similar to those of 
+\eqref{eq:dess-mxyp-te1-ph}-\eqref{eq:dess-mxyp-te1},
+\begin{align}
+	\mxyp\paren{\bmr,t_0+\frac{\TP}{2}-\TE} 
+		&= \mxyp\paren{\bmr,t_0} e^{+\paren{\TE-\TP/2}/\Tt\pr} 
+			e^{+i\php\paren{\bmr,t_0;t_0-\paren{\TE-\frac{\TP}{2}}}} \nonumber \\
+		&\approx \mxyp\paren{\bmr,t_0} e^{+\TE/\Tt\pr} 
+			e^{+i\php\paren{\bmr,t_0+\frac{\TP}{2};t_0+\frac{\TP}{2}-\TE}}
+			\label{eq:dess-mxyp-te2-ph} \\
+		&\approx \mxyp\paren{\bmr,t_0} e^{+\TE/\Tt\pr} e^{+i\omp\pr\TE}.	
+			\label{eq:dess-mxyp-te2}
+\end{align}
+
+The received signal is approximately proportional
+to the integrated transverse magnetization 
+over a volume $\setv$.
+To derive expressions,
+we retake assumptions used
+in Subsection~\ref{sss,bkgrd,mri,ss,spgr}
+and append an additional assumption
+on the full-repetition phase accrual $\php\pr$:
+\begin{itemize}
+	\item We assume that
+		the signal is localized
+		to a scale over which
+		there is off-resonance phase variation,
+		but minimal variation
+		of $\mzero\pr$, $\To\pr$, $\Tt\pr$, and $\flip\pr$.
+		This assumption is reasonable
+		\footnote{Model mismatch due
+			to within-voxel spatial variation 
+			of relaxation parameters
+			can be significant,
+			especially for large voxels.
+			Chapter~\ref{c,mwf} studies 
+			so-called partial volume effects
+			and uses them for QMRI.
+		} 
+		when describing the signal 
+		arising from a typical voxel.
+	\item We assume that
+		free precession off resonance frequency $\omp\pr$
+		is distributed over the localized voxel
+		as $\dist{\omp} \gets \operatorname{Cauchy}\paren{\ompmed,\Rtp}$,
+		where $\ompmed\pr$ is the median off-resonance frequency
+		and $\Rtp\pr$ is the broadening bandwidth.
+	\item We assume that 
+		the dephasing gradient imparts 
+		an integral number $\cyc$ of across-voxel phase cycles
+		\footnote{In theory,
+			it suffices to design dephasing gradients
+			to impart as few as one complete cycle
+			of net phase variation across a voxel.
+			In practice,
+			field inhomogeneities will induce
+			spurious through-voxel field gradients 
+			that modify the effective dephasing gradient moment
+			and thereby create partial phase cycles
+			that distort the nominally uniform phase distribution.
+			To reduce model mismatch 
+			due to such ``partial spoiling'' effects,
+			dephasing gradients are usually designed
+			to nominally impart multiple complete cycles
+			of across-voxel phase variation.
+			However, 
+			larger dephasing gradients
+			cause greater DESS model mismatch
+			due to diffusive signal loss.
+			Appendix~\ref{a,dess-diff} 
+			studies diffusion in DESS
+			and discusses regimes of dephasing gradient moments
+			which balance partial-spoiling versus diffusive
+			sources of model mismatch.
+		}
+		such that full-repetition phase accrual $\php\pr$ 
+		is distributed essentially uniformly
+		as $\dist{\php} \gets \operatorname{uniform}\paren{0,2\pi\cyc},
+		\cyc\in\set{1,2,3,\dots}$.  
+\end{itemize}
+With these assumptions, 
+the received steady-state DESS (noiseless) signal models
+for a typically sized voxel centered at position $\bmr$ are
+(to within constants):
+\begin{align}
+	\dess\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
+		&\propto \int_{\setv\paren{\bmr}} 
+			\mxyp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \dercubed{\bmr}
+			\label{eq:dess-def-int} \\
+		&\approx \int_\real \int_\real \mxyp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
+			\dist{\php}\paren{\php} \dist{\omp}\paren{\omp} \der{\php} \der{\omp}
+			\nonumber \\
+		&\approx e^{-\TE/\Tt\pr}
+			\int_\real \mxyp\paren{\bmr,t_0+\TP} \dist{\php}\paren{\php} \der{\php} 
+			\int_\real e^{-i\omp\TE} \dist{\omp}\paren{\omp} \der{\omp}
+			\nonumber \\
+		&= +i\mzero\pr \Et\paren{\bmr,\TE} e^{-\paren{\Rtp\pr-i\ompmed\pr}\TE}
+			\tan\frac{\alpha\pr}{2} 
+			\brac{1 - \frac{\eta\paren{\bmr,\TR}}{\xi\paren{\bmr,\TR}}};
+			\label{eq:dess-def-model} \\
+	\dess\paren{\bmr,t_0+\frac{\TP}{2}-\TE}
+		&\propto \int_{\setv\paren{\bmr}}
+			\mxyp\paren{\bmr,t_0+\frac{\TP}{2}-\TE} \dercubed{\bmr}
+			\label{eq:dess-ref-int} \\
+		&\approx \int_\real \int_\real \mxyp\paren{\bmr,t_0+\frac{\TP}{2}-\TE} 
+			\dist{\php}\paren{\php} \dist{\omp}\paren{\omp} \der{\php} \der{\omp}
+			\nonumber \\
+		&\approx e^{+\TE/\Tt\pr}
+			\int_\real \mxyp\paren{\bmr,t_0} \dist{\php}\paren{\php} \der{\php} 
+			\int_\real e^{+i\omp\TE} \dist{\omp}\paren{\omp} \der{\omp} 
+			\nonumber \\
+		&= -i\mzero\pr \Et^{-1}\paren{\bmr,\TE} e^{-\paren{\Rtp\pr+i\ompmed\pr}\TE}
+			\tan\frac{\alpha\pr}{2}
+			\brac{1 - \eta\paren{\bmr,\TR}},
+			\label{eq:dess-ref-model}
+\end{align}	
+where \eqref{eq:dess-def-model} and \eqref{eq:dess-ref-model}
+introduce intermediate variables
+\begin{align}
+	\eta\prt &:=
+		\sqrt{\frac{1-\Et^2\prt}{1-\Et^2\prt/\xi^2\prt}};
+		\nonumber \\
+	\xi\prt &:=
+		\frac{1-\Eo\prt \cos{\flip\pr}}{\Eo\prt - \cos{\flip\pr}}.
+		\nonumber
+\end{align}
+In steady-state, 
+the DESS signal is typically greatest 
+immediately following excitation 
+and defocuses with rate $\frac{1}{\Tt}+\Rtp$
+until what we hereafter denote
+the \emph{defocusing} echo time.
+After a low-signal period between RF pulses,
+the DESS signal then refocuses
+with rate $\frac{1}{\Tt}-\Rtp$
+from what we hereafter denote
+the \emph{refocusing} echo time
+until just prior the next excitation.
+Fortuitously,
+the defocusing \eqref{eq:dess-def-model}
+and refocusing \eqref{eq:dess-ref-model}
+DESS signal models
+have significantly different dependence 
+on relaxation parameters (especially $\Tt$)
+and thus together are quite useful
+for relaxation parameter estimation.
 
 \section{Relevant Optimization Tools}
 \label{s,bkgrd,opt}
