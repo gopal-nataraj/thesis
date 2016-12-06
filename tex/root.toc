@@ -1,7 +1,7 @@
-\contentsline {chapter}{List of Figures}{ii}{section*.2}
-\contentsline {chapter}{List of Appendices}{iii}{section*.3}
-\contentsline {chapter}{List of Abbreviations}{iv}{section*.5}
-\contentsline {chapter}{Abstract}{v}{section*.6}
+\contentsline {chapter}{List of Figures}{iii}{section*.2}
+\contentsline {chapter}{List of Appendices}{iv}{section*.3}
+\contentsline {chapter}{List of Abbreviations}{v}{section*.5}
+\contentsline {chapter}{Abstract}{vi}{section*.6}
 \vspace {1.3ex}\noindent {\bf Chapter}\vspace {1.3ex}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Thesis Overview}{2}{section.1.1}
@@ -14,13 +14,13 @@
 \contentsline {subsection}{\numberline {2.1.2}Steady-State Sequences}{8}{subsection.2.1.2}
 \contentsline {subsubsection}{\numberline {2.1.2.1}Spoiled Gradient-Recalled Echo (SPGR) Sequence}{8}{subsubsection.2.1.2.1}
 \contentsline {subsubsection}{\numberline {2.1.2.2}Dual-Echo Steady-State (DESS) Sequence}{11}{subsubsection.2.1.2.2}
-\contentsline {section}{\numberline {2.2}Relevant Optimization Tools}{15}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}(Coping with) Non-convex Optimization}{15}{subsection.2.2.1}
+\contentsline {section}{\numberline {2.2}Optimization in QMRI}{15}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Gradient-Based Local Optimization}{15}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Partially Linear Models and the Variable Projection Method}{15}{subsection.2.2.2}
-\contentsline {chapter}{\numberline {3}MRI Parameter Estimation \\ from Likelihood Models}{16}{chapter.3}
-\contentsline {chapter}{\numberline {4}Optimizing MR Scan Design \\ for Model-Based Relaxometry}{17}{chapter.4}
-\contentsline {chapter}{\numberline {5}MRI Parameter Estimation \\ via Kernel Regression}{18}{chapter.5}
-\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation \\ from Steady-State Sequences}{19}{chapter.6}
+\contentsline {chapter}{\numberline {3}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ from Likelihood Models}{16}{chapter.3}
+\contentsline {chapter}{\numberline {4}Optimizing MR Scan Design\tmspace +\thinmuskip {.1667em}\\ for Model-Based Relaxometry}{17}{chapter.4}
+\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{18}{chapter.5}
+\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{19}{chapter.6}
 \contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{20}{chapter.7}
 \contentsline {chapter}{\numberline {8}Future Work}{21}{chapter.8}
 \contentsline {chapter}{Appendices}{22}{section*.7}

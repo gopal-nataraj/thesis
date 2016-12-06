@@ -975,11 +975,80 @@ on relaxation parameters (especially $\Tt$)
 and thus together are quite useful
 for relaxation parameter estimation.
 
-\section{Relevant Optimization Tools}
+\section{Optimization in QMRI}
 \label{s,bkgrd,opt}
 
-\subsection{(Coping with) Non-convex Optimization}
-\label{ss,bkgrd,opt,ncvx}
+This section overviews 
+how optimization methods are leveraged 
+in a substantial portion of this thesis 
+to solve practical QMRI problems.
+For such problems,
+the central idea is to construct
+a suitable scalar cost function $\cost$
+of some design variables $\bmx$,
+whose output $\costa{\bmx} \in \real$ 
+is designed to provide a measure
+of the undesirability of $\bmx$.
+We then employ 
+tailored optimization algorithms
+to find an $\bmx$
+that minimizes $\cost$
+over a set $\setx$,
+written as
+\begin{align}
+	\est{\bmx} \in \set{\argmin{\setx} \costa{\bmx}}.
+	\label{eq:opt-gen}
+\end{align}
+In either optimization-based 
+parameter estimation (Chapter~\ref{c,relax})
+or acquisition design (Chapter~\ref{c,scn-dsgn}),
+we have reason to design $\cost$
+to depend on corresponding design variables $\bmx$ 
+through MR signal models.
+Because these models are often 
+(strongly) nonlinear functions
+of design variables,
+corresponding cost functions
+are usually non-convex in $\bmx$
+(though the search space $\setx$ 
+is almost always assumed convex
+in this thesis).
+Thus,
+most QMRI problems
+in the form of \eqref{eq:opt-gen}
+are non-convex optimization problems.
+
+In general, 
+solving \eqref{eq:opt-gen}
+is more challenging when 
+$\Psi$ is non-convex in $\bmx$
+than otherwise,
+due in part to the possible presence
+of local extrema and/or saddle points.
+In the following, 
+we discuss two strategies 
+used in this thesis 
+to cope with non-convex optimization.
+Subsection~\ref{ss,bkgrd,opt,loc}
+relaxes \eqref{eq:opt-gen}
+to seek a local
+(instead of global) minimizer
+via iterative methods.
+Subsection~\ref{ss,bkgrd,opt,vpm}
+restricts attention 
+to signal models 
+that are linear in a portion of $\bmx$
+and discusses a simplification 
+of \eqref{eq:opt-gen}
+for such partially linear structures. 
+
+\subsection{Iterative Local Optimization with Constraints}
+\label{ss,bkgrd,opt,loc}
+
+% local vs global
+% initialization, attraction basin
 
 \subsection{Partially Linear Models and the Variable Projection Method}
 \label{ss,bkgrd,opt,vpm}
+
+

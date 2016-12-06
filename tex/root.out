@@ -8,11 +8,11 @@
 \BOOKMARK [1][-]{section.1.2}{Thesis Organization}{chapter.1}% 8
 \BOOKMARK [0][-]{chapter.2}{Background}{}% 9
 \BOOKMARK [1][-]{section.2.1}{Relevant MR Physics}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.2}{Relevant Optimization Tools}{chapter.2}% 11
-\BOOKMARK [0][-]{chapter.3}{MRI Parameter Estimation \040from Likelihood Models}{}% 12
-\BOOKMARK [0][-]{chapter.4}{Optimizing MR Scan Design \040for Model-Based Relaxometry}{}% 13
-\BOOKMARK [0][-]{chapter.5}{MRI Parameter Estimation \040via Kernel Regression}{}% 14
-\BOOKMARK [0][-]{chapter.6}{Myelin Water Fraction Estimation \040from Steady-State Sequences}{}% 15
+\BOOKMARK [1][-]{section.2.2}{Optimization in QMRI}{chapter.2}% 11
+\BOOKMARK [0][-]{chapter.3}{MRI Parameter Estimation from Likelihood Models}{}% 12
+\BOOKMARK [0][-]{chapter.4}{Optimizing MR Scan Design for Model-Based Relaxometry}{}% 13
+\BOOKMARK [0][-]{chapter.5}{MRI Parameter Estimation via Kernel Regression}{}% 14
+\BOOKMARK [0][-]{chapter.6}{Myelin Water Fraction Estimation from Steady-State Sequences}{}% 15
 \BOOKMARK [0][-]{chapter.7}{Steady-State RF Pulse Design}{}% 16
 \BOOKMARK [0][-]{chapter.8}{Future Work}{}% 17
 \BOOKMARK [0][-]{section*.7}{Appendices}{}% 18

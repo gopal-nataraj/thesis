@@ -16,7 +16,14 @@ chapters
 	about this thesis
 	specific contributions
   background
-	add later
+	relevant mr physics
+	  bloch equations
+	  spgr,dess derivations
+	optimization tools
+	  non-convex optimization
+		local vs global optimization
+		initialization and attraction basin
+	  partially-linear models and vpm
   model-based relaxometry
 	nataraJ::oms appendix
 	nataraj:14:rje
