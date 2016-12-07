@@ -84,4 +84,14 @@ H.~Bruder, H.~Fischer, R.~Graumann, and M.~Deimling, ``A new steady-state
   different contrasts,'' {\em {Mag. Res. Med.}}, vol.~7, pp.~{35--42}, May
   1988.
 
+\bibitem{rosen:60:tgp}
+J.~B. Rosen, ``The gradient projection method for nonlinear programming, {Part}
+  {I:} {Linear} constraints,'' {\em {SIAM J. Appl. Math.}}, vol.~8, no.~1,
+  pp.~{181--217}, 1960.
+
+\bibitem{byrne:04:aut}
+C.~Byrne, ``A unified treatment of some iterative algorithms in signal
+  processing and image reconstruction,'' {\em {Inverse Prob.}}, vol.~20,
+  pp.~{103--20}, Feb. 2004.
+
 \end{thebibliography}

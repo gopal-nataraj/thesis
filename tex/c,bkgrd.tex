@@ -584,7 +584,7 @@ with literature expressions.
 The received signal
 is approximately proportional 
 to the integrated transverse magnetization
-over a volume $\setv$.
+over a volume $\setV$.
 To derive expressions,
 we take a few more usual assumptions:
 \begin{itemize}
@@ -623,7 +623,7 @@ for a typically sized voxel
 centered at position $\bmr$ is (to within constants):
 \begin{align}
 	\spgr\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
-	&\propto \int_{\setv\pr} \mxyp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \dercubed{\bmr} 
+	&\propto \int_{\setV\pr} \mxyp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \dercubed{\bmr} 
 		\label{eq:spgr-int} \\
 	&\approx \mxy\paren{\bmr,t_0+\TP} e^{-\TE/\Tt\pr} \int_\real e^{-i\omp \TE} 
 		\dist{\omp}\paren{\omp} \der{\omp} \nonumber \\
@@ -844,7 +844,7 @@ similar to those of
 
 The received signal is approximately proportional
 to the integrated transverse magnetization 
-over a volume $\setv$.
+over a volume $\setV$.
 To derive expressions,
 we retake assumptions used
 in Subsection~\ref{sss,bkgrd,mri,ss,spgr}
@@ -914,7 +914,7 @@ for a typically sized voxel centered at position $\bmr$ are
 (to within constants):
 \begin{align}
 	\dess\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
-		&\propto \int_{\setv\paren{\bmr}} 
+		&\propto \int_{\setV\paren{\bmr}} 
 			\mxyp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \dercubed{\bmr}
 			\label{eq:dess-def-int} \\
 		&\approx \int_\real \int_\real \mxyp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
@@ -929,7 +929,7 @@ for a typically sized voxel centered at position $\bmr$ are
 			\brac{1 - \frac{\eta\paren{\bmr,\TR}}{\xi\paren{\bmr,\TR}}};
 			\label{eq:dess-def-model} \\
 	\dess\paren{\bmr,t_0+\frac{\TP}{2}-\TE}
-		&\propto \int_{\setv\paren{\bmr}}
+		&\propto \int_{\setV\paren{\bmr}}
 			\mxyp\paren{\bmr,t_0+\frac{\TP}{2}-\TE} \dercubed{\bmr}
 			\label{eq:dess-ref-int} \\
 		&\approx \int_\real \int_\real \mxyp\paren{\bmr,t_0+\frac{\TP}{2}-\TE} 
@@ -993,11 +993,11 @@ We then employ
 tailored optimization algorithms
 to find an $\bmx$
 that minimizes $\cost$
-over a set $\setx$,
+over a set $\setX$,
 written as
 \begin{align}
-	\est{\bmx} \in \set{\argmin{\setx} \costa{\bmx}}.
-	\label{eq:opt-gen}
+	\bmx^* \in \set{\argmin{\bmx\in\setX} \costa{\bmx}}.
+	\label{eq:opt-global}
 \end{align}
 In either optimization-based 
 parameter estimation (Chapter~\ref{c,relax})
@@ -1010,16 +1010,16 @@ Because these models are often
 of design variables,
 corresponding cost functions
 are usually non-convex in $\bmx$
-(though the search space $\setx$ 
+(though the search space $\setX$ 
 is almost always assumed convex
 in this thesis).
 Thus,
 most QMRI problems
-in the form of \eqref{eq:opt-gen}
+in the form of \eqref{eq:opt-global}
 are non-convex optimization problems.
 
 In general, 
-solving \eqref{eq:opt-gen}
+solving \eqref{eq:opt-global}
 is more challenging when 
 $\Psi$ is non-convex in $\bmx$
 than otherwise,
@@ -1030,7 +1030,7 @@ we discuss two strategies
 used in this thesis 
 to cope with non-convex optimization.
 Subsection~\ref{ss,bkgrd,opt,loc}
-relaxes \eqref{eq:opt-gen}
+relaxes \eqref{eq:opt-global}
 to seek a local
 (instead of global) minimizer
 via iterative methods.
@@ -1039,14 +1039,98 @@ restricts attention
 to signal models 
 that are linear in a portion of $\bmx$
 and discusses a simplification 
-of \eqref{eq:opt-gen}
+of \eqref{eq:opt-global}
 for such partially linear structures. 
 
 \subsection{Iterative Local Optimization with Constraints}
 \label{ss,bkgrd,opt,loc}
 
-% local vs global
-% initialization, attraction basin
+This subsection overviews
+a method for finding a local minimizer $\est{\bmx}$
+of possibly non-convex cost function $\cost$
+over convex constraint set $\setX$.
+Such $\est{\bmx} \in \setX$ must satisfy
+for some $\delta>0$
+\begin{align}
+	\costa{\est{\bmx}} \leq \costa{\bmx} \qquad
+		\forall \bmx \in \setX : \norm{\est{\bmx}-\bmx}_2 < \delta.
+		\label{eq:opt-local}
+\end{align}	
+Observe that
+a global optimizer $\bmx^*$ 
+satisfies \eqref{eq:opt-local}
+for arbitrarily large $\delta$;
+thus, any global minimizer 
+is a local minimizer
+(but the converse is not necessarily true
+unless $\cost$ is convex).
+
+As even locally optimal minimizers
+are often challenging to compute analytically,
+many algorithms construct $\est{\bmx}$ 
+by iteratively updating
+an initial guess $\bmxi{0}$
+until some convergence criterion is satisfied.
+For a differentiable cost
+and convex constraints, 
+the gradient projection method
+\cite{rosen:60:tgp}
+is one such iterative algorithm
+and repeats the following simple update:
+\begin{align}
+	\bmxi{i} \gets \proja{\setX}{\bmxi{i-1}-\bmPi \grada{\bmx}\costa{\bmxi{i-1}}},
+	\label{eq:gpm}
+\end{align}
+where $\proj{\setX}$ denotes 
+projection onto $\setX$
+and $\bmPi$ is a diagonal preconditioning matrix
+that permits elements of $\bmx$
+to take scale-informed step sizes
+along the negative gradient direction.
+
+If $\cost$ is convex and sufficiently smooth,
+iterates produced via \eqref{eq:gpm} 
+converge to a limit point \cite{byrne:04:aut}
+that is a constrained global minimum
+(for appropriately selected $\bmPi$).
+If instead $\cost$ is non-convex 
+(but $\setX$ is still convex),
+statements regarding convergence
+\footnote{For example, 
+it suffices to assume
+that $\bmxi{0}$ lies
+in the \emph{attraction basin} $\setB{\bmxt}$
+of a given unconstrained local minimum $\bmxt$, 
+where attraction basin 
+is defined here as the largest convex set
+containing $\bmxt$ 
+over which $\cost$ is convex.
+If $\setB{\bmxt} \cap \setX$ is nonempty 
+and step sizes within $\bmPi$ are small enough 
+to contain iterates
+within $\setB{\bmxt}$,
+then iterates converge
+to the limit point $\proja{\setX}{\bmxt}$.
+}
+to a particular constrained local minimizer
+require additional (strong) assumptions
+regarding initialization
+and in general 
+are still much weaker 
+than in the convex case.
+
+Since non-convex cost functions
+can have many local extrema
+(whose associated costs can vary dramatically),
+the utility of a locally optimal solution
+depends strongly on initialization quality.
+Accordingly,
+this thesis uses iterative local optimization
+for non-convex QMRI problems
+where a reasonable initialization is available
+and global optimization (to within quantization error) 
+via exhaustive grid search
+is intractable.
 
 \subsection{Partially Linear Models and the Variable Projection Method}
 \label{ss,bkgrd,opt,vpm}
