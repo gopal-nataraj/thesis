@@ -1031,16 +1031,15 @@ used in this thesis
 to cope with non-convex optimization.
 Subsection~\ref{ss,bkgrd,opt,loc}
 relaxes \eqref{eq:opt-global}
-to seek a local
-(instead of global) minimizer
+to instead seek a local minimizer
 via iterative methods.
 Subsection~\ref{ss,bkgrd,opt,vpm}
 restricts attention 
 to signal models 
 that are linear in a portion of $\bmx$
-and discusses a simplification 
-of \eqref{eq:opt-global}
-for such partially linear structures. 
+and discusses a specific problem
+for which \eqref{eq:opt-global} simplifies 
+for such partially linear structures.
 
 \subsection{Iterative Local Optimization with Constraints}
 \label{ss,bkgrd,opt,loc}
@@ -1135,4 +1134,95 @@ is intractable.
 \subsection{Partially Linear Models and the Variable Projection Method}
 \label{ss,bkgrd,opt,vpm}
 
+(Constrained, weighted) nonlinear least-squares
+is a specific non-convex optimization problem 
+that is useful for many parameter estimation problems:
+\begin{align}
+	\bmx^* \in \set{\argmin{\bmx\in\setX} \norm{\bmy - \bmfa{\bmx}}^2_{\bmW^{1/2}}},
+	\label{eq:nonlin-ls}
+\end{align}
+where $\bmf : \setX \mapsto \complexes{D}$ is 
+a nonlinear forward model
+that (barring noise) 
+relates parameters 
+$\bmx \in \setX \subseteq \complexes{L}$ 
+to data $\bmy \in \complexes{D}$;
+and $\bmW^{1/2} \in \reals{D\times D}$ 
+is the positive-semidefinite square root 
+of a symmetric, positive-semidefinite weighting matrix.
+The variable projection method 
+\cite{golub:03:snl}
+reduces the complexity of \eqref{eq:nonlin-ls}
+when the forward model takes
+the partially linear structure
+$\bmfa{\bmx} \equiv \bmAa{\bmxn}\bmxl$
+and the feasible set takes 
+the partially unconstrained form 
+$\setX \equiv \complexes{\Ll} \times \setXn$,
+where $\bmxl \in \complexes{\Ll}$; $\bmxn \in \setXn$;
+and $\bmA : \setXn \mapsto \complexes{D\times\Ll}$ 
+is a matrix function.
+These restrictions on \eqref{eq:nonlin-ls} 
+define a so-called separable least-squares problem
+\begin{align}
+	\paren{\bmxl^*,\bmxn^*} \in 
+		\set{\argmin{\substack{\bmxl \in \complexes{\Ll} \\ \bmxn \in \setXn}} 
+		\norm{\bmy - \bmAa{\bmxn}\bmxl}^2_{\bmW^{1/2}}}.
+	\label{eq:sep-ls}
+\end{align}
+The variable projection method simplifies \eqref{eq:sep-ls}
+by exploiting the partially linear structure of $\bmf$ 
+to explicitly express the optimal $\bmxl^*$ as a function 
+of any fixed $\bmxn \in \setXn$:
+\begin{align}
+	\bmxl^*\paren{\bmxn} 
+		&= \argmin{\bmxl \in \complexes{\Ll}} 
+		\norm{\bmy - \bmAa{\bmxn}\bmxl}^2_{\bmW^{1/2}} 
+		\nonumber \\
+		&= \pinv{\bmW^{1/2}\bmAa{\bmxn}} \bmW^{1/2} \bmy
+		\label{eq:sep-ls-lin} \\
+		&= \inv{\bmA\ctpose\paren{\bmxn} \bmW \bmAa{\bmxn}} 
+		\bmA\ctpose\paren{\bmxn} \bmW \bmy,
+		\label{eq:sep-ls-fullrnk}
+\end{align}
+where $\pinv{\cdot}$ denotes pseudoinverse;
+$\paren{\cdot}\ctpose$ denotes conjugate transpose; 
+and \eqref{eq:sep-ls-fullrnk} holds
+if the matrix inversion within exists.
+Substituting \eqref{eq:sep-ls-fullrnk}
+into \eqref{eq:sep-ls} 
+yields a new non-convex optimization problem
+that contains $\Ll$ fewer unknowns than before:
+\begin{align}
+	\bmxn^* &\in \set{\argmin{\bmxn\in\setXn} 
+	\norm{\bmy - \bmAa{\bmxn}\inv{\bmA\ctpose\paren{\bmxn} \bmW \bmAa{\bmxn}}
+		\bmA\ctpose\paren{\bmxn} \bmW \bmy}^2_{\bmW^{1/2}}} 
+		\nonumber \\
+	&\equiv \set{\argmax{\bmxn\in\setXn}
+		\bmy\ctpose \bmW \bmAa{\bmxn}
+		\inv{\bmA\ctpose\paren{\bmxn} \bmW \bmAa{\bmxn}}
+		\bmA\ctpose\paren{\bmxn} \bmW \bmy}, 
+		\label{eq:sep-ls-nonlin}
+\end{align}
+where the equivalence leading to \eqref{eq:sep-ls-nonlin}
+omits terms independent of $\bmxn$.
 
+In low-dimensional
+QMRI applications 
+(\eg, those discussed in Chapter~\ref{c,relax}), 
+reduced problem \eqref{eq:sep-ls-nonlin}
+may be tractable via exhaustive grid search,
+in which case a global optimum 
+$\paren{\bmxl^*\paren{\bmxn^*},\bmxn^*}$
+is achievable to within quantization error.
+However, larger estimation problems 
+involving more nonlinear parameters
+might still be tractable 
+only via iterative optimization
+(see Subsection~\ref{ss,bkgrd,opt,loc})
+towards a local solution 
+$\paren{\est{\bmx}_\mathrm{L}\paren{\est{\bmx}_\mathrm{N}},\est{\bmx}_\mathrm{N}}$.
+For such higher-dimensional applications,
+Chapters~\ref{c,krr}-\ref{c,mwf} introduce novel methods 
+that tackle problems similar to \eqref{eq:nonlin-ls},
+while circumventing initialization-dependent local optimization.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  6 DEC 2016 23:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 DEC 2016 01:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -691,7 +691,7 @@ Overfull \hbox (43.6091pt too wide) in paragraph at lines 769--769
 [] 
  []
 
-[12] [13] [14] [15]) [16]
+[12] [13] [14] [15] [16]) [17]
 CHAPTER 3.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -702,7 +702,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 100.
 
-(./c,relax.tex) [17
+(./c,relax.tex) [18
 
 ]
 CHAPTER 4.
@@ -715,7 +715,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 104.
 
-(./c,scn-dsgn.tex) [18
+(./c,scn-dsgn.tex) [19
 
 ]
 CHAPTER 5.
@@ -728,7 +728,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 108.
 
-(./c,krr.tex) [19
+(./c,krr.tex) [20
 
 ]
 CHAPTER 6.
@@ -741,34 +741,34 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 112.
 
-(./c,mwf.tex) [20
+(./c,mwf.tex) [21
 
 ]
 CHAPTER 7.
-(./c,ss-rf.tex) [21
+(./c,ss-rf.tex) [22
 
 ]
 CHAPTER 8.
-(./c,future.tex) [22
+(./c,future.tex) [23
 
 ]
 APPENDIX A.
-(./a,cc-multi.tex) [23
+(./a,cc-multi.tex) [24
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [24
+(./a,dess-diff.tex) [25
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [25
+ [26
 
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 138.
- [26]
+ [27]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 138.
  (./root.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 138.
@@ -778,10 +778,10 @@ Package rerunfilecheck Info: File `root.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 138.
  ) 
 Here is how much of TeX's memory you used:
- 9186 strings out of 493089
- 131446 string characters out of 6134842
- 237093 words of memory out of 5000000
- 12299 multiletter control sequences out of 15000+600000
+ 9218 strings out of 493089
+ 131775 string characters out of 6134842
+ 237683 words of memory out of 5000000
+ 12324 multiletter control sequences out of 15000+600000
  36708 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,20n,45p,297b,473s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -810,10 +810,10 @@ ts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2015/texmf-dist/
 fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on root.pdf (34 pages, 295327 bytes).
+Output written on root.pdf (35 pages, 305826 bytes).
 PDF statistics:
- 598 PDF objects out of 1000 (max. 8388607)
- 532 compressed objects within 6 object streams
- 143 named destinations out of 1000 (max. 500000)
+ 624 PDF objects out of 1000 (max. 8388607)
+ 557 compressed objects within 6 object streams
+ 150 named destinations out of 1000 (max. 500000)
  169 words of extra memory for PDF output out of 10000 (max. 10000000)
 

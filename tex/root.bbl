@@ -94,4 +94,9 @@ C.~Byrne, ``A unified treatment of some iterative algorithms in signal
   processing and image reconstruction,'' {\em {Inverse Prob.}}, vol.~20,
   pp.~{103--20}, Feb. 2004.
 
+\bibitem{golub:03:snl}
+G.~Golub and V.~Pereyra, ``Separable nonlinear least squares: the variable
+  projection method and its applications,'' {\em {Inverse Prob.}}, vol.~19,
+  pp.~{R1--26}, Apr. 2003.
+
 \end{thebibliography}
