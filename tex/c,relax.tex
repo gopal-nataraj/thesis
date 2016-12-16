@@ -5,7 +5,7 @@
 
 This chapter introduces methods
 for QMRI parameter estimation
-from statistical models
+from statistical likelihood models
 and applies these methods
 to simple problems 
 in $\To$ and $\Tt$ relaxometry,
@@ -13,8 +13,8 @@ which are of interest
 for monitoring the progression
 of various disorders \cite{cheng:12:pma}.
 Section~\ref{s,relax,meth}
-describes a general QMRI signal model,
 introduces the notion of a QMRI scan profile,
+describes a signal model for parameter estimation,
 formulates several likelihood-based estimators
 using this model,
 and discuss practical implementation issues.
@@ -31,8 +31,8 @@ and suggests future directions.
 \label{s,relax,meth}
 % signal model and construction of scan profile
 
-\subsection{The Signal Model of a QMRI Scan Profile }
-\label{ss,relax,meth,sig}
+\subsection{The QMRI Scan Profile}
+\label{ss,relax,meth,prof}
 
 After image reconstruction,
 many MRI pulse sequences
@@ -44,7 +44,7 @@ $\set{y_1\pr,\dots,y_D\pr}$,
 each of which can be described
 with the following general model:
 \begin{align}
-	y_d\pr = s_d\paren{\bmx\pr; \bmnu\pr} + \epsilon_d\pr,
+	y_d\pr = s_d\paren{\bmx\pr; \bmnu\pr, \bmp_d} + \epsilon_d\pr,
 	\label{eq:relax,mod-scalar}
 \end{align}
 where 
@@ -54,10 +54,11 @@ $\bmx\pr \in \complexes{L}$
 collects $L$ \emph{latent} object parameters at $\bmr$;
 $\bmnu\pr \in \complexes{K}$ 
 collects $K$ \emph{known} object parameters at $\bmr$;
-$s_d : \complexes{L} \times \complexes{K} \mapsto \complex$
+$s_d : \complexes{L} \times \complexes{K} \times \reals{A} \mapsto \complex$
 is a (pulse-sequence dependent) function
 that models the noiseless signal 
-obtained from the $d$th dataset;
+obtained from the $d$th dataset
+using \emph{acquisition} parameter $\bmp_d \in \reals{A}$;
 and $\epsilon_d \sim \cgauss{0}{\sigma_d^2}$ 
 is assumed for simplicity 
 \footnote{Though the noise distribution 
@@ -86,7 +87,11 @@ to be Gaussian-distributed.
 to be (circularly-symmetric) complex Gaussian noise
 \cite{macovski:96:nim, lei:07:som}
 with zero mean and variance $\sigma_d^2$.
-(Concrete examples will follow shortly.)
+Colon positions 
+in signal model \eqref{eq:relax,mod-scalar} 
+and similar expressions throughout this thesis 
+distinguish unknown and known parameters.
+Concrete examples follow shortly.
 
 For accurate, well-conditioned QMRI parameter estimation,
 it is typically necessary 
@@ -98,16 +103,18 @@ from up to $D$ pulse sequences
 (some sequences yield more than one dataset, \eg DESS).
 Let 
 $\bmy\pr := \brac{y_1\pr, \dots, y_D\pr}\tpose \in \complexes{D}$
-collect voxel values centered at $\bmr$
+collect noisy voxel values centered at $\bmr$
 from a given scan profile.
 Then the vector signal model
 \begin{align}
-	\bmy\pr = \bms\paren{\bmx\pr; \bmnu\pr} + \bmeps\pr
+	\bmy\pr = \bms\paren{\bmx\pr; \bmnu\pr, \bmP} + \bmeps\pr
 	\label{eq:relax,scalar}
 \end{align}
-helps define the noiseless signal
+helps define the noiseless signal 
 $\bms := \brac{s_1, \dots, s_D}\tpose
-: \complexes{L} \times \complexes{K} \mapsto \complexes{D}$
+: \complexes{L} \times \complexes{K} \times \reals{A \times D} \mapsto \complexes{D}$
+and acquisition parameter
+$\bmP := \brac{\bmp_1,\dots,\bmp_D} \in \reals{A \times D}$
 associated with that scan profile.
 Here, noise
 $\bmeps\pr := \brac{\epsilon_1\pr, \dots, \epsilon_D\pr}\tpose \in \complexes{D}$
@@ -116,7 +123,7 @@ $\bmSig := \diag{\brac{\sigma_1,\dots,\sigma_D}\tpose}$
 due to independence across datasets,
 where $\diag{\cdot}$ assigns its argument 
 to the diagonal entries 
-of an otherwise zero matrix.
+of an otherwise zero (square) matrix.
 
 The following subsections
 describe two concrete scan profiles
@@ -126,17 +133,124 @@ and that we study through experiments
 later in this chapter.
 
 \subsubsection{Example: $\To$ estimation from SPGR scans}
-\label{eq:relax,meth,sig,t1}
+\label{sss,relax,meth,sig,t1}
+
+We first consider the problem
+of $\To\pr$ estimation at $\bmr$ 
+from as few SPGR scans as possible,
+given a prior estimate
+of transmit field variation $\stx\pr$
+(see \eqref{eq:flip-def}).
+Examining SPGR model \eqref{eq:spgr-model}
+makes clear that 
+by fixing echo time $\TE$ across scans, 
+SPGR signal dependence is reduced 
+to just two spatially varying latent parameters:
+desired parameter $\To\pr \in \real$ and 
+nuisance parameter 
+$\const{1}\pr := i\mzero\pr e^{-\TE/\Tts\pr} e^{-i\ompmed\pr \TE} \in \complex$.
+We assign $\bmx \gets \brac{\To, \const{1}}\tpose$ and $\bmnu \gets \stx$
+for $L \gets 2$ latent 
+and $K \gets 1$ known parameters, respectively.
+
+With $\TE$ fixed, 
+prescribed flip angles $\flipnom$ 
+and repetition times $\TR$ 
+are the only remaining $P \gets 2$ 
+acquisition parameters
+available to choose
+that appear explicitly in \eqref{eq:spgr-model}.
+Thus, a SPGR scan profile 
+useful for $\To$ estimation 
+must vary 
+$\bmp_d \gets \brac{\flipnom, \TR}\tpose
+\forall d \in \set{1,\dots,D}$
+over $\Ss$ scan repetitions
+to produce $D \geq L \gets 2$ datasets
+for well-conditioned estimation.
 
 \subsubsection{Example: $\Tt$ estimation from DESS scans}
-\label{eq:relax,meth,sig,t2}
+\label{sss,relax,meth,sig,t2}
+
+We next consider 
+the problem of $\Tt\pr$ estimation at $\bmr$
+from as few DESS scans as possible.
+Examining DESS models 
+\eqref{eq:dess-def-model} and \eqref{eq:dess-ref-model}
+makes clear that even with fixed $\TE$
+over possibly several acquisitions, 
+there is signal dependence 
+on five distinct object parameters:
+$\stx\pr \in \real$,
+$\To\pr \in \real$, 
+$\ompmed\pr \in \real$,
+$\const{2}\pr := \mzero\pr e^{-\TE/\Tts\pr} \in \complex$, 
+and $\Tt\pr \in \real$.
+In this chapter,
+we take $\stx\pr \in \real$ and $\To\pr \in \real$
+as known for simplicity.
+To avoid (separate or joint) $\ompmed\pr$ estimation,
+we choose to use magnitude DESS data,
+at the expense of slight model mismatch
+\footnote{The assumption of complex Gaussian noise 
+in noisy MRI images
+implies that corresponding magnitude MRI images
+are Rician-distributed.
+However,
+the statistical estimators
+we will develop
+in Subsection~\ref{ss,relax,meth,est}
+are based on Gaussian data.
+Fortunately,
+this source of model mismatch
+is negligible (less than $1\%$)
+for signal-to-noise ratio (SNR)
+in excess of 10 \cite{gudbjartsson:95:trd},
+and the acquisitions we examine here
+are capable of producing SNR in tissue 
+of at minimum $100$ and usually more. 
+}
+due to Rician data.
+These choices assign 
+$\bmnu \gets \brac{\stx, \To}\tpose$ 
+as $K \gets 2$
+known parameters
+and leave $L \gets 2$
+latent parameters  
+$\bmx \gets \brac{\const{2}, \Tt}\tpose$
+to be estimated.
+
+With $\TE$ again fixed, 
+$\bmp_d \gets \brac{\flipnom, \TR}\tpose
+\forall d \in \set{1,\dots,D}$
+collects the remaining $P \gets 2$ 
+tunable scan parameters
+that appear explicitly in
+\eqref{eq:dess-def-model} and \eqref{eq:dess-ref-model}.
+As in Example~\ref{sss,relax,meth,sig,t1},
+$D \geq L \gets 2$ datasets are necessary
+for well-conditioned estimation.
+Unlike before however,
+a minimum $D \gets 2$ datasets 
+need not require scan repetition,
+since $\Sd$ DESS scan repetitions
+produce $D \gets 2\Sd$ datasets.
+
+\subsection{Signal Model for MRI Parameter Estimation}
+\label{ss,relax,meth,sig}
 
 \subsection{Latent Object Parameter Estimation}
 \label{ss,relax,meth,est}
+% mom estimation
 % from likelihood function to...
 % ml cost
 % rls cost 
 % regularizers one might use
+
+The goal in QMRI parameter estimation
+is to estimate $\bmx$ at each voxel,
+given (separately acquired, estimated, and here assumed)
+known $\bmnu$ 
 
 \subsection{Practical Considerations}
 \label{ss,relax,meth,pract}

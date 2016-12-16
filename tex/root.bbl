@@ -123,4 +123,8 @@ A.~Macovski, ``Noise in {MRI},'' {\em {Mag. Res. Med.}}, vol.~36, pp.~{494--7},
 T.~Lei, ``Statistics of {MR} signals: revisited,'' in {\em Proc. SPIE 6510
   Medical Imaging 2007: Phys. Med. Im.}, p.~651052, 2007.
 
+\bibitem{gudbjartsson:95:trd}
+H.~Gudbjartsson and S.~Patz, ``The {Rician} distribution of noisy {MRI} data,''
+  {\em {Mag. Res. Med.}}, vol.~34, pp.~{910--4}, Dec. 1995.
+
 \end{thebibliography}
