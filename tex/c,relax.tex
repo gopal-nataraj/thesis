@@ -1,3 +1,152 @@
 % relaxometry
 
+\section{Introduction}
+\label{s,relax,intro}
 
+This chapter introduces methods
+for QMRI parameter estimation
+from statistical models
+and applies these methods
+to simple problems 
+in $\To$ and $\Tt$ relaxometry,
+which are of interest
+for monitoring the progression
+of various disorders \cite{cheng:12:pma}.
+Section~\ref{s,relax,meth}
+describes a general QMRI signal model,
+introduces the notion of a QMRI scan profile,
+formulates several likelihood-based estimators
+using this model,
+and discuss practical implementation issues.
+Section~\ref{s,relax,exp}
+demonstrates the utility
+of likelihood-based parameter estimation
+over conventional methods
+through simulation, phantom, and \invivo experiments.
+Section~\ref{s,relax,summ}
+provides brief concluding remarks
+and suggests future directions.
+
+\section{Likelihood-Based Estimation in QMRI}
+\label{s,relax,meth}
+% signal model and construction of scan profile
+
+\subsection{The Signal Model of a QMRI Scan Profile }
+\label{ss,relax,meth,sig}
+
+After image reconstruction,
+many MRI pulse sequences
+useful for parameter estimation
+produce at each voxel 
+centered at position $\bmr$
+a set of noisy voxel values 
+$\set{y_1\pr,\dots,y_D\pr}$, 
+each of which can be described
+with the following general model:
+\begin{align}
+	y_d\pr = s_d\paren{\bmx\pr; \bmnu\pr} + \epsilon_d\pr,
+	\label{eq:relax,mod-scalar}
+\end{align}
+where 
+$d \in \set{1,\dots,D}$. 
+Here,
+$\bmx\pr \in \complexes{L}$ 
+collects $L$ \emph{latent} object parameters at $\bmr$;
+$\bmnu\pr \in \complexes{K}$ 
+collects $K$ \emph{known} object parameters at $\bmr$;
+$s_d : \complexes{L} \times \complexes{K} \mapsto \complex$
+is a (pulse-sequence dependent) function
+that models the noiseless signal 
+obtained from the $d$th dataset;
+and $\epsilon_d \sim \cgauss{0}{\sigma_d^2}$ 
+is assumed for simplicity 
+\footnote{Though the noise distribution 
+of $\bmk$-space raw data 
+is usually well-modeled
+as complex white Gaussian, 
+the noise distribution 
+of the $d$th reconstructed image $y_d$ depends both
+on the acquisition and reconstruction.
+If single receive channel $\bmk$-space data
+is fully-sampled
+on a Cartesian grid,
+each dataset $y_d$ is recoverable
+via separate Fourier transform,
+and is thus complex Gaussian
+and independent across datasets.
+However if $\bmk$-space data
+is multi-channel, undersampled, and/or Cartesian,
+it may be preferable
+that $y_d$ be estimated by more sophisticated techniques,
+\eg \cite{fessler:03:nff, muckley:15:fpm}.
+In such cases,
+reconstructed image noise is unlikely
+to be Gaussian-distributed.
+}
+to be (circularly-symmetric) complex Gaussian noise
+\cite{macovski:96:nim, lei:07:som}
+with zero mean and variance $\sigma_d^2$.
+(Concrete examples will follow shortly.)
+
+For accurate, well-conditioned QMRI parameter estimation,
+it is typically necessary 
+to acquire a collection of datasets,
+which we refer to hereafter as a \emph{scan profile}.
+A scan profile consists 
+of $D$ datasets
+from up to $D$ pulse sequences
+(some sequences yield more than one dataset, \eg DESS).
+Let 
+$\bmy\pr := \brac{y_1\pr, \dots, y_D\pr}\tpose \in \complexes{D}$
+collect voxel values centered at $\bmr$
+from a given scan profile.
+Then the vector signal model
+\begin{align}
+	\bmy\pr = \bms\paren{\bmx\pr; \bmnu\pr} + \bmeps\pr
+	\label{eq:relax,scalar}
+\end{align}
+helps define the noiseless signal
+$\bms := \brac{s_1, \dots, s_D}\tpose
+: \complexes{L} \times \complexes{K} \mapsto \complexes{D}$
+associated with that scan profile.
+Here, noise
+$\bmeps\pr := \brac{\epsilon_1\pr, \dots, \epsilon_D\pr}\tpose \in \complexes{D}$
+typically has diagonal covariance structure
+$\bmSig := \diag{\brac{\sigma_1,\dots,\sigma_D}\tpose}$
+due to independence across datasets,
+where $\diag{\cdot}$ assigns its argument 
+to the diagonal entries 
+of an otherwise zero matrix.
+
+The following subsections
+describe two concrete scan profiles
+whose signals can be modeled 
+via \eqref{eq:relax,scalar} 
+and that we study through experiments
+later in this chapter.
+
+\subsubsection{Example: $\To$ estimation from SPGR scans}
+\label{eq:relax,meth,sig,t1}
+
+\subsubsection{Example: $\Tt$ estimation from DESS scans}
+\label{eq:relax,meth,sig,t2}
+
+\subsection{Latent Object Parameter Estimation}
+\label{ss,relax,meth,est}
+% from likelihood function to...
+% ml cost
+% rls cost 
+% regularizers one might use
+
+\subsection{Practical Considerations}
+\label{ss,relax,meth,pract}
+% preconditioner design
+
+\section{Experimentation}
+\label{s,relax,exp}
+% experiments and results
+% t1 estimation from spgr
+% t2 estimation from dess
+
+\section{Summary}
+\label{s,relax,summ}

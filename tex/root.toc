@@ -18,11 +18,20 @@
 \contentsline {subsection}{\numberline {2.2.1}Iterative Local Optimization with Constraints}{15}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Partially Linear Models and the Variable Projection Method}{16}{subsection.2.2.2}
 \contentsline {chapter}{\numberline {3}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ from Likelihood Models}{18}{chapter.3}
-\contentsline {chapter}{\numberline {4}Optimizing MR Scan Design\tmspace +\thinmuskip {.1667em}\\ for Model-Based Relaxometry}{19}{chapter.4}
-\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{20}{chapter.5}
-\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{21}{chapter.6}
-\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{22}{chapter.7}
-\contentsline {chapter}{\numberline {8}Future Work}{23}{chapter.8}
-\contentsline {chapter}{Appendices}{24}{section*.7}
+\contentsline {section}{\numberline {3.1}Introduction}{18}{section.3.1}
+\contentsline {section}{\numberline {3.2}Likelihood-Based Estimation in QMRI}{18}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}The Signal Model of a QMRI Scan Profile }{18}{subsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.1.1}Example: $T_1$ estimation from SPGR scans}{19}{subsubsection.3.2.1.1}
+\contentsline {subsubsection}{\numberline {3.2.1.2}Example: $T_2$ estimation from DESS scans}{19}{subsubsection.3.2.1.2}
+\contentsline {subsection}{\numberline {3.2.2}Latent Object Parameter Estimation}{19}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Practical Considerations}{19}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Experimentation}{19}{section.3.3}
+\contentsline {section}{\numberline {3.4}Summary}{19}{section.3.4}
+\contentsline {chapter}{\numberline {4}Optimizing MR Scan Design\tmspace +\thinmuskip {.1667em}\\ for Model-Based Relaxometry}{20}{chapter.4}
+\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{21}{chapter.5}
+\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{22}{chapter.6}
+\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{23}{chapter.7}
+\contentsline {chapter}{\numberline {8}Future Work}{24}{chapter.8}
+\contentsline {chapter}{Appendices}{25}{section*.7}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{26}{section*.10}
+\contentsline {chapter}{Bibliography}{27}{section*.10}

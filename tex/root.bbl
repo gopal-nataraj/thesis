@@ -99,4 +99,28 @@ G.~Golub and V.~Pereyra, ``Separable nonlinear least squares: the variable
   projection method and its applications,'' {\em {Inverse Prob.}}, vol.~19,
   pp.~{R1--26}, Apr. 2003.
 
+\bibitem{cheng:12:pma}
+H.-L.~M. Cheng, N.~Stikov, N.~R. Ghugre, and G.~A. Wright, ``Practical medical
+  applications of quantitative {MR} relaxometry,'' {\em {J. Mag. Res. Im.}},
+  vol.~36, pp.~{805--24}, Oct. 2012.
+
+\bibitem{fessler:03:nff}
+J.~A. Fessler and B.~P. Sutton, ``Nonuniform fast {Fourier} transforms using
+  min-max interpolation,'' {\em {IEEE Trans. Sig. Proc.}}, vol.~51,
+  pp.~{560--74}, Feb. 2003.
+
+\bibitem{muckley:15:fpm}
+M.~J. Muckley, D.~C. Noll, and J.~A. Fessler, ``Fast parallel {MR} image
+  reconstruction via {B1-based,} adaptive restart, iterative soft thresholding
+  algorithms {(BARISTA)},'' {\em {IEEE Trans. Med. Imag.}}, vol.~34,
+  pp.~{578--88}, Feb. 2015.
+
+\bibitem{macovski:96:nim}
+A.~Macovski, ``Noise in {MRI},'' {\em {Mag. Res. Med.}}, vol.~36, pp.~{494--7},
+  Sept. 1996.
+
+\bibitem{lei:07:som}
+T.~Lei, ``Statistics of {MR} signals: revisited,'' in {\em Proc. SPIE 6510
+  Medical Imaging 2007: Phys. Med. Im.}, p.~651052, 2007.
+
 \end{thebibliography}

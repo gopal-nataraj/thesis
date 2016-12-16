@@ -10,12 +10,16 @@
 \BOOKMARK [1][-]{section.2.1}{Relevant MR Physics}{chapter.2}% 10
 \BOOKMARK [1][-]{section.2.2}{Optimization in QMRI}{chapter.2}% 11
 \BOOKMARK [0][-]{chapter.3}{MRI Parameter Estimation from Likelihood Models}{}% 12
-\BOOKMARK [0][-]{chapter.4}{Optimizing MR Scan Design for Model-Based Relaxometry}{}% 13
-\BOOKMARK [0][-]{chapter.5}{MRI Parameter Estimation via Kernel Regression}{}% 14
-\BOOKMARK [0][-]{chapter.6}{Myelin Water Fraction Estimation from Steady-State Sequences}{}% 15
-\BOOKMARK [0][-]{chapter.7}{Steady-State RF Pulse Design}{}% 16
-\BOOKMARK [0][-]{chapter.8}{Future Work}{}% 17
-\BOOKMARK [0][-]{section*.7}{Appendices}{}% 18
-\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 19
-\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 20
-\BOOKMARK [0][-]{section*.10}{Bibliography}{}% 21
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.2}{Likelihood-Based Estimation in QMRI}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.3}{Experimentation}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.4}{Summary}{chapter.3}% 16
+\BOOKMARK [0][-]{chapter.4}{Optimizing MR Scan Design for Model-Based Relaxometry}{}% 17
+\BOOKMARK [0][-]{chapter.5}{MRI Parameter Estimation via Kernel Regression}{}% 18
+\BOOKMARK [0][-]{chapter.6}{Myelin Water Fraction Estimation from Steady-State Sequences}{}% 19
+\BOOKMARK [0][-]{chapter.7}{Steady-State RF Pulse Design}{}% 20
+\BOOKMARK [0][-]{chapter.8}{Future Work}{}% 21
+\BOOKMARK [0][-]{section*.7}{Appendices}{}% 22
+\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 23
+\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 24
+\BOOKMARK [0][-]{section*.10}{Bibliography}{}% 25

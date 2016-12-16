@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 DEC 2016 14:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 DEC 2016 21:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -609,20 +609,21 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
  (./root.toc
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
-)
-\tf@toc=\write5
-\openout5 = `root.toc'.
-
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.89 \begin{document}
-                      [1] [2] (./root.lof)
+l.34 ...\numberline {8}Future Work}{24}{chapter.8}
+                                                   [1])
+\tf@toc=\write5
+\openout5 = `root.toc'.
+
+ [2] (./root.lof)
 \tf@lof=\write6
 \openout6 = `root.lof'.
 
- [3] (./root.loa)
+
+[3] (./root.loa)
 \tf@loa=\write7
 \openout7 = `root.loa'.
 
@@ -702,9 +703,9 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 100.
 
-(./c,relax.tex) [18
+(./c,relax.tex [18
 
-]
+]) [19]
 CHAPTER 4.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -715,7 +716,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 104.
 
-(./c,scn-dsgn.tex) [19
+(./c,scn-dsgn.tex) [20
 
 ]
 CHAPTER 5.
@@ -728,7 +729,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 108.
 
-(./c,krr.tex) [20
+(./c,krr.tex) [21
 
 ]
 CHAPTER 6.
@@ -741,50 +742,50 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 112.
 
-(./c,mwf.tex) [21
+(./c,mwf.tex) [22
 
 ]
 CHAPTER 7.
-(./c,ss-rf.tex) [22
+(./c,ss-rf.tex) [23
 
 ]
 CHAPTER 8.
-(./c,future.tex) [23
+(./c,future.tex) [24
 
 ]
 APPENDIX A.
-(./a,cc-multi.tex) [24
+(./a,cc-multi.tex) [25
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [25
+(./a,dess-diff.tex) [26
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [26
+ [27
 
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 138.
- [27]
+ [28]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 138.
  (./root.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 138.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 138.
 Package rerunfilecheck Info: File `root.out' has not changed.
-(rerunfilecheck)             Checksum: 6522D257A149908DE74395201D1A0118;1373.
+(rerunfilecheck)             Checksum: 67AD18FC40E1416E618ADE3B9B338DD9;1630.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 138.
  ) 
 Here is how much of TeX's memory you used:
- 9218 strings out of 493089
- 131775 string characters out of 6134842
- 237683 words of memory out of 5000000
- 12324 multiletter control sequences out of 15000+600000
+ 9278 strings out of 493089
+ 132665 string characters out of 6134842
+ 238592 words of memory out of 5000000
+ 12366 multiletter control sequences out of 15000+600000
  36708 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,20n,45p,297b,473s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,20n,50p,297b,473s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/tex
@@ -795,25 +796,27 @@ ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive
 ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive
 /2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2015/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
-ype1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2015/texmf-dist/
-fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
-1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/time
-s/utmri8a.pfb>
-Output written on root.pdf (35 pages, 306123 bytes).
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/
+utmri8a.pfb>
+Output written on root.pdf (36 pages, 332998 bytes).
 PDF statistics:
- 624 PDF objects out of 1000 (max. 8388607)
- 557 compressed objects within 6 object streams
- 150 named destinations out of 1000 (max. 500000)
- 169 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 686 PDF objects out of 1000 (max. 8388607)
+ 615 compressed objects within 7 object streams
+ 168 named destinations out of 1000 (max. 500000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
 
