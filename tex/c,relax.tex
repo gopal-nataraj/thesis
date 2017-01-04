@@ -108,7 +108,7 @@ from a given scan profile.
 Then the vector signal model
 \begin{align}
 	\bmy\pr = \bms\paren{\bmx\pr; \bmnu\pr, \bmP} + \bmeps\pr
-	\label{eq:relax,scalar}
+	\label{eq:relax,mod-vec}
 \end{align}
 helps define the noiseless signal 
 $\bms := \brac{s_1, \dots, s_D}\tpose
@@ -128,11 +128,11 @@ of an otherwise zero (square) matrix.
 The following subsections
 describe two concrete scan profiles
 whose signals can be modeled 
-via \eqref{eq:relax,scalar} 
+via \eqref{eq:relax,mod-vec} 
 and that we study through experiments
 later in this chapter.
 
-\subsubsection{Example: $\To$ estimation from SPGR scans}
+\subsubsection{Example: An SPGR Scan Profile for $\To$ estimation}
 \label{sss,relax,meth,sig,t1}
 
 We first consider the problem
@@ -160,7 +160,7 @@ are the only remaining $P \gets 2$
 acquisition parameters
 available to choose
 that appear explicitly in \eqref{eq:spgr-model}.
-Thus, a SPGR scan profile 
+Thus, an SPGR scan profile 
 useful for $\To$ estimation 
 must vary 
 $\bmp_d \gets \brac{\flipnom, \TR}\tpose
@@ -169,7 +169,7 @@ over $\Ss$ scan repetitions
 to produce $D \geq L \gets 2$ datasets
 for well-conditioned estimation.
 
-\subsubsection{Example: $\Tt$ estimation from DESS scans}
+\subsubsection{Example: A DESS Scan Profile for $\Tt$ estimation}
 \label{sss,relax,meth,sig,t2}
 
 We next consider 
@@ -210,7 +210,7 @@ and the acquisitions we examine here
 are capable of producing SNR in tissue 
 of at minimum $100$ and usually more. 
 }
-due to Rician data.
+due to Rician noise.
 These choices assign 
 $\bmnu \gets \brac{\stx, \To}\tpose$ 
 as $K \gets 2$
@@ -236,23 +236,60 @@ need not require scan repetition,
 since $\Sd$ DESS scan repetitions
 produce $D \gets 2\Sd$ datasets.
 
-\subsection{Signal Model for MRI Parameter Estimation}
-\label{ss,relax,meth,sig}
-
-
-
+%\subsection{Signal Model for MRI Parameter Estimation}
+%\label{ss,relax,meth,sig}
 \subsection{Latent Object Parameter Estimation}
 \label{ss,relax,meth,est}
-% mom estimation
+
+\subsubsection{Signal Model and Problem Statement}
+\label{sss,relax,meth,est,sig}
+
+A scan profile's reconstructed images
+can be modeled 
+to discretize the bulk MR signal 
+into $V$ localized voxels
+centered at positions $\bmr_1,\dots,\bmr_V$:
+\begin{align}
+	\bmY = \bmS\paren{\bmX; \bmN, \bmP} + \bmE.
+	\label{eq:relax,mod-mtx}
+\end{align}
+Here, signal model
+$\bmS : \complexes{L\times V} \times \complexes{K\times V}
+\times \reals{A \times D} \mapsto \complexes{D \times V}$ 
+is a matrix function
+that maps latent 
+$\bmX := \brac{\bmx\paren{\bmr_1},\dots,\bmx\paren{\bmr_V}} 
+\in \complexes{L\times V}$
+and known 
+$\bmN := \brac{\bmnu\paren{\bmr_1},\dots,\bmnu\paren{\bmr_V}} 
+\in \complexes{L\times V}$
+parameter images 
+(with fixed acquisition parameter $\bmP$)
+to reconstructed image data
+$\bmY := \brac{\bmy\paren{\bmr_1},\dots,\bmy\paren{\bmr_V}} 
+\in \complexes{D\times V}$,
+save for noise image
+$\bmE := \brac{\bmeps\paren{\bmr_1},\dots,\bmeps\paren{\bmr_V}} 
+\in \complexes{D\times V}$. 
+The goal in QMRI parameter estimation
+is to estimate latent parameter images $\bmX$ 
+from MR image data $\bmY$,
+for a fixed scan profile defined by $\bmS$ and $\bmP$
+and given (separately acquired, estimated, and here assumed)
+known parameter images $\bmN$.
+
+\subsubsection{Maximum Likelihood Methods}
+\label{sss,relax,meth,est,ml}
 % from likelihood function to...
 % ml cost
+
+
+
+\subsubsection{Regularized Likelihood Methods}
+\label{sss,relax,meth,est,rls}
 % rls cost 
 % regularizers one might use
 
-The goal in QMRI parameter estimation
-is to estimate $\bmx$ at each voxel,
-given (separately acquired, estimated, and here assumed)
-known $\bmnu$ 
 
 \subsection{Practical Considerations}
 \label{ss,relax,meth,pract}
