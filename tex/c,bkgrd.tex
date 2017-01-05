@@ -1139,7 +1139,7 @@ is intractable.
 is a specific non-convex optimization problem 
 that is useful for many parameter estimation problems:
 \begin{align}
-	\bmx^* \in \set{\argmin{\bmx\in\setX} \norm{\bmy - \bmfa{\bmx}}^2_{\bmW^{1/2}}},
+	\bmx^* \in \set{\argmin{\bmx\in\setX} \norm{\bmy - \bmfa{\bmx}}^2_{\bmW}},
 	\label{eq:nonlin-ls}
 \end{align}
 where $\bmf : \setX \mapsto \complexes{D}$ is 
@@ -1148,9 +1148,12 @@ that (barring noise)
 relates parameters 
 $\bmx \in \setX \subseteq \complexes{L}$ 
 to data $\bmy \in \complexes{D}$;
-and $\bmW^{1/2} \in \reals{D\times D}$ 
-is the positive-semidefinite square root 
-of a symmetric, positive-semidefinite weighting matrix.
+weighted 2-norm
+$\norm{\bmiota}_\bmW := \sqrt{\bmiota\ctpose\bmW\bmiota}$
+for a symmetric, positive-semidefinite weighting matrix
+$\bmW \in \reals{D\times D}$ 
+and arbitrary vector $\bmiota \in \complexes{D}$;
+and $\paren{\cdot}\ctpose$ denotes conjugate transpose.
 The variable projection method 
 \cite{golub:03:snl}
 reduces the complexity of \eqref{eq:nonlin-ls}
@@ -1164,11 +1167,11 @@ where $\bmxl \in \complexes{\Ll}$; $\bmxn \in \setXn$;
 and $\bmA : \setXn \mapsto \complexes{D\times\Ll}$ 
 is a matrix function.
 These restrictions on \eqref{eq:nonlin-ls} 
-define a so-called separable least-squares problem
+define a so-called separable least-squares problem:
 \begin{align}
 	\paren{\bmxl^*,\bmxn^*} \in 
 		\set{\argmin{\substack{\bmxl \in \complexes{\Ll} \\ \bmxn \in \setXn}} 
-		\norm{\bmy - \bmAa{\bmxn}\bmxl}^2_{\bmW^{1/2}}}.
+		\norm{\bmy - \bmAa{\bmxn}\bmxl}^2_{\bmW}}.
 	\label{eq:sep-ls}
 \end{align}
 The variable projection method simplifies \eqref{eq:sep-ls}
@@ -1178,7 +1181,7 @@ of any fixed $\bmxn \in \setXn$:
 \begin{align}
 	\bmxl^*\paren{\bmxn} 
 		&= \argmin{\bmxl \in \complexes{\Ll}} 
-		\norm{\bmy - \bmAa{\bmxn}\bmxl}^2_{\bmW^{1/2}} 
+		\norm{\bmy - \bmAa{\bmxn}\bmxl}^2_{\bmW} 
 		\nonumber \\
 		&= \pinv{\bmW^{1/2}\bmAa{\bmxn}} \bmW^{1/2} \bmy
 		\label{eq:sep-ls-lin} \\
@@ -1187,7 +1190,7 @@ of any fixed $\bmxn \in \setXn$:
 		\label{eq:sep-ls-fullrnk}
 \end{align}
 where $\pinv{\cdot}$ denotes pseudoinverse;
-$\paren{\cdot}\ctpose$ denotes conjugate transpose; 
+$\bmW^{1/2}$ denotes principle (matrix) square root;
 and \eqref{eq:sep-ls-fullrnk} holds
 if the matrix inversion within exists.
 Substituting \eqref{eq:sep-ls-fullrnk}
