@@ -283,8 +283,88 @@ known parameter images $\bmN$.
 % from likelihood function to...
 % ml cost
 
+In maximum likelihood (ML) estimation,
+one seeks to find model parameters
+that maximize the likelihood
+of observing output data.
+We apply ML estimation to QMRI
+by first constructing 
+a \emph{likelihood function}
+that describes the probability 
+of observing image data $\bmY$
+given latent parameters $\bmX$.
+We then formulate 
+ML latent parameter estimate $\estaML{\bmX}{\bmY; \bmN, \bmP}$ 
+by finding an $\bmX$
+that maximizes this likelihood function. 
 
+We first construct the likelihood function
+for the $v$th voxel's data $\bmy\paren{\bmr_v}$ 
+and latent parameter $\bmx\paren{\bmr_v}$.
+For complex Gaussian noise,
+the likelihood function is
+\begin{align}
+	\Lf{\bmx\paren{\bmr_v}} \propto
+	\expa{-\norm{\bmy\paren{\bmr_v}-
+	\bms\paren{\bmx\paren{\bmr_v}; \bmnu\paren{\bmr_v}, \bmP}}^2_{\bmSig^{-1}}},
+	\label{eq:relax,lf-vec}
+\end{align}
+where \eqref{eq:relax,lf-vec} omits constants
+that are independent of $\bmx\paren{\bmr_v}$
+and are therefore irrelevant.
+Assuming noise independence 
+across image voxels,
+we can next build 
+a simple and practical likelihood function
+of the full image data as
+\begin{align}
+	\Lf{\bmX} &= \prod_{v=1}^V \Lf{\bmx\paren{\bmr_v}}.
+	\label{eq:relax,lf-mtx}
+\end{align}
+We form an ML parameter estimate
+by finding $\bmX$  
+that maximizes this likelihood function:
+\begin{align}
+	\estaML{\bmX}{\bmY; \bmN, \bmP} &\in \set{\argmax{\bmX \in \setX^V} \Lf{\bmX}} 
+	\nonumber \\
+	&\equiv \set{\argmin{\bmX \in \setX^V} -\log{\Lf{\bmX}}}
+	\label{eq:relax,ml-log-lf} \\
+	&= \set{\argmin{\bmX \in \setX^V} 
+	\sum_{v=1}^V \norm{\bmy\paren{\bmr_v} -
+	\bms\paren{\bmx\paren{\bmr_v}; \bmnu\paren{\bmr_v}, \bmP}}^2_{\bmSig^{-1}}}
+	\nonumber \\
+	&= \set{\argmin{\bmX \in \setX^V} 
+	\frob{\bmSig^{-1/2} \paren{\bmY - \bmS\paren{\bmX; \bmN, \bmP}}}^2},
+	\label{eq:relax,ml-est}
+\end{align}
+where $\setX$ is a (typically convex) latent parameter search space;
+the set equivalence in \eqref{eq:relax,ml-log-lf} 
+uses the monotonicity of the $\log$ function;
+and $\frob{\cdot}$ denotes the Frobenius matrix norm.
 
+Typically, 
+QMR image model $\bmS$ is nonlinear in $\bmX$
+and so ML estimation problem \eqref{eq:relax,ml-est}
+involves non-convex optimization,
+which is challenging in general
+(see Section~\ref{s,bkgrd,opt}).
+Two properties 
+of \eqref{eq:relax,ml-est}
+guide our solution strategies.
+First, 
+\eqref{eq:relax,ml-est} is separable across voxels,
+so problem non-convexity is addressable 
+on a voxel-by-voxel basis.
+Second,
+MR signal models are usually partially linear,
+in which case we may employ the variable projection method 
+(described in Section~\ref{ss,bkgrd,opt,vpm})
+to further reduce problem complexity.
+For applications studied
+in this chapter,
+these properties allow for \eqref{eq:relax,ml-est}
+to be solved via simple grid search.
+ 
 \subsubsection{Regularized Likelihood Methods}
 \label{sss,relax,meth,est,rls}
 % rls cost 

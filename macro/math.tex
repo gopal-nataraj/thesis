@@ -33,6 +33,8 @@
 % estimator
 \newcommand{\est}[1]{\widehat{#1}}
 \newcommand{\esta}[2]{\widehat{#1}\paren{#2}}
+\newcommand{\estML}[1]{\est{#1}_\mathrm{ML}}
+\newcommand{\estaML}[2]{\estML{#1}\paren{#2}}
 
 % sets
 \newcommand{\real}{\mathbb{R}}
@@ -80,7 +82,7 @@
 \newcommand{\unit}[1]{\hat{#1}}
 
 % exp
-\newcommand{\expa}[1]{\exp{\paren{#1}}u}
+\newcommand{\expa}[1]{\exp{\paren{#1}}}
 
 % projection
 \newcommand{\proj}[1]{P_{#1}}
@@ -88,3 +90,6 @@
 
 % constant
 \newcommand{\const}[1]{c_{#1}}
+
+% norm
+\newcommand{\frob}[1]{\norm{#1}_\mathrm{F}}

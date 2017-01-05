@@ -26,15 +26,15 @@
 \contentsline {subsection}{\numberline {3.2.2}Latent Object Parameter Estimation}{20}{subsection.3.2.2}
 \contentsline {subsubsection}{\numberline {3.2.2.1}Signal Model and Problem Statement}{20}{subsubsection.3.2.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2.2}Maximum Likelihood Methods}{21}{subsubsection.3.2.2.2}
-\contentsline {subsubsection}{\numberline {3.2.2.3}Regularized Likelihood Methods}{21}{subsubsection.3.2.2.3}
-\contentsline {subsection}{\numberline {3.2.3}Practical Considerations}{21}{subsection.3.2.3}
-\contentsline {section}{\numberline {3.3}Experimentation}{21}{section.3.3}
-\contentsline {section}{\numberline {3.4}Summary}{21}{section.3.4}
-\contentsline {chapter}{\numberline {4}Optimizing MR Scan Design\tmspace +\thinmuskip {.1667em}\\ for Model-Based Relaxometry}{22}{chapter.4}
-\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{23}{chapter.5}
-\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{24}{chapter.6}
-\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{25}{chapter.7}
-\contentsline {chapter}{\numberline {8}Future Work}{26}{chapter.8}
-\contentsline {chapter}{Appendices}{27}{section*.7}
+\contentsline {subsubsection}{\numberline {3.2.2.3}Regularized Likelihood Methods}{22}{subsubsection.3.2.2.3}
+\contentsline {subsection}{\numberline {3.2.3}Practical Considerations}{22}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Experimentation}{22}{section.3.3}
+\contentsline {section}{\numberline {3.4}Summary}{22}{section.3.4}
+\contentsline {chapter}{\numberline {4}Optimizing MR Scan Design\tmspace +\thinmuskip {.1667em}\\ for Model-Based Relaxometry}{23}{chapter.4}
+\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{24}{chapter.5}
+\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{25}{chapter.6}
+\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{26}{chapter.7}
+\contentsline {chapter}{\numberline {8}Future Work}{27}{chapter.8}
+\contentsline {chapter}{Appendices}{28}{section*.7}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{29}{section*.10}
+\contentsline {chapter}{Bibliography}{30}{section*.10}
