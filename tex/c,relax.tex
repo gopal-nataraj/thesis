@@ -370,9 +370,84 @@ to be solved via simple grid search.
 % rls cost 
 % regularizers one might use
 
+In regularized likelihood (RL) estimation,
+we modify ML estimation problem \eqref{eq:relax,ml-log-lf}
+to include additional information
+in the form of \emph{regularization}:
+\begin{align}
+	\estaRL{\bmX}{\bmY; \bmN, \bmP} &\in
+	\set{\argmin{\bmX \in \setX^V} -\log{\Lf{\bmX}} + \Rega{\bmX}}.
+	\label{eq:relax,rl-est}
+\end{align}
+Here,
+we have freedom to design regularizer 
+$\Reg : \complexes{L \times V} \mapsto \real$ 
+to encourage desirable structure
+in estimates of $\bmX$. 
+We observe
+that it is usually reasonable
+to assume that each latent object parameter map
+is \emph{piecewise smooth} as a function of space:
+that is, 
+each parameter is likely 
+to vary smoothly in space,
+except for sharp discontinuities 
+at tissue boundaries.
+To encourage piecewise-smoothness 
+in parameter estimates,
+we use the regularizer 
+\begin{align}
+	\Rega{\bmX} &:= \sum_{l=1}^L \beta_l \sum_{j=1}^J
+	\phi_l\paren{\brac{\bmJ\bmX\tpose}_{jl}}, \where
+	\label{eq:relax,reg} \\
+	\phi_l\paren{\cdot} &:= 
+	\gamma_l^2 \paren{\sqrt{1 + \abs{\cdot/\gamma_l}^2} - 1}
+\end{align}
+is a differentiable approximation
+%(with shape parameter $\gamma_l$)
+the absolute value function;
+$\bmJ \in \reals{J\times V}$ 
+evaluates $J$ (multi-dimensional) finite-differencing operations;
+$\brac{\cdot}_{jl}$ extracts the $\paren{j,l}$th matrix element;
+and $\beta_l$ is a regularization parameter
+that controls the relative importance
+of smoothing the $l$th latent object parameter image.
+Conceptually,
+this regularizer penalizes inconsistencies 
+in adjacent latent parameter image voxels,
+but with a severity that depends
+on the degree of inconsistency. 
+``Small'' voxel-to-voxel differences 
+are likely due to image data noise
+within a single tissue type
+and are penalized near-quadratically, 
+while ``large'' differences
+are likely due to tissue boundaries
+and are penalized near-linearly.
+Useful notions 
+of small versus large differences
+are governed by shape parameters 
+$\gamma_l\, \forall l\in\set{1,\dots,L}$,
+and vary for different latent parameter maps
+based on their units and relative scale.
 
-\subsection{Practical Considerations}
-\label{ss,relax,meth,pract}
+In general, 
+QMRI image signal model $\bmS$ is nonlinear in $\bmX$
+and so RL estimation problem \eqref{eq:relax,rl-est}
+requries non-convex optimization.
+Unlike in ML estimation,
+\eqref{eq:relax,rl-est} is not separable across voxels
+due to regularization, 
+precluding global optimization
+(via grid search or other methods).
+We instead take the corresponding ML estimate
+as initialization
+and solve \eqref{eq:relax,rl-est} 
+via iterative constrained local optimization
+(detailed in Section~\ref{ss,bkgrd,opt,loc}).
+
+%\subsection{Practical Considerations}
+%\label{ss,relax,meth,pract}
 % preconditioner design
 
 \section{Experimentation}
