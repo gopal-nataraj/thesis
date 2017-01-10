@@ -127,4 +127,247 @@ T.~Lei, ``Statistics of {MR} signals: revisited,'' in {\em Proc. SPIE 6510
 H.~Gudbjartsson and S.~Patz, ``The {Rician} distribution of noisy {MRI} data,''
   {\em {Mag. Res. Med.}}, vol.~34, pp.~{910--4}, Dec. 1995.
 
+\bibitem{larsson:88:ivd}
+H.~B.~W. Larsson, J.~Frederiksen, L.~Kjaer, O.~Henriksen, and J.~Olesen, ``In
+  vivo determination of {T1} and {T2} in the brain of patients with severe but
+  stable multiple sclerosis,'' {\em {Mag. Res. Med.}}, vol.~7, pp.~{43--55},
+  May 1988.
+
+\bibitem{kurki:96:tco}
+T.~Kurki, N.~Lundbom, M.~Komu, and M.~Kormano, ``Tissue characterization of
+  inter cranial tumors by magnetization transfer and spin-lattice relaxation
+  parameters in vivo,'' {\em {J. Mag. Res. Im.}}, vol.~6, pp.~{573--9}, Aug.
+  1996.
+
+\bibitem{englund:86:rti}
+E.~Englund, A.~Brun, Z.~Gyorffy-Wagner, E.~Larsson, and B.~Persson,
+  ``Relaxation times in relation to grade of malignancy and tissue necrosis in
+  astrocytic gliomas,'' {\em {Mag. Res. Im.}}, vol.~4, no.~5, pp.~{425--9},
+  1986.
+
+\bibitem{siemonsen:09:qtv}
+S.~Siemonsen, K.~Mouridsen, B.~Holst, T.~Ries, J.~Finsterbusch, G.~Thomalia,
+  L.~Ostergaard, and J.~Fiehler, ``Quantitative {T2} values predict time from
+  symptom onset in acute stroke patients,'' {\em {Stroke}}, vol.~40,
+  pp.~{1612--6}, May 2009.
+
+\bibitem{dewitt:87:nnc}
+L.~D. DeWitt, J.~P. Kistler, D.~C. Miller, E.~P. Richardson, and F.~S.
+  Buonanno, ``{NMR-neuropathologic} correlation in stroke,'' {\em {Stroke}},
+  vol.~18, no.~2, pp.~{342--51}, 1987.
+
+\bibitem{matzat:13:qmt}
+S.~J. Matzat, J.~V. Tiel, G.~E. Gold, and E.~H.~G. Oei, ``Quantitative {MRI}
+  techniques of cartilage composition,'' {\em {Quant. Imaging Med. Surg.}},
+  vol.~3, pp.~{162--74}, June 2013.
+
+\bibitem{mosher:04:cmt}
+T.~J. Mosher and B.~J. Dardzinski, ``Cartilage {MRI} {T2} relaxation time
+  mapping: overview and applications,'' {\em {Semin. Musculoskelet. Radiol.}},
+  vol.~8, no.~4, pp.~{355--68}, 2004.
+
+\bibitem{guo:09:mtq}
+H.~Guo, W.-Y. Au, J.~S. Cheung, D.~Kim, J.~H. Jensen, P.-L. Khong, Q.~Chan,
+  K.~C. Chan, C.~Tosti, H.~Tang, T.~R. Brown, W.~W.~M. Lam, S.-Y. Ha, G.~M.
+  Brittenham, and E.~X. Wu, ``Myocardial {T2} quantification in patients with
+  iron overload at 3 {Tesla},'' {\em {J. Mag. Res. Im.}}, vol.~30,
+  pp.~{394--400}, Aug. 2009.
+
+\bibitem{giri:09:tqf}
+S.~Giri, Y.~C. Chung, A.~Merchant, G.~Mihai, S.~Rajagopalan, S.~V. Raman, and
+  O.~P. Simonetti, ``T2 quantification for improved detection of myocardial
+  edema,'' {\em {Cardiovasc. Magn. Reson.}}, vol.~11, no.~1, pp.~{56--68},
+  2009.
+
+\bibitem{look:70:tsi}
+D.~C. Look and D.~R. Locker, ``Time saving in measurement of {NMR} and {EPR}
+  relaxation times,'' {\em {Rev Sci Instrum}}, vol.~41, pp.~{250--1}, Feb.
+  1970.
+
+\bibitem{carr:54:eod}
+H.~Y. Carr and E.~M. Purcell, ``Effects of diffusion on free precession in
+  nuclear magnetic resonance experiments,'' {\em {Phys. Rev.}}, vol.~94,
+  pp.~{630--8}, May 1954.
+
+\bibitem{stehling:91:epi}
+M.~K. Stehling, R.~Turner, and P.~Mansfield, ``Echo-planar imaging: magnetic
+  resonance imaging in a fraction of a second,'' {\em {Science}}, vol.~254,
+  pp.~{43--50}, Oct. 1991.
+
+\bibitem{ahn:86:hss}
+C.~B. Ahn, J.~H. Kim, and Z.~H. Cho, ``High-speed spiral-scan scho planar {NMR}
+  imaging - {I},'' {\em {IEEE Trans. Med. Imag.}}, vol.~5, pp.~{2--7}, Mar.
+  1986.
+
+\bibitem{meyer:92:fsc}
+C.~H. Meyer, B.~S. Hu, D.~G. Nishimura, and A.~Macovski, ``Fast spiral coronary
+  artery imaging,'' {\em {Mag. Res. Med.}}, vol.~28, pp.~{202--13}, Dec. 1992.
+
+\bibitem{kay:91:pia}
+I.~Kay and R.~M. Henkelman, ``Practical {Implementation} and {Optimization} of
+  {One-shot} {T1} imaging,'' {\em {Mag. Res. Med.}}, vol.~22, pp.~{414--24},
+  Dec. 1991.
+
+\bibitem{gowland:92:faa}
+P.~A. Gowland and M.~O. Leach, ``Fast and accurate measurements of {T1} using a
+  multi-readout single inversion-recovery sequence,'' {\em {Mag. Res. Med.}},
+  vol.~26, pp.~{79--88}, July 1992.
+
+\bibitem{messroghli:04:mll}
+D.~R. Messroghli, A.~Radjenovic, S.~Kozerke, D.~M. Higgins, M.~U. Sivananthan,
+  and J.~P. Ridgway, ``Modified {Look-Locker} inversion recovery {(MOLLI)} for
+  high-resolution {$T_1$} mapping of the heart,'' {\em {Mag. Res. Med.}},
+  vol.~52, pp.~{141--6}, July 2004.
+
+\bibitem{stehling:90:ire}
+M.~K. Stehling, R.~J. Ordidge, R.~Coxon, and P.~Mansfield, ``Inversion-recovery
+  {Echo-planar} imaging {(IR-EPI)} at {0.5T},'' {\em {Mag. Res. Med.}},
+  vol.~13, pp.~{514--7}, Mar. 1990.
+
+\bibitem{bonny:96:tml}
+J.-M. Bonny, M.~Zanca, J.-Y. Boire, and A.~Veyre, ``T2 maximum likelihood
+  estimation from multiple spin-echo magnitude images,'' {\em {Mag. Res.
+  Med.}}, vol.~36, pp.~{287--93}, Aug. 1996.
+
+\bibitem{kumar:12:bau}
+D.~Kumar, T.~D. Nguyen, S.~A. Gauthier, and A.~Raj, ``Bayesian algorithm using
+  spatial priors for multiexponential {T2} relaxometry from multiecho spin echo
+  {MRI},'' {\em {Mag. Res. Med.}}, vol.~68, pp.~{1536--43}, Nov. 2012.
+
+\bibitem{beneliezer:15:raa}
+N.~Ben-Eliezer, D.~K. Sodickson, and K.~T. Block, ``Rapid and accurate {T2}
+  mapping from multi--spin-echo data using {Bloch-simulation-based}
+  reconstruction,'' {\em {Mag. Res. Med.}}, vol.~73, pp.~{809--17}, Feb. 2015.
+
+\bibitem{nguyen:12:ttd}
+T.~D. Nguyen, C.~Wisnieff, M.~A. Cooper, D.~Kumar, A.~Raj, P.~Spincemaille,
+  Y.~Wang, T.~Vartanian, and S.~A. Gauthier, ``T2prep three-dimensional spiral
+  imaging with efficient whole brain coverage for myelin water quantification
+  at 1.5 tesla,'' {\em {Mag. Res. Med.}}, vol.~67, pp.~{614--21}, Mar. 2012.
+
+\bibitem{majumdar:86:eit-1}
+S.~Majumdar, S.~C. Orphanoudakis, A.~Gmitro, M.~O'Donnell, and J.~C. Gore,
+  ``Error in the measurements of {T2} using multiple-echo {MRI} techniques: 1.
+  {Effect} of radiofrequency pulse imperfections,'' {\em {Mag. Res. Med.}},
+  vol.~3, pp.~{397--417}, June 1986.
+
+\bibitem{majumdar:86:eit-2}
+S.~Majumdar, S.~C. Orphanoudakis, A.~Gmitro, M.~O'Donnell, and J.~C. Gore,
+  ``Error in the measurements of {T2} using multiple-echo {MRI} techniques: 2.
+  {Effects} of static field inhomogeneity,'' {\em {Mag. Res. Med.}}, vol.~3,
+  pp.~{562--74}, Aug. 1986.
+
+\bibitem{farzaneh:90:aot}
+F.~Farzaneh, S.~J. Riederer, and N.~J. Pelc, ``Analysis of {T2} limitations and
+  off-resonance effects on spatial resolution and artifacts in echo-planar
+  imaging,'' {\em {Mag. Res. Med.}}, vol.~14, pp.~{123--39}, Apr. 1990.
+
+\bibitem{deoni:03:rct}
+S.~C.~L. Deoni, B.~K. Rutt, and T.~M. Peters, ``Rapid combined {T1} and {T2}
+  mapping using gradient recalled acquisition in the steady state,'' {\em {Mag.
+  Res. Med.}}, vol.~49, pp.~{515--26}, Mar. 2003.
+
+\bibitem{chang:08:lls}
+L.-C. Chang, C.~G. Koay, P.~J. Basser, and C.~Pierpaoli, ``Linear least-squares
+  method for unbiased estimation of {T1} from {SPGR} signals,'' {\em {Mag. Res.
+  Med.}}, vol.~60, pp.~{496--501}, Aug. 2008.
+
+\bibitem{fram:87:rco}
+E.~K. Fram, R.~J. Herfkens, G.~A. Johnson, G.~H. Glover, J.~P. Kaaris,
+  A.~Shimakawa, T.~G. Perkins, and N.~J. Pelc, ``Rapid calculation of {T1}
+  using variable flip angle gradient refocused imaging,'' {\em {Mag. Res.
+  Im.}}, vol.~5, no.~3, pp.~{201--8}, 1987.
+
+\bibitem{wang:12:srt}
+H.~Wang and Y.~Cao, ``Spatially regularized {T1} estimation from variable flip
+  angles {MRI},'' {\em {Med. Phys.}}, vol.~39, pp.~{4139--48}, July 2012.
+
+\bibitem{deoni:04:rte}
+S.~C.~L. Deoni, H.~A. Ward, T.~M. Peters, and B.~K. Rutt, ``Rapid {$T_2$}
+  estimation with phase-cycled variable nutation steady-state free
+  precession,'' {\em {Mag. Res. Med.}}, vol.~52, pp.~{435--9}, Aug. 2004.
+
+\bibitem{deoni:09:trt}
+S.~C.~L. Deoni, ``Transverse relaxation time {(T2)} mapping in the brain with
+  off-resonance correction using phase-cycled steady-state free precession
+  imaging,'' {\em {J. Mag. Res. Im.}}, vol.~30, pp.~{411--7}, Aug. 2009.
+
+\bibitem{welsch:09:reo}
+G.~H. Welsch, K.~Scheffler, T.~C. Mamisch, T.~Hughes, S.~Millington,
+  M.~Deimling, and S.~Trattnig, ``Rapid estimation of cartilage {T2} based on
+  double echo at steady state {(DESS)} with 3 {Tesla},'' {\em {Mag. Res.
+  Med.}}, vol.~62, pp.~{544--9}, Aug. 2009.
+
+\bibitem{heule:14:reo}
+R.~Heule, C.~Ganter, and O.~Bieri, ``Rapid estimation of cartilage {T2} with
+  reduced {T1} sensitivity using double echo steady state imaging,'' {\em {Mag.
+  Res. Med.}}, vol.~71, pp.~{1137--43}, Mar. 2014.
+
+\bibitem{stocker:14:mpq}
+T.~{\Stocker}, F.~Keil, K.~Vahedipour, D.~Brenner, E.~Pracht, and N.~J. Shah,
+  ``{MR} parameter quantification with magnetization-prepared double echo
+  steady-state {(MP-DESS)},'' {\em {Mag. Res. Med.}}, vol.~72, pp.~{103--11},
+  July 2014.
+
+\bibitem{heule:14:tes-mrm}
+R.~Heule, C.~Ganter, and O.~Bieri, ``Triple echo steady-state {(TESS)}
+  relaxometry,'' {\em {Mag. Res. Med.}}, vol.~71, pp.~{230--7}, Jan. 2014.
+
+\bibitem{gyngell:89:tss}
+M.~L. Gyngell, ``The steady-state signals in short-repetition-time sequences,''
+  {\em {J. Mag. Res.}}, vol.~81, pp.~{474--83}, Feb. 1989.
+
+\bibitem{hanicke:03:aas}
+W.~{H\"anicke} and H.~U. Vogel, ``An analytical solution for the {SSFP} signal
+  in {MRI},'' {\em {Mag. Res. Med.}}, vol.~49, pp.~{771--5}, Apr. 2003.
+
+\bibitem{weiss:80:tco}
+G.~H. Weiss, R.~K. Gupta, J.~A. Ferretti, and E.~D. Becker, ``The choice of
+  optimal parameters for measurement of spin-lattice relaxation times. {I.}
+  {Mathematical} formulation,'' {\em {J. Mag. Res.}}, vol.~37, pp.~{369--79},
+  Feb. 1980.
+
+\bibitem{zhang:98:dos}
+Y.~Zhang, H.~N. Yeung, M.~O'Donnell, and P.~L. Carson, ``Determination of
+  sample time for {T1} measurement,'' {\em {J. Mag. Res. Im.}}, vol.~8,
+  pp.~{675--81}, May 1998.
+
+\bibitem{wang:87:otp}
+H.~Z. Wang, S.~J. Riederer, and J.~N. Lee, ``Optimizing the precision in {T1}
+  relaxation estimation using limited flip angles,'' {\em {Mag. Res. Med.}},
+  vol.~5, pp.~{399--416}, Nov. 1987.
+
+\bibitem{jones:96:oss}
+J.~A. Jones, P.~Hodgkinson, A.~L. Barker, and P.~J. Hore, ``Optimal sampling
+  strategies for the measurement of spin-spin relaxation times,'' {\em {J. Mag.
+  Res. B}}, vol.~113, pp.~{25--34}, Oct. 1996.
+
+\bibitem{imran:99:tpm}
+J.~Imran, {\Francois}.~Langevin, and {\Herve}.~Saint-Jalmes, ``Two-point method
+  for {T1} estimation with optimized gradient-echo sequence,'' {\em {Mag. Res.
+  Im.}}, vol.~17, pp.~{1347--56}, Nov. 1999.
+
+\bibitem{deoni:04:doo}
+S.~C.~L. Deoni, T.~M. Peters, and B.~K. Rutt, ``Determination of optimal angles
+  for variable nutation proton magnetic spin-lattice, {$T_1$,} and spin-spin,
+  {$T_2$,} relaxation times measurement,'' {\em {Mag. Res. Med.}}, vol.~51,
+  pp.~{194--9}, Jan. 2004.
+
+\bibitem{fleysher:07:otp}
+L.~Fleysher, R.~Fleysher, S.~Liu, W.~Zaaraoui, and O.~Gonen, ``Optimizing the
+  precision-per-unit-time of quantitative {MR} metrics: {Examples} for {$T_1$,}
+  {$T_2$,} and {DTI},'' {\em {Mag. Res. Med.}}, vol.~57, pp.~{380--7}, Feb.
+  2007.
+
+\bibitem{akcakaya:15:ots}
+M.~{\Akcakaya}, S.~{\Weingartner}, {\Sebastien}.~Roujol, and R.~Nezafat, ``On
+  the selection of sampling points for myocardial {T1} mapping,'' {\em {Mag.
+  Res. Med.}}, vol.~73, pp.~{1741--53}, May 2015.
+
+\bibitem{lewis:16:ddo}
+C.~M. Lewis, S.~A. Hurley, M.~E. Meyerand, and C.~G. Koay, ``Data-driven
+  optimized flip angle selection for {T1} estimation from spoiled gradient echo
+  acquisitions,'' {\em {Mag. Res. Med.}}, 2016.
+\newblock To appear.
+
 \end{thebibliography}
