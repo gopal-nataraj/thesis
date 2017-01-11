@@ -251,7 +251,7 @@ to guide QMRI scan design
 for relaxometry.
 
 \subsection{Min-max Optimization Problem for Scan Design}
-\label{ss,scn-dsgn,minmax}
+\label{ss,scn-dsgn,crb,minmax}
 
 Following \cite{chernoff:53:lod}, 
 we focus on minimizing a weighted average 
@@ -362,4 +362,28 @@ and is robust to variations in those parameters
 over broader sets $\setXb$ and $\setNb$, 
 respectively.
 
+\section{Optimizing SS Sequences for Relaxometry in the Brain}
+\label{s,scn-dsgn,opt}
 
+This section applies the methods 
+of Section~\ref{ss,scn-dsgn,crb,minmax} 
+to the problem of scan design 
+for joint $\To,\Tt$ estimation 
+from combinations of SS sequences. 
+Section~\ref{ss,scn-dsgn,opt,design} details 
+how we use optimization problems
+\eqref{eq:scn-dsgn,P-cand} and \eqref{eq:scn-dsgn,P-star} 
+to tailor three SPGR and DESS scan combinations
+for precise $\To,\Tt$ estimation 
+in white matter (WM) and grey matter (GM) regions 
+of the brain. 
+Section~\ref{ss,scn-dsgn,opt,compare} compares the predicted performance 
+of the three optimized scan profiles.
+
+\subsection{Scan Design Details}
+\label{ss,scn-dsgn,opt,design}
+
+
+
+\subsection{Scan Profile Comparisons}
+\label{ss,scn-dsgn,opt,compare}
