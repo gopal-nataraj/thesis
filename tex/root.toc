@@ -33,10 +33,11 @@
 \contentsline {section}{\numberline {4.1}Introduction}{24}{section.4.1}
 \contentsline {section}{\numberline {4.2}A CRB-Inspired Scan Selection Method}{26}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}The CRB and its Relevance to QMRI}{26}{subsection.4.2.1}
-\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{28}{chapter.5}
-\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{29}{chapter.6}
-\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{30}{chapter.7}
-\contentsline {chapter}{\numberline {8}Future Work}{31}{chapter.8}
-\contentsline {chapter}{Appendices}{32}{section*.7}
+\contentsline {subsection}{\numberline {4.2.2}Min-max Optimization Problem for Scan Design}{27}{subsection.4.2.2}
+\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{29}{chapter.5}
+\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{30}{chapter.6}
+\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{31}{chapter.7}
+\contentsline {chapter}{\numberline {8}Future Work}{32}{chapter.8}
+\contentsline {chapter}{Appendices}{33}{section*.7}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{34}{section*.10}
+\contentsline {chapter}{Bibliography}{35}{section*.10}

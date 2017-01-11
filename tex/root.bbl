@@ -378,4 +378,8 @@ R.~A. Fisher, ``Theory of statistical estimation,'' {\em {Proc. Cambridge
 H.~{\Cramer}, {\em Mathematical methods of statistics}.
 \newblock Princeton: Princeton Univ. Press, 1946.
 
+\bibitem{chernoff:53:lod}
+H.~Chernoff, ``Locally optimal designs for estimating parameters,'' {\em {Ann.
+  Math. Stat.}}, vol.~24, pp.~{586--602}, Dec. 1953.
+
 \end{thebibliography}

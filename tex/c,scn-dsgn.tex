@@ -234,7 +234,7 @@ given $\bmnu$ and $\bmP$:
 where $\expect{\bmy}{\cdot}$ denotes element-wise expectation
 with respect to $\bmy$.
 In particular,
-the matrix CRB \cite{cramer:46} 
+the matrix CRB \cite{cramer:46} ensures
 that any unbiased estimator $\est{\bmx}$ satisfies
 \begin{align}
 	\cov{\est{\bmx}; \bmnu, \bmP} \succeq
@@ -249,3 +249,117 @@ we design an optimization problem
 based on the CRB
 to guide QMRI scan design 
 for relaxometry.
+
+\subsection{Min-max Optimization Problem for Scan Design}
+\label{ss,scn-dsgn,minmax}
+
+Following \cite{chernoff:53:lod}, 
+we focus on minimizing a weighted average 
+of the variances 
+in each of the $L$ latent object parameter estimates. 
+A reasonable objective function 
+for overall estimator precision 
+is therefore given by
+\begin{align}
+	\costa{\bmx; \bmnu, \bmP} =
+		\trace{\bmW \bmF^{-1}\paren{\bmx; \bmnu, \bmP} \bmW\tpose}, 
+		\label{eq:scn-dsgn,cost}
+\end{align}
+where $\bmW \in \reals{L \times L}$ 
+is a diagonal, application-specific  matrix of weights, 
+preselected to control the relative importance 
+of precisely estimating the $L$ latent object parameters. 
+For scan design, 
+we would like to minimize \eqref{eq:scn-dsgn,cost} 
+with respect to scan parameters $\bmP$.
+ 
+The CRB depends not only on $\bmP$ 
+but also on the spatially varying object parameters 
+$\bmx$ and $\bmnu$. 
+Thus, one cannot perform scan design 
+by ``simply'' minimizing $\cost$ 
+with respect to scan parameters $\bmP$. 
+Instead, we pose a 
+\emph{min-max} optimization problem 
+for scan design: 
+we seek candidate scan parameters $\bmPc$ 
+over a search space $\setP$ 
+that \emph{minimize} the worst-case 
+(\emph{i.e.}, \emph{maximum}) 
+cost $\costwt$, 
+as viewed over ``tight'' object parameter ranges 
+$\setXt$ and $\setNt$:
+\begin{align}
+	\breve{\bmP} &\in 
+		\set{\argmin{\bmP \in \setP} \costawt{\bmP}}, \where 
+		\label{eq:scn-dsgn,P-cand} \\
+	\costawt{\bmP} &:=
+		\max_{\substack{\bmx \in \setXt \\ \bmnu \in \setNt}}
+		\costa{\bmx; \bmnu, \bmP}.
+		\label{eq:scn-dsgn,cost-tight}
+\end{align}
+Here, 
+we select \emph{latent} parameter set $\setXt$ 
+based on the application 
+and \emph{known} parameter set $\setNt$ 
+based on the spatial variation typically observed 
+in the known parameters $\bmnu$. 
+Min-max approach \eqref{eq:scn-dsgn,P-star} 
+should ensure good estimation precision 
+over a range of parameter values.
+
+Since $\Psi$ is in general non-convex 
+with respect to $\bmP$, 
+it may have multiple global minimizers 
+as well as other scan parameters 
+that are nearly global minimizers. 
+To improve robustness 
+to object parameter variations, 
+we form an expanded set of candidate scan parameters 
+by also including scan parameters 
+that yield costs to within a tolerance $\delta \ll 1$ 
+of the optimum. 
+Mathematically, 
+we define this expanded set 
+of candidate scan parameter combinations 
+(for a given scan profile) as 
+\begin{align}
+	\setPc &:= 
+		\set{\bmP : \costawt{\bmP} - \costawt{\bmPc} \le \delta \costawt{\bmPc}}.
+		\label{eq:scn-dsgn,set}
+\end{align}
+To select amongst these candidate scan parameters, 
+we employ a robustness criterion: 
+we select the single scan parameter $\bmPs$ 
+that degrades the least 
+when the worst-case cost is viewed 
+over widened object parameter sets 
+$\setXb \supseteq \setXt$ and $\setNb \supseteq \setNt$:
+\begin{align}
+	\bmPs &= 
+		\argmin{\bmP \in \setPc} \costawb{\bmP}, \where
+		\label{eq:scn-dsgn,P-star} \\
+	\costawb{\bmP} &:=
+		\max_{\substack{\bmx \in \setXb \\ \bmnu \in \setNb}}
+		\costa{\bmx; \bmnu, \bmP}.
+		\label{eq:scn-dsgn,cost-broad}
+\end{align}
+To compare different scan profiles, 
+we select corresponding search spaces $\setP$ 
+to satisfy acquisition constraints 
+(\emph{e.g.}, total scan time), 
+but otherwise hold optimization parameters 
+$\bmW$, $\delta$, $\setXt$, $\setXb$, $\setNt$, $\setNb$ fixed.
+Since $\Psi$ is data-independent, 
+we can solve \eqref{eq:P,star} and \eqref{eq:P,hat} offline 
+for each scan profile. 
+The result of each profile's min-max optimization process \eqref{eq:P,hat} 
+is a corresponding optimized scan parameter matrix $\bmPs$ 
+that is suitable for the range 
+of latent $\bmx$ and known $\bmnu$ object parameters specified 
+in $\setXt$ and $\setNt$, 
+and is robust to variations in those parameters 
+over broader sets $\setXb$ and $\setNb$, 
+respectively.
+
+
