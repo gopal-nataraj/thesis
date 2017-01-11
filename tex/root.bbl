@@ -382,4 +382,15 @@ H.~{\Cramer}, {\em Mathematical methods of statistics}.
 H.~Chernoff, ``Locally optimal designs for estimating parameters,'' {\em {Ann.
   Math. Stat.}}, vol.~24, pp.~{586--602}, Dec. 1953.
 
+\bibitem{wansapura:99:nrt}
+J.~P. Wansapura, S.~K. Holland, R.~S. Dunn, and W.~S. Ball, ``{NMR} relaxation
+  times in the human brain at 3.0 {Tesla},'' {\em {J. Mag. Res.}}, vol.~9,
+  pp.~{531--8}, Apr. 1999.
+
+\bibitem{stanisz:05:ttr}
+G.~J. Stanisz, E.~E. Odrobina, J.~Pun, M.~Escaravage, S.~J. Graham, M.~J.
+  Bronskill, and R.~M. Henkelman, ``{$T_1$,} {$T_2$} relaxation and
+  magnetization transfer in tissue at {3T},'' {\em {Mag. Res. Med.}}, vol.~54,
+  pp.~{507--12}, Sept. 2005.
+
 \end{thebibliography}

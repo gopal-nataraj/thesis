@@ -36,11 +36,10 @@
 \contentsline {subsection}{\numberline {4.2.2}Min-max Optimization Problem for Scan Design}{27}{subsection.4.2.2}
 \contentsline {section}{\numberline {4.3}Optimizing SS Sequences for Relaxometry in the Brain}{28}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Scan Design Details}{28}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Scan Profile Comparisons}{28}{subsection.4.3.2}
-\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{29}{chapter.5}
-\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{30}{chapter.6}
-\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{31}{chapter.7}
-\contentsline {chapter}{\numberline {8}Future Work}{32}{chapter.8}
-\contentsline {chapter}{Appendices}{33}{section*.7}
+\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{31}{chapter.5}
+\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{32}{chapter.6}
+\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{33}{chapter.7}
+\contentsline {chapter}{\numberline {8}Future Work}{34}{chapter.8}
+\contentsline {chapter}{Appendices}{35}{section*.7}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{35}{section*.10}
+\contentsline {chapter}{Bibliography}{37}{section*.10}
