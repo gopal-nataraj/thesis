@@ -61,14 +61,16 @@
 \newcommand{\eye}[1]{\mathbf{I}_{#1}}
 \newcommand{\ones}[1]{\bm{1}_{#1}}
 \newcommand{\diag}[1]{\operatorname{diag}\paren{#1}}
+
 % theorem
 \newtheorem{thm}{Theorem}
 
 % probability
-\newcommand{\expect}[2]{\operatorname{E}_{#1}\paren{#2}}
+\newcommand{\expect}[2]{\mathsf{E}_{#1}\paren{#2}}
 \newcommand{\rands}[1]{\mathcal{#1}}
 \newcommand{\randv}[1]{\boldsymbol{\rands{#1}}}
 \newcommand{\dist}[1]{p_{#1}}
+\newcommand{\cov}[1]{\operatorname{cov}\paren{#1}}
 
 % complexity
 \newcommand{\order}[1]{\mathcal{O}\paren{#1}}
@@ -87,11 +89,18 @@
 \newcommand{\expa}[1]{\exp{\paren{#1}}}
 
 % projection
-\newcommand{\proj}[1]{P_{#1}}
+\newcommand{\proj}[1]{\mathsf{P}_{#1}}
 \newcommand{\proja}[2]{\proj{#1}\paren{#2}}
 
 % constant
 \newcommand{\const}[1]{c_{#1}}
+\newcommand{\Const}[1]{\mathbf{C}_{#1}}
 
 % norm
 \newcommand{\frob}[1]{\norm{#1}_\mathrm{F}}
+
+% likelihood estimation
+\newcommand{\Lf}[1]{\mathsf{L}\paren{#1}}
+\newcommand{\Reg}{\mathsf{R}}
+\newcommand{\Rega}[1]{\Reg\paren{#1}}
+

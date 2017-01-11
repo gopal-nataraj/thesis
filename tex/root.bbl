@@ -370,4 +370,12 @@ C.~M. Lewis, S.~A. Hurley, M.~E. Meyerand, and C.~G. Koay, ``Data-driven
   acquisitions,'' {\em {Mag. Res. Med.}}, 2016.
 \newblock To appear.
 
+\bibitem{fisher:1925:tos}
+R.~A. Fisher, ``Theory of statistical estimation,'' {\em {Proc. Cambridge
+  Philosophical Society}}, vol.~22, pp.~{700--25}, July 1925.
+
+\bibitem{cramer:46}
+H.~{\Cramer}, {\em Mathematical methods of statistics}.
+\newblock Princeton: Princeton Univ. Press, 1946.
+
 \end{thebibliography}

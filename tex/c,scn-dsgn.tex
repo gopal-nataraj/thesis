@@ -8,7 +8,9 @@ or quantification
 of spin-lattice and spin-spin relaxation parameters $\To$ and $\Tt$ 
 has been of longstanding interest in MRI. 
 Many researchers have suggested 
-that $\To, \Tt$ maps may serve as biomarkers 
+that $\To, \Tt$ ``maps''
+(\ie, estimated parameter images)
+may serve as biomarkers 
 for monitoring the progression 
 of various disorders \cite{cheng:12:pma}. 
 Neurological applications include: 
@@ -27,7 +29,8 @@ due to iron overload \cite{guo:09:mtq}
 or edema \cite{giri:09:tqf}. 
 Motivated by this broad interest 
 in $\To, \Tt$ mapping, 
-this chapter describes a systematic method to guide MR scan design.
+this chapter describes a systematic method 
+to guide QMRI scan design.
 
 Classical pulse sequences 
 such as inversion/saturation recovery (IR/SR) 
@@ -87,7 +90,9 @@ As with other SS methods,
 the resulting signals 
 \cite{gyngell:89:tss, hanicke:03:aas} 
 are complicated functions 
-of $\To$, $\Tt$, and other parameters. 
+of $\To$, $\Tt$, and other parameters
+(see Section~\ref{sss,bkgrd,mri,ss,dess}
+for derivations). 
 Prior works have isolated $\Tt$ dependencies 
 using either algebraic manipulations 
 of the first- and second-echo signals 
@@ -110,16 +115,17 @@ it is typically not obvious how
 to best select acquisition parameters 
 (\emph{e.g.}, flip angles, repetition times, etc.) 
 for relaxometry. 
-In this chapter, 
+In this and subsequent chapters, 
 the term \emph{scan design} refers 
 to the related problems 
-of scan profile selection and scan parameter optimization.
+of scan profile selection 
+and acquisition parameter optimization.
 
-Historically, scan design for relaxometry 
-has predominantly been explored 
+Historically, scan design for relaxometry
+has mainly been explored 
 using figures of merit related to estimator precision. 
 In particular, several studies have used the \Cramer-Rao Bound (CRB), 
-a statistical measure that bounds the minimum variance of an unbiased estimator.
+a statistical tool that bounds the minimum variance of an unbiased estimator.
 Earlier works have used the CRB and variations 
 to select inversion times for recovery experiments 
 \cite{weiss:80:tco, zhang:98:dos}, 
@@ -144,13 +150,13 @@ The framework then chooses the one scan parameter set
 most \emph{robust} to estimator precision degradation 
 over a broader range of object parameters.
 As a detailed example, 
-we optimize three combinations of DESS and SPGR sequences 
+we optimize three combinations of SPGR and DESS sequences 
 for $\To, \Tt$ mapping. 
 For a fixed total scan time, 
 we find that well-chosen DESS scans alone 
 can be used to estimate both $\To$ and $\Tt$ 
 with precision and robustness comparable 
-to combinations of DESS and SPGR. 
+to combinations of SPGR and DESS. 
 This example illustrates that, 
 with careful scan profile design, 
 well-established pulse sequences 
@@ -171,3 +177,75 @@ and discusses corresponding results.
 Section~\ref{s,scn-dsgn,disc} discusses practical challenges 
 and suggests future directions.
 Section~\ref{s,scn-dsgn,conc} summarizes key contributions.
+
+\section{A CRB-Inspired Scan Selection Method}
+\label{s,scn-dsgn,crb}
+
+\subsection{The CRB and its Relevance to QMRI}
+\label{ss,scn-dsgn,crb,sig}
+
+Recall from Section~\ref{ss,relax,meth,prof}
+that after image reconstruction,
+we can model the single-voxel MR image domain data
+associated with a particular scan profile as 
+\begin{align}
+	\bmy = \bms\paren{\bmx; \bmnu, \bmP} + \bmeps,
+	\label{eq:scn-dsgn,mod-vec-abbrev}
+\end{align}
+where signal model
+$\bms := \brac{s_1, \dots, s_D}\tpose
+: \complexes{L} \times \complexes{K} \times \reals{A \times D} \mapsto \complexes{D}$
+relates latent $\bmx \in \complexes{L}$,
+known $\bmnu \in \complexes{K}$,
+and acquisition $\bmP \in \reals{A \times D}$ parameters
+to noisy scan profile image data $\bmy \in \complexes{D}$, 
+barring noise $\bmeps \in \complexes{D}$.
+Assuming (as in Section~\ref{ss,relax,meth,prof})
+complex Gaussian noise $\bmeps \sim \cgauss{\mathbf{0}}{\bmSig}$,
+the likelihood function \eqref{eq:relax,lf-vec} is
+(to within constants independent of $\bmx$)
+\begin{align}
+	\Lf{\bmx|\bmy} \propto
+		\expa{-\norm{\bmy - \bms\paren{\bmx; \bmnu, \bmP}}^2_{\bmSig^{-1}}}.
+	\label{eq:scn-dsgn,lf-vec}
+\end{align}
+Under suitable regularity conditions
+\footnote{In particular,
+$\bms$ must be analytic in complex components
+of $\bmx$.},
+the Fisher information matrix 
+$\Fisher{\bmx; \bmnu, \bmP} \in \complexes{L \times L}$
+\cite{fisher:1925:tos}
+characterizes the imprecision 
+of unbiased estimates 
+of $\bmx$ from $\bmy$, 
+given $\bmnu$ and $\bmP$:
+\begin{align}
+	\Fisher{\bmx; \bmnu, \bmP} 
+		&:= 
+		\expect{\bmy}{\paren{\grada{\bmx} \log{\Lf{\bmx|\bmy}}}\ctpose
+		\grada{\bmx} \log{\Lf{\bmx|\bmy}}} 
+		\nonumber \\
+		&= 
+		\paren{\grada{\bmx} \bms\paren{\bmx; \bmnu, \bmP}}\ctpose
+		\bmSig^{-1} \grada{\bmx} \bms\paren{\bmx; \bmnu, \bmP}
+		\label{eq:scn-dsgn,fisher},
+\end{align}
+where $\expect{\bmy}{\cdot}$ denotes element-wise expectation
+with respect to $\bmy$.
+In particular,
+the matrix CRB \cite{cramer:46} 
+that any unbiased estimator $\est{\bmx}$ satisfies
+\begin{align}
+	\cov{\est{\bmx}; \bmnu, \bmP} \succeq
+		\bmF^{-1}\paren{\bmx; \bmnu, \bmP},
+		\label{eq:scn-dsgn,crb}
+\end{align}
+where for arbitrary, equally-sized $\Const{1}$ and $\Const{2}$,
+matrix inequality $\Const{1} \succeq \Const{2}$ 
+means $\Const{1}-\Const{2}$ is positive semi-definite.
+In the following,
+we design an optimization problem 
+based on the CRB
+to guide QMRI scan design 
+for relaxometry.
