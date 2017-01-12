@@ -750,10 +750,28 @@ comparable to two SPGR scans.
 \label{s,scn-dsgn,exp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+To test our approach 
+to optimized scan design 
+(described in Section~\ref{ss,scn-dsgn,crb,minmax}), 
+we estimate $\mathbf{T}_1$ and $\mathbf{T}_2$ maps 
+(using maximum likelihood (ML) and 
+regularized likelihood (RL) methods 
+detailed in Section~\ref{ss,relax,meth,est}) 
+from datasets collected 
+using the scan profiles 
+optimized in Section~\ref{s,scn-dsgn,opt}. 
+In Section~\ref{ss,scn-dsgn,exp,sim}, 
+we study estimator statistics from simulated data.
+In Sections~\ref{ss,scn-dsgn,exp,phant}-\ref{ss,scn-dsgn,exp,invivo}, 
+we progress to phantom and \emph{in vivo} datasets 
+to evaluate scan profile performance 
+under increasingly complex settings.
+For the latter experiments, 
+we use reference parameter maps 
+from classical (long) pulse sequences, 
+in lieu of ground truth maps.
+
 \begin{comment}
-	To test our approach to optimized scan design (described in Section~\ref{ssec:crb:minmax}), we next estimate $\mathbf{T}_1$ and $\mathbf{T}_2$  
-	\revone{maps (using maximum-likelihood (ML) and regularized least squares (RLS)} methods detailed in Section~\ref{sec:est}) from datasets collected using the scan profiles optimized in Section~\ref{sec:opt}. In Section~\ref{ss,scn-dsgn,exp:sim}, we study estimator statistics from simulated data.
-	In Sections~\ref{ss,scn-dsgn,exp:phant}-\ref{ss,scn-dsgn,exp:invivo}, we progress to phantom and \emph{in vivo} datasets to evaluate scan profile performance and estimator robustness under increasingly complex settings. For the latter experiments, we use reference parameter maps from classical (long) pulse sequences, in lieu of ground truth maps.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Numerical Simulations}
