@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{keenan:16:msm}
+K.~E. Keenan, K.~F. Stupic, M.~A. Boss, S.~E. Russek, T.~L. Chenevert, P.~V.
+  Prasad, W.~E. Reddick, K.~M. Cecil, J.~Zheng, P.~Hu, and E.~F. Jackson,
+  ``Multi-site, multi-vendor comparison of {T1} measurement using {ISMRM/NIST}
+  system phantom,'' in {\em Proc. Intl. Soc. Mag. Res. Med.}, p.~3290, 2016.
+
 \bibitem{nataraj:14:rje}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Regularized, joint estimation
   of {T1} and {M0} maps,'' in {\em Proc. Intl. Soc. Mag. Res. Med.}, p.~3128,
@@ -404,10 +410,54 @@ D.~L. Collins, A.~P. Zijdenbos, V.~Kollokian, J.~G. Sled, N.~J. Kabani, C.~J.
   brain phantom,'' {\em {IEEE Trans. Med. Imag.}}, vol.~17, pp.~{463--8}, June
   1998.
 
-\bibitem{keenan:16:msm}
-K.~E. Keenan, K.~F. Stupic, M.~A. Boss, S.~E. Russek, T.~L. Chenevert, P.~V.
-  Prasad, W.~E. Reddick, K.~M. Cecil, J.~Zheng, P.~Hu, and E.~F. Jackson,
-  ``Multi-site, multi-vendor comparison of {T1} measurement using {ISMRM/NIST}
-  system phantom,'' in {\em Proc. Intl. Soc. Mag. Res. Med.}, p.~3290, 2016.
+\bibitem{pauly:91:prf}
+J.~Pauly, P.~{Le Roux}, D.~Nishimura, and A.~Macovski, ``Parameter relations
+  for the {Shinnar-Le} {Roux} selective excitation pulse design algorithm,''
+  {\em {IEEE Trans. Med. Imag.}}, vol.~10, pp.~{53--65}, Mar. 1991.
+
+\bibitem{sacolick:10:bmb}
+L.~I. Sacolick, F.~Wiesinger, I.~Hancu, and M.~W. Vogel, ``B1 mapping by
+  {Bloch-Siegert} shift,'' {\em {Mag. Res. Med.}}, vol.~63, pp.~{1315--22}, May
+  2010.
+
+\bibitem{sun:14:reo}
+H.~Sun, W.~A. Grissom, and J.~A. Fessler, ``Regularized estimation of
+  {Bloch-Siegert} {B1+} {Maps} in {MRI},'' in {\em Proc. IEEE Intl. Conf. on
+  Image Processing}, pp.~{3646--50}, 2014.
+
+\bibitem{ying:07:jir}
+L.~Ying and J.~Sheng, ``Joint image reconstruction and sensitivity estimation
+  in {SENSE} {(JSENSE)},'' {\em {Mag. Res. Med.}}, vol.~57, pp.~{1196--1202},
+  June 2007.
+
+\bibitem{arthur:07:kmt}
+D.~Arthur and S.~Vassilvitskii, ``K-means++: {The} advantages of careful
+  seeding,'' in {\em Proc. 18th Annual ACM-SIAM Symp. Disc. Alg. (SODA)},
+  pp.~{1027--35}, 2007.
+
+\bibitem{frank:97:spe}
+L.~R. Frank, E.~C. Wong, and R.~B. Buxton, ``Slice profile effects in adiabatic
+  inversion: {Application} to multislice perfusion imaging,'' {\em {Mag. Res.
+  Med.}}, vol.~38, pp.~{558--64}, Oct. 1997.
+
+\bibitem{barral:10:arm}
+J.~K. Barral, E.~Gudmundson, N.~Stikov, M.~Etezadi-Amoli, P.~Stoica, and D.~G.
+  Nishimura, ``A robust methodology for in vivo {T1} mapping,'' {\em {Mag. Res.
+  Med.}}, vol.~64, pp.~{1057--67}, Oct. 2010.
+
+\bibitem{carney:91:asa}
+C.~E. Carney, S.~T.~S. Wong, and S.~Patz, ``Analytical solution and
+  verification of diffusion effect in {SSFP},'' {\em {Mag. Res. Med.}},
+  vol.~19, pp.~{240--6}, June 1991.
+
+\bibitem{wu:90:eod}
+E.~X. Wu and R.~B. Buxton, ``Effect of diffusion on the steady-state
+  magnetization with pulsed field gradients,'' {\em {J. Mag. Res.}}, vol.~90,
+  pp.~{243--53}, Nov. 1990.
+
+\bibitem{kaiser:74:daf}
+R.~Kaiser, E.~Bartholdi, and R.~R. Ernst, ``Diffusion and field-gradient
+  effects in {NMR} {Fourier} spectroscopy,'' {\em {J. Chem. Phys.}}, vol.~60,
+  pp.~{2966--79}, Apr. 1974.
 
 \end{thebibliography}

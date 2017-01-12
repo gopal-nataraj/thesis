@@ -1,7 +1,7 @@
 \contentsline {chapter}{List of Figures}{iii}{section*.2}
-\contentsline {chapter}{List of Appendices}{iv}{section*.3}
-\contentsline {chapter}{List of Abbreviations}{v}{section*.5}
-\contentsline {chapter}{Abstract}{vi}{section*.6}
+\contentsline {chapter}{List of Appendices}{v}{section*.3}
+\contentsline {chapter}{List of Abbreviations}{vi}{section*.5}
+\contentsline {chapter}{Abstract}{vii}{section*.6}
 \vspace {1.3ex}\noindent {\bf Chapter}\vspace {1.3ex}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Thesis Overview}{2}{section.1.1}
@@ -41,10 +41,10 @@
 \contentsline {subsection}{\numberline {4.4.1}Numerical Simulations}{33}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}Phantom Experiments}{36}{subsection.4.4.2}
 \contentsline {subsubsection}{\numberline {4.4.2.1}Within-ROI Statistics}{36}{subsubsection.4.4.2.1}
-\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{37}{chapter.5}
-\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{38}{chapter.6}
-\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{39}{chapter.7}
-\contentsline {chapter}{\numberline {8}Future Work}{40}{chapter.8}
-\contentsline {chapter}{Appendices}{41}{section*.7}
+\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{42}{chapter.5}
+\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{43}{chapter.6}
+\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{44}{chapter.7}
+\contentsline {chapter}{\numberline {8}Future Work}{45}{chapter.8}
+\contentsline {chapter}{Appendices}{46}{section*.7}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{43}{section*.10}
+\contentsline {chapter}{Bibliography}{48}{section*.10}

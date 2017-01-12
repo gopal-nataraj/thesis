@@ -556,7 +556,7 @@ of inverse Fisher matrix $\bmF^{-1}(\bmx; \bmnu, \bmP)$.
 Grid searches for the $(2,1)$, $(1,1)$, and $(0,2)$ profiles 
 each took about 4, 43, and 28 minutes, respectively.
 All experiments described hereafter were carried out 
-using MATLAB\textsuperscript{\textregistered} R2013a 
+using MATLAB\regis R2013a 
 on a 3.5GHz desktop with 32GB RAM. 
 
 \begin{table*} [!tb]
@@ -999,7 +999,7 @@ from the National Institute for Standards and Technology (NIST)
 \cite{keenan:16:msm}.
 These measurements provide information 
 about \emph{ROI sample means} and \emph{ROI sample standard deviations} 
-(Fig.~\ref{fig:hpd}), 
+(Fig.~\ref{fig:hpd,ml-rls}), 
 which we define as first- and second-order statistics 
 computed across voxels within an ROI.
 In the second experiment, 
@@ -1015,161 +1015,360 @@ which indicate relative scan profile precision.
 \subsubsection{Within-ROI Statistics} 
 \label{sss,scn-dsgn,exp,phant,roi}
 
-	\begin{comment}
+We acquire combinations 
+of $(2,1)$, $(1,1)$, and $(0,2)$ SPGR and DESS coronal scans 
+of a High Precision Devices\regis MR system phantom $\Tt$ array.
+For each scan profile, 
+we prescribe the optimized flip angles $\bmflipnomest$ 
+and repetition times $\bmTRest$ 
+listed in Table~\ref{table:profile},
+ and hold all other scan parameters fixed. 
+We achieve the desired nominal flip angles 
+by scaling a 20mm slab-selective Shinnar-Le Roux excitation \cite{pauly:91:prf}, 
+of duration 1.28ms and time-bandwidth product 4. 
+For each DESS (SPGR) scan, 
+we apply 2 (10) spoiling phase cycles 
+over a $5$mm slice thickness. 
+We acquire all steady-state phantom and \emph{in vivo} datasets 
+with a $256 \times 256 \times 8$ matrix 
+over a $240 \times 240 \times 30$ mm$^3$ field of view (FOV). 
+Using a 31.25kHz readout bandwidth, 
+we acquire all data at minimum $\TE \gets 4.67$ms 
+before or after RF excitations. 
+To avoid slice-profile effects, 
+we sample $\mathbf{k}$-space over a 3D Cartesian grid. 
+After Fourier transform of the raw datasets, 
+only one of the excited image slices 
+is used for subsequent parameter mapping. 
+Including time to reach steady-state, 
+each steady-state scan profile requires 1m37s scan time.
 
-	We acquire combinations of $(2,1)$, $(1,1)$, and $(0,2)$ SPGR and DESS coronal scans of a \revone{
-		High Precision Devices\textsuperscript{\textregistered} MR system phantom $\Tt$ array.
-	} 
-	For each scan profile, we prescribe the optimized flip angles $\widehat{\bm{\alpha}}_0$ and repetition times $\widehat{\mathbf{T}}_\mathrm{R}$ listed in Table~\ref{table:profile}, and hold all other scan parameters fixed. 
-	We achieve the desired nominal flip angles by scaling a 20mm slab-selective Shinnar-Le Roux excitation \cite{pauly:91:prf}, of duration 1.28ms and time-bandwidth product 4. 
-	For each DESS (SPGR) scan, we apply 2 (10) spoiling phase cycles over a $5$mm slice thickness. 
-	We acquire all steady-state phantom and \emph{in vivo} datasets with a $256 \times 256 \times 8$ matrix over a $240 \times 240 \times 30$ mm$^3$ field of view (FOV). 
-	Using a 31.25kHz readout bandwidth, we acquire all data at minimum $T_\mathrm{E} \gets 4.67$ms before or after RF excitations. 
-	To avoid slice-profile effects, we sample $\mathbf{k}$-space over a 3D Cartesian grid. 
-	After Fourier transform of the raw datasets, only one of the excited image slices is used for subsequent parameter mapping. 
-	\revone{
-		Including time to reach steady-state, each steady-state scan profile requires 1m37s scan time.
-	}
+To validate a reference scan profile 
+for use in \emph{in vivo} experiments, 
+we also collect 4 IR and 4 SE scans.
+For (phase-sensitive, SE) IR, 
+we hold $(\TR, \TE) \gets (1400, 14)$ms fixed 
+and vary (adiabatic) inversion time 
+$\TI \in \set{50, 150, 450, 1350}$ms across scans.
+For SE, we similarly hold $\TR \gets 1000$ms fixed 
+and vary echo time $\TE \in \set{10, 30, 60, 150}$ms across scans.
+We prescribe these scan parameters 
+to acquire $256 \times 256$ datasets 
+over the same $240 \times 240 \times 5$ mm$^3$ slice processed 
+from the SPGR/DESS datasets. 
+Each IR and SE scan requires 5m58s and 4m16s, 
+for a total 40m58s scan time.
 
-\revone{
-	To validate a reference scan profile for use in \emph{in vivo} experiments, we also collect 4 IR and 4 SE scans.
-	For (phase-sensitive, SE) IR, we hold $(\TR, T_\mathrm{E}) \gets (1400, 14)$ms fixed and vary (adiabatic) inversion time $T_\mathrm{I} \in \set{50, 150, 450, 1350}$ms across scans.
-	For SE, we similarly hold $\TR \gets 1000$ms fixed and vary echo time $T_\mathrm{E} \in \set{10, 30, 60, 150}$ms across scans.
-	We prescribe these scan parameters to acquire $256 \times 256$ datasets over the same $240 \times 240 \times 5$ mm$^3$ slice processed from the SPGR/DESS datasets. Each IR and SE scan requires 5m58s and 4m16s, for a total 40m58s scan time.
+We additionally collect a pair 
+of Bloch-Siegert shifted 3D SPGR scans 
+for separate transmit field estimation 
+\cite{sacolick:10:bmb}. 
+We insert a 9ms Fermi pulse 
+at $\pm8$kHz off-resonance
+into an SPGR sequence immediately following on-resonant excitation.
+We estimate regularized transmit field maps \cite{sun:14:reo}
+from the resulting pair of datasets.
+We normalize this transmit field map estimate
+by the 0.075G peak Fermi pulse amplitute
+to estimate transmit coil spatial variation map $\bmstx$.
+After calibration via separate measurements,
+we take $\bmstx$ as known.
+For consistency, we account for flip angle variation 
+when estimating $\bmTo$ and $\bmTt$ 
+from both candidate (SPGR/DESS) 
+and reference (IR/SE) scan profiles.
+With a repetition time of 21.7ms, 
+this transmit field mapping acquisition requires 
+1m40s total scan time.
+
+We acquire all phantom datasets 
+using a GE Discovery\tmark MR750 3.0T scanner 
+with an 8-channel receive head array. 
+We separately normalize and combine coil data 
+from each scan profile using a natural extension 
+of \cite{ying:07:jir} to the case of multiple datasets. 
+For each optimized SPGR/DESS scan profile $\bmPs$, 
+we pre-cluster known parameter maps $\bmN$ 
+into 10 clusters using $k$-means++ \cite{arthur:07:kmt} 
+and use each of the 10 cluster means 
+to compute a corresponding dictionary 
+of signal vectors from 300 $\To$ and $\Tt$ values 
+logarithmically spaced between $[10^{1.5}, 10^{3.5}]$ 
+and $[10^{0.5}, 10^3]$, respectively.
+We then iterate over clusters 
+and use each dictionary in conjunction 
+with corresponding coil-combined magnitude image data 
+to produce ML parameter estimates 
+$\estaML{\bmX}{\bmN,\bmPs}$.
+We subsequently solve RL problem \eqref{eq:relax,rl-est} 
+with initialization $\estaML{\bmX}{\bmN,\bmPs}$ 
+to obtain regularized estimates $\estaRL{\bmX}{\bmN,\bmPs}$ 
+for each $\bmPs$. 
+We design regularizer \eqref{eq:relax,reg} 
+to encourage RL parameter estimates 
+from different scan profiles 
+to exhibit similar levels of smoothness.
+Letting $l \in \set{1, 2, 3}$ enumerate latent object parameters 
+$\bmTo$, $\bmTt$, and the proportionality constant, 
+we choose mild regularization parameters 
+$(\beta_1, \beta_2, \beta_3) := D \times (2^{-21}, 2^{-23}, 2^{-26})$ 
+to scale with the number of datasets
+and fix shape parameters
+$(\gamma_1, \gamma_2, \gamma_3) := (2^{5} \textrm{ ms}, 2^{2} \textrm{ ms}, 2^{-2})$ 
+to values on the order 
+of anticipated standard deviations.
+We iteratively update $\bmX$ until convergence criterion 
+\begin{align}
+	\frob{\iter{\bmX}{i}-\iter{\bmX}{i-1}} < 10^{-7} \frob{\iter{\bmX}{i}}
+	\label{eq:conv,crit}
+\end{align}
+is satisfied. 
+For all steady-state profiles tested, 
+ML initializations and RL reconstructions 
+of phantom datasets require less than
+3m30s and 9s, respectively.
+
+We next describe sequential
+\footnote{
+We initially attempted 
+to circumvent sequential $\bmTo$, then $\bmTt$ estimation 
+by instead jointly estimating $\bmMz$, $\bmTo$, $\bmTt$, and inversion efficiency 
+from the IR and SE datasets together.
+Even using magnitude data and signal models, 
+this resulted in heavily biased parameter maps, 
+possibly due to the dependence 
+of adiabatic inversion efficiency 
+on relaxation parameters \cite{frank:97:spe}.
 }
-
-	We additionally collect a pair of Bloch-Siegert shifted 
-	\revtwo{3D}
-	SPGR scans for separate $\mathbf{B}_1^+$ estimation \cite{sacolick:10:bmb}. 
-	We insert a 9ms Fermi pulse (peak amplitude $B_1^\mathrm{pk} \gets 0.075$G) at $\pm8$kHz off-resonance into an SPGR sequence immediately following on-resonant excitation. 
-	We estimate regularized $\widehat{\mathbf{B}}_1^+$ maps \cite{sun:14:reo} from the resulting pair of datasets. 
-	We then estimate flip angle variation $\widehat{\bm{\kappa}}$ as $\widehat{\mathbf{B}}_1^+ / B_1^\mathrm{pk}$,
-	\revone{
-		calibrate $\widehat{\bm{\kappa}}$ (via separate measurements described in Section~\ref{sec:kap}),
-	} 
-	and thereafter take $\bm{\kappa}$ as known.
-	\revtwo{
-		For consistency, we account for flip angle variation when estimating $\bmTo$ and $\bmTt$ from both the candidate (SPGR/DESS) and reference (IR/SE) aforementioned scan profiles.
-	}
-	With a repetition time of 21.7ms, this $\mathbf{B}_1^+$ mapping acquisition requires 
-	\revone{
-		1m40s total scan time.
-	}
-	
-	\revone{
-	We first jointly coil-combine all 8-channel IR and SE phantom datasets to produce complex images.
-	We next estimate $\bmTo$ along with nuisance parameters $\bmMz \exp{\paren{-T_\mathrm{E}/\bmTt}}$ and inversion efficiency map $\bm{\epsilon}$ via \eqref{eq:Psi,ML} and \eqref{eq:Psi,RL} from the 4 complex coil-combined IR images.
-	By using the same flip angle scaling map $\widehat{\bm{\kappa}}$ as is used for SPGR/DESS profiles, we estimate $\bmTo$ using a signal model similar to one proposed in \cite{barral:10:arm}, which accounts for imperfect excitation/refocusing and imperfect inversion.
-	We then take both $\bmTo$ and $\bm{\kappa}$ as known and estimate $\bmTt$ along with nuisance parameter $\bmMz$ (accounting for imperfect excitation/refocusing and incomplete recovery) via \eqref{eq:Psi,ML} and \eqref{eq:Psi,RL} from the 4 complex coil-combined SE images.
-	We hold all other reconstruction details identical to those of SPGR/DESS reconstructions.
-	For all steady-state scan profiles tested, ML initializations and RL reconstructions of brain datasets require less than 3m and 7s, respectively.
-	
-	As an aside: we initially attempted to circumvent sequential $\bmTo$, then $\bmTt$ estimation by instead jointly estimating $\bmMz$, $\bmTo$, $\bmTt$, and $\bm{\epsilon}$ from the IR and SE datasets together.
-	Even using magnitude data and signal models, this resulted in heavily biased parameter maps, possibly due to the dependence of adiabatic inversion efficiency on relaxation parameters \cite{frank:97:spe}.
-}
+$\bmTo$,
+then $\bmTt$ estimation
+from IR and SE reference scans.
+We first jointly coil-combine
+all 8-channel IR and SE phantom datasets 
+to produce complex images.
+We next estimate $\bmTo$ along 
+with a (nuisance parameter) inversion efficiency map
+via \eqref{eq:relax,ml-est} and \eqref{eq:relax,rl-est} 
+from the 4 complex coil-combined IR images.
+By using the same flip angle scaling map $\bmstx$ 
+as is used for SPGR/DESS profiles, 
+we estimate $\bmTo$ using a signal model similar
+to one proposed in \cite{barral:10:arm},
+which accounts for imperfect excitation/refocusing 
+and imperfect inversion.
+We then take both $\bmTo$ and $\bmstx$ 
+as known and estimate $\bmTt$ 
+along with nuisance parameter $\bmMz$ 
+(accounting for imperfect excitation/refocusing and incomplete recovery) 
+via \eqref{eq:relax,ml-est} and \eqref{eq:relax,rl-est} 
+from the 4 complex coil-combined SE images.
+We hold all other reconstruction details identical 
+to those of SPGR/DESS reconstructions.
 
 % nist t1/t2 maps, jet
 \begin{figure*} [!tb]
 	\centering
 	\subfigure{
-		\includegraphics [width=\textwidth] {2016-06-20,hpd,t1,jet.eps}
+		\includegraphics [width=15.4cm] {2016-06-20,hpd,t1,jet.eps}
 		\label{fig:hpd,t1,jet}
 	}
 	\vspace{0cm}
 	\subfigure{
-		\includegraphics [width=\textwidth-2mm, trim=0 0 0 25, clip] {2016-06-20,hpd,t2,jet.eps}
+		\includegraphics [width=15.2cm, trim=0 0 0 25, clip] {2016-06-20,hpd,t2,jet.eps}
 		\label{fig:hpd,t2,jet}
 	}
 	\caption{
-		Colorized $\bmTo$ and $\bmTt$ ML and RL estimates from an HPD\textsuperscript{\textregistered} quantitative phantom.
-		Columns correspond to scan profiles consisting of (2 SPGR, 1 DESS), (1 SPGR, 1 DESS), (0 SPGR, 2 DESS), and (4 IR, 4 SE) acquisitions. 
+		Colorized $\bmTo$ and $\bmTt$ ML and RL estimates 
+		from an HPD\regis quantitative phantom.
+		Columns correspond to scan profiles consisting of 
+		(2 SPGR, 1 DESS), (1 SPGR, 1 DESS), (0 SPGR, 2 DESS),
+		and (4 IR, 4 SE) acquisitions. 
 		Rows distinguish $\bmTo$ and $\bmTt$ ML and RL estimators. 
-		Fig.~\ref{fig:hpd,gray} provides identical grayscale images which enumerate vials. 
+		Fig.~\ref{fig:hpd,gray} provides identical grayscale images
+		that enumerate vials.
 		Colorbar ranges are in milliseconds.
 	}
 	\label{fig:hpd,jet}
 \end{figure*}
 
-	Figs.~\ref{fig:hpd,jet} and \ref{fig:hpd,gray} compare phantom $\bmTo$ and $\bmTt$ ML and RL estimates 
-	\revone{
-		in color and grayscale
+% nist t1/t2 maps, gray
+\begin{figure*} [!tb]
+	\centering
+	\subfigure{
+		\includegraphics [width=15.4cm] {2016-06-20,hpd,t1,gray.eps}
+		\label{fig:hpd,t1,gray}
 	}
+	\vspace{0cm}
+	\subfigure{
+		\includegraphics [width=15.2cm, trim=0 0 0 25, clip] {2016-06-20,hpd,t2,gray.eps}
+		\label{fig:hpd,t2,gray}
+	}
+	\caption{
+		Grayscale $\bmTo$ and $\bmTt$ ML and RL estimates 
+		from an HPD\regis quantitative phantom.
+		Columns correspond to scan profiles consisting of 
+		(2 SPGR, 1 DESS), (1 SPGR, 1 DESS), (0 SPGR, 2 DESS),
+		and (4 IR, 4 SE) acquisitions. 
+		Rows distinguish $\bmTo$ and $\bmTt$ ML and RL estimators. 
+		Vials are enumerated and color-coded
+		to correspond with data points in Fig.~\ref{fig:hpd,ml-rls}.
+		Fig.~\ref{fig:hpd,jet} provides identical colorized images.
+		Colorbar ranges are in milliseconds.
+	}
+	\label{fig:hpd,gray}
+\end{figure*}
+
+Figs.~\ref{fig:hpd,jet}-\ref{fig:hpd,gray} compare
+in color and grayscale  
+phantom $\bmTo$ and $\bmTt$ ML and RL estimates 
 from optimized scan profiles. 
-	Vials are enumerated in Fig.~\ref{fig:hpd,gray} in descending $\To$ and $\Tt$ order. 
-	Vials corresponding to tight $\mathcal{X}_\mathrm{t}$ and broad $\mathcal{X}_\mathrm{b}$ parameter ranges are highlighted with orange and yellow labels, respectively. 
-	Within these vials of interest, parameter maps from different scans appear visually similar.
-	 
+Vials are enumerated 
+in Fig.~\ref{fig:hpd,ml-rls} 
+in descending $\To$ and $\Tt$ order. 
+Vials corresponding to tight $\setXt$ 
+and broad $\setXb$ parameter ranges are highlighted 
+with orange and yellow labels, respectively. 
+Within these vials of interest, 
+parameter maps from different scans appear visually similar.
 
 % outside range of interest, most severe bias in T1 ML (0,2) 
 % appears that pure-DESS tends to have significantly greater systematic errors in regions of high T1 
-\revone{
-	In higher-$\To$ vials (and the surrounding water),
-	}
-	more bias is apparent in $\bmToest$ ML and RL estimates from the $(0,2)$ scan profile than from the $(2,1)$ and $(1,1)$ scan profiles. 
-	With the signal models used in this study, the images suggest that scan profiles consisting of at least one SPGR scan may offer increased protection against $\To$ estimation bias.
+In higher-$\To$ vials (and the surrounding water),
+more bias is apparent 
+in $\bmToest$ ML and RL estimates 
+from the $(0,2)$ scan profile than 
+from the $(2,1)$ and $(1,1)$ scan profiles. 
+With the signal models used in this study,
+the images suggest that scan profiles consisting 
+of at least one SPGR scan may offer increased protection 
+against $\To$ estimation bias.
 
 % t1/t2 ml/rls hpd accuracy
 \begin{figure*} [!tbp]
 	\centering
 	\subfigure [$\ToML$ Estimates] {
-		\includegraphics [width = 0.47\textwidth] {2016-06-20,hpd,t1-ml-compare.eps}
-		\label{fig:t1,hpd,ml,repeat}
+		\includegraphics [width = 0.45\textwidth] {2016-06-20,hpd,t1-ml-compare.eps}
+		\label{fig:t1,hpd,ml}
 	}
 	\hspace{0.3cm}
 	\subfigure [$\TtML$ Estimates] {
-		\includegraphics [width = 0.47\textwidth] {2016-06-20,hpd,t2-ml-compare.eps}
-		\label{fig:t2,hpd,ml,repeat}
+		\includegraphics [width = 0.45\textwidth] {2016-06-20,hpd,t2-ml-compare.eps}
+		\label{fig:t2,hpd,ml}
 	}
 	\vspace{-0.3cm}
-	\subfigure [$\widehat{T}_1^\mathrm{RL}$ Estimates] {
-		\includegraphics [width = 0.47\textwidth] {2016-06-20,hpd,t1-rls-compare.eps}
+	\subfigure [$\ToRL$ Estimates] {
+		\includegraphics [width = 0.45\textwidth] {2016-06-20,hpd,t1-rls-compare.eps}
 		\label{fig:t1,hpd,rls}
 	}
 	\hspace{0.3cm}
-	\subfigure [$\widehat{T}_2^\mathrm{RL}$ Estimates] {
-		\includegraphics [width = 0.47\textwidth] {2016-06-20,hpd,t2-rls-compare.eps}
+	\subfigure [$\TtRL$ Estimates] {
+		\includegraphics [width = 0.45\textwidth] {2016-06-20,hpd,t2-rls-compare.eps}
 		\label{fig:t2,hpd,rls}
 	}
 	\caption{
-		Phantom 
-		\revone{
-			within-ROI sample statistics of $\bmTo$ and $\bmTt$ estimates from optimized SPGR/DESS and reference IR/SE scan profiles, vs. NIST NMR measurements \citep{keenan:16:msm}.
-		}
+		Phantom within-ROI sample statistics 
+		of $\bmTo$ and $\bmTt$ ML and RL estimates 
+		from optimized SPGR/DESS and reference IR/SE scan profiles, 
+		versus NIST NMR measurements \cite{keenan:16:msm}.
 		Markers and error bars indicate 
-		\revone{
-			ROI sample means and ROI sample standard deviations
-		} 
-		within the 14 labeled and color-coded vials in Fig.~\ref{fig:hpd,gray}.
-		\revone{
-			Figs.~\ref{fig:t1,hpd,ml,repeat}-\ref{fig:t2,hpd,ml,repeat} correspond with ML estimates and replicate Figs.~\ref{fig:t1,hpd,ml}-\ref{fig:t2,hpd,ml} for sake of comparison.
-			Figs.~\ref{fig:t1,hpd,rls}-\ref{fig:t2,hpd,rls} correspond with RL estimates.
-		}
-		Tight $\mathcal{X}_\mathrm{t}$ and broad $\mathcal{X}_\mathrm{b}$ latent parameter ranges are highlighted in orange and yellow, respectively.
-		\revtwo{
-			Table~\ref{table:hpd,accuracy} replicates sample statistics within Vials 5-8.
-			Our MR measurements are at 293K, while NIST NMR measurements are at 293.00K.
-		}
-		Within the designed parameter ranges, estimates from different acquisitions are in reasonable agreement with NIST measurements.}
+		ROI sample means and ROI sample standard deviations 
+		within the 14 labeled and color-coded vials 
+		in Fig.~\ref{fig:hpd,gray}.
+		Tight $\setXt$ and broad $\setXb$ latent parameter ranges are highlighted 
+		in orange and yellow, respectively.
+		Table~\ref{table:hpd,accuracy} replicates sample statistics 
+		within Vials 5-8.
+		Our MR measurements are at 293K 
+		and NIST NMR measurements are at 293.00K.
+		Within the designed parameter ranges, 
+		estimates from different acquisitions 
+		are in reasonable agreement with NIST measurements.
+	}
 	\label{fig:hpd,ml-rls}
 \end{figure*}
 
-	\revone{
-		Fig.~\ref{fig:hpd,ml} plots sample means and sample standard deviations computed within circular ROIs of phantom $\bmTo$ and $\bmTt$ ML estimates (reconstruction details, analogous plots for RL estimates, and images in Sections~\ref{ssec:detail:sp,de}-\ref{ssec:detail:phant}).
+% t1/t2 ml/rls hpd accuracy-table
+\begin{table*} [t]
+	\centering
+	\begin{tabu} {c || r r r | r || r}
+		\hline \hline
+		 			& (2SP,1DE)			& (1SP,1DE) 		& (0SP,2DE)			& (4IR,4SE)			& NIST NMR\\
+		\hline
+		V5 $\ToML$ 	& $1450 \pm 50.$	& $1380 \pm 41$ 	& $1600 \pm 130$	& $1380 \pm 44$		& $1332 \pm 0.8$ \\
+		V5 $\ToRL$	& $1450 \pm 26$ 	& $1370 \pm 16$		& $1540 \pm 98$ 	& $1380 \pm 37$		& \\
+		\hline
+		V6 $\ToML$ 	& $1100 \pm 30.$	& $1050 \pm 39$		& $1120 \pm 39$ 	& $1100 \pm 74$ 	& $1044 \pm 3.2$ \\
+		V6 $\ToRL$ 	& $1100 \pm 15$ 	& $1040 \pm 14$ 	& $1110 \pm 16$ 	& $1100 \pm 64$ 	& \\
+		\hline
+		V7 $\ToML$ 	& $870 \pm 22$ 		& $830 \pm 29$ 		& $880 \pm 29$		& $870 \pm 25$		& $801.7 \pm 1.70$ \\
+		V7 $\ToRL$ 	& $865 \pm 7.1$ 	& $820 \pm 11$		& $860 \pm 18$		& $870 \pm 21$		& \\
+		\hline
+		V8 $\ToML$ 	& $680 \pm 12$ 		& $640 \pm 18$		& $670 \pm 12$ 		& $658 \pm 8.8$ 	& $608.6 \pm 1.03$ \\
+		V8 $\ToRL$ 	& $674 \pm 7.6$		& $637 \pm 7.4$ 	& $662 \pm 6.6$		& $658 \pm 7.1$		& \\
+		\hline \hline
+		V5 $\TtML$ 	& $131 \pm 5.5$		& $140 \pm 10.$		& $141 \pm 8.4$		& $143 \pm 4.9$		& $133.27 \pm 0.073$ \\
+		V5 $\ToRL$ 	& $131 \pm 5.2$ 	& $145 \pm 9.1$		& $139 \pm 7.1$		& $142 \pm 4.8$ 	& \\
+		\hline
+		V6 $\TtML$	& $91 \pm 3.5$ 		& $99 \pm 6.0$ 		& $95 \pm 4.2$ 		& $96 \pm 2.7$ 		& $96.89 \pm 0.049$ \\
+		V6 $\ToRL$ 	& $91 \pm 3.4$ 		& $104 \pm 6.2$		& $93 \pm 3.7$ 		& $96 \pm 2.6$		& \\
+		\hline
+		V7 $\TtML$ 	& $64 \pm 2.2$		& $69 \pm 3.9$		& $65 \pm 2.1$ 		& $69 \pm 1.2$ 		& $64.07 \pm 0.034$ \\
+		V7 $\ToRL$ 	& $65 \pm 2.1$ 		& $71 \pm 4.3$		& $64 \pm 1.9$ 		& $69 \pm 1.2$ 		& \\
+		\hline
+		V8 $\TtML$	& $46 \pm 1.5$ 		& $50. \pm 2.3$ 	& $46 \pm 1.1$		& $47.6 \pm 0.87$ 	& $46.42 \pm 0.014$ \\
+		V8 $\ToRL$	& $46 \pm 1.5$ 		& $50. \pm 2.3$ 	& $46 \pm 1.0$ 		& $47.5 \pm 0.85$ 	& \\	
+		\hline \hline	 
+	\end{tabu}
+	\caption{
+		Phantom within-ROI sample means $\pm$ sample standard deviations 
+		of $\mathbf{T}_1$ and $\mathbf{T}_2$ estimates 
+		from optimized SPGR/DESS and reference IR/SE scan profiles, 
+		versus NIST NMR measurements (\emph{cf.} slide 22 
+		of e-poster corresponding to \cite{keenan:16:msm}).
+		For sake of brevity, 
+		sample statistics corresponding only to phantom vials 
+		within (or nearly within) tight design range $\setXt$ 
+		(color-coded orange in Fig.~\ref{fig:hpd,gray}) are reported. 
+		Fig.~\ref{fig:hpd,ml-rls} plots sample statistics for all vials.
+		`V\#' abbreviates vial numbers. 
+		All values are reported in milliseconds.
 	}
-	The highlighted orange and yellow parameter spaces correspond to design ranges $\setXt$ and $\setXb$.
-	\revone{
-		$\bmTo$ estimates from both the candidate $(2,1)$, $(1,1)$, and $(0,2)$ (SPGR, DESS) and reference $(4,4)$ (IR, SE) profiles are in reasonable agreement with NIST estimates \cite{keenan:16:msm} across the vial range.
-		$\bmTt$ estimates from all profiles are also in good agreement with NIST for vials within $\setXb$.
-	SPGR/DESS profiles likely underestimate large $\Tt$ values ($\ge$200ms) due to greater influence of diffusion in DESS \cite{carney:91:asa, wu:90:eod, kaiser:74:daf}.
-	SPGR/DESS profiles possibly overestimate and the IR/SE profile likely underestimates short ($\le$30ms) and very short ($\le$15ms) $\Tt$ values, respectively, due to poorly conditioned estimation. 
-	}
+	\label{table:hpd,accuracy}
+\end{table*}
+
+Fig.~\ref{fig:hpd,ml-rls} plots 
+sample means and sample standard deviations 
+computed within circular ROIs 
+of phantom $\bmTo$ and $\bmTt$ ML and RL estimates.
+The highlighted orange and yellow parameter spaces 
+correspond to design ranges $\setXt$ and $\setXb$.
+$\bmTo$ estimates from both 
+the candidate $(2,1)$, $(1,1)$, and $(0,2)$ (SPGR, DESS) 
+and reference $(4,4)$ (IR, SE) profiles 
+are in reasonable agreement 
+with NIST estimates \cite{keenan:16:msm} 
+across the vial range.
+$\bmTt$ estimates from all profiles are also 
+in good agreement with NIST 
+for vials within $\setXb$.
+SPGR/DESS profiles likely underestimate large $\Tt$ values ($\ge$200ms) 
+due to greater influence of diffusion in DESS 
+\cite{carney:91:asa, wu:90:eod, kaiser:74:daf},
+(studied further in Appendix~\ref{a,dess-diff}).
+SPGR/DESS profiles possibly overestimate 
+and the IR/SE profile likely underestimates 
+short ($\le$30ms) and very short ($\le$15ms) $\Tt$ values, 
+respectively, 
+due to poorly conditioned estimation. 
+Table~\ref{table:hpd,accuracy} replicates sample statistics 
+in Fig.~\ref{fig:hpd,ml-rls} for vials 5-8.
+Compared to ML initializations, 
+(weakly) regularized estimates reduce error bars 
+without introducing substantial additional bias.
 	
-\revone{
-	Fig.~\ref{fig:hpd,ml-rls} expands Fig.~\ref{fig:hpd,ml} by plotting phantom within-ROI sample statistics of both ML and RL $\bmTo, \bmTt$ estimates.
-	Table~\ref{table:hpd,accuracy} replicates sample statistics in Fig.~\ref{fig:hpd,ml-rls} for vials 5-8.
-	Compared to ML initializations, (weakly) regularized estimates reduce error bars without introducing substantial additional bias.
-}		
+\begin{comment}
 	
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsubsection{Across-Repetition Statistics} 
 \label{sss,scn-dsgn,exp:phant:rep}
@@ -1235,11 +1434,14 @@ from optimized scan profiles.
 	\revone{
 		the reference profile containing $(4,4)$ IR and SE scans.
 	}
-	We obtain axial slices from a 32-channel Nova Medical\textsuperscript{\textregistered} receive head array.
+	We obtain axial slices from a 32-channel Nova Medical\regis receive head array.
 	\revone{
 		To address bulk motion between acquisitions and to compare within-ROI statistics, we rigidly register each coil-combined image to an IR image (details in Section~\ref{ssec:detail:invivo}) prior to parameter mapping.
 		All acquisition (\emph{cf.} Section~\ref{sss,scn-dsgn,exp:phant:roi}) and reconstruction (\emph{cf.} Sections~\ref{ssec:detail:sp,de}-\ref{ssec:detail:ir,se}) details are otherwise the same as in phantom experiments. 
 	}
+	For all steady-state scan profiles tested, 
+ML initializations and RL reconstructions 
+of brain datasets require less than 3m and 7s, respectively.
 
 % brain t1/t2 maps, jet
 \begin{figure*} [t]
@@ -1321,14 +1523,14 @@ from optimized scan profiles.
 		\hline \hline
 			& ROI (color)		& (2SP,1DE)			& (1SP,1DE) 		& (0SP,2DE)			& (4IR,4SE) \\
 		\hline
-		\multirow{5}{*}{\ToML} 	
+		\multirow{5}{*}{$\ToML$} 	
 			& \AR WM (yellow) 	& $840 \pm 32$		& $770 \pm 31$ 		& $840 \pm 43$ 		& $780 \pm 22$ \\
 			& \AL WM (magenta)	& $740 \pm 61$ 		& $660 \pm 45$ 		& $740 \pm 55$ 		& $760 \pm 24$ \\
 			& \PR WM (green) 	& $890 \pm 88$ 		& $860 \pm 72$ 		& $960 \pm 84$ 		& $810 \pm 26$ \\
 			& \PL WM (blue) 	& $860 \pm 70.$ 	& $850 \pm 61$ 		& $880 \pm 79$ 		& $820 \pm 37$ \\
 			& \A GM (cyan) 		& $1200 \pm 210$	& $1200 \pm 230$ 	& $1300 \pm 230$	& $1300 \pm 180$ \\
 		\hline
-		\multirow{5}{*}{\TtML} 	
+		\multirow{5}{*}{$\TtML$} 	
 			& \AR WM (yellow) 	& $40. \pm 1.3$ 	& $54 \pm 3.8$ 		& $46 \pm 1.5$		& $55 \pm 1.9$ \\
 			& \AL WM (magenta)	& $40. \pm 1.7$		& $50. \pm 4.5$		& $44 \pm 1.7$ 		& $53 \pm 1.8$ \\
 			& \PR WM (green) 	& $43 \pm 2.7$ 		& $60. \pm 6.9$ 	& $51 \pm 3.6$ 		& $59 \pm 2.1$ \\
@@ -1354,14 +1556,14 @@ from optimized scan profiles.
 		\hline \hline
 			& ROI (color)		& (2SP,1DE)			& (1SP,1DE) 		& (0SP,2DE)			& (4IR,4SE) \\
 		\hline
-		\multirow{5}{*}{\ToRL} 	
+		\multirow{5}{*}{$\ToRL$} 	
 			& \AR WM (yellow) 	& $840 \pm 24$		& $770 \pm 20.$		& $840 \pm 43$ 		& $780 \pm 20.$ \\
 			& \AL WM (magenta)	& $740 \pm 51$ 		& $670 \pm 37$ 		& $740 \pm 54$ 		& $760 \pm 23$ \\
 			& \PR WM (green) 	& $890 \pm 79$ 		& $860 \pm 61$ 		& $960 \pm 82$ 		& $810 \pm 24$ \\
 			& \PL WM (blue) 	& $870 \pm 62$ 		& $850 \pm 50.$		& $880 \pm 78$ 		& $820 \pm 35$ \\
 			& \A GM (cyan) 		& $1200 \pm 200$	& $1200 \pm 220$ 	& $1300 \pm 230$	& $1300 \pm 180$ \\
 		\hline
-		\multirow{5}{*}{\TtRL} 	
+		\multirow{5}{*}{$\TtRL$} 	
 			& \AR WM (yellow) 	& $40. \pm 1.3$ 	& $54 \pm 3.4$ 		& $46 \pm 1.5$		& $55 \pm 1.9$ \\
 			& \AL WM (magenta)	& $40. \pm 1.7$		& $50. \pm 4.4$		& $43 \pm 1.7$ 		& $53 \pm 1.8$ \\
 			& \PR WM (green) 	& $43 \pm 2.8$ 		& $60. \pm 6.7$ 	& $51 \pm 3.7$ 		& $58 \pm 2.3$ \\
@@ -1405,14 +1607,14 @@ from optimized scan profiles.
 
 \revtwo{
 	In most cases, $\bmToest$ within-ROI sample means from optimized SPGR/DESS scan profiles do not deviate substantially from each other or from reference IR/SE measurements.
-	Two notable exceptions are \ToML in anterior left and posterior right WM from $(1,1)$ and $(0,2)$ profiles: these estimates are significantly lower and higher than analogous estimates from other profiles, respectively.
-	Results thus suggest that the optimized $(2,1)$ scan profile yields WM \ToML estimates that are more consistently similar to IR WM \ToML estimates than other optimized SPGR/DESS profiles.
+	Two notable exceptions are $\ToML$ in anterior left and posterior right WM from $(1,1)$ and $(0,2)$ profiles: these estimates are significantly lower and higher than analogous estimates from other profiles, respectively.
+	Results thus suggest that the optimized $(2,1)$ scan profile yields WM $\ToML$ estimates that are more consistently similar to IR WM $\ToML$ estimates than other optimized SPGR/DESS profiles.
 }
 
 \revtwo{
 	Systematic differences in $\bmTtest$ sample means are evident across scan profiles, particularly within WM ROIs.
-	Curiously, the $(1,1)$ profile agrees most consistently (in WM/GM \TtML within-ROI sample mean) with reference estimates, though with relatively high sample variation.
-	The $(2,1)$ and $(0,2)$ SPGR/DESS profiles produce consistently lower WM \TtML than the reference IR/SE profile, though the $(0,2)$ profile is in reasonable agreement with other steady-state estimates \cite{heule:14:tes-nib}.
+	Curiously, the $(1,1)$ profile agrees most consistently (in WM/GM $\TtML$ within-ROI sample mean) with reference estimates, though with relatively high sample variation.
+	The $(2,1)$ and $(0,2)$ SPGR/DESS profiles produce consistently lower WM $\TtML$ than the reference IR/SE profile, though the $(0,2)$ profile is in reasonable agreement with other steady-state estimates \cite{heule:14:tes-nib}.
 }
 	These discrepancies may due to differences in sensitivity to multi-compartmental relaxation \cite{mackay:94:ivv}.
 	Specifically, different signal models with different scan parameter choices might be more or less sensitive to the model mismatch incurred by neglecting to distinguish the multiple $\Tt$ components within each voxel.

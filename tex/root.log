@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  12 JAN 2017 11:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  12 JAN 2017 18:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -664,16 +664,16 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 \tf@lof=\write6
 \openout6 = `root.lof'.
 
- [3] (./root.loa)
+ [3] [4] (./root.loa)
 \tf@loa=\write7
 \openout7 = `root.loa'.
 
- [4] [5]
+ [5] [6]
 Underfull \hbox (badness 10000) in paragraph at lines 100--100
 
  []
 
-[6]
+[7]
 CHAPTER 1.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 103.
@@ -867,9 +867,6 @@ ps)
 
 <../fig/c,scn-dsgn/T2_hist_ml_gm_3parm_0SPGR2DESS.eps>
 
-LaTeX Warning: Reference `fig:hpd' on page 34 undefined on input line 1002.
-
-
 LaTeX Warning: Reference `table:hpd,sample-std-dev' on page 34 undefined on inp
 ut line 1011.
 
@@ -879,7 +876,51 @@ Overfull \hbox (6.94366pt too wide) in paragraph at lines 992--1013
 x-per-i-ment, we com-pare SPGR/DESS
  []
 
-[34] [35]) [36]
+[34] [35] [36] [37]
+File: ../fig/c,scn-dsgn/2016-06-20,hpd,t1,jet.eps Graphic file (type eps)
+ <../fig/c,scn-dsgn/2016-06-20,hpd,t1,jet.eps>
+File: ../fig/c,scn-dsgn/2016-06-20,hpd,t2,jet.eps Graphic file (type eps)
+
+<../fig/c,scn-dsgn/2016-06-20,hpd,t2,jet.eps>
+Overfull \hbox (10.55226pt too wide) in paragraph at lines 1174--1190
+ [][] 
+ []
+
+
+Overfull \hbox (4.8618pt too wide) in paragraph at lines 1174--1190
+ [][][][] 
+ []
+
+File: ../fig/c,scn-dsgn/2016-06-20,hpd,t1,gray.eps Graphic file (type eps)
+<../fig/c,scn-dsgn/2016-06-20,hpd,t1,gray.eps>
+File: ../fig/c,scn-dsgn/2016-06-20,hpd,t2,gray.eps Graphic file (type eps)
+
+<../fig/c,scn-dsgn/2016-06-20,hpd,t2,gray.eps>
+Overfull \hbox (10.55226pt too wide) in paragraph at lines 1200--1217
+ [][] 
+ []
+
+
+Overfull \hbox (4.8618pt too wide) in paragraph at lines 1200--1217
+ [][][][] 
+ []
+
+[38]
+File: ../fig/c,scn-dsgn/2016-06-20,hpd,t1-ml-compare.eps Graphic file (type eps
+)
+ <../fig/c,scn-dsgn/2016-06-20,hpd,t1-ml-compare.eps>
+File: ../fig/c,scn-dsgn/2016-06-20,hpd,t2-ml-compare.eps Graphic file (type eps
+)
+
+<../fig/c,scn-dsgn/2016-06-20,hpd,t2-ml-compare.eps>
+File: ../fig/c,scn-dsgn/2016-06-20,hpd,t1-rls-compare.eps Graphic file (type ep
+s)
+
+<../fig/c,scn-dsgn/2016-06-20,hpd,t1-rls-compare.eps>
+File: ../fig/c,scn-dsgn/2016-06-20,hpd,t2-rls-compare.eps Graphic file (type ep
+s)
+
+<../fig/c,scn-dsgn/2016-06-20,hpd,t2-rls-compare.eps> [39] [40]) [41]
 CHAPTER 5.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -890,7 +931,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 119.
 
-(./c,krr.tex) [37
+(./c,krr.tex) [42
 
 ]
 CHAPTER 6.
@@ -903,36 +944,37 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 123.
 
-(./c,mwf.tex) [38
+(./c,mwf.tex) [43
 
 ]
 CHAPTER 7.
-(./c,ss-rf.tex) [39
+(./c,ss-rf.tex) [44
 
 ]
 CHAPTER 8.
-(./c,future.tex) [40
+(./c,future.tex) [45
 
 ]
 APPENDIX A.
-(./a,cc-multi.tex) [41
+(./a,cc-multi.tex) [46
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [42
+(./a,dess-diff.tex) [47
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [43
+ [48
 
 
-] [44] [45] [46] [47])
+] [49] [50] [51] [52] [53])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 149.
- [48]
+ [54]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 149.
- (./root.aux)
+
+(./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 149.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 149.
 Package rerunfilecheck Info: File `root.out' has not changed.
@@ -947,12 +989,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 149.
  ) 
 Here is how much of TeX's memory you used:
- 9823 strings out of 493090
- 141550 string characters out of 6134868
- 272812 words of memory out of 5000000
- 13074 multiletter control sequences out of 15000+600000
+ 9923 strings out of 493090
+ 143355 string characters out of 6134868
+ 276404 words of memory out of 5000000
+ 13166 multiletter control sequences out of 15000+600000
  26517 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,20n,48p,1800b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,20n,48p,1910b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on root.dvi (56 pages, 350588 bytes).
+Output written on root.dvi (63 pages, 393904 bytes).
