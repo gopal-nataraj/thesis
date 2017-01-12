@@ -520,69 +520,244 @@ with associated worst-case cost $\costawt{\bmPs}$
 within 1\% of global optimum $\costawt{\bmPc}$.
 
 \subsection{Scan Profile Comparisons}
-\label{ssec:opt:compare}
+\label{ss,scn-dsgn,opt,compare} 
+
+We solve \eqref{eq:scn-dsgn,P-cand} and \eqref{eq:scn-dsgn,P-star} 
+via grid search 
+to allow illustration 
+of $\costwt(\bmP)$ 
+as well as worst-case $\To,\Tt$ standard deviations 
+$\sigwot(\bmP)$ and $\sigwtt(\bmP)$, 
+each defined as
+\begin{align}
+	\sigwot(\bmP) &:= 
+		\max_{\substack{\bmx \in \setXt \\ \bmnu \in \setNt}} 
+		\sigma_{\To}(\bmx; \bmnu, \bmP); 
+		\label{eq:sigwot} \\
+	\sigwtt(\bmP) &:= 
+		\max_{\substack{\bmx \in \setXt \\ \bmnu \in \setNt}} 
+		\sigma_{\Tt}(\bmx; \bmnu, \bmP), 
+		\label{eq:sigwtt} 
+\end{align}
+where $\sigma_{\To}(\bmx; \bmnu, \bmP)$ 
+and $\sigma_{\Tt}(\bmx; \bmnu, \bmP)$ 
+are corresponding diagonal elements 
+of inverse Fisher matrix $\bmF^{-1}(\bmx; \bmnu, \bmP)$. 
+Grid searches for the $(2,1)$, $(1,1)$, and $(0,2)$ profiles 
+each took about 4, 43, and 28 minutes, respectively.
+All experiments described hereafter were carried out 
+using MATLAB\textsuperscript{\textregistered} R2013a 
+on a 3.5GHz desktop with 32GB RAM. 
 
 \begin{table*} [!tb]
 	\centering
 	{\tabulinesep = 0.5mm
-	\begin{tabu} {r | c c c c | c c | c c | c c}
+	\begin{tabu} {r | c c c}
 		\hline \hline 
-		Scan & $\widehat{\alpha}^{\mathrm{spgr}}_0$ & $\widehat{\alpha}^{\mathrm{dess}}_0$ & $\widehat{T}_{R}^\mathrm{spgr}$ & $\widehat{T}_{R}^\mathrm{dess}$ & $\sigwonet(\bmPs)$ & $\sigwoneb(\bmPs)$ & $\sigwtwot(\bmPs)$ & $\sigwtwob(\bmPs)$ & $\Psiwt(\bmPs)$ & $\Psiwb(\bmPs)$ \\
-		\hline 	
-		$(2,1)$ 		& (15, 5)$^\circ$ 	& 30$^\circ$ 	
-						& (12.2, 12.2) 		& 17.5 			
-						& 28				& 154  				
-						& \textbf{1.3}		& 9.1			 
-						& 4.0				& 17.7 \\
-		$(1,1)$			& 15$^\circ$		& 10$^\circ$	
-						& 13.9				& 28.0
-						& 27				& 169 				
-						& 2.8				& 8.8			 
-						& 4.9				& 17.9 \\
-		$(0,2)$			& -- 				& (35, 10)$^\circ$
-						& --				& (24.4, 17.5)
-						& \textbf{21}		& \textbf{113} 				
-						& 1.5				& \textbf{6.0}			 
-						& \textbf{3.5}		& \textbf{12.2} \\
+		Scan & $(2,1)$ & $(1,1)$ & $(0,2)$ \\
+		\hline
+		$\widehat{\alpha}^{\mathrm{spgr}}_0$ & (15,5)$^\circ$ & 15$^\circ$ & -- \\
+		$\widehat{\alpha}^{\mathrm{dess}}_0$ & 30$^\circ$ & 10$^\circ$ & (35,10)$^\circ$ \\
+		$\widehat{T}_{R}^\mathrm{spgr}$ & (12.2, 12.2) & 13.9 & -- \\
+		$\widehat{T}_{R}^\mathrm{dess}$ & 17.5 & 28.0 & (24.4, 17.5) \\
+		\hline
+		$\sigwot(\bmPs)$ & 28 & 27 & \textbf{21} \\
+		$\sigwob(\bmPs)$ & 154 & 169 & \textbf{113} \\
+		\hline
+		$\sigwtt(\bmPs)$ & \textbf{1.3} & 2.8 & 1.5 \\
+		$\sigwtb(\bmPs)$ & 9.1 & 8.8 & \textbf{6.0} \\
+		\hline
+		$\costwt(\bmPs)$ & 4.0 & 4.9 & \textbf{3.5} \\
+		$\costwb(\bmPs)$ & 17.7 & 17.9 & \textbf{12.2} \\
 		\hline \hline
 	\end{tabu}}
 	\vspace{1mm}
-	\caption{Performance summary of different scan profiles, optimized by solving \eqref{eq:scn-dsgn,P-star} subject to scan time constraint $\Tmax = 41.9$ms. The first column defines each profile. The next four columns describe $\bmPs$. The latter three pairs of columns show how worst-case $\sigwone$, $\sigwtwo$, and $\Psiw$ values degrade from tight to broad ranges. Flip angles are in degrees; all other values are in milliseconds.}
+	\caption{Performance summary of different scan profiles, 
+		optimized by solving \eqref{eq:scn-dsgn,P-star} subject 
+		to scan time constraint $\Tmax = 41.9$ms. 
+		The first row defines each profile. 
+		The next four rows describe $\bmPs$. 
+		The latter three pairs of rows 
+		show how worst-case values degrade 
+		from tight to broad ranges. 
+		Flip angles are in degrees; 
+		all other values are in milliseconds.
+	}
 	\label{table:profile}
-\end{table*} 
+\end{table*}
 
-\begin{comment}
+Table~\ref{table:profile} compares optimized scan parameters 
+for profiles consisting 
+of $(2,1)$, $(1,1)$, and $(0,2)$ SPGR and DESS scans, 
+respectively. 
+In addition to $\sigwot(\bmPs)$ and $\sigwtt(\bmPs)$, 
+Table~\ref{table:profile} presents 
+analogous worst-case standard deviations 
+$\sigwob(\bmPs)$ and $\sigwtb(\bmPs)$ 
+over $\setXb \times \setNb$ 
+to show how each estimator degrades 
+over the broadened object parameter range. 
+When viewed over tight range 
+$\setXt \times \setNt$, 
+the $(0,2)$ profile provides a 11.5\% reduction 
+in worst-case cost over the other choices. 
+Extending to broadened range $\setXb \times \setNb$, 
+this reduction grows dramatically to 31.4\%. 
+We thus observe that while the different optimized profiles 
+afford similar estimator precision 
+over a narrow range of interest, 
+the $(0,2)$ profile may be preferable 
+due to its robustness to a wide range of object parameters. 
 
-	We solve \eqref{eq:P,star} and \eqref{eq:scn-dsgn,P-star} via grid search to allow illustration (\S{\ref{sec:opt-detail}} in Supplement\footnote{Supplementary material is available in the /media tab on IEEEXplore.}) of $\Psiwt(\mathbf{P})$ as well as worst-case $\To, \Tt$ standard deviations $\sigwonet(\mathbf{P})$ and $\sigwtwot(\mathbf{P})$, each defined as
-	\begin{align}
-		\sigwonet(\mathbf{P}) &:= \max_{\substack{\mathbf{x} \in \mathcal{X}_{\mathrm{b}} \\ \bm{\nu} \in \mathcal{N}_{\mathrm{b}}}} \sigma_{\To}(\mathbf{x}; \bm{\nu}, \mathbf{P}) && \text{and} \label{eq:sigw,1,t} \\
-		\sigwtwot(\mathbf{P}) &:= \max_{\substack{\mathbf{x} \in \mathcal{X}_{\mathrm{b}} \\ \bm{\nu} \in \mathcal{N}_{\mathrm{b}}}} \sigma_{\Tt}(\mathbf{x}; \bm{\nu}, \mathbf{P}), \label{eq:sigw,2,t} 
-	\end{align}
-	where $\sigma_{\To}(\mathbf{x}; \bm{\nu}, \mathbf{P})$ and $\sigma_{\Tt}(\mathbf{x}; \bm{\nu}, \mathbf{P})$ are corresponding diagonal elements of inverse Fisher matrix $\mathbf{I}^{-1}(\mathbf{x}; \bm{\nu}, \mathbf{P})$. 
-	\revone{Grid searches for the $(2,1)$, $(1,1)$, and $(0,2)$ profiles each took about 4, 43, and 28 minutes, respectively.}
-	All experiments described hereafter were carried out using MATLAB\textsuperscript{\textregistered} R2013a on a 3.5GHz desktop with 32GB RAM. 
+\begin{sidewaysfigure} [!tbp]
+	\centering
+	\fbox{ 
+		\begin {minipage} [b] [12.5cm] [b] {0.54\textwidth}
+			\subfigure [$\sigwot$ vs. $(\alpha_1^\mathrm{spgr}, \alpha_2^\mathrm{spgr})$] {
+				\includegraphics [height=3.41cm] {sigw_t1_vs_s1s2_21_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t1,s1s2,21}
+			}
+			\subfigure [$\sigwot$ vs. $(\alpha_1^\mathrm{spgr}, \alpha^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {sigw_t1_vs_s1d1_21_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t1,s1d1,21}
+			}
+			\subfigure [$\sigwot$ vs. $(\alpha_2^\mathrm{spgr}, \alpha^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {sigw_t1_vs_s2d1_21_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t1,s2d1,21}
+			}
+			
+			\subfigure [$\sigwtt$ vs. $(\alpha_1^\mathrm{spgr}, \alpha_2^\mathrm{spgr})$] {
+				\includegraphics [height=3.41cm] {sigw_t2_vs_s1s2_21_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t2,s1s2,21}
+			}
+			\subfigure [$\sigwtt$ vs. $(\alpha_1^\mathrm{spgr}, \alpha^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {sigw_t2_vs_s1d1_21_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t2,s1d1,21}
+			}
+			\subfigure [$\sigwtt$ vs. $(\alpha_2^\mathrm{spgr}, \alpha^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {sigw_t2_vs_s2d1_21_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t2,s2d1,21}
+			}
+			
+			\subfigure [$\costwt$ vs. $(\alpha_1^\mathrm{spgr}, \alpha_2^\mathrm{spgr})$] {
+				\includegraphics [height=3.41cm] {Psiw_vs_s1s2_21_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t1,s1s2,21}
+			}
+			\subfigure [$\costwt$ vs. $(\alpha_1^\mathrm{spgr}, \alpha^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {Psiw_vs_s1d1_21_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t1,s1d1,21}
+			}
+			\subfigure [$\costwt$ vs. $(\alpha_2^\mathrm{spgr}, \alpha^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {Psiw_vs_s2d1_21_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t1,s2d1,21}
+			}
+		\end{minipage}
+	}
+	\fbox{ 
+		\begin {minipage} [b] [12.5cm] [b] {0.18\textwidth}
+			\subfigure [$\sigwot$ vs. $(\alpha^\mathrm{spgr}, \alpha^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {sigw_t1_vs_s1d1_11_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t1,s1d1,11}
+			}
+			
+			\subfigure [$\sigwtt$ vs. $(\alpha^\mathrm{spgr}, \alpha^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {sigw_t2_vs_s1d1_11_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t2,s1d1,11}
+			}
+			
+			\subfigure [$\costwt$ vs. $(\alpha^\mathrm{spgr}, \alpha^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {Psiw_vs_s1d1_11_41p90ms_0p1_1.eps}
+				\label{fig:Psiw,s1d1,11}
+			}
+		\end{minipage}	
+	}
+	\fbox{ 
+		\begin {minipage} [b] [12.5cm] [b] {0.18\textwidth}
+			\subfigure [$\sigwot$ vs. $(\alpha_1^\mathrm{dess}, \alpha_2^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {sigw_t1_vs_d1d2_02_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t1,d1d2,02}
+			}
+			
+			\subfigure [$\sigwtt$ vs. $(\alpha_1^\mathrm{dess}, \alpha_2^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {sigw_t2_vs_d1d2_02_41p90ms_0p1_1.eps}
+				\label{fig:sigw,t2,d1d2,02}
+			}
+			
+			\subfigure [$\costwt$ vs. $(\alpha_1^\mathrm{dess}, \alpha_2^\mathrm{dess})$] {
+				\includegraphics [height=3.41cm] {Psiw_vs_d1d2_02_41p90ms_0p1_1.eps}
+				\label{fig:Psiw,d1d2,02}
+			}
+		\end{minipage}	
+	}
+	\caption{
+		Worst-case standard deviations $\sigwot$ (top), $\sigwtt$ (middle), and cost $\costwt$ (bottom), versus pairs of nominal flip angles, holding other scan parameters fixed at selected profile $\bmPs$. 
+		Subfigures (a)-(i), (j)-(l), and (m)-(o) correspond to scan profiles containing $(\Ss, \Sd) = (2,1), (1,1), \text{and}\,(0,2)$ SPGR and DESS scans, respectively. 
+		Selected scan parameters (starred) are within $\delta = 1$\% of global minimizers and retain as much estimator precision as possible over a wide range of latent object parameters. 		
+		All axes range from 5 to 90 degrees, in 5-degree increments. 
+		Colorbar ranges are $[0,100]$, $[0,10]$, and $[0,20]$ milliseconds for rows of $\sigwot$, $\sigwtt$, and $\costwt$ subfigures, respectively. 
+		The optimized $(0,2)$ profile appears most robust to flip angle variation.
+	}
+	\label{fig:heat,maps}
+\end{sidewaysfigure}
 
-	Table~\ref{table:profile} compares optimized scan parameters for profiles consisting of $(2,1)$, $(1,1)$, and $(0,2)$ SPGR and DESS scans, respectively. 
-	In addition to $\sigwonet(\bmPs)$ and $\sigwtwot(\bmPs)$, Table~\ref{table:profile} presents analogous worst-case standard deviations $\sigwoneb(\mathbf{P})$ and $\sigwtwob(\mathbf{P})$ over $\setXb \times \mathcal{K}_\mathrm{b}$ to show how each estimator degrades over the broadened object parameter range. 
-	When viewed over tight range $\setXt \times \mathcal{K}_\mathrm{t}$, the $(0,2)$ profile provides a 11.5\% reduction in worst-case cost over the other choices. Extending to broadened range $\setXb \times \mathcal{K}_\mathrm{b}$, this reduction grows dramatically to 31.4\%. 
-	We thus observe that while the different optimized profiles afford similar estimator precision over a narrow range of interest, the $(0,2)$ profile may be preferable due to its robustness to a wide range of object parameters. 
+Fig.~\ref{fig:heat,maps} displays heat maps 
+of worst-case latent parameter standard deviations 
+$\sigwot$, $\sigwtt$ 
+and worst-case cost $\costwt$ 
+as pairs of flip angles are varied away 
+from the optimized scan design $\bmPs$.
+Boxes group subfigures corresponding 
+to the same scan profile. 
+Viewing the bottom row of subfigures, 
+it is evident 
+that $\costwt(\bmPs)$ takes similar values 
+for the different scan profiles. 
+However, 
+it is apparent that the $(\Ss,\Sd) = (0,2)$ profile 
+is substantially more robust 
+to flip angle variation 
+than other tested profiles 
+(namely, $(2,1)$ and $(1,1)$). 
+Optimized worst-case cost 
+over broadened latent parameter ranges 
+$\costwb(\bmPs)$ captures this 
+by expanding the range of possible flip angles 
+from $\setNt = [0.9, 1.1]$ to $\setNb = [0.5, 2]$ 
+to account for factor-of-two spatial variation 
+in relative flip angle.
+As a result, we find that the properties 
+of ``broad'' search criterion $\costwb$ 
+provide a stronger reason to select the $(0,2)$ scan 
+for joint $T_1, T_2$ estimation in the brain 
+than the properties 
+of ``tight'' search criterion $\costwt$.
 
-	As the DESS sequence has already found success for $\Tt$ mapping from even one scan \cite{welsch:09:reo}, it is reassuring but unsurprising that our analysis finds two DESS scans to yield the most precise $\Tt$ estimates. 
-	More interestingly, our methods suggest that, with a minimum $\Sd = 2$ scans, DESS can be used to simultaneously estimate $\To$ as well. 
-	In fact, for certain choices of parameter ranges, a second DESS scan is predicted to afford $\widehat{T}_1$ precision comparable to two SPGR scans. 
+As the DESS sequence has already found success 
+for $\Tt$ mapping from even one scan \cite{welsch:09:reo}, 
+it is reassuring but unsurprising that our analysis finds two DESS scans 
+to yield the most precise $\Tt$ estimates. 
+More interestingly, 
+our methods suggest that, 
+with a minimum $\Sd = 2$ scans, 
+DESS can be used to simultaneously estimate $\To$ as well. 
+In fact, for certain choices of parameter ranges, 
+a second DESS scan is predicted 
+to afford $\widehat{T}_1$ precision 
+comparable to two SPGR scans. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimental Validation and Results}
-\label{s,scn-dsgn,esp}
+\label{s,scn-dsgn,exp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{comment}
 	To test our approach to optimized scan design (described in Section~\ref{ssec:crb:minmax}), we next estimate $\mathbf{T}_1$ and $\mathbf{T}_2$  
-	\revone{maps (using maximum-likelihood (ML) and regularized least squares (RLS)} methods detailed in Section~\ref{sec:est}) from datasets collected using the scan profiles optimized in Section~\ref{sec:opt}. In Section~\ref{ss,scn-dsgn,esp:sim}, we study estimator statistics from simulated data.
-	In Sections~\ref{ss,scn-dsgn,esp:phant}-\ref{ss,scn-dsgn,esp:invivo}, we progress to phantom and \emph{in vivo} datasets to evaluate scan profile performance and estimator robustness under increasingly complex settings. For the latter experiments, we use reference parameter maps from classical (long) pulse sequences, in lieu of ground truth maps.
+	\revone{maps (using maximum-likelihood (ML) and regularized least squares (RLS)} methods detailed in Section~\ref{sec:est}) from datasets collected using the scan profiles optimized in Section~\ref{sec:opt}. In Section~\ref{ss,scn-dsgn,exp:sim}, we study estimator statistics from simulated data.
+	In Sections~\ref{ss,scn-dsgn,exp:phant}-\ref{ss,scn-dsgn,exp:invivo}, we progress to phantom and \emph{in vivo} datasets to evaluate scan profile performance and estimator robustness under increasingly complex settings. For the latter experiments, we use reference parameter maps from classical (long) pulse sequences, in lieu of ground truth maps.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Numerical Simulations}
-\label{ss,scn-dsgn,esp:sim}
+\label{ss,scn-dsgn,exp:sim}
 
 	We select $\To$ and $\Tt$ WM and GM values based on previously reported measurements at 3T \cite{wansapura:99:nrt, stanisz:05:ttr} and extrapolate other unimportant latent object parameters 
 	\revone{$M_0$ and $\Tt^*$}
@@ -636,7 +811,7 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 		\hline \hline
 	\end{tabu}}
 	\vspace{1mm}
-	\caption{Sample means $\pm$ sample standard deviations of $\mathbf{T}_1$ and $\mathbf{T}_2$ ML estimates in WM and GM ROIs of simulated data, compared across different optimized scan profiles. Sample means exhibit insignificant bias, and sample standard deviations are consistent with worst-case standard deviations $\sigwonet$ and $\sigwtwot$ reported in Table \ref{table:profile}. All values are reported in milliseconds.}
+	\caption{Sample means $\pm$ sample standard deviations of $\mathbf{T}_1$ and $\mathbf{T}_2$ ML estimates in WM and GM ROIs of simulated data, compared across different optimized scan profiles. Sample means exhibit insignificant bias, and sample standard deviations are consistent with worst-case standard deviations $\sigwot$ and $\sigwtt$ reported in Table \ref{table:profile}. All values are reported in milliseconds.}
 	\label{table:numerical}
 \end{table}
 
@@ -650,9 +825,9 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 	estimation bias 
 	\revtwo{in WM- and GM-like voxels}
 	is negligible.
-	Sample standard deviations are consistent with $\sigwonet$ and $\sigwtwot$ (\emph{cf.}~Table~\ref{table:profile}). 
+	Sample standard deviations are consistent with $\sigwot$ and $\sigwtt$ (\emph{cf.}~Table~\ref{table:profile}). 
 	In WM and GM, we observe that the $(1,1)$ and $(0,2)$ profiles afford high $\widehat{\mathbf{T}}_1^\mathrm{ML}$ precision, while the $(2,1)$ and $(0,2)$ scans afford high $\widehat{\mathbf{T}}_2^\mathrm{ML}$ precision. 
-	In agreement with the predictions of $\Psiwt$ and $\Psiwb$, these simulation studies suggest that 
+	In agreement with the predictions of $\costwt$ and $\costwb$, these simulation studies suggest that 
 	\revtwo{
 		at these SNR levels,
 	}
@@ -660,7 +835,7 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Phantom Experiments}
-\label{ss,scn-dsgn,esp:phant}
+\label{ss,scn-dsgn,exp:phant}
 
 \revone{
 	This subsection describes two experiments. 
@@ -672,7 +847,7 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsubsection{Within-ROI Statistics} 
-\label{sss,scn-dsgn,esp:phant:roi}
+\label{sss,scn-dsgn,exp:phant:roi}
 
 	We acquire combinations of $(2,1)$, $(1,1)$, and $(0,2)$ SPGR and DESS coronal scans of a \revone{
 		High Precision Devices\textsuperscript{\textregistered} MR system phantom $\Tt$ array.
@@ -760,7 +935,7 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsubsection{Across-Repetition Statistics} 
-\label{sss,scn-dsgn,esp:phant:rep}
+\label{sss,scn-dsgn,exp:phant:rep}
 
 \begin{table*} [!tb]
 	\centering
@@ -817,7 +992,7 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{\textit{In Vivo} Experiments}
-\label{ss,scn-dsgn,esp:invivo}
+\label{ss,scn-dsgn,exp:invivo}
 
 	In a single long study of a healthy volunteer, we acquire the same optimized scan profiles containing $(2,1)$, $(1,1)$, and $(0,2)$ SPGR and DESS scans (\emph{cf.} Table~\ref{table:profile}), as well as 
 	\revone{
@@ -826,7 +1001,7 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 	We obtain axial slices from a 32-channel Nova Medical\textsuperscript{\textregistered} receive head array.
 	\revone{
 		To address bulk motion between acquisitions and to compare within-ROI statistics, we rigidly register each coil-combined image to an IR image (details in Section~\ref{ssec:detail:invivo}) prior to parameter mapping.
-		All acquisition (\emph{cf.} Section~\ref{sss,scn-dsgn,esp:phant:roi}) and reconstruction (\emph{cf.} Sections~\ref{ssec:detail:sp,de}-\ref{ssec:detail:ir,se}) details are otherwise the same as in phantom experiments. 
+		All acquisition (\emph{cf.} Section~\ref{sss,scn-dsgn,exp:phant:roi}) and reconstruction (\emph{cf.} Sections~\ref{ssec:detail:sp,de}-\ref{ssec:detail:ir,se}) details are otherwise the same as in phantom experiments. 
 	}
 
 % brain t1/t2 maps, jet
@@ -870,7 +1045,7 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 	}
 	\revone{
 		Though in-plane motion is largely compensated via registration, through-plane motion and non-bulk motion likely persist, and will influence ROI statistics.
-		Due to motion (and scan duration) considerations, we examine within-ROI statistics from a single repetition as in Section~\ref{sss,scn-dsgn,esp:phant:roi}, and do not attempt across-repetition statistics as in Section~\ref{sss,scn-dsgn,esp:phant:rep}.
+		Due to motion (and scan duration) considerations, we examine within-ROI statistics from a single repetition as in Section~\ref{sss,scn-dsgn,exp:phant:roi}, and do not attempt across-repetition statistics as in Section~\ref{sss,scn-dsgn,exp:phant:rep}.
 	}
 	
 	Visually, $\widehat{\mathbf{T}}_1$ maps from steady-state profiles exhibit similar levels of contrast in WM/GM regions well away from cerebrospinal fluid (CSF) as that seen in the reference $\widehat{\mathbf{T}}_1$ estimate.
@@ -958,9 +1133,9 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 \revone{
 	The proposed scan design framework addresses spatial variation in object parameters through a min-max design criterion.
 	The min-max criterion guarantees an upper bound on a weighted sum of variances and assumes no prior knowledge of distributions.
-	However, in general it is non-differentiable in $\mathbf{P}$, precluding gradient-based optimization. 	
+	However, in general it is non-differentiable in $\bmP$, precluding gradient-based optimization. 	
 	Furthermore, it is conservative by nature, and often selects scan parameters based on corner cases of the object parameter space.
-	To reduce the influence of corner cases, it may be desirable to instead construct a cost function related to the coefficient of variation as in \cite{jones:96:oss, zhang:98:dos, imran:99:tpm, deoni:04:doo}, perhaps by setting parameter weights $\mathbf{W}^{-1} \gets \mathrm{diag}\paren{\mathbf{x}}$ for $\mathbf{x} \neq 0$ in \eqref{eq:cost}.
+	To reduce the influence of corner cases, it may be desirable to instead construct a cost function related to the coefficient of variation as in \cite{jones:96:oss, zhang:98:dos, imran:99:tpm, deoni:04:doo}, perhaps by setting parameter weights $\mathbf{W}^{-1} \gets \mathrm{diag}\paren{\bmx}$ for $\bmx \neq 0$ in \eqref{eq:cost}.
 	
 	As a less conservative alternative to min-max design, other recent works \cite{akcakaya:15:ots, lewis:16:ddo} have addressed object parameter spatial variation by instead constructing cost functions related to the Bayesian CRB \cite{gill:95:aot}, which characterizes the expected precision with respect to a prior distribution on object parameters.
 	Bayesian cost functions are usually differentiable and can also, with appropriate priors, penalize object parameter coefficients of variation instead of variances, as in \cite{akcakaya:15:ots}.
@@ -973,7 +1148,7 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 		but acknowledge that non-idealities in those separate acquisitions may themselves cause resultant $\widehat{\mathbf{B}}_1^+$ errors to propagate into our $\mathbf{T}_1, \mathbf{T}_2$ estimates. 
 		To reduce error propagation, it may be desirable to instead design scan profiles to permit \emph{joint} estimation of $\bm{\kappa}$, in addition to other latent object parameters.
 	} 
-	Unfortunately, we find that optimizing the $(2,1)$ or $(0,2)$ profile to allow for four-parameter $\mathbf{x}(\mathbf{r}) := \brac{M_{\mathrm{E}}(\mathbf{r}), \To(\mathbf{r}), \Tt(\mathbf{r}),\kappa(\mathbf{r})}\tpose$ estimation results in unacceptably high amplification of the worst-case $\To$ standard deviation. 
+	Unfortunately, we find that optimizing the $(2,1)$ or $(0,2)$ profile to allow for four-parameter $\bmx(\mathbf{r}) := \brac{M_{\mathrm{E}}(\mathbf{r}), \To(\mathbf{r}), \Tt(\mathbf{r}),\kappa(\mathbf{r})}\tpose$ estimation results in unacceptably high amplification of the worst-case $\To$ standard deviation. 
 	(Incidentally, precise $\mathbf{T}_2$ ML and RLS estimation alone from the $(2,1)$ or $(0,2)$ profile is possible \cite{nataraj:14:mbe}.) 
 	\revone{
 		It remains an open scan design question as to whether time spent collecting Bloch-Siegert data for separate $\mathbf{B}_1^+$ mapping could instead be better spent collecting additional SPGR, DESS, and/or other data for joint estimation.

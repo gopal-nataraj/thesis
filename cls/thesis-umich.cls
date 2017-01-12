@@ -1368,7 +1368,9 @@
  \RequirePackage[pagebackref=true]{hyperref}
 \else
  % Do not use back references.
- \RequirePackage{hyperref}
+% gn 2016-01-11
+% \RequirePackage{hyperref}
+ \RequirePackage[breaklinks]{hyperref}
 \fi
 
 % This controls some settings that affect the appearance of links.

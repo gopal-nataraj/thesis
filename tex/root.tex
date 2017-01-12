@@ -1,10 +1,20 @@
+% !TEX TS-program = latex
 % gopal nataraj thesis proposal
 \documentclass[thesis]{../cls/thesis-umich}
 
-% packages
+% doc
 \usepackage{subfiles} 				% partial compilation
-\usepackage[left]{showlabels}	% show labels
 \usepackage{xspace}						% good spacing
+\usepackage[left]{showlabels}	% show labels
+
+% media
+\usepackage{tabu}							% nice tables
+\usepackage{rotating}					% sideways figures and tables
+
+% fig location
+\graphicspath{
+	{../fig/c,scn-dsgn/}
+}
 
 % macros
 \input{../macro/doc}
