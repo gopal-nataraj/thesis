@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  12 JAN 2017 11:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  12 JAN 2017 11:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -769,26 +769,22 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ] [25]
 
 LaTeX Warning: Reference `s,scn-dsgn,disc' on page 26 undefined on input line 1
-77.
+79.
 
 
 LaTeX Warning: Reference `s,scn-dsgn,conc' on page 26 undefined on input line 1
-79.
+81.
 
 [26] [27]
-Overfull \hbox (3.16121pt too wide) in paragraph at lines 365--365
+Overfull \hbox (3.16121pt too wide) in paragraph at lines 372--372
 []\OT1/ptm/b/n/17.28 Optimizing SS Se-quences for Re-lax-om-e-try in the Brain 
 
  []
 
 [28]
 
-LaTeX Warning: Reference `sss,scn-dsgn,exp,phant,roi' on page 29 undefined on i
-nput line 514.
-
-
 LaTeX Warning: Reference `ss,scn-dsgn,exp,brain' on page 29 undefined on input 
-line 515.
+line 524.
 
 [29]
 File: ../fig/c,scn-dsgn/sigw_t1_vs_s1s2_21_41p90ms_0p1_1.eps Graphic file (type
@@ -851,12 +847,8 @@ s)
 
 <../fig/c,scn-dsgn/Psiw_vs_d1d2_02_41p90ms_0p1_1.eps> [30] [31]
 
-LaTeX Warning: Reference `ss,scn-dsgn,exp,phant' on page 32 undefined on input 
-line 765.
-
-
 LaTeX Warning: Reference `ss,scn-dsgn,exp,invivo' on page 32 undefined on input
- line 765.
+ line 775.
 
 [32] [33]
 File: ../fig/c,scn-dsgn/T1_hist_ml_wm_3parm_0SPGR2DESS.eps Graphic file (type e
@@ -873,7 +865,21 @@ ps)
 File: ../fig/c,scn-dsgn/T2_hist_ml_gm_3parm_0SPGR2DESS.eps Graphic file (type e
 ps)
 
-<../fig/c,scn-dsgn/T2_hist_ml_gm_3parm_0SPGR2DESS.eps>) [34] [35]
+<../fig/c,scn-dsgn/T2_hist_ml_gm_3parm_0SPGR2DESS.eps>
+
+LaTeX Warning: Reference `fig:hpd' on page 34 undefined on input line 1002.
+
+
+LaTeX Warning: Reference `table:hpd,sample-std-dev' on page 34 undefined on inp
+ut line 1011.
+
+
+Overfull \hbox (6.94366pt too wide) in paragraph at lines 992--1013
+\OT1/ptm/m/n/12 This sub-sec-tion de-scribes two ex-per-i-ments. In the first e
+x-per-i-ment, we com-pare SPGR/DESS
+ []
+
+[34] [35]) [36]
 CHAPTER 5.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -884,7 +890,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 119.
 
-(./c,krr.tex) [36
+(./c,krr.tex) [37
 
 ]
 CHAPTER 6.
@@ -897,34 +903,34 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 123.
 
-(./c,mwf.tex) [37
+(./c,mwf.tex) [38
 
 ]
 CHAPTER 7.
-(./c,ss-rf.tex) [38
+(./c,ss-rf.tex) [39
 
 ]
 CHAPTER 8.
-(./c,future.tex) [39
+(./c,future.tex) [40
 
 ]
 APPENDIX A.
-(./a,cc-multi.tex) [40
+(./a,cc-multi.tex) [41
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [41
+(./a,dess-diff.tex) [42
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [42
+ [43
 
 
-] [43] [44] [45] [46])
+] [44] [45] [46] [47])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 149.
- [47]
+ [48]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 149.
  (./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 149.
@@ -941,12 +947,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 149.
  ) 
 Here is how much of TeX's memory you used:
- 9817 strings out of 493090
- 141434 string characters out of 6134868
- 272429 words of memory out of 5000000
- 13068 multiletter control sequences out of 15000+600000
+ 9823 strings out of 493090
+ 141550 string characters out of 6134868
+ 272812 words of memory out of 5000000
+ 13074 multiletter control sequences out of 15000+600000
  26517 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,20n,48p,1800b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on root.dvi (55 pages, 346312 bytes).
+Output written on root.dvi (56 pages, 350588 bytes).

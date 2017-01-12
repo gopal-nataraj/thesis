@@ -1,7 +1,9 @@
 % optimized scan design
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 \label{s,scn-dsgn,intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Fast, accurate \emph{relaxometry}, 
 or quantification
@@ -178,15 +180,18 @@ Section~\ref{s,scn-dsgn,disc} discusses practical challenges
 and suggests future directions.
 Section~\ref{s,scn-dsgn,conc} summarizes key contributions.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{A CRB-Inspired Scan Selection Method}
 \label{s,scn-dsgn,crb}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The CRB and its Relevance to QMRI}
 \label{ss,scn-dsgn,crb,sig}
 
 Recall from Section~\ref{ss,relax,meth,prof}
 that after image reconstruction,
-we can model the single-voxel MR image domain data
+vwe can model the single-voxel MR image domain data
 associated with a particular scan profile as 
 \begin{align}
 	\bmy = \bms\paren{\bmx; \bmnu, \bmP} + \bmeps,
@@ -250,6 +255,7 @@ based on the CRB
 to guide QMRI scan design 
 for relaxometry.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Min-max Optimization Problem for Scan Design}
 \label{ss,scn-dsgn,crb,minmax}
 
@@ -362,8 +368,10 @@ and is robust to variations in those parameters
 over broader sets $\setXb$ and $\setNb$, 
 respectively.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Optimizing SS Sequences for Relaxometry in the Brain}
 \label{s,scn-dsgn,opt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This section applies the methods 
 of Section~\ref{ss,scn-dsgn,crb,minmax} 
@@ -380,6 +388,7 @@ of the brain.
 Section~\ref{ss,scn-dsgn,opt,compare} compares the predicted performance 
 of the three optimized scan profiles.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scan Design Details}
 \label{ss,scn-dsgn,opt,design}
 
@@ -519,6 +528,7 @@ to select a robust scan parameter $\bmPs$
 with associated worst-case cost $\costawt{\bmPs}$ 
 within 1\% of global optimum $\costawt{\bmPc}$.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scan Profile Comparisons}
 \label{ss,scn-dsgn,opt,compare} 
 
@@ -975,23 +985,37 @@ In contrast, the proposed min-max formulation finds scan parameters
 that ensure precise estimation 
 in \emph{both} WM \emph{and} GM.	
 
-	\begin{comment}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Phantom Experiments}
 \label{ss,scn-dsgn,exp,phant}
 
-\revone{
-	This subsection describes two experiments. 
-	In the first experiment, we compare the SPGR/DESS scan profiles described in Table~\ref{table:profile} (as well as a reference profile consisting of IR and SE scans) against nuclear magnetic resonance (NMR) measurements from the National Institute for Standards and Technology (NIST) \cite{keenan:16:msm}.
-	These measurements provide information about \emph{ROI sample means} and \emph{ROI sample standard deviations} (Fig.~\ref{fig:hpd,ml}), which we define as first- and second-order statistics computed across voxels within an ROI.
-	In the second experiment, we repeat the SPGR/DESS scan profiles 10 times and compute \emph{sample standard deviation maps} across repetitions (not shown). 
-	Taking ROI sample means of these maps gives \emph{pooled sample standard deviations} (Table~\ref{table:hpd,sample-std-dev}), which indicate relative scan profile precision.
-}
+This subsection describes two experiments. 
+In the first experiment, 
+we compare SPGR/DESS scan profiles 
+described in Table~\ref{table:profile} 
+(as well as a reference profile consisting of IR and SE scans) 
+against nuclear magnetic resonance (NMR) measurements 
+from the National Institute for Standards and Technology (NIST) 
+\cite{keenan:16:msm}.
+These measurements provide information 
+about \emph{ROI sample means} and \emph{ROI sample standard deviations} 
+(Fig.~\ref{fig:hpd}), 
+which we define as first- and second-order statistics 
+computed across voxels within an ROI.
+In the second experiment, 
+we repeat the SPGR/DESS scan profiles 10 times 
+and compute \emph{sample standard deviation maps} 
+across repetitions. 
+Taking ROI sample means of these maps 
+gives \emph{pooled sample standard deviations} 
+(Table~\ref{table:hpd,sample-std-dev}), 
+which indicate relative scan profile precision.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsubsection{Within-ROI Statistics} 
 \label{sss,scn-dsgn,exp,phant,roi}
+
+	\begin{comment}
 
 	We acquire combinations of $(2,1)$, $(1,1)$, and $(0,2)$ SPGR and DESS coronal scans of a \revone{
 		High Precision Devices\textsuperscript{\textregistered} MR system phantom $\Tt$ array.
