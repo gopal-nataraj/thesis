@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  11 JAN 2017 21:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  12 JAN 2017 11:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -851,10 +851,6 @@ s)
 
 <../fig/c,scn-dsgn/Psiw_vs_d1d2_02_41p90ms_0p1_1.eps> [30] [31]
 
-LaTeX Warning: Reference `ss,scn-dsgn,exp,sim' on page 32 undefined on input li
-ne 763.
-
-
 LaTeX Warning: Reference `ss,scn-dsgn,exp,phant' on page 32 undefined on input 
 line 765.
 
@@ -862,7 +858,22 @@ line 765.
 LaTeX Warning: Reference `ss,scn-dsgn,exp,invivo' on page 32 undefined on input
  line 765.
 
-[32]) [33]
+[32] [33]
+File: ../fig/c,scn-dsgn/T1_hist_ml_wm_3parm_0SPGR2DESS.eps Graphic file (type e
+ps)
+ <../fig/c,scn-dsgn/T1_hist_ml_wm_3parm_0SPGR2DESS.eps>
+File: ../fig/c,scn-dsgn/T1_hist_ml_gm_3parm_0SPGR2DESS.eps Graphic file (type e
+ps)
+
+<../fig/c,scn-dsgn/T1_hist_ml_gm_3parm_0SPGR2DESS.eps>
+File: ../fig/c,scn-dsgn/T2_hist_ml_wm_3parm_0SPGR2DESS.eps Graphic file (type e
+ps)
+
+<../fig/c,scn-dsgn/T2_hist_ml_wm_3parm_0SPGR2DESS.eps>
+File: ../fig/c,scn-dsgn/T2_hist_ml_gm_3parm_0SPGR2DESS.eps Graphic file (type e
+ps)
+
+<../fig/c,scn-dsgn/T2_hist_ml_gm_3parm_0SPGR2DESS.eps>) [34] [35]
 CHAPTER 5.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -873,7 +884,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 119.
 
-(./c,krr.tex) [34
+(./c,krr.tex) [36
 
 ]
 CHAPTER 6.
@@ -886,34 +897,34 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 123.
 
-(./c,mwf.tex) [35
+(./c,mwf.tex) [37
 
 ]
 CHAPTER 7.
-(./c,ss-rf.tex) [36
+(./c,ss-rf.tex) [38
 
 ]
 CHAPTER 8.
-(./c,future.tex) [37
+(./c,future.tex) [39
 
 ]
 APPENDIX A.
-(./a,cc-multi.tex) [38
+(./a,cc-multi.tex) [40
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [39
+(./a,dess-diff.tex) [41
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [40
+ [42
 
 
-] [41] [42] [43] [44])
+] [43] [44] [45] [46])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 149.
- [45]
+ [47]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 149.
  (./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 149.
@@ -930,12 +941,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 149.
  ) 
 Here is how much of TeX's memory you used:
- 9775 strings out of 493090
- 140561 string characters out of 6134868
- 270607 words of memory out of 5000000
- 13030 multiletter control sequences out of 15000+600000
+ 9817 strings out of 493090
+ 141434 string characters out of 6134868
+ 272429 words of memory out of 5000000
+ 13068 multiletter control sequences out of 15000+600000
  26517 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,20n,48p,1800b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on root.dvi (53 pages, 324064 bytes).
+Output written on root.dvi (55 pages, 346312 bytes).

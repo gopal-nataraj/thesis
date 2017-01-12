@@ -728,7 +728,7 @@ in relative flip angle.
 As a result, we find that the properties 
 of ``broad'' search criterion $\costwb$ 
 provide a stronger reason to select the $(0,2)$ scan 
-for joint $T_1, T_2$ estimation in the brain 
+for joint $\To, \Tt$ estimation in the brain 
 than the properties 
 of ``tight'' search criterion $\costwt$.
 
@@ -753,7 +753,7 @@ comparable to two SPGR scans.
 To test our approach 
 to optimized scan design 
 (described in Section~\ref{ss,scn-dsgn,crb,minmax}), 
-we estimate $\mathbf{T}_1$ and $\mathbf{T}_2$ maps 
+we estimate $\bmTo$ and $\bmTt$ maps 
 (using maximum likelihood (ML) and 
 regularized likelihood (RL) methods 
 detailed in Section~\ref{ss,relax,meth,est}) 
@@ -771,47 +771,80 @@ we use reference parameter maps
 from classical (long) pulse sequences, 
 in lieu of ground truth maps.
 
-\begin{comment}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Numerical Simulations}
-\label{ss,scn-dsgn,exp:sim}
+\label{ss,scn-dsgn,exp,sim}
 
-	We select $\To$ and $\Tt$ WM and GM values based on previously reported measurements at 3T \cite{wansapura:99:nrt, stanisz:05:ttr} and extrapolate other unimportant latent object parameters 
-	\revone{$M_0$ and $\Tt^*$}
+We select $\To$ and $\Tt$ WM and GM values 
+based on previously reported measurements 
+at 3T \cite{wansapura:99:nrt, stanisz:05:ttr} 
+and extrapolate other nuisance latent object parameters 
+$\mzero$ and $\Tts$
 from measurements at 1.5T \cite{kwan:99:msb}. 
-	We assign these parameter values to the discrete anatomy of the BrainWeb digital phantom \cite{collins:98:dac, kwan:99:msb} to create ground truth $\mathbf{M}_0$, $\mathbf{T}_1$, $\mathbf{T}_2$, and $\mathbf{T}_2^*$ maps. 
-	We then choose acquisition parameters based on Table~\ref{table:profile} (with fixed $T_\mathrm{E}~=~4.67$ms) and apply models \eqref{eq:S,spgr} and \eqref{eq:S,minus,TE}-\eqref{eq:S,plus,TE} to the 81st slices of these true maps to compute noiseless $217 \times 181$ SPGR and DESS image-domain data, respectively. 
+We assign these parameter values
+to the discrete anatomy 
+of the BrainWeb digital phantom 
+\cite{collins:98:dac, kwan:99:msb} 
+to create ground truth $\bmMz$, $\bmTo$, $\bmTt$, and $\bmTts$ maps. 
+We then choose acquisition parameters based 
+on Table~\ref{table:profile} 
+(with fixed $\TE~=~4.67$ms) 
+and apply models \eqref{eq:spgr-model} 
+and \eqref{eq:dess-def-model}-\eqref{eq:dess-ref-model} 
+to the 81st slices of these true maps 
+to compute noiseless $217 \times 181$ SPGR and DESS image-domain data, 
+respectively. 
 
-	For each scan profile, we corrupt the corresponding (complex) noiseless dataset $\mathbf{F}$ with additive complex Gaussian noise, whose variance $\sigma^2 \gets 1.49 \times 10^{-7}$ is set to match CRB calculations. This yields 
-	\revtwo{realistically}
-	noisy datasets $\mathbf{Y}$ ranging from 
-	\revone{105-122 SNR, where SNR is defined here as
-		\begin{align}
-			\mathrm{SNR}(\mathbf{F}, \mathbf{Y}) := \frac{\norm{\mathbf{F}}_F}{\norm{\mathbf{Y} - \mathbf{F}}_F} .
-			\label{eq:snr}
-		\end{align}
-	}
-	We use each profile's noisy 
-	\revone{magnitude} 
-	dataset 
-	\revone{$\abs{\mathbf{Y}}$} 
-	to compute estimates $\widehat{\mathbf{M}}_{\mathrm{E}}$, $\widehat{\mathbf{T}}_1$, and $\widehat{\mathbf{T}}_2$ 
-	\revone{
-		(images and histograms in Section~\ref{sec:num}).
-	}
-	We then evaluate estimator bias and variance from latent ground truth $\mathbf{T}_1$ and $\mathbf{T}_2$ maps.
+For each scan profile, 
+we corrupt the corresponding (complex) noiseless dataset $\bmS$ 
+with additive complex Gaussian noise, 
+whose variance $\sigma^2 \gets 1.49 \times 10^{-7}$ 
+is set to match CRB calculations. 
+This yields realistically noisy datasets $\bmY$ ranging 
+from 105-122 signal-to-noise ratio (SNR), 
+where SNR is defined here as
+\begin{align}
+	\snr{\bmS,\bmY} := \frac{\frob{\bmS}}{\frob{\bmY-\bmS}}.
+	\label{eq:snr}
+\end{align}
+We use each profile's noisy magnitude dataset $\abs{\bmY}$
+to compute estimates $\bmToest$ and $\bmTtest$ 
+We then evaluate estimator bias and variance 
+from latent ground truth $\bmTo$ and $\bmTt$ maps.
 
-	In these simulations, we intentionally neglect to model a number of physically realistic effects because their inclusion would complicate study of estimator statistics. 
-	First and foremost, we assume knowledge of a uniform  transmit field, to avoid confounding $B_1^+$ and $\To, \Tt$ estimation errors. 
-	For a similar reason, spatial variation in the sensitivity of a single receive coil is also not considered. 
-	We omit modeling partial volume effects to ensure deterministic knowledge of WM and GM ROIs. 
-	We will explore the influence of these (and other) nuisance effects on scan design in later subsections. 
+In these simulations, 
+we intentionally neglect to model 
+a number of physically realistic effects 
+because their inclusion 
+would complicate study of estimator statistics. 
+First and foremost, 
+we assume knowledge 
+of a uniform  transmit field, 
+to avoid confounding $\stx$ and $\To, \Tt$ estimation errors. 
+For a similar reason, 
+spatial variation in the sensitivity 
+of a single receive coil is also not considered. 
+We omit modeling partial volume effects 
+to ensure deterministic knowledge of WM and GM ROIs. 
+We will explore the influence of these (and other) nuisance effects 
+on scan design in later subsections and chapters. 
 
-	To isolate bias due to estimator nonlinearity from regularization bias, we minimize the ML initialization cost \eqref{eq:Psi,ML} only, and do not proceed to solve RLS problem \eqref{eq:X,hat}.
-	This permits consideration of $\To, \Tt$ estimation from each of the 7733 WM or 9384 GM data points as voxel-wise independent realizations of the same estimation problem. 
-	To minimize quantization bias, we optimize \eqref{eq:Psi,ML} using a very finely spaced dictionary of signal vectors from 1000 $\To$ and $\Tt$ values logarithmically spaced between $[10^2, 10^{3.5}]$ and $[10^1, 10^{2.5}]$, respectively. 
-	Using $10^6$ dictionary elements, solving \eqref{eq:Psi,ML} took less than 7 minutes for each tested scan design $\bmPs$.
+To isolate bias due to estimator nonlinearity 
+from regularization bias, 
+we solve ML problem \eqref{eq:relax,ml-est} only,
+and do not proceed to solve RL problem \eqref{eq:relax,rl-est}.
+This permits consideration of $\To,\Tt$ estimation 
+from each of the 7733 WM or 9384 GM data points 
+as voxel-wise independent realizations 
+of the same estimation problem. 
+To minimize quantization bias, 
+we optimize \eqref{eq:relax,ml-est} using a finely spaced dictionary 
+of signal vectors from 1000 $\To$ and $\Tt$ values 
+logarithmically spaced between 
+$[10^2, 10^{3.5}]$ and $[10^1, 10^{2.5}]$, respectively. 
+Using $10^6$ dictionary elements, 
+solving \eqref{eq:relax,ml-est} took less than 7 minutes 
+for each tested scan design $\bmPs$.
 
 % T1/T2 simulation summary table
 \begin{table} [!tb]
@@ -821,39 +854,132 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 		\hline \hline
 		Scan 		& $(2,1)$ 			& $(1,1)$ 			& $(0,2)$			& Truth \\
 		\hline
-		WM \ToML	& $830 \pm 17$		& $830 \pm 15$		& $830 \pm 14$		& $832$	\\
-		GM \ToML 	& $1330 \pm 30.$	& $1330 \pm 24$		& $1330 \pm 24$		& $1331$ \\
+		WM $\ToML$	& $830 \pm 17$		& $830 \pm 15$		& $830 \pm 14$		& $832$	\\
+		GM $\ToML$ 	& $1330 \pm 30.$	& $1330 \pm 24$		& $1330 \pm 24$		& $1331$ \\
 		\hline
-		WM \TtML 	& $80. \pm 1.0$		& $80. \pm 2.1$		& $79.6 \pm 0.94$	& $79.6$ \\
-		GM \TtML	& $110. \pm 1.4$	& $110. \pm 3.0$	& $110. \pm 1.6$ 	& $110$ \\
+		WM $\TtML$ 	& $80. \pm 1.0$		& $80. \pm 2.1$		& $79.6 \pm 0.94$	& $79.6$ \\
+		GM $\TtML$	& $110. \pm 1.4$	& $110. \pm 3.0$	& $110. \pm 1.6$ 	& $110$ \\
 		\hline \hline
 	\end{tabu}}
 	\vspace{1mm}
-	\caption{Sample means $\pm$ sample standard deviations of $\mathbf{T}_1$ and $\mathbf{T}_2$ ML estimates in WM and GM ROIs of simulated data, compared across different optimized scan profiles. Sample means exhibit insignificant bias, and sample standard deviations are consistent with worst-case standard deviations $\sigwot$ and $\sigwtt$ reported in Table \ref{table:profile}. All values are reported in milliseconds.}
+	\caption{Sample means $\pm$ sample standard deviations of $\bmTo$ and $\bmTt$ ML estimates in WM and GM ROIs of simulated data, compared across different optimized scan profiles. Sample means exhibit insignificant bias, and sample standard deviations are consistent with worst-case standard deviations $\sigwot$ and $\sigwtt$ reported in Table \ref{table:profile}. All values are reported in milliseconds.}
 	\label{table:numerical}
 \end{table}
 
-	Table~\ref{table:numerical}\footnote{\revtwo{
-		Each sample statistic presented hereafter is rounded off to the highest place value of its corresponding uncertainty measure.
-		For simplicity, each uncertainty measure is itself endowed one extra significant figure.
-		Decimal points indicate the significance of trailing zeros.
-	}}	
-	 verifies that, 
-	\revone{despite model nonlinearity and Rician noise},
-	estimation bias 
-	\revtwo{in WM- and GM-like voxels}
-	is negligible.
-	Sample standard deviations are consistent with $\sigwot$ and $\sigwtt$ (\emph{cf.}~Table~\ref{table:profile}). 
-	In WM and GM, we observe that the $(1,1)$ and $(0,2)$ profiles afford high $\widehat{\mathbf{T}}_1^\mathrm{ML}$ precision, while the $(2,1)$ and $(0,2)$ scans afford high $\widehat{\mathbf{T}}_2^\mathrm{ML}$ precision. 
-	In agreement with the predictions of $\costwt$ and $\costwb$, these simulation studies suggest that 
-	\revtwo{
-		at these SNR levels,
+Table~\ref{table:numerical} verifies
+\footnote{Each sample statistic presented 
+in this chapter 
+is rounded off to the highest place value 
+of its corresponding uncertainty measure.
+For simplicity, 
+each uncertainty measure is itself endowed 
+one extra significant figure.
+Decimal points indicate the significance of trailing zeros.
+}	
+that, 
+despite model nonlinearity and Rician noise,
+estimation bias in WM- and GM-like voxels is negligible.
+Sample standard deviations are consistent with $\sigwot$ and $\sigwtt$ (\emph{cf.}~Table~\ref{table:profile}). 
+We observe that the $(1,1)$ and $(0,2)$ profiles afford high 
+$\bmToest^\mathrm{ML}$ precision, 
+while the $(2,1)$ and $(0,2)$ scans afford high 
+$\bmTtest^\mathrm{ML}$ precision. 
+In agreement with the predictions 
+of $\costwt$ and $\costwb$, 
+these simulation studies suggest that at these SNR levels,
+an optimized profile containing 2 DESS scans
+can permit $\bmTo$ and $\bmTt$ estimation precision 
+in WM and GM comparable to optimized profiles 
+containing SPGR/DESS combinations.
+	
+% Simulation T1/T2 distributions for (0,2) scan
+\begin{figure} [!tbp]
+	\centering
+	\subfigure [$\ToML$ in voxels with WM-like $\To \gets 832$] {
+		\includegraphics [width = 0.43\textwidth] {T1_hist_ml_wm_3parm_0SPGR2DESS.eps}
+		\label{fig:t1,hist,wm,02}
 	}
-	an optimized profile containing 2 DESS scans can permit $\mathbf{T}_1$ and $\mathbf{T}_2$ estimation precision in WM and GM comparable to optimized profiles containing SPGR/DESS combinations.
+	\hspace{1cm}
+	\subfigure [$\ToML$ in voxels with GM-like $\To \gets 1331$] {
+		\includegraphics [width = 0.43\textwidth] {T1_hist_ml_gm_3parm_0SPGR2DESS.eps}
+		\label{fig:t1,hist,gm,02}
+	}
+	\vspace{0.2cm}
+	
+	\subfigure [$\TtML$ in voxels with WM-like $\Tt \gets 79.6$] {
+		\includegraphics [width = 0.43\textwidth] {T2_hist_ml_wm_3parm_0SPGR2DESS.eps}
+		\label{fig:t2,hist,wm,02}
+	}
+	\hspace{1cm}
+	\subfigure [$\TtML$ in voxels with GM-like $\Tt \gets 110$] {
+		\includegraphics [width = 0.43\textwidth] {T2_hist_ml_gm_3parm_0SPGR2DESS.eps}
+		\label{fig:t2,hist,gm,02}
+	}
+	\caption{
+		Histograms of $\To$ and $\Tt$ estimates 
+		from noisy independent measurements 
+		of a \emph{single} nominal WM or GM value. 
+		In each plot, two normal distributions are overlaid, 
+		each with latent means $\To$ and $\Tt$. 
+		In (a)-(b) and (c)-(d), the solid green curve 
+		is $\gauss{\To}{(\sigwot)^2)}$ 
+		and $\gauss{\Tt}{(\sigwtt)^2}$, respectively.
+		In (a)-(d), the dashed maroon curves have variances computed 
+		from the Fisher information at \emph{a priori} unknown $\To, \Tt$ values 
+		in WM or GM. 
+		These plots correspond to an optimized $(0,2)$ scan profile; 
+		analogous plots for other profiles are visually similar. 
+		At realistic noise levels,
+		parameter estimates distribute 
+		with minimal bias and near-Gaussian shape.
+		Thus, the CRB reliably approximates 
+		$\ToML$ and $\TtML$ errors.
+	}
+	\label{fig:normality}
+\end{figure}
+
+Fig.~\ref{fig:normality} histograms (voxel-wise independent) ML estimates 
+$\widehat{T}_1^{\mathrm{ML}}$ and $\widehat{T}_2^{\mathrm{ML}}$ 
+from the $(0,2)$ scan profile.
+Each histogram is over a WM or GM ROI, 
+within which all voxels are assigned 
+the same single-component true $\To$ and $\Tt$ nominal value, 
+listed in Table~\ref{table:numerical}.
+
+Overlaid in dashed maroon are normal distributions 
+with latent means $\To$ and $\Tt$ 
+and variances computed 
+from the Fisher matrix at $\To,\Tt$ values 
+in WM or GM. 
+It is apparent that despite finite SNR and Rician noise, 
+$\widehat{T}_1^{\mathrm{ML}}$ and $\widehat{T}_2^{\mathrm{ML}}$ 
+exhibit negligible bias and near-Gaussian shape, 
+suggesting locally linear behavior of the DESS signal model 
+in $\To$ and $\Tt$ 
+($\widehat{T}_1^{\mathrm{ML}}$ and $\widehat{T}_2^{\mathrm{ML}}$ distributions 
+from other profiles are similar). 
+
+% tradeoff: bigger range of interest, further from optimal variance 
+The subfigures of Fig.~\ref{fig:normality} superimpose 
+in solid green a second set of normal distributions, 
+with the same means $\To$ and $\Tt$ as before, 
+but worst-case standard deviations $\sigwot$ and $\sigwtt$. 
+The separations between these distribution pairs 
+visually depict how estimator variances specific 
+to WM or GM $\To$ and $\Tt$ values differ 
+from worst-case variances. 
+Using the fixed latent object parameters 
+to optimize scan profiles can tailor scans 
+for precise estimation in \emph{either} WM \emph{or} GM. 
+In contrast, the proposed min-max formulation finds scan parameters 
+that ensure precise estimation 
+in \emph{both} WM \emph{and} GM.	
+
+	\begin{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Phantom Experiments}
-\label{ss,scn-dsgn,exp:phant}
+\label{ss,scn-dsgn,exp,phant}
 
 \revone{
 	This subsection describes two experiments. 
@@ -865,7 +991,7 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsubsection{Within-ROI Statistics} 
-\label{sss,scn-dsgn,exp:phant:roi}
+\label{sss,scn-dsgn,exp,phant,roi}
 
 	We acquire combinations of $(2,1)$, $(1,1)$, and $(0,2)$ SPGR and DESS coronal scans of a \revone{
 		High Precision Devices\textsuperscript{\textregistered} MR system phantom $\Tt$ array.
@@ -899,57 +1025,126 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 	} 
 	and thereafter take $\bm{\kappa}$ as known.
 	\revtwo{
-		For consistency, we account for flip angle variation when estimating $\mathbf{T}_1$ and $\mathbf{T}_2$ from both the candidate (SPGR/DESS) and reference (IR/SE) aforementioned scan profiles.
+		For consistency, we account for flip angle variation when estimating $\bmTo$ and $\bmTt$ from both the candidate (SPGR/DESS) and reference (IR/SE) aforementioned scan profiles.
 	}
 	With a repetition time of 21.7ms, this $\mathbf{B}_1^+$ mapping acquisition requires 
 	\revone{
 		1m40s total scan time.
 	}
+	
+	\revone{
+	We first jointly coil-combine all 8-channel IR and SE phantom datasets to produce complex images.
+	We next estimate $\bmTo$ along with nuisance parameters $\bmMz \exp{\paren{-T_\mathrm{E}/\bmTt}}$ and inversion efficiency map $\bm{\epsilon}$ via \eqref{eq:Psi,ML} and \eqref{eq:Psi,RL} from the 4 complex coil-combined IR images.
+	By using the same flip angle scaling map $\widehat{\bm{\kappa}}$ as is used for SPGR/DESS profiles, we estimate $\bmTo$ using a signal model similar to one proposed in \cite{barral:10:arm}, which accounts for imperfect excitation/refocusing and imperfect inversion.
+	We then take both $\bmTo$ and $\bm{\kappa}$ as known and estimate $\bmTt$ along with nuisance parameter $\bmMz$ (accounting for imperfect excitation/refocusing and incomplete recovery) via \eqref{eq:Psi,ML} and \eqref{eq:Psi,RL} from the 4 complex coil-combined SE images.
+	We hold all other reconstruction details identical to those of SPGR/DESS reconstructions.
+	For all steady-state scan profiles tested, ML initializations and RL reconstructions of brain datasets require less than 3m and 7s, respectively.
+	
+	As an aside: we initially attempted to circumvent sequential $\bmTo$, then $\bmTt$ estimation by instead jointly estimating $\bmMz$, $\bmTo$, $\bmTt$, and $\bm{\epsilon}$ from the IR and SE datasets together.
+	Even using magnitude data and signal models, this resulted in heavily biased parameter maps, possibly due to the dependence of adiabatic inversion efficiency on relaxation parameters \cite{frank:97:spe}.
+}
 
-% T1/T2 ML-only HPD accuracy plots 
+% nist t1/t2 maps, jet
 \begin{figure*} [!tb]
 	\centering
-	\subfloat{
-		\includegraphics [width = 0.47\textwidth] {natar1.eps}
-		\label{fig:t1,hpd,ml}
+	\subfigure{
+		\includegraphics [width=\textwidth] {2016-06-20,hpd,t1,jet.eps}
+		\label{fig:hpd,t1,jet}
+	}
+	\vspace{0cm}
+	\subfigure{
+		\includegraphics [width=\textwidth-2mm, trim=0 0 0 25, clip] {2016-06-20,hpd,t2,jet.eps}
+		\label{fig:hpd,t2,jet}
+	}
+	\caption{
+		Colorized $\bmTo$ and $\bmTt$ ML and RL estimates from an HPD\textsuperscript{\textregistered} quantitative phantom.
+		Columns correspond to scan profiles consisting of (2 SPGR, 1 DESS), (1 SPGR, 1 DESS), (0 SPGR, 2 DESS), and (4 IR, 4 SE) acquisitions. 
+		Rows distinguish $\bmTo$ and $\bmTt$ ML and RL estimators. 
+		Fig.~\ref{fig:hpd,gray} provides identical grayscale images which enumerate vials. 
+		Colorbar ranges are in milliseconds.
+	}
+	\label{fig:hpd,jet}
+\end{figure*}
+
+	Figs.~\ref{fig:hpd,jet} and \ref{fig:hpd,gray} compare phantom $\bmTo$ and $\bmTt$ ML and RL estimates 
+	\revone{
+		in color and grayscale
+	}
+from optimized scan profiles. 
+	Vials are enumerated in Fig.~\ref{fig:hpd,gray} in descending $\To$ and $\Tt$ order. 
+	Vials corresponding to tight $\mathcal{X}_\mathrm{t}$ and broad $\mathcal{X}_\mathrm{b}$ parameter ranges are highlighted with orange and yellow labels, respectively. 
+	Within these vials of interest, parameter maps from different scans appear visually similar.
+	 
+
+% outside range of interest, most severe bias in T1 ML (0,2) 
+% appears that pure-DESS tends to have significantly greater systematic errors in regions of high T1 
+\revone{
+	In higher-$\To$ vials (and the surrounding water),
+	}
+	more bias is apparent in $\bmToest$ ML and RL estimates from the $(0,2)$ scan profile than from the $(2,1)$ and $(1,1)$ scan profiles. 
+	With the signal models used in this study, the images suggest that scan profiles consisting of at least one SPGR scan may offer increased protection against $\To$ estimation bias.
+
+% t1/t2 ml/rls hpd accuracy
+\begin{figure*} [!tbp]
+	\centering
+	\subfigure [$\ToML$ Estimates] {
+		\includegraphics [width = 0.47\textwidth] {2016-06-20,hpd,t1-ml-compare.eps}
+		\label{fig:t1,hpd,ml,repeat}
 	}
 	\hspace{0.3cm}
-	\subfloat{
-		\includegraphics [width = 0.47\textwidth] {natar2.eps}
-		\label{fig:t2,hpd,ml}
+	\subfigure [$\TtML$ Estimates] {
+		\includegraphics [width = 0.47\textwidth] {2016-06-20,hpd,t2-ml-compare.eps}
+		\label{fig:t2,hpd,ml,repeat}
+	}
+	\vspace{-0.3cm}
+	\subfigure [$\widehat{T}_1^\mathrm{RL}$ Estimates] {
+		\includegraphics [width = 0.47\textwidth] {2016-06-20,hpd,t1-rls-compare.eps}
+		\label{fig:t1,hpd,rls}
+	}
+	\hspace{0.3cm}
+	\subfigure [$\widehat{T}_2^\mathrm{RL}$ Estimates] {
+		\includegraphics [width = 0.47\textwidth] {2016-06-20,hpd,t2-rls-compare.eps}
+		\label{fig:t2,hpd,rls}
 	}
 	\caption{
 		Phantom 
 		\revone{
-			within-ROI sample statistics of $\mathbf{T}_1$ and $\mathbf{T}_2$ ML estimates from optimized SPGR/DESS and reference IR/SE scan profiles, vs. NIST NMR measurements \cite{keenan:16:msm}.
+			within-ROI sample statistics of $\bmTo$ and $\bmTt$ estimates from optimized SPGR/DESS and reference IR/SE scan profiles, vs. NIST NMR measurements \citep{keenan:16:msm}.
 		}
 		Markers and error bars indicate 
 		\revone{
 			ROI sample means and ROI sample standard deviations
 		} 
-		within the 14 labeled and color-coded vials in Fig.~\ref{fig:hpd,gray}. 
-		Tight $\setXt$ and broad $\setXb$ latent parameter ranges are highlighted in orange and yellow, respectively.
+		within the 14 labeled and color-coded vials in Fig.~\ref{fig:hpd,gray}.
 		\revone{
-			Fig.~\ref{fig:hpd,ml-rls} provides analogous plots for RLS estimates.
+			Figs.~\ref{fig:t1,hpd,ml,repeat}-\ref{fig:t2,hpd,ml,repeat} correspond with ML estimates and replicate Figs.~\ref{fig:t1,hpd,ml}-\ref{fig:t2,hpd,ml} for sake of comparison.
+			Figs.~\ref{fig:t1,hpd,rls}-\ref{fig:t2,hpd,rls} correspond with RL estimates.
 		}
+		Tight $\mathcal{X}_\mathrm{t}$ and broad $\mathcal{X}_\mathrm{b}$ latent parameter ranges are highlighted in orange and yellow, respectively.
 		\revtwo{
 			Table~\ref{table:hpd,accuracy} replicates sample statistics within Vials 5-8.
 			Our MR measurements are at 293K, while NIST NMR measurements are at 293.00K.
 		}
 		Within the designed parameter ranges, estimates from different acquisitions are in reasonable agreement with NIST measurements.}
-	\label{fig:hpd,ml}
+	\label{fig:hpd,ml-rls}
 \end{figure*}
 
 	\revone{
-		Fig.~\ref{fig:hpd,ml} plots sample means and sample standard deviations computed within circular ROIs of phantom $\mathbf{T}_1$ and $\mathbf{T}_2$ ML estimates (reconstruction details, analogous plots for RLS estimates, and images in Sections~\ref{ssec:detail:sp,de}-\ref{ssec:detail:phant}).
+		Fig.~\ref{fig:hpd,ml} plots sample means and sample standard deviations computed within circular ROIs of phantom $\bmTo$ and $\bmTt$ ML estimates (reconstruction details, analogous plots for RL estimates, and images in Sections~\ref{ssec:detail:sp,de}-\ref{ssec:detail:phant}).
 	}
 	The highlighted orange and yellow parameter spaces correspond to design ranges $\setXt$ and $\setXb$.
 	\revone{
-		$\mathbf{T}_1$ estimates from both the candidate $(2,1)$, $(1,1)$, and $(0,2)$ (SPGR, DESS) and reference $(4,4)$ (IR, SE) profiles are in reasonable agreement with NIST estimates \cite{keenan:16:msm} across the vial range.
-		$\mathbf{T}_2$ estimates from all profiles are also in good agreement with NIST for vials within $\setXb$.
+		$\bmTo$ estimates from both the candidate $(2,1)$, $(1,1)$, and $(0,2)$ (SPGR, DESS) and reference $(4,4)$ (IR, SE) profiles are in reasonable agreement with NIST estimates \cite{keenan:16:msm} across the vial range.
+		$\bmTt$ estimates from all profiles are also in good agreement with NIST for vials within $\setXb$.
 	SPGR/DESS profiles likely underestimate large $\Tt$ values ($\ge$200ms) due to greater influence of diffusion in DESS \cite{carney:91:asa, wu:90:eod, kaiser:74:daf}.
 	SPGR/DESS profiles possibly overestimate and the IR/SE profile likely underestimates short ($\le$30ms) and very short ($\le$15ms) $\Tt$ values, respectively, due to poorly conditioned estimation. 
 	}
+	
+\revone{
+	Fig.~\ref{fig:hpd,ml-rls} expands Fig.~\ref{fig:hpd,ml} by plotting phantom within-ROI sample statistics of both ML and RL $\bmTo, \bmTt$ estimates.
+	Table~\ref{table:hpd,accuracy} replicates sample statistics in Fig.~\ref{fig:hpd,ml-rls} for vials 5-8.
+	Compared to ML initializations, (weakly) regularized estimates reduce error bars without introducing substantial additional bias.
+}		
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsubsection{Across-Repetition Statistics} 
@@ -996,7 +1191,7 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 \end{table*}
 
 \revone{
-	In a second study, we repeat the $(2,1)$, $(1,1)$, and $(0,2)$ scan profiles 10 times each and separately estimate $\mathbf{T}_1$ and $\mathbf{T}_2$ for each repetition of each scan profile. 
+	In a second study, we repeat the $(2,1)$, $(1,1)$, and $(0,2)$ scan profiles 10 times each and separately estimate $\bmTo$ and $\bmTt$ for each repetition of each scan profile. 
 	We then estimate the standard deviation across repetitions on a per-voxel basis, to produce sample standard deviation maps for each profile.
 	Each ROI voxel of the sample standard deviation map is a better estimate of the \emph{population standard deviation} (which the CRB characterizes) than the ROI sample standard deviation from a single repetition, because the latter estimate is contaminated with slight spatial variation of voxel population means (due to imaging non-idealities such as Gibbs ringing due to $\mathbf{k}$-space truncation).
 }	
@@ -1030,12 +1225,12 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 		\label{fig:brain,roi,gray}
 	\end{minipage}
 	\begin{minipage}{0.8\textwidth}
-		\subfloat{
+		\subfigure{
 			\includegraphics [width=\textwidth] {natar4.eps}
 			\label{fig:brain,t1-ml,jet}
 		}
 		
-		\subfloat{
+		\subfigure{
 			\includegraphics [width=\textwidth-2mm, trim=0 0 0 25, clip] {natar5.eps}
 			\label{fig:brain,t2-ml,jet}
 		}
@@ -1046,29 +1241,52 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 			Separate WM ROIs are distinguished with anterior/posterior (A/P) and right/left (R/L) directions.
 			Four small anterior cortical GM polygons are pooled into a single ROI (cyan).
 		}
-			\emph{Right}: Colorized $\mathbf{T}_1$ and $\mathbf{T}_2$ ML estimates from the brain of a healthy volunteer.
+			\emph{Right}: Colorized $\bmTo$ and $\bmTt$ ML estimates from the brain of a healthy volunteer.
 		Columns correspond to profiles consisting of (2~SPGR,~1~DESS), (1~SPGR,~1~DESS), (0~SPGR,~2~DESS), and (4~IR,~4~SE) acquisitions.  
 		\revtwo{
 			Parameter maps are cropped in post-processing for the purpose of display.
-			Figs.~\ref{fig:brain,jet} (colorized) and ~\ref{fig:brain,gray} (grayscale) provide analogous full-FOV maps estimated via both ML and RLS estimators.
+			Figs.~\ref{fig:brain,jet} (colorized) and ~\ref{fig:brain,gray} (grayscale) provide analogous full-FOV maps estimated via both ML and RL estimators.
 		}
 		Colorbar ranges are in milliseconds.
 	}
 	\label{fig:brain,ml,jet}
 \end{figure*}
 
-	Fig.~\ref{fig:brain,ml,jet} compares brain $\mathbf{T}_1$ and $\mathbf{T}_2$ ML estimates from optimized scan profiles 
+% brain t1/t2 maps, jet
+\begin{figure*} [!tbp]
+	\centering
+	\subfigure{
+		\includegraphics [width=\textwidth] {2016-05-31,brain,t1,jet.eps}
+		\label{fig:brain,t1,jet}
+	}
+	\vspace{0cm}
+	\subfigure{
+		\includegraphics [width=\textwidth-2mm, trim=0 0 0 25, clip] {2016-05-31,brain,t2,jet.eps}
+		\label{fig:brain,t2,jet}
+	}
+	\caption{
+		Colorized $\bmTo$ and $\bmTt$ ML and RL estimates from the brain of a healthy volunteer.
+		Columns correspond to profiles consisting of (2~SPGR,~1~DESS), (1~SPGR,~1~DESS), (0~SPGR,~2~DESS), and (4~IR,~4~SE) acquisitions.  
+		Rows distinguish $\bmTo$ and $\bmTt$ ML and RL estimators.
+		Fig.~\ref{fig:brain,gray} provides identical grayscale images. 
+		Colorbar ranges are in milliseconds.
+	}
+	\label{fig:brain,jet}
+\end{figure*}
+
+
+	Fig.~\ref{fig:brain,ml,jet} compares brain $\bmTo$ and $\bmTt$ ML estimates from optimized scan profiles 
 	\revtwo{
-		(Fig.~\ref{fig:brain,jet} and Fig.~\ref{fig:brain,gray} provide corresponding colorized and grayscale RLS estimates, respectively).
+		(Fig.~\ref{fig:brain,jet} and Fig.~\ref{fig:brain,gray} provide corresponding colorized and grayscale RL estimates, respectively).
 	}
 	\revone{
 		Though in-plane motion is largely compensated via registration, through-plane motion and non-bulk motion likely persist, and will influence ROI statistics.
 		Due to motion (and scan duration) considerations, we examine within-ROI statistics from a single repetition as in Section~\ref{sss,scn-dsgn,exp:phant:roi}, and do not attempt across-repetition statistics as in Section~\ref{sss,scn-dsgn,exp:phant:rep}.
 	}
 	
-	Visually, $\widehat{\mathbf{T}}_1$ maps from steady-state profiles exhibit similar levels of contrast in WM/GM regions well away from cerebrospinal fluid (CSF) as that seen in the reference $\widehat{\mathbf{T}}_1$ estimate.
+	Visually, $\bmToest$ maps from steady-state profiles exhibit similar levels of contrast in WM/GM regions well away from cerebrospinal fluid (CSF) as that seen in the reference $\bmToest$ estimate.
 	\revone{
-		Since we did not optimize any scan profiles for estimation in high-$\To$ regions, it is expected that greater differences may emerge in voxels containing or nearby CSF. In particular, $\mathbf{T}_1$ is significantly underestimated within and near CSF by the $(0,2)$ DESS-only profile. 
+		Since we did not optimize any scan profiles for estimation in high-$\To$ regions, it is expected that greater differences may emerge in voxels containing or nearby CSF. In particular, $\bmTo$ is significantly underestimated within and near CSF by the $(0,2)$ DESS-only profile. 
 		This suggests that with the signal models used in this work, including at least one SPGR scan in an optimized profile may offer greater protection against estimation bias in high-$\To$ regions.
 	}
 	
@@ -1097,13 +1315,47 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 	\vspace{1mm}
 	\caption{
 		\revone{
-			Within-ROI sample means $\pm$ within-ROI sample standard deviations of $\mathbf{T}_1$ and $\mathbf{T}_2$ ML estimates from the brain of a healthy volunteer.
+			Within-ROI sample means $\pm$ within-ROI sample standard deviations of $\bmTo$ and $\bmTt$ ML estimates from the brain of a healthy volunteer.
 			Sample statistics are computed within ROIs indicated in Fig.~\ref{fig:brain,ml,jet}. 
 		} 
 		All values are reported in milliseconds.
 	}
 	\label{table:brain,ml}
 \end{table*} 
+
+% t1/t2 rls brain summary table
+\begin{table*} [tb]
+	\centering
+	\begin{tabu} {c | c | r r r | r}
+		\hline \hline
+			& ROI (color)		& (2SP,1DE)			& (1SP,1DE) 		& (0SP,2DE)			& (4IR,4SE) \\
+		\hline
+		\multirow{5}{*}{\ToRL} 	
+			& \AR WM (yellow) 	& $840 \pm 24$		& $770 \pm 20.$		& $840 \pm 43$ 		& $780 \pm 20.$ \\
+			& \AL WM (magenta)	& $740 \pm 51$ 		& $670 \pm 37$ 		& $740 \pm 54$ 		& $760 \pm 23$ \\
+			& \PR WM (green) 	& $890 \pm 79$ 		& $860 \pm 61$ 		& $960 \pm 82$ 		& $810 \pm 24$ \\
+			& \PL WM (blue) 	& $870 \pm 62$ 		& $850 \pm 50.$		& $880 \pm 78$ 		& $820 \pm 35$ \\
+			& \A GM (cyan) 		& $1200 \pm 200$	& $1200 \pm 220$ 	& $1300 \pm 230$	& $1300 \pm 180$ \\
+		\hline
+		\multirow{5}{*}{\TtRL} 	
+			& \AR WM (yellow) 	& $40. \pm 1.3$ 	& $54 \pm 3.4$ 		& $46 \pm 1.5$		& $55 \pm 1.9$ \\
+			& \AL WM (magenta)	& $40. \pm 1.7$		& $50. \pm 4.4$		& $43 \pm 1.7$ 		& $53 \pm 1.8$ \\
+			& \PR WM (green) 	& $43 \pm 2.8$ 		& $60. \pm 6.7$ 	& $51 \pm 3.7$ 		& $58 \pm 2.3$ \\
+			& \PL WM (blue) 	& $43 \pm 1.7$		& $57 \pm 4.7$ 		& $49 \pm 2.5$ 		& $57 \pm 1.8$ \\
+			& \A GM (cyan) 		& $50 \pm 12$ 		& $60 \pm 15$ 		& $60 \pm 11$ 		& $59 \pm 6.4$ \\
+		\hline \hline
+	\end{tabu}
+	\vspace{1mm}
+	\caption{
+		\revone{
+			Within-ROI sample means $\pm$ within-ROI sample standard deviations of $\bmTo$ and $\bmTt$ RL estimates from the brain of a healthy volunteer.
+			Sample statistics are computed within ROIs indicated in Fig.~\ref{fig:brain,ml,jet}. 
+		} 
+		All values are reported in milliseconds.
+	}
+	\label{table:brain,rls}
+\end{table*} 
+
 
 % v2-2
 \revone{
@@ -1115,25 +1367,33 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 	over four separate WM ROIs containing 96, 69, 224, and 148 voxels and one pooled cortical GM ROI containing 156 voxels (\emph{cf.}~Fig.~\ref{fig:brain,ml,jet}).	
 }
 \revone{
-	Within-ROI $\widehat{\mathbf{T}}_1$ sample standard deviations are comparable across steady-state profiles.
-	In agreement with Table~\ref{table:profile}, $\mathbf{T}_2$ estimates from the optimized $(1,1)$ scan profile exhibit higher within-ROI sample variation than corresponding $(2,1)$ and $(0,2)$ $\widehat{\mathbf{T}}_2$ maps.
+	Within-ROI $\bmToest$ sample standard deviations are comparable across steady-state profiles.
+	In agreement with Table~\ref{table:profile}, $\bmTt$ estimates from the optimized $(1,1)$ scan profile exhibit higher within-ROI sample variation than corresponding $(2,1)$ and $(0,2)$ $\bmTtest$ maps.
+}
+
+%supp
+\revtwo{
+	Fig.~\ref{fig:brain,jet} expands Fig.~\ref{fig:brain,ml,jet} by comparing both ML and RL $\bmTo, \bmTt$ estimates across scan profiles.
+	Fig.~\ref{fig:brain,gray} replicates Fig.~\ref{fig:brain,jet} in grayscale.
+	Table~\ref{table:brain,rls} is similar to Table~\ref{table:brain,ml}, except for RL estimates.
+	Compared to ML counterparts, RL estimates in general reduce within-ROI sample variation without incurring significant additional bias.
 }
 
 \revtwo{
-	In most cases, $\widehat{\mathbf{T}}_1$ within-ROI sample means from optimized SPGR/DESS scan profiles do not deviate substantially from each other or from reference IR/SE measurements.
+	In most cases, $\bmToest$ within-ROI sample means from optimized SPGR/DESS scan profiles do not deviate substantially from each other or from reference IR/SE measurements.
 	Two notable exceptions are \ToML in anterior left and posterior right WM from $(1,1)$ and $(0,2)$ profiles: these estimates are significantly lower and higher than analogous estimates from other profiles, respectively.
 	Results thus suggest that the optimized $(2,1)$ scan profile yields WM \ToML estimates that are more consistently similar to IR WM \ToML estimates than other optimized SPGR/DESS profiles.
 }
 
 \revtwo{
-	Systematic differences in $\widehat{\mathbf{T}}_2$ sample means are evident across scan profiles, particularly within WM ROIs.
+	Systematic differences in $\bmTtest$ sample means are evident across scan profiles, particularly within WM ROIs.
 	Curiously, the $(1,1)$ profile agrees most consistently (in WM/GM \TtML within-ROI sample mean) with reference estimates, though with relatively high sample variation.
 	The $(2,1)$ and $(0,2)$ SPGR/DESS profiles produce consistently lower WM \TtML than the reference IR/SE profile, though the $(0,2)$ profile is in reasonable agreement with other steady-state estimates \cite{heule:14:tes-nib}.
 }
 	These discrepancies may due to differences in sensitivity to multi-compartmental relaxation \cite{mackay:94:ivv}.
 	Specifically, different signal models with different scan parameter choices might be more or less sensitive to the model mismatch incurred by neglecting to distinguish the multiple $\Tt$ components within each voxel.
 	\revone{
-		Section~\ref{sec:multi} studies $\mathbf{T}_2$ estimation bias due to multi-compartmental relaxation in more detail.
+		Section~\ref{sec:multi} studies $\bmTt$ estimation bias due to multi-compartmental relaxation in more detail.
 	}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1160,14 +1420,14 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 	However, prior distributions are generally unknown, and may need to be estimated from data, as in \cite{lewis:16:ddo}.
 }
 
-	Careful calibration of flip angle scaling $\bm{\kappa}$ is essential for accurate $\mathbf{T}_1, \mathbf{T}_2$ estimation from SPGR/DESS scan profiles. 
+	Careful calibration of flip angle scaling $\bm{\kappa}$ is essential for accurate $\bmTo, \bmTt$ estimation from SPGR/DESS scan profiles. 
 	In this work, we estimate $\bm{\kappa}$ from \emph{separate} acquisitions and adjust nominal flip angles prior to reconstruction, 
 	\revone{
-		but acknowledge that non-idealities in those separate acquisitions may themselves cause resultant $\widehat{\mathbf{B}}_1^+$ errors to propagate into our $\mathbf{T}_1, \mathbf{T}_2$ estimates. 
+		but acknowledge that non-idealities in those separate acquisitions may themselves cause resultant $\widehat{\mathbf{B}}_1^+$ errors to propagate into our $\bmTo, \bmTt$ estimates. 
 		To reduce error propagation, it may be desirable to instead design scan profiles to permit \emph{joint} estimation of $\bm{\kappa}$, in addition to other latent object parameters.
 	} 
 	Unfortunately, we find that optimizing the $(2,1)$ or $(0,2)$ profile to allow for four-parameter $\bmx(\mathbf{r}) := \brac{M_{\mathrm{E}}(\mathbf{r}), \To(\mathbf{r}), \Tt(\mathbf{r}),\kappa(\mathbf{r})}\tpose$ estimation results in unacceptably high amplification of the worst-case $\To$ standard deviation. 
-	(Incidentally, precise $\mathbf{T}_2$ ML and RLS estimation alone from the $(2,1)$ or $(0,2)$ profile is possible \cite{nataraj:14:mbe}.) 
+	(Incidentally, precise $\bmTt$ ML and RL estimation alone from the $(2,1)$ or $(0,2)$ profile is possible \cite{nataraj:14:mbe}.) 
 	\revone{
 		It remains an open scan design question as to whether time spent collecting Bloch-Siegert data for separate $\mathbf{B}_1^+$ mapping could instead be better spent collecting additional SPGR, DESS, and/or other data for joint estimation.
 	}
@@ -1201,7 +1461,7 @@ from measurements at 1.5T \cite{kwan:99:msb}.
 	}
 
 \revone{
-	\emph{In vivo} experiments suggest that with optimization, the $(0,2)$ profile can yield comparable $\widehat{\mathbf{T}}_1, \widehat{\mathbf{T}}_2$ precision to the more conventional $(2,1)$ \cite{nataraj:14:mbe} scan profile in well-isolated WM/GM ROIs; however, the $(0,2)$ $\mathbf{T}_1$ estimates are unreliable within and near the CSF
+	\emph{In vivo} experiments suggest that with optimization, the $(0,2)$ profile can yield comparable $\bmToest, \bmTtest$ precision to the more conventional $(2,1)$ \cite{nataraj:14:mbe} scan profile in well-isolated WM/GM ROIs; however, the $(0,2)$ $\bmTo$ estimates are unreliable within and near the CSF
 }
 \revtwo{
 	and do not agree with IR measurements in WM as consistently as the $(2,1)$ profile.

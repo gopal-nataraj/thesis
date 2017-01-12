@@ -393,4 +393,15 @@ G.~J. Stanisz, E.~E. Odrobina, J.~Pun, M.~Escaravage, S.~J. Graham, M.~J.
   magnetization transfer in tissue at {3T},'' {\em {Mag. Res. Med.}}, vol.~54,
   pp.~{507--12}, Sept. 2005.
 
+\bibitem{kwan:99:msb}
+R.~K.-S. Kwan, A.~C. Evans, and G.~B. Pike, ``{MRI} simulation-based evaluation
+  of image-processing and classification methods,'' {\em {IEEE Trans. Med.
+  Imag.}}, vol.~18, pp.~{1085--97}, Nov. 1999.
+
+\bibitem{collins:98:dac}
+D.~L. Collins, A.~P. Zijdenbos, V.~Kollokian, J.~G. Sled, N.~J. Kabani, C.~J.
+  Holmes, and A.~C. Evans, ``Design and construction of a realistic digital
+  brain phantom,'' {\em {IEEE Trans. Med. Imag.}}, vol.~17, pp.~{463--8}, June
+  1998.
+
 \end{thebibliography}

@@ -38,10 +38,11 @@
 \contentsline {subsection}{\numberline {4.3.1}Scan Design Details}{28}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Scan Profile Comparisons}{30}{subsection.4.3.2}
 \contentsline {section}{\numberline {4.4}Experimental Validation and Results}{32}{section.4.4}
-\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{34}{chapter.5}
-\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{35}{chapter.6}
-\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{36}{chapter.7}
-\contentsline {chapter}{\numberline {8}Future Work}{37}{chapter.8}
-\contentsline {chapter}{Appendices}{38}{section*.7}
+\contentsline {subsection}{\numberline {4.4.1}Numerical Simulations}{33}{subsection.4.4.1}
+\contentsline {chapter}{\numberline {5}MRI Parameter Estimation\tmspace +\thinmuskip {.1667em}\\ via Kernel Regression}{36}{chapter.5}
+\contentsline {chapter}{\numberline {6}Myelin Water Fraction Estimation\tmspace +\thinmuskip {.1667em}\\ from Steady-State Sequences}{37}{chapter.6}
+\contentsline {chapter}{\numberline {7}Steady-State RF Pulse Design}{38}{chapter.7}
+\contentsline {chapter}{\numberline {8}Future Work}{39}{chapter.8}
+\contentsline {chapter}{Appendices}{40}{section*.7}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{40}{section*.10}
+\contentsline {chapter}{Bibliography}{42}{section*.10}
