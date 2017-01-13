@@ -1789,33 +1789,47 @@ Designing scan profiles involving such complex signal models
 would likely necessitate optimization techniques more involved 
 than the simple grid searches used in this work.
 
-\begin{comment}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
-\label{sec:conc}
+\label{s,scn-dsgn,conc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-	We have introduced a CRB-inspired min-max optimization approach to aid robust, application-specific MR scan selection and optimization for precise parameter estimation. 
-	As a detailed example, we have optimized combinations of fast SPGR and DESS scans for $\To, \Tt$ relaxometry in WM and GM regions of the human brain at 3T. 
-	\revtwo{
-		Numerical simulations show that at typical noise levels and with accurate flip angle prior knowledge, WM- and GM-like $\To, \Tt$ ML estimates from optimized scans are nearly unbiased,
-	}
-	and so worst-case CRB predictions yield reliable bounds on ROI sample variances.
-	\revone{
-		Phantom accuracy experiments show that optimized combinations of $(2,1)$, $(1,1)$, or $(0,2)$ (SPGR, DESS) scans are in excellent agreement with NIST and IR/SE measurements over the designed latent object parameter range of interest.
-		Phantom precision experiments show that these SPGR/DESS combinations exhibit trends in pooled sample standard deviations that reasonably reflect CRB predictions.
-	}
+This chapter has introduced 
+a CRB-inspired min-max optimization approach 
+to guide MR scan design 
+for precise parameter estimation. 
+As a detailed example, 
+we have optimized combinations 
+of fast SPGR and DESS scans 
+for $\To, \Tt$ relaxometry 
+in WM and GM regions of the human brain at 3T. 
+Numerical simulations show that at typical noise levels 
+and with accurate flip angle prior knowledge, 
+WM- and GM-like $\To, \Tt$ ML estimates 
+from optimized scans are nearly unbiased,
+and so worst-case CRB predictions 
+yield reliable bounds on ROI sample variances.
+Phantom accuracy experiments show that optimized combinations 
+of $(2,1)$, $(1,1)$, or $(0,2)$ (SPGR, DESS) scans 
+are in excellent agreement with NIST and IR/SE measurements 
+over the designed latent object parameter range of interest.
+Phantom precision experiments show 
+that these SPGR/DESS combinations exhibit trends 
+in pooled sample standard deviations 
+that reasonably reflect CRB predictions.
 
-\revone{
-	\emph{In vivo} experiments suggest that with optimization, the $(0,2)$ profile can yield comparable $\bmToest, \bmTtest$ precision to the more conventional $(2,1)$ \cite{nataraj:14:mbe} scan profile in well-isolated WM/GM ROIs; however, the $(0,2)$ $\bmTo$ estimates are unreliable within and near the CSF
-}
-\revtwo{
-	and do not agree with IR measurements in WM as consistently as the $(2,1)$ profile.
-}
-\revone{
-	This and other disagreements across profiles \emph{in vivo} may be attributable to differences in signal model sensitivities to neglected higher-order effects. 
-	Nevertheless, this simple example application illustrates that scan optimization may enable new parameter mapping techniques from established pulse sequences.
-}
-
-\end{comment}
+\emph{In vivo} experiments suggest that with optimization, 
+the $(0,2)$ profile can yield comparable $\bmToest, \bmTtest$ precision 
+to the more conventional $(2,1)$ \cite{nataraj:14:mbe} scan profile 
+in well-isolated WM/GM ROIs; 
+however, the $(0,2)$ $\bmTo$ estimates are unreliable 
+within and near the CSF
+and do not agree with IR measurements 
+in WM as consistently as the $(2,1)$ profile.
+This and other disagreements across profiles \emph{in vivo} 
+may be attributable to differences in signal model sensitivities 
+to neglected higher-order effects. 
+Nevertheless, the example application 
+studied in this chapter illustrates 
+that scan optimization can enable new parameter mapping techniques 
+from established pulse sequences.
