@@ -1307,16 +1307,16 @@ against $\To$ estimation bias.
 		V8 $\ToRL$ 	& $674 \pm 7.6$		& $637 \pm 7.4$ 	& $662 \pm 6.6$		& $658 \pm 7.1$		& \\
 		\hline \hline
 		V5 $\TtML$ 	& $131 \pm 5.5$		& $140 \pm 10.$		& $141 \pm 8.4$		& $143 \pm 4.9$		& $133.27 \pm 0.073$ \\
-		V5 $\ToRL$ 	& $131 \pm 5.2$ 	& $145 \pm 9.1$		& $139 \pm 7.1$		& $142 \pm 4.8$ 	& \\
+		V5 $\TtRL$ 	& $131 \pm 5.2$ 	& $145 \pm 9.1$		& $139 \pm 7.1$		& $142 \pm 4.8$ 	& \\
 		\hline
 		V6 $\TtML$	& $91 \pm 3.5$ 		& $99 \pm 6.0$ 		& $95 \pm 4.2$ 		& $96 \pm 2.7$ 		& $96.89 \pm 0.049$ \\
-		V6 $\ToRL$ 	& $91 \pm 3.4$ 		& $104 \pm 6.2$		& $93 \pm 3.7$ 		& $96 \pm 2.6$		& \\
+		V6 $\TtRL$ 	& $91 \pm 3.4$ 		& $104 \pm 6.2$		& $93 \pm 3.7$ 		& $96 \pm 2.6$		& \\
 		\hline
 		V7 $\TtML$ 	& $64 \pm 2.2$		& $69 \pm 3.9$		& $65 \pm 2.1$ 		& $69 \pm 1.2$ 		& $64.07 \pm 0.034$ \\
-		V7 $\ToRL$ 	& $65 \pm 2.1$ 		& $71 \pm 4.3$		& $64 \pm 1.9$ 		& $69 \pm 1.2$ 		& \\
+		V7 $\TtRL$ 	& $65 \pm 2.1$ 		& $71 \pm 4.3$		& $64 \pm 1.9$ 		& $69 \pm 1.2$ 		& \\
 		\hline
 		V8 $\TtML$	& $46 \pm 1.5$ 		& $50. \pm 2.3$ 	& $46 \pm 1.1$		& $47.6 \pm 0.87$ 	& $46.42 \pm 0.014$ \\
-		V8 $\ToRL$	& $46 \pm 1.5$ 		& $50. \pm 2.3$ 	& $46 \pm 1.0$ 		& $47.5 \pm 0.85$ 	& \\	
+		V8 $\TtRL$	& $46 \pm 1.5$ 		& $50. \pm 2.3$ 	& $46 \pm 1.0$ 		& $47.5 \pm 0.85$ 	& \\	
 		\hline \hline	 
 	\end{tabu}
 	\caption{
@@ -1456,203 +1456,226 @@ the optimized $(2,1)$ and $(0,2)$ profiles
 afford greater $\Tt$ ML estimation precision 
 than the optimized $(1,1)$ profile.
 
-\begin{comment}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{\textit{In Vivo} Experiments}
-\label{ss,scn-dsgn,exp:invivo}
+\subsection{\textit{In~Vivo} Experiments}
+\label{ss,scn-dsgn,exp,invivo}
 
-	In a single long study of a healthy volunteer, we acquire the same optimized scan profiles containing $(2,1)$, $(1,1)$, and $(0,2)$ SPGR and DESS scans (\emph{cf.} Table~\ref{table:profile}), as well as 
-	\revone{
-		the reference profile containing $(4,4)$ IR and SE scans.
-	}
-	We obtain axial slices from a 32-channel Nova Medical\regis receive head array.
-	\revone{
-		To address bulk motion between acquisitions and to compare within-ROI statistics, we rigidly register each coil-combined image to an IR image (details in Section~\ref{ssec:detail:invivo}) prior to parameter mapping.
-		All acquisition (\emph{cf.} Section~\ref{sss,scn-dsgn,exp:phant:roi}) and reconstruction (\emph{cf.} Sections~\ref{ssec:detail:sp,de}-\ref{ssec:detail:ir,se}) details are otherwise the same as in phantom experiments. 
-	}
-	For all steady-state scan profiles tested, 
-ML initializations and RL reconstructions 
-of brain datasets require less than 3m and 7s, respectively.
-
-% brain t1/t2 maps, jet
-\begin{figure*} [t]
-	\centering
-	\begin{minipage}{0.18\textwidth}
-		\includegraphics [width=3cm] {natar3.eps}
-		\label{fig:brain,roi,gray}
-	\end{minipage}
-	\begin{minipage}{0.8\textwidth}
-		\subfigure{
-			\includegraphics [width=\textwidth] {natar4.eps}
-			\label{fig:brain,t1-ml,jet}
-		}
-		
-		\subfigure{
-			\includegraphics [width=\textwidth-2mm, trim=0 0 0 25, clip] {natar5.eps}
-			\label{fig:brain,t2-ml,jet}
-		}
-	\end{minipage}
-	\caption{
-		\revtwo{
-			\emph{Left}: WM and GM ROIs, overlaid on a representative  anatomical (coil-combined IR) image.
-			Separate WM ROIs are distinguished with anterior/posterior (A/P) and right/left (R/L) directions.
-			Four small anterior cortical GM polygons are pooled into a single ROI (cyan).
-		}
-			\emph{Right}: Colorized $\bmTo$ and $\bmTt$ ML estimates from the brain of a healthy volunteer.
-		Columns correspond to profiles consisting of (2~SPGR,~1~DESS), (1~SPGR,~1~DESS), (0~SPGR,~2~DESS), and (4~IR,~4~SE) acquisitions.  
-		\revtwo{
-			Parameter maps are cropped in post-processing for the purpose of display.
-			Figs.~\ref{fig:brain,jet} (colorized) and ~\ref{fig:brain,gray} (grayscale) provide analogous full-FOV maps estimated via both ML and RL estimators.
-		}
-		Colorbar ranges are in milliseconds.
-	}
-	\label{fig:brain,ml,jet}
-\end{figure*}
+In a single long study of a healthy volunteer, 
+we acquire the same optimized scan profiles 
+containing $(2,1)$, $(1,1)$, and $(0,2)$ SPGR/DESS scans 
+(\emph{cf.} Table~\ref{table:profile}), 
+as well as the reference profile 
+containing $(4,4)$ IR/SE scans.
+We obtain axial slices 
+from a 32-channel Nova Medical\regis receive head array.
+To address bulk motion between acquisitions 
+and to compare within-ROI statistics, 
+we rigidly register
+\footnote{For each coil-combined dataset, 
+we compute a separate 2D rigid transformation 
+(with respect to the $\TI = 50$ms IR dataset) 
+via the MATLAB\regis function \texttt{imregtform} 
+and then apply the transformation via \texttt{imwarp}.
+We choose to use rigid transformations 
+instead of affine distortions to avoid scaling; 
+however in doing so we sacrifice compensating 
+for small through-plane rotations. 
+We do not find registration 
+to substantially change subsequently estimated relaxation maps; 
+however, this extra step substantially improves alignment 
+of (especially cortical GM) ROIs 
+in $\To$ and $\Tt$ estimates from different scan profiles.
+} 
+each coil-combined image to an IR image
+prior to parameter mapping.
+All acquisition and reconstruction details 
+are otherwise the same as in phantom experiments
+(\emph{cf.} Section~\ref{sss,scn-dsgn,exp,phant,roi}). 
+For all SS scan profiles tested, 
+ML and RL reconstructions 
+of brain datasets require less than 3m30s and 9s, respectively.
 
 % brain t1/t2 maps, jet
 \begin{figure*} [!tbp]
 	\centering
 	\subfigure{
-		\includegraphics [width=\textwidth] {2016-05-31,brain,t1,jet.eps}
+		\includegraphics [width=15.4cm] {2016-05-31,brain,t1,jet.eps}
 		\label{fig:brain,t1,jet}
 	}
 	\vspace{0cm}
 	\subfigure{
-		\includegraphics [width=\textwidth-2mm, trim=0 0 0 25, clip] {2016-05-31,brain,t2,jet.eps}
+		\includegraphics [width=15.2cm, trim=0 0 0 25, clip] {2016-05-31,brain,t2,jet.eps}
 		\label{fig:brain,t2,jet}
 	}
 	\caption{
-		Colorized $\bmTo$ and $\bmTt$ ML and RL estimates from the brain of a healthy volunteer.
-		Columns correspond to profiles consisting of (2~SPGR,~1~DESS), (1~SPGR,~1~DESS), (0~SPGR,~2~DESS), and (4~IR,~4~SE) acquisitions.  
+		Colorized $\bmTo$ and $\bmTt$ ML and RL estimates 
+		from the brain of a healthy volunteer.
+		Columns correspond to profiles consisting 
+		of (2~SPGR,~1~DESS), (1~SPGR,~1~DESS), (0~SPGR,~2~DESS), 
+		and (4~IR,~4~SE) acquisitions.  
 		Rows distinguish $\bmTo$ and $\bmTt$ ML and RL estimators.
-		Fig.~\ref{fig:brain,gray} provides identical grayscale images. 
 		Colorbar ranges are in milliseconds.
 	}
 	\label{fig:brain,jet}
 \end{figure*}
 
+Fig.~\ref{fig:brain,jet} compares 
+brain $\bmTo$ and $\bmTt$ ML and RL estimates 
+from optimized scan profiles.
+Though in-plane motion is largely compensated via registration, 
+through-plane motion and non-bulk motion likely persist, 
+and will influence ROI statistics.
+Due to motion (and scan duration) considerations,
+we examine within-ROI statistics from a single repetition 
+as in Section~\ref{sss,scn-dsgn,exp,phant,roi}, 
+and do not attempt across-repetition statistics 
+as in Section~\ref{sss,scn-dsgn,exp,phant,rep}.
+	
+Visually, $\bmToest$ maps from steady-state profiles 
+exhibit similar levels of contrast 
+in WM/GM regions well away 
+from cerebrospinal fluid (CSF) as that seen 
+in the reference $\bmToest$ estimate.
+Since we did not optimize any scan profiles 
+for estimation in high-$\To$ regions, 
+it is expected that greater differences may emerge 
+in voxels containing or nearby CSF. 
+In particular, 
+$\bmTo$ is significantly underestimated 
+within and near CSF by the $(0,2)$ DESS-only profile. 
+This suggests that with the signal models used in this work, 
+including at least one SPGR scan in an optimized profile 
+may offer greater protection 
+against estimation bias in high-$\To$ regions.
 
-	Fig.~\ref{fig:brain,ml,jet} compares brain $\bmTo$ and $\bmTt$ ML estimates from optimized scan profiles 
-	\revtwo{
-		(Fig.~\ref{fig:brain,jet} and Fig.~\ref{fig:brain,gray} provide corresponding colorized and grayscale RL estimates, respectively).
-	}
-	\revone{
-		Though in-plane motion is largely compensated via registration, through-plane motion and non-bulk motion likely persist, and will influence ROI statistics.
-		Due to motion (and scan duration) considerations, we examine within-ROI statistics from a single repetition as in Section~\ref{sss,scn-dsgn,exp:phant:roi}, and do not attempt across-repetition statistics as in Section~\ref{sss,scn-dsgn,exp:phant:rep}.
-	}
-	
-	Visually, $\bmToest$ maps from steady-state profiles exhibit similar levels of contrast in WM/GM regions well away from cerebrospinal fluid (CSF) as that seen in the reference $\bmToest$ estimate.
-	\revone{
-		Since we did not optimize any scan profiles for estimation in high-$\To$ regions, it is expected that greater differences may emerge in voxels containing or nearby CSF. In particular, $\bmTo$ is significantly underestimated within and near CSF by the $(0,2)$ DESS-only profile. 
-		This suggests that with the signal models used in this work, including at least one SPGR scan in an optimized profile may offer greater protection against estimation bias in high-$\To$ regions.
-	}
-	
 % t1/t2 ml brain summary table
 \begin{table*} [tb]
 	\centering
-	\begin{tabu} {c | c | r r r | r}
-		\hline \hline
-			& ROI (color)		& (2SP,1DE)			& (1SP,1DE) 		& (0SP,2DE)			& (4IR,4SE) \\
-		\hline
-		\multirow{5}{*}{$\ToML$} 	
-			& \AR WM (yellow) 	& $840 \pm 32$		& $770 \pm 31$ 		& $840 \pm 43$ 		& $780 \pm 22$ \\
-			& \AL WM (magenta)	& $740 \pm 61$ 		& $660 \pm 45$ 		& $740 \pm 55$ 		& $760 \pm 24$ \\
-			& \PR WM (green) 	& $890 \pm 88$ 		& $860 \pm 72$ 		& $960 \pm 84$ 		& $810 \pm 26$ \\
-			& \PL WM (blue) 	& $860 \pm 70.$ 	& $850 \pm 61$ 		& $880 \pm 79$ 		& $820 \pm 37$ \\
-			& \A GM (cyan) 		& $1200 \pm 210$	& $1200 \pm 230$ 	& $1300 \pm 230$	& $1300 \pm 180$ \\
-		\hline
-		\multirow{5}{*}{$\TtML$} 	
-			& \AR WM (yellow) 	& $40. \pm 1.3$ 	& $54 \pm 3.8$ 		& $46 \pm 1.5$		& $55 \pm 1.9$ \\
-			& \AL WM (magenta)	& $40. \pm 1.7$		& $50. \pm 4.5$		& $44 \pm 1.7$ 		& $53 \pm 1.8$ \\
-			& \PR WM (green) 	& $43 \pm 2.7$ 		& $60. \pm 6.9$ 	& $51 \pm 3.6$ 		& $59 \pm 2.1$ \\
-			& \PL WM (blue) 	& $43 \pm 1.8$		& $57 \pm 4.9$ 		& $49 \pm 2.5$ 		& $57 \pm 1.8$ \\
-			& \A GM (cyan) 		& $50 \pm 12$ 		& $60 \pm 15$ 		& $60 \pm 11$ 		& $59 \pm 6.0$ \\
-		\hline \hline
-	\end{tabu}
+	\small
+	\begin{minipage}{0.18\textwidth}
+		\includegraphics [width=2.8cm] {2016-05-31,brain,roi,gray.eps}
+		\label{fig:brain,roi,gray}
+	\end{minipage}
+	\begin{minipage}{0.8\textwidth}
+		\begin{tabu} {c | c | r r r | r}
+			\hline \hline
+				& ROI			& (2SP,1DE)				& (1SP,1DE) 			& (0SP,2DE)				& (4IR,4SE) \\
+			\hline
+			\multirow{5}{*}{$\ToML$} 	
+			& \AR WM	& $840 \pm 32$		& $770 \pm 31$ 		& $840 \pm 43$ 		& $780 \pm 22$ \\
+			& \AL WM 	& $740 \pm 61$ 		& $660 \pm 45$ 		& $740 \pm 55$ 		& $760 \pm 24$ \\
+			& \PR WM 	& $890 \pm 88$ 		& $860 \pm 72$ 		& $960 \pm 84$ 		& $810 \pm 26$ \\
+			& \PL WM 	& $860 \pm 70.$ 	& $850 \pm 61$ 		& $880 \pm 79$ 		& $820 \pm 37$ \\
+			& \A GM 	& $1200 \pm 210$	& $1200 \pm 230$ 	& $1300 \pm 230$	& $1300 \pm 180$ \\
+			\hline
+			\multirow{5}{*}{$\ToRL$} 	
+			& \AR WM	& $840 \pm 24$		& $770 \pm 20.$		& $840 \pm 43$ 		& $780 \pm 20.$ \\
+			& \AL WM 	& $740 \pm 51$ 		& $670 \pm 37$ 		& $740 \pm 54$ 		& $760 \pm 23$ \\
+			& \PR WM 	& $890 \pm 79$ 		& $860 \pm 61$ 		& $960 \pm 82$ 		& $810 \pm 24$ \\
+			& \PL WM 	& $870 \pm 62$ 		& $850 \pm 50.$		& $880 \pm 78$ 		& $820 \pm 35$ \\
+			& \A GM 	& $1200 \pm 200$	& $1200 \pm 220$ 	& $1300 \pm 230$	& $1300 \pm 180$ \\
+			\hline \hline
+			\multirow{5}{*}{$\TtML$} 	
+			& \AR WM 	& $40. \pm 1.3$ 	& $54 \pm 3.8$ 		& $46 \pm 1.5$		& $55 \pm 1.9$ \\
+			& \AL WM 	& $40. \pm 1.7$		& $50. \pm 4.5$		& $44 \pm 1.7$ 		& $53 \pm 1.8$ \\
+			& \PR WM  & $43 \pm 2.7$ 		& $60. \pm 6.9$ 	& $51 \pm 3.6$ 		& $59 \pm 2.1$ \\
+			& \PL WM 	& $43 \pm 1.8$		& $57 \pm 4.9$ 		& $49 \pm 2.5$ 		& $57 \pm 1.8$ \\
+			& \A GM 	& $50 \pm 12$ 		& $60 \pm 15$ 		& $60 \pm 11$ 		& $59 \pm 6.0$ \\
+			\hline
+			\multirow{5}{*}{$\TtRL$} 	
+			& \AR WM  & $40. \pm 1.3$ 	& $54 \pm 3.4$ 		& $46 \pm 1.5$		& $55 \pm 1.9$ \\
+			& \AL WM 	& $40. \pm 1.7$		& $50. \pm 4.4$		& $43 \pm 1.7$ 		& $53 \pm 1.8$ \\
+			& \PR WM  & $43 \pm 2.8$ 		& $60. \pm 6.7$ 	& $51 \pm 3.7$ 		& $58 \pm 2.3$ \\
+			& \PL WM 	& $43 \pm 1.7$		& $57 \pm 4.7$ 		& $49 \pm 2.5$ 		& $57 \pm 1.8$ \\
+			& \A GM 	& $50 \pm 12$ 		& $60 \pm 15$ 		& $60 \pm 11$ 		& $59 \pm 6.4$ \\
+			\hline \hline
+		\end{tabu}
+	\end{minipage}
 	\vspace{1mm}
 	\caption{
-		\revone{
-			Within-ROI sample means $\pm$ within-ROI sample standard deviations of $\bmTo$ and $\bmTt$ ML estimates from the brain of a healthy volunteer.
-			Sample statistics are computed within ROIs indicated in Fig.~\ref{fig:brain,ml,jet}. 
-		} 
+		\emph{Left}:
+		WM and GM ROIs,
+		overlaid on a representative anatomical
+		(coil-combined, IR) image.
+		Separate WM ROIs are distinguished
+		with anterior-right (\AR),
+		anterior-left (\AL),
+		posterior-right (\PR), and
+		posterior-left (\PL) directions.
+		Four small anterior (\A) cortical GM polygons
+		are pooled into a single ROI.
+		\emph{Right}:
+		Within-ROI sample means $\pm$ 
+		within-ROI sample standard deviations 
+		of $\bmTo$ and $\bmTt$ ML and RL estimates 
+		from the brain of a healthy volunteer.
+		Sample statistics are computed 
+		within ROIs indicated in the anatomical image.  
 		All values are reported in milliseconds.
 	}
-	\label{table:brain,ml}
+	\label{table:brain}
 \end{table*} 
 
-% t1/t2 rls brain summary table
-\begin{table*} [tb]
-	\centering
-	\begin{tabu} {c | c | r r r | r}
-		\hline \hline
-			& ROI (color)		& (2SP,1DE)			& (1SP,1DE) 		& (0SP,2DE)			& (4IR,4SE) \\
-		\hline
-		\multirow{5}{*}{$\ToRL$} 	
-			& \AR WM (yellow) 	& $840 \pm 24$		& $770 \pm 20.$		& $840 \pm 43$ 		& $780 \pm 20.$ \\
-			& \AL WM (magenta)	& $740 \pm 51$ 		& $670 \pm 37$ 		& $740 \pm 54$ 		& $760 \pm 23$ \\
-			& \PR WM (green) 	& $890 \pm 79$ 		& $860 \pm 61$ 		& $960 \pm 82$ 		& $810 \pm 24$ \\
-			& \PL WM (blue) 	& $870 \pm 62$ 		& $850 \pm 50.$		& $880 \pm 78$ 		& $820 \pm 35$ \\
-			& \A GM (cyan) 		& $1200 \pm 200$	& $1200 \pm 220$ 	& $1300 \pm 230$	& $1300 \pm 180$ \\
-		\hline
-		\multirow{5}{*}{$\TtRL$} 	
-			& \AR WM (yellow) 	& $40. \pm 1.3$ 	& $54 \pm 3.4$ 		& $46 \pm 1.5$		& $55 \pm 1.9$ \\
-			& \AL WM (magenta)	& $40. \pm 1.7$		& $50. \pm 4.4$		& $43 \pm 1.7$ 		& $53 \pm 1.8$ \\
-			& \PR WM (green) 	& $43 \pm 2.8$ 		& $60. \pm 6.7$ 	& $51 \pm 3.7$ 		& $58 \pm 2.3$ \\
-			& \PL WM (blue) 	& $43 \pm 1.7$		& $57 \pm 4.7$ 		& $49 \pm 2.5$ 		& $57 \pm 1.8$ \\
-			& \A GM (cyan) 		& $50 \pm 12$ 		& $60 \pm 15$ 		& $60 \pm 11$ 		& $59 \pm 6.4$ \\
-		\hline \hline
-	\end{tabu}
-	\vspace{1mm}
-	\caption{
-		\revone{
-			Within-ROI sample means $\pm$ within-ROI sample standard deviations of $\bmTo$ and $\bmTt$ RL estimates from the brain of a healthy volunteer.
-			Sample statistics are computed within ROIs indicated in Fig.~\ref{fig:brain,ml,jet}. 
-		} 
-		All values are reported in milliseconds.
-	}
-	\label{table:brain,rls}
-\end{table*} 
-
-
-% v2-2
-\revone{
-	Table~\ref{table:brain,ml} summarizes within-ROI sample means and sample standard deviations} 
-\revtwo{
-	computed\footnote{\revone{We have taken effort to try and select ROIs that reflect expected anatomy in all coil-combined and registered images, including adjacent slices in images from 3D acquisitions. 
-		However, we acknowledge the possibility of some contamination across tissue boundaries, especially WM and/or CSF contamination into cortical GM.
-	}}
-	over four separate WM ROIs containing 96, 69, 224, and 148 voxels and one pooled cortical GM ROI containing 156 voxels (\emph{cf.}~Fig.~\ref{fig:brain,ml,jet}).	
+Table~\ref{table:brain} summarizes 
+within-ROI sample means and sample standard deviations 
+computed\footnote{We have taken effort 
+to select ROIs that reflect expected anatomy 
+in all coil-combined and registered images, 
+including adjacent slices in images from 3D acquisitions. 
+However, we acknowledge the possibility 
+of some contamination across tissue boundaries, 
+especially WM and/or CSF contamination into cortical GM.
 }
-\revone{
-	Within-ROI $\bmToest$ sample standard deviations are comparable across steady-state profiles.
-	In agreement with Table~\ref{table:profile}, $\bmTt$ estimates from the optimized $(1,1)$ scan profile exhibit higher within-ROI sample variation than corresponding $(2,1)$ and $(0,2)$ $\bmTtest$ maps.
-}
+over four separate WM ROIs containing 96, 69, 224, and 148 voxels 
+and one pooled cortical GM ROI containing 156 voxels.	
+Within-ROI $\bmToest$ sample standard deviations are comparable 
+across SS profiles.
+In agreement with Table~\ref{table:profile}, 
+$\bmTt$ estimates from the optimized $(1,1)$ scan profile 
+exhibit higher within-ROI sample variation 
+than corresponding $(2,1)$ and $(0,2)$ $\bmTtest$ maps.
+Compared to ML counterparts,
+RL estimates generally reduce within-ROI sample variation
+and do not significantly change within-ROI sample means.
 
-%supp
-\revtwo{
-	Fig.~\ref{fig:brain,jet} expands Fig.~\ref{fig:brain,ml,jet} by comparing both ML and RL $\bmTo, \bmTt$ estimates across scan profiles.
-	Fig.~\ref{fig:brain,gray} replicates Fig.~\ref{fig:brain,jet} in grayscale.
-	Table~\ref{table:brain,rls} is similar to Table~\ref{table:brain,ml}, except for RL estimates.
-	Compared to ML counterparts, RL estimates in general reduce within-ROI sample variation without incurring significant additional bias.
-}
+In most cases, $\bmToest$ within-ROI sample means 
+from optimized SPGR/DESS scan profiles 
+do not deviate substantially from each other 
+or from reference IR/SE measurements.
+Two notable exceptions are $\ToML$ 
+in anterior left and posterior right WM 
+from $(1,1)$ and $(0,2)$ profiles: 
+these estimates are significantly lower and higher 
+than analogous estimates from other profiles, respectively.
+Results thus suggest that the optimized $(2,1)$ scan profile 
+yields WM $\ToML$ estimates 
+that are more consistently similar to IR WM $\ToML$ estimates 
+than other optimized SPGR/DESS profiles.
 
-\revtwo{
-	In most cases, $\bmToest$ within-ROI sample means from optimized SPGR/DESS scan profiles do not deviate substantially from each other or from reference IR/SE measurements.
-	Two notable exceptions are $\ToML$ in anterior left and posterior right WM from $(1,1)$ and $(0,2)$ profiles: these estimates are significantly lower and higher than analogous estimates from other profiles, respectively.
-	Results thus suggest that the optimized $(2,1)$ scan profile yields WM $\ToML$ estimates that are more consistently similar to IR WM $\ToML$ estimates than other optimized SPGR/DESS profiles.
-}
+Systematic differences in $\bmTtest$ sample means 
+are evident across scan profiles, 
+particularly within WM ROIs.
+Curiously, the $(1,1)$ profile agrees most consistently 
+(in WM/GM $\TtML$ within-ROI sample mean) 
+with reference estimates, 
+though with relatively high sample variation.
+The $(2,1)$ and $(0,2)$ SPGR/DESS profiles 
+produce consistently lower WM $\TtML$ 
+than the reference IR/SE profile, 
+though the $(0,2)$ profile is in reasonable agreement 
+with other steady-state estimates \cite{heule:14:tes-nib}.
+These discrepancies may due to differences 
+in sensitivity to multi-compartmental relaxation \cite{mackay:94:ivv}.
+Specifically, different signal models 
+with different scan parameter choices 
+might be more or less sensitive 
+to the model mismatch incurred 
+by neglecting to distinguish 
+the multiple $\Tt$ components within each voxel.
+Chapter~\ref{c,mwf} studies multi-compartmental relaxation 
+in much greater detail.
 
-\revtwo{
-	Systematic differences in $\bmTtest$ sample means are evident across scan profiles, particularly within WM ROIs.
-	Curiously, the $(1,1)$ profile agrees most consistently (in WM/GM $\TtML$ within-ROI sample mean) with reference estimates, though with relatively high sample variation.
-	The $(2,1)$ and $(0,2)$ SPGR/DESS profiles produce consistently lower WM $\TtML$ than the reference IR/SE profile, though the $(0,2)$ profile is in reasonable agreement with other steady-state estimates \cite{heule:14:tes-nib}.
-}
-	These discrepancies may due to differences in sensitivity to multi-compartmental relaxation \cite{mackay:94:ivv}.
-	Specifically, different signal models with different scan parameter choices might be more or less sensitive to the model mismatch incurred by neglecting to distinguish the multiple $\Tt$ components within each voxel.
-	\revone{
-		Section~\ref{sec:multi} studies $\bmTt$ estimation bias due to multi-compartmental relaxation in more detail.
-	}
+\begin{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion and Future Work}

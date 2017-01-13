@@ -43,10 +43,11 @@
 \contentsline {subsection}{\numberline {4.4.2}Phantom Experiments}{36}{subsection.4.4.2}
 \contentsline {subsubsection}{\numberline {4.4.2.1}Within-ROI Statistics}{36}{subsubsection.4.4.2.1}
 \contentsline {subsubsection}{\numberline {4.4.2.2}Across-Repetition Statistics}{42}{subsubsection.4.4.2.2}
-\contentsline {chapter}{\numberline {5}MRI\nobreakspace {}Parameter\nobreakspace {}Estimation via\nobreakspace {}Kernel\nobreakspace {}Regression}{43}{chapter.5}
-\contentsline {chapter}{\numberline {6}Myelin\nobreakspace {}Water\nobreakspace {}Fraction\nobreakspace {}Estimation from\nobreakspace {}Steady-State\nobreakspace {}Sequences}{44}{chapter.6}
-\contentsline {chapter}{\numberline {7}Steady-State\nobreakspace {}RF\nobreakspace {}Pulse\nobreakspace {}Design}{45}{chapter.7}
-\contentsline {chapter}{\numberline {8}Future\nobreakspace {}Work}{46}{chapter.8}
-\contentsline {chapter}{Appendices}{47}{section*.8}
+\contentsline {subsection}{\numberline {4.4.3}\textit {In\nobreakspace {}Vivo} Experiments}{43}{subsection.4.4.3}
+\contentsline {chapter}{\numberline {5}MRI\nobreakspace {}Parameter\nobreakspace {}Estimation via\nobreakspace {}Kernel\nobreakspace {}Regression}{47}{chapter.5}
+\contentsline {chapter}{\numberline {6}Myelin\nobreakspace {}Water\nobreakspace {}Fraction\nobreakspace {}Estimation from\nobreakspace {}Steady-State\nobreakspace {}Sequences}{48}{chapter.6}
+\contentsline {chapter}{\numberline {7}Steady-State\nobreakspace {}RF\nobreakspace {}Pulse\nobreakspace {}Design}{49}{chapter.7}
+\contentsline {chapter}{\numberline {8}Future\nobreakspace {}Work}{50}{chapter.8}
+\contentsline {chapter}{Appendices}{51}{section*.8}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{49}{section*.11}
+\contentsline {chapter}{Bibliography}{53}{section*.11}
