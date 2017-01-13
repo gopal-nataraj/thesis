@@ -19,7 +19,7 @@ G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Model-based estimation of {T2}
 \bibitem{nataraj::oms}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Optimizing {MR} scan design for
   model-based {T1,} {T2} estimation from steady-state sequences,'' {\em {IEEE
-  Trans. Med. Imag.}}, 2016.
+  Trans. Med. Imag.}}, 2017.
 \newblock To appear.
 
 \bibitem{nataraj:15:amm}
@@ -31,7 +31,7 @@ G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``A min-max {CRLB} optimization
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Dictionary-free {MRI} parameter
   estimation via kernel ridge regression,'' in {\em Proc. IEEE Intl. Symp.
   Biomed. Imag.}, 2017.
-\newblock Submitted.
+\newblock To appear.
 
 \bibitem{nataraj:17:mwf}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Myelin water fraction
@@ -373,7 +373,7 @@ M.~{\Akcakaya}, S.~{\Weingartner}, {\Sebastien}.~Roujol, and R.~Nezafat, ``On
 \bibitem{lewis:16:ddo}
 C.~M. Lewis, S.~A. Hurley, M.~E. Meyerand, and C.~G. Koay, ``Data-driven
   optimized flip angle selection for {T1} estimation from spoiled gradient echo
-  acquisitions,'' {\em {Mag. Res. Med.}}, 2016.
+  acquisitions,'' {\em {Mag. Res. Med.}}, vol.~76, pp.~{792--802}, Sept. 2016.
 \newblock To appear.
 
 \bibitem{fisher:1925:tos}

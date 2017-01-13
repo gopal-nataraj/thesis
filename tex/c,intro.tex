@@ -6,14 +6,15 @@ that has earned widespread clinical adoption
 due (among other factors) 
 to its potential for excellent soft tissue contrast,
 its avoidance of ionizing radiation,
-and its flexibility to characterize many physical phenomena. 
+and its flexibility to characterize 
+a diversity of physical phenomena. 
 Despite its numerous advantages,
 MRI requires highly specialized hardware,
 ongoing liquid-helium cooling
 of its superconducting main magnet,
 and comparably long scan times.
 For these reasons,
-MRI is (somewhat inherently) expensive relative
+MRI is expensive relative
 to other medical imaging modalities.
 Accordingly,
 one broad initiative 
@@ -22,85 +23,105 @@ is to increase the \emph{value}
 of MRI examinations.
 
 Two reasonable measures
-of an acquisition's value
-are its sensitivity
+of an MRI acquisition's value
+are its \emph{sensitivity}
 to a given disorder
-and its specificity
+and its \emph{specificity}
 in distinguishing it
 from others.
-The field of \emph{pathology}
-seeks to ascribe physical processes
-to disorders of interest
-with high sensitivity and specificity.
 The field of \emph{quantitative MRI} (QMRI)
-seeks to build MRI biomarkers
-that measurably describe such physical processes
-and thereby provide indirect information
-about the onset and progression
-of underlying conditions.
+seeks to use MRI data 
+to build MR \emph{biomarkers},
+or measurable tissue properties
+that can increase the sensitivity and specificity of MRI
+for specific disorders of interest.
+
+QMRI has potential
+to be more informative than conventional MRI.
+Conventional MRI is \emph{qualitative}:
+it produces images comprised of \emph{voxels}
+(\ie, three-dimensional pixels)
+that are informative only relative to each other,
+not individually.
+Conventional MRI voxels are qualitative
+because they localize the MR signal,
+which is typically a complex function
+of not only biomarkers
+but also two types of confounds:
+\emph{nuisance markers}
+that characterize undesired signal sources
+and/or MRI system imperfections;
+and \emph{acquisition parameters}
+that characterize the MRI system's tunable ``knobs''. 
+QMRI seeks to remove confound influence
+by instead imaging the biomarkers directly.
+Each QMR image voxel
+is thus a measurement 
+of a given biomarker
+at a specific location.
+QMRI can therefore provide localized biomarker measurements
+(\eg, myelin water content)
+related to a specific physiological process
+(\eg, demyelination)
+that can, through longitudinal study,
+be used to monitor the onset and progression of disease
+(\eg, multiple sclerosis). 
 
 QMRI poses several challenges
-beyond those of commonplace anatomical MRI
-and thus remains yet to be widely adopted clinically.
-For example, latent parameter ``maps'' 
-that describe relevant physical processes
-are often related to the received MR signal
-through complicated, 
-highly nonlinear relationships. 
+beyond those of conventional MRI 
+that currently limit its feasibility 
+for routine clinical use.
+For example,
+accurate biomarker quantification 
+traditionally requires multiple MR scans
+and thus long scan times.
 Furthermore,
-practical MR pulse sequences
-produce signals
-that are usually functions
-of not only desired
-but also nuisance parameters.
-Scan repetition is often necessary
-for accurate estimation
-of multiple desired and nuisance parameters,
-which can increase scan times.
-Mitigating these challenges 
-(and likely others)
-is essential
-to furthering widespread clinical adoption
-of QMRI techniques.
+it has previously been unclear
+how to tune acquisition parameters 
+of these multiple scans
+to ensure that biomarkers can be quantified precisely.
+Finally, MR biomarker quantification
+is a challenging estimation problem
+for which efficient algorithms
+have previously been unavailable.
+Addressing these challenges is essential
+for widespread clinical adoption of QMRI.
 
 \section{Thesis Overview}
 \label{s,intro,over}
 
-In this thesis,
-we seek to build a systematic framework
-towards QMRI.
+This thesis seeks
+to address the above challenges
+by building an automated workflow for QMRI.
 We borrow tools
 from optimization, statistics, and machine learning
-to construct time-efficient workflows
-for quantifiably characterizing
-physical processes of interest.
+to develop fast workflows
+for quantifying biomarkers
+that characterize specific physiological processes. 
 We apply this framework
-to challenging QMRI problems
-that are motivated
-by pathological studies.
-Our goal is to introduce tools 
-that aid in identifying clinical tasks 
-for which QMRI should
-(or should not) be part
-of a targeted, high-value MRI examination.
+to challenging QMRI problems 
+of clinical interest.
+Our goal is to introduce fast, automated tools
+that will increase the clinical viability of QMRI.
 
-We consider two distinct subproblems in our framework.
+Our solutions to two distinct subproblems in QMRI
+constitute two stages of our proposed QMRI workflow.
 Questions in \emph{acquisition design}
-(Chapters~\ref{c,scn-dsgn},\ref{c,mwf})
+(Chapters~\ref{c,scn-dsgn}, \ref{c,mwf})
 ask how to assemble 
 fast collections of scans
 that yield data 
 rich in information 
 about physical processes of interest.
 Questions in \emph{parameter estimation}
-(Chapters~\ref{c,relax},\ref{c,krr})
-ask how to quickly and reliably quantify parameters 
+(Chapters~\ref{c,relax}, \ref{c,krr})
+ask how to quickly and reliably quantify biomarkers 
 associated with these relevant physical processes.
-The overall framework seeks to
+The overall workflow seeks to
 first design fast and informative scans 
 based on the application,
 and to then accurately and precisely estimate 
-application-specific parameters of interest.
+clinically relevant biomarkers.
  
 \section{Thesis Organization}
 \label{s,intro,org}
@@ -160,6 +181,7 @@ The main body of this thesis is organized as follows:
 	in simulations and \invivo experiments.
 	It derives some content from conference paper
 	\cite{nataraj:17:mwf}.
+\begin{comment}
 \item
 	Chapter~\ref{c,ss-rf} presents
 	some relatively immature ideas
@@ -167,6 +189,7 @@ The main body of this thesis is organized as follows:
 	as well as associated challenges.
 	This work is presently unpublished
 	and may offer avenues for further research.
+\end{comment}
 \item 
 	Chapter~\ref{c,future} summarizes several items 
 	of possible future work

@@ -1,9 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  13 JAN 2017 10:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  13 JAN 2017 12:42
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**root.tex
+**root
 (./root.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
@@ -936,37 +935,33 @@ CHAPTER 6.
 
 ]
 CHAPTER 7.
-(./c,ss-rf.tex) [51
-
-]
-CHAPTER 8.
-(./c,future.tex) [52
+(./c,future.tex) [51
 
 ]
 APPENDIX A.
-(./a,cc-multi.tex) [53
+(./a,cc-multi.tex) [52
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [54
+(./a,dess-diff.tex) [53
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [55
+ [54
 
 
-] [56] [57] [58] [59] [60] [61])
+] [55] [56] [57] [58] [59] [60])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 148.
 
-[62]
+[61]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 148.
  (./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 148.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 148.
 Package rerunfilecheck Info: File `root.out' has not changed.
-(rerunfilecheck)             Checksum: AF102A58A56CB86FA2D1242F8A9E2B18;2134.
+(rerunfilecheck)             Checksum: 922E062849DBB864801081CB3914E676;2070.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -974,12 +969,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 148.
  ) 
 Here is how much of TeX's memory you used:
- 10039 strings out of 493090
- 145316 string characters out of 6134868
- 278662 words of memory out of 5000000
- 13267 multiletter control sequences out of 15000+600000
+ 10033 strings out of 493090
+ 145256 string characters out of 6134868
+ 278610 words of memory out of 5000000
+ 13264 multiletter control sequences out of 15000+600000
  30248 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,20n,48p,1922b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,20n,48p,1918b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on root.dvi (72 pages, 450312 bytes).
+Output written on root.dvi (71 pages, 449320 bytes).

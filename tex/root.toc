@@ -48,8 +48,7 @@
 \contentsline {section}{\numberline {4.6}Conclusion}{47}{section.4.6}
 \contentsline {chapter}{\numberline {5}MRI\nobreakspace {}Parameter\nobreakspace {}Estimation via\nobreakspace {}Kernel\nobreakspace {}Regression}{49}{chapter.5}
 \contentsline {chapter}{\numberline {6}Myelin\nobreakspace {}Water\nobreakspace {}Fraction\nobreakspace {}Estimation from\nobreakspace {}Steady-State\nobreakspace {}Sequences}{50}{chapter.6}
-\contentsline {chapter}{\numberline {7}Steady-State\nobreakspace {}RF\nobreakspace {}Pulse\nobreakspace {}Design}{51}{chapter.7}
-\contentsline {chapter}{\numberline {8}Future\nobreakspace {}Work}{52}{chapter.8}
-\contentsline {chapter}{Appendices}{53}{section*.8}
+\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{51}{chapter.7}
+\contentsline {chapter}{Appendices}{52}{section*.8}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{55}{section*.11}
+\contentsline {chapter}{Bibliography}{54}{section*.11}
