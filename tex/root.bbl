@@ -476,4 +476,18 @@ A.~Mackay, K.~Whittall, J.~Adler, D.~Li, D.~Paty, and D.~Graeb, ``In vivo
   visualization of myelin water in brain by magnetic resonance,'' {\em {Mag.
   Res. Med.}}, vol.~31, pp.~{673--7}, June 1994.
 
+\bibitem{gill:95:aot}
+R.~D. Gill and B.~Y. Levit, ``Applications of the van {Trees} inequality: {A}
+  {Bayesian} {\Cramer-rao} bound,'' {\em {Bernoulli}}, vol.~1, no.~1/2,
+  pp.~{59--79}, 1995.
+
+\bibitem{ma:13:mrf}
+D.~Ma, V.~Gulani, N.~Seiberlich, K.~Liu, J.~L. Sunshine, J.~L. Duerk, and M.~A.
+  Griswold, ``Magnetic resonance fingerprinting,'' {\em {Nature}}, vol.~495,
+  pp.~{187--93}, Mar. 2013.
+
+\bibitem{zhao:16:oed}
+B.~Zhao, J.~Haldar, K.~Setsompop, and L.~L. Wald, ``Optimal experiment design
+  for magnetic resonance fingerprinting,'' in {\em embc}, 2016.
+
 \end{thebibliography}

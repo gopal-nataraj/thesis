@@ -400,7 +400,8 @@ In this chapter,
 we consider combinations
 of magnitude SPGR and DESS scans
 for estimating the $L\gets3$ latent parameters
-$\To$,$\Tt$, and a proportionality constant,
+$\To,\Tt$, and proportionality constant $\const{2}$
+(defined in Example~\ref{sss,relax,meth,sig,t2}),
 given knowledge 
 of transmit field inhomogeneity $\stx$
 as $K \gets 1$ known parameter.
@@ -492,16 +493,16 @@ In the ensuing experiments,
 we focus on precise $\To,\Tt$ estimation in the brain.
 Noting that $\To\sim10\Tt$, 
 we choose $\mathbf{W} \gets \mathrm{diag}\paren{0.1, 1, 0}$ 
-to place roughly equal importance 
-on precise $\To$ vs. $\Tt$ estimation
+to place approximately equal importance 
+on precise $\To$ versus $\Tt$ estimation
 and zero weight
-on proportionality constant estimation
+on proportionality constant $\const{2}$ estimation
 (obviating the need
 for complex differentiation
 in \eqref{eq:scn-dsgn,fisher}).
 Since $\cost$ then depends 
-on the constant through a scale factor,
-it suffices to fix the constant as 1
+on $\const{2}$ through only a scale factor,
+it suffices to fix $\const{2} \gets 1$
 and design the latent object parameter range
 as $\setXt \gets \setTot \times \setTtt \times 1$.
 Here, 
@@ -515,13 +516,12 @@ Broadened ranges
 $\setXb \gets [400, 2000]\text{ms} \times [40, 200]\text{ms} \times 1$ 
 and $\setNb \gets [0.5, 2]$ are constructed 
 to encourage solutions robust 
-to a wide range of object parameters. 
+to a realistically wide range of object parameters. 
 We assume constant noise variance 
 $\sigma_1^2 = \dots = \sigma_D^2 := \sigma^2$, 
 where $\sigma^2 \gets 1.49 \times 10^{-7}$ is selected 
 to reflect measurements from normalized phantom datasets 
-(\emph{cf.} Sections~\ref{sss,scn-dsgn,exp,phant,roi} 
-and \ref{ss,scn-dsgn,exp,brain} 
+(\emph{cf.} Section~\ref{sss,scn-dsgn,exp,phant,roi}  
 for acquisition details).
 Lastly, we set $\delta \gets 0.01$ 
 to select a robust scan parameter $\bmPs$ 
@@ -543,11 +543,11 @@ each defined as
 	\sigwot(\bmP) &:= 
 		\max_{\substack{\bmx \in \setXt \\ \bmnu \in \setNt}} 
 		\sigma_{\To}(\bmx; \bmnu, \bmP); 
-		\label{eq:sigwot} \\
+		\label{eq:scn-dsgn,sigwot} \\
 	\sigwtt(\bmP) &:= 
 		\max_{\substack{\bmx \in \setXt \\ \bmnu \in \setNt}} 
 		\sigma_{\Tt}(\bmx; \bmnu, \bmP), 
-		\label{eq:sigwtt} 
+		\label{eq:scn-dsgn,sigwtt} 
 \end{align}
 where $\sigma_{\To}(\bmx; \bmnu, \bmP)$ 
 and $\sigma_{\Tt}(\bmx; \bmnu, \bmP)$ 
@@ -705,7 +705,7 @@ due to its robustness to a wide range of object parameters.
 		Selected scan parameters (starred) are within $\delta = 1$\% of global minimizers and retain as much estimator precision as possible over a wide range of latent object parameters. 		
 		All axes range from 5 to 90 degrees, in 5-degree increments. 
 		Colorbar ranges are $[0,100]$, $[0,10]$, and $[0,20]$ milliseconds for rows of $\sigwot$, $\sigwtt$, and $\costwt$ subfigures, respectively. 
-		The optimized $(0,2)$ profile appears most robust to flip angle variation.
+		The optimized $(0,2)$ profile appears most robust to transmit field spatial variation.
 	}
 	\label{fig:heat,maps}
 \end{sidewaysfigure}
@@ -725,7 +725,7 @@ for the different scan profiles.
 However, 
 it is apparent that the $(\Ss,\Sd) = (0,2)$ profile 
 is substantially more robust 
-to flip angle variation 
+to transmit field variation 
 than other tested profiles 
 (namely, $(2,1)$ and $(1,1)$). 
 Optimized worst-case cost 
@@ -795,7 +795,7 @@ We assign these parameter values
 to the discrete anatomy 
 of the BrainWeb digital phantom 
 \cite{collins:98:dac, kwan:99:msb} 
-to create ground truth $\bmMz$, $\bmTo$, $\bmTt$, and $\bmTts$ maps. 
+to create ground truth $\bmMz, \bmTo, \bmTt, \bmTts \in \reals{V}$ maps. 
 We then choose acquisition parameters based 
 on Table~\ref{table:profile} 
 (with fixed $\TE~=~4.67$ms) 
@@ -1514,6 +1514,8 @@ of brain datasets require less than 3m30s and 9s, respectively.
 		of (2~SPGR,~1~DESS), (1~SPGR,~1~DESS), (0~SPGR,~2~DESS), 
 		and (4~IR,~4~SE) acquisitions.  
 		Rows distinguish $\bmTo$ and $\bmTt$ ML and RL estimators.
+		Table~\ref{table:brain} presents corresponding WM/GM 
+		within-ROI sample statistics.
 		Colorbar ranges are in milliseconds.
 	}
 	\label{fig:brain,jet}
@@ -1594,11 +1596,11 @@ against estimation bias in high-$\To$ regions.
 	\vspace{1mm}
 	\caption{
 		\emph{Left}:
-		WM and GM ROIs,
+		WM/GM ROIs,
 		overlaid on a representative anatomical
 		(coil-combined, IR) image.
 		Separate WM ROIs are distinguished
-		with anterior-right (\AR),
+		by anterior-right (\AR),
 		anterior-left (\AL),
 		posterior-right (\PR), and
 		posterior-left (\PL) directions.
@@ -1608,7 +1610,8 @@ against estimation bias in high-$\To$ regions.
 		Within-ROI sample means $\pm$ 
 		within-ROI sample standard deviations 
 		of $\bmTo$ and $\bmTt$ ML and RL estimates 
-		from the brain of a healthy volunteer.
+		from the brain of a healthy volunteer
+		(Fig.~\ref{fig:brain,jet} presents corresponding images).
 		Sample statistics are computed 
 		within ROIs indicated in the anatomical image.  
 		All values are reported in milliseconds.
@@ -1675,55 +1678,118 @@ the multiple $\Tt$ components within each voxel.
 Chapter~\ref{c,mwf} studies multi-compartmental relaxation 
 in much greater detail.
 
-\begin{comment}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion and Future Work}
-\label{sec:disc}
+\label{s,scn-dsgn,disc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\revone{
-	Phantom experiments show that optimized scan profiles consisting of $(2,1)$, $(1,1)$, and $(0,2)$ (SPGR, DESS) scans yield accurate WM/GM $\To, \Tt$ estimates, and that empirical precision trends across profiles agree reasonably with CRB-based predictions.
-	However, \emph{in vivo} experiments reveal that even with scan optimization, it may be challenging to achieve clinically viable levels of precision from the aforementioned steady-state profiles, at least at 3T. 
-	At the expense of greater scan time, it is of course possible that optimized profiles containing greater numbers of SPGR, DESS, and/or other steady-state scans can provide clinically acceptable precision levels.
-	For these and other more complicated scan profiles, estimator dependence on scan parameters becomes even less intuitive, increasing the need for scan design.
-}
+Phantom experiments show 
+that optimized scan profiles consisting 
+of $(2,1)$, $(1,1)$, and $(0,2)$ (SPGR, DESS) scans 
+yield accurate WM/GM $\To,\Tt$ estimates, 
+and that empirical precision trends across profiles agree reasonably 
+with CRB-based predictions.
+However, \emph{in vivo} experiments reveal 
+that even with scan optimization, 
+it may be challenging to achieve clinically viable levels 
+of precision from the aforementioned SS profiles, at least at 3T. 
+At the expense of greater scan time, 
+it is of course possible that optimized profiles 
+containing greater numbers of SPGR, DESS, and/or other SS scans 
+can provide clinically acceptable precision levels.
+For these and other more complicated scan profiles, 
+estimator dependence on scan parameters becomes even less intuitive, 
+increasing the need for scan design.
 
-\revone{
-	The proposed scan design framework addresses spatial variation in object parameters through a min-max design criterion.
-	The min-max criterion guarantees an upper bound on a weighted sum of variances and assumes no prior knowledge of distributions.
-	However, in general it is non-differentiable in $\bmP$, precluding gradient-based optimization. 	
-	Furthermore, it is conservative by nature, and often selects scan parameters based on corner cases of the object parameter space.
-	To reduce the influence of corner cases, it may be desirable to instead construct a cost function related to the coefficient of variation as in \cite{jones:96:oss, zhang:98:dos, imran:99:tpm, deoni:04:doo}, perhaps by setting parameter weights $\mathbf{W}^{-1} \gets \mathrm{diag}\paren{\bmx}$ for $\bmx \neq 0$ in \eqref{eq:cost}.
+The proposed scan design framework addresses spatial variation 
+in object parameters through a min-max design criterion.
+The min-max criterion guarantees an upper bound 
+on a weighted sum of variances 
+and assumes no prior knowledge of distributions.
+However, in general it is non-differentiable 
+in $\bmP$, precluding gradient-based optimization. 	
+Furthermore, it is conservative by nature, 
+and often selects scan parameters based 
+on corner cases of the object parameter space.
+To reduce the influence of corner cases, 
+it may be desirable to instead construct a cost function 
+related to the coefficient of variation 
+as in \cite{jones:96:oss, zhang:98:dos, imran:99:tpm, deoni:04:doo}, 
+perhaps by setting parameter weights $\bmW^{-1} \gets \diag{\bmx}$ 
+for $\bmx \neq 0$ in \eqref{eq:scn-dsgn,cost}.
 	
-	As a less conservative alternative to min-max design, other recent works \cite{akcakaya:15:ots, lewis:16:ddo} have addressed object parameter spatial variation by instead constructing cost functions related to the Bayesian CRB \cite{gill:95:aot}, which characterizes the expected precision with respect to a prior distribution on object parameters.
-	Bayesian cost functions are usually differentiable and can also, with appropriate priors, penalize object parameter coefficients of variation instead of variances, as in \cite{akcakaya:15:ots}.
-	However, prior distributions are generally unknown, and may need to be estimated from data, as in \cite{lewis:16:ddo}.
-}
+As a less conservative alternative 
+to min-max design, 
+other recent works \cite{akcakaya:15:ots, lewis:16:ddo} 
+have addressed object parameter spatial variation 
+by instead constructing cost functions related 
+to the Bayesian CRB \cite{gill:95:aot}, 
+which characterizes the expected precision 
+with respect to a prior distribution on object parameters.
+Bayesian cost functions are usually differentiable and can also, 
+with appropriate priors, 
+penalize object parameter coefficients of variation 
+instead of variances, 
+as in \cite{akcakaya:15:ots}.
+However, prior distributions are generally unknown, 
+and may need to be estimated from data, 
+as in \cite{lewis:16:ddo}.
 
-	Careful calibration of flip angle scaling $\bm{\kappa}$ is essential for accurate $\bmTo, \bmTt$ estimation from SPGR/DESS scan profiles. 
-	In this work, we estimate $\bm{\kappa}$ from \emph{separate} acquisitions and adjust nominal flip angles prior to reconstruction, 
-	\revone{
-		but acknowledge that non-idealities in those separate acquisitions may themselves cause resultant $\widehat{\mathbf{B}}_1^+$ errors to propagate into our $\bmTo, \bmTt$ estimates. 
-		To reduce error propagation, it may be desirable to instead design scan profiles to permit \emph{joint} estimation of $\bm{\kappa}$, in addition to other latent object parameters.
-	} 
-	Unfortunately, we find that optimizing the $(2,1)$ or $(0,2)$ profile to allow for four-parameter $\bmx(\mathbf{r}) := \brac{M_{\mathrm{E}}(\mathbf{r}), \To(\mathbf{r}), \Tt(\mathbf{r}),\kappa(\mathbf{r})}\tpose$ estimation results in unacceptably high amplification of the worst-case $\To$ standard deviation. 
-	(Incidentally, precise $\bmTt$ ML and RL estimation alone from the $(2,1)$ or $(0,2)$ profile is possible \cite{nataraj:14:mbe}.) 
-	\revone{
-		It remains an open scan design question as to whether time spent collecting Bloch-Siegert data for separate $\mathbf{B}_1^+$ mapping could instead be better spent collecting additional SPGR, DESS, and/or other data for joint estimation.
-	}
+Careful calibration of flip angle scaling $\bmstx$ is essential 
+for accurate $\bmTo, \bmTt$ estimation 
+from SPGR/DESS scan profiles. 
+In this work, we estimate $\bmstx$ 
+from \emph{separate} acquisitions 
+and adjust nominal flip angles prior to reconstruction, 
+but acknowledge that non-idealities 
+in those separate acquisitions may themselves 
+cause resultant transmit field estimation errors 
+to propagate into our $\bmTo,\bmTt$ estimates. 
+To reduce error propagation, 
+it may be desirable to instead design scan profiles 
+to permit \emph{joint} estimation of $\bmstx$, 
+in addition to other latent object parameters.
+Unfortunately, 
+we find that optimizing the $(2,1)$ or $(0,2)$ profile 
+to allow for four-parameter 
+$\bmx\pr \gets \brac{\To\pr, \Tt\pr, \const{2}\pr, \stx\pr}\tpose$ estimation 
+results in unacceptably high amplification 
+of the worst-case $\To$ standard deviation. 
+(Incidentally however, precise $\bmTt$ ML and RL estimation alone 
+from the $(2,1)$ or $(0,2)$ profile 
+is possible \cite{nataraj:14:mbe}.) 
+It remains an open scan design question 
+as to whether time spent collecting Bloch-Siegert data 
+for separate $\bmstx$ mapping could instead be better spent 
+collecting additional SPGR, DESS, 
+and/or other data for joint estimation.
 
-	By working with closed-form signal expressions, we neglect to model several higher-order effects.
-	However, it is apparent that the nonlinear estimation procedures required for many mapping problems can amplify the influence of these secondary effects, often inducing substantial bias. 
-	\revone{
-		Since the CRB (as described) applies only to unbiased estimators, it is thus desirable to use signal models that are as complete as possible for CRB-based scan design.
-	}
-	In theory, scan optimization approach \eqref{eq:scn-dsgn,P-star} is even compatible with acquisitions where a closed-form model relating data to latent and scan parameters is unknown, as in \cite{beneliezer:15:raa, ma:13:mrf}. 
-	In practice, difficulties arise in efficient computation of signal gradients required in \eqref{eq:fisher},
-	\revtwo{
-		which may demand more specialized techniques, as in \cite{zhao:16:oed}.
-		Designing scan profiles involving such complex signal models would likely necessitate optimization techniques more involved than the simple grid searches used in this work.
-	}
+By working with closed-form signal expressions, 
+we neglect to model several higher-order effects.
+However, it is apparent 
+that the nonlinear estimation procedures required 
+for many mapping problems can amplify the influence 
+of these secondary effects, 
+often inducing substantial bias. 
+Since the CRB (as described) 
+applies only to unbiased estimators, 
+it is thus desirable to use signal models 
+that are as complete as possible 
+for CRB-based scan design.
+In theory, scan optimization approach \eqref{eq:scn-dsgn,P-star} 
+is even compatible with acquisitions 
+where a closed-form model relating data 
+to latent and scan parameters is unknown, 
+as in \cite{beneliezer:15:raa, ma:13:mrf}. 
+In practice, difficulties arise in efficient computation 
+of signal gradients required in \eqref{eq:scn-dsgn,fisher},
+which may demand more specialized techniques, 
+as in \cite{zhao:16:oed}.
+Designing scan profiles involving such complex signal models 
+would likely necessitate optimization techniques more involved 
+than the simple grid searches used in this work.
+
+\begin{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
