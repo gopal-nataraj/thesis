@@ -460,4 +460,9 @@ R.~Kaiser, E.~Bartholdi, and R.~R. Ernst, ``Diffusion and field-gradient
   effects in {NMR} {Fourier} spectroscopy,'' {\em {J. Chem. Phys.}}, vol.~60,
   pp.~{2966--79}, Apr. 1974.
 
+\bibitem{ahn:03:seo}
+S.~Ahn and J.~A. Fessler, ``Standard errors of mean, variance, and standard
+  deviation estimators,'' Tech. Rep. 413, Comm. and Sign. Proc. Lab., Dept. of
+  EECS, Univ. of Michigan, Ann Arbor, MI, 48109-2122, July 2003.
+
 \end{thebibliography}

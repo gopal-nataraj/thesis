@@ -1365,66 +1365,98 @@ in Fig.~\ref{fig:hpd,ml-rls} for vials 5-8.
 Compared to ML initializations, 
 (weakly) regularized estimates reduce error bars 
 without introducing substantial additional bias.
-	
-\begin{comment}
-	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsubsection{Across-Repetition Statistics} 
-\label{sss,scn-dsgn,exp:phant:rep}
+\label{sss,scn-dsgn,exp,phant,rep}
 
 \begin{table*} [!tb]
 	\centering
-	\begin{tabu} {c c}
-		{\tabulinesep = 0.3mm
-		\begin{tabu} {c | r r r}
-			\hline \hline
-			 				& (2SP,1DE)			& (1SP,1DE) 		& (0SP,2DE)	\\
-			\hline
-			V5 \sigToML 	& $50 \pm 12$		& $40 \pm 10.$     	& $39 \pm 9.4$ \\	
-			V6 \sigToML 	& $70 \pm 18$ 		& $60 \pm 15$ 		& $70 \pm 16$ \\
-			V7 \sigToML 	& $60 \pm 13$ 		& $50 \pm 13$ 		& $50 \pm 13$ \\
-			V8 \sigToML 	& $23 \pm 5.4$ 		& $20. \pm 4.7$		& $18 \pm 4.3$ \\
-			\hline \hline
-		\end{tabu}} 
-		&
-		{\tabulinesep = 0.3mm
-		\begin{tabu} {c | r r r}
-			\hline \hline
-							& (2SP,1DE)			& (1SP,1DE) 		& (0SP,2DE)		\\	
-			\hline
-			V5 \sigTtML 	& $2.6 \pm 0.63$	& $6 \pm 1.4$		& $3.5 \pm 0.84$ \\
-			V6 \sigTtML		& $1.9 \pm 0.46$ 	& $5 \pm 1.1$		& $2.3 \pm 0.54$ \\
-			V7 \sigTtML 	& $1.4 \pm 0.34$	& $3.4 \pm 0.80$ 	& $1.5 \pm 0.35$ \\
-			V8 \sigTtML 	& $1.1 \pm 0.26$	& $3.5 \pm 0.84$ 	& $1.4 \pm 0.33$ \\
-			\hline \hline
-		\end{tabu}}
-		\vspace{1mm}
+	\begin{tabu} {c | r r r}
+		\hline \hline
+		 								& (2SP,1DE)				& (1SP,1DE) 			& (0SP,2DE)	\\
+		\hline
+		V5 $\sigToML$ 	& $50 \pm 12$			& $40 \pm 10.$    & $39 \pm 9.4$ \\	
+		V6 $\sigToML$ 	& $70 \pm 18$ 		& $60 \pm 15$ 		& $70 \pm 16$ \\
+		V7 $\sigToML$ 	& $60 \pm 13$ 		& $50 \pm 13$ 		& $50 \pm 13$ \\
+		V8 $\sigToML$ 	& $23 \pm 5.4$ 		& $20. \pm 4.7$		& $18 \pm 4.3$ \\
+		\hline \hline
+		V5 $\sigTtML$ 	& $2.6 \pm 0.63$	& $6 \pm 1.4$			& $3.5 \pm 0.84$ \\
+		V6 $\sigTtML$		& $1.9 \pm 0.46$ 	& $5 \pm 1.1$			& $2.3 \pm 0.54$ \\
+		V7 $\sigTtML$ 	& $1.4 \pm 0.34$	& $3.4 \pm 0.80$ 	& $1.5 \pm 0.35$ \\
+		V8 $\sigTtML$ 	& $1.1 \pm 0.26$	& $3.5 \pm 0.84$ 	& $1.4 \pm 0.33$ \\
+		\hline \hline
 	\end{tabu}
 	\caption{
-		\revone{
-			Phantom pooled sample standard deviations $\pm$ pooled standard errors of sample standard deviations, from optimized SPGR/DESS scan profiles.
-			Each entry is a measure of uncertainty of a typical voxel's $\To$ or $\Tt$ ML estimate.
-		}
-		For sake of brevity, sample statistics corresponding only to phantom vials within (or nearly within) tight design range $\setXt$ (color-coded orange in Fig.~\ref{fig:hpd,gray}) are reported. 	
+		Phantom pooled sample standard deviations 
+		$\pm$ pooled standard errors of sample standard deviations, 
+		from optimized SPGR/DESS scan profiles.
+		Each entry is a measure of uncertainty 
+		of a typical voxel's $\To$ or $\Tt$ ML estimate,
+		estimated over 10 repeated acquisitions.
+		For sake of brevity, 
+		sample statistics corresponding only 
+		to phantom vials within 
+		(or nearly within) 
+		tight design range $\setXt$
+		(color-coded orange in Fig.~\ref{fig:hpd,gray}) 
+		are reported. 	
 		`V\#' abbreviates vial numbers. 
 		All values are reported in milliseconds.
 	}
 	\label{table:hpd,sample-std-dev}
 \end{table*}
 
-\revone{
-	In a second study, we repeat the $(2,1)$, $(1,1)$, and $(0,2)$ scan profiles 10 times each and separately estimate $\bmTo$ and $\bmTt$ for each repetition of each scan profile. 
-	We then estimate the standard deviation across repetitions on a per-voxel basis, to produce sample standard deviation maps for each profile.
-	Each ROI voxel of the sample standard deviation map is a better estimate of the \emph{population standard deviation} (which the CRB characterizes) than the ROI sample standard deviation from a single repetition, because the latter estimate is contaminated with slight spatial variation of voxel population means (due to imaging non-idealities such as Gibbs ringing due to $\mathbf{k}$-space truncation).
-}	
+In a second study, 
+we repeat the $(2,1)$, $(1,1)$, and $(0,2)$ scan profiles 
+10 times each 
+and separately compute $\bmTo$ and $\bmTt$ ML estimates
+for each repetition of each scan profile. 
+We then estimate the standard deviation across repetitions 
+on a per-voxel basis, 
+to produce sample standard deviation maps 
+for each profile.
+Each ROI voxel of the sample standard deviation map 
+is a better estimate 
+of the \emph{population standard deviation} 
+(which the CRB characterizes) 
+than the ROI sample standard deviation 
+from a single repetition, 
+because the latter estimate is contaminated 
+with slight spatial variation 
+of voxel population means 
+(due to imaging non-idealities 
+such as Gibbs ringing 
+due to $\mathbf{k}$-space truncation).
+	
+Table~\ref{table:hpd,sample-std-dev} reports 
+pooled sample standard deviations 
+and pooled standard errors of the sample standard deviations 
+(computed via expressions in \cite{ahn:03:seo}) 
+for phantom vials within (or nearly within) 
+tight design range $\setXt$ 
+(marked orange in Fig.~\ref{fig:hpd,gray}).
+Due to error propagation from coil combination 
+and $\bmstx$ estimation, 
+pooled ML sample standard deviations 
+cannot be compared \emph{in magnitude} 
+to worst-case predicted standard deviations 
+(Table~\ref{table:profile}); 
+however, \emph{trends} 
+of empirical and theoretical standard deviations 
+are overall similar.
+In particular, 
+the optimized $(0,2)$ DESS-only scan profile 
+affords $\To$ ML estimation precision 
+(in vials whose $\To,\Tt$ is similar to that of WM/GM) 
+comparable to optimized $(2,1)$ and $(1,1)$ 
+mixed (SPGR, DESS) profiles. 
+Also in agreement with predictions, 
+the optimized $(2,1)$ and $(0,2)$ profiles 
+afford greater $\Tt$ ML estimation precision 
+than the optimized $(1,1)$ profile.
 
-\revone{
-	Table~\ref{table:hpd,sample-std-dev} reports pooled sample standard deviations and pooled standard errors of the sample standard deviations (computed via expressions in \cite{ahn:03:seo}) for phantom vials within (or nearly within) tight design range $\setXt$ (marked orange in Fig.~\ref{fig:hpd,gray}).
-	Due to error propagation from coil combination and $\widehat{\bm{\kappa}}$ estimation, pooled ML sample standard deviations cannot be compared \emph{in magnitude} to worst-case predicted standard deviations (Table~\ref{table:profile}); however, \emph{trends} of empirical and theoretical standard deviations are overall similar.
-	In particular, the optimized $(0,2)$ DESS-only scan profile affords $\To$ ML estimation precision (in vials whose $\To,\Tt$ is similar to that of WM/GM) comparable to optimized $(2,1)$ and $(1,1)$ mixed (SPGR, DESS) profiles. 
-	Also in agreement with predictions, the optimized $(2,1)$ and $(0,2)$ profiles afford greater $\Tt$ ML estimation precision than the optimized $(1,1)$ profile.
-}
+\begin{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{\textit{In Vivo} Experiments}

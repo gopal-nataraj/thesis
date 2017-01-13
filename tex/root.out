@@ -1,29 +1,30 @@
 \BOOKMARK [0][-]{i.0}{Table of Contents}{}% 1
 \BOOKMARK [0][-]{section*.2}{List of Figures}{}% 2
-\BOOKMARK [0][-]{section*.3}{List of Appendices}{}% 3
-\BOOKMARK [0][-]{section*.5}{List of Abbreviations}{}% 4
-\BOOKMARK [0][-]{section*.6}{Abstract}{}% 5
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 6
-\BOOKMARK [1][-]{section.1.1}{Thesis Overview}{chapter.1}% 7
-\BOOKMARK [1][-]{section.1.2}{Thesis Organization}{chapter.1}% 8
-\BOOKMARK [0][-]{chapter.2}{Background}{}% 9
-\BOOKMARK [1][-]{section.2.1}{Relevant MR Physics}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.2}{Optimization in QMRI}{chapter.2}% 11
-\BOOKMARK [0][-]{chapter.3}{MRI Parameter Estimation from Likelihood Models}{}% 12
-\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.2}{Likelihood-Based Estimation in QMRI}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.3}{Experimentation}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.4}{Summary}{chapter.3}% 16
-\BOOKMARK [0][-]{chapter.4}{Optimizing MR Scan Design for Model-Based Relaxometry}{}% 17
-\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 18
-\BOOKMARK [1][-]{section.4.2}{A CRB-Inspired Scan Selection Method}{chapter.4}% 19
-\BOOKMARK [1][-]{section.4.3}{Optimizing SS Sequences for Relaxometry in the Brain}{chapter.4}% 20
-\BOOKMARK [1][-]{section.4.4}{Experimental Validation and Results}{chapter.4}% 21
-\BOOKMARK [0][-]{chapter.5}{MRI Parameter Estimation via Kernel Regression}{}% 22
-\BOOKMARK [0][-]{chapter.6}{Myelin Water Fraction Estimation from Steady-State Sequences}{}% 23
-\BOOKMARK [0][-]{chapter.7}{Steady-State RF Pulse Design}{}% 24
-\BOOKMARK [0][-]{chapter.8}{Future Work}{}% 25
-\BOOKMARK [0][-]{section*.7}{Appendices}{}% 26
-\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 27
-\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 28
-\BOOKMARK [0][-]{section*.10}{Bibliography}{}% 29
+\BOOKMARK [0][-]{section*.3}{List of Tables}{}% 3
+\BOOKMARK [0][-]{section*.4}{List of Appendices}{}% 4
+\BOOKMARK [0][-]{section*.6}{List of Abbreviations}{}% 5
+\BOOKMARK [0][-]{section*.7}{Abstract}{}% 6
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 7
+\BOOKMARK [1][-]{section.1.1}{Thesis Overview}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.2}{Thesis Organization}{chapter.1}% 9
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 10
+\BOOKMARK [1][-]{section.2.1}{Relevant MR Physics}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.2}{Optimization in QMRI}{chapter.2}% 12
+\BOOKMARK [0][-]{chapter.3}{MRI Parameter Estimation from Likelihood Models}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{Likelihood-Based Estimation in QMRI}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.3}{Experimentation}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.4}{Summary}{chapter.3}% 17
+\BOOKMARK [0][-]{chapter.4}{Optimizing MR Scan Design for Model-Based Relaxometry}{}% 18
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.2}{A CRB-Inspired Scan Selection Method}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.3}{Optimizing SS Sequences for Relaxometry in the Brain}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.4}{Experimental Validation and Results}{chapter.4}% 22
+\BOOKMARK [0][-]{chapter.5}{MRI Parameter Estimation via Kernel Regression}{}% 23
+\BOOKMARK [0][-]{chapter.6}{Myelin Water Fraction Estimation from Steady-State Sequences}{}% 24
+\BOOKMARK [0][-]{chapter.7}{Steady-State RF Pulse Design}{}% 25
+\BOOKMARK [0][-]{chapter.8}{Future Work}{}% 26
+\BOOKMARK [0][-]{section*.8}{Appendices}{}% 27
+\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 28
+\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 29
+\BOOKMARK [0][-]{section*.11}{Bibliography}{}% 30
