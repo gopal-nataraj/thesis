@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  13 JAN 2017 12:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  19 JAN 2017 11:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -700,46 +700,40 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 CHAPTER 2.
 (./c,bkgrd.tex [4
 
-]
-Overfull \hbox (1.12833pt too wide) in paragraph at lines 149--155
-[]\OT1/ptm/m/n/12 We as-sume neg-li-gi-ble spa-tial vari-a-tion in the lon-gi-t
-u-di-nal mag-netic field, so $\OML/cmm/m/it/12 b[][][] \OMS/cmsy/m/n/12 ^^Y
- []
-
-[5] [6]
-Overfull \hbox (1.73587pt too wide) in paragraph at lines 290--304
+] [5] [6]
+Overfull \hbox (1.73587pt too wide) in paragraph at lines 297--311
 \OT1/ptm/m/n/12 denotes the phase ac-cu-mu-la-tion due to main field in-ho-mo-g
 ene-ity (of-ten called off-resonance
  []
 
 
-Overfull \hbox (9.80157pt too wide) in paragraph at lines 290--304
+Overfull \hbox (9.80157pt too wide) in paragraph at lines 297--311
 \OT1/ptm/m/n/12 ef-fects). Eq. [] re-veals that with-out RF ex-ci-ta-tions, the
  trans-verse mag-ne-ti-za-tion $\OML/cmm/m/it/12 m[][][]$
  []
 
 [7] [8]
-Overfull \hbox (4.88657pt too wide) in paragraph at lines 521--521
+Overfull \hbox (4.88657pt too wide) in paragraph at lines 528--528
 [] 
  []
 
 
-Overfull \hbox (0.19235pt too wide) in paragraph at lines 543--543
+Overfull \hbox (0.19235pt too wide) in paragraph at lines 550--550
 [] 
  []
 
 [9] [10] [11]
-Overfull \hbox (8.83086pt too wide) in paragraph at lines 742--742
+Overfull \hbox (8.83086pt too wide) in paragraph at lines 749--749
 [] 
  []
 
 
-Overfull \hbox (49.87589pt too wide) detected at line 755
+Overfull \hbox (49.87589pt too wide) detected at line 762
 []\OML/cmm/m/it/12 :
  []
 
 
-Overfull \hbox (43.6091pt too wide) in paragraph at lines 770--770
+Overfull \hbox (43.6091pt too wide) in paragraph at lines 777--777
 [] 
  []
 
@@ -748,7 +742,7 @@ CHAPTER 3.
 (./c,relax.tex [18
 
 ] [19]
-Overfull \hbox (0.75612pt too wide) in paragraph at lines 286--300
+Overfull \hbox (0.75612pt too wide) in paragraph at lines 290--304
 \OT1/ptm/m/n/12 given la-tent pa-ram-e-ters $\OT1/cmr/bx/n/12 X$\OT1/ptm/m/n/12
  . We then for-mu-late ML la-tent pa-ram-e-ter es-ti-mate $[][][]$
  []
@@ -971,10 +965,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 148.
 Here is how much of TeX's memory you used:
  10033 strings out of 493090
  145256 string characters out of 6134868
- 278610 words of memory out of 5000000
+ 278609 words of memory out of 5000000
  13264 multiletter control sequences out of 15000+600000
  30248 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,20n,48p,1918b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on root.dvi (71 pages, 449320 bytes).
+Output written on root.dvi (71 pages, 450160 bytes).

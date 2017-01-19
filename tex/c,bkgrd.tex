@@ -35,8 +35,8 @@ to books such as
 
 The Bloch equations
 \cite{bloch:1946:ni-paper}
-describe the magnetization dynamics
-of \emph{spins}, 
+describe the macroscopic magnetization dynamics
+of \emph{spin}, 
 or (loosely) atomic nuclei with nonzero 
 angular momentum
 and thus nonzero magnetic moment,
@@ -81,7 +81,16 @@ $\gam$
 is the gyromagnetic ratio;
 and $i := \sqrt{-1}$.
 As written,
-equations \eqref{eq:bloch-mxy}-\eqref{eq:bloch-mz}
+\eqref{eq:bloch-mxy}-\eqref{eq:bloch-mz}
+specifically model the temporal dynamics
+of a single spin \emph{isochromat}, 
+or collection of macroscopically similar spins;
+later chapters consider second-order effects
+such as multiple (possibly interacting) isochromat compartments
+(Chapter~\ref{c,mwf})
+and diffusion
+(Appendix~\ref{a,dess-diff}).
+
 only model dominant temporal dynamics;
 later chapters consider second-order effects
 such as multiple magnetization compartments
@@ -147,10 +156,8 @@ We take the following common assumptions:
 \begin{itemize}
 	\item 
 		We assume negligible spatial variation
-		in the longitudinal magnetic field, 
-		so $\bzp\prt \approx 0$. 
-		This lack of spatial variation is reason
-		for non-selective excitation.
+		in the main magnetic field, 
+		so $\bzp\prt \approx 0$.
 	\item 
 		We assume the transverse field
 		separates in position and time;
@@ -693,7 +700,7 @@ dephasing gradients mainly contribute
 to off-resonance phase accrual,
 the net effect
 after data acquisition
-and gradient spoiling
+and gradient dephasing
 is well described 
 simply by precession and relaxation:
 \begin{align}
