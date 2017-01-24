@@ -1,2 +1,168 @@
 % kernel ridge regression for parameter estimation
 
+\section{Introduction}
+\label{s,krr,intro}
+
+In MRI \emph{parameter estimation},
+one seeks to quantify biomarker ''maps''
+(\ie, parameter images) 
+from data.
+Because MRI acquisitions 
+are tunably sensitive
+to many physical processes
+(\eg, relaxation \cite{bloch:1946:ni-paper}, 
+diffusion \cite{torrey:56:bew}, 
+and chemical exchange \cite{mcconnell:58:rrb}),
+MRI parameter estimation is important
+in many QMRI applications
+(\eg, relaxometry \cite{bloembergen:1948:rei}, 
+diffusivity tensor imaging \cite{bihan:01:dti}, 
+and multi-compartmental imaging \cite{mackay:94:ivv}). 
+Motivated by such widespread applications,
+this chapter describes a method
+for fast MRI parameter estimation.
+
+% signal models nonlinear
+% so parameter estimation requires nonconvex optimization
+% previous chapter described likelihood models
+% several works [cite] have had success with this
+% however these work for simple problems like single t1/t2 estimation
+% for larger problems, undesirable or even intractable
+Chapter~\ref{c,relax} applied
+a common parameter estimation strategy
+to QMRI
+that involves minimization
+of an objective function
+related to the likelihood function
+(and possibly regularization terms).
+Because MR signal models are typically nonlinear functions
+of latent object parameters,
+such likelihood-based estimation
+requires non-convex optimization in general.
+To seek global optima,
+several of our 
+\cite{nataraj:14:rje,nataraj:14:mbe,nataraj::oms}
+and others' 
+\cite{staroswiecki:12:seo,ma:13:mrf,beneliezer:15:raa,zhao:16:mlr}
+works approach estimation 
+via exhaustive grid search,
+which requires either storing
+or computing on-the-fly a ``dictionary'' 
+of scan profile signal vectors.
+These works estimate a small (2-3)
+number of latent parameters,
+and so grid search is practical.
+However, 
+for even moderately sized problems,
+the required number 
+of dictionary elements
+renders grid search undesirable or even intractable,
+unless one assumes artificially restrictive latent parameter constraints.
+
+% clear need for a method that scales well with # parameters?
+% multi-compartment: 6-11
+% diffusion: at least 7
+% phase-based methods: flow, b1, b0, asl? 
+There are numerous QMRI applications
+that could benefit from an alternative MRI parameter estimation method
+that scales well with the number of latent parameters.
+For example,
+vector (\eg, flow \cite{feinberg:85:mri})
+and tensor 
+(\eg, diffusivity \cite{bihan:01:dti} or conductivity \cite{tuch:01:ctm})
+field mapping techniques
+require estimation 
+of at minimum 4 and 7 latent parameters per voxel,
+respectively.
+Phase-based longitudinal \cite{sekihara:85:nif} 
+or transverse \cite{morrell:08:aps,sacolick:10:bmb} field mapping
+could avoid noise-amplifying algebraic manipulations
+on reconstructed image data
+that are conventionally used
+to reduce signal dependencies 
+on nuisance latent parameters.
+Compartmental fraction mapping \cite{mackay:94:ivv}
+from steady-state pulse sequences
+requires estimation of at least 7 \cite{deoni:08:gmt}
+and as many as 10 \cite{deoni:13:oct}
+latent parameters per voxel.
+In these and other applications,
+greater estimation accuracy
+requires more complete signal models
+that involve more latent parameters,
+which only increases the need 
+for scalable estimation methods.
+
+% omit
+% what has been done for larger problems?
+% several works tried sim annealing, global opt, region contraction
+% however, slow and have been shown to yield constraint-dependent estimates
+
+% kernel methods
+% fundamental challenge: nonlinear model
+% kernel methods used to allow nonlinearity in classification, novelty detection, regression
+% can relate estimation (where
+The fundamental challenge 
+of scalable MRI parameter estimation
+stems from MR signal model nonlinearity:
+standard linear estimators
+would be scalable but inaccurate.
+Opportunely,
+so-called \emph{kernel functions} \cite{berg:84:hao}
+are often well-suited 
+to transform nonlinear problems
+into linear (albeit higher-dimensional) problems
+that can be solved efficiently. 
+Associated \emph{kernel methods} \cite{scholkopf:01:agr}
+are quite general
+and yield remarkably simple nonlinear extensions
+to otherwise linear methods
+for various machine learning problems,
+\eg classification,
+anomaly detection,
+dimensionality reduction,
+and regression.
+
+% idea here is to link parameter estimation 
+% to a problem of regression
+% ideas of machine learning can link estimation (seek parameter estimates from data assuming model) to regression (seek regression function relating 
+This chapter introduces a fast, scalable method 
+for nonlinear MRI parameter estimation
+via kernel ridge regression (KRR).
+We observe that 
+for voxel-wise separable MRI parameter estimation problems,
+one can rapidly simulate many instances
+of latent parameter inputs and signal outputs
+from the nonlinear signal model.
+We take such input-output pairs
+as simulated \emph{training points}
+and propose to then \emph{learn}
+(using an appropriate kernel function)
+a non-iterative estimator
+(\ie, a nonlinear regression function)
+from the training points.
+The proposed KRR-based estimator scales considerably better
+with the number of estimated latent parameters
+than previously-discussed likelihood-based estimators.
+
+This chapter is organized as follows.
+Section~\ref{s,krr,meth}
+reviews the general signal model
+for an MR scan profile,
+constructs and solves 
+an appropriate functional optimization problem,
+and further reduces the proposed estimator's
+computational requirements
+through a kernel approximation.
+Section~\ref{s,krr,exp}
+applies KRR-based estimation
+to quantify six parameters arising 
+from models describing the steady-state 
+magnetization dynamics
+of two water compartments,
+a challenging application
+of interest in myelin water fraction imaging 
+(discussed in Chapter~\ref{c,mwf}).
+Section~\ref{s,krr,summ}
+discusses possible extensions 
+and provides concluding remarks.

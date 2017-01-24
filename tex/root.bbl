@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{100}
 
 \bibitem{keenan:16:msm}
 K.~E. Keenan, K.~F. Stupic, M.~A. Boss, S.~E. Russek, T.~L. Chenevert, P.~V.
@@ -489,5 +489,77 @@ D.~Ma, V.~Gulani, N.~Seiberlich, K.~Liu, J.~L. Sunshine, J.~L. Duerk, and M.~A.
 \bibitem{zhao:16:oed}
 B.~Zhao, J.~Haldar, K.~Setsompop, and L.~L. Wald, ``Optimal experiment design
   for magnetic resonance fingerprinting,'' in {\em embc}, 2016.
+
+\bibitem{torrey:56:bew}
+H.~C. Torrey, ``Bloch equations with diffusion terms,'' {\em {Phys. Rev.}},
+  vol.~104, pp.~{563--5}, 1956.
+
+\bibitem{mcconnell:58:rrb}
+H.~M. McConnell, ``Reaction rates by nuclear magnetic resonance,'' {\em {J. of
+  Chemical Phys.}}, vol.~28, pp.~{430--31}, Mar. 1958.
+
+\bibitem{bloembergen:1948:rei}
+N.~Bloembergen, E.~M. Purcell, and R.~V. Pound, ``Relaxation effects in nuclear
+  magnetic resonance absorption,'' {\em {Phys. Rev.}}, vol.~73, pp.~{679--712},
+  Apr. 1948.
+
+\bibitem{bihan:01:dti}
+D.~L. Bihan, J.-F. Mangin, C.~Poupon, C.~A. Clark, S.~Pappata, N.~Molko, and
+  H.~Chabriat, ``Diffusion tensor imaging: {Concepts} and applications,'' {\em
+  {J. Mag. Res. Im.}}, vol.~13, pp.~{534--546}, Apr. 2001.
+
+\bibitem{staroswiecki:12:seo}
+E.~Staroswiecki, K.~L. Granlund, M.~T. Alley, G.~E. Gold, and B.~A. Hargreaves,
+  ``Simultaneous estimation of {T2} and apparent diffusion coefficient in human
+  articular cartilage in vivo with a modified three-dimensional double echo
+  steady state {(DESS)} sequence at 3 {T},'' {\em {Mag. Res. Med.}}, vol.~67,
+  no.~4, pp.~{1086--96}, 2012.
+
+\bibitem{zhao:16:mlr}
+B.~Zhao, K.~Setsompop, H.~Ye, S.~Cauley, and L.~L. Wald, ``Maximum likelihood
+  reconstruction for magnetic resonance fingerprinting,'' {\em {IEEE Trans.
+  Med. Imag.}}, vol.~35, pp.~{1812--23}, Aug. 2016.
+
+\bibitem{feinberg:85:mri}
+D.~A. Feinberg, L.~E. Crooks, P.~Sheldon, J.~H. III, J.~Watts, and M.~Arakawa,
+  ``Magnetic resonance imaging the velocity vector components of fluid flow,''
+  {\em {Mag. Res. Med.}}, vol.~2, pp.~{555--66}, Dec. 1985.
+
+\bibitem{tuch:01:ctm}
+D.~S. Tuch, V.~J. Wedeen, A.~M. Dale, J.~S. George, and J.~W. Belliveau,
+  ``Conductivity tensor mapping of the human brain using diffusion tensor
+  {MRI},'' {\em {Proc. Natl. Acad. Sci.}}, vol.~98, pp.~{11697--701}, Sept.
+  2001.
+
+\bibitem{sekihara:85:nif}
+K.~Sekihara, S.~Matsui, and H.~Kohno, ``{NMR} imaging for magnets with large
+  nonuniformities,'' {\em {IEEE Trans. Med. Imag.}}, vol.~4, pp.~{193--9}, Dec.
+  1985.
+
+\bibitem{morrell:08:aps}
+G.~R. Morrell, ``A phase-sensitive method of flip angle mapping,'' {\em {Mag.
+  Res. Med.}}, vol.~60, pp.~{889--94}, Oct. 2008.
+
+\bibitem{deoni:08:gmt}
+S.~C.~L. Deoni, B.~K. Rutt, T.~Arun, C.~Pierpaoli, and D.~K. Jones, ``Gleaning
+  multicomponent {T1} and {T2} information from steady-state imaging data,''
+  {\em {Mag. Res. Med.}}, vol.~60, pp.~{1372--87}, Dec. 2008.
+
+\bibitem{deoni:13:oct}
+S.~C.~L. Deoni, L.~Matthews, and S.~H. Kolind, ``One component? {Two}
+  components? {Three?} {The} effect of including a nonexchanging "free" water
+  component in multicomponent driven equilibrium single pulse observation of
+  {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~70, pp.~{147--54}, July 2013.
+
+\bibitem{berg:84:hao}
+C.~Berg, J.~P.~R. Christensen, and P.~Ressel, {\em Harmonic analysis on
+  semigroups}.
+\newblock Springer-Verlag, 1984.
+
+\bibitem{scholkopf:01:agr}
+B.~{Sch\"olkopf}, R.~Herbrich, and A.~J. Smola, ``A generalized representer
+  theorem,'' in {\em Proc. Computational Learning Theory (COLT)},
+  pp.~{416--426}, 2001.
+\newblock LNCS 2111.
 
 \end{thebibliography}
