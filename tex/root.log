@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  23 JAN 2017 22:50
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  24 JAN 2017 22:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -920,52 +920,53 @@ Overfull \hbox (1.61938pt too wide) in paragraph at lines 1558--1560
 CHAPTER 5.
 (./c,krr.tex [49
 
-]
-
-LaTeX Warning: Reference `s,krr,meth' on page 50 undefined on input line 149.
-
-
-LaTeX Warning: Reference `s,krr,exp' on page 50 undefined on input line 157.
+] [50] [51]
+Overfull \hbox (8.96999pt too wide) in paragraph at lines 303--303
+[] 
+ []
 
 
-LaTeX Warning: Reference `s,krr,summ' on page 50 undefined on input line 166.
+Overfull \hbox (7.09262pt too wide) in paragraph at lines 316--324
+\OT1/ptm/m/n/12 where $\OT1/cmr/bx/n/12 K \OMS/cmsy/m/n/12 2 \U/msb/m/n/12 R[]$
+ \OT1/ptm/m/n/12 is the Gram ma-trix con-sist-ing of en-tries $\OML/cmm/m/it/12
+ k\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 q[]\OML/cmm/m/it/12 ; \OT1/cmr/bx/n/12 q[]\
+OT1/cmr/m/n/12 )$ \OT1/ptm/m/n/12 for $\OML/cmm/m/it/12 n; n[] \OMS/cmsy/m/n/12
+ 2 [][]$\OT1/ptm/m/n/12 ;
+ []
 
-) [50]
+[52] [53]) [54]
 CHAPTER 6.
-(./c,mwf.tex) [51
+(./c,mwf.tex) [55
 
 ]
 CHAPTER 7.
-(./c,future.tex) [52
+(./c,future.tex) [56
 
 ]
 APPENDIX A.
-(./a,cc-multi.tex) [53
+(./a,cc-multi.tex) [57
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [54
+(./a,dess-diff.tex) [58
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [55
+ [59
 
 
-] [56] [57] [58] [59] [60] [61]
-[62])
+] [60] [61] [62] [63] [64] [65]
+[66])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 148.
- [63]
+ [67]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 148.
  (./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 148.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 148.
 Package rerunfilecheck Info: File `root.out' has not changed.
-(rerunfilecheck)             Checksum: D4D9BDF39B28A90339A3122BAC194B8F;2129.
-
-
-LaTeX Warning: There were undefined references.
+(rerunfilecheck)             Checksum: AF1B8A2FE6511781005153288C2F85FB;2354.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -973,12 +974,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 148.
  ) 
 Here is how much of TeX's memory you used:
- 9687 strings out of 493489
- 139948 string characters out of 3141349
- 264813 words of memory out of 3000000
- 12748 multiletter control sequences out of 15000+200000
+ 9763 strings out of 493489
+ 140730 string characters out of 3141349
+ 266824 words of memory out of 3000000
+ 12824 multiletter control sequences out of 15000+200000
  30248 words of font info for 95 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  36i,20n,48p,1922b,472s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (73 pages, 470860 bytes).
+Output written on root.dvi (77 pages, 512036 bytes).

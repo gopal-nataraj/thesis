@@ -1,7 +1,9 @@
 % kernel ridge regression for parameter estimation
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 \label{s,krr,intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In MRI \emph{parameter estimation},
 one seeks to quantify biomarker ''maps''
@@ -108,7 +110,7 @@ stems from MR signal model nonlinearity:
 standard linear estimators
 would be scalable but inaccurate.
 Opportunely,
-so-called \emph{kernel functions} \cite{berg:84:hao}
+so-called \emph{kernel functions} \cite{aronszajn:50:tor}
 are often well-suited 
 to transform nonlinear problems
 into linear (albeit higher-dimensional) problems
@@ -153,7 +155,7 @@ constructs and solves
 an appropriate functional optimization problem,
 and further reduces the proposed estimator's
 computational requirements
-through a kernel approximation.
+via a kernel approximation.
 Section~\ref{s,krr,exp}
 applies KRR-based estimation
 to quantify six parameters arising 
@@ -166,3 +168,382 @@ of interest in myelin water fraction imaging
 Section~\ref{s,krr,summ}
 discusses possible extensions 
 and provides concluding remarks.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{MRI Parameter Estimation via Kernel Regression}
+\label{s,krr,meth}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{A Functional Optimization Problem and Kernel Solution}
+\label{ss,krr,meth,opt}
+
+Recall from Section~\ref{ss,relax,meth,prof}
+that after image reconstruction,
+many MRI acquisitions
+produce at each voxel position
+a sequence of noisy voxel values 
+$\bmy \in \complexes{D}$, 
+modeled as
+\begin{align}
+	\bmy = \bms\paren{\bmx; \bmnu} + \bmeps,
+	\label{eq:krr,model}
+\end{align}
+where $\bmx \in \reals{L}$ denotes $L$ \emph{latent} object parameters 
+(\eg, relaxation time constants);
+$\bmnu \in \reals{K}$ denotes $K$ \emph{known} object parameters 
+(\eg, separately acquired and estimated field maps);
+$\bms : \reals{L} \times \reals{K} \mapsto \complexes{D}$ 
+models the noiseless signals that arise from $D$ datasets;
+and $\bmeps \in \complexes{D}$
+is complex Gaussian noise,
+assumed to be distributed as $\cgauss{\bmzero}{\bmSig}$.
+Unlike signal models in earlier chapters
+(\cf \eqref{eq:scn-dsgn,mod-vec-abbrev}),
+Equation~\ref{eq:krr,model} omits
+for simplicity
+explicit model dependence on acquisition parameters,
+as these are fixed 
+during parameter estimation.
+
+Here we seek to estimate 
+on a per-voxel basis
+each latent parameter $\bmx$
+from corresponding data sequence $\bmy$ 
+and known parameter $\bmnu$.
+To develop (or train) a non-iterative estimator $\est{\bmx}$,
+we simulate many instances 
+of input-output relation \eqref{eq:krr,model}
+and use kernels
+to develop a nonlinear inverse relation.
+We sample $\reals{L} \times \reals{K} \times \complexes{D}$
+and evaluate \eqref{eq:krr,model} $N$ times
+to produce sets of training inputs
+$\set{\paren{\bmx_1,\bmnu_1,\bmeps_1},\dots,\paren{\bmx_N,\bmnu_N,\bmeps_N}}$
+and data sequences
+$\set{\bmy_1,\dots,\bmy_N}$. 
+We seek a function
+$\est{\bmh}~:~\reals{Q} \mapsto \reals{L}$
+for $Q := 2D+K$
+and an offset $\est{\bmb} \in \reals{L}$
+that together map each pure-real regressor
+$\bmq_n := [\re{\bmy_n}\tpose, \im{\bmy_n}\tpose, \bmnu_n\tpose]\tpose$,
+$n \in \set{1,\dots,N}$, 
+to an estimate 
+$\bmxha{\bmq_n} := \bmhha{\bmq_n}+\est{\bmb}$ 
+that is ``close'' to corresponding regressand $\bmx_n$:
+\begin{align}
+	\paren{\est{\bmh},\est{\bmb}} &\in 
+		\set{\argmin{\substack{\bmh \in \hilb^L \\ \bmb \in \reals{L}}}
+		\costa{\bmh, \bmb; \paren{\bmx_1,\bmq_1},\dots,\paren{\bmx_N,\bmq_N}}}, 
+		\where \label{eq:krr,prob} \\
+	\costa{\dots} &= 
+		\sum_{l=1}^L \cost_l\paren{h_l,b_l; 
+		\paren{x_{l,1},\bmq_1},\dots,\paren{x_{l,N},\bmq_N}}; 
+		\label{eq:krr,cost} \\
+	\Psi_l(\dots) &= 
+		\frac{1}{N} \sum_{n=1}^N \paren{h_l(\bmq_n) + 
+		b_l - x_{l,n}}^2 + \rho_l \norm{h_l}_\hilb^2.
+	\label{eq:krr,cost-l}
+\end{align}
+Here, each $h_l~:~\reals{Q} \mapsto \real$ is a scalar function
+that maps to the $l$th component of the output of $\bmh$; 
+each $b_l,x_{l,n} \in \real$ are scalar components of $\bmb,\bmx$;
+$\hilb$ is a (presently unspecified) Hilbert function space,
+whose norm $\norm{\cdot}_\hilb$ is
+induced by inner product 
+$\innprod{\cdot}{\cdot}_\hilb : \hilb \times \hilb \mapsto \real$; 
+each $\rho_l$ controls for regularity in $h_l$;
+and $\paren{\cdot}\tpose$ denotes vector transpose.
+
+Since \eqref{eq:krr,cost} is separable 
+in the components of $\bmh$, 
+it suffices to consider optimizing each $\paren{h_l,b_l}$ 
+by separately minimizing \eqref{eq:krr,cost-l}
+for each $l \in \set{1,\dots,L}$.
+Nevertheless, 
+minimizing \eqref{eq:krr,cost-l} 
+is a challenging functional optimization problem
+without further restriction 
+on the Hilbert space $\hilb$.
+Following many other works involving kernels,
+we proceed by hereafter restricting $\hilb$
+to be a \emph{reproducing kernel} Hilbert space 
+(RKHS) \cite{aronszajn:50:tor}.
+Remarkably,
+a generalization
+of the Representer Theorem \cite{scholkopf:01:agr},
+restated as is relevant here for completeness,
+then reduces \eqref{eq:krr,cost-l}
+to a finite-dimensional optimization problem:
+\begin{thm}[Generalized Representer, \cite{scholkopf:01:agr}]
+	Define $k : \reals{Q} \times \reals{Q} \mapsto \real$
+	to be the (symmetric positive definite) kernel function 
+	associated with RKHS $\hilb$, 
+	such that reproducing property $h_l(\bmq) = \innprod{h_l}{k(\cdot,\bmq)}_\hilb$
+	holds for all $h_l \in \hilb$ and $\bmq \in \reals{Q}$. 
+	Then any minimizer $(\est{h}_l,\est{b}_l)$ of \eqref{eq:krr,cost-l}
+	over $\hilb \times \real$
+	admits a representation of $\est{h}_l$ of the form
+	\label{thm:rep}
+	\begin{align}
+		\est{h}_l(\cdot) \equiv \sum_{n=1}^N a_{l,n} k(\cdot,\bmq_{n}),
+		\label{eq:krr,rep}
+	\end{align}
+	where each $a_{l,n} \in \real$ for $n \in \set{1,\dots,N}$.
+\end{thm}
+Theorem~\ref{thm:rep} ensures that any solution to 
+\begin{align}
+	(\est{\bma}_l,\est{b}_l) \in 
+	\set{\argmin{\substack{\bma_l \in \reals{N} \\ b_l \in \real}} 
+		\frac{1}{N} \sum_{n=1}^N \paren{\sum_{n'=1}^N a_{l,n'} k(\bmq_n,\bmq_{n'}) 
+		+ b_l - x_{l,n}}^2 +
+		\rho_l \norm{\sum_{n'=1}^N a_{l,n'} k(\cdot,\bmq_{n'})}^2_\hilb}
+	\label{eq:krr,cvx}
+\end{align}
+corresponds via \eqref{eq:krr,rep} 
+to a minimizer of \eqref{eq:krr,cost-l}
+over $\hilb \times \real$,
+where $\bma_l := [a_{l,1},\dots,a_{l,N}]\tpose$.
+Fortunately, a solution of \eqref{eq:krr,cvx} exists uniquely
+for $\rho_l > 0$
+and can be expressed as
+\begin{align}
+	\est{\bma}_l &= \inv{\bmM \bmK + N\rho_l\eye{N}} \bmM \bmxg{l};
+	\label{eq:krr,a-hat} \\
+	\est{b}_l &= \frac{1}{N} \ones{N}\tpose \paren{\bmxg{l} - \bmK \est{\bma}_l},
+	\label{eq:krr,b-hat}
+\end{align}
+where 
+$\bmK \in \reals{N \times N}$ is the Gram matrix 
+consisting of entries $k(\bmq_n,\bmq_{n'})$ for $n,n' \in \set{1,\dots,N}$;
+$\bmM := \eye{N}-\frac{1}{N}\ones{N}\ones{N}\tpose$ is a de-meaning operator;
+$\bmxg{l} := [x_{l,1},\dots,x_{l,N}]\tpose$;
+$\eye{N} \in \reals{N \times N}$ is the identity matrix;
+and $\ones{N} \in \reals{N}$ is a vector of ones.
+
+In the special case where each
+$\rho_l \gets \rho$ 
+for fixed $\rho>0$, 
+corresponding scalar estimators 
+$\set{\est{x}_l\paren{\cdot} := \est{h}_l\paren{\cdot} + \est{b}_l}_1^L$
+that arise from plugging \eqref{eq:krr,a-hat} into \eqref{eq:krr,rep}
+can be concatenated as
+\begin{align}
+	\bmxha{\cdot} &\gets \bmX 
+		\paren{\frac{1}{N}\ones{N} + 
+		\bmM\inv{\bmK\bmM + N\rho\eye{N}} \bmka{\cdot}},
+		\label{eq:krr,x-hat}
+\end{align}
+where
+$\bmka{\cdot} := 
+\brac{k(\cdot,\bmq_1),\dots,k(\cdot,\bmq_N)}\tpose - \frac{1}{N}\bmK\ones{N}
+: \reals{Q} \mapsto \reals{N}$
+and 
+$\bmX := \brac{\bmx_1,\dots,\bmx_N} = \brac{\bmxg{1},\dots,\bmxg{L}}\tpose 
+\in \reals{L \times N}$.
+
+% utility of estimate depends on kernel function
+% valid kernel is q'*q, which corresponds to linear ridge regression
+% more useful kernel is nonlinear fun of q; we use gaussian
+For $\rho>0$, 
+estimator \eqref{eq:krr,x-hat} minimizes \eqref{eq:krr,cost}
+over $\paren{\hilb \times \real}^L$.
+However, the utility of \eqref{eq:krr,x-hat}
+depends on the choice of kernel $k$,
+which induces a choice on the RKHS $\hilb$
+and thus the function space $\paren{\hilb \times \real}^L$
+over which \eqref{eq:krr,prob} optimizes.
+For example, if $k$ was selected as the canonical dot product 
+$k(\bmq,\bmq') \gets \innprod{\bmq}{\bmq'}_{\reals{Q}} := \bmq\tpose \bmq'$
+(for which RKHS $\hilb \gets \reals{Q}$),
+then \eqref{eq:krr,x-hat} would reduce 
+to affine ridge regression \cite{hoerl:70:rrb},
+which is optimal over $\paren{\reals{Q} \times \real}^L$
+but is unlikely to be useful when signal model $\bms$ is nonlinear in $\bmx$.
+
+Since we expect a useful estimate $\est{\bmx}\paren{\bmq}$ 
+to depend nonlinearly (but smoothly) on $\bmq$,
+we instead use a 
+(symmetric, positive definite) 
+$k$ that is likewise nonlinear in its arguments
+and thus corresponds to a RKHS richer than $\reals{Q}$. 
+Specifically, we use a Gaussian kernel
+\begin{align}
+	k(\bmq,\bmq') \gets \expa{-\frac{1}{2}\norm{\bmq-\bmq'}^2_{\bmL^{-1}}},
+	\label{eq:krr,kern}
+\end{align}
+where symmetric, positive definite 
+$\bmL \in \reals{Q \times Q}$ 
+controls the length scales in $\bmq$ over which 
+the estimator $\est{\bmx}$ smooths.
+
+Interestingly, 
+the RKHS associated 
+with Gaussian kernel \eqref{eq:krr,kern}
+is infinite-dimensional.
+Thus, 
+Gaussian KRR
+can be interpreted as 
+first ``lifting'' 
+via a nonlinear \emph{feature map} 
+$\bmz : \reals{Q} \mapsto \hilb$ 
+each $\bmq$ 
+into an infinite-dimensional \emph{feature} $\bmza{\bmq} \in \hilb$,
+and then performing affine ridge regression
+on the features
+via dot products of the form
+$k(\bmq,\bmq') \gets \innprod{\bmza{\bmq}}{\bmza{\bmq'}}_{\hilb}$.
+From this perspective,
+the challenges of nonlinear estimation 
+via likelihood models
+are avoided 
+because we \emph{select} 
+(through the choice of kernel) 
+characteristics of the nonlinear dependence
+that we wish 
+for our regression function to model
+and need only \emph{estimate} via \eqref{eq:krr,cvx} 
+the linear dependence
+of $\est{\bmx}$ on the corresponding features.
+% \todo{performance analysis: how must $N$ scale with $L,Q$?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Practical Considerations: A Kernel Approximation}
+\label{ss,krr,meth,apprx}
+
+In practical problems
+with even moderately large ambient dimension $Q$,
+the necessarily large number of training samples $N$ 
+complicates storage of (dense) Gram matrix $\bmK$.
+Using a kernel approximation 
+can mitigate storage issues.
+Here we choose
+to sample Random (Fourier) Features \cite{rahimi:07:rff},
+a recent method 
+for approximating shift-invariants kernels
+having form $k\paren{\bmq,\bmq'} \equiv k\paren{\bmq-\bmq'}$.
+This section briefly reviews \cite{rahimi:07:rff}
+for the purpose of constructing 
+an intuitive and computationally efficient approximation of \eqref{eq:krr,x-hat}.
+
+The strategy of \cite{rahimi:07:rff}
+is to construct independent probability distributions 
+$\dist{\bmv}$ and $\dist{s}$
+associated with
+random $\bmv \in \reals{Q}$ 
+and random $s \in \real$ 
+as well as a random function 
+(that is parameterized by $\bmq$) 
+$\zt\paren{\cdot,\cdot;\bmq} : \reals{Q} \times \real \times \reals{Q} \mapsto \real$,
+such that
+\begin{align}
+	\expect{\bmv,s}{
+		\zta{\bmv,s;\bmq}
+		\zta{\bmv,s;\bmq'} 
+	}
+	= k(\bmq-\bmq'),
+	\label{eq:krr,exp}
+\end{align}
+where 
+$\expect{\bmv,s}{\cdot}$
+denotes expectation with respect to $\dist{\bmv}\dist{s}$.
+If such a construction exists,
+one can build
+approximate feature maps $\bmztZ$
+by concatenating evaluations of 
+$\ztZ:= \sqrt{2/Z}\zt$ on 
+$Z$ samples 
+$\set{\paren{\bmv_1,s_1},\dots,\bmv_Z,s_Z}$
+of $\paren{\bmv,s}$
+(drawn jointly albeit independently),
+to produce approximate feature vectors
+\begin{align}
+	\bmztZa{\bmq} := \brac{\ztZa{\bmv_1,s_1;\bmq},\dots,\ztZa{\bmv_Z,s_Z;\bmq}}\tpose
+	\label{eq:krr,feat}
+\end{align}
+for any $\bmq$. 
+Then by the strong law of large numbers,
+\begin{align}
+	\lim_{Z \to \infty} \innprod{
+		\bmztZa{\bmq}}{
+		\bmztZa{\bmq'}
+	}_{\reals{Z}} \overset{a.s.}{\to} k(\bmq,\bmq') \qquad \forall \bmq,\bmq',
+	\label{eq:krr,lln}
+\end{align}
+which, 
+in conjunction 
+with strong performance guarantees
+for finite $Z$ \cite{rahimi:07:rff}, 
+justifies the interpretation 
+of $\bmztZ$ as an approximate 
+(and now finite-dimensional) feature map.
+
+We use the Fourier construction 
+of \cite{rahimi:07:rff}
+that assigns
+$\zt\paren{\bmv,s;\bmq} 
+\gets 
+\cosa{2\pi\paren{\bmv\tpose \bmq + s}}$.
+If $s\sim\unif{0,1}$, 
+then 
+$\expect{\bmv,s}{
+		\zt\paren{\bmv,s;\bmq}
+		\zt\paren{\bmv,s;\bmq'} 
+}$
+simplifies to
+\begin{align}
+	\int_{\reals{Q}} \cosa{2\pi\bmv\tpose\paren{\bmq-\bmq'}} \dist{\bmv}\paren{\bmv} \der{\bmv}.
+	\label{eq:krr,ft}
+\end{align}
+For symmetric positive definite $k$,
+\eqref{eq:krr,ft} exists \cite{wu:97:gbt} 
+and is the Fourier transform 
+% with argument $\paren{\bmq-\bmq'}$
+of $\dist{\bmv}$.
+Thus, for Gaussian kernel \eqref{eq:krr,kern},
+choosing $\bmv\sim\gauss{\boldsymbol{0}}{\inv{4\pi^2\bmL}}$
+satisfies \eqref{eq:krr,exp}.
+
+Subsequent sampling of $\bmv,s$ 
+and construction of 
+$\bmZt := \brac{\bmztZa{\bmq_1},\dots,\bmztZa{\bmq_N}} \in \reals{Z \times N}$
+via \eqref{eq:krr,feat}
+gives for $Z \ll N$
+a low-rank approximation $\bmZt\tpose\bmZt$ 
+of Gram matrix $\bmK$.
+Substituting this approximation into \eqref{eq:krr,x-hat}
+and applying the matrix inversion lemma \cite{woodbury:50:imm} 
+yields
+\begin{align}
+	\esta{\bmx}{\cdot} \gets \bmmx + \Cxzt\inv{\Cztzt + \rho\eye{Z}} \paren{\bmztZa{\cdot} - \bmmzt},
+	\label{eq:krr,x-apx}
+\end{align}
+where $\bmmx := \frac{1}{N}\bmX\ones{N}$ 
+and $\bmmzt := \frac{1}{N}\bmZt\ones{N}$ 
+are sample mean vectors; and
+$\Cxzt := \frac{1}{N}\bmX\bmM\bmZt\tpose$
+and $\Cztzt := \frac{1}{N}\bmZt\bmM\bmZt\tpose$ 
+are sample covariance matrices.
+Estimator \eqref{eq:krr,x-apx} 
+is a regularized variation
+of the linear minimum mean-squared error estimator
+on the features,
+and illustrates
+that Gaussian KRR via estimator \eqref{eq:krr,x-hat}
+is asymptotically (in $Z$) equivalent
+to affine ridge regression
+after nonlinear, high-dimensional feature mapping.
+%\todo{storage comparison with grid search}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimentation}
+\label{s,krr,exp}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary and Future Work}
+\label{s,krr,summ}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

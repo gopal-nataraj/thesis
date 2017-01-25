@@ -551,15 +551,32 @@ S.~C.~L. Deoni, L.~Matthews, and S.~H. Kolind, ``One component? {Two}
   component in multicomponent driven equilibrium single pulse observation of
   {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~70, pp.~{147--54}, July 2013.
 
-\bibitem{berg:84:hao}
-C.~Berg, J.~P.~R. Christensen, and P.~Ressel, {\em Harmonic analysis on
-  semigroups}.
-\newblock Springer-Verlag, 1984.
+\bibitem{aronszajn:50:tor}
+N.~Aronszajn, ``Theory of reproducing kernels,'' {\em {tams}}, vol.~68,
+  pp.~{337--404}, May 1950.
 
 \bibitem{scholkopf:01:agr}
 B.~{Sch\"olkopf}, R.~Herbrich, and A.~J. Smola, ``A generalized representer
   theorem,'' in {\em Proc. Computational Learning Theory (COLT)},
   pp.~{416--426}, 2001.
 \newblock LNCS 2111.
+
+\bibitem{hoerl:70:rrb}
+A.~E. Hoerl and R.~W. Kennard, ``Ridge regression: biased estimation for
+  nonorthogonal problems,'' {\em {Technometrics}}, vol.~12, pp.~{55--67}, Feb.
+  1970.
+
+\bibitem{rahimi:07:rff}
+A.~Rahimi and B.~Recht, ``Random features for large-scale kernel machines,'' in
+  {\em NIPS}, 2007.
+
+\bibitem{wu:97:gbt}
+Z.~Wu, ``Generalized {Bochner's} theorem for radial function,'' {\em
+  {Approximation Theory and its Applications}}, vol.~13, no.~3, pp.~{47--57},
+  1997.
+
+\bibitem{woodbury:50:imm}
+M.~A. Woodbury, ``Inverting modified matrices,'' 1950.
+\newblock Tech. Report 42, Stat. Res. Group, Princeton Univ.
 
 \end{thebibliography}
