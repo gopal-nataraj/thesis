@@ -24,12 +24,13 @@
 \BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 24
 \BOOKMARK [0][-]{chapter.5}{MRI Parameter Estimation via Kernel Regression}{}% 25
 \BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 26
-\BOOKMARK [1][-]{section.5.2}{MRI Parameter Estimation via Kernel Regression}{chapter.5}% 27
-\BOOKMARK [1][-]{section.5.3}{Experimentation}{chapter.5}% 28
-\BOOKMARK [1][-]{section.5.4}{Summary and Future Work}{chapter.5}% 29
-\BOOKMARK [0][-]{chapter.6}{Myelin Water Fraction Estimation from Steady-State Sequences}{}% 30
-\BOOKMARK [0][-]{chapter.7}{Future Work}{}% 31
-\BOOKMARK [0][-]{section*.8}{Appendices}{}% 32
-\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 33
-\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 34
-\BOOKMARK [0][-]{section*.11}{Bibliography}{}% 35
+\BOOKMARK [1][-]{section.5.2}{A Function Optimization Problem \046 Kernel Solution}{chapter.5}% 27
+\BOOKMARK [1][-]{section.5.3}{Implementation Considerations}{chapter.5}% 28
+\BOOKMARK [1][-]{section.5.4}{Experimentation}{chapter.5}% 29
+\BOOKMARK [1][-]{section.5.5}{Summary and Future Work}{chapter.5}% 30
+\BOOKMARK [0][-]{chapter.6}{Myelin Water Fraction Estimation from Steady-State Sequences}{}% 31
+\BOOKMARK [0][-]{chapter.7}{Future Work}{}% 32
+\BOOKMARK [0][-]{section*.8}{Appendices}{}% 33
+\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 34
+\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 35
+\BOOKMARK [0][-]{section*.11}{Bibliography}{}% 36

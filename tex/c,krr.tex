@@ -170,13 +170,13 @@ discusses possible extensions
 and provides concluding remarks.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{MRI Parameter Estimation via Kernel Regression}
+\section{A Function Optimization Problem \& Kernel Solution}
 \label{s,krr,meth}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{A Functional Optimization Problem and Kernel Solution}
-\label{ss,krr,meth,opt}
+%\subsection{A Functional Optimization Problem and Kernel Solution}
+%\label{ss,krr,meth,opt}
 
 Recall from Section~\ref{ss,relax,meth,prof}
 that after image reconstruction,
@@ -292,6 +292,7 @@ to a finite-dimensional optimization problem:
 	\end{align}
 	where each $a_{l,n} \in \real$ for $n \in \set{1,\dots,N}$.
 \end{thm}
+
 Theorem~\ref{thm:rep} ensures that any solution to 
 \begin{align}
 	(\est{\bma}_l,\est{b}_l) \in 
@@ -321,14 +322,13 @@ $\bmM := \eye{N}-\frac{1}{N}\ones{N}\ones{N}\tpose$ is a de-meaning operator;
 $\bmxg{l} := [x_{l,1},\dots,x_{l,N}]\tpose$;
 $\eye{N} \in \reals{N \times N}$ is the identity matrix;
 and $\ones{N} \in \reals{N}$ is a vector of ones.
-
 In the special case where each
 $\rho_l \gets \rho$ 
 for fixed $\rho>0$, 
 corresponding scalar estimators 
 $\set{\est{x}_l\paren{\cdot} := \est{h}_l\paren{\cdot} + \est{b}_l}_1^L$
 that arise from plugging \eqref{eq:krr,a-hat} into \eqref{eq:krr,rep}
-can be concatenated as
+can be concisely concatenated as
 \begin{align}
 	\bmxha{\cdot} &\gets \bmX 
 		\paren{\frac{1}{N}\ones{N} + 
@@ -339,9 +339,10 @@ where
 $\bmka{\cdot} := 
 \brac{k(\cdot,\bmq_1),\dots,k(\cdot,\bmq_N)}\tpose - \frac{1}{N}\bmK\ones{N}
 : \reals{Q} \mapsto \reals{N}$
-and 
+is a kernel embedding operator and 
 $\bmX := \brac{\bmx_1,\dots,\bmx_N} = \brac{\bmxg{1},\dots,\bmxg{L}}\tpose 
-\in \reals{L \times N}$.
+\in \reals{L \times N}$
+collects the regressands. 
 
 % utility of estimate depends on kernel function
 % valid kernel is q'*q, which corresponds to linear ridge regression
@@ -377,6 +378,11 @@ where symmetric, positive definite
 $\bmL \in \reals{Q \times Q}$ 
 controls the length scales in $\bmq$ over which 
 the estimator $\est{\bmx}$ smooths.
+We focus on the Gaussian kernel
+over other candidate kernels
+because of its popularity
+in the machine learning community 
+for representing smooth functions.
 
 Interestingly, 
 the RKHS associated 
@@ -392,7 +398,7 @@ each $\bmq$
 into an infinite-dimensional \emph{feature} $\bmza{\bmq} \in \hilb$,
 and then performing affine ridge regression
 on the features
-via dot products of the form
+via inner products of the form
 $k(\bmq,\bmq') \gets \innprod{\bmza{\bmq}}{\bmza{\bmq'}}_{\hilb}$.
 From this perspective,
 the challenges of nonlinear estimation 
@@ -406,11 +412,22 @@ for our regression function to model
 and need only \emph{estimate} via \eqref{eq:krr,cvx} 
 the linear dependence
 of $\est{\bmx}$ on the corresponding features.
-% \todo{performance analysis: how must $N$ scale with $L,Q$?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Practical Considerations: A Kernel Approximation}
-\label{ss,krr,meth,apprx}
+\section{Implementation Considerations}
+\label{s,krr,pract,apprx}
+
+This section focuses
+on important practical implementation issues.
+Subsection~\ref{ss,krr,pract,apprx} discusses
+a scalable and conceptually intuitive approximation
+of KRR estimator \eqref{eq:krr,x-hat}.
+Subsection~\ref{ss,krr,pract,mod} describes guidelines
+for nearly-automatic model selection.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{A Kernel Approximation}
+\label{ss,krr,pract,apprx}
 
 In practical problems
 with even moderately large ambient dimension $Q$,
@@ -423,7 +440,7 @@ to sample Random (Fourier) Features \cite{rahimi:07:rff},
 a recent method 
 for approximating shift-invariants kernels
 having form $k\paren{\bmq,\bmq'} \equiv k\paren{\bmq-\bmq'}$.
-This section briefly reviews \cite{rahimi:07:rff}
+This subsection briefly reviews the main result of \cite{rahimi:07:rff}
 for the purpose of constructing 
 an intuitive and computationally efficient approximation of \eqref{eq:krr,x-hat}.
 
@@ -537,6 +554,32 @@ after nonlinear, high-dimensional feature mapping.
 %\todo{storage comparison with grid search}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Model Selection}
+\label{ss,krr,pract,mod}
+
+This subsection proposes guidelines
+for data-driven model selection
+through a mixture
+of referenced analytical results 
+and intuitive arguments.
+Our goal here is to leave
+for manual tuning
+as few model parameters as possible.
+
+\subsubsection{Choosing Number of Training Points $N$}
+\label{sss,krr,pract,mod,n}
+
+\subsubsection{Choosing Regularization Parameter $\rho$}
+\label{sss,krr,pract,mod,rho}
+
+\subsubsection{Choosing Smoothing Length Scale $\bmL$}
+\label{sss,krr,pract,mod,lam}
+
+\subsubsection{Choosing Kernel Approximation Order $Z$}
+\label{sss,krr,pract,mod,h}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimentation}
 \label{s,krr,exp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -546,4 +589,9 @@ after nonlinear, high-dimensional feature mapping.
 \label{s,krr,summ}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% performance analysis: 
+% how must $N$ scale with $L,Q$?
+% storage comparison with grid search
 
+% dealing with m0
+% adding reconstruction
