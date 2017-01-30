@@ -160,7 +160,6 @@
 \newcommand{\sigTtML}{\widehat{\sigma}_{\TtML}}
 
 % kernel regression
-\newcommand{\bmzero}{\boldsymbol{0}}
 \newcommand{\bmxha}[1]{\est{\bmx}\paren{#1}}
 \newcommand{\bmh}{\mathbf{h}}
 \newcommand{\bmhha}[1]{\est{\bmh}\paren{#1}}
@@ -187,4 +186,8 @@
 \newcommand{\bmC}{\mathbf{C}}
 \newcommand{\Cxzt}{\bmC_{\bmx\bmzt}}
 \newcommand{\Cztzt}{\bmC_{\bmzt\bmzt}}
+\newcommand{\expx}{\expect{\bmx}{\bmx}}
+\newcommand{\expnu}{\expect{\bmnu}{\bmnu}}
+\newcommand{\gradxs}{\brac{\grada{\bmx}{\bms\paren{\expx,\bmnu}}}}
+\newcommand{\gradxvs}{\brac{\grada{\bmx}{\bms\paren{\expx,\expnu}}}}
 

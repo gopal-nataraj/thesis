@@ -140,8 +140,8 @@ We take such input-output pairs
 as simulated \emph{training points}
 and propose to then \emph{learn}
 (using an appropriate kernel function)
-a non-iterative estimator
-(\ie, a nonlinear regression function)
+a nonlinear \emph{regression function}
+(\ie, non-iterative estimator)
 from the training points.
 The proposed KRR-based estimator scales considerably better
 with the number of estimated latent parameters
@@ -197,7 +197,7 @@ $\bms : \reals{L} \times \reals{K} \mapsto \complexes{D}$
 models the noiseless signals that arise from $D$ datasets;
 and $\bmeps \in \complexes{D}$
 is complex Gaussian noise,
-assumed to be distributed as $\cgauss{\bmzero}{\bmSig}$.
+assumed to be distributed as $\cgauss{\zeros{D}}{\bmSig}$.
 Unlike signal models in earlier chapters
 (\cf \eqref{eq:scn-dsgn,mod-vec-abbrev}),
 Equation~\ref{eq:krr,model} omits
@@ -560,20 +560,147 @@ after nonlinear, high-dimensional feature mapping.
 This subsection proposes guidelines
 for data-driven model selection
 through a mixture
-of referenced analytical results 
-and intuitive arguments.
+of intuitive arguments
+and referenced analytical results.
 Our goal here is to leave
-for manual tuning
+for uninformed manual tuning
 as few model parameters as possible.
 
-\subsubsection{Choosing Number of Training Points $N$}
-\label{sss,krr,pract,mod,n}
+\subsubsection{Choosing Sampling Distributions}
+\label{sss,krr,pract,mod,dist}
 
-\subsubsection{Choosing Regularization Parameter $\rho$}
+To sample training points,
+one must select prior distributions
+on object parameters $\bmx,\bmnu$
+and noise vector $\bmeps$. 
+If offline training is required,
+all of these distributions of course
+must either be assumed
+or empirically estimated
+from previous experiments.
+Here we focus on online training,
+where one trains alongside data processing.
+
+Latent object parameter distributions 
+must account for model physics
+(to focus samples on useful parameter ranges)
+while also leaving generously heavy distribution tails
+(to enable precise estimation 
+over a broad parameter range).
+Known object parameter distributions
+can be estimated directly from known $\bmnu$
+via density estimation methods, 
+\eg \cite{parzen:62:oeo}.
+Noise covariance is well-estimated
+from low-signal regions of test data.
+
+%\subsubsection{Choosing Number of Training Points $N$}
+%\label{sss,krr,pract,mod,n}
+% performance bounds (eg, pac statements) likely conservative
+% empirical methods: bootstrap?
+
+\subsubsection{Choosing Regularization Parameters $\rho_1,\dots,\rho_L$}
 \label{sss,krr,pract,mod,rho}
+
+% krr from bayesian perspective
+% assume x(q) = h(q)+b+eps is a noisy random function with Gaussian process prior
+% eps is gaussian noise
+% corresponding posterior mean is the krr estimate, with rho <- eps
+% here we know selected noise variance, and can estimate cov(x) (when grad full col rank)
+Regularization parameter selection is well guided
+by considering KRR from an alternative Bayesian formulation.
+In this perspective,
+the unknown regression function
+$\bmh\paren{\cdot}+\bmb$ arises randomly 
+from a Gaussian process prior distribution
+with mean function zero
+and covariance function
+given by the kernel.
+The observed regressand model
+$\bmx\paren{\bmq} = \bmh\paren{\bmq}+\bmb + \bmeps_\bmx$
+includes additive \emph{latent parameter noise} $\bmeps_\bmx$ 
+because noise is \emph{anticipated} in testing data
+and is thus intentionally \emph{simulated} in training data.
+If this latent parameter noise is assumed 
+to be distributed as $\gauss{\zeros{L}}{N\diag{\rho_1,\dots,\rho_L}}$,
+then the mean function
+of the regression function's posterior distribution
+(after observation of training points)
+happens to equal the KRR solution 
+\eqref{eq:krr,a-hat}-\eqref{eq:krr,b-hat}
+for each $l \in \set{1,\dots,L}$
+(see \cite[Ch.~2]{rasmussen:05:gpf} for derivations).
+In a Bayesian perspective then,
+$N\rho_1,\dots,N\rho_L$ should reflect
+latent parameter noise covariance.
+
+In MRI parameter estimation,
+we can more easily measure noise covariance
+in image data $\bmSig$ 
+than in latent parameters. 
+We relate these two covariances
+in the following.
+
+A first-order Taylor expansion
+of the signal model 
+around $\expect{\bmx}{\bmx}$ is
+\begin{align}
+	\bmy \approx \expect{\bmy}{\bmy} + 
+		\gradxs \paren{\bmx - \expect{\bmx}{\bmx}}.
+	\label{eq:krr,model-approx}
+\end{align}
+Substituting \eqref{eq:krr,model-approx}
+into a covariance definition gives
+\begin{align}
+	\bmSig &= 
+		\expect{\bmy}{
+			\paren{\bmy - \expect{\bmy}{\bmy}}
+			\paren{\bmy - \expect{\bmy}{\bmy}}\ctpose
+		}
+		\nonumber \\
+		&\approx \gradxs \cov{\bmx} \gradxs\ctpose.
+		\label{eq:krr,cov-y}
+\end{align}
+Taking the Moore-Penrose pseudoinverse 
+(denoted by $\pinv{\cdot}$)
+of each side yields 
+\begin{align}
+	\gradxs\ctpose \inv{\bmSig} \gradxs &\approx 
+		\label{eq:krr,messy} \\
+	\gradxs\ctpose \pinv{\gradxs\ctpose} &\inv{\cov{\bmx}} \pinv{\gradxs} \gradxs.
+		\nonumber
+\end{align}
+If the Jacobian matrix $\gradxs$ 
+is of full column rank
+(and is thus left-invertible), 
+Eq.~\eqref{eq:krr,messy} simplifies
+after matrix inversion to
+\begin{align}
+	\cov{\bmx; \bmnu} \approx \inv{\gradxs\ctpose \inv{\bmSig} \gradxs},
+	\label{eq:krr,cov-x}
+\end{align}
+an expression reminiscent
+of the \Cramer-Rao Bound 
+(\cf Eq.~\eqref{eq:scn-dsgn,fisher}-\eqref{eq:scn-dsgn,crb}).
+
+Expression~\eqref{eq:krr,cov-x} approximates
+latent parameter noise covariance 
+but is not yet useful
+because it remains a function 
+of known parameter $\bmnu$,
+which varies spatially.
+As a simple solution,
+we set regularization parameters $\rho_1,\dots,\rho_L$
+using diagonal elements of
+$$\inv{N \gradxvs\ctpose \inv{\bmSig} \gradxvs},$$
+where expectations are taken
+with respect to 
+training point sampling distributions.
 
 \subsubsection{Choosing Smoothing Length Scale $\bmL$}
 \label{sss,krr,pract,mod,lam}
+
+
 
 \subsubsection{Choosing Kernel Approximation Order $Z$}
 \label{sss,krr,pract,mod,h}

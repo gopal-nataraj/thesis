@@ -579,4 +579,13 @@ Z.~Wu, ``Generalized {Bochner's} theorem for radial function,'' {\em
 M.~A. Woodbury, ``Inverting modified matrices,'' 1950.
 \newblock Tech. Report 42, Stat. Res. Group, Princeton Univ.
 
+\bibitem{parzen:62:oeo}
+E.~Parzen, ``On estimation of a probability density function and mode,'' {\em
+  {Ann. Math. Stat.}}, vol.~33, pp.~{1065--76}, Sept. 1962.
+
+\bibitem{rasmussen:05:gpf}
+C.~E. Rasmussen and C.~K.~I. Williams, {\em Gaussian Processes for Machine
+  Learning (Adaptive Computation and Machine Learning)}.
+\newblock The MIT Press, 2005.
+
 \end{thebibliography}
