@@ -371,7 +371,7 @@ $k$ that is likewise nonlinear in its arguments
 and thus corresponds to a RKHS richer than $\reals{Q}$. 
 Specifically, we use a Gaussian kernel
 \begin{align}
-	k(\bmq,\bmq') \gets \expa{-\frac{1}{2}\norm{\bmq-\bmq'}^2_{\bmL^{-1}}},
+	k(\bmq,\bmq') \gets \expa{-\frac{1}{2}\norm{\bmq-\bmq'}^2_{\bmL^{-2}}},
 	\label{eq:krr,kern}
 \end{align}
 where symmetric, positive definite 
@@ -519,7 +519,7 @@ and is the Fourier transform
 % with argument $\paren{\bmq-\bmq'}$
 of $\dist{\bmv}$.
 Thus, for Gaussian kernel \eqref{eq:krr,kern},
-choosing $\bmv\sim\gauss{\boldsymbol{0}}{\inv{4\pi^2\bmL}}$
+choosing $\bmv\sim\gauss{\boldsymbol{0}}{\paren{2\pi\bmL}^{-2}}$
 satisfies \eqref{eq:krr,exp}.
 
 Subsequent sampling of $\bmv,s$ 
@@ -599,7 +599,7 @@ from low-signal regions of test data.
 % performance bounds (eg, pac statements) likely conservative
 % empirical methods: bootstrap?
 
-\subsubsection{Choosing Regularization Parameters $\rho_1,\dots,\rho_L$}
+\subsubsection{Choosing Regularization Parameters}
 \label{sss,krr,pract,mod,rho}
 
 % krr from bayesian perspective
@@ -622,7 +622,8 @@ includes additive \emph{latent parameter noise} $\bmeps_\bmx$
 because noise is \emph{anticipated} in testing data
 and is thus intentionally \emph{simulated} in training data.
 If this latent parameter noise is assumed 
-to be distributed as $\gauss{\zeros{L}}{N\diag{\rho_1,\dots,\rho_L}}$,
+to be distributed as 
+$\gauss{\zeros{L}}{N\diag{\brac{\rho_1,\dots,\rho_L}\tpose}}$,
 then the mean function
 of the regression function's posterior distribution
 (after observation of training points)
@@ -693,16 +694,36 @@ As a simple solution,
 we set regularization parameters $\rho_1,\dots,\rho_L$
 using diagonal elements of
 $$\inv{N \gradxvs\ctpose \inv{\bmSig} \gradxvs},$$
-where expectations are taken
+where $\expx$ is taken
 with respect to 
-training point sampling distributions.
+the distributions 
+used to sample training points 
+and $\nubar := \frac{1}{V} \sum_1^V \bmnu\paren{\bmr_v}$
+is the sample mean 
+of the known object parameters.
 
-\subsubsection{Choosing Smoothing Length Scale $\bmL$}
+\subsubsection{Choosing Smoothing Length Scale}
 \label{sss,krr,pract,mod,lam}
 
+With online training,
+it is intuitive
+to set the Gaussian kernel's 
+smoothing length scale 
+based on test data sample means
+$\bar{\bmy} := \frac{1}{V} \sum_{v=1}^V \bmy\paren{\bmr_v}$
+and known parameter sample means $\nubar$:
+\begin{align}
+	\bmL \gets \lambda 
+	\diag{\brac{\re{\bar{\bmy}}\tpose, \im{\bar{\bmy}}\tpose, \nubar\tpose}\tpose}.
+	\label{eq:krr,length}
+\end{align}
+With this parameter selection,
+$\lambda>0$ remains 
+as a unitless scalar free parameter
+that balances training point consistency 
+and estimator complexity.
 
-
-\subsubsection{Choosing Kernel Approximation Order $Z$}
+\subsubsection{Choosing Kernel Approximation Order}
 \label{sss,krr,pract,mod,h}
 
 
