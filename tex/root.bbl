@@ -551,9 +551,23 @@ S.~C.~L. Deoni, L.~Matthews, and S.~H. Kolind, ``One component? {Two}
   component in multicomponent driven equilibrium single pulse observation of
   {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~70, pp.~{147--54}, July 2013.
 
+\bibitem{kimeldorf:70:acb}
+G.~S. Kimeldorf and G.~A. Wahba, ``A correspondence between bayesian estimation
+  on stochastic processes and smoothing by splines,'' {\em {Ann. Math.
+  Statist.}}, vol.~41, no.~2, pp.~{495--502}, 1970.
+
 \bibitem{aronszajn:50:tor}
 N.~Aronszajn, ``Theory of reproducing kernels,'' {\em {tams}}, vol.~68,
   pp.~{337--404}, May 1950.
+
+\bibitem{cortes:95:svn}
+C.~Cortes and V.~Vapnik, ``Support-vector networks,'' {\em Mach. Learn.},
+  vol.~20, pp.~{273--97}, Sept. 1995.
+
+\bibitem{saunders:98:rrl}
+C.~Saunders, A.~Gammerman, and V.~Vovk, ``Ridge regression learning algorithm
+  in dual variables,'' in {\em In Proceedings of the 15th International
+  Conference on Machine Learning}, pp.~{515--21}, Morgan Kaufmann, 1998.
 
 \bibitem{scholkopf:01:agr}
 B.~{Sch\"olkopf}, R.~Herbrich, and A.~J. Smola, ``A generalized representer

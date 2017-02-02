@@ -102,28 +102,42 @@ for scalable estimation methods.
 
 % kernel methods
 % fundamental challenge: nonlinear model
-% kernel methods used to allow nonlinearity in classification, novelty detection, regression
-% can relate estimation (where
+% classical idea: transform nonlinear problem into a linear one
+% kernel functions well-suited to make this transformation efficiently
+% wahba introduced representation in approx theory
+% scholkopf introduced in context of learning theory
+% enjoyed success in many machine learning applications,
+% originally for classification and later regression
 The fundamental challenge 
 of scalable MRI parameter estimation
 stems from MR signal model nonlinearity:
 standard linear estimators
-would be scalable but inaccurate.
-Opportunely,
-so-called \emph{kernel functions} \cite{aronszajn:50:tor}
-are often well-suited 
-to transform nonlinear problems
-into linear (albeit higher-dimensional) problems
-that can be solved efficiently. 
-Associated \emph{kernel methods} \cite{scholkopf:01:agr}
-are quite general
-and yield remarkably simple nonlinear extensions
-to otherwise linear methods
-for various machine learning problems,
-\eg classification,
-anomaly detection,
-dimensionality reduction,
-and regression.
+would be scalable but also inaccurate.
+One natural solution strategy
+involves preprocessing the image data
+such that the transformed data 
+is at least approximately linear
+in the latent parameters.
+Without further insight however,
+such transformation 
+could dramatically increase problem dimensionality,
+hindering scalability.
+Fortunately, 
+a celebrated result
+in approximation theory \cite{kimeldorf:70:acb} showed
+that simple transformations involving
+so-called \emph{reproducing kernel} functions \cite{aronszajn:50:tor}
+could accurately represent solutions 
+to a relevant class of nonlinear problems
+while scaling the associated linear problem's dimensionality 
+in a mild, controlled manner.
+These kernel methods later found popularity
+in machine learning
+(initially for classification \cite{cortes:95:svn}
+and quickly thereafter for other applications,
+\eg regression \cite{saunders:98:rrl})
+because they provided simple, scalable nonlinear extensions
+to otherwise linear algorithms.
 
 % idea here is to link parameter estimation 
 % to a problem of regression
@@ -147,15 +161,18 @@ The proposed KRR-based estimator scales considerably better
 with the number of estimated latent parameters
 than previously-discussed likelihood-based estimators.
 
-This chapter is organized as follows.
+The remainder of this chapter
+is organized as follows.
 Section~\ref{s,krr,meth}
 reviews the general signal model
 for an MR scan profile,
-constructs and solves 
-an appropriate functional optimization problem,
-and further reduces the proposed estimator's
-computational requirements
-via a kernel approximation.
+constructs an appropriate functional optimization problem,
+and efficiently solves this problem using kernels.
+Section~\ref{s,krr,pract}
+further reduces computational requirements 
+via a kernel approximation
+and provides guidelines 
+for model selection.
 Section~\ref{s,krr,exp}
 applies KRR-based estimation
 to quantify six parameters arising 
@@ -173,10 +190,6 @@ and provides concluding remarks.
 \section{A Function Optimization Problem \& Kernel Solution}
 \label{s,krr,meth}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{A Functional Optimization Problem and Kernel Solution}
-%\label{ss,krr,meth,opt}
 
 Recall from Section~\ref{ss,relax,meth,prof}
 that after image reconstruction,
@@ -271,8 +284,8 @@ we proceed by hereafter restricting $\hilb$
 to be a \emph{reproducing kernel} Hilbert space 
 (RKHS) \cite{aronszajn:50:tor}.
 Remarkably,
-a generalization
-of the Representer Theorem \cite{scholkopf:01:agr},
+a generalization \cite{scholkopf:01:agr}
+of the Representer Theorem \cite{kimeldorf:70:acb},
 restated as is relevant here for completeness,
 then reduces \eqref{eq:krr,cost-l}
 to a finite-dimensional optimization problem:
@@ -415,7 +428,7 @@ of $\est{\bmx}$ on the corresponding features.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Implementation Considerations}
-\label{s,krr,pract,apprx}
+\label{s,krr,pract}
 
 This section focuses
 on important practical implementation issues.
