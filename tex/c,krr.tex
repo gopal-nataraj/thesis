@@ -298,7 +298,7 @@ to a finite-dimensional optimization problem:
 	Then any minimizer $(\est{h}_l,\est{b}_l)$ of \eqref{eq:krr,cost-l}
 	over $\hilb \times \real$
 	admits a representation of $\est{h}_l$ of the form
-	\label{thm:rep}
+	\label{thm:krr,rep}
 	\begin{align}
 		\est{h}_l(\cdot) \equiv \sum_{n=1}^N a_{l,n} k(\cdot,\bmq_{n}),
 		\label{eq:krr,rep}
@@ -306,7 +306,7 @@ to a finite-dimensional optimization problem:
 	where each $a_{l,n} \in \real$ for $n \in \set{1,\dots,N}$.
 \end{thm}
 
-Theorem~\ref{thm:rep} ensures that any solution to 
+Theorem~\ref{thm:krr,rep} ensures that any solution to 
 \begin{align}
 	(\est{\bma}_l,\est{b}_l) \in 
 	\set{\argmin{\substack{\bma_l \in \reals{N} \\ b_l \in \real}} 
@@ -449,11 +449,11 @@ complicates storage of (dense) Gram matrix $\bmK$.
 Using a kernel approximation 
 can mitigate storage issues.
 Here we choose
-to sample Random (Fourier) Features \cite{rahimi:07:rff},
+to sample Random Fourier Features (RFF) \cite{rahimi:07:rff},
 a recent method 
 for approximating shift-invariants kernels
 having form $k\paren{\bmq,\bmq'} \equiv k\paren{\bmq-\bmq'}$.
-This subsection briefly reviews the main result of \cite{rahimi:07:rff}
+This subsection reviews the main result of \cite{rahimi:07:rff}
 for the purpose of constructing 
 an intuitive and computationally efficient approximation of \eqref{eq:krr,x-hat}.
 
@@ -504,7 +504,7 @@ Then by the strong law of large numbers,
 which, 
 in conjunction 
 with strong performance guarantees
-for finite $Z$ \cite{rahimi:07:rff}, 
+for finite $Z$ \cite{rahimi:07:rff,sutherland:15:ote}, 
 justifies the interpretation 
 of $\bmztZ$ as an approximate 
 (and now finite-dimensional) feature map.
@@ -532,7 +532,7 @@ and is the Fourier transform
 % with argument $\paren{\bmq-\bmq'}$
 of $\dist{\bmv}$.
 Thus, for Gaussian kernel \eqref{eq:krr,kern},
-choosing $\bmv\sim\gauss{\boldsymbol{0}}{\paren{2\pi\bmL}^{-2}}$
+choosing $\bmv\sim\gauss{\zeros{Q}}{\paren{2\pi\bmL}^{-2}}$
 satisfies \eqref{eq:krr,exp}.
 
 Subsequent sampling of $\bmv,s$ 
@@ -726,11 +726,11 @@ based on test data sample means
 $\bar{\bmy} := \frac{1}{V} \sum_{v=1}^V \bmy\paren{\bmr_v}$
 and known parameter sample means $\nubar$:
 \begin{align}
-	\bmL \gets \lambda 
+	\bmL \gets \lambda_0 
 	\diag{\brac{\re{\bar{\bmy}}\tpose, \im{\bar{\bmy}}\tpose, \nubar\tpose}\tpose}.
 	\label{eq:krr,length}
 \end{align}
-Here, $\lambda>0$ remains unspecified
+Here, $\lambda_0>0$ remains unspecified
 as a unitless scalar free parameter
 that balances training point consistency 
 and estimator regularity.
@@ -738,6 +738,104 @@ and estimator regularity.
 \subsubsection{Choosing Kernel Approximation Order}
 \label{sss,krr,pract,mod,h}
 
+Selection of kernel approximation order $Z$ 
+can be guided through performance analysis.  
+To this end, 
+we apply a bound 
+on the expected maximal approximation error 
+of RFF \cite{rahimi:07:rff},
+studied in Proposition~4 of \cite{sutherland:15:ote}
+and restated in our notation below for convenience.
+We examine this bound over others
+because it requires intuitive selection 
+of only one error criterion;
+tighter bounds are available,
+but may not be as simple to use.
+\begin{thm}[\cite{sutherland:15:ote}]
+	Let $\setQ$ 
+	be a compact subset of $\reals{Q}$
+	with diameter $d_\setQ := \sup_{\bmq,\bmq' \in \setQ} \norm{\bmq-\bmq'}_2$.
+	Define $k : \setQ \times \setQ \mapsto \real$  
+	to be a shift-invariant symmetric positive definite kernel,
+	such that $k(\bmq,\bmq') \equiv k(\bmq-\bmq')$
+	for each $\bmq,\bmq' \in \setQ$.
+	Normalize $k(\zeros{Q}) = 1$ 
+	and ensure $\grad^2 k(\zeros{Q})$ exists.
+	Further suppose $k$ is $\upsilon$-Lipschitz 
+	over $\setQD := \set{\bmq-\bmq'|\bmq,\bmq'\in\setQ}$.
+	Construct approximate feature vectors $\bmztZ$
+	(defined in \eqref{eq:krr,feat})
+	from $Z$ independently drawn samples of $\paren{\bmnu,s}$,
+	where $\bmnu$ is distributed 
+	with a probability density defined by the Fourier transform of $k$
+	and $s \sim \unif{0,1}$.
+	Take $r := \expect{\bmnu}{\max\paren{\norm{\bmnu_1}_2,\dots,\norm{\bmnu_Z}_2}}$.
+	Assume $\setQ$ and $Z$ are not so small
+	as to prevent $\bmztZa{\bmq}\tpose\bmztZa{\bmq'}-k\paren{\bmq,\bmq'}$
+	from crossing zero, as is typical. Then
+	\label{thm:rff-approx}
+	\begin{align}
+		\expect{}{\sup_{\bmq,\bmq' \in \setQ} 
+			\abs{\bmztZa{\bmq}\tpose\bmztZa{\bmq'}-k\paren{\bmq,\bmq'}}}
+			\leq 
+			\frac{48 c_\setQ d_\setQ \sqrt{Q}}{\sqrt{Z}} \paren{\upsilon + r},
+			\label{eq:krr,rff-approx}
+	\end{align}
+	where $c_\setQ \in \brac{0.803,1.542}$
+	achieves its lower/upper bound for $\setQ$ a ball/sphere.
+\end{thm}
+
+For concreteness,
+we apply Theorem~\ref{thm:rff-approx} explicitly 
+to Gaussian kernel \eqref{eq:krr,kern}.
+It suffices to consider $\setQ$ a ball
+with diameter 
+$d_\setQ \gets 2 
+\max\paren{\norm{\bmq\paren{\bmr_1}}_2,\dots,\norm{\bmq\paren{\bmr_V}}_2}$.
+Then $c_\setQ \gets 0.803$.
+The Gaussian kernel admits a global Lipschitz constant as
+\begin{align}
+	\upsilon := \sup_{\Delta \in \setQD} \norm{\grada{\Delta}{k}}_2 
+		\leq \sup_{\Delta \in \reals{Q}} \norm{\grada{\Delta}{k}}_2 
+		= \sqrt{\frac{Q}{e\trace{\bmL^2}}}.
+	\label{eq:krr,lipschitz}
+\end{align}
+The best lower bound we have presently 
+for $r$ is 
+\begin{align}
+	r \leq \frac{1}{2\pi \mineig{\bmL}} \paren{\sqrt{2 \log{Z}} + \sqrt{Q}},
+	\label{eq:krr,max-nu}
+\end{align}
+where $\mineig{\cdot}$ extracts the minimum eigenvalue.
+Our overall bound is then 
+\begin{align}
+	\mathsf{E}&\paren{\sup_{\bmq,\bmq' \in \setQ} 
+		\abs{\bmztZa{\bmq}\tpose\bmztZa{\bmq'}-k\paren{\bmq,\bmq'}}} 
+		\nonumber \\
+	&\leq 
+		\frac{96\paren{0.803}
+		\paren{\max_v\paren{\norm{\bmq\paren{\bmr_v}}_2}}\sqrt{Q}}{\sqrt{Z}}
+		\paren{\sqrt{\frac{Q}{e\trace{\bmL^2}}} + 
+		\frac{\sqrt{2 \log{Z}} + \sqrt{Q}}{2\pi \mineig{\bmL}}}
+		\label{eq:approx-tight} \\
+	&\leq 
+		\frac{96\paren{0.803}
+		\paren{\max_v\paren{\norm{\bmq\paren{\bmr_v}}_2}}\sqrt{Q}}{\mineig{\bmL}\sqrt{Z}}
+		\paren{\frac{1}{\sqrt{e}} + \frac{\sqrt{2\log{Z}} + \sqrt{Q}}{2\pi}}.
+		\label{eq:approx-loose}
+\end{align}	
+Error bound \eqref{eq:approx-tight} is conservative 
+due to large constants,
+but at least ensures asymptotically
+that scaling $Z$ quadratically 
+with $Q$ 
+will maintain a given expected maximal approximation error tolerance.
+Error bound \eqref{eq:approx-loose} is looser,
+but more clearly shows 
+that selecting $\bmL$ 
+via \eqref{eq:krr,length}
+makes the bound somewhat invariant
+to the scale of test data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimentation}

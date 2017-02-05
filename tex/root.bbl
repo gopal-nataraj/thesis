@@ -602,4 +602,9 @@ C.~E. Rasmussen and C.~K.~I. Williams, {\em Gaussian Processes for Machine
   Learning (Adaptive Computation and Machine Learning)}.
 \newblock The MIT Press, 2005.
 
+\bibitem{sutherland:15:ote}
+D.~J. Sutherland and J.~Schneider, ``On the error of random fourier features,''
+  in {\em In Proceedings of the 31st International Conference on Uncertainty in
+  Artificial Intelligence}, 2015.
+
 \end{thebibliography}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  1 FEB 2017 19:43
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  5 FEB 2017 16:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -934,33 +934,40 @@ OT1/cmr/m/n/12 )$ \OT1/ptm/m/n/12 for $\OML/cmm/m/it/12 n; n[] \OMS/cmsy/m/n/12
  2 [][]$\OT1/ptm/m/n/12 ;
  []
 
-[52] [53] [54] [55]) [56] [57]
+[52] [53] [54] [55] [56]
+Overfull \hbox (17.50264pt too wide) in paragraph at lines 755--777
+[]\OT1/ptm/m/it/12 Let $\U/msb/m/n/12 Q$ \OT1/ptm/m/it/12 be a com-pact sub-set
+ of $\U/msb/m/n/12 R[]$ \OT1/ptm/m/it/12 with di-am-e-ter $\OML/cmm/m/it/12 d[]
+ \OT1/cmr/m/n/12 := [][][][][]$\OT1/ptm/m/it/12 .
+ []
+
+[57]) [58]
 CHAPTER 6.
-(./c,mwf.tex) [58
+(./c,mwf.tex) [59
 
 ]
 CHAPTER 7.
-(./c,future.tex) [59
+(./c,future.tex) [60
 
 ]
 APPENDIX A.
-(./a,cc-multi.tex) [60
+(./a,cc-multi.tex) [61
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [61
+(./a,dess-diff.tex) [62
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [62
+ [63
 
 
-] [63] [64] [65] [66] [67] [68]
-[69])
+] [64] [65] [66] [67] [68] [69]
+[70])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 148.
- [70]
+ [71]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 148.
  (./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 148.
@@ -974,12 +981,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 148.
  ) 
 Here is how much of TeX's memory you used:
- 9798 strings out of 493489
- 141298 string characters out of 3141349
- 267544 words of memory out of 3000000
- 12859 multiletter control sequences out of 15000+200000
+ 9816 strings out of 493489
+ 141566 string characters out of 3141349
+ 267997 words of memory out of 3000000
+ 12877 multiletter control sequences out of 15000+200000
  30248 words of font info for 95 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  36i,20n,48p,1922b,472s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (80 pages, 532084 bytes).
+Output written on root.dvi (81 pages, 543336 bytes).
