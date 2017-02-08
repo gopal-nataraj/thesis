@@ -704,9 +704,12 @@ because it remains a function
 of known parameter $\bmnu$,
 which varies spatially.
 As a simple solution,
-we set regularization parameters $\rho_1,\dots,\rho_L$
+one could set regularization parameters $\rho_1,\dots,\rho_L$
 using diagonal elements of
-$$\inv{N \gradxvs\ctpose \inv{\bmSig} \gradxvs},$$
+\begin{align}
+	\inv{N \gradxvs\ctpose \inv{\bmSig} \gradxvs},
+	\label{eq:krr,cov-x,approx}
+\end{align}
 where $\expx$ is taken
 with respect to 
 the distributions 
@@ -714,6 +717,19 @@ used to sample training points
 and $\nubar := \frac{1}{V} \sum_1^V \bmnu\paren{\bmr_v}$
 is the sample mean 
 of the known object parameters.
+
+Regularization parameter selection 
+via \eqref{eq:krr,cov-x,approx}
+is extremely fast
+but requires signal model gradients
+that might be undesirable to compute
+or altogether unavailable.
+As an alternative,
+one could compute the sample covariance matrix
+$\Cxx := \frac{1}{N}\bmX \bmM \bmX\tpose$
+from simulated training data points 
+and set $\rho_1,\dots,\rho_L$
+as diagonal elements of $\frac{1}{N}\Cxx$.
 
 \subsubsection{Choosing Smoothing Length Scale}
 \label{sss,krr,pract,mod,lam}
@@ -842,10 +858,292 @@ to the scale of test data.
 \label{s,krr,exp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+As proof of concept, 
+we apply kernel-based estimation 
+to quantify parameters describing 
+the magnetization dynamics of multiple water compartments,
+a challenging application of clinical interest,
+\eg, for myelin water imaging 
+(application details in Chapter~\ref{c,mwf}).
+Specifically,
+we use a simple model of two non-exchanging compartments
+and seek to estimate the associated latent parameters;
+more complex models would only add parameters
+and thereby increase the need for an alternative to grid search.
+
+Such challenging estimation problems
+typically require multiple data acquisitions
+and thus long scans.
+To reduce scan times
+of classical methods
+\cite{mackay:94:ivv},
+fast steady-state pulse sequences
+were recently proposed 
+for two-compartment parameter estimation
+\cite{deoni:08:gmt, deoni:11:com}.
+We similarly take interest
+in steady-state sequences,
+but modify acquisition details
+to address possible concerns
+of insufficient estimation precision
+\cite{lankford:13:oti}.
+
+We begin with two-compartment models
+of the signals arising from
+Spoiled Gradient-Recalled Echo (SPGR)
+\cite{zur:91:sot}
+and Dual-Echo Steady-State (DESS) 
+\cite{bruder:88:ans}
+pulse sequences.
+We make appropriate assumptions 
+to reduce model dependencies
+to seven free parameters per voxel:
+flip angle spatial variation 
+(due to transmit field inhomogeneity) $\stx$;
+fast-relaxing compartmental fraction $\ff$;
+(spin-lattice, spin-spin) relaxation time constants 
+for the fast-relaxing $\paren{\tf{1},\tf{2}}$
+and slow-relaxing $\paren{\ts{1},\ts{2}}$ compartments;
+and a complex proportionality constant
+\footnote{We collect off-resonance effects in $\mzero$
+by approximating broadening distributions
+to be constant across compartments,
+as in prior works \cite{deoni:08:gmt, deoni:11:com}.
+We acknowledge this could lead to some bias in practice.}
+$\mzero$.
+We assume prior knowledge of $\bmnu \gets \stx$ 
+(which in practice can be estimated
+from separate fast acquisitions, 
+\eg \cite{sacolick:10:bmb})
+and collect the remaining $L \gets 6$ latent parameters as
+$\bmx \gets \brac{\ff,\tf{1},\tf{2},\ts{1},\ts{2},\mzero}\tpose$.
+
+In light of clinical need,
+we focus on estimating fast-relaxing fraction $\ff$
+and tailor our simulation accordingly.
+We optimize 
+(by methods similar to those described in Section~\ref{s,scn-dsgn,crb})
+the flip angles and repetition times
+of four SPGR and three DESS scans
+\footnote{Since SPGR (DESS) yields one (two) signal(s) per excitation,
+four SPGR and three DESS scans produce a total $D \gets 10$ datasets.}
+for precise estimation of $\ff$ 
+in white matter (WM) 
+and grey matter (GM) regions 
+of the human brain.
+We consider the other five latent parameters
+to be nuisance parameters
+and thus do not evaluate the performance of their estimators
+in the following.
+
+We simulate data to arise
+from two non-exchanging water pools
+with nominal fast 
+$\paren{\tf{1},\tf{2}} \gets \paren{500,20}$ms
+and slow 
+$\paren{\ts{1},\ts{2}} \gets \paren{1000,80}$ms
+relaxation time constants 
+selected from prior measurements 
+\cite{mackay:94:ivv,deoni:11:com}.
+We assign fast-compartment fractions
+$\ff \gets 0.15$ in WM and
+$\ff \gets 0.03$ in GM
+and constrain corresponding slow-compartment fractions 
+as $1-\ff$.
+We prescribe these parameter values 
+to the anatomy of the BrainWeb digital phantom
+\cite{collins:98:dac}
+to produce ground truth parameter maps.
+Using optimized acquisition parameters
+and allowing $\stx$ to model $\pm20\%$ flip angle variation,
+we apply two-compartment SPGR and DESS models
+to the 81st axial slice of the true parameter maps.
+We corrupt these (complex) noiseless signals
+with additive complex Gaussian noise
+whose covariance $\bmSig \gets \paren{1.49\times10^{-7}} \eye{D\gets10}$
+reflects measurements
+from normalized datasets \cite{nataraj::oms}.
+This yields realistically noisy $217\times181$ (image-domain) datasets
+ranging from 24.3-48.8dB SNR in WM
+and 26.4-49.5dB SNR in GM.
+
+Because the first and second DESS signals depend differently
+on phase accrual due to off-resonance effects \cite{nataraj::oms},
+off-resonance related phase (unlike signal loss) 
+cannot be collected into $\mzero$.
+To avoid (separate or joint) estimation
+of an off-resonance field map, 
+we elect to estimate parameters 
+using magnitude SPGR and DESS image data
+and account for consequently Rician-distributed noise
+during training.
+
+To sample training points, 
+we assume prior distributions 
+on latent object parameters $\bmx$
+(that distinguish the two compartments
+but are otherwise conservative)
+and directly measure 
+known parameter $\bmnu$ and noise $\bmeps$ distributions
+from test data.
+We take $\ff$ to be uniformly distributed
+on $\brac{-0.1,0.4}$ 
+and $\tf{1}$, $\tf{2}$, $\ts{1}$, $\ts{2}$ 
+to be log-uniformly distributed
+on $\brac{50,700}$ms, $\brac{5,50}$ms, $\brac{700,2000}$ms, $\brac{50,300}$ms,
+respectively.
+We match the scaling of test data
+in training
+by taking $\mzero$ 
+to be uniformly distributed on $\brac{\eps,u}$, 
+where $u$ is set as 5$\times$ the maximum value of test data.
+We estimate the distribution of $\bmnu$
+via kernel density estimation
+\cite{parzen:62:oeo}.
+We assume noise covariance $\bmSig$ 
+of form $\sigma^2 \eye{10}$
+and compute noise variance estimate $\est{\sigma}^2$
+from Rayleigh-distributed noise regions
+of magnitude test data, using estimators described in 
+\cite{siddiqui:64:sif}.
+
+We sample $N \gets 10^6$ training inputs
+from these distributions
+and use two-compartment SPGR/DESS signal models
+to evaluate corresponding (noisy, magnitude) responses.
+We set smoothing length scale $\bmL$ 
+via \eqref{eq:krr,length},
+with $\lambda_0 \gets 1$.
+We sample $\paren{\bmv,s}$ $Z \gets 10^3$ times
+to construct approximate feature mapping $\bmztZ$.
+We apply $\bmztZ$ to training data
+and compute sample means $\bmmx$, $\bmmzt$ 
+and sample covariance matrices $\Cxzt$, $\Cztzt$, and $\Cxx$.
+Lastly, 
+we set $\rho_1,\dots,\rho_L$ 
+as diagonal entries of $\frac{1}{N}\Cxx$ 
+and evaluate \eqref{eq:krr,x-apx}
+for each latent parameter
+using test datasets and $\stx$ 
+on a per-voxel basis. 
+On a 3.5GHz desktop computer 
+with 32GB RAM
+running \matlab R2013a, 
+training and estimating 
+each took less than 40s and 2s.
+
+\begin{figure*} [!tb]
+	\centering
+	\includegraphics [width=0.81\textwidth] {sim}
+	\caption{
+		True $\ff$ (\emph{left}) and estimated \ffest
+		fast-relaxing compartmental fraction  maps, 
+		in simulation.
+		Maximum-likelihood estimation 
+		via variable projection method and grid search (\emph{center}) 
+		is accurate 
+		but is computationally expensive.
+		In contrast,
+		kernel ridge regression (\emph{right}) 
+		is very fast and achieves comparable precision,
+		at the expense of slightly increased bias
+		(\cf Table~\ref{tab:ff}).
+		Voxels outside WM/GM regions are masked out 
+		in post-processing for visual clarity.
+	}
+	\label{fig:ff}
+\end{figure*}
+
+Fig.~\ref{fig:ff} compares KRR estimates
+of fast-relaxing compartmental fraction $\ff$ 
+against not only ground truth maps
+but also maximum-likelihood estimates
+achieved via the ``variable projection'' method (VPM)
+\cite{golub:03:snl}
+and grid search.
+As presented,
+the VPM estimate utilizes a dictionary 
+of nearly $8 \times 10^6$ signal vectors
+computed using finely spaced samples 
+on an unrealistically narrow feasible region
+consisting of a hypercube 
+with boundaries set 
+as $\brac{-0.1,0.4}$ in $\ff$
+and $\pm20\%$ away from the truth 
+in other dimensions.
+Using equal computational resources,
+estimation via VPM took nearly 4h.
+
+\begin{table}[!t]
+	\centering
+	\begin{tabular}{c | r | r r}
+		\hline
+		\hline
+		& Truth & VPM & KRR  \\
+		\hline
+		WM \ffest & $0.15$ 	& \mnstd{0.1538}{0.0292} & \mnstd{0.1440}{0.0221} \\
+		GM \ffest & $0.03$ 	& \mnstd{0.0336}{0.0232} & \mnstd{0.0407}{0.0231} \\
+		\hline
+		\hline
+	\end{tabular}
+	\caption{
+		Sample means $\pm$ sample standard deviations
+		of fast-relaxing compartmental fraction estimates \ffest,
+		computed over simulated WM- and GM-like voxels.
+		Each sample statistic is rounded off
+		to the highest place value 
+		of its (unreported) standard error,
+		which is computed via formulas in \cite{ahn:03:seo}.
+	}
+	\label{tab:ff}
+\end{table}
+
+Table~\ref{tab:ff} reports $\ff$ sample statistics 
+computed over $7810$ WM-like and $9162$ GM-like voxels. 
+Overall, 
+KRR and VPM achieve comparable estimation performance.
+In WM,
+KRR attains precision slightly higher than
+and accuracy similar to VPM.
+In GM,
+KRR attains precision comparable to
+and accuracy slightly lower than VPM.
+KRR attains root mean squared errors
+lower than VPM in WM ($0.0229$ versus $0.0295$)
+and comparable to VPM in GM ($0.0254$ versus $0.0235$).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Future Work}
 \label{s,krr,summ}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This chapter has introduced
+a fast and computationally efficient method
+for MRI parameter estimation
+from nonlinear models
+via KRR.
+As proof of concept,
+we applied KRR
+to quantify in simulation
+fast-relaxing compartmental fraction $\ff$ maps
+(along with several nuisance parameters)
+using two-compartment signal models
+of realistic SPGR and DESS acquisitions.
+In \ffest WM/GM regions,
+KRR achieved comparable estimation performance
+as VPM-accelerated grid search,
+with dramatically reduced computation.
+Due to its generality,
+KRR could potentially accelerate
+MRI parameter estimation
+in many other applications,
+particularly those
+involving multiple latent parameters
+and/or
+cumbersome if not altogether unavailable signal models
+(as in, \eg, MR fingerprinting \cite{ma:13:mrf}).
+
+
 
 % performance analysis: 
 % how must $N$ scale with $L,Q$?
@@ -853,3 +1151,5 @@ to the scale of test data.
 
 % dealing with m0
 % adding reconstruction
+
+% -ff range

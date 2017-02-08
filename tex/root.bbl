@@ -6,6 +6,11 @@ K.~E. Keenan, K.~F. Stupic, M.~A. Boss, S.~E. Russek, T.~L. Chenevert, P.~V.
   ``Multi-site, multi-vendor comparison of {T1} measurement using {ISMRM/NIST}
   system phantom,'' in {\em Proc. Intl. Soc. Mag. Res. Med.}, p.~3290, 2016.
 
+\bibitem{ahn:03:seo}
+S.~Ahn and J.~A. Fessler, ``Standard errors of mean, variance, and standard
+  deviation estimators,'' Tech. Rep. 413, Comm. and Sign. Proc. Lab., Dept. of
+  EECS, Univ. of Michigan, Ann Arbor, MI, 48109-2122, July 2003.
+
 \bibitem{nataraj:14:rje}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Regularized, joint estimation
   of {T1} and {M0} maps,'' in {\em Proc. Intl. Soc. Mag. Res. Med.}, p.~3128,
@@ -460,11 +465,6 @@ R.~Kaiser, E.~Bartholdi, and R.~R. Ernst, ``Diffusion and field-gradient
   effects in {NMR} {Fourier} spectroscopy,'' {\em {J. Chem. Phys.}}, vol.~60,
   pp.~{2966--79}, Apr. 1974.
 
-\bibitem{ahn:03:seo}
-S.~Ahn and J.~A. Fessler, ``Standard errors of mean, variance, and standard
-  deviation estimators,'' Tech. Rep. 413, Comm. and Sign. Proc. Lab., Dept. of
-  EECS, Univ. of Michigan, Ann Arbor, MI, 48109-2122, July 2003.
-
 \bibitem{heule:14:tes-nib}
 R.~Heule, P.~{B\"ar}, C.~Mirkes, K.~Scheffler, S.~Trattnig, and O.~Bieri,
   ``Triple-echo steady-state {T2} relaxometry of the human brain at high to
@@ -584,6 +584,11 @@ A.~E. Hoerl and R.~W. Kennard, ``Ridge regression: biased estimation for
 A.~Rahimi and B.~Recht, ``Random features for large-scale kernel machines,'' in
   {\em NIPS}, 2007.
 
+\bibitem{sutherland:15:ote}
+D.~J. Sutherland and J.~Schneider, ``On the error of random fourier features,''
+  in {\em In Proceedings of the 31st International Conference on Uncertainty in
+  Artificial Intelligence}, 2015.
+
 \bibitem{wu:97:gbt}
 Z.~Wu, ``Generalized {Bochner's} theorem for radial function,'' {\em
   {Approximation Theory and its Applications}}, vol.~13, no.~3, pp.~{47--57},
@@ -602,9 +607,24 @@ C.~E. Rasmussen and C.~K.~I. Williams, {\em Gaussian Processes for Machine
   Learning (Adaptive Computation and Machine Learning)}.
 \newblock The MIT Press, 2005.
 
-\bibitem{sutherland:15:ote}
-D.~J. Sutherland and J.~Schneider, ``On the error of random fourier features,''
-  in {\em In Proceedings of the 31st International Conference on Uncertainty in
-  Artificial Intelligence}, 2015.
+\bibitem{alonsoortiz:15:mbm}
+E.~Alonso-Ortiz, I.~R. Levesque, and G.~B. Pike, ``{MRI-based} myelin water
+  imaging: {A} technical review,'' {\em {Mag. Res. Med.}}, vol.~73,
+  pp.~{70--81}, Jan. 2015.
+
+\bibitem{deoni:11:com}
+S.~C.~L. Deoni, ``Correction of main and transmit magnetic field {(B0} and
+  {B1)} inhomogeneity effects in multicomponent-driven equilibrium single-pulse
+  observation of {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~65,
+  pp.~{1021--35}, Apr. 2011.
+
+\bibitem{lankford:13:oti}
+C.~L. Lankford and M.~D. Does, ``On the inherent precision of {mcDESPOT},''
+  {\em {Mag. Res. Med.}}, vol.~69, pp.~{127--36}, Jan. 2013.
+
+\bibitem{siddiqui:64:sif}
+M.~M. Siddiqui, ``Statistical inference for {Rayleigh} distributions,'' {\em
+  {RADIO SCIENCE Journal of Research NBS/USNC-URSI}}, vol.~68D, pp.~{1005--10},
+  Sept. 1964.
 
 \end{thebibliography}
