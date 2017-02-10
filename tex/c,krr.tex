@@ -1117,19 +1117,19 @@ and comparable to VPM in GM ($0.0254$ versus $0.0235$).
 \label{s,krr,summ}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter has introduced
+This chapter is introducing
 a fast and computationally efficient method
 for MRI parameter estimation
 from nonlinear models
 via KRR.
 As proof of concept,
-we applied KRR
+we have thus far applied KRR
 to quantify in simulation
 fast-relaxing compartmental fraction $\ff$ maps
 (along with several nuisance parameters)
 using two-compartment signal models
 of realistic SPGR and DESS acquisitions.
-In \ffest WM/GM regions,
+In simulated \ffest WM/GM regions,
 KRR achieved comparable estimation performance
 as VPM-accelerated grid search,
 with dramatically reduced computation.
@@ -1143,13 +1143,143 @@ and/or
 cumbersome if not altogether unavailable signal models
 (as in, \eg, MR fingerprinting \cite{ma:13:mrf}).
 
+We foresee several avenues for ongoing research.
+Below, we discuss items of future work 
+specific to the refinement of KRR 
+for general MRI parameter estimation problems.
+Section~\ref{s,mwf,summ} will discuss
+future work items specific to myelin water imaging.
 
+\paragraph{Performance Analysis}
+We assert 
+(with some support from one simulation study)
+that scalability
+with the number of latent parameters $L$
+is the major computational advantage
+of KRR over conventional grid search.
+It is natural then to ask
+for the rate of this improvement.
+Specifically,
+we ask how slowly the number
+of training points $N$ may scale 
+with $L$ (and regressor length $Q$) 
+while still ensuring small test error.
 
-% performance analysis: 
-% how must $N$ scale with $L,Q$?
-% storage comparison with grid search
+We see two strategies to address this question.
+The first approach 
+is through mathematical arguments.
+To this end,
+kernel ridge regression
+is one of several so-called 
+\emph{structural risk minimization} problems
+in statistical machine learning,
+for which well-established analytical results are available.
+While these results may aid 
+in proving that our method 
+has sub-exponential complexity in $L$
+(and thus outperforms grid search),
+the rates we find may be conservative.
+To construct a practical performance criterion,
+we may need to employ a second 
+(likely more cumbersome) approach
+involving empirical parameter selection.
 
-% dealing with m0
-% adding reconstruction
+\paragraph{Exploiting Partially Linear Structure to Incorporate Scale Invariance}
+Because there is ambiguity
+in the scale of MR data,
+it is desirable
+to construct a regression function
+that is unaffected
+by changes in data scale 
+between training and testing.
+The present formulation 
+addresses scaling ambiguity
+by setting the sampling distribution
+of proportionality constant $\mzero$
+based on test data,
+thereby matching simulated training data scale
+to test data scale.
+This strategy requires retraining 
+between acquisitions,
+which may be undesirable in practice.
 
-% -ff range
+Since $\mzero$ is the only latent parameter
+that is affected by data scale,
+it is natural
+to seek problem structure
+in $\mzero$ 
+to build scale invariance
+into KRR-based MRI parameter estimation.
+Here we surmise 
+that appropriately leveraging the partial linearity
+of most MR signal models in $\mzero$
+will allow us
+to separate estimating scale-variant $\mzero$
+(via standard linear estimators)
+from estimating scale-invariant nonlinear parameters
+(via kernel regression).
+
+\paragraph{Joint Image Reconstruction and Parameter Estimation}
+We have thus far considered parameter estimation
+to be separate from image reconstruction,
+which affords fast data processing
+but may leave room for improved estimation,
+especially when raw data is undersampled.
+Alternatively, 
+one could employ a procedure
+for joint image reconstruction and parameter estimation;
+one such algorithm iterates the following variable updates:
+\begin{align}
+	\iter{\bmY}{t} &\gets
+		\argmin{\bmY} \frob{\bmD - \bmY \bmA}^2 + 
+		\iter{\eta}{t} \frob{\iter{\bmS}{t-1}-\bmY}^2
+		\label{eq:krr,joint-recon} \\
+	\iter{\bmZt}{t} &\gets 
+		\brac{\bmztZa{\iter{\bmy}{t}_1,\bmnu_1},\dots,\bmztZa{\iter{\bmy}{t}_V,\bmnu_V}} 
+		\label{eq:krr,joint-lift} \\
+	\iter{\bmX}{t} &\gets
+		\bmmx\ones{V}\tpose + \Cxzt\inv{\Cztzt + 
+		\rho\eye{N}}\paren{\iter{\bmZt}{t} - \bmmzt\ones{V}\tpose}
+		\label{eq:krr,joint-est} \\
+	\iter{\bmS}{t} &\gets
+		\brac{\bms\paren{\iter{\bmx}{t}_1,\bmnu_1},\dots,\bms\paren{\iter{\bmx}{t}_V,\bmnu_V}}
+		\label{eq:krr,joint-model}
+\end{align}
+where $\bmA$ is a linear sensing operator 
+that models how raw data $\bmD$
+relates to image data $\bmY$; 
+and $\iter{\paren{\cdot}}{t}$ denotes the $t$th iterate.
+The general concept involves cycling
+image reconstruction \eqref{eq:krr,joint-recon},
+feature mapping \eqref{eq:krr,joint-lift},
+parameter estimation via KRR \eqref{eq:krr,joint-est},
+and
+signal modeling \eqref{eq:krr,joint-model}.
+Setting $\iter{\eta}{0} \gets 0$ provides a natural initialization,
+and increasing $\iter{\eta}{t}$ for subsequent iterations
+encourages image iterates $\iter{\bmY}{t}$
+to not only maintain raw data fidelity
+but also add training point consistency,
+which might provide a regularization-like effect.
+
+Two points of inquiry may guide refinement
+of the above algorithm
+\eqref{eq:krr,joint-recon}-\eqref{eq:krr,joint-model}.
+First, 
+it is desirable to reformulate 
+\eqref{eq:krr,joint-recon}-\eqref{eq:krr,joint-model}
+as steps towards the solution
+of a well-defined optimization problem.
+This will likely provide 
+a route towards convergence analysis
+and may also give intuition 
+in setting $\iter{\eta}{t}$
+or other algorithmic parameters.
+Second,
+it is desirable 
+to explicitly incorporate the signal model's 
+partially linear structure
+in variable updates,
+as this may help incorporate
+scale invariance 
+in the KRR step \eqref{eq:krr,joint-est}.

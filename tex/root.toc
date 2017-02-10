@@ -58,8 +58,11 @@
 \contentsline {subsubsection}{\numberline {5.3.2.4}Choosing Kernel Approximation Order}{57}{subsubsection.5.3.2.4}
 \contentsline {section}{\numberline {5.4}Experimentation}{58}{section.5.4}
 \contentsline {section}{\numberline {5.5}Summary and Future Work}{61}{section.5.5}
-\contentsline {chapter}{\numberline {6}Myelin\nobreakspace {}Water\nobreakspace {}Fraction\nobreakspace {}Estimation from\nobreakspace {}Steady-State\nobreakspace {}Sequences}{62}{chapter.6}
-\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{63}{chapter.7}
-\contentsline {chapter}{Appendices}{64}{section*.8}
+\contentsline {paragraph}{Performance Analysis}{61}{section*.8}
+\contentsline {paragraph}{Exploiting Partially Linear Structure to Incorporate Scale Invariance}{62}{section*.9}
+\contentsline {paragraph}{Joint Image Reconstruction and Parameter Estimation}{62}{section*.10}
+\contentsline {chapter}{\numberline {6}Myelin\nobreakspace {}Water\nobreakspace {}Fraction\nobreakspace {}Estimation from\nobreakspace {}Steady-State\nobreakspace {}Sequences}{63}{chapter.6}
+\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{64}{chapter.7}
+\contentsline {chapter}{Appendices}{65}{section*.11}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{66}{section*.11}
+\contentsline {chapter}{Bibliography}{67}{section*.14}
