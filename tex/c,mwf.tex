@@ -5,6 +5,117 @@
 \label{s,mwf,intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Myelin is a lipid-rich material
+that forms an insulating sheath
+encasing neuronal axons 
+predominantly in white matter (WM) regions
+of the human brain
+\cite{morell:84}.
+Demyelination (\ie, myelin loss) is central
+to the development 
+of several neurodegenerative disorders
+such as multiple sclerosis (MS)
+\cite{goldenberg:12:msr}. 
+Non-invasive myelin quantification in WM
+is thus desirable 
+for monitoring the onset and progression
+of neurodegenerative disease.
+
+% MR relaxation rates (esp t2) depend on water environment
+% local water environment changes on sub-millimeter scale
+% MR sensitive only on millimeter scale
+% need to assign a macroscopic t2 to each pool or compartment
+% thus multiple water compartments contribute to each voxel at typical resolutions
+MR relaxation time constants
+(especially spin-spin time constant $\Tt$)
+depend on the macromolecular environment
+surrounding excited water molecules.
+In nervous tissue,
+these environments vary spatially
+on scales much smaller 
+than the millimeter-scale resolutions
+used in typical MR imaging experiments.
+Thus, 
+there is significant variation
+of relaxation times 
+within a typical imaging voxel 
+containing nervous tissue.
+
+% natural to try to separate t2 components in mri
+% several groups measured first in vitro short t2 pool in white matter
+% assigned to water in myelin (trapped in bilayers?)
+% later measured in vivo, who termed mwf (mackay)
+% mwf found to correlate well in vivo with histology (laule)
+% mwf thus noninvasive MR-based biomarker for myelin content
+Many researchers have attempted 
+to characterize tissue microstructure
+by estimating the distribution
+of MR relaxation time constants
+and associating certain ranges of time constants
+with particular ``compartments'' or ``pools'' of water molecules
+that exist in similar macromolecular environments.
+Several \invitro NMR studies
+of nervous animal tissue
+prescribed a fast-relaxing water compartment
+with $\Tt\sim$10-40ms 
+initially to general protein 
+and phospholipid structures \cite{vasilescu:78:wci}
+and later more specifically
+to water trapped between
+the phospholipid bilayers 
+of myelin
+\cite{menon:91:aoc, stewart:93:ssr}.
+Shortly thereafter,
+the first MR images 
+of so-called \emph{myelin water fraction} (MWF),
+defined as the proportion of MR signal 
+arising from the fast-relaxing water compartment
+relative to total MR signal,
+were demonstrated \emph{in vivo}
+in the human brain \cite{mackay:94:ivv}.
+More recently,
+MWF has been shown 
+to correlate well 
+with histological measurements
+of myelin content 
+in animal models
+of nerve injury \cite{gareau:00:mta}
+and demyelination \cite{webb:03:imt}.
+In humans, 
+MWF has also been measured 
+to be markedly lower
+in ``normally appearing'' WM 
+of MS patients versus controls \cite{laule:04:wca},
+and to correlate strongly 
+with post-mortem histological measurements
+of myelin content
+in MS patients \cite{laule:06:mwi}.
+Thus,
+there is reasonably strong evidence
+that MWF
+(as originally measured in \cite{mackay:94:ivv})
+is a specific and non-invasive biomarker
+for myelin content in WM.
+
+% all aforementioned studies used MESE 
+% MESE typically uses long tr to ensure full recovery between excitations
+% thus MESE acquisitions take long time
+% mcdespot based on ss techniques (specifically spgr and bssfp) 
+% shown to disagree significantly with ss 
+% maybe due to insufficient precision
+All of the aforementioned studies
+estimate MWF images
+from a multi-echo spin echo (MESE) MRI acquisition.
+To ensure sufficient $\To$ recovery,
+these studies employ long $\TR\geq2$s
+to ensure sufficient $\To$ recovery
+of the longitudinal magnetization in WM.
+Whole-brain MWF imaging 
+using such long-$\TR$ MESE acquisitions
+at a typical imaging resolution
+would require hours of imaging time
+and thus may not be clinically practical.
+
 
 
 This chapter applies previously developed methods

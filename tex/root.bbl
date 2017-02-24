@@ -4,7 +4,7 @@
 K.~E. Keenan, K.~F. Stupic, M.~A. Boss, S.~E. Russek, T.~L. Chenevert, P.~V.
   Prasad, W.~E. Reddick, K.~M. Cecil, J.~Zheng, P.~Hu, and E.~F. Jackson,
   ``Multi-site, multi-vendor comparison of {T1} measurement using {ISMRM/NIST}
-  system phantom,'' in {\em Proc. Intl. Soc. Mag. Res. Med.}, p.~3290, 2016.
+  system phantom,'' in {\em {Proc. Intl. Soc. Mag. Res. Med.}}, p.~3290, 2016.
 
 \bibitem{ahn:03:seo}
 S.~Ahn and J.~A. Fessler, ``Standard errors of mean, variance, and standard
@@ -13,13 +13,13 @@ S.~Ahn and J.~A. Fessler, ``Standard errors of mean, variance, and standard
 
 \bibitem{nataraj:14:rje}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Regularized, joint estimation
-  of {T1} and {M0} maps,'' in {\em Proc. Intl. Soc. Mag. Res. Med.}, p.~3128,
+  of {T1} and {M0} maps,'' in {\em {Proc. Intl. Soc. Mag. Res. Med.}}, p.~3128,
   2014.
 
 \bibitem{nataraj:14:mbe}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Model-based estimation of {T2}
-  maps with dual-echo steady-state {MR} imaging,'' in {\em Proc. IEEE Intl.
-  Conf. on Image Processing}, pp.~{1877--81}, 2014.
+  maps with dual-echo steady-state {MR} imaging,'' in {\em {Proc. IEEE Intl.
+  Conf. on Image Processing}}, pp.~{1877--81}, 2014.
 
 \bibitem{nataraj::oms}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Optimizing {MR} scan design for
@@ -29,20 +29,20 @@ G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Optimizing {MR} scan design for
 
 \bibitem{nataraj:15:amm}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``A min-max {CRLB} optimization
-  approach to scan selection for relaxometry,'' in {\em Proc. Intl. Soc. Mag.
-  Res. Med.}, p.~1672, 2015.
+  approach to scan selection for relaxometry,'' in {\em {Proc. Intl. Soc. Mag.
+  Res. Med.}}, p.~1672, 2015.
 
 \bibitem{nataraj:17:dfm}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Dictionary-free {MRI} parameter
-  estimation via kernel ridge regression,'' in {\em Proc. IEEE Intl. Symp.
-  Biomed. Imag.}, 2017.
+  estimation via kernel ridge regression,'' in {\em {Proc. IEEE Intl. Symp.
+  Biomed. Imag.}}, 2017.
 \newblock To appear.
 
 \bibitem{nataraj:17:mwf}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Myelin water fraction
   estimation from optimized steady-state sequences using kernel ridge
-  regression,'' in {\em Proc. Intl. Soc. Mag. Res. Med.}, 2017.
-\newblock Submitted.
+  regression,'' in {\em {Proc. Intl. Soc. Mag. Res. Med.}}, 2017.
+\newblock To appear.
 
 \bibitem{macovski:83}
 A.~Macovski, {\em Medical imaging systems}.
@@ -131,8 +131,8 @@ A.~Macovski, ``Noise in {MRI},'' {\em {Mag. Res. Med.}}, vol.~36, pp.~{494--7},
   Sept. 1996.
 
 \bibitem{lei:07:som}
-T.~Lei, ``Statistics of {MR} signals: revisited,'' in {\em Proc. SPIE 6510
-  Medical Imaging 2007: Phys. Med. Im.}, p.~651052, 2007.
+T.~Lei, ``Statistics of {MR} signals: revisited,'' in {\em {Proc. SPIE 6510
+  Medical Imaging 2007: Phys. Med. Im.}}, p.~651052, 2007.
 
 \bibitem{gudbjartsson:95:trd}
 H.~Gudbjartsson and S.~Patz, ``The {Rician} distribution of noisy {MRI} data,''
@@ -427,8 +427,8 @@ L.~I. Sacolick, F.~Wiesinger, I.~Hancu, and M.~W. Vogel, ``B1 mapping by
 
 \bibitem{sun:14:reo}
 H.~Sun, W.~A. Grissom, and J.~A. Fessler, ``Regularized estimation of
-  {Bloch-Siegert} {B1+} {Maps} in {MRI},'' in {\em Proc. IEEE Intl. Conf. on
-  Image Processing}, pp.~{3646--50}, 2014.
+  {Bloch-Siegert} {B1+} {Maps} in {MRI},'' in {\em {Proc. IEEE Intl. Conf. on
+  Image Processing}}, pp.~{3646--50}, 2014.
 
 \bibitem{ying:07:jir}
 L.~Ying and J.~Sheng, ``Joint image reconstruction and sensitivity estimation
@@ -437,7 +437,7 @@ L.~Ying and J.~Sheng, ``Joint image reconstruction and sensitivity estimation
 
 \bibitem{arthur:07:kmt}
 D.~Arthur and S.~Vassilvitskii, ``K-means++: {The} advantages of careful
-  seeding,'' in {\em Proc. 18th Annual ACM-SIAM Symp. Disc. Alg. (SODA)},
+  seeding,'' in {\em {Proc. 18th Annual ACM-SIAM Symp. Disc. Alg. (SODA)}},
   pp.~{1027--35}, 2007.
 
 \bibitem{frank:97:spe}
@@ -488,7 +488,7 @@ D.~Ma, V.~Gulani, N.~Seiberlich, K.~Liu, J.~L. Sunshine, J.~L. Duerk, and M.~A.
 
 \bibitem{zhao:16:oed}
 B.~Zhao, J.~Haldar, K.~Setsompop, and L.~L. Wald, ``Optimal experiment design
-  for magnetic resonance fingerprinting,'' in {\em embc}, 2016.
+  for magnetic resonance fingerprinting,'' in {\em {embc}}, pp.~{453--6}, 2016.
 
 \bibitem{torrey:56:bew}
 H.~C. Torrey, ``Bloch equations with diffusion terms,'' {\em {Phys. Rev.}},
@@ -571,7 +571,7 @@ C.~Saunders, A.~Gammerman, and V.~Vovk, ``Ridge regression learning algorithm
 
 \bibitem{scholkopf:01:agr}
 B.~{Sch\"olkopf}, R.~Herbrich, and A.~J. Smola, ``A generalized representer
-  theorem,'' in {\em Proc. Computational Learning Theory (COLT)},
+  theorem,'' in {\em {Proc. Computational Learning Theory (COLT)}},
   pp.~{416--426}, 2001.
 \newblock LNCS 2111.
 
@@ -582,7 +582,7 @@ A.~E. Hoerl and R.~W. Kennard, ``Ridge regression: biased estimation for
 
 \bibitem{rahimi:07:rff}
 A.~Rahimi and B.~Recht, ``Random features for large-scale kernel machines,'' in
-  {\em NIPS}, 2007.
+  {\em {NIPS}}, 2007.
 
 \bibitem{sutherland:15:ote}
 D.~J. Sutherland and J.~Schneider, ``On the error of random fourier features,''
@@ -607,11 +607,6 @@ C.~E. Rasmussen and C.~K.~I. Williams, {\em Gaussian Processes for Machine
   Learning (Adaptive Computation and Machine Learning)}.
 \newblock The MIT Press, 2005.
 
-\bibitem{alonsoortiz:15:mbm}
-E.~Alonso-Ortiz, I.~R. Levesque, and G.~B. Pike, ``{MRI-based} myelin water
-  imaging: {A} technical review,'' {\em {Mag. Res. Med.}}, vol.~73,
-  pp.~{70--81}, Jan. 2015.
-
 \bibitem{deoni:11:com}
 S.~C.~L. Deoni, ``Correction of main and transmit magnetic field {(B0} and
   {B1)} inhomogeneity effects in multicomponent-driven equilibrium single-pulse
@@ -626,5 +621,51 @@ C.~L. Lankford and M.~D. Does, ``On the inherent precision of {mcDESPOT},''
 M.~M. Siddiqui, ``Statistical inference for {Rayleigh} distributions,'' {\em
   {RADIO SCIENCE Journal of Research NBS/USNC-URSI}}, vol.~68D, pp.~{1005--10},
   Sept. 1964.
+
+\bibitem{morell:84}
+P.~Morell, {\em Myelin}.
+\newblock Springer, 1984.
+
+\bibitem{goldenberg:12:msr}
+M.~M. Goldenberg, ``Multiple sclerosis review,'' {\em Pharmacy and
+  Therapeutics}, vol.~37, no.~3, pp.~{175--84}, 2012.
+
+\bibitem{vasilescu:78:wci}
+V.~Vasilescu, E.~Katona, V.~Simplaceanu, and D.~Demco, ``Water compartments in
+  the myelinated nerve. iii. pulsed nmr results,'' {\em Experientia}, vol.~34,
+  pp.~{1443--4}, Nov. 1978.
+
+\bibitem{menon:91:aoc}
+R.~S. Menon and P.~S. Allen, ``Application of continuous relaxation time
+  distributions to the fitting of data from model systems and excised tissue,''
+  {\em Magn. Res. Med.}, vol.~20, pp.~{214--27}, Aug. 1991.
+
+\bibitem{stewart:93:ssr}
+W.~A. Stewart, A.~L. Mackay, K.~P. Whittall, G.~R.~W. Moore, and D.~W. Paty,
+  ``Spin-spin relaxation in experimental allergic encephalomyelitis. analysis
+  of cpmg data using a non-linear least-squares method and linear inverse
+  theory,'' {\em Magn. Res. Med}, vol.~29, pp.~{767--775}, June 1993.
+
+\bibitem{gareau:00:mta}
+P.~J. Gareau, B.~K. Rutt, S.~J. Karlik, and J.~R. Mitchell, ``Magnetization
+  transfer and multicomponent t2 relaxation measurements with histopathologic
+  correlation in an experimental model of ms,'' {\em Journ. Mag. Res. Med.},
+  vol.~11, pp.~{586--95}, June 2000.
+
+\bibitem{webb:03:imt}
+S.~Webb, C.~A. Munro, R.~Midha, and G.~J. Stanisz, ``Is multicomponent t2 a
+  good measure of myelin content in peripheral nerve?,'' {\em Magn. Res. Med.},
+  vol.~49, pp.~{628--45}, Apr. 2003.
+
+\bibitem{laule:04:wca}
+C.~Laule, I.~M. Vavasour, G.~R.~W. Moore, J.~Oger, D.~K.~B. Li, D.~W. Paty, and
+  A.~L. MacKay, ``Water content and myelin water fraction in multiple
+  sclerosis,'' {\em J. Neurol.}, vol.~251, pp.~{284--93}, Mar. 2004.
+
+\bibitem{laule:06:mwi}
+C.~Laule, E.~Leung, D.~K.~B. Li, A.~L. Traboulsee, D.~W. Paty, A.~L. MacKay,
+  and G.~R.~W. Moore, ``Myelin water imaging in multiple sclerosis:
+  quantitative correlations with histopathology,'' {\em {Multiple Sclerosis}},
+  vol.~12, pp.~{747--53}, Nov. 2006.
 
 \end{thebibliography}
