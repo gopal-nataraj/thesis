@@ -105,23 +105,69 @@ for myelin content in WM.
 % maybe due to insufficient precision
 All of the aforementioned studies
 estimate MWF images
-from a multi-echo spin echo (MESE) MRI acquisition.
-To ensure sufficient $\To$ recovery,
-these studies employ long $\TR\geq2$s
-to ensure sufficient $\To$ recovery
-of the longitudinal magnetization in WM.
+from a multi-echo spin echo (MESE) MRI pulse sequence
+\cite{carr:54:eod}
+with long repetition time $\TR\geq2$s
+to ensure sufficient recovery
+of the longitudinal magnetization 
+in nervous tissue.
 Whole-brain MWF imaging 
 using such long-$\TR$ MESE acquisitions
 at a typical imaging resolution
-would require hours of imaging time
-and thus may not be clinically practical.
+would require hours of scan time
+and thus may not be clinically feasible.
+As a more practical alternative,
+scan profiles consisting of short-$\TR$ steady-state (SS) sequences
+were proposed 
+for whole-brain MWF imaging in about 30m scan time
+\cite{deoni:08:gmt}.
+Despite recent further refinements
+\cite{deoni:11:com, deoni:13:oct},
+MWF images from SS pulse sequences 
+have thus far been shown
+to be incomparable with MWF images
+from MESE pulse sequences
+\cite{zhang:15:com},
+likely due in part
+to insufficient unbiased parameter estimation precision
+\cite{lankford:13:oti}.
 
+This chapter introduces
+a rapid SS MRI scan profile
+for precise MWF imaging.
+We apply QMRI acquisition design
+(developed in Chapter~\ref{c,scn-dsgn})
+to optimize the flip angles and repetition times
+of combinations 
+of spoil gradient-recalled echo (SPGR)
+and dual-echo steady-state (DESS) sequences
+for precise MWF estimation.
+We rapidly estimate MWF and 
+other nuisance latent object parameters
+using QMRI parameter estimation
+via kernel ridge regression (KRR)
+(developed in Chapter~\ref{c,krr}).
+We obtain proof-of-concept MWF maps \invivo
+that are comparable
+to results reported
+in MESE literature.
 
-
-This chapter applies previously developed methods
-for QMRI acquisition (Chapter~\ref{c,scn-dsgn})
-and scalable QMRI parameter estimation (Chapter~\ref{c,krr})
-for myelin water fraction imaging.
+The remainder of this chapter
+is organized as follows.
+Section~\ref{s,mwf,model} reviews and develops
+simple two-compartment signal models
+for SPGR and DESS pulse sequences, 
+respectively.
+Section~\ref{s,mwf,acq} designs 
+a new SPGR/DESS scan profile 
+for precisely estimating MWF parameter images
+from SPGR/DESS image data.
+Section~\ref{s,mwf,exp} applies
+the proposed acquisition \invivo
+and qualitatively compares resultant MWF images
+to state-of-the-art MESE results.
+Section~\ref{s,mwf,summ} summarizes contributions thus far
+and discusses future work. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Multi-Compartmental Models for SS Sequences}
