@@ -139,8 +139,10 @@ We apply QMRI acquisition design
 (developed in Chapter~\ref{c,scn-dsgn})
 to optimize the flip angles and repetition times
 of combinations 
-of spoil gradient-recalled echo (SPGR)
-and dual-echo steady-state (DESS) sequences
+of spoiled gradient-recalled echo (SPGR)
+\cite{zur:91:sot}
+and dual-echo steady-state (DESS) 
+\cite{redpath:88:fan, bruder:88:ans} sequences
 for precise MWF estimation.
 We rapidly estimate MWF and 
 other nuisance latent object parameters
@@ -174,17 +176,26 @@ and discusses future work.
 \label{s,mwf,model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{A Two-Compartment DESS Model}
-\label{ss,mwf,model,dess}
-
-% dess-2comp notes
+This section describes multi-compartmental signal models
+for the SPGR and DESS pulse sequences.
+Subsection~\ref{ss,mwf,model,spgr} first briefly reviews
+an SPGR signal model 
+of two exchanging water compartments \cite{deoni:08:gmt}.
+Subsection~\ref{ss,mwf,model,dess} then develops 
+in detail novel DESS signal models 
+of two exchanging water compartments.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{A Two-Compartment SPGR Model}
 \label{ss,mwf,model,spgr}
 
 % state results from deoni
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{A Two-Compartment DESS Model}
+\label{ss,mwf,model,dess}
+
+% dess-2comp notes
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{SPGR/DESS Acquisition Design for MWF Imaging}

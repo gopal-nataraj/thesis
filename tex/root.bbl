@@ -381,6 +381,12 @@ C.~M. Lewis, S.~A. Hurley, M.~E. Meyerand, and C.~G. Koay, ``Data-driven
   acquisitions,'' {\em {Mag. Res. Med.}}, vol.~76, pp.~{792--802}, Sept. 2016.
 \newblock To appear.
 
+\bibitem{liu:17:gmm}
+Y.~Liu, J.~R. Buck, and V.~N. Ikonomidou, ``Generalized min-max bound-based
+  {MRI} pulse sequence design framework for wide-range {T1} relaxometry: {A}
+  case study on the tissue specific imaging sequence,'' {\em {PLOS ONE}},
+  vol.~12, pp.~{1--20}, 02 2017.
+
 \bibitem{fisher:1925:tos}
 R.~A. Fisher, ``Theory of statistical estimation,'' {\em {Proc. Cambridge
   Philosophical Society}}, vol.~22, pp.~{700--25}, July 1925.
