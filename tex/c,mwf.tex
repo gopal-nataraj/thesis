@@ -176,20 +176,99 @@ and discusses future work.
 \label{s,mwf,model}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This section describes multi-compartmental signal models
+This section develops multi-compartmental signal models
 for the SPGR and DESS pulse sequences.
-Subsection~\ref{ss,mwf,model,spgr} first briefly reviews
-an SPGR signal model 
-of two exchanging water compartments \cite{deoni:08:gmt}.
-Subsection~\ref{ss,mwf,model,dess} then develops 
-in detail novel DESS signal models 
-of two exchanging water compartments.
+Subsection~\ref{ss,mwf,model,spgr} reviews
+a concise Bloch-matrix derivation \cite{spencer:00:mos}
+of an SPGR signal model 
+that accounts for first-order exchange 
+between multiple compartments.
+Subsection~\ref{ss,mwf,model,dess} applies 
+the Bloch-matrix representation
+to derive analogous 
+(but previously unpublished)
+multi-compartmental DESS signal models. 
+Though in the derivations below
+we focus for simplicity
+on only two exchanging compartments,
+the Bloch-matrix formulation allows
+for straightforward generalization
+to three or more interacting compartments.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{A Two-Compartment SPGR Model}
 \label{ss,mwf,model,spgr}
 
-% state results from deoni
+The McConnell equations \cite{mcconnell:58:rrb}
+extend the Bloch equations \cite{bloch:1946:ni-paper}
+to account for first-order reversible chemical exchange
+between two or more intra-voxel compartments. 
+Here,
+we specifically consider the interaction
+of a fast-relaxing water compartment
+(characterized by comparatively short spin-lattice $\tf{1}$ 
+and spin-spin $\tf{2}$ relaxation times) 
+with a slow-relaxing water compartment
+(characterized by longer relaxation times $\ts{1},\ts{2}$).
+In primed coordinates rotating clockwise 
+about the longitudinal $z$-axis
+at the Larmor frequency,
+the dynamics 
+of corresponding fast-relaxing and slow-relaxing
+compartmental magnetization vectors
+$\bmmpf := \brac{\mxpf, \mypf, \mzpf}\tpose$
+and
+$\bmmps := \brac{\mxps, \myps, \mzps}\tpose$
+are coupled via first-order exchange rates 
+$\rfs$ (from fast to slow compartment) 
+and $\rsf$ (vice-versa).
+In the absence of RF excitation,
+these magnetization dynamics
+decouple in transverse and longitudinal components;
+the two-compartment transverse equations 
+extend \eqref{eq:bloch-free-mxyp} to read
+\begin{align}
+	\dela{t} \mxypf\prt &= 
+		-i\gam \mxypf\prt \bzp\prt - \frac{\mxypf\prt}{\tf{2}\pr} 
+		- \rfs\pr \mxypf\prt + \rsf\pr \mxyps\prt;
+		\label{eq:mwf,mxy-f} \\
+	\dela{t} \mxyps\prt &= 
+		-i\gam \mxyps\prt \bzp\prt - \frac{\mxyps\prt}{\ts{2}\pr} 
+		- \rsf\pr \mxyps\prt + \rfs\pr \mxypf\prt,
+		\label{eq:mwf,mxy-s}
+\end{align}
+where 
+$\mxypf\prt := \mxpf\prt + i\mypf\prt$ 
+and $\mxyps\prt := \mxps\prt + i\myps\prt$
+are complex representations
+of the transverse magnetization
+at position $\bmr$ 
+and time $t$; 
+and $\bzp\prt$ is the apparent longitudinal magnetic field.
+Analogous two-compartment longitudinal equations 
+extend \eqref{eq:bloch-free-mzp} to read
+\begin{align}
+	\dela{t} \mzpf\prt &=
+		-\frac{\mzpf\prt - \ff\pr\mzero\pr}{\tf{1}\pr} 
+		- \rfs\pr \mzpf\prt + \rsf\pr \mzps\prt;
+		\label{eq:mwf,mz-f} \\
+	\dela{t} \mzps\prt &= 
+		-\frac{\mzps\prt - \fs\pr\mzero\pr}{\ts{1}\pr}
+		- \rsf\pr \mzps\prt + \rsf\pr \mzpf\prt.
+		\label{eq:mwf,mz-s}
+\end{align}
+where $\ff\pr$ and $\fs\pr$ denote compartmental fractions
+and $\mzero\pr$ denotes the equilibrium magnetization.
+
+in matrix form as
+\begin{align}
+	\dela{t} \bmmp\prt = \bmA\pr \bmmp\prt + \bmc\pr,
+	\label{eq:mwf,mdot}
+\end{align}	
+where $\bmr$
+must now be understood 
+to specify a position 
+on a sub-voxel but supra-molecular scale.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{A Two-Compartment DESS Model}

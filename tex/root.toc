@@ -65,11 +65,11 @@
 \contentsline {section}{\numberline {6.1}Introduction}{63}{section.6.1}
 \contentsline {section}{\numberline {6.2}Multi-Compartmental Models for SS Sequences}{64}{section.6.2}
 \contentsline {subsection}{\numberline {6.2.1}A Two-Compartment SPGR Model}{65}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}A Two-Compartment DESS Model}{65}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}SPGR/DESS Acquisition Design for MWF Imaging}{65}{section.6.3}
-\contentsline {section}{\numberline {6.4}Experimentation}{65}{section.6.4}
-\contentsline {section}{\numberline {6.5}Summary and Future Work}{65}{section.6.5}
-\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{66}{chapter.7}
-\contentsline {chapter}{Appendices}{67}{section*.11}
+\contentsline {subsection}{\numberline {6.2.2}A Two-Compartment DESS Model}{66}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}SPGR/DESS Acquisition Design for MWF Imaging}{66}{section.6.3}
+\contentsline {section}{\numberline {6.4}Experimentation}{66}{section.6.4}
+\contentsline {section}{\numberline {6.5}Summary and Future Work}{66}{section.6.5}
+\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{67}{chapter.7}
+\contentsline {chapter}{Appendices}{68}{section*.11}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{69}{section*.14}
+\contentsline {chapter}{Bibliography}{70}{section*.14}
