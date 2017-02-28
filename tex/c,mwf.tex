@@ -229,23 +229,27 @@ the two-compartment transverse equations
 extend \eqref{eq:bloch-free-mxyp} to read
 \begin{align}
 	\dela{t} \mxypf\prt &= 
-		-i\gam \mxypf\prt \bzp\prt - \frac{\mxypf\prt}{\tf{2}\pr} 
+		-i\gam \mxypf\prt \ompf\pr - \frac{\mxypf\prt}{\tf{2}\pr} 
 		- \rfs\pr \mxypf\prt + \rsf\pr \mxyps\prt;
 		\label{eq:mwf,mxy-f} \\
 	\dela{t} \mxyps\prt &= 
-		-i\gam \mxyps\prt \bzp\prt - \frac{\mxyps\prt}{\ts{2}\pr} 
+		-i\gam \mxyps\prt \omps\pr - \frac{\mxyps\prt}{\ts{2}\pr} 
 		- \rsf\pr \mxyps\prt + \rfs\pr \mxypf\prt,
 		\label{eq:mwf,mxy-s}
 \end{align}
 where 
 $\mxypf\prt := \mxpf\prt + i\mypf\prt$ 
 and $\mxyps\prt := \mxps\prt + i\myps\prt$
-are complex representations
+are complex compartmental representations
 of the transverse magnetization
 at position $\bmr$ 
 and time $t$; 
-and $\bzp\prt$ is the apparent longitudinal magnetic field.
-Analogous two-compartment longitudinal equations 
+$\ompf\pr \in \real$ and $\omps\pr \in \real$ 
+allow for compartment-specific 
+but time-invariant off-resonance effects;
+and $\gam \in \real$ is the gyromagnetic ratio.
+Without excitation,
+analogous two-compartment longitudinal equations 
 extend \eqref{eq:bloch-free-mzp} to read
 \begin{align}
 	\dela{t} \mzpf\prt &=
@@ -254,21 +258,112 @@ extend \eqref{eq:bloch-free-mzp} to read
 		\label{eq:mwf,mz-f} \\
 	\dela{t} \mzps\prt &= 
 		-\frac{\mzps\prt - \fs\pr\mzero\pr}{\ts{1}\pr}
-		- \rsf\pr \mzps\prt + \rsf\pr \mzpf\prt.
+		- \rsf\pr \mzps\prt + \rsf\pr \mzpf\prt,
 		\label{eq:mwf,mz-s}
 \end{align}
-where $\ff\pr$ and $\fs\pr$ denote compartmental fractions
-and $\mzero\pr$ denotes the equilibrium magnetization.
-
+where $\ff\pr \in \brac{0,1}$ and $\fs\pr \in \brac{0,1}$ 
+denote fast- and slow-relaxing
+compartmental fractions
+and $\mzero\pr$ denotes the total 
+\footnote{The numerous parameters introduced here
+	are often interdependent. 
+	In regions with only two water compartments present,
+	$\ff\pr + \fs\pr = 1$.
+	In regions where only two water pools exhibit exchange 
+	and that exchange is in chemical equilibrium,
+	$\ff\pr \rfs\pr = \fs\pr \rsf\pr$.
+}
+equilibrium magnetization.
+ 
+Equations~\eqref{eq:mwf,mxy-f}-\eqref{eq:mwf,mz-s}
+comprise a first-order affine dynamical system
+and can be equivalently and concisely written
 in matrix form as
 \begin{align}
 	\dela{t} \bmmp\prt = \bmA\pr \bmmp\prt + \bmc\pr,
 	\label{eq:mwf,mdot}
 \end{align}	
-where $\bmr$
-must now be understood 
-to specify a position 
-on a sub-voxel but supra-molecular scale.
+where $\bmmp\prt := \vect{\brac{\bmmpf\prt, \bmmps\prt}\tpose} \in \reals{6}$
+collects the compartmental magnetization vectors
+and $\vect{\cdot}$ denotes vectorization;
+system matrix $\bmA\pr \in \reals{6 \times 6}$ 
+admits a block diagonal form
+$\bmA\pr \equiv \brac{\bmAxy\pr, \zeros{4 \times 2}; \zeros{2 \times 4}, \bmAz\pr}$,
+with $\bmAxy\pr :=$
+\begin{align}
+	\begin{bmatrix}
+		-\frac{1}{\tf{2}\pr}-\rfs\pr & \rsf\pr & \ompf\pr & 0 \\
+		\rfs\pr & -\frac{1}{\ts{2}\pr}-\rsf\pr & 0 & \omps\pr \\
+		-\ompf\pr & 0 & -\frac{1}{\tf{2}\pr}-\rfs\pr & \rsf\pr \\
+		0 & -\omps\pr & \rfs\pr & -\frac{1}{\ts{2}\pr}-\rsf\pr 
+		\label{eq:mwf,Axy}
+	\end{bmatrix}
+\end{align}
+collecting transverse dynamics and
+\begin{align}
+	\bmAz\pr :=
+	\begin{bmatrix}
+		-\frac{1}{\tf{1}\pr}-\rfs\pr & \rsf\pr \\
+		\rfs\pr & -\frac{1}{\ts{1}\pr}-\rsf\pr
+		\label{eq:mwf,Az}
+	\end{bmatrix}
+\end{align}
+collecting longitudinal dynamics; and
+$\bmc\pr := \brac{0, 0, 0, 0, 
+\frac{\ff\pr \mzero\pr}{\tf{1}}, 
+\frac{\fs\pr \mzero\pr}{\ts{1}}}\tpose$.
+If $\bmA\pr$ is invertible,
+a matrix exponential solution 
+to \eqref{eq:mwf,mdot}
+exists and reads
+\begin{align}
+	\bmmp\prt = e^{t\bmA\pr} \bmmp\prtz +
+	\paren{e^{t\bmA\pr} - \eye{6}} \inv{\bmA\pr} \bmc\pr
+	\qquad \forall t \geq t_0,
+	\label{eq:mwf,m}
+\end{align}
+where $\bmmp\prtz$ is the magnetization
+at an initial time $t_0$
+and $\eye{6} \in \reals{6 \times 6}$ 
+is an identity matrix.
+
+To develop a two-compartment SPGR signal model,
+we modify the derivation 
+of the single-compartment SPGR model
+(presented in Subsection~\ref{sss,bkgrd,mri,ss,spgr})
+to account for inter-compartmental exchange
+(via \eqref{eq:mwf,m})
+during intervals of free precession and relaxation.
+As before,
+let $\bmmp\prt$ denote the magnetization
+at an initial time $t_0$ selected 
+well into the steady-state
+and just prior to RF excitation.
+The SPGR sequence first applies
+an RF excitation
+with pulse duration $\TP$.
+If we assume
+that each compartment 
+experiences this excitation
+with equal transmit field sensitivity,
+we may model RF excitation as a rotation
+by a compartment-wise constant 
+(but spatially varying)
+nutation angle $\flip\prtzt{t_0+\TP}$
+(defined in \eqref{eq:flip-def}),
+abbreviated $\flip\pr$ hereafter.
+Then for clockwise rotations
+about the $x'$-axis,
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TP} = 
+		\bmRxpsix{\flip\pr} \bmmp\prtz,
+		\label{eq:mwf,spgr-ex}
+\end{align}
+where $\bmRxpsix{\flip\pr} := \bmRxp{\flip\pr} \otimes \eye{2} 
+\in \reals{6 \times 6}$
+is a compartment-wise rotation operation;
+$\bmRxp{\flip\pr}$ is defined in \eqref{eq:rot-sol};
+and $\otimes$ denotes the Kronecker product.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{A Two-Compartment DESS Model}
