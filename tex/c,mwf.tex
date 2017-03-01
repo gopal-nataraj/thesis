@@ -196,7 +196,7 @@ for straightforward generalization
 to three or more interacting compartments.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{A Two-Compartment SPGR Model}
+\subsection{A Two-Compartment SPGR Signal Model}
 \label{ss,mwf,model,spgr}
 
 The McConnell equations \cite{mcconnell:58:rrb}
@@ -272,6 +272,7 @@ and $\mzero\pr$ denotes the total
 	In regions where only two water pools exhibit exchange 
 	and that exchange is in chemical equilibrium,
 	$\ff\pr \rfs\pr = \fs\pr \rsf\pr$.
+	\label{foot:constraint}
 }
 equilibrium magnetization.
  
@@ -318,21 +319,41 @@ to \eqref{eq:mwf,mdot}
 exists and reads
 \begin{align}
 	\bmmp\prt = e^{t\bmA\pr} \bmmp\prtz +
-	\paren{e^{t\bmA\pr} - \eye{6}} \inv{\bmA\pr} \bmc\pr
-	\qquad \forall t \geq t_0,
-	\label{eq:mwf,m}
+		\paren{e^{t\bmA\pr} - \eye{6}} \inv{\bmA\pr} \bmc\pr
+		\qquad \forall t \geq t_0,
+		\label{eq:mwf,epr}
 \end{align}
 where $\bmmp\prtz$ is the magnetization
 at an initial time $t_0$
 and $\eye{6} \in \reals{6 \times 6}$ 
 is an identity matrix.
+In chemical equilibrium
+(described in Footnote~\ref{foot:constraint}),
+a direct calculation involving 
+compartmental equilibrium magnetization
+$\bmmzero\pr := \brac{0,0,0,0,\ff\pr\mzero\pr,\fs\pr\mzero\pr}\tpose$
+reveals that $\bmA\pr \bmmzero\pr = -\bmc\pr$,
+in which case \eqref{eq:mwf,epr} may be simplified as
+\begin{align}
+	\bmmp\prt = e^{t\bmA\pr} \bmmp\prtz +
+		\paren{\eye{6} - e^{t\bmA\pr}} \bmmzero\pr
+		\qquad \forall t \geq t_0,
+		\label{eq:mwf,epr-eq}
+\end{align}
+a form
+that bears much resemblance  
+to the matrix operator solution
+\eqref{eq:mtx-pr}
+to the single-compartment Bloch equations
+in the presence
+of only free precession and relaxation.
 
 To develop a two-compartment SPGR signal model,
 we modify the derivation 
 of the single-compartment SPGR model
 (presented in Subsection~\ref{sss,bkgrd,mri,ss,spgr})
 to account for inter-compartmental exchange
-(via \eqref{eq:mwf,m})
+(via \eqref{eq:mwf,epr-eq})
 during intervals of free precession and relaxation.
 As before,
 let $\bmmp\prt$ denote the magnetization
@@ -342,7 +363,12 @@ and just prior to RF excitation.
 The SPGR sequence first applies
 an RF excitation
 with pulse duration $\TP$.
-If we assume
+If we neglect relaxation,
+off-resonance,
+and exchange during excitation
+(which is reasonable 
+for sufficiently short $\TP$) 
+and further assume
 that each compartment 
 experiences this excitation
 with equal transmit field sensitivity,
@@ -352,8 +378,10 @@ by a compartment-wise constant
 nutation angle $\flip\prtzt{t_0+\TP}$
 (defined in \eqref{eq:flip-def}),
 abbreviated $\flip\pr$ hereafter.
-Then for clockwise rotations
+For clockwise rotations
 about the $x'$-axis,
+such near-instantaneous rotation
+may be represented as
 \begin{align}
 	\bmmp\paren{\bmr,t_0+\TP} = 
 		\bmRxpsix{\flip\pr} \bmmp\prtz,
@@ -365,8 +393,113 @@ is a compartment-wise rotation operation;
 $\bmRxp{\flip\pr}$ is defined in \eqref{eq:rot-sol};
 and $\otimes$ denotes the Kronecker product.
 
+The compartments exchange
+while their magnetization vectors precess and relax
+as per \eqref{eq:mwf,epr}
+until data acquisition
+at echo time $\TE \in \brac{\TP,\TR}$
+after the midpoint of RF excitation:
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} =
+		e^{\paren{\TE-\frac{\TP}{2}}\bmA\pr} \bmmp\paren{\bmr,t_0+\TP} 
+		+ \paren{\eye{6} - e^{\paren{\TE-\frac{\TP}{2}}\bmA\pr}} \bmmzero\pr.
+	\label{eq:mwf,spgr-daq}
+\end{align}
+Following signal reception,
+the remaining transverse magnetization
+(in both compartments) 
+is spoiled 
+while longitudinal magnetization components
+in each compartment
+remain unaffected.
+We model ideal spoiling 
+in both compartments as 
+\begin{align}
+	\bmSsix \bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE},
+	\label{eq:mwf,spgr-spoil}
+\end{align}
+where $\bmSsix := \bmS \otimes \eye{2} \in \reals{6 \times 6}$
+is a compartment-wise spoiling operator
+and $\bmS$ is defined in \eqref{eq:spgr-spoil}.
+After spoiling,
+compartments continue to exchange
+while their longitudinal magnetization components
+partially recover
+until $t \gets t_0 + \TR$,
+completing one repetition cycle:
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TR} &=
+		e^{\paren{\TR-\paren{\frac{\TP}{2}+\TE}}\bmA\pr} \bmSsix 
+		\bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
+		\nonumber \\
+		&+ \paren{\eye{6} - e^{\paren{\TR-\paren{\frac{\TP}{2}+\TE}}\bmA\pr}} \bmmzero\pr.
+	\label{eq:mwf,spgr-epr}
+\end{align}
+In steady-state, one cycle of excitation, acquisition, spoiling, and recovery 
+returns the magnetization back to its initial state.
+We enforce this through the steady-state condition
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TP} = 
+		\bmRxpsix{\flip\pr} \bmmp\paren{\bmr,t_0+\TR},
+		\label{eq:mwf,spgr-ss}
+\end{align}
+which yields an algebraic system
+of equations.
+When it exists,
+the solution is
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TP} &=
+		\inv{\eye{6}-\bmRxpsix{\flip\pr} \bmSsix e^{\paren{\TR-\TP}\bmA\pr}} \bmRxpsix{\flip\pr}
+		\label{eq:mwf,spgr-bmmp-t0} \\
+	&\times \paren{\eye{6}-\bmSsix e^{\paren{\TR-\TP}\bmA\pr} -
+		\paren{\eye{6}-\bmSsix}e^{\paren{\TR-\paren{\frac{\TP}{2}+\TE}}\bmA\pr}}
+		\bmmzero\pr.
+		\nonumber
+\end{align}
+Substituting \eqref{eq:mwf,spgr-bmmp-t0}
+into \eqref{eq:mwf,spgr-daq}
+yields an expression
+for the magnetization 
+at the echo time.
+
+The matrix exponentials 
+in \eqref{eq:mwf,spgr-bmmp-t0} 
+are cumbersome to expand in general
+but fortunately admit
+explicit representations
+that can be found via standard solvers.
+Observe that
+if RF pulses are assumed instantaneous
+(\ie, $\TP \gets 0$)
+the longitudinal components
+of \eqref{eq:mwf,spgr-bmmp-t0}
+are equivalent to \cite[Eq.~34]{spencer:00:mos}.
+Another simpler but instructive special case
+neglects exchange
+(\ie, $\rfs \gets 0$ and $\rsf \gets 0$),
+in which case \eqref{eq:mwf,spgr-bmmp-t0} reduces to
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TP} =
+	\begin{bmatrix}
+		0 \\
+		0 \\
+		\frac{\ff\pr \sina{\flip\pr}\paren{1-e^{-\paren{\TR-\TP}/\tf{1}\pr}}}
+			{1-e^{-\paren{\TR-\TP}/\tf{1}\pr}\cosa{\flip\pr}} \\
+		\frac{\fs\pr \sina{\flip\pr}\paren{1-e^{-\paren{\TR-\TP}/\ts{1}\pr}}}
+			{1-e^{-\paren{\TR-\TP}/\ts{1}\pr}\cosa{\flip\pr}} \\
+		\frac{\ff\pr \cosa{\flip\pr}\paren{1-e^{-\paren{\TR-\TP}/\tf{1}\pr}}}
+			{1-e^{-\paren{\TR-\TP}/\tf{1}\pr}\cosa{\flip\pr}} \\
+		\frac{\fs\pr \cosa{\flip\pr}\paren{1-e^{-\paren{\TR-\TP}/\ts{1}\pr}}}
+			{1-e^{-\paren{\TR-\TP}/\ts{1}\pr}\cosa{\flip\pr}}
+	\end{bmatrix}
+	\mzero\pr
+	\label{eq:mwf-spgr-bmmp-t0-exchg0}
+\end{align}
+a two (non-exchanging) compartment extension
+to the SPGR steady-state solution \eqref{eq:spgr-bmmp-t0}.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{A Two-Compartment DESS Model}
+\subsection{A Two-Compartment DESS Signal Model}
 \label{ss,mwf,model,dess}
 
 % dess-2comp notes

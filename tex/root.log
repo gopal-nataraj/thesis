@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  27 FEB 2017 19:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=latex 2015.5.24)  28 FEB 2017 19:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -852,29 +852,29 @@ Overfull \hbox (31.44374pt too wide) in paragraph at lines 239--239
 [] |
  []
 
-[65] [66]) [67]
+[65] [66] [67]) [68]
 CHAPTER 7.
-(./c,future.tex) [68
+(./c,future.tex) [69
 
 ]
 APPENDIX A.
-(./a,cc-multi.tex) [69
+(./a,cc-multi.tex) [70
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [70
+(./a,dess-diff.tex) [71
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [71
+ [72
 
 
-] [72] [73] [74] [75] [76] [77]
-[78] [79] [80])
+] [73] [74] [75] [76] [77] [78]
+[79] [80] [81])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 150.
- [81]
+ [82]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 150.
  (./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 150.
@@ -886,12 +886,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 150.
  ) 
 Here is how much of TeX's memory you used:
- 10234 strings out of 493090
- 146495 string characters out of 6134868
- 278818 words of memory out of 5000000
- 13468 multiletter control sequences out of 15000+600000
+ 10251 strings out of 493090
+ 146805 string characters out of 6134868
+ 279280 words of memory out of 5000000
+ 13485 multiletter control sequences out of 15000+600000
  30680 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,20n,48p,1922b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,21n,48p,1922b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on root.dvi (92 pages, 399400 bytes).
+Output written on root.dvi (93 pages, 408856 bytes).
