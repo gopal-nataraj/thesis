@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  1 MAR 2017 19:48
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  2 MAR 2017 14:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -849,7 +849,7 @@ Overfull \hbox (31.44374pt too wide) in paragraph at lines 239--239
  []
 
 [65] [66] [67] [68]
-Overfull \hbox (46.24203pt too wide) in paragraph at lines 606--606
+Overfull \hbox (48.04744pt too wide) in paragraph at lines 606--606
 [] |
  []
 
@@ -887,12 +887,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 150.
  ) 
 Here is how much of TeX's memory you used:
- 9895 strings out of 493489
- 141357 string characters out of 3141349
- 264779 words of memory out of 3000000
- 12959 multiletter control sequences out of 15000+200000
+ 9899 strings out of 493489
+ 141427 string characters out of 3141349
+ 264858 words of memory out of 3000000
+ 12963 multiletter control sequences out of 15000+200000
  30680 words of font info for 97 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  36i,21n,48p,1922b,472s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (95 pages, 418528 bytes).
+Output written on root.dvi (95 pages, 420244 bytes).

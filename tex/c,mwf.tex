@@ -356,7 +356,7 @@ to account for inter-compartmental exchange
 (via \eqref{eq:mwf,epr-eq})
 during intervals of free precession and relaxation.
 As before,
-let $\bmmp\prt$ denote the magnetization
+let $\bmmp\prtz$ denote the magnetization
 at an initial time $t_0$ selected 
 well into the steady-state
 and just prior to RF excitation.
@@ -551,7 +551,7 @@ in \S\ref{sss,bkgrd,mri,ss,spgr}:
 		with marginal distributions
 		$\dist{\ompf} := \operatorname{Cauchy}\paren{\ompfmed,\Rtpf}$
 		and $\dist{\omps} := \operatorname{Cauchy}\paren{\ompsmed,\Rtps}$,
-		where $\ompf,\omps$ are median off-resonance frequencies
+		where $\ompfmed,\ompsmed$ are median off-resonance frequencies
 		and $\Rtpf,\Rtps$ are broadening bandwidths.
 		\label{item:spgr,freq}
 		
@@ -595,8 +595,8 @@ is (to within constants):
 			\end{bmatrix}
 			\tpose \bmmp\paren{\bmr,t_0+\TP}
 			\label{eq:mwf,spgr,int-exchg0} \\
-		&=& 
-			&\xspace \mxypf\paren{\bmr,t_0+\TP} 
+		&=\,& 
+			&\mxypf\paren{\bmr,t_0+\TP} 
 				e^{-\paren{1/\tf{2}\pr+\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}} +
 				\nonumber \\
 		&& 
@@ -616,14 +616,37 @@ to expand the matrix exponential
 and evaluate broadening integrals component-wise.
 Eq.~\eqref{eq:mwf,spgr,model} naturally extends
 the single-compartment SPGR model \eqref{eq:spgr-model} 
-and shows clearly 
-that compartmental signals add constructively,
-here neglecting exchange
-and to first order otherwise.
+and shows clearly the intuitive result
+that compartmental signals add constructively
+if exchange is neglected. 
 
 % here very simple model
 % but already shows nontrivial phase dependence
 % on ompmed for compartments in general 
+Though the manipulations leading
+to \eqref{eq:mwf,spgr,model} require strong assumptions,
+they serve to minimally demonstrate 
+the nontrivial two-compartment SPGR signal dependence
+on off-resonance distributions.
+Unlike in the single-compartment case,
+the signal decay and dephasing terms
+due to off-resonance effects
+$e^{-\paren{\Rtpf+i\ompfmed}\TE}$ and $e^{-\paren{\Rtps+i\ompsmed}\TE}$
+may \emph{not} be considered
+to simply modify spin density $\mzero$
+(in fact,
+to first order
+they modify compartmental fractions $\ff$ and $\fs$
+of usual interest).
+Since off-resonance distributions
+do often differ significantly in cerebral tissue
+\cite{miller:10:aot-I, miller:10:aot-II}, 
+accurate \invivo parameter estimation
+from this model 
+requires either joint estimation
+of compartmental distributions
+or acquisition with echo times much shorter
+than compartmental broadening timescale differences. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{A Two-Compartment DESS Signal Model}
