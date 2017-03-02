@@ -471,7 +471,7 @@ then precesses and relaxes
 as per \eqref{eq:mtx-pr}
 until data acquisition,
 defined to occur at
-``echo time'' $\TE \in \brac{\TP,\TR}$
+``echo time'' $\TE \in \brac{\frac{\TP}{2},\TR}$
 after the (midpoint of) RF excitation:
 \begin{align}
 	\bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} &=
@@ -505,7 +505,7 @@ while the longitudinal component
 is unaffected. 
 We model an ideal spoiling operation as
 \begin{align}
-	\bmS \bmmp\paren{\bmr,\frac{\TP}{2}+\TE}, \where \qquad
+	\bmS \bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE}, \where \qquad
 	\bmS := 
 	\begin{bmatrix}
 		0 & 0 & 0 \\
@@ -621,7 +621,7 @@ we take a few more usual assumptions:
 	We further assume
 	that off-resonance frequency $\omp\pr$
 	is distributed over the localized voxel
-	as $\dist{\omp} \gets \operatorname{Cauchy}\paren{\ompmed,\Rtp}$,
+	as $\dist{\omp} := \operatorname{Cauchy}\paren{\ompmed,\Rtp}$,
 	where $\ompmed\pr$ is the median off-resonance frequency
 	and $\Rtp\pr$ is the broadening bandwidth.
 \end{itemize}

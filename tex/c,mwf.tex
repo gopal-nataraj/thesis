@@ -178,10 +178,10 @@ and discusses future work.
 
 This section develops multi-compartmental signal models
 for the SPGR and DESS pulse sequences.
-Subsection~\ref{ss,mwf,model,spgr} reviews
+Subsection~\ref{ss,mwf,model,spgr} reviews and extends
 a concise Bloch-matrix derivation \cite{spencer:00:mos}
 of an SPGR signal model 
-that accounts for first-order exchange 
+that accounts for exchange 
 between multiple compartments.
 Subsection~\ref{ss,mwf,model,dess} applies 
 the Bloch-matrix representation
@@ -397,7 +397,7 @@ The compartments exchange
 while their magnetization vectors precess and relax
 as per \eqref{eq:mwf,epr}
 until data acquisition
-at echo time $\TE \in \brac{\TP,\TR}$
+at echo time $\TE \in \brac{\frac{\TP}{2},\TR}$
 after the midpoint of RF excitation:
 \begin{align}
 	\bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} =
@@ -450,34 +450,54 @@ the solution is
 \begin{align}
 	\bmmp\paren{\bmr,t_0+\TP} &=
 		\inv{\eye{6}-\bmRxpsix{\flip\pr} \bmSsix e^{\paren{\TR-\TP}\bmA\pr}} \bmRxpsix{\flip\pr}
-		\label{eq:mwf,spgr-bmmp-t0} \\
+		\label{eq:mwf,spgr-m-t0-alg} \\
 	&\times \paren{\eye{6}-\bmSsix e^{\paren{\TR-\TP}\bmA\pr} -
-		\paren{\eye{6}-\bmSsix}e^{\paren{\TR-\paren{\frac{\TP}{2}+\TE}}\bmA\pr}}
-		\bmmzero\pr.
-		\nonumber
+		e^{\paren{\TR-\paren{\frac{\TP}{2}+\TE}}\bmA\pr}\paren{\eye{6}-\bmSsix}}
+		\bmmzero\pr
+		\nonumber \\
+	&= \inv{\eye{6}-\bmRxpsix{\flip\pr} \bmSsix e^{\paren{\TR-\TP}\bmA\pr}} \bmRxpsix{\flip\pr}
+		\label{eq:mwf,spgr-m-t0} \\
+	&\times \paren{\eye{6}-\bmSsix e^{\paren{\TR-\TP}\bmA\pr}} \bmmzero\pr,
+		\nonumber 
 \end{align}
-Substituting \eqref{eq:mwf,spgr-bmmp-t0}
+where \eqref{eq:mwf,spgr-m-t0-alg} is due
+to straightforward matrix operations
+and \eqref{eq:mwf,spgr-m-t0} makes use 
+of the ideal spoiling property
+$\paren{\eye{6}-\bmSsix}\bmmzero\pr = \zeros{6}\xspace \forall\bmr$.
+Substituting \eqref{eq:mwf,spgr-m-t0}
 into \eqref{eq:mwf,spgr-daq}
 yields an expression
-for the magnetization 
+for the compartmental magnetization 
 at the echo time.
 
 The matrix exponentials 
-in \eqref{eq:mwf,spgr-bmmp-t0} 
+in \eqref{eq:mwf,spgr-m-t0} 
 are cumbersome to expand in general
-but fortunately admit
-explicit representations
-that can be found via standard solvers.
-Observe that
+but fortunately always arise
+prepended by ideal spoiling operator $\bmSsix$.
+The combined form simplifies as
+\begin{align}
+	\bmSsix e^{\paren{\TR-\TP}\bmA\pr} \equiv
+		\brac{\zeros{4 \times 4}, \zeros{4 \times 2}; 
+		\zeros{2 \times 4}, e^{\paren{\TR-\TP} \bmAz\pr}}
+	\label{eq:mwf,spgr-spoil-simp}
+\end{align}
+and admits 
+an explicit representation 
+for \eqref{eq:mwf,spgr-m-t0}
+that can be found 
+via standard solvers. 
+Note that
 if RF pulses are assumed instantaneous
 (\ie, $\TP \gets 0$)
 the longitudinal components
-of \eqref{eq:mwf,spgr-bmmp-t0}
+of \eqref{eq:mwf,spgr-m-t0}
 are equivalent to \cite[Eq.~34]{spencer:00:mos}.
-Another simpler but instructive special case
+Another instructive (and much simpler) special case
 neglects exchange
 (\ie, $\rfs \gets 0$ and $\rsf \gets 0$),
-in which case \eqref{eq:mwf,spgr-bmmp-t0} reduces to
+in which case \eqref{eq:mwf,spgr-m-t0} reduces to
 \begin{align}
 	\bmmp\paren{\bmr,t_0+\TP} =
 	\begin{bmatrix}
@@ -493,10 +513,117 @@ in which case \eqref{eq:mwf,spgr-bmmp-t0} reduces to
 			{1-e^{-\paren{\TR-\TP}/\ts{1}\pr}\cosa{\flip\pr}}
 	\end{bmatrix}
 	\mzero\pr
-	\label{eq:mwf-spgr-bmmp-t0-exchg0}
+	\label{eq:mwf-spgr-m-t0-exchg0}
 \end{align}
 a two (non-exchanging) compartment extension
 to the SPGR steady-state solution \eqref{eq:spgr-bmmp-t0}.
+
+The received signal
+is approximately proportional
+to the integrated transverse magnetization
+arising from both compartments.
+To derive expressions,
+we take further assumptions,
+the first two of which are two-compartment extensions 
+of assumptions used 
+in \S\ref{sss,bkgrd,mri,ss,spgr}: 
+\begin{enumerate}
+	\item
+		We assume
+		that the signal is localized
+		to a scale over which 
+		there is within-voxel variation
+		of each compartment's off-resonance frequency,
+		but minimal intra-voxel variation
+		of other space-varying parameters
+		$\mzero, \ff, \fs, \tf{1}, \ts{1}, \tf{2}, \ts{2}, \rfs, \rsf$.
+		This assumption effectively fixes all compartmental properties 
+		other than $\ompf$ and $\omps$
+		over the volume $\setV$ of a sufficiently small voxel.
+		\label{item:spgr,int}
+		
+	\item 
+		We assume 
+		that the fast-relaxing
+		and slow-relaxing compartments' off-resonance frequencies	
+		are independently distributed 
+		within a localized voxel 
+		with marginal distributions
+		$\dist{\ompf} := \operatorname{Cauchy}\paren{\ompfmed,\Rtpf}$
+		and $\dist{\omps} := \operatorname{Cauchy}\paren{\ompsmed,\Rtps}$,
+		where $\ompf,\omps$ are median off-resonance frequencies
+		and $\Rtpf,\Rtps$ are broadening bandwidths.
+		\label{item:spgr,freq}
+		
+	\item 
+		We assume 
+		for short echo time $\TE$
+		that negligible exchange occurs
+		between excitation and signal reception.
+		This assumption facilitates expansion 
+		of the matrix exponentials
+		in \eqref{eq:mwf,spgr-daq}
+		and separates broadening integrals 
+		by compartment.
+		\label{item:spgr,exchg0}
+\end{enumerate}
+With these assumptions,
+the noiseless two-compartment steady-state SPGR signal model
+for a voxel
+centered at position $\bmr$ 
+and with volume defined by $\setV\pr$ 
+is (to within constants):
+\begin{alignat}{2}
+	\spgr\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
+		&\propto&
+			&\int_{\setV\pr} \brac{1, 1, i, i, 0, 0} \bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \dercubed{\bmr} 
+			\label{eq:mwf,spgr,int} \\
+		&\approx& 
+			&\paren{\int_{\real^2} \brac{1, 1, i, i, 0, 0}
+				e^{\paren{\TE-\frac{\TP}{2}}\bmA\pr} 
+				\dista{\ompf} \dista{\omps} \der{\ompf} \der{\omps}} 
+				\bmmp\paren{\bmr,t_0+\TP} 
+				\label{eq:mwf,spgr,int-freq} \\
+		&=&
+			&\begin{bmatrix}
+				e^{-\paren{1/\tf{2}\pr+\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				e^{-\paren{1/\ts{2}\pr+\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				ie^{-\paren{1/\tf{2}\pr+\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				ie^{-\paren{1/\ts{2}\pr+\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				0 \\
+				0
+			\end{bmatrix}
+			\tpose \bmmp\paren{\bmr,t_0+\TP}
+			\label{eq:mwf,spgr,int-exchg0} \\
+		&=& 
+			&\xspace \mxypf\paren{\bmr,t_0+\TP} 
+				e^{-\paren{1/\tf{2}\pr+\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}} +
+				\nonumber \\
+		&& 
+			&\mxyps\paren{\bmr,t_0+\TP} 
+				e^{-\paren{1/\ts{2}\pr+\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}}.
+			\label{eq:mwf,spgr,model}
+\end{alignat}
+Observe that \eqref{eq:mwf,spgr,int-freq}
+uses Assumption~\ref{item:spgr,int}
+to leave $\bmmp\paren{\bmr,t_0+\TP}$
+outside of broadening integrals
+defined by Assumption~\ref{item:spgr,freq}
+and 
+\eqref{eq:mwf,spgr,int-exchg0}
+uses Assumption~\ref{item:spgr,exchg0}
+to expand the matrix exponential
+and evaluate broadening integrals component-wise.
+Eq.~\eqref{eq:mwf,spgr,model} naturally extends
+the single-compartment SPGR model \eqref{eq:spgr-model} 
+and shows clearly 
+that compartmental signals add constructively,
+here neglecting exchange
+and to first order otherwise.
+
+% here very simple model
+% but already shows nontrivial phase dependence
+% on ompmed for compartments in general 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{A Two-Compartment DESS Signal Model}
