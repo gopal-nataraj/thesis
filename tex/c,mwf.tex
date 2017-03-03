@@ -652,7 +652,65 @@ than compartmental broadening timescale differences.
 \subsection{A Two-Compartment DESS Signal Model}
 \label{ss,mwf,model,dess}
 
-% dess-2comp notes
+To develop two-compartment DESS signal models,
+we modify corresponding derivations
+of single-compartment DESS models
+(presented in Subsection~\ref{sss,bkgrd,mri,ss,dess})
+to account for inter-compartmental exchange
+(via \eqref{eq:mwf,epr-eq})
+during intervals of free precession and relaxation.
+As in Subsection~\ref{ss,mwf,model,spgr},
+let $\bmmp\prtz$ denote the two-compartment magnetization 
+at an initial time $t_0$
+selected well into the steady-state
+and just prior to RF excitation.
+The DESS sequence first applies a fixed RF excitation,
+which as before we assume
+is of sufficiently short duration $\TP$ 
+as to permit neglect 
+of within-pulse relaxation, off-resonance, and exchange effects.
+Further assuming
+that each compartment experiences excitation
+with equal transmit field sensitivity,
+we model RF excitation as a simple rotation operation
+by angle $\flip\pr$:
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TP} = 
+		\bmRxpsix{\flip\pr} \bmmp\prtz.
+		\label{eq:mwf,dess-ex}
+\end{align}
+The transverse components
+of the compartmental transverse magnetization
+contribute to a first acquired signal;
+dephase (but do not spoil completely)
+due to gradient dephasing,
+and contribute again 
+to a second (smaller, but nonzero) acquired signal.
+
+Since (with proper selection) dephasing gradients
+primarily contribute 
+to off-resonance phase accrual,
+the net effect
+after data acquisition 
+and gradient dephasing
+is well-described by 
+
+With proper selection,
+dephasing gradients contribute primarily 
+to off-resonance phase accrual 
+
+Since dephasing gradients 
+of appropriately small area
+contribute primarily
+to off-resonance phase accrual 
+as to impart negligible self-diffusion with each compartment
+and negligible inter-diffusion between compartments,
+
+For sufficiently small dephasing gradient moments,
+we can neglect 
+
+% self-diffusion stronger than inter-diffusion
+% need to explore right way to set up dephasing integrals
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{SPGR/DESS Acquisition Design for MWF Imaging}
