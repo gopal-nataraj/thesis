@@ -297,8 +297,8 @@ with $\bmAxy\pr :=$
 		\rfs\pr & -\frac{1}{\ts{2}\pr}-\rsf\pr & 0 & \omps\pr \\
 		-\ompf\pr & 0 & -\frac{1}{\tf{2}\pr}-\rfs\pr & \rsf\pr \\
 		0 & -\omps\pr & \rfs\pr & -\frac{1}{\ts{2}\pr}-\rsf\pr 
-		\label{eq:mwf,Axy}
 	\end{bmatrix}
+	\label{eq:mwf,Axy}
 \end{align}
 collecting transverse dynamics and
 \begin{align}
@@ -512,7 +512,7 @@ in which case \eqref{eq:mwf,spgr-m-t0} reduces to
 		\frac{\fs\pr \cosa{\flip\pr}\paren{1-e^{-\paren{\TR-\TP}/\ts{1}\pr}}}
 			{1-e^{-\paren{\TR-\TP}/\ts{1}\pr}\cosa{\flip\pr}}
 	\end{bmatrix}
-	\mzero\pr
+	\mzero\pr,
 	\label{eq:mwf-spgr-m-t0-exchg0}
 \end{align}
 a two (non-exchanging) compartment extension
@@ -653,19 +653,104 @@ than compartmental broadening timescale differences.
 \label{ss,mwf,model,dess}
 
 To develop two-compartment DESS signal models,
-we modify corresponding derivations
+we first adapt the McConnell equation solutions
+of Subsection~\ref{ss,mwf,model,spgr}
+to describe compartmental magnetization evolution
+in the presence of time-dependent field inhomogeneities.
+We then modify corresponding derivations
 of single-compartment DESS models
-(presented in Subsection~\ref{sss,bkgrd,mri,ss,dess})
-to account for inter-compartmental exchange
-(via \eqref{eq:mwf,epr-eq})
+(presented in Subsection~\ref{sss,bkgrd,mri,ss,dess}),
+to account for inter-compartmental exchange 
 during intervals of free precession and relaxation.
-As in Subsection~\ref{ss,mwf,model,spgr},
+
+As discussed
+in Subsection~\ref{sss,bkgrd,mri,ss,dess},
+the DESS pulse sequence interlaces fixed RF excitations
+with fixed dephasing gradients
+to produce two distinct signals
+per excitation.
+Because these dephasing gradients
+create time-dependence
+in compartmental off-resonance effects,
+DESS signal dynamics
+cannot in general be described
+by matrix exponential solution \eqref{eq:mwf,epr-eq}.
+Instead, 
+the dynamics (without excitation) arise as a solution to
+\begin{align}
+	\dela{t} \bmmp\prt = \bmA\prt \bmmp\prt + \bmc\pr,
+	\label{eq:mwf,mdot,t-dep}
+\end{align}
+where
+$\bmA\prt \equiv \brac{\bmAxy\prt, \zeros{4 \times 2};
+\zeros{2 \times 4}, \bmAz\pr}$
+contains now time-dependent compartmental off-resonance effects
+$\ompf\prt, \omps\prt$
+that appear only in submatrix
+$\bmAxy\prt :=$
+\begin{align}
+	\begin{bmatrix}
+		-\frac{1}{\tf{2}\pr}-\rfs\pr & \rsf\pr & \ompf\prt & 0 \\
+		\rfs\pr & -\frac{1}{\ts{2}\pr}-\rsf\pr & 0 & \omps\prt \\
+		-\ompf\prt & 0 & -\frac{1}{\tf{2}\pr}-\rfs\pr & \rsf\pr \\
+		0 & -\omps\prt & \rfs\pr & -\frac{1}{\ts{2}\pr}-\rsf\pr
+	\end{bmatrix}.
+	\label{eq:mwf,Axy-t-dep}
+\end{align}
+If $\bmA\prt$ is invertible,
+an exponential series solution
+to \eqref{eq:mwf,mdot,t-dep} exists
+and could be expressed exactly
+using the Magnus expansion \cite{magnus:54:ote}. 
+Here, 
+we utilize a first-order Magnus expansion 
+that in chemical equilibrium yields
+a simple approximate 
+\footnote{
+Approximation \eqref{eq:mwf,epr-eq,t-dep} is exact 
+if commutation relation
+$$\bmA\paren{\bmr,t_1}\bmA\paren{\bmr,t_2} = \bmA\paren{\bmr,t_2} \bmA\paren{\bmr,t_1}$$
+holds for all $t_1,t_2 \geq t_0$,
+which in turn holds pointwise if and only if
+\begin{align}
+	\rfs\pr \paren{\ompf\paren{\bmr,t_1} - \omps\paren{\bmr,t_1} -
+		\paren{\ompf\paren{\bmr,t_2} - \omps\paren{\bmr,t_2}}} &= 0;
+		\label{eq:mwf,epr,appx-conf-rfs} \\
+	\rsf\pr \paren{\ompf\paren{\bmr,t_1} - \omps\paren{\bmr,t_1} -
+		\paren{\ompf\paren{\bmr,t_2} - \omps\paren{\bmr,t_2}}} &= 0.
+		\label{eq:mwf,epr,appx-conf-rsf}
+\end{align}
+Conditions~\eqref{eq:mwf,epr,appx-conf-rfs}-\eqref{eq:mwf,epr,appx-conf-rsf} hold exactly
+in the special cases 
+of equal field inhomogeneity across compartments
+(\ie, $\ompf = \omps$);
+no exchange 
+(\ie, $\rfs \gets 0$ and $\rsf \gets 0$); 
+or time-independent off-resonance 
+(\ie, $\ompf\prt \equiv \ompf\pr$ and $\omps\prt \equiv \omps\pr\, \forall \bmr,t$).
+}
+solution for all $t \geq t_0$:
+\begin{align}
+	\bmmp\prt \approx
+		e^{\int_{t_0}^t \bmA\paren{\bmr,t'} \der{t'}} \bmmp\paren{\bmr,t_0} +
+		\paren{e^{\int_{t_0}^t \bmA\paren{\bmr,t'} \der{t'}} - \eye{6}} \bmmzero\pr.
+	\label{eq:mwf,epr-eq,t-dep}
+\end{align}
+Higher-order expansions
+would capture compartmental interactions
+due to off-resonance effects
+and are not considered hereafter 
+for simplicity.
+
+We next use \eqref{eq:mwf,epr-eq,t-dep}
+to proceed in developing a two-compartment DESS signal model.
+As before,
 let $\bmmp\prtz$ denote the two-compartment magnetization 
 at an initial time $t_0$
 selected well into the steady-state
 and just prior to RF excitation.
 The DESS sequence first applies a fixed RF excitation,
-which as before we assume
+which we again assume
 is of sufficiently short duration $\TP$ 
 as to permit neglect 
 of within-pulse relaxation, off-resonance, and exchange effects.
@@ -680,36 +765,96 @@ by angle $\flip\pr$:
 		\label{eq:mwf,dess-ex}
 \end{align}
 The transverse components
-of the compartmental transverse magnetization
+of $\bmmp\paren{\bmr,t_0+\TP}$
 contribute to a first acquired signal;
 dephase (but do not spoil completely)
 due to gradient dephasing,
 and contribute again 
 to a second (smaller, but nonzero) acquired signal.
-
-Since (with proper selection) dephasing gradients
-primarily contribute 
-to off-resonance phase accrual,
-the net effect
-after data acquisition 
+We assume that the dephasing gradient 
+is of sufficiently small gradient area
+so as to contribute
+mainly to compartmental off-resonance phase accrual 
+and
+negligibly to self-diffusion 
+within each compartment
+or inter-diffusion between compartments.
+Then, compartmental magnetization evolution
+during data acquisition 
 and gradient dephasing
-is well-described by 
+and until repetition time $\TR$
+is reasonably described 
+by \eqref{eq:mwf,epr-eq,t-dep}:
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TR} \approx
+		e^{\int_{t_0+\TP}^{\TR} \bmA\paren{\bmr,t'} \der{t'}} \bmmp\paren{\bmr,t_0+\TP} +
+		\paren{e^{\int_{t_0+\TP}^{\TR} \bmA\paren{\bmr,t'} \der{t'}} - \eye{6}} \bmmzero\pr.
+	\label{eq:mwf,dess-epr}
+\end{align}
+Conveniently,
+approximation \eqref{eq:mwf,dess-epr}
+depends on compartmental off-resonance effects
+entirely through compartmental phase functions
+$\phipf\pr := \int_{t_0+\TP}^{\TR} \ompf\paren{\bmr,t'} \der t'$
+and
+$\phips\pr := \int_{t_0+\TP}^{\TR} \omps\paren{\bmr,t'} \der t'$,
+which will later aid across-voxel integration. 
 
-With proper selection,
-dephasing gradients contribute primarily 
-to off-resonance phase accrual 
+In steady state,
+one cycle of excitation,
+first acquisition,
+gradient spoiling,
+second acquisition,
+and partial recovery
+returns the compartmental magnetization
+back to its initial state.
+We enforce this through 
+the usual steady-state condition
+\begin{align}
+	\bmmp\prtz = \bmmp\paren{\bmr,t_0+\TR}
+	\label{eq:mwf,dess-ss}
+\end{align}
+which yields an algebraic system of equations.
+The solution
+(if it exists)
+gives the steady-state compartmental magnetization
+just prior to RF excitation:
+\begin{align}
+	\bmmp\prtz = 
+		\inv{\eye{6} - e^{\int_{t_0+\TP}^{\TR} \bmA\paren{\bmr,t'} \der{t'}} \bmRxpsix{\flip\pr}}
+		\paren{e^{\int_{t_0+\TP}^{\TR} \bmA\paren{\bmr,t'} \der{t'}} - \eye{6}} \bmmzero\pr.
+	\label{eq:mwf,dess-m-t0}
+\end{align}
+Substituting \eqref{eq:mwf,dess-m-t0} into \eqref{eq:mwf,dess-ex}
+would yield a similar expression
+for the steady-state compartmental magnetization
+immediately following RF excitation.
+Equivalently,
+one may substitute \eqref{eq:mwf,dess-ss} into \eqref{eq:mwf,dess-ex}
+before solving for $\bmmp\paren{\bmr,t_0+\TP}$ directly,
+which gives
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\TP} &=
+		\inv{\eye{6} - \bmRxpsix{\flip\pr} e^{\int_{t_0+\TP}^{\TR} \bmA\paren{\bmr,t'} \der{t'}}}
+		\nonumber \\
+	&\times \bmRxpsix{\flip\pr} 
+		\paren{e^{\int_{t_0+\TP}^{\TR} \bmA\paren{\bmr,t'} \der{t'}} - \eye{6}} \bmmzero\pr.
+		\label{eq:mwf,dess-m-tp}
+\end{align}
+Unlike the SPGR two-compartment magnetization 
+\eqref{eq:mwf,spgr-m-t0},
+analogous DESS expressions 
+\eqref{eq:mwf,dess-m-t0}-\eqref{eq:mwf,dess-m-tp} depend strongly
+on tranverse submatrix $\int_{t_0}^{\TP} \bmAxy\paren{\bmr,t'} \der{t'}$.
+Consequently,
+it remains challenging (even with computer solvers)
+to expand corresponding matrix exponentials
+and thereby find explicit representations 
+of \eqref{eq:mwf,dess-m-t0}-\eqref{eq:mwf,dess-m-tp}
+in general.
 
-Since dephasing gradients 
-of appropriately small area
-contribute primarily
-to off-resonance phase accrual 
-as to impart negligible self-diffusion with each compartment
-and negligible inter-diffusion between compartments,
 
-For sufficiently small dephasing gradient moments,
-we can neglect 
 
-% self-diffusion stronger than inter-diffusion
 % need to explore right way to set up dephasing integrals
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
