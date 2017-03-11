@@ -602,7 +602,7 @@ is (to within constants):
 		&& 
 			&\mxyps\paren{\bmr,t_0+\TP} 
 				e^{-\paren{1/\ts{2}\pr+\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}}.
-			\label{eq:mwf,spgr,model}
+			\label{eq:mwf,spgr,mod-exchg0}
 \end{alignat}
 Observe that \eqref{eq:mwf,spgr,int-freq}
 uses Assumption~\ref{item:spgr,int}
@@ -614,17 +614,17 @@ and
 uses Assumption~\ref{item:spgr,exchg0}
 to expand the matrix exponential
 and evaluate broadening integrals component-wise.
-Eq.~\eqref{eq:mwf,spgr,model} naturally extends
+Eq.~\eqref{eq:mwf,spgr,mod-exchg0} naturally extends
 the single-compartment SPGR model \eqref{eq:spgr-model} 
-and shows clearly the intuitive result
-that compartmental signals add constructively
-if exchange is neglected. 
+and shows clearly
+that compartmental signals simply add
+if exchange between excitation and signal reception is neglected. 
 
 % here very simple model
 % but already shows nontrivial phase dependence
 % on ompmed for compartments in general 
 Though the manipulations leading
-to \eqref{eq:mwf,spgr,model} require strong assumptions,
+to \eqref{eq:mwf,spgr,mod-exchg0} require strong assumptions,
 they serve to minimally demonstrate 
 the nontrivial two-compartment SPGR signal dependence
 on off-resonance distributions.
@@ -737,7 +737,7 @@ solution for all $t \geq t_0$:
 	\label{eq:mwf,epr-eq,t-dep}
 \end{align}
 Higher-order expansions
-would capture compartmental interactions
+would better capture compartmental magnetization interactions
 due to off-resonance effects
 and are not considered hereafter 
 for simplicity.
@@ -853,9 +853,257 @@ and thereby find explicit representations
 of \eqref{eq:mwf,dess-m-t0}-\eqref{eq:mwf,dess-m-tp}
 in general.
 
+Frequently,
+the DESS signals are acquired
+at symmetric echo times $\TE$ before and after
+the center of each RF pulse.
+Since no gradient dephasing occurs
+during intervals
+between refocusing and defocusing echoes
+that contain excitations,
+we can reasonably assume
+linear off-resonance phase accrual 
+over these intervals
+and therefore use \eqref{eq:mwf,epr-eq} 
+(instead of \eqref{eq:mwf,epr-eq,t-dep})
+to evolve the magnetization accordingly.
+Substituting \eqref{eq:mwf,dess-m-tp} 
+into \eqref{eq:mwf,epr-eq}
+gives the magnetization
+at the data acquisition time
+after RF excitation:
+\begin{align}
+	\bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} =
+		e^{\paren{\TE-\frac{\TP}{2}}\bmA\pr} \bmmp\paren{\bmr,t_0+\TP} 
+		+ \paren{\eye{6} - e^{\paren{\TE-\frac{\TP}{2}}\bmA\pr}} \bmmzero\pr.
+	\label{eq:mwf,dess-m-te-def}
+\end{align}
+To compute the magnetization
+at the acquisition time 
+before excitation,
+we consider the free precession, relaxation, and exchange
+that occurs between signal reception and excitation:
+\begin{align}
+	\bmmp\prtz =
+		e^{\paren{\TE-\frac{\TP}{2}}\bmA\pr} \bmmp\paren{\bmr,t_0+\frac{\TP}{2}-\TE} 
+		+ \paren{\eye{6} - e^{\paren{\TE-\frac{\TP}{2}}\bmA\pr}} \bmmzero\pr.
+	\label{eq:mwf,dess-m-te-ref}
+\end{align}
+Inserting \eqref{eq:mwf,dess-m-t0}
+into \eqref{eq:mwf,dess-m-te-ref}
+and rearranging 
+gives an expression 
+for $\bmmp\paren{\bmr,t_0+\frac{\TP}{2}-\TE}$.
 
+The received signal is approximately proportional
+to the integrated transverse magnetization
+arising from both compartments.
+To derive expressions,
+we take assumptions very similar 
+to those used in Subsection~\ref{ss,mwf,model,spgr}
+and append additional distributional assumptions
+on the compartmental phase accrual functions 
+$\phipf\pr$ and $\phips\pr$:
+\begin{enumerate}
+	\item We assume that the signal is localized
+		to a scale over which there is within-voxel variation
+		of compartmental off-resonance effects, 
+		but minimal intra-voxel variation 
+		of other space-varying parameters
+		$\mzero, \ff, \fs, \tf{1}, \ts{1}, \tf{2}, \ts{2}, \rfs, \rsf$.
+		This assumption effectively fixes all compartmental properties
+		other than $\phipf$, $\phips$, $\ompf$, and $\omps$
+		over the volume $\setV$ 
+		of a sufficiently small voxel.
+		\label{item:dess,int} 
+		
+	\item
+		We assume 
+		that the dephasing gradient imparts 
+		a sufficiently large integral number $\cyc$ 
+		of across-voxel phase cycles
+		such that full-repetition compartmental phase accruals
+		$\phipf$ and $\phips$ 
+		are distributed essentially uniformly
+		as $\dist{\phipf} \gets \unif{0,2\pi\cyc}$ 
+		and $\dist{\phips} \gets \unif{0,2\pi\cyc}$, 
+		where $\cyc \in \set{1,2,3,\dots}$.
+		\label{item:dess,ph}
+		
+	\item 
+		We again assume
+		that compartmental off-resonance phase accrues linearly
+		between each excitation 
+		and its adjacent data acquisition periods,
+		and that off-resonance frequencies
+		are independently distributed 
+		within a localized voxel 
+		with marginal distributions
+		$\dist{\ompf} := \operatorname{Cauchy}\paren{\ompfmed,\Rtpf}$
+		and $\dist{\omps} := \operatorname{Cauchy}\paren{\ompsmed,\Rtps}$,
+		where $\ompfmed,\ompsmed$ are median off-resonance frequencies
+		and $\Rtpf,\Rtps$ are broadening bandwidths.
+		\label{item:dess,freq}
+		
+	\item 
+		We assume 
+		for short echo times $\TE$
+		that negligible exchange occurs
+		between each excitation 
+		and its adjacent data acquisition periods.
+		This assumption facilitates expansion 
+		of the matrix exponentials
+		explicitly visible 
+		in \eqref{eq:mwf,dess-m-te-def}-\eqref{eq:mwf,dess-m-te-ref}
+		and separates off-resonance frequency broadening integrals
+		by compartment.
+		\label{item:dess,exchg0}
+\end{enumerate}
+With these assumptions,
+the noiseless two-compartment steady-state DESS signal models
+for a voxel centered
+at position $\bmr$
+and with volume defined
+by $\setV\pr$ are (to within constants):
+\begin{align}
+	\dess\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
+		&\propto \int_{\setV\paren{\bmr}}
+			\brac{1, 1, i, i, 0, 0} \bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \dercubed{\bmr}
+			\label{eq:mwf,dess-def,int} \\
+		&\approx \paren{\int_{\reals{2}} 
+			\brac{1, 1, i, i, 0, 0} e^{\paren{\TE-\frac{\TP}{2}}\bmA\pr}
+				\dist{\ompf}\paren{\ompf} \dist{\omps}\paren{\omps} 
+				\der{\ompf} \der{\omps}}
+				\nonumber \\
+		&\times \int_{\reals{2}} \bmmp\paren{\bmr,t_0+\TP}
+			\dist{\phipf} \paren{\phipf} \dist{\phips} \paren{\phips} 
+			\der{\phips} \der{\phipf}
+			\label{eq:mwf,dess-def,int-freq} \\
+		&= 
+			\begin{bmatrix}
+				e^{-\paren{1/\tf{2}\pr+\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				e^{-\paren{1/\ts{2}\pr+\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				ie^{-\paren{1/\tf{2}\pr+\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				ie^{-\paren{1/\ts{2}\pr+\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				0 \\
+				0
+			\end{bmatrix}\tpose 
+			\nonumber \\
+		&\times \int_{\reals{2}} \bmmp\paren{\bmr,t_0+\TP}
+			\dist{\phipf} \paren{\phipf} \dist{\phips} \paren{\phips} 
+			\der{\phips} \der{\phipf};
+			\label{eq:mwf,dess-def,int-exchg0} \\
+	\dess\paren{\bmr,t_0+\frac{\TP}{2}-\TE}
+		&\propto \int_{\setV\paren{\bmr}}
+			\brac{1, 1, i, i, 0, 0} \bmmp\paren{\bmr,t_0+\frac{\TP}{2}-\TE} \dercubed{\bmr}
+			\label{eq:mwf,dess-ref,int} \\
+		&\approx \paren{\int_{\reals{2}} 
+			\brac{1, 1, i, i, 0, 0} e^{-\paren{\TE-\frac{\TP}{2}}\bmA\pr}
+				\dist{\ompf}\paren{\ompf} \dist{\omps}\paren{\omps} 
+				\der{\ompf} \der{\omps}}
+				\nonumber \\
+		&\times \int_{\reals{2}} \bmmp\paren{\bmr,t_0}
+			\dist{\phipf} \paren{\phipf} \dist{\phips} \paren{\phips} 
+			\der{\phips} \der{\phipf}
+			\label{eq:mwf,dess-ref,int-freq} \\
+		&= 
+			\begin{bmatrix}
+				e^{+\paren{1/\tf{2}\pr-\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				e^{+\paren{1/\ts{2}\pr-\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				ie^{+\paren{1/\tf{2}\pr-\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				ie^{+\paren{1/\ts{2}\pr-\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
+				0 \\
+				0
+			\end{bmatrix}\tpose 
+			\nonumber \\
+		&\times \int_{\reals{2}} \bmmp\paren{\bmr,t_0}
+			\dist{\phipf} \paren{\phipf} \dist{\phips} \paren{\phips} 
+			\der{\phips} \der{\phipf}.
+			\label{eq:mwf,dess-ref,int-exchg0}
+\end{align}
+Observe that
+\eqref{eq:mwf,dess-def,int-freq} and \eqref{eq:mwf,dess-ref,int-freq}
+use Assumption~\ref{item:dess,int}
+to separate the phase and frequency broadening integrals
+respectively defined 
+in Assumptions~\ref{item:dess,ph} and \ref{item:dess,freq}.
+Similar to SPGR calculations 
+in Subsection~\ref{ss,mwf,model,spgr},
+\eqref{eq:mwf,dess-def,int-exchg0} and \eqref{eq:mwf,dess-ref,int-exchg0}
+use Assumption~\ref{item:dess,exchg0}
+to evaluate the frequency broadening integral compartment-wise.
+However,
+the phase broadening integrals
+in \eqref{eq:mwf,dess-def,int-exchg0} and \eqref{eq:mwf,dess-ref,int-exchg0}
+do not separate.
+Thus,
+even with the simple first-order Magnus expansion
+taken in \eqref{eq:mwf,epr-eq,t-dep},
+we find in DESS 
+that magnetization compartments mix 
+due not only to exchange effects
+but also to differences across compartments
+in off-resonance phase accrual.
 
-% need to explore right way to set up dephasing integrals
+In the special case
+where exchange is altogether neglected
+(which is a stronger assumption
+than Assumption~\ref{item:dess,exchg0},
+especially for longer $\TR$),
+the phase broadening integrals 
+in \eqref{eq:mwf,dess-def,int-exchg0} and \eqref{eq:mwf,dess-ref,int-exchg0}
+separate across voxels
+and admit the closed-form expressions
+\begin{align}
+	\dess\paren{\bmr,t_0+\frac{\TP}{2}+\TE} &\propto
+		+i\mzero\pr \tan{\frac{\flip\pr}{2}} 
+		\label{eq:mwf,dess-def,mod-exchg0} \\
+	&\times 
+		\bigg(
+			\paren{1-\frac{\etaf\paren{\bmr,\TR-\TP}}{\xif\paren{\bmr,\TR-\TP}}}
+			e^{-\paren{1/\tf{2}\pr+\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}}
+			\nonumber \\
+	&+	
+			\paren{1-\frac{\etas\paren{\bmr,\TR-\TP}}{\xis\paren{\bmr,\TR-\TP}}}
+			e^{-\paren{1/\ts{2}\pr+\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}}
+		\bigg);
+		\nonumber \\
+	\dess\paren{\bmr,t_0+\frac{\TP}{2}-\TE} &\propto
+		-i\mzero\pr \tan{\frac{\flip\pr}{2}}
+		\label{eq:mwf,dess-ref,mod-exchg0} \\
+	&\times
+		\bigg(
+			\paren{1-\etaf\paren{\bmr,\TR-\TP}}
+			e^{+\paren{1/\tf{2}\pr-\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}}
+			\nonumber \\
+	&+
+			\paren{1-\etas\paren{\bmr,\TR-\TP}}
+			e^{+\paren{1/\ts{2}\pr-\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}}
+		\bigg),
+		\nonumber
+\end{align}
+where $\etaf$, $\etas$, $\xif$, and $\xis$ 
+are intermediate variables defined as
+\begin{align}
+	\etaf\prt &:=
+		\sqrt{\frac{1-\paren{\expa{-t/\tf{2}}}^2}{1-\paren{\expa{-t/\tf{2}}/\xif\prt}^2}}
+		\qquad
+	\xif\prt &:=
+		\frac{1-\expa{-t/\tf{1}}\cos{\flip\pr}}{\expa{-t/\tf{1}}-\cos{\flip\pr}};
+		\nonumber \\
+	\etas\prt &:=
+		\sqrt{\frac{1-\paren{\expa{-t/\ts{2}}}^2}{1-\paren{\expa{-t/\tf{2}}/\xis\prt}^2}}
+		\qquad
+	\xis\prt &:=
+		\frac{1-\expa{-t/\ts{1}}\cos{\flip\pr}}{\expa{-t/\ts{1}}-\cos{\flip\pr}}.
+		\nonumber
+\end{align}
+Eqs.~\eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0}
+naturally extend single-compartment models
+\eqref{eq:dess-def-model} and \eqref{eq:dess-ref-model},
+and elucidate the intuitive result
+that compartmental signals simply add
+if exchange is neglected.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{SPGR/DESS Acquisition Design for MWF Imaging}

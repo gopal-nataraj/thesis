@@ -913,7 +913,7 @@ on the full-repetition phase accrual $\php\pr$:
 		}
 		such that full-repetition phase accrual $\php\pr$ 
 		is distributed essentially uniformly
-		as $\dist{\php} \gets \operatorname{uniform}\paren{0,2\pi\cyc},
+		as $\dist{\php} \gets \unif{0,2\pi\cyc},
 		\cyc\in\set{1,2,3,\dots}$.  
 \end{itemize}
 With these assumptions, 
@@ -932,9 +932,9 @@ for a typically sized voxel centered at position $\bmr$ are
 			\int_\real \mxyp\paren{\bmr,t_0+\TP} \dist{\php}\paren{\php} \der{\php} 
 			\int_\real e^{-i\omp\TE} \dist{\omp}\paren{\omp} \der{\omp}
 			\nonumber \\
-		&= +i\mzero\pr \Et\paren{\bmr,\TE} e^{-\paren{\Rtp\pr-i\ompmed\pr}\TE}
+		&= +i\mzero\pr \Et\paren{\bmr,\TE} e^{-\paren{\Rtp\pr+i\ompmed\pr}\TE}
 			\tan\frac{\alpha\pr}{2} 
-			\brac{1 - \frac{\eta\paren{\bmr,\TR}}{\xi\paren{\bmr,\TR}}};
+			\paren{1 - \frac{\eta\paren{\bmr,\TR}}{\xi\paren{\bmr,\TR}}};
 			\label{eq:dess-def-model} \\
 	\dess\paren{\bmr,t_0+\frac{\TP}{2}-\TE}
 		&\propto \int_{\setV\paren{\bmr}}
@@ -947,9 +947,9 @@ for a typically sized voxel centered at position $\bmr$ are
 			\int_\real \mxyp\paren{\bmr,t_0} \dist{\php}\paren{\php} \der{\php} 
 			\int_\real e^{+i\omp\TE} \dist{\omp}\paren{\omp} \der{\omp} 
 			\nonumber \\
-		&= -i\mzero\pr \Et^{-1}\paren{\bmr,\TE} e^{-\paren{\Rtp\pr+i\ompmed\pr}\TE}
+		&= -i\mzero\pr \Et^{-1}\paren{\bmr,\TE} e^{-\paren{\Rtp\pr-i\ompmed\pr}\TE}
 			\tan\frac{\alpha\pr}{2}
-			\brac{1 - \eta\paren{\bmr,\TR}},
+			\paren{1 - \eta\paren{\bmr,\TR}},
 			\label{eq:dess-ref-model}
 \end{align}	
 where \eqref{eq:dess-def-model} and \eqref{eq:dess-ref-model}
