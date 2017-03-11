@@ -1106,11 +1106,53 @@ that compartmental signals simply add
 if exchange is neglected.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SPGR/DESS Acquisition Design for MWF Imaging}
+\section{An Fast Acquisition for Precise MWF Estimation}
 \label{s,mwf,acq}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% ismrm conf paper
+This section develops a new scan profile
+consisting of fast steady-state pulse sequences
+for precise MWF estimation.
+Subsection~\ref{ss,mwf,acq,bayes} 
+first motivates the need
+for more scalable scan design
+in MWF imaging 
+and then adapts our method 
+for QMRI scan design
+(introduced for a simpler problem 
+in Chapter~\ref{c,scn-dsgn}) accordingly.
+Subsection~\ref{ss,mwf,acq,detail}
+details how we use scalable scan design
+(with the two-compartment signal models developed 
+in Section~\ref{s,mwf,model})
+to design a fast SPGR/DESS acquisition 
+for precise MWF imaging.
+
+adapts our method for QMRI scan design
+as discussed in Chapter~\ref{c,scn-dsgn}
+to be amenable 
+to gradient-based local optimization,
+which is more convenient 
+for higher-dimensionality 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{SPGR/DESS Scan Design using the Bayesian CRB}
+\label{ss,mwf,acq,bayes}
+
+% include gradient
+% greedy scan construction
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Scan Design Implementation Details}
+\label{ss,mwf,acq,detail}
+
+% why spgr/dess (?)
+% neglect exchange, same off resonance, lump r2p/f into m0, etc
+% optimize flips and trs
+% search space (flip, tr constraints, time)
+% prior distributions - estimated v measured
+% greedy scan design initialization
+% noise - to have realistic coef of var
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimentation}
