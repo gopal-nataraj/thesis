@@ -845,7 +845,7 @@ Unlike the SPGR two-compartment magnetization
 \eqref{eq:mwf,spgr-m-t0},
 analogous DESS expressions 
 \eqref{eq:mwf,dess-m-t0}-\eqref{eq:mwf,dess-m-tp} depend strongly
-on tranverse submatrix $\int_{t_0}^{\TP} \bmAxy\paren{\bmr,t'} \der{t'}$.
+on transverse submatrix $\int_{t_0}^{\TP} \bmAxy\paren{\bmr,t'} \der{t'}$.
 Consequently,
 it remains challenging (even with computer solvers)
 to expand corresponding matrix exponentials
@@ -1128,16 +1128,22 @@ in Section~\ref{s,mwf,model})
 to design a fast SPGR/DESS acquisition 
 for precise MWF imaging.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{SPGR/DESS Acquisition Design using the Bayesian CRB}
+\label{ss,mwf,acq,bayes}
+
+% first start re-deriving
+% when you get to min-max step, stop to motivate
+% min-max non-differentiable in P (as mentioned in prev discussion)
+% P expected to be higher dimensional than app in ch 4
+% thus more convenient to build a cost amenable to gradient-based local opt
+
 adapts our method for QMRI scan design
 as discussed in Chapter~\ref{c,scn-dsgn}
 to be amenable 
 to gradient-based local optimization,
 which is more convenient 
 for higher-dimensionality 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{SPGR/DESS Scan Design using the Bayesian CRB}
-\label{ss,mwf,acq,bayes}
 
 % include gradient
 % greedy scan construction
