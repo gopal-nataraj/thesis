@@ -1113,14 +1113,14 @@ if exchange is neglected.
 This section develops a new scan profile
 consisting of fast steady-state pulse sequences
 for precise MWF estimation.
-Subsection~\ref{ss,mwf,acq,bayes} 
+Subsection~\ref{ss,mwf,acq,design} 
 first motivates the need
 for more scalable scan design
 in MWF imaging 
 and then adapts our method 
 for QMRI scan design
 (introduced for a simpler problem 
-in Chapter~\ref{c,scn-dsgn}) accordingly.
+in Chapter~\ref{c,scn-dsgn}) appropriately.
 Subsection~\ref{ss,mwf,acq,detail}
 details how we use scalable scan design
 (with the two-compartment signal models developed 
@@ -1129,23 +1129,165 @@ to design a fast SPGR/DESS acquisition
 for precise MWF imaging.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{SPGR/DESS Acquisition Design using the Bayesian CRB}
-\label{ss,mwf,acq,bayes}
+\subsection{SPGR/DESS Acquisition Design}
+\label{ss,mwf,acq,design}
 
-% first start re-deriving
-% when you get to min-max step, stop to motivate
-% min-max non-differentiable in P (as mentioned in prev discussion)
-% P expected to be higher dimensional than app in ch 4
-% thus more convenient to build a cost amenable to gradient-based local opt
+Recall from Subsection~\ref{ss,scn-dsgn,crb,sig} 
+that the inverse 
+of the Fisher information 
+$\Fisher{\bmx;\bmnu,\bmP} \in \complexes{L \times L}$ 
+lower-bounds the covariance
+of unbiased estimates 
+of $L$ latent object parameters $\bmx \in \complexes{L}$,
+given $K$ known object parameters $\bmnu \in \complexes{K}$ 
+and $A$ tunable acquisition parameters 
+for each of $D$ datasets 
+$\bmP \in \reals{A \times D}$.
+As before, we continue to focus 
+on minimizing a weighted average 
+of the latent parameter variances
+and thus study the objective function
+\begin{align}
+	\costa{\bmx; \bmnu, \bmP} := 
+		\trace{\bmW \bmF^{-1}\paren{\bmx;\bmnu,\bmP} \bmW\tpose},
+	\label{eq:mwf,cost}
+\end{align}
+where $\bmW$ is a diagonal weighting matrix
+and $\trace{\cdot}$ denotes the matrix trace operation.
+For scan design,
+we seek to minimize $\cost$
+with respect to acquisition parameters $\bmP$.
 
-adapts our method for QMRI scan design
-as discussed in Chapter~\ref{c,scn-dsgn}
-to be amenable 
-to gradient-based local optimization,
-which is more convenient 
-for higher-dimensionality 
+In Subsection~\ref{ss,scn-dsgn,crb,minmax}, 
+we addressed the dependance of $\cost$ 
+on space-varying object parameters $\bmx$ and $\bmnu$
+through a min-max optimization problem.
+The associated ``worst-case'' design criterion 
+requires only weak assumptions
+on object parameter distributions
+but is non-differentiable in $\bmP$.
+For the relatively simple application described
+in Section~\ref{s,scn-dsgn,opt},
+the min-max criterion was studied 
+through exhaustive search
+and so non-differentiability did not matter.
+However,
+MWF imaging requires estimation
+of several more latent parameters
+and thus necessitates scan parameter selection
+for a greater number of datasets
+and thus over a larger search space.
+Since exhaustive search 
+over this higher-dimensional search space
+is prohibitively expensive computationally,
+we study here an alternate design criterion
+that is differentiable in $\bmP$ 
+and is thus amenable 
+to gradient-based local optimization.
+Specifically,
+we seek an acquisition parameter $\bmP$ 
+that minimizes the \emph{expected} weighted average
+of latent parameter variances
+over a search space $\setP$:
+\begin{align}
+	\est{\bmP} &\in 
+		\set{\argmin{\bmP \in \setP} \expcost\paren{\bmP}}, \where
+		\label{eq:mwf,P-hat} \\
+	\expcost\paren{\bmP} &:= 
+		\expect{\bmx,\bmnu}{\costa{\bmx; \bmnu, \bmP}}
+		\label{eq:mwf,expcost}
+\end{align}
+and $\expect{\bmx,\bmnu}{\cdot}$ denotes joint expectation
+with respect to prior joint distribution $\dist{\bmx,\bmnu}$ on $\bmx,\bmnu$.
 
-% include gradient
+Unlike min-max cost \eqref{eq:scn-dsgn,cost-tight},
+expected cost \eqref{eq:mwf,expcost} is often differentiable in $\bmP$.
+We next construct the gradient matrix 
+$\grada{\bmP}{\expcost\paren{\bmP}} \in \reals{A \times D}$
+and provide sufficient conditions
+for when this gradient matrix exists.
+Our simple strategy involves 
+first constructing $\grada{\bmP}{\costa{\bmx; \bmnu, \bmP}}$
+element-wise 
+for fixed $\bmx,\bmnu$
+and then relating
+$\grada{\bmP}{\expcost\paren{\bmP}}$
+to $\grada{\bmP}{\costa{\bmx; \bmnu, \bmP}}$.
+Let $\dela{p_{a,d}}$ be the $(a,d)$th element
+of matrix operator $\grada{\bmP}$.
+By standard matrix derivative identities,
+we have
+\begin{align}
+	\dela{p_{a,d}} \costa{\bmx; \bmnu, \bmP}
+		&= 
+		\dela{p_{a,d}} \trace{\bmW \bmF^{-1}\paren{\bmx;\bmnu,\bmP} \bmW\tpose}
+		\nonumber \\
+		&= -\trace{\bmW \bmF^{-1}\paren{\bmx;\bmnu,\bmP} 
+		\dela{p_{a,d}}\paren{\Fisher{\bmx;\bmnu,\bmP}} 
+		\bmF^{-1}\paren{\bmx;\bmnu,\bmP} \bmW\tpose}.
+		\label{eq:mwf,cost-der}
+\end{align}
+For image data corrupted
+by additive complex Gaussian noise 
+with zero mean 
+and covariance $\bmSig$,
+the Fisher information
+(repeated from \eqref{eq:scn-dsgn,fisher} for clarity)
+is given by
+\begin{align}
+	\Fisher{\bmx; \bmnu, \bmP}
+		&=
+		\paren{\grada{\bmx} \bms\paren{\bmx; \bmnu, \bmP}}\ctpose
+    \bmSig^{-1} \grada{\bmx} \bms\paren{\bmx; \bmnu, \bmP},
+   \label{eq:mwf,fisher}
+\end{align}
+where $\bms := \brac{s_1,\dots,s_D}\tpose$ 
+is the signal model.
+Furthermore, if datasets are assumed independent
+(as is typical),
+$\bmSig$ takes diagonal structure
+$\bmSig \gets \diag{\sigma_1^2,\dots,\sigma_D^2}$
+and
+\begin{align}
+	\dela{p_{a,d}}\paren{\Fisher{\bmx;\bmnu,\bmP}} 
+		&= 
+		\dela{p_{a,d}} \sum_{d'=1}^D \frac{1}{\sigma_{d'}^2}
+		\paren{\grada{\bmx}{s_{d'}\paren{\bmx; \bmnu, \bmp_{d'}}}}\ctpose
+		\grada{\bmx}{s_{d'}\paren{\bmx; \bmnu, \bmp_{d'}}}
+		\nonumber \\
+		&= 
+		\frac{1}{\sigma_d^2} \dela{p_{a,d}} 
+		\paren{\paren{\grada{\bmx}{s_d\paren{\bmx; \bmnu, \bmp_d}}}\ctpose
+		\grada{\bmx}{s_d\paren{\bmx; \bmnu, \bmp_d}}}.
+		\label{eq:mwf,fisher-der}
+\end{align}
+Substituting \eqref{eq:mwf,fisher}-\eqref{eq:mwf,fisher-der}
+into \eqref{eq:mwf,cost-der} 
+gives expressions 
+in terms of signal model derivatives
+for each element 
+of $\grada{\bmP}{\costa{\bmx; \bmnu, \bmP}}$.
+These expressions are well-defined 
+if $\bmF$ is invertible 
+and if mixed partial derivative tensor
+$\grada{\bmP}{\paren{\grada{\bmx}{\bms}}} \in \complexes{L \times A \times D}$ exists
+and is continuous in $\bmx,\bmP$. 
+Further assuming 
+that $\grada{\bmP}{\costa{\bmx; \bmnu, \bmP}}$ remains bounded 
+for all $\bmx,\bmnu$, 
+\begin{align}
+	\grada{\bmP}{\expcost\paren{\bmx; \bmnu, \bmP}} 
+		&= 
+		\grada{\bmP}{\expect{\bmx,\bmnu}{\costa{\bmx; \bmnu, \bmP}}}
+		\nonumber \\
+		&= 
+		\expect{\bmx,\bmnu}{\grada{\bmP}{\costa{\bmx; \bmnu, \bmP}}},
+		\label{eq:mwf,expcost-Pgrad}
+\end{align} 
+which provides an expression
+for the gradient of the expected cost,
+as desired.
+
 % greedy scan construction
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

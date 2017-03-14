@@ -67,11 +67,11 @@
 \contentsline {subsection}{\numberline {6.2.1}A Two-Compartment SPGR Signal Model}{65}{subsection.6.2.1}
 \contentsline {subsection}{\numberline {6.2.2}A Two-Compartment DESS Signal Model}{70}{subsection.6.2.2}
 \contentsline {section}{\numberline {6.3}An Fast Acquisition for Precise MWF Estimation}{75}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}SPGR/DESS Acquisition Design using the Bayesian CRB}{76}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Scan Design Implementation Details}{76}{subsection.6.3.2}
-\contentsline {section}{\numberline {6.4}Experimentation}{76}{section.6.4}
-\contentsline {section}{\numberline {6.5}Summary and Future Work}{76}{section.6.5}
-\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{77}{chapter.7}
-\contentsline {chapter}{Appendices}{78}{section*.11}
+\contentsline {subsection}{\numberline {6.3.1}SPGR/DESS Acquisition Design}{76}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Scan Design Implementation Details}{77}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}Experimentation}{77}{section.6.4}
+\contentsline {section}{\numberline {6.5}Summary and Future Work}{77}{section.6.5}
+\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{78}{chapter.7}
+\contentsline {chapter}{Appendices}{79}{section*.11}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{80}{section*.14}
+\contentsline {chapter}{Bibliography}{81}{section*.14}
