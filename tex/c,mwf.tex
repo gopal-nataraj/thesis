@@ -536,7 +536,7 @@ in \S\ref{sss,bkgrd,mri,ss,spgr}:
 		of each compartment's off-resonance frequency,
 		but minimal intra-voxel variation
 		of other space-varying parameters
-		$\mzero, \ff, \fs, \tf{1}, \ts{1}, \tf{2}, \ts{2}, \rfs, \rsf$.
+		$\mzero, \ff, \fs, \tf{1}, \ts{1}, \tf{2}, \ts{2}, \flip, \rfs, \rsf$.
 		This assumption effectively fixes all compartmental properties 
 		other than $\ompf$ and $\omps$
 		over the volume $\setV$ of a sufficiently small voxel.
@@ -910,7 +910,7 @@ $\phipf\pr$ and $\phips\pr$:
 		of compartmental off-resonance effects, 
 		but minimal intra-voxel variation 
 		of other space-varying parameters
-		$\mzero, \ff, \fs, \tf{1}, \ts{1}, \tf{2}, \ts{2}, \rfs, \rsf$.
+		$\mzero, \ff, \fs, \tf{1}, \ts{1}, \tf{2}, \ts{2}, \flip, \rfs, \rsf$.
 		This assumption effectively fixes all compartmental properties
 		other than $\phipf$, $\phips$, $\ompf$, and $\omps$
 		over the volume $\setV$ 
@@ -1313,14 +1313,100 @@ depends on initialization.
 \subsection{Scan Design Implementation Details}
 \label{ss,mwf,acq,detail}
 
-% why spgr/dess (?)
-% neglect exchange, same off resonance, lump r2p/f into m0, etc
-% optimize flips and trs
-% search space (flip, tr constraints, time)
-% prior distributions - estimated v measured
-% greedy scan construction
-% greedy scan design initialization
-% noise - to have realistic coef of var
+This subsection applies 
+scalable scan design problem \eqref{eq:mwf,P-hat}
+to optimize fast scan profiles 
+consisting of SPGR and DESS scans
+for precise MWF estimation.
+Intuitively,
+we study SPGR/DESS scan profiles
+over previously studied steady-state scan combinations
+\cite{deoni:08:gmt, deoni:11:com, deoni:13:oct}
+because SPGR/DESS signals
+are relatively insensitive
+to off-resonance related non-idealities,
+which as demonstrated 
+in Section~\ref{s,mwf,model}
+can be difficult
+to model accurately 
+in multi-compartmental systems
+and in fact here 
+(as in \cite{deoni:11:com, deoni:13:oct})
+are largely neglected.
+
+Specifically,
+we assume (as in Section~\ref{s,krr,exp}) 
+that signal arises
+from two non-exchanging water compartments
+(\ie, $\rfs \gets 0$, $\rsf \gets 0$, and $\ff + \fs = 1$)
+with identical broadening distributions
+(\ie, $\Rtpf \equiv \Rtps$ and $\ompfmed \equiv \ompsmed$).
+These simplifications provide closed-form expressions
+for the SPGR 
+\eqref{eq:mwf,spgr,mod-exchg0}
+and DESS 
+\eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0}
+signal models 
+as well as their gradients.
+To reduce SPGR/DESS signal dependence
+on off-resonance effects,
+we use magnitude signal models
+for scan design
+and highlight 
+that Rician distributed noise 
+in corresponding magnitude image data
+is well-approximated as Gaussian
+for sufficiently large SNR \cite{gudbjartsson:95:trd}. 
+We further fix $\TP$, $\TE$ across scans
+and thereby reduce model dependencies 
+to seven free object parameters per voxel:
+$\ff$, $\tf{1}$, $\tf{2}$, $\ts{1}$, $\ts{2}$, $\stx$, and
+$\const{3} := \mzero e^{-\Rtpf \TE} \equiv \mzero e^{-\Rtps \TE}$;
+and two acquisition parameters per dataset:
+$\bmp_d \gets \brac{\flipnom, \TR}\tpose, \forall d \in \set{1,\dots,D}$.
+As in Chapter~\ref{c,scn-dsgn},
+we assume prior knowledge 
+of transmit field sensitivity $\bmnu \gets \stx$ 
+(which in practice can be estimated
+from separate fast acquisitions, \eg \cite{sacolick:10:bmb})
+and collect the remaining $L \gets 6$ latent parameters
+as $\bmx \gets \brac{\ff, \tf{1}, \tf{2}, \ts{1}, \ts{2}, \const{3}}$.
+
+% take ff as proxy for mwf
+% focus on estimating ff and take rest as nuisance
+% suffices to design W as zero everywhere but for ff
+% actually design W as inv of mean^2 
+% then for symmetric distribution, sqrt(cost) interpretable as rstd
+
+% take simple distributional assumptions for expectations
+% all components of x,nu independent 
+% ff unif dist on [0.03, 0.21]
+% t1f,t2f,t1s,t2s gauss dist with means 400,20,1000,80 and std 20% of means
+% since W places no weight on c3, suffices to fix it to 1
+% nu dist as unif on [0.9,1.1] to account for 10% var in flip
+% constant noise variance 1.49 times 10^-7 matches norm measurements from before
+
+% constrain search space based on hardware limitations, safety limitations, where model expected to be accurate, and to encourage fast scan
+% dess flips and trs of course must be equal for each dess scan
+% dess flip between 1 and 60 deg 
+% spgr flip between 1 and 40 deg (beyond which partial spoiling causes issues)
+% dess tr geq 17.5 ms
+% spgr tr geq 12.2 ms
+% total time leq 263.7ms selected to allow equal data with our hardware restrictions as in Deoni, at minimal TR for each scan
+% all constraints define a convex search space, so eq:mwf,P-iter converges
+
+% since local opt, desirable to have good initialization
+% however, unclear a priori how to best allocate scan time amongst initial spgr/dess scans
+% Fig diagrams greedy design approach... (ismrm abstract)
+% note that while this approach not optimal, we can track quality of solution through coef of var cost
+
+% Table shows resulting optimized scan parameters
+% these parameters have rstd of 0.2853 (reduced from 1.1508)
+% time of 64s
+% using fmincon with tolFun and tolX of 10^-7 and maxIter 500 for each opt
+% hardware info, etc 
+% using (9,9) got about 0.3873 rstd 
+% tr variation does seem to help!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimentation}
