@@ -1106,7 +1106,7 @@ that compartmental signals simply add
 if exchange is neglected.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{An Fast Acquisition for Precise MWF Estimation}
+\section{A Fast Acquisition for Precise MWF Estimation}
 \label{s,mwf,acq}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1269,9 +1269,12 @@ for each element
 of $\grada{\bmP}{\costa{\bmx; \bmnu, \bmP}}$.
 These expressions are well-defined 
 if $\bmF$ is invertible 
-and if mixed partial derivative tensor
-$\grada{\bmP}{\paren{\grada{\bmx}{\bms}}} \in \complexes{L \times A \times D}$ exists
-and is continuous in $\bmx,\bmP$. 
+and if mixed partial derivative matrices
+$\grada{\bmp_1}{\paren{\grada{\bmx}{s_1}}\tpose},
+\dots,
+\grada{\bmp_D}{\paren{\grada{\bmx}{s_D}}\tpose}
+\in \complexes{L \times A}$
+exist and are continuous in $\bmx,\bmP$. 
 Further assuming 
 that $\grada{\bmP}{\costa{\bmx; \bmnu, \bmP}}$ remains bounded 
 for all $\bmx,\bmnu$, 
@@ -1288,7 +1291,23 @@ which provides an expression
 for the gradient of the expected cost,
 as desired.
 
-% greedy scan construction
+If \eqref{eq:mwf,expcost-Pgrad} exists,
+\eqref{eq:mwf,P-hat} can be solved iteratively
+for a convex search space $\setP$
+via updates
+\begin{align}
+	\iter{\bmP}{i} \gets 
+		\proja{\setP}{\iter{\bmP}{i-1}-\grada{\bmP}{\expcost\paren{\iter{\bmP}{i-1}}}},
+		\label{eq:mwf,P-iter}
+\end{align}
+where $\proja{\setP}{\cdot}$ denotes projection onto $\setP$
+and $i$ indexes iteration.
+Since $\expcost$ is non-convex in $\bmP$ in general,
+such iterations achieve
+only locally optimal convergence
+(further discussed in Subsection~\ref{ss,bkgrd,opt,loc})
+and the locally convergent minimizer
+depends on initialization.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scan Design Implementation Details}
@@ -1299,6 +1318,7 @@ as desired.
 % optimize flips and trs
 % search space (flip, tr constraints, time)
 % prior distributions - estimated v measured
+% greedy scan construction
 % greedy scan design initialization
 % noise - to have realistic coef of var
 
