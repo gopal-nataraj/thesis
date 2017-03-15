@@ -1185,12 +1185,12 @@ that is differentiable in $\bmP$
 and is thus amenable 
 to gradient-based local optimization.
 Specifically,
-we seek an acquisition parameter $\bmP$ 
+we seek an acquisition parameter $\bmPc$ 
 that minimizes the \emph{expected} weighted average
 of latent parameter variances
 over a search space $\setP$:
 \begin{align}
-	\est{\bmP} &\in 
+	\bmPc &\in 
 		\set{\argmin{\bmP \in \setP} \expcost\paren{\bmP}}, \where
 		\label{eq:mwf,P-hat} \\
 	\expcost\paren{\bmP} &:= 
@@ -1304,7 +1304,7 @@ where $\proja{\setP}{\cdot}$ denotes projection onto $\setP$
 and $i$ indexes iteration.
 Since $\expcost$ is non-convex in $\bmP$ in general,
 such iterations achieve
-only locally optimal convergence
+only locally optimal convergence in cost
 (further discussed in Subsection~\ref{ss,bkgrd,opt,loc})
 and the locally convergent minimizer
 depends on initialization.
@@ -1377,6 +1377,25 @@ as $\bmx \gets \brac{\ff, \tf{1}, \tf{2}, \ts{1}, \ts{2}, \const{3}}$.
 % suffices to design W as zero everywhere but for ff
 % actually design W as inv of mean^2 
 % then for symmetric distribution, sqrt(cost) interpretable as rstd
+We take fast-relaxing compartmental fraction $\ff$ 
+to be a proxy for MWF.
+To design a MWF imaging acquisition,
+we therefore tailor our design criterion
+to encourage precise $\ff$ estimation.
+We consider the other five latent parameters
+to be nuisance parameters
+and accordingly set weighting matrix
+$\bmW \gets \diag{\inv{\expect{\bmx,\bmnu}{\ff}}, \zeros{5}}$,
+thereby ignoring nuisance parameter
+estimation precision.
+Here, 
+fast-fraction variance weight 
+$\inv{\expect{\bmx,\bmnu}{\ff}}$ assigns interpretable meaning
+to $\sqrt{\expcost\paren{\bmP}}$
+as a unitless measure
+of the expected relative standard deviation 
+afforded by $\bmP$ 
+in asymptotically unbiased estimates of $\ff$. 
 
 % take simple distributional assumptions for expectations
 % all components of x,nu independent 
@@ -1385,6 +1404,37 @@ as $\bmx \gets \brac{\ff, \tf{1}, \tf{2}, \ts{1}, \ts{2}, \const{3}}$.
 % since W places no weight on c3, suffices to fix it to 1
 % nu dist as unif on [0.9,1.1] to account for 10% var in flip
 % constant noise variance 1.49 times 10^-7 matches norm measurements from before
+We approximate expectations 
+of form $\expect{\bmx,\bmnu}{\cdot}$
+by taking empirical averages
+using samples of $\bmx,\bmnu$ drawn 
+from the prior distribution defined as follows.
+We assume for simplicity
+that all components of $\bmx,\bmnu$ are independent.
+We model 
+$\ff \sim \unif{0.03, 0.21}$
+to conservatively contain
+state-of-the-art MESE MWF measurements in WM
+\cite{zhang:15:com}.
+We assume $\tf{1}$, $\tf{2}$, $\ts{1}$, and $\ts{2}$
+are Gaussian distributed,
+with means $400$ms, $20$ms, $1000$ms, and $80$ms
+selected from literature measurements 
+\cite{mackay:94:ivv, deoni:11:com}
+and standard deviations
+that are $20$\% of corresponding means.
+Since $\bmW$ places zero weight 
+on estimating $\const{3}$, 
+it suffices to fix $\const{3} \gets 1$
+and to assign noise variance
+$\bmSig \gets \paren{1.49 \times 10^{-7}}\eye{10}$
+based on separate measurements
+in unit-normalized image data
+(\cf Section~\ref{sss,scn-dsgn,exp,phant,roi}
+for acquisition details).
+Lastly, 
+we model $\stx \sim \unif{0.9,1.1}$ 
+to account for 10\% flip angle spatial variation.
 
 % constrain search space based on hardware limitations, safety limitations, where model expected to be accurate, and to encourage fast scan
 % dess flips and trs of course must be equal for each dess scan
@@ -1394,11 +1444,148 @@ as $\bmx \gets \brac{\ff, \tf{1}, \tf{2}, \ts{1}, \ts{2}, \const{3}}$.
 % spgr tr geq 12.2 ms
 % total time leq 263.7ms selected to allow equal data with our hardware restrictions as in Deoni, at minimal TR for each scan
 % all constraints define a convex search space, so eq:mwf,P-iter converges
+We constrain our search space $\setP$
+to reflect hardware, safety, and model-accuracy limitations
+and to avoid undesirably long acquisitions.
+To control RF energy deposition,
+we restrict DESS flip angles 
+to range between $\degrees{1}$ and $\degrees{60}$.
+We further restrict SPGR flip angles
+to be within $\degrees{1}$ and $\degrees{40}$
+to avoid excessive model mismatch 
+due to partial spoiling effects \cite{zur:91:sot}.
+To comply with other fixed pulse sequence timing requirements,
+we require DESS and SPGR repetition times
+to be no less
+than $17.5$ms and $11.8$ms respectively.
+We of course insist each pair
+of DESS defocusing- and refocusing-echo datasets
+be assigned the same flip angle and repetition time.
+Lastly, 
+we impose a total scan time constraint 
+$\sum_{d=1}^D \TRd \leq 263.7$ms
+that permits equal data collection 
+at minimal $\TR$
+(given our acquisition timing restrictions)
+as in a state-of-the-art fast steady-state acquisition
+\cite{deoni:11:com}.
+These constraints together define a convex search space
+over which $\expcost$ can be locally optimized.
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[node distance=1em]
+  
+	% nodes
+	\node[input] at (0,2.75) (start) 
+		{\vwidth{6em}{init: $\iter{\bmP}{0}$}};
+	\node[block] at (0,0) (opt0) 
+		{$\argmin{\bmP} \expcost$};
+	\node[block] at (2.5,0) (update) 
+		{\vwidth{7em}{update $\bmPc$}};
+	\node[sum] at (4,1) (sum1) {$+$};
+	\node[sum] at (4,-1) (sum2) {$+$};
+	\node[input] at (4,2.75) (spgr) 
+		{\vwidth{8em}{new SPGR scan: rand $\flip$, min $\TR$}};
+	\node[input] at (4,-2.75) (dess) 
+		{\vwidth{8em}{new DESS scan: rand $\flip$, min $\TR$}};
+	\node[block] at (6,1) (opt1) {$\argmin{\bmP} \expcost$};
+	\node[block] at (6,-1) (opt2) {$\argmin{\bmP} \expcost$};
+	\node[block] at (7.5,0) (opt3) {choose candidate};
+	\node[decision] at (11.5,0) (comp) {candidate reduced $\expcost$?};
+	\node[output] at (11.5,-2.75) (end) {return: $\est{\bmP}$};
+	
+	% connections
+	\draw[arrow] (start) -- (opt0);
+	\draw[arrow] (opt0) -- (update);
+	\draw[arrow] (update) -| (sum1);
+	\draw[arrow] (update) -| (sum2);
+	\draw[arrow, name path=int1] (spgr) -- (sum1);
+	\draw[arrow] (dess) -- (sum2);
+	\draw[arrow] (sum1) -- (opt1);
+	\draw[arrow] (sum2) -- (opt2);
+	\draw[arrow] (opt1) -| (opt3);
+	\draw[arrow] (opt2) -| (opt3);
+	\draw[arrow] (opt3) -- (comp);
+	\path[arrow, name path=int2] 
+		(comp) -- node[name=yes, anchor=west]{Y} (11.5,2) -- (3,2) -- (update);
+	\draw[arrow] (comp) -- node[name=no, anchor=west]{N} (end);
+	
+	% intersection
+	\path[name intersections={of = int1 and int2}];
+	\coordinate (S) at (intersection-1);
+	\path[name path=circ] (S) circle(0.5em);
+	\path [name intersections={of = circ and int2}];
+	\coordinate (I1) at (intersection-1);
+	\coordinate (I2) at (intersection-2);
+	\draw[line] (comp) -- (11.5,2) -- (I2);
+	\draw[arrow] (I1) -- (2.5,2) -- (update);
+	\tkzDrawArc[color=black, very thick](S,I1)(I2);
+  \end{tikzpicture}
+  \caption{
+	Block diagram of greedy acquisition design.
+	We set an original acquisition
+	consisting of three SPGR and three DESS scans
+	whose flip angles and repetition times 
+	are respectively initialized randomly and minimally.
+	We optimize the original acquisition subject to several constraints: 
+	$\flip \in \brac{1,40}^\circ$ and $\TR\geq11.8$ms for SPGR; 
+	$\flip \in \brac{1,60}^\circ$ and $\TR\geq17.5$ms for DESS;
+	and $\sum_{d=1}^D \TRd \leq 263.7$ms.
+	We then seek to improve the acquisition 
+	by appending another SPGR or DESS scan
+	and repeating (constrained) optimization.
+	This process iterates
+	until additional scans no longer 
+	improve estimation precision. 
+  }
+  \label{fig:mwf,schem}
+\end{figure}
 
 % since local opt, desirable to have good initialization
-% however, unclear a priori how to best allocate scan time amongst initial spgr/dess scans
+% however, unclear a priori how to best allocate scan time among init spgr/dess scans
 % Fig diagrams greedy design approach... (ismrm abstract)
+% idea is to first optimize a small scan profile and 
+
+
 % note that while this approach not optimal, we can track quality of solution through coef of var cost
+To this point,
+we have only considered scan design
+via acquisition parameter optimization
+for a fixed scan profile.
+In Chapter~\ref{c,scn-dsgn},
+we were able to restrict our time constraint
+such that only three scan profiles
+were feasible given timing restrictions,
+each of which we studied explicitly.
+Here,
+our total time constraint is necessarily larger
+and allows combinatorially many more scan combinations.
+As an alternative
+to exhaustively comparing all scan profiles
+(that too, only via local optima),
+we employ a greedy method 
+for scan profile construction,
+diagrammed in Figure~\ref{fig:mwf,schem}.
+
+
+
+to compare all possible scan profiles exhaustively
+
+Iterative optimization 
+of $\expcost$ yields a 
+
+
+
+For non-convex optimization problem \eqref{eq;mwf,P-hat},
+the cost $\expcost\paren{\bmPc}$ 
+of locally optimal solution $\bmPc$
+is likely to depend on initialization.
+
+
+Since $\expcost$ is non-convex in $\bmP$, 
+the converged cost $\expcost{\bmPc}$ 
+of 
 
 % Table shows resulting optimized scan parameters
 % these parameters have rstd of 0.2853 (reduced from 1.1508)
