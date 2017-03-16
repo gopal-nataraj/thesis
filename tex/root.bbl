@@ -6,6 +6,12 @@ K.~E. Keenan, K.~F. Stupic, M.~A. Boss, S.~E. Russek, T.~L. Chenevert, P.~V.
   ``Multi-site, multi-vendor comparison of {T1} measurement using {ISMRM/NIST}
   system phantom,'' in {\em {Proc. Intl. Soc. Mag. Res. Med.}}, p.~3290, 2016.
 
+\bibitem{deoni:11:com}
+S.~C.~L. Deoni, ``Correction of main and transmit magnetic field {(B0} and
+  {B1)} inhomogeneity effects in multicomponent-driven equilibrium single-pulse
+  observation of {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~65,
+  pp.~{1021--35}, Apr. 2011.
+
 \bibitem{ahn:03:seo}
 S.~Ahn and J.~A. Fessler, ``Standard errors of mean, variance, and standard
   deviation estimators,'' Tech. Rep. 413, Comm. and Sign. Proc. Lab., Dept. of
@@ -612,12 +618,6 @@ E.~Parzen, ``On estimation of a probability density function and mode,'' {\em
 C.~E. Rasmussen and C.~K.~I. Williams, {\em Gaussian Processes for Machine
   Learning (Adaptive Computation and Machine Learning)}.
 \newblock The MIT Press, 2005.
-
-\bibitem{deoni:11:com}
-S.~C.~L. Deoni, ``Correction of main and transmit magnetic field {(B0} and
-  {B1)} inhomogeneity effects in multicomponent-driven equilibrium single-pulse
-  observation of {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~65,
-  pp.~{1021--35}, Apr. 2011.
 
 \bibitem{lankford:13:oti}
 C.~L. Lankford and M.~D. Does, ``On the inherent precision of {mcDESPOT},''

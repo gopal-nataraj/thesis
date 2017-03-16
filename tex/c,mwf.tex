@@ -1523,7 +1523,7 @@ over which $\expcost$ can be locally optimized.
 	\tkzDrawArc[color=black, very thick](S,I1)(I2);
   \end{tikzpicture}
   \caption{
-	Block diagram of greedy acquisition design.
+	Block diagram of greedy scan profile construction.
 	We set an original acquisition
 	consisting of three SPGR and three DESS scans
 	whose flip angles and repetition times 
@@ -1531,7 +1531,10 @@ over which $\expcost$ can be locally optimized.
 	We optimize the original acquisition subject to several constraints: 
 	$\flip \in \brac{1,40}^\circ$ and $\TR\geq11.8$ms for SPGR; 
 	$\flip \in \brac{1,60}^\circ$ and $\TR\geq17.5$ms for DESS;
-	and $\sum_{d=1}^D \TRd \leq 263.7$ms.
+	and $\sum_{d=1}^D \TRd \leq 263.7$ms
+	(selected to allow 9 SPGR and 9 DESS scans
+	each at minimal $\TR$,
+	comparable to \cite{deoni:11:com}).
 	We then seek to improve the acquisition 
 	by appending another SPGR or DESS scan
 	and repeating (constrained) optimization.
@@ -1545,47 +1548,98 @@ over which $\expcost$ can be locally optimized.
 % since local opt, desirable to have good initialization
 % however, unclear a priori how to best allocate scan time among init spgr/dess scans
 % Fig diagrams greedy design approach... (ismrm abstract)
-% idea is to first optimize a small scan profile and 
-
-
+% idea is to first optimize a small scan profile
+% only add scans as necessary
+% solve sequence of opt problems
 % note that while this approach not optimal, we can track quality of solution through coef of var cost
 To this point,
 we have only considered scan design
 via acquisition parameter optimization
-for a fixed scan profile.
-In Chapter~\ref{c,scn-dsgn},
-we were able to restrict our time constraint
-such that only three scan profiles
-were feasible given timing restrictions,
+for a fixed combination 
+of SPGR and DESS scans.
+In single-component $\To,\Tt$ relaxometry
+(studied in Section~\ref{s,scn-dsgn,opt}),
+we were able to restrict 
+our total scan time constraint
+such that only three such scan profiles were feasible,
 each of which we studied explicitly.
-Here,
-our total time constraint is necessarily larger
-and allows combinatorially many more scan combinations.
+However in MWF imaging,
+a greater number of datasets are required
+for well-conditioned estimation
+of a larger number of latent parameters.
+To permit scan profiles
+with greater numbers of datasets,
+we must optimize with respect
+to a larger time constraint
+that allows combinatorially many more scan profiles.
 As an alternative
 to exhaustively comparing all scan profiles
 (that too, only via local optima),
 we employ a greedy method 
 for scan profile construction,
 diagrammed in Figure~\ref{fig:mwf,schem}.
+We first optimize
+an initial scan profile consisting 
+of only $3$ SPGR and $3$ DESS scans.
+We then seek 
+to improve the acquisition 
+by appending another SPGR or DESS scan
+to the previously optimized scan profile
+and repeating constrained optimization.
+If we find
+that at least one appended scan profile
+reduces the objective 
+while meeting all constraints,
+we update the previous scan profile
+with the appended scan profile
+that better improved the objective
+and repeat the process. 
+Otherwise, 
+we return the previously optimized scan profile.
+Observe that while this approach
+is far from optimal,
+we can easily assess solution quality 
+via expected $\ff$ relative standard deviation 
+$\sqrt{\expcost(\est{\bmP})}$.
 
-
-
-to compare all possible scan profiles exhaustively
-
-Iterative optimization 
-of $\expcost$ yields a 
-
-
-
-For non-convex optimization problem \eqref{eq;mwf,P-hat},
-the cost $\expcost\paren{\bmPc}$ 
-of locally optimal solution $\bmPc$
-is likely to depend on initialization.
-
-
-Since $\expcost$ is non-convex in $\bmP$, 
-the converged cost $\expcost{\bmPc}$ 
-of 
+\begin{table}[!tb]
+  \centering
+  \begin{tabular}{r | c | c}
+    \hline
+    \hline
+    & Optimized flip angles (deg) & Optimized repetition times (ms) \\
+    \hline
+    SPGR & $[38.1,12.9,9.2,33.5]^\mathsf{T}$ & $[50.2,32.4,16.4,11.8]^\mathsf{T}$ \\
+    DESS & $[32.0,40.3,52.9]^\mathsf{T}$ & $[17.5,98.0,37.6]^\mathsf{T}$ \\
+    \hline
+    \hline
+  \end{tabular}
+  \caption{
+		SPGR/DESS flip angles and repetition times
+		that comprise $\est{\bmP}$,
+		a scan parameter designed
+		for precise $\ff$ estimation in WM
+		via the sequence of optimization problems
+		described in Figure~\ref{fig:mwf,schem}. 
+		For our noise variance measurements,
+		this acquisition is expected
+		to yield $28.5$\% relative standard deviation
+		in asymptotically unbiased $\ff$ estimates
+		from two-compartment
+		SPGR \eqref{eq:mwf,spgr,mod-exchg0}
+		and DESS \eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0}
+		signal models.
+		Remarkably, 
+		this optimized scan profile involving $\TR$ variation
+		achieves better $\ff$ estimation precision
+		than a similarly optimized scan profile
+		with fixed minimum-$\TR$ acquisitions,
+		even though the latter 
+		can utilize many more scans 
+		for the given time budget.
+  }
+  \label{tab:mwf,acq}
+\end{table}
 
 % Table shows resulting optimized scan parameters
 % these parameters have rstd of 0.2853 (reduced from 1.1508)
@@ -1594,6 +1648,51 @@ of
 % hardware info, etc 
 % using (9,9) got about 0.3873 rstd 
 % tr variation does seem to help!
+Table~\ref{tab:mwf,acq} summarizes
+the optimized scan parameter $\est{\bmP}$ 
+that arises
+from one representative realization 
+of our scan profile construction procedure.
+Using \texttt{fmincon} 
+in \matlab R2013a
+for each inner-step optimization
+(with the ``active set'' option and
+with an objective function convergence tolerance of $10^{-7}$),
+this realization took 64s run time
+on a 3.5GHz desktop computer with 32GB RAM.
+We find that $\sqrt{\expcost(\est{\bmP})} = 0.285$, 
+meaning that at a realistic noise level,
+the SPGR/DESS acquisition defined by $\est{\bmP}$
+is expected to yield $28.5$\% relative standard deviation
+in asymptotically unbiased $\ff$ estimates
+from SPGR \eqref{eq:mwf,spgr,mod-exchg0} 
+and DESS 
+\eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0}
+non-exchanging two-compartment signal models.
+
+Interestingly,
+we observe empirically
+that the above scan profile construction procedure
+tends to append far fewer additional scans
+than is possible under our time budget: 
+here, it halts at a small scan profile
+consisting of only 4 SPGR and 3 DESS scans. 
+We investigated this phenomenon further
+by repeating the above procedure
+under the same time constraint,
+but now initializing with a profile
+consisting of $9$ SPGR and $9$ DESS scans
+whose repetition times are implicitly restricted
+to be minimal. 
+Over many random flip angle initializations,
+we found after optimization
+that this expanded minimum-$\TR$ scan profile could achieve
+an expected $\ff$ relative standard deviation
+no better than $0.387$,
+suggesting that $\TR$ variation 
+across scans is important 
+for building scan profiles
+that permit precise $\ff$ estimation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimentation}

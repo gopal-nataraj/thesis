@@ -21,6 +21,7 @@
 \HyPL@Entry{2<</S/r>>}
 \citation{keenan:16:msm}
 \@writefile{toc}{\contentsline {chapter}{List of Figures}{iii}{section*.2}}
+\citation{deoni:11:com}
 \citation{keenan:16:msm}
 \citation{ahn:03:seo}
 \@writefile{toc}{\contentsline {chapter}{List of Tables}{v}{section*.3}}
@@ -683,157 +684,161 @@
 \newlabel{ss,mwf,acq,detail}{{6.3.2}{78}{Scan Design Implementation Details}{subsection.6.3.2}{}}
 \citation{zur:91:sot}
 \citation{deoni:11:com}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces  Block diagram of greedy acquisition design. We set an original acquisition consisting of three SPGR and three DESS scans whose flip angles and repetition times are respectively initialized randomly and minimally. We optimize the original acquisition subject to several constraints: $\alpha \in \mathopen {}\mathclose \bgroup \originalleft [1,40\aftergroup \egroup \originalright ]^\circ $ and $T_\mathrm  {R}\geq 11.8$ms for SPGR; $\alpha \in \mathopen {}\mathclose \bgroup \originalleft [1,60\aftergroup \egroup \originalright ]^\circ $ and $T_\mathrm  {R}\geq 17.5$ms for DESS; and $\DOTSB \sum@ \slimits@ _{d=1}^D T_{\mathrm  {R},d}\leq 263.7$ms. We then seek to improve the acquisition by appending another SPGR or DESS scan and repeating (constrained) optimization. This process iterates until additional scans no longer improve estimation precision. }}{79}{figure.6.1}}
-\newlabel{fig:mwf,schem}{{6.1}{79}{Block diagram of greedy acquisition design. We set an original acquisition consisting of three SPGR and three DESS scans whose flip angles and repetition times are respectively initialized randomly and minimally. We optimize the original acquisition subject to several constraints: $\flip \in \brac {1,40}^\circ $ and $\TR \geq 11.8$ms for SPGR; $\flip \in \brac {1,60}^\circ $ and $\TR \geq 17.5$ms for DESS; and $\sum _{d=1}^D \TRd \leq 263.7$ms. We then seek to improve the acquisition by appending another SPGR or DESS scan and repeating (constrained) optimization. This process iterates until additional scans no longer improve estimation precision}{figure.6.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Experimentation}{80}{section.6.4}}
-\newlabel{s,mwf,exp}{{6.4}{80}{Experimentation}{section.6.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Summary and Future Work}{80}{section.6.5}}
-\newlabel{s,mwf,summ}{{6.5}{80}{Summary and Future Work}{section.6.5}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Future\nobreakspace  {}Work}{81}{chapter.7}}
+\citation{deoni:11:com}
+\citation{deoni:11:com}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces  Block diagram of greedy scan profile construction. We set an original acquisition consisting of three SPGR and three DESS scans whose flip angles and repetition times are respectively initialized randomly and minimally. We optimize the original acquisition subject to several constraints: $\alpha \in \mathopen {}\mathclose \bgroup \originalleft [1,40\aftergroup \egroup \originalright ]^\circ $ and $T_\mathrm  {R}\geq 11.8$ms for SPGR; $\alpha \in \mathopen {}\mathclose \bgroup \originalleft [1,60\aftergroup \egroup \originalright ]^\circ $ and $T_\mathrm  {R}\geq 17.5$ms for DESS; and $\DOTSB \sum@ \slimits@ _{d=1}^D T_{\mathrm  {R},d}\leq 263.7$ms (selected to allow 9 SPGR and 9 DESS scans each at minimal $T_\mathrm  {R}$, comparable to \cite  {deoni:11:com}). We then seek to improve the acquisition by appending another SPGR or DESS scan and repeating (constrained) optimization. This process iterates until additional scans no longer improve estimation precision. }}{79}{figure.6.1}}
+\newlabel{fig:mwf,schem}{{6.1}{79}{Block diagram of greedy scan profile construction. We set an original acquisition consisting of three SPGR and three DESS scans whose flip angles and repetition times are respectively initialized randomly and minimally. We optimize the original acquisition subject to several constraints: $\flip \in \brac {1,40}^\circ $ and $\TR \geq 11.8$ms for SPGR; $\flip \in \brac {1,60}^\circ $ and $\TR \geq 17.5$ms for DESS; and $\sum _{d=1}^D \TRd \leq 263.7$ms (selected to allow 9 SPGR and 9 DESS scans each at minimal $\TR $, comparable to \cite {deoni:11:com}). We then seek to improve the acquisition by appending another SPGR or DESS scan and repeating (constrained) optimization. This process iterates until additional scans no longer improve estimation precision}{figure.6.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces  SPGR/DESS flip angles and repetition times that comprise $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathbf  {P}$}\mathaccent "0362{\mathbf  {P}}$, a scan parameter designed for precise $f_\mathrm  {F}$ estimation in WM via the sequence of optimization problems described in Figure\nobreakspace  {}\ref  {fig:mwf,schem}. For our noise variance measurements, this acquisition is expected to yield $28.5$\% relative standard deviation in asymptotically unbiased $f_\mathrm  {F}$ estimates from two-compartment SPGR \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:mwf,spgr,mod-exchg0}\unskip \@@italiccorr )}\global \let \SL@labelname \relax } and DESS \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:mwf,dess-def,mod-exchg0}\unskip \@@italiccorr )}\global \let \SL@labelname \relax }-\textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \ref  {eq:mwf,dess-ref,mod-exchg0}\unskip \@@italiccorr )}\global \let \SL@labelname \relax } signal models. Remarkably, this optimized scan profile involving $T_\mathrm  {R}$ variation achieves better $f_\mathrm  {F}$ estimation precision than a similarly optimized scan profile with fixed minimum-$T_\mathrm  {R}$ acquisitions, even though the latter can utilize many more scans for the given time budget. }}{80}{table.6.1}}
+\newlabel{tab:mwf,acq}{{6.1}{80}{SPGR/DESS flip angles and repetition times that comprise $\est {\bmP }$, a scan parameter designed for precise $\ff $ estimation in WM via the sequence of optimization problems described in Figure~\ref {fig:mwf,schem}. For our noise variance measurements, this acquisition is expected to yield $28.5$\% relative standard deviation in asymptotically unbiased $\ff $ estimates from two-compartment SPGR \eqref {eq:mwf,spgr,mod-exchg0} and DESS \eqref {eq:mwf,dess-def,mod-exchg0}-\eqref {eq:mwf,dess-ref,mod-exchg0} signal models. Remarkably, this optimized scan profile involving $\TR $ variation achieves better $\ff $ estimation precision than a similarly optimized scan profile with fixed minimum-$\TR $ acquisitions, even though the latter can utilize many more scans for the given time budget}{table.6.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Experimentation}{81}{section.6.4}}
+\newlabel{s,mwf,exp}{{6.4}{81}{Experimentation}{section.6.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Summary and Future Work}{81}{section.6.5}}
+\newlabel{s,mwf,summ}{{6.5}{81}{Summary and Future Work}{section.6.5}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Future\nobreakspace  {}Work}{82}{chapter.7}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{c,future}{{7}{81}{Future~Work}{chapter.7}{}}
-\@writefile{toc}{\contentsline {chapter}{Appendices}{82}{section*.11}}
+\newlabel{c,future}{{7}{82}{Future~Work}{chapter.7}{}}
+\@writefile{toc}{\contentsline {chapter}{Appendices}{83}{section*.11}}
 \@writefile{toc}{\global \c@tocdepth 1\relax }
-\@writefile{loa}{\contentsline {chapter}{\numberline {A}Coil Data Combination from Multiple Datasets}{82}{section*.12}}
+\@writefile{loa}{\contentsline {chapter}{\numberline {A}Coil Data Combination from Multiple Datasets}{83}{section*.12}}
 \@writefile{lof}{\addvspace {8pt}}
 \@writefile{lot}{\addvspace {8pt}}
 \@writefile{lom}{\addvspace {8pt}}
 \@writefile{lop}{\addvspace {8pt}}
 \@writefile{loi}{\addvspace {8pt}}
-\newlabel{a,cc-multi}{{A}{82}{Future~Work}{section*.12}{}}
+\newlabel{a,cc-multi}{{A}{83}{Future~Work}{section*.12}{}}
 \bibstyle{ieeetr}
-\@writefile{loa}{\contentsline {chapter}{\numberline {B}DESS in the Presence of Diffusion}{83}{section*.13}}
+\@writefile{loa}{\contentsline {chapter}{\numberline {B}DESS in the Presence of Diffusion}{84}{section*.13}}
 \@writefile{lof}{\addvspace {8pt}}
 \@writefile{lot}{\addvspace {8pt}}
 \@writefile{lom}{\addvspace {8pt}}
 \@writefile{lop}{\addvspace {8pt}}
 \@writefile{loi}{\addvspace {8pt}}
-\newlabel{a,dess-diff}{{B}{83}{Future~Work}{section*.13}{}}
+\newlabel{a,dess-diff}{{B}{84}{Future~Work}{section*.13}{}}
 \bibdata{../bib/master.bib,../bib/tmp.bib}
 \bibcite{keenan:16:msm}{1}
-\bibcite{ahn:03:seo}{2}
-\bibcite{nataraj:14:rje}{3}
-\bibcite{nataraj:14:mbe}{4}
-\bibcite{nataraj::oms}{5}
-\bibcite{nataraj:15:amm}{6}
-\bibcite{nataraj:17:dfm}{7}
-\bibcite{nataraj:17:mwf}{8}
-\bibcite{macovski:83}{9}
-\bibcite{haacke:99}{10}
-\bibcite{nishimura:96:pom}{11}
-\bibcite{bloch:1946:ni-paper}{12}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{84}{section*.14}}
-\bibcite{hinshaw:76:ifb}{13}
-\bibcite{scheffler:99:apd}{14}
-\bibcite{hargreaves:01:car}{15}
-\bibcite{zur:91:sot}{16}
-\bibcite{denolin:05:nii}{17}
-\bibcite{redpath:88:fan}{18}
-\bibcite{bruder:88:ans}{19}
-\bibcite{rosen:60:tgp}{20}
-\bibcite{byrne:04:aut}{21}
-\bibcite{golub:03:snl}{22}
-\bibcite{cheng:12:pma}{23}
-\bibcite{fessler:03:nff}{24}
-\bibcite{muckley:15:fpm}{25}
-\bibcite{macovski:96:nim}{26}
-\bibcite{lei:07:som}{27}
-\bibcite{gudbjartsson:95:trd}{28}
-\bibcite{larsson:88:ivd}{29}
-\bibcite{kurki:96:tco}{30}
-\bibcite{englund:86:rti}{31}
-\bibcite{siemonsen:09:qtv}{32}
-\bibcite{dewitt:87:nnc}{33}
-\bibcite{matzat:13:qmt}{34}
-\bibcite{mosher:04:cmt}{35}
-\bibcite{guo:09:mtq}{36}
-\bibcite{giri:09:tqf}{37}
-\bibcite{look:70:tsi}{38}
-\bibcite{carr:54:eod}{39}
-\bibcite{stehling:91:epi}{40}
-\bibcite{ahn:86:hss}{41}
-\bibcite{meyer:92:fsc}{42}
-\bibcite{kay:91:pia}{43}
-\bibcite{gowland:92:faa}{44}
-\bibcite{messroghli:04:mll}{45}
-\bibcite{stehling:90:ire}{46}
-\bibcite{bonny:96:tml}{47}
-\bibcite{kumar:12:bau}{48}
-\bibcite{beneliezer:15:raa}{49}
-\bibcite{nguyen:12:ttd}{50}
-\bibcite{majumdar:86:eit-1}{51}
-\bibcite{majumdar:86:eit-2}{52}
-\bibcite{farzaneh:90:aot}{53}
-\bibcite{deoni:03:rct}{54}
-\bibcite{chang:08:lls}{55}
-\bibcite{fram:87:rco}{56}
-\bibcite{wang:12:srt}{57}
-\bibcite{deoni:04:rte}{58}
-\bibcite{deoni:09:trt}{59}
-\bibcite{welsch:09:reo}{60}
-\bibcite{heule:14:reo}{61}
-\bibcite{stocker:14:mpq}{62}
-\bibcite{heule:14:tes-mrm}{63}
-\bibcite{gyngell:89:tss}{64}
-\bibcite{hanicke:03:aas}{65}
-\bibcite{weiss:80:tco}{66}
-\bibcite{zhang:98:dos}{67}
-\bibcite{wang:87:otp}{68}
-\bibcite{jones:96:oss}{69}
-\bibcite{imran:99:tpm}{70}
-\bibcite{deoni:04:doo}{71}
-\bibcite{fleysher:07:otp}{72}
-\bibcite{akcakaya:15:ots}{73}
-\bibcite{lewis:16:ddo}{74}
-\bibcite{liu:17:gmm}{75}
-\bibcite{fisher:1925:tos}{76}
-\bibcite{cramer:46}{77}
-\bibcite{chernoff:53:lod}{78}
-\bibcite{wansapura:99:nrt}{79}
-\bibcite{stanisz:05:ttr}{80}
-\bibcite{kwan:99:msb}{81}
-\bibcite{collins:98:dac}{82}
-\bibcite{pauly:91:prf}{83}
-\bibcite{sacolick:10:bmb}{84}
-\bibcite{sun:14:reo}{85}
-\bibcite{ying:07:jir}{86}
-\bibcite{arthur:07:kmt}{87}
-\bibcite{frank:97:spe}{88}
-\bibcite{barral:10:arm}{89}
-\bibcite{carney:91:asa}{90}
-\bibcite{wu:90:eod}{91}
-\bibcite{kaiser:74:daf}{92}
-\bibcite{heule:14:tes-nib}{93}
-\bibcite{mackay:94:ivv}{94}
-\bibcite{gill:95:aot}{95}
-\bibcite{ma:13:mrf}{96}
-\bibcite{zhao:16:oed}{97}
-\bibcite{torrey:56:bew}{98}
-\bibcite{mcconnell:58:rrb}{99}
-\bibcite{bloembergen:1948:rei}{100}
-\bibcite{bihan:01:dti}{101}
-\bibcite{staroswiecki:12:seo}{102}
-\bibcite{zhao:16:mlr}{103}
-\bibcite{feinberg:85:mri}{104}
-\bibcite{tuch:01:ctm}{105}
-\bibcite{sekihara:85:nif}{106}
-\bibcite{morrell:08:aps}{107}
-\bibcite{deoni:08:gmt}{108}
-\bibcite{deoni:13:oct}{109}
-\bibcite{kimeldorf:70:acb}{110}
-\bibcite{aronszajn:50:tor}{111}
-\bibcite{cortes:95:svn}{112}
-\bibcite{saunders:98:rrl}{113}
-\bibcite{scholkopf:01:agr}{114}
-\bibcite{hoerl:70:rrb}{115}
-\bibcite{rahimi:07:rff}{116}
-\bibcite{sutherland:15:ote}{117}
-\bibcite{wu:97:gbt}{118}
-\bibcite{woodbury:50:imm}{119}
-\bibcite{parzen:62:oeo}{120}
-\bibcite{rasmussen:05:gpf}{121}
-\bibcite{deoni:11:com}{122}
+\bibcite{deoni:11:com}{2}
+\bibcite{ahn:03:seo}{3}
+\bibcite{nataraj:14:rje}{4}
+\bibcite{nataraj:14:mbe}{5}
+\bibcite{nataraj::oms}{6}
+\bibcite{nataraj:15:amm}{7}
+\bibcite{nataraj:17:dfm}{8}
+\bibcite{nataraj:17:mwf}{9}
+\bibcite{macovski:83}{10}
+\bibcite{haacke:99}{11}
+\bibcite{nishimura:96:pom}{12}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{85}{section*.14}}
+\bibcite{bloch:1946:ni-paper}{13}
+\bibcite{hinshaw:76:ifb}{14}
+\bibcite{scheffler:99:apd}{15}
+\bibcite{hargreaves:01:car}{16}
+\bibcite{zur:91:sot}{17}
+\bibcite{denolin:05:nii}{18}
+\bibcite{redpath:88:fan}{19}
+\bibcite{bruder:88:ans}{20}
+\bibcite{rosen:60:tgp}{21}
+\bibcite{byrne:04:aut}{22}
+\bibcite{golub:03:snl}{23}
+\bibcite{cheng:12:pma}{24}
+\bibcite{fessler:03:nff}{25}
+\bibcite{muckley:15:fpm}{26}
+\bibcite{macovski:96:nim}{27}
+\bibcite{lei:07:som}{28}
+\bibcite{gudbjartsson:95:trd}{29}
+\bibcite{larsson:88:ivd}{30}
+\bibcite{kurki:96:tco}{31}
+\bibcite{englund:86:rti}{32}
+\bibcite{siemonsen:09:qtv}{33}
+\bibcite{dewitt:87:nnc}{34}
+\bibcite{matzat:13:qmt}{35}
+\bibcite{mosher:04:cmt}{36}
+\bibcite{guo:09:mtq}{37}
+\bibcite{giri:09:tqf}{38}
+\bibcite{look:70:tsi}{39}
+\bibcite{carr:54:eod}{40}
+\bibcite{stehling:91:epi}{41}
+\bibcite{ahn:86:hss}{42}
+\bibcite{meyer:92:fsc}{43}
+\bibcite{kay:91:pia}{44}
+\bibcite{gowland:92:faa}{45}
+\bibcite{messroghli:04:mll}{46}
+\bibcite{stehling:90:ire}{47}
+\bibcite{bonny:96:tml}{48}
+\bibcite{kumar:12:bau}{49}
+\bibcite{beneliezer:15:raa}{50}
+\bibcite{nguyen:12:ttd}{51}
+\bibcite{majumdar:86:eit-1}{52}
+\bibcite{majumdar:86:eit-2}{53}
+\bibcite{farzaneh:90:aot}{54}
+\bibcite{deoni:03:rct}{55}
+\bibcite{chang:08:lls}{56}
+\bibcite{fram:87:rco}{57}
+\bibcite{wang:12:srt}{58}
+\bibcite{deoni:04:rte}{59}
+\bibcite{deoni:09:trt}{60}
+\bibcite{welsch:09:reo}{61}
+\bibcite{heule:14:reo}{62}
+\bibcite{stocker:14:mpq}{63}
+\bibcite{heule:14:tes-mrm}{64}
+\bibcite{gyngell:89:tss}{65}
+\bibcite{hanicke:03:aas}{66}
+\bibcite{weiss:80:tco}{67}
+\bibcite{zhang:98:dos}{68}
+\bibcite{wang:87:otp}{69}
+\bibcite{jones:96:oss}{70}
+\bibcite{imran:99:tpm}{71}
+\bibcite{deoni:04:doo}{72}
+\bibcite{fleysher:07:otp}{73}
+\bibcite{akcakaya:15:ots}{74}
+\bibcite{lewis:16:ddo}{75}
+\bibcite{liu:17:gmm}{76}
+\bibcite{fisher:1925:tos}{77}
+\bibcite{cramer:46}{78}
+\bibcite{chernoff:53:lod}{79}
+\bibcite{wansapura:99:nrt}{80}
+\bibcite{stanisz:05:ttr}{81}
+\bibcite{kwan:99:msb}{82}
+\bibcite{collins:98:dac}{83}
+\bibcite{pauly:91:prf}{84}
+\bibcite{sacolick:10:bmb}{85}
+\bibcite{sun:14:reo}{86}
+\bibcite{ying:07:jir}{87}
+\bibcite{arthur:07:kmt}{88}
+\bibcite{frank:97:spe}{89}
+\bibcite{barral:10:arm}{90}
+\bibcite{carney:91:asa}{91}
+\bibcite{wu:90:eod}{92}
+\bibcite{kaiser:74:daf}{93}
+\bibcite{heule:14:tes-nib}{94}
+\bibcite{mackay:94:ivv}{95}
+\bibcite{gill:95:aot}{96}
+\bibcite{ma:13:mrf}{97}
+\bibcite{zhao:16:oed}{98}
+\bibcite{torrey:56:bew}{99}
+\bibcite{mcconnell:58:rrb}{100}
+\bibcite{bloembergen:1948:rei}{101}
+\bibcite{bihan:01:dti}{102}
+\bibcite{staroswiecki:12:seo}{103}
+\bibcite{zhao:16:mlr}{104}
+\bibcite{feinberg:85:mri}{105}
+\bibcite{tuch:01:ctm}{106}
+\bibcite{sekihara:85:nif}{107}
+\bibcite{morrell:08:aps}{108}
+\bibcite{deoni:08:gmt}{109}
+\bibcite{deoni:13:oct}{110}
+\bibcite{kimeldorf:70:acb}{111}
+\bibcite{aronszajn:50:tor}{112}
+\bibcite{cortes:95:svn}{113}
+\bibcite{saunders:98:rrl}{114}
+\bibcite{scholkopf:01:agr}{115}
+\bibcite{hoerl:70:rrb}{116}
+\bibcite{rahimi:07:rff}{117}
+\bibcite{sutherland:15:ote}{118}
+\bibcite{wu:97:gbt}{119}
+\bibcite{woodbury:50:imm}{120}
+\bibcite{parzen:62:oeo}{121}
+\bibcite{rasmussen:05:gpf}{122}
 \bibcite{lankford:13:oti}{123}
 \bibcite{siddiqui:64:sif}{124}
 \bibcite{morell:84}{125}

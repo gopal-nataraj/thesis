@@ -69,9 +69,9 @@
 \contentsline {section}{\numberline {6.3}A Fast Acquisition for Precise MWF Estimation}{75}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}SPGR/DESS Acquisition Design}{76}{subsection.6.3.1}
 \contentsline {subsection}{\numberline {6.3.2}Scan Design Implementation Details}{78}{subsection.6.3.2}
-\contentsline {section}{\numberline {6.4}Experimentation}{80}{section.6.4}
-\contentsline {section}{\numberline {6.5}Summary and Future Work}{80}{section.6.5}
-\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{81}{chapter.7}
-\contentsline {chapter}{Appendices}{82}{section*.11}
+\contentsline {section}{\numberline {6.4}Experimentation}{81}{section.6.4}
+\contentsline {section}{\numberline {6.5}Summary and Future Work}{81}{section.6.5}
+\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{82}{chapter.7}
+\contentsline {chapter}{Appendices}{83}{section*.11}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{84}{section*.14}
+\contentsline {chapter}{Bibliography}{85}{section*.14}
