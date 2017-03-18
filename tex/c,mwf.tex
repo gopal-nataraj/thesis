@@ -1699,9 +1699,227 @@ that permit precise $\ff$ estimation.
 \label{s,mwf,exp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% maybe repeat some details from ch 4
-% krr details
-% preliminary image
+As a second step toward validation
+(the first being simulation results 
+presented in Section~\ref{s,krr,exp}),
+we estimate $\ff$ maps
+from \invivo datasets acquired
+using the precision-optimized scan profile
+developed in Section~\ref{s,mwf,acq}.
+For preliminary discussion,
+we qualitatively compare our $\ff$ maps 
+with other state-of-the-art MWF proxies
+described in recent literature.
+
+In a single continuous study
+of a healthy volunteer,
+we collected a scan profile 
+consisting of $4$ SPGR and $3$ DESS datasets
+whose flip angles and repetition times
+(listed in Table~\ref{tab:mwf,acq}) 
+are optimized 
+to permit precise $\ff$ estimation. 
+We obtained 3D axial slices 
+using a GE Discovery\tmark MR750 3.0T scanner
+with a 32-channel Nova Medical\regis receive head array.
+All other acquisition details were identical
+to those described in Section~\ref{sss,scn-dsgn,exp,phant,roi}.
+Most importantly,
+we acquired all data 
+at fixed $\TE \gets 4.67$ms
+before and after RF excitations,
+which is minimal
+given other pulse sequence timing requirements
+and thus minimizes model mismatch 
+due to compartmental off-resonance effects
+(characterized in Section~\ref{s,mwf,model}).
+Also as in Section~\ref{sss,scn-dsgn,exp,phant,roi},
+we separately estimated
+transmit field sensitivity $\stx$
+from a Bloch-Siegert acquisition \cite{sacolick:10:bmb}
+and took $\stx$ as known
+for $\ff$ estimation.
+For $256\times256\times8$ fully-sampled 3D Cartesian acquisitions
+(each over a $240\times240\times40$mm$^3$ field of view),
+SPGR/DESS and Bloch-Siegert acquisitions respectively took totals
+of 10m8s and 1m40s. 
+
+After Fourier transform of the raw coil SPGR/DESS data,
+we normalized and combined 
+one central slice 
+of each coil image
+using an extension of \cite{ying:07:jir}
+for the case of multiple datasets,
+detailed in Appendix~\ref{a,cc-multi}.
+We then applied KRR parameter estimation
+exactly as in simulations
+(discussed in Section~\ref{s,krr,exp})
+to estimate $\ff$ and five other nuisance parameter maps
+from magnitude coil-combined SPGR/DESS image data.
+To refine results,
+we lastly solved ML parameter estimation problem
+\eqref{eq:relax,ml-est}
+via iterative local optimization
+\footnote{We ran preconditioned gradient projection method iterations 
+	\eqref{eq:gpm}
+	with the same constraint set 
+	used to sample training points 
+	for KRR 
+	and a diagonal preconditioning matrix
+	defined as the inverse diagonal entries
+	of the cost function's Hessian matrix.
+	We used a step-halved backtracking line search 
+	to ensure monotone descent
+	in cost over iterations.
+	We iterated until convergence criterion \eqref{eq:conv,crit}
+	was met with tolerance $10^{-8}$. 
+},
+using KRR parameter estimates as initialization.
+KRR training (with simulated data),
+KRR testing (with real data),
+and iterative refinement 
+respectively took $35.2$s, $5.4$s, and $27.5$s.
+
+\begin{figure}
+    \centering    
+    \begin{minipage}[b]{0.92\textwidth}
+        \centering
+        \includegraphics [height=7.4cm, clip] {ff,log2c-0,krr-ml}
+    \end{minipage}
+    
+    \begin{minipage}[b]{0.96\textwidth}
+        \centering
+        \includegraphics [height=7cm] {mwf,grase}
+        \includegraphics [height=7cm] {mwf,mcdespot}
+    \end{minipage}
+    \caption{
+    	MWF estimates, using:
+			our optimized SPGR/DESS scan profile
+			and (\emph{top left}) KRR $\ff$ estimation,
+			followed by (\emph{top right}) iterative ML estimation;
+    	(\emph{bottom left})
+			GRASE \cite{prasloski:12:rwc},
+			a state-of-the-art acceleration
+			to the slow gold-standard MESE acquisition
+			originally used in \cite{mackay:94:ivv};
+			and (\emph{bottom right})
+			mcDESPOT \cite{deoni:11:com},
+			a fast steady-state acquisition
+			that lacks sufficient estimation precision \cite{lankford:13:oti}.
+			All MWF estimates are from healthy volunteers,
+			but those from GRASE/mcDESPOT
+			are from a separate study
+			in a different subject 
+			and are reprinted 
+			from \cite{zhang:15:com},
+			a recent comparison study.
+			The proposed precision-optimized SPGR/DESS scan profile
+			is as fast as mcDESPOT
+			and yields MWF images
+			comparable to those of GRASE.
+    }
+    \label{fig:mwf,brain}
+\end{figure}
+
+Figure~\ref{fig:mwf,brain} compares resulting $\ff$ estimates 
+using KRR only 
+versus KRR followed by iterative ML estimation.
+ML iterations produce visible improvement
+in cerebrospinal fluid 
+but leave $\ff$ estimates 
+in WM and GM ROIs
+largely unchanged.
+
+For qualitative comparison,
+Figure~\ref{fig:mwf,brain} also reprints
+from a comparison study \cite{zhang:15:com}
+MWF proxy estimates
+from two other acquisitions:
+GRASE \cite{prasloski:12:rwc}, 
+a state-of-the-art acceleration
+to the slow gold-standard MESE acquisition \cite{mackay:94:ivv};
+and 
+mcDESPOT \cite{deoni:11:com},
+a faster steady-state acquisition
+that lacks sufficient estimation precision \cite{lankford:13:oti}.
+These images are from a separate study
+of a different healthy volunteer,
+and utilize different algorithms
+to estimate different MWF proxies
+from multi-compartmental signal models 
+of different acquisitions.
+Acknowledging the lack of controls,
+we cautiously observe
+that the proposed optimized SPGR/DESS scan profile
+is as fast as the mcDESPOT acquisition
+(controlling for scanner timing limitations)
+and yields MWF maps
+at least comparable in WM to those of GRASE.
+
+\begin{table*} [tb]
+	\centering
+	\begin{minipage}{0.3\textwidth}
+		\includegraphics [width=4cm] {roi.eps}
+		\label{fig:mwf,brain,roi}
+	\end{minipage}
+	\begin{minipage}{0.6\textwidth}
+		\begin{tabu} {c | r r}
+			\hline
+			\hline
+			ROI (\# voxels) & KRR & KRR, then ML \\
+			\hline
+			\WM \ffest ($725$) 	& \mnstd{0.130}{0.074} & \mnstd{0.134}{0.070} \\
+			\GM \ffest ($176$)	& \mnstd{0.063}{0.106} & \mnstd{0.063}{0.098} \\
+			\hline
+			\hline
+		\end{tabu}
+	\end{minipage}
+	\caption{
+		\emph{Left}:
+		\WM/\GM ROIs,
+		overlaid on a representative anatomical
+		(coil-combined SPGR) image.
+		Four \WM ROIs and four \GM ROIs are each pooled
+		into a single \WM and a single \GM ROI,
+		over which sample statistics are computed.
+		\emph{Right}:
+		Within-ROI sample means $\pm$ 
+		within-ROI sample standard deviations
+		of $\ff$ estimates,
+		using KRR only 
+		as well as KRR with ML refinement
+		(Fig.~\ref{fig:mwf,brain} presents corresponding images).
+	}
+	\label{tab:mwf,brain}
+\end{table*}
+
+% tab:mwf,brain summarizes within-roi sample means and sstd
+% computed over 4 wm , 4 gm rois containing x voxels
+% agree well with grase wm histograms (see fig. 5 in zhang:15:com for example)
+% difficult to compare gm values given very high std dev
+% however, grase did report mean about 0.05 in both cortical and internal gray matter
+Table~\ref{tab:mwf,brain} summarizes 
+within-ROI samples means and sample standard deviations
+computed over manually-selected ROIs 
+containing $725$ WM and $176$ GM voxels.
+Compared to its KRR initialization,
+local ML optimization
+does not appreciably change 
+WM/GM \ffest sample means
+and mildly reduces sample standard deviations.
+Our WM \ffest sample means
+agree well with literature MESE measurements
+(\eg, see \cite[Fig.~3]{zhang:15:com}).
+Our GM \ffest sample means
+are not statistically meaningful
+because of high within-ROI sample variation,
+likely due to the common challenge
+of poor GM ROI selection.
+Nevertheless,
+it warrants mention 
+that MWF in healthy GM 
+was reported in \cite[Fig.~3]{zhang:15:com}
+to be $\sim0.05$ using GRASE.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Future Work}

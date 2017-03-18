@@ -12,6 +12,25 @@ S.~C.~L. Deoni, ``Correction of main and transmit magnetic field {(B0} and
   observation of {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~65,
   pp.~{1021--35}, Apr. 2011.
 
+\bibitem{prasloski:12:rwc}
+T.~Prasloski, A.~Rauscher, A.~L. MacKay, M.~Hodgson, I.~M. Vavasour, C.~Laule,
+  and B.~{M\"adler}, ``Rapid whole cerebrum myelin water imaging using a {3D}
+  {GRASE} sequence,'' {\em {NeuroImage}}, vol.~63, pp.~{533--9}, Oct. 2012.
+
+\bibitem{mackay:94:ivv}
+A.~Mackay, K.~Whittall, J.~Adler, D.~Li, D.~Paty, and D.~Graeb, ``In vivo
+  visualization of myelin water in brain by magnetic resonance,'' {\em {Mag.
+  Res. Med.}}, vol.~31, pp.~{673--7}, June 1994.
+
+\bibitem{lankford:13:oti}
+C.~L. Lankford and M.~D. Does, ``On the inherent precision of {mcDESPOT},''
+  {\em {Mag. Res. Med.}}, vol.~69, pp.~{127--36}, Jan. 2013.
+
+\bibitem{zhang:15:com}
+J.~Zhang, S.~H. Kolind, C.~Laule, and A.~L. MacKay, ``Comparison of myelin
+  water fraction from multiecho {T2} decay curve and steady-state methods,''
+  {\em {Mag. Res. Med.}}, vol.~73, pp.~{223--32}, Jan. 2015.
+
 \bibitem{ahn:03:seo}
 S.~Ahn and J.~A. Fessler, ``Standard errors of mean, variance, and standard
   deviation estimators,'' Tech. Rep. 413, Comm. and Sign. Proc. Lab., Dept. of
@@ -483,11 +502,6 @@ R.~Heule, P.~{B\"ar}, C.~Mirkes, K.~Scheffler, S.~Trattnig, and O.~Bieri,
   ultra-high fields,'' {\em {NMR in Biomedicine}}, vol.~27, pp.~{1037--45},
   Sept. 2014.
 
-\bibitem{mackay:94:ivv}
-A.~Mackay, K.~Whittall, J.~Adler, D.~Li, D.~Paty, and D.~Graeb, ``In vivo
-  visualization of myelin water in brain by magnetic resonance,'' {\em {Mag.
-  Res. Med.}}, vol.~31, pp.~{673--7}, June 1994.
-
 \bibitem{gill:95:aot}
 R.~D. Gill and B.~Y. Levit, ``Applications of the van {Trees} inequality: {A}
   {Bayesian} {\Cramer-rao} bound,'' {\em {Bernoulli}}, vol.~1, no.~1/2,
@@ -619,10 +633,6 @@ C.~E. Rasmussen and C.~K.~I. Williams, {\em Gaussian Processes for Machine
   Learning (Adaptive Computation and Machine Learning)}.
 \newblock The MIT Press, 2005.
 
-\bibitem{lankford:13:oti}
-C.~L. Lankford and M.~D. Does, ``On the inherent precision of {mcDESPOT},''
-  {\em {Mag. Res. Med.}}, vol.~69, pp.~{127--36}, Jan. 2013.
-
 \bibitem{siddiqui:64:sif}
 M.~M. Siddiqui, ``Statistical inference for {Rayleigh} distributions,'' {\em
   {RADIO SCIENCE Journal of Research NBS/USNC-URSI}}, vol.~68D, pp.~{1005--10},
@@ -673,11 +683,6 @@ C.~Laule, E.~Leung, D.~K.~B. Li, A.~L. Traboulsee, D.~W. Paty, A.~L. MacKay,
   and G.~R.~W. Moore, ``Myelin water imaging in multiple sclerosis:
   quantitative correlations with histopathology,'' {\em {Multiple Sclerosis}},
   vol.~12, pp.~{747--53}, Nov. 2006.
-
-\bibitem{zhang:15:com}
-J.~Zhang, S.~H. Kolind, C.~Laule, and A.~L. MacKay, ``Comparison of myelin
-  water fraction from multiecho {T2} decay curve and steady-state methods,''
-  {\em {Mag. Res. Med.}}, vol.~73, pp.~{223--32}, Jan. 2015.
 
 \bibitem{spencer:00:mos}
 R.~G. Spencer and K.~W. Fishbein, ``Measurement of spin-lattice relaxation
