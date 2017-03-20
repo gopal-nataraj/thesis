@@ -71,7 +71,9 @@
 \contentsline {subsection}{\numberline {6.3.2}Scan Design Implementation Details}{78}{subsection.6.3.2}
 \contentsline {section}{\numberline {6.4}Experimentation}{81}{section.6.4}
 \contentsline {section}{\numberline {6.5}Summary and Future Work}{83}{section.6.5}
-\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{85}{chapter.7}
-\contentsline {chapter}{Appendices}{86}{section*.11}
+\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{84}{section*.11}
+\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{85}{section*.12}
+\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{86}{chapter.7}
+\contentsline {chapter}{Appendices}{87}{section*.13}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{88}{section*.14}
+\contentsline {chapter}{Bibliography}{89}{section*.16}

@@ -1950,17 +1950,188 @@ and will constitute a major portion
 of relevant future work,
 discussed in the following.
 
-% comparison studies
-% validate with mese implementation
-% jfn already implemented mese
+% need to first build support for claim that ff as measured by spgr/dess 
+% is a measure of mwf as measured originally by mackay
+% need to compare our estimates with estimates from a mese measurement
+% foreseen challenges: still will be differences in model assumptions and estimation algorithms
+\paragraph{Comparisons with MESE MWF Estimates}
+We would like to claim
+that fast-relaxing fraction $\ff$ estimates
+from precision-optimized SPGR/DESS scan profiles
+are accurate measurements 
+of MWF as originally defined 
+in \cite{mackay:94:ivv}.
+To build support
+for this hypothesis,
+we will need
+to systematically compare our $\ff$ estimates
+with MWF estimates
+from a MESE acquisition.
+Such comparison is challenging
+because the methods differ
+not only in acquisitions
+but also in modeling assumptions
+\footnote{MESE MWF estimation 
+	assumes $\To$ is known and fixed
+	over many compartments.
+	As presented, SPGR/DESS $\ff$ estimation
+	assumes unknown variable $\To$
+	across two compartments.
+	Both models neglect exchange 
+	and multi-compartmental off-resonance effects,
+	and assume known flip angle spatial variation.
+	\label{foot:mwf,assumption}
+},
+initialization
+(KRR estimate \eqref{eq:krr,x-hat}
+versus the zero vector),
+objective functions
+(ML cost \eqref{eq:relax,lf-mtx}
+versus a regularized nonnegative least-squares (NNLS) cost
+\cite[Eq.~8]{whittall:89:qio}),
+and estimation algorithms
+(gradient projection method \cite{rosen:60:tgp}
+versus
+least-distance programming (LDP) \cite[\S23.4]{lawson:74}).
 
-% exploring model mismatch 
-% exchange, three-pool, fixed t1
-% scan opt needs to be diff; but maybe design with simpler model?
+% first validate krr by comparing mwf estimates from nnls/ldp vs krr, using same model
+% then take as many assumptions same as possible while comparing mese and spgr/dess
+% modify model (possibly of both acq) as needed to achieve agreement
+We plan to approach validation as follows.
+First,
+we will compare \invivo MWF estimates
+from a fixed signal model
+of a fixed MESE acquisition
+using KRR, KRR-initialized ML,
+KRR-initialized regularized NNLS,
+and zero-initialized regularized NNLS
+\footnote{Both KRR- and zero-initialized NNLS 
+	should yield near-equivalent solutions
+	because the regularized NNLS problem is convex,
+	assuming as in \cite{whittall:89:qio, mackay:94:ivv}
+	that all latent parameters other than MWF are known.
+}.
+Here, 
+all three iterative algorithms can be solved
+via gradient projection method
+for consistency.
+These results will provide direct insight
+as to how KRR and KRR-initialized ML estimation perform
+for \invivo MWF estimation
+from a classical acquisition and signal model.
+% mese takes t1 as known as and constant across compartments from IR-prepared FSE sequences
+% we estimate t1 for two compartments
+% joint estimation of refocusing flip angle; we assume flip angle scaling known
+
+% little bit of a trivial problem above (linear)
+% next study nonlinear but relatively simple problem mwf and flip estimation
+% t1 still known
+% can't use nnls but can use krr and varpro 
+% classical acquisition but more complicated signal model
+Using KRR as above
+for a convex MWF estimation problem 
+is important for systematic validation
+but is overkill in practice.
+For a more interesting usage,
+we will next consider joint estimation
+of MWF and transmit field variation $\ff$
+(still assuming knowledge of other latent parameters)
+from the same MESE dataset.
+NNLS is inapplicable 
+for this non-convex problem;
+however, 
+we can still quickly validate KRR estimates 
+via voxel-wise exhaustive grid search
+due to low problem dimensionality.
+If promising,
+these results will support the claim
+that KRR could be useful 
+for fast \invivo MWF estimation 
+from nonlinear models.
+
+% next, could fix model assumptions 
+% design spgr/dess acquisition for estimating ff from much simpler model
+% this model will again lead to convex problem in ff that can be solved via above methods
+% positive result here suggests that spgr/dess can be used to design mwf acquisitions
+To compare SPGR/DESS and MESE acquisitions,
+we can modify SPGR/DESS model assumptions
+to those taken in \cite{prasloski:12:rwc}
+for the MESE model
+(listed in Footnote~\ref{foot:mwf,assumption})
+and thereby formulate an analogous
+$\Tt$ distribution estimation problem,
+for which linear algorithms 
+such as regularized NNLS and LDP are applicable.
+Our task will then be 
+to design a fast SPGR/DESS acquisition
+under these modified model assumptions
+that permits precise voxel-wise estimation 
+of the $\Tt$ distribution.
+The resulting estimated $\Tt$ distributions
+will be directly comparable 
+to $\Tt$ distributions 
+from MESE acquisitions
+and could be used
+to form SPGR/DESS MWF maps
+that are directly comparable 
+with MESE MWF maps.
+
+% finally, show true generality of methods developed in thesis
+% can relax some model assumptions, design corresponding scans, and study via krr/ml only
+% e.g., variable t1 over two discrete compartments gives acquisition in table mwf,acq
+% others might be three discrete compartments or exchange (though this is hard w/ acq design)
+% comparing with KRR-ML spgr/dess gives info about effect of model assumptions
+Upon isolated validation
+of acquisitions, initializations, and estimation algorithms,
+we can explore the effects 
+of different modeling assumptions
+using the full flexibility
+of optimized scan design and KRR estimation.
+As a first experiment,
+we could try to optimize
+under the variable-$\To$ two-compartment model 
+a MESE acquisition
+similar to the SPGR/DESS acquisition 
+presented in Table~\ref{tab:mwf,acq}
+and compare resulting SPGR/DESS and MESE \ffest maps. 
+If \ffest from these models do not measure MWF
+with sufficient specificity,
+we could explore similar comparisons
+using more complicated models
+involving exchange, three (or more) compartments,
+and/or compartmental off-resonance effects.
+All of these model comparisons 
+will require highly nonlinear estimation problems
+involving many latent parameters,
+for which KRR-initialized ML estimation is well-suited.
 
 % comparison with mt
 % different measure of myelination - does it correlate?
-
-% clinical collaboration (long-term?)
-
-\todo{discuss negative $\ff$ range}
+\paragraph{Comparisons with Different Myelin Biomarkers}
+We are also interested
+in how $\ff$ estimates (or other MWF proxies)
+correlate with other myelin biomarkers. 
+One contending noninvasive marker arises
+from MR pulse sequences sensitized
+to the inhomogeneous magnetization transfer (ihMT) effect
+\cite{varma:15:mtf},
+which has recently been argued
+to be specific
+to the large membrane lipids
+that comprise much of myelin
+\cite{varma:15:iom, swanson:16:mda}.
+Outside MRI,
+invasive measurements
+from histology
+have been used to study myelin 
+(as in \eg, \cite{gareau:00:mta, webb:03:imt})
+and could serve as a gold-standard \insitu marker.
+Multi-compartmental and ihHT MRI markers 
+can be successively compared 
+through phantom, healthy volunteer, and patient studies.
+Both MRI and histological markers
+can be compared through 
+phantom and \insitu studies.
+All of these studies
+are highly amenable 
+to clinical collaborations.

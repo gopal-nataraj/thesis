@@ -704,4 +704,29 @@ W.~Magnus, ``On the exponential solution of differential equations for a linear
   operator,'' {\em Communications on Pure and Applied Mathematics}, vol.~7,
   pp.~{649--73}, Nov. 1954.
 
+\bibitem{whittall:89:qio}
+K.~P. Whittall, ``Quantitative interpretation of nmr relaxation data,'' {\em
+  Journ. Mag. Res.}, vol.~84, pp.~{134--52}, Aug. 1989.
+
+\bibitem{lawson:74}
+C.~L. Lawson and R.~J. Hanson, {\em Solving least squares problems}.
+\newblock Prentice-Hall, 1974.
+
+\bibitem{varma:15:mtf}
+G.~Varma, G.~Duhamel, C.~{de Bazelaire}, and D.~C. Alsop, ``Magnetization
+  transfer from inhomogeneously broadened lines: a potential marker for
+  myelin,'' {\em Magn. Res. Med.}, vol.~73, pp.~{614--22}, Feb. 2015.
+
+\bibitem{varma:15:iom}
+G.~Varma, O.~M. Girard, V.~H. Prevost, G.~Duhamel, and D.~C. Alsop,
+  ``Interpretation of magnetization transfer from inhomogeneously broadened
+  lines (ihmt) in tissues as a dipolar effect within motion restricted
+  molecules,'' {\em Journ. Mag. Res.}, pp.~{67--76}, Nov. 2015.
+
+\bibitem{swanson:16:mda}
+S.~D. Swanson, D.~I. Malyarenko, M.~L. Fabiilli, R.~C. Welsh, J.-F. Nielsen,
+  and A.~Srinivasan, ``Molecular, dynamic, and structural origin of
+  inhomogeneous magnetization transfer in lipid membranes,'' {\em Magn. Res.
+  Med.}, vol.~77, pp.~{1318--28}, Mar. 2016.
+
 \end{thebibliography}
