@@ -1,3 +1,107 @@
 % future work
 
-% do kernel regression stuff with mese acquisition
+This chapter organizes the numerous avenues 
+of future work itemized 
+in Sections~\ref{s,krr,summ} and \ref{s,mwf,summ}
+into a timeline for completion 
+of this dissertation.
+For the short term,
+we place emphasis
+on future work items
+that are likely 
+to lead 
+to journal publications
+that expand 
+on Chapters~\ref{c,krr}-\ref{c,mwf}.
+Other opportunities
+are realistically listed 
+as longer-term research goals.
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{l | p{12cm}}
+		\hline 
+		\hline
+		2017-03 & propose dissertation \\
+		2017-04 & prepare for conference presentations
+			\begin{itemize}
+				\setlength\topsep{0em}
+				\setlength\itemsep{0em}
+				\item{
+					partially validate KRR estimates 
+					from SPGR/DESS acquisition 
+					given in \ref{tab:mwf,acq}
+					via exhaustive search
+				}
+				\item{present \cite{nataraj:17:dfm} at ISBI}
+				\item{present \cite{nataraj:17:mwf} at ISMRM annual meeting}
+			\end{itemize} \\
+		2017-05 & experimentally validate KRR estimation
+			\begin{itemize}
+				\setlength\topsep{0em}
+				\setlength\itemsep{0em}
+				\item{implement and test MESE acquisition}
+				\item{research MESE forward model; implement NNLS estimation}
+				\item{
+					replicate \invivo MESE MWF maps in \cite{zhang:15:com},
+					using KRR versus gold-standard NNLS
+				}
+				\item{
+					repeat above while jointly estimating transmit field sensitivity,
+					using KRR versus exhaustive grid search
+				}
+			\end{itemize} \\
+		2017-08 & prepare journal paper on scalable MRI parameter estimation via KRR
+			\begin{itemize}
+				\setlength\topsep{0em}
+				\setlength\itemsep{0em}
+				\item{analyze performance through theory and simulations}
+				\item{seek to exploit partially linear structure}
+				\item{
+					present simulation and experimental results,
+					first showing that KRR can replicate 
+					classical MWF maps \invivo,
+					and then showing that KRR has flexibility
+					to handle more complicated nonlinear models
+					of faster (precision-optimized) SPGR/DESS acquisitions
+				}
+			\end{itemize} \\
+		2017-10 & experimentally validate $\ff$ estimates from SPGR/DESS acquisition
+			\begin{itemize}
+				\setlength\topsep{0em}
+				\setlength\itemsep{0em}
+				\item{
+					design SPGR/DESS acquisition 
+					under MESE model assumptions
+				}
+				\item{
+					compare \invivo MWF estimates 
+					from optimized SPGR/DESS 
+					vs. classical MESE acquisitions
+				}
+				\item{
+					repeat scan design/comparison
+					using increasingly complex model assumptions
+					until MWF estimates
+					from SPGR/DESS and MESE agree reasonably
+				}
+			\end{itemize} \\
+		2018-01 & prepare journal paper on MWF imaging from SPGR/DESS acquisitions \\
+		2018-03 & defend dissertation \\
+		\hline
+		& longer-term research directions
+			\begin{itemize}
+				\setlength\topsep{0em}
+				\setlength\itemsep{0em}
+				\item{combine image reconstruction and KRR parameter estimation}
+				\item{correlate our MWF estimates with other myelin biomarkers}
+				\item{apply KRR to other MRI parameter estimation problems}
+			\end{itemize} \\
+		\hline
+		\hline
+	\end{tabular}
+\end{table}
+
+
+
+
