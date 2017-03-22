@@ -3,33 +3,46 @@
 \section{Introduction}
 \label{s,relax,intro}
 
-\todo{connect with ss,bkgrd,opt,vpm; 
-more motivation; 
-see jfn 2017-01-18}
-
-This chapter introduces methods
+This brief chapter describes methods
 for QMRI parameter estimation
-from statistical likelihood models
-and applies these methods
-to simple problems 
-in $\To$ and $\Tt$ relaxometry,
-which are of interest
-for monitoring the progression
-of various disorders \cite{cheng:12:pma}.
+from statistical likelihood models.
+The main purpose of this chapter
+is to serve as a bridge 
+between the background information
+reviewed in Chapter~\ref{c,bkgrd}
+and more novel ideas 
+introduced in later chapters.
+As such, 
+we place emphasis here
+on development of notation and terminology
+over thorough validation.
+As instructional examples,
+we demonstrate likelihood-based parameter estimation
+on simple problems
+involving estimation 
+of relaxation parameters $\To$ and $\Tt$,
+applications
+that Chapter~\ref{c,scn-dsgn} motivates and studies 
+in much greater detail.
+
+The remainder of this chapter 
+is organized as follows.
 Section~\ref{s,relax,meth}
 introduces the notion of a QMRI scan profile,
 describes a signal model for parameter estimation,
 formulates several likelihood-based estimators
 using this model,
-and discuss practical implementation issues.
+and discusses practical implementation issues.
 Section~\ref{s,relax,exp}
 demonstrates the utility
 of likelihood-based parameter estimation
 over conventional methods
-through simulation, phantom, and \invivo experiments.
+through 
+simulation experiments.
 Section~\ref{s,relax,summ}
-provides brief concluding remarks
-and suggests future directions.
+provides concluding remarks
+and motivates the future work items
+studied in subsequent chapters.
 
 \section{Likelihood-Based Estimation in QMRI}
 \label{s,relax,meth}
@@ -460,5 +473,32 @@ via iterative constrained local optimization
 % t1 estimation from spgr
 % t2 estimation from dess
 
+In the completed thesis,
+this section will demonstrate likelihood-based estimation
+in two simulation experiments
+that correspond to the problems
+defined in Examples~\ref{sss,relax,meth,sig,t1}-\ref{sss,relax,meth,sig,t2}.
+The results will involve minor implementation improvements
+to similar results presented 
+in early conference papers 
+\cite{nataraj:14:rje} and \cite{nataraj:14:mbe},
+respectively.
+The results will motivate our use 
+in Chapter~\ref{c,scn-dsgn}
+of likelihood-based estimation
+over more conventional methods.
+
 \section{Summary}
 \label{s,relax,summ}
+
+In the completed thesis,
+this section will call into question
+the somewhat arbitrary choices
+of acquisition parameters 
+used in the previous examples
+and ask whether these acquisition parameters
+can themselves be designed 
+through optimization.
+This question will serve 
+as motivation for 
+and as transition into Chapter~\ref{c,scn-dsgn}.

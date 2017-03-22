@@ -135,11 +135,6 @@ G.~Golub and V.~Pereyra, ``Separable nonlinear least squares: the variable
   projection method and its applications,'' {\em {Inverse Prob.}}, vol.~19,
   pp.~{R1--26}, Apr. 2003.
 
-\bibitem{cheng:12:pma}
-H.-L.~M. Cheng, N.~Stikov, N.~R. Ghugre, and G.~A. Wright, ``Practical medical
-  applications of quantitative {MR} relaxometry,'' {\em {J. Mag. Res. Im.}},
-  vol.~36, pp.~{805--24}, Oct. 2012.
-
 \bibitem{fessler:03:nff}
 J.~A. Fessler and B.~P. Sutton, ``Nonuniform fast {Fourier} transforms using
   min-max interpolation,'' {\em {IEEE Trans. Sig. Proc.}}, vol.~51,
@@ -162,6 +157,11 @@ T.~Lei, ``Statistics of {MR} signals: revisited,'' in {\em {Proc. SPIE 6510
 \bibitem{gudbjartsson:95:trd}
 H.~Gudbjartsson and S.~Patz, ``The {Rician} distribution of noisy {MRI} data,''
   {\em {Mag. Res. Med.}}, vol.~34, pp.~{910--4}, Dec. 1995.
+
+\bibitem{cheng:12:pma}
+H.-L.~M. Cheng, N.~Stikov, N.~R. Ghugre, and G.~A. Wright, ``Practical medical
+  applications of quantitative {MR} relaxometry,'' {\em {J. Mag. Res. Im.}},
+  vol.~36, pp.~{805--24}, Oct. 2012.
 
 \bibitem{larsson:88:ivd}
 H.~B.~W. Larsson, J.~Frederiksen, L.~Kjaer, O.~Henriksen, and J.~Olesen, ``In
