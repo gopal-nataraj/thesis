@@ -241,7 +241,29 @@ where $\expect{\bmy}{\cdot}$ denotes element-wise expectation
 with respect to $\bmy$.
 In particular,
 the matrix CRB \cite{cramer:46} ensures
-that any unbiased estimator $\est{\bmx}$ satisfies
+that any unbiased
+\footnote{Provided that signal model $\bms\paren{\cdot}$
+	is injective and continuously differentiable in $\bmx$, 
+	maximum-likelihood (ML) estimates of $\bmx$
+	(discussed in Subsection~\ref{sss,relax,meth,est,ml})
+	are asymptotically consistent and efficient,
+	and thus asymptotically achieve the CRB.
+	For Gaussian noise models,
+	increasing sample size is statistically equivalent
+	to increasing signal-to-noise ratio. 
+	Thus, in regions where the data provides sufficiently high SNR
+	(and is thus approximately Gaussian-distributed 
+	even in magnitude \cite{gudbjartsson:95:trd}), 
+	ML estimates will exhibit minimal estimation bias,
+	and the CRB can be used 
+	to reliably predict ML estimation error.
+	Table~\ref{table:numerical} in Subsection~\ref{ss,scn-dsgn,exp,sim}
+	empirically explores the validity
+	of this high-SNR assumption,
+	through simulations
+	at realistic noise levels.
+} 
+estimator $\est{\bmx}$ satisfies
 \begin{align}
 	\cov{\est{\bmx}; \bmnu, \bmP} \succeq
 		\bmF^{-1}\paren{\bmx; \bmnu, \bmP},

@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In MRI \emph{parameter estimation},
-one seeks to quantify biomarker ''maps''
+one seeks to quantify biomarker ``maps''
 (\ie, parameter images) 
 from data.
 Because MR acquisitions 
@@ -47,8 +47,8 @@ several of our
 and others' 
 \cite{staroswiecki:12:seo,ma:13:mrf,beneliezer:15:raa,zhao:16:mlr}
 works approach estimation 
-via exhaustive grid search,
-which requires either storing
+through exhaustive grid search
+that requires either storing
 or computing on-the-fly a ``dictionary'' 
 of scan profile signal vectors.
 These works estimate a small (2-3)
@@ -92,7 +92,7 @@ In these and other applications,
 greater estimation accuracy
 requires more complete signal models
 that involve more latent parameters,
-which only increases the need 
+increasing the need 
 for scalable estimation methods.
 
 % omit
@@ -306,7 +306,8 @@ to a finite-dimensional optimization problem:
 	where each $a_{l,n} \in \real$ for $n \in \set{1,\dots,N}$.
 \end{thm}
 
-Theorem~\ref{thm:krr,rep} ensures that any solution to 
+Theorem~\ref{thm:krr,rep} ensures that any solution 
+to the $(N+1)$-dimensional optimization problem 
 \begin{align}
 	(\est{\bma}_l,\est{b}_l) \in 
 	\set{\argmin{\substack{\bma_l \in \reals{N} \\ b_l \in \real}} 
@@ -321,7 +322,7 @@ over $\hilb \times \real$,
 where $\bma_l := [a_{l,1},\dots,a_{l,N}]\tpose$.
 Fortunately, a solution of \eqref{eq:krr,cvx} exists uniquely
 for $\rho_l > 0$
-and can be expressed as
+and is expressed as
 \begin{align}
 	\est{\bma}_l &= \inv{\bmM \bmK + N\rho_l\eye{N}} \bmM \bmxg{l};
 	\label{eq:krr,a-hat} \\
@@ -349,7 +350,8 @@ can be concisely concatenated as
 		\label{eq:krr,x-hat}
 \end{align}
 where
-ck
+$\bmka{\cdot} := \brac{k(\cdot,\bmq_1),\dots,k(\cdot,\bmq_N)}\tpose - \frac{1}{N}\bmK\ones{N}
+: \reals{Q} \mapsto \reals{N}$
 is a kernel embedding operator and 
 $\bmX := \brac{\bmx_1,\dots,\bmx_N} = \brac{\bmxg{1},\dots,\bmxg{L}}\tpose 
 \in \reals{L \times N}$
@@ -362,8 +364,8 @@ For $\rho>0$,
 estimator \eqref{eq:krr,x-hat} minimizes \eqref{eq:krr,cost}
 over $\paren{\hilb \times \real}^L$.
 However, the utility of \eqref{eq:krr,x-hat}
-depends on the choice of kernel $k$,
-which induces a choice on the RKHS $\hilb$
+depends on the choice of kernel $k$
+that induces a choice on the RKHS $\hilb$
 and thus the function space $\paren{\hilb \times \real}^L$
 over which \eqref{eq:krr,prob} optimizes.
 For example, if $k$ was selected as the canonical dot product 
@@ -372,12 +374,12 @@ $k(\bmq,\bmq') \gets \innprod{\bmq}{\bmq'}_{\reals{Q}} := \bmq\tpose \bmq'$
 then \eqref{eq:krr,x-hat} would reduce 
 to affine ridge regression \cite{hoerl:70:rrb},
 which is optimal over $\paren{\reals{Q} \times \real}^L$
-but is unlikely to be useful when signal model $\bms$ is nonlinear in $\bmx$.
+but is unlikely to be useful when signal model $\bms\paren{\cdot}$ is nonlinear in $\bmx$.
 
 Since we expect a useful estimate $\est{\bmx}\paren{\bmq}$ 
 to depend nonlinearly (but smoothly) on $\bmq$,
 we instead use a 
-(symmetric, positive definite) 
+(symmetric, positive definite) kernel
 $k$ that is likewise nonlinear in its arguments
 and thus corresponds to a RKHS richer than $\reals{Q}$. 
 Specifically, we use a Gaussian kernel
@@ -385,12 +387,12 @@ Specifically, we use a Gaussian kernel
 	k(\bmq,\bmq') \gets \expa{-\frac{1}{2}\norm{\bmq-\bmq'}^2_{\bmL^{-2}}},
 	\label{eq:krr,kern}
 \end{align}
-where symmetric, positive definite 
+where symmetric, positive definite matrix
 $\bmL \in \reals{Q \times Q}$ 
 controls the length scales in $\bmq$ over which 
 the estimator $\est{\bmx}$ smooths.
-We focus on the Gaussian kernel
-over other candidate kernels
+We use the Gaussian kernel
+over other candidates
 because of its popularity
 in the machine learning community 
 for representing smooth functions.
@@ -449,7 +451,7 @@ can mitigate storage issues.
 Here we choose
 to sample Random Fourier Features (RFF) \cite{rahimi:07:rff},
 a recent method 
-for approximating shift-invariants kernels
+for approximating shift-invariant kernels
 having form $k\paren{\bmq,\bmq'} \equiv k\paren{\bmq-\bmq'}$.
 This subsection reviews the main result of \cite{rahimi:07:rff}
 for the purpose of constructing 
@@ -573,9 +575,25 @@ for data-driven model selection
 through a mixture
 of intuitive arguments
 and referenced analytical results.
-Our goal here is to leave
-for uninformed manual tuning
-as few model parameters as possible.
+Our aim here is
+to automatically tune 
+as many model parameters as possible,
+leaving as few parameters as possible
+to manual selection. 
+In light of this goal,
+we focus (where necessary)
+on \emph{online} model selection,
+where one chooses model parameters
+for training the estimator $\esta{\bmx}{\cdot}$ 
+\emph{after} observation of test data.
+Though often impractical  
+in traditional machine learning applications,
+this approach is appropriate here
+because typical voxel-wise separable
+QMRI parameter estimation problems
+are low dimensional relative
+to literature machine learning applications,
+allowing fast training.
 
 \subsubsection{Choosing Sampling Distributions}
 \label{sss,krr,pract,mod,dist}
@@ -584,13 +602,15 @@ To sample training points,
 one must select prior distributions
 on object parameters $\bmx,\bmnu$
 and noise vector $\bmeps$. 
-If offline training is required,
-all of these distributions of course
-must either be assumed
-or empirically estimated
-from previous experiments.
-Here we focus on online training,
-where one trains alongside data processing.
+If one requires offline training,
+one must either assume
+or empirically estimate 
+from previous experiments
+all of these distributions.
+Here we instead focus 
+on online training,
+where one learns the estimator $\esta{\bmx}{\cdot}$ 
+alongside data processing.
 
 Latent object parameter distributions 
 must account for model physics
