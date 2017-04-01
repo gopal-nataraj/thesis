@@ -1069,7 +1069,7 @@ a method for finding a local minimizer $\est{\bmx}$
 of possibly non-convex cost function $\cost$
 over convex constraint set $\setX$.
 Such $\est{\bmx} \in \setX$ must satisfy
-for some $\delta>0$
+for some local neighborhood's radius $\delta>0$
 \begin{align}
 	\costa{\est{\bmx}} \leq \costa{\bmx} \qquad
 		\forall \bmx \in \setX : \norm{\est{\bmx}-\bmx}_2 < \delta.
@@ -1102,8 +1102,8 @@ and repeats the following simple update:
 \end{align}
 where $\proj{\setX}$ denotes 
 projection onto $\setX$;
-$\grada{\bmx}$ denotes
-row gradient with respect to $\bmx$;
+$\grada{\bmx} := \brac{\dela{x_1},\dots,\dela{x_L}}$ denotes
+row gradient with respect to length-$L$ vector $\bmx$;
 and $\bmPi$ is a diagonal preconditioning matrix
 that permits elements of $\bmx$
 to take scale-informed step sizes
@@ -1211,7 +1211,7 @@ of any fixed $\bmxn \in \setXn$:
 		\label{eq:sep-ls-fullrnk}
 \end{align}
 where $\pinv{\cdot}$ denotes pseudoinverse;
-$\bmW^{1/2}$ denotes principle (matrix) square root;
+$\bmW^{1/2}$ denotes principal (matrix) square root;
 and \eqref{eq:sep-ls-fullrnk} holds
 if the matrix inversion within exists.
 Substituting \eqref{eq:sep-ls-fullrnk}
@@ -1242,12 +1242,8 @@ $\paren{\bmxl^*\paren{\bmxn^*},\bmxn^*}$
 is achievable to within quantization error.
 However, larger estimation problems 
 involving more nonlinear parameters
-might still be tractable 
-only via iterative optimization
+might only be tractable 
+via iterative optimization
 (see Subsection~\ref{ss,bkgrd,opt,loc})
 towards a local solution 
 $\paren{\est{\bmx}_\mathrm{L}\paren{\est{\bmx}_\mathrm{N}},\est{\bmx}_\mathrm{N}}$.
-For such higher-dimensional applications,
-Chapters~\ref{c,krr}-\ref{c,mwf} introduce novel methods 
-that tackle problems similar to \eqref{eq:nonlin-ls},
-while circumventing initialization-dependent local optimization.
