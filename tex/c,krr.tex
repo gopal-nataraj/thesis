@@ -320,8 +320,12 @@ corresponds via \eqref{eq:krr,rep}
 to a minimizer of \eqref{eq:krr,cost-l}
 over $\hilb \times \real$,
 where $\bma_l := [a_{l,1},\dots,a_{l,N}]\tpose$.
-Fortunately, a solution of \eqref{eq:krr,cvx} exists uniquely
-for $\rho_l > 0$
+Because the objective function 
+within \eqref{eq:krr,cvx}
+is a strictly convex quadratic function
+in $\paren{\bma_l,b_l}$
+for $\rho_l > 0$,
+a solution to \eqref{eq:krr,cvx} exists uniquely
 and is expressed as
 \begin{align}
 	\est{\bma}_l &= \inv{\bmM \bmK + N\rho_l\eye{N}} \bmM \bmxg{l};
@@ -375,7 +379,6 @@ then \eqref{eq:krr,x-hat} would reduce
 to affine ridge regression \cite{hoerl:70:rrb},
 which is optimal over $\paren{\reals{Q} \times \real}^L$
 but is unlikely to be useful when signal model $\bms\paren{\cdot}$ is nonlinear in $\bmx$.
-
 Since we expect a useful estimate $\est{\bmx}\paren{\bmq}$ 
 to depend nonlinearly (but smoothly) on $\bmq$,
 we instead use a 
@@ -575,55 +578,68 @@ for data-driven model selection
 through a mixture
 of intuitive arguments
 and referenced analytical results.
-Our aim here is
+Our goal here is
 to automatically tune 
 as many model parameters as possible,
-leaving as few parameters as possible
+thereby leaving as few parameters as possible
 to manual selection. 
-In light of this goal,
-we focus (where necessary)
-on \emph{online} model selection,
+In this spirit,
+we focus on ``online'' model selection,
 where one chooses model parameters
-for training the estimator $\esta{\bmx}{\cdot}$ 
-\emph{after} observation of test data.
-Though often impractical  
-in traditional machine learning applications,
-this approach is appropriate here
-because typical voxel-wise separable
-QMRI parameter estimation problems
-are low dimensional relative
-to literature machine learning applications,
-allowing fast training.
+for training the estimator $\esta{\bmx}{\cdot}$
+\emph{after} observation 
+of (unlabeled) real test data.
+This approach is unconventional
+in traditional machine learning applications
+because training often takes 
+considerably longer than testing.
+However,
+many voxel-wise separable QMRI parameter estimation problems
+are comparatively low-dimensional
+and so KRR-based estimators
+can be quickly trained
+using only a moderate number
+of simulated training examples;
+in fact,
+applying the estimator
+(especially on full-volume high-resolution imaging data)
+can take time comparable to
+or even greater than training.
+For these reasons,
+online model selection is practical
+for KRR-based QMRI parameter estimation.
 
 \subsubsection{Choosing Sampling Distributions}
 \label{sss,krr,pract,mod,dist}
 
 To sample training points,
-one must select prior distributions
-on object parameters $\bmx,\bmnu$
-and noise vector $\bmeps$. 
-If one requires offline training,
-one must either assume
-or empirically estimate 
-from previous experiments
-all of these distributions.
-Here we instead focus 
-on online training,
-where one learns the estimator $\esta{\bmx}{\cdot}$ 
-alongside data processing.
-
-Latent object parameter distributions 
-must account for model physics
-(to focus samples on useful parameter ranges)
-while also leaving generously heavy distribution tails
-(to enable precise estimation 
-over a broad parameter range).
-Known object parameter distributions
-can be estimated directly from known $\bmnu$
-via density estimation methods, 
-\eg \cite{parzen:62:oeo}.
-Noise covariance is well-estimated
-from low-signal regions of test data.
+we must select prior distributions
+on object parameters $\bmx,\bmnu$ 
+and noise vector $\bmeps$.
+Because we do not possess
+many separate prior estimates
+of latent object parameters,
+we must assume a prior distribution on $\bmx$,
+and do so 
+balancing prior knowledge 
+of the model physics 
+(to focus samples
+on useful parameter ranges)
+against generously heavy distribution tails
+(to enable precise estimation
+over broad parameter ranges).
+However, 
+we \emph{can} automatically estimate distributions 
+on $\bmnu$ and $\bmeps$ 
+with online model selection.
+We estimate known object parameter distributions
+directly from known $\bmnu$
+via kernel density estimation \cite{parzen:62:oeo}.
+We estimate the noise covariance
+from low-signal regions 
+of real image data
+(and could alternatively have used 
+readouts with no RF excitation).
 
 %\subsubsection{Choosing Number of Training Points $N$}
 %\label{sss,krr,pract,mod,n}
@@ -649,10 +665,12 @@ and covariance function
 given by the kernel.
 The observed regressand model
 $\bmx\paren{\bmq} = \bmh\paren{\bmq}+\bmb + \bmeps_\bmx$
-includes additive \emph{latent parameter noise} $\bmeps_\bmx$ 
-because noise is \emph{anticipated} in testing data
-and is thus intentionally \emph{simulated} in training data.
-If this latent parameter noise is assumed 
+includes additive \emph{latent parameter variability} $\bmeps_\bmx$
+because variation is \emph{anticipated} in parameter estimates
+and is thus intentionally \emph{simulated} 
+(implicitly through additive measurement noise)
+during training.
+If this latent parameter variability is assumed 
 to be distributed as 
 $\gauss{\zeros{L}}{N\diag{\brac{\rho_1,\dots,\rho_L}\tpose}}$,
 then the mean function
@@ -664,42 +682,46 @@ for each $l \in \set{1,\dots,L}$
 (see \cite[Ch.~2]{rasmussen:05:gpf} for derivations).
 In a Bayesian perspective then,
 $N\rho_1,\dots,N\rho_L$ should reflect
-latent parameter noise covariance.
+latent parameter variability.
 
 In MRI parameter estimation,
 we can more easily measure noise covariance
-in image data $\bmSig$ 
-than in latent parameters. 
-We relate these two covariances
+in image data
+than variability in latent parameters. 
+We relate these two quantities
 in the following.
 
 A first-order Taylor expansion
-of the signal model 
+of the signal model
 around $\expect{\bmx}{\bmx}$ is
 \begin{align}
-	\bmy \approx \expect{\bmy}{\bmy} + 
+	\bms\paren{\bmx,\bmnu} \approx \expect{\bmx}{\bmx} + 
 		\gradxs \paren{\bmx - \expect{\bmx}{\bmx}}.
 	\label{eq:krr,model-approx}
 \end{align}
 Substituting \eqref{eq:krr,model-approx}
-into a covariance definition gives
+into a standard covariance identity gives
 \begin{align}
-	\bmSig &= 
-		\expect{\bmy}{
-			\paren{\bmy - \expect{\bmy}{\bmy}}
-			\paren{\bmy - \expect{\bmy}{\bmy}}\ctpose
-		}
-		\nonumber \\
-		&\approx \gradxs \cov{\bmx} \gradxs\ctpose.
-		\label{eq:krr,cov-y}
+	\cov{\bmy} 
+		&= 
+			\cov{\bms\paren{\bmx;\bmnu}} + \cov{\bmeps}
+			\label{eq:krr,cov-y} \\
+		&\approx 
+			\gradxs \cov{\bmx} \gradxs\ctpose + \bmSig.
+			\label{eq:krr,cov-y,approx}
 \end{align}
-Taking the Moore-Penrose pseudoinverse 
-(denoted by $\pinv{\cdot}$)
-of each side yields 
+where in \eqref{eq:krr,cov-y} we have assumed
+that latent parameters $\bmx$
+and noise $\bmeps$ are uncorrelated. 
+Subtracting $\bmSig$ from each side,
+taking the Moore-Penrose pseudoinverse 
+(denoted by $\pinv{\cdot}$),
+and pre- and post-multiplying
+by $\gradxs\ctpose$ and $\gradxs$ together yield
 \begin{align}
-	\gradxs\ctpose \inv{\bmSig} \gradxs &\approx 
+	\gradxs\ctpose \pinv{\cov{\bmy}-\bmSig} \gradxs &\approx 
 		\label{eq:krr,messy} \\
-	\gradxs\ctpose \pinv{\gradxs\ctpose} &\inv{\cov{\bmx}} \pinv{\gradxs} \gradxs.
+	\gradxs\ctpose \pinv{\gradxs\ctpose} \inv{\cov{\bmx}} &\pinv{\gradxs} \gradxs.
 		\nonumber
 \end{align}
 If the Jacobian matrix $\gradxs$ 
@@ -708,10 +730,10 @@ is of full column rank
 Eq.~\eqref{eq:krr,messy} simplifies
 after matrix inversion to
 \begin{align}
-	\cov{\bmx; \bmnu} \approx \inv{\gradxs\ctpose \inv{\bmSig} \gradxs},
+	\cov{\bmx} \approx \inv{\gradxs\ctpose \pinv{\cov{\bmy}-\bmSig} \gradxs},
 	\label{eq:krr,cov-x}
 \end{align}
-an expression reminiscent
+an expression somewhat reminiscent
 of the \Cramer-Rao Bound 
 (\cf Eq.~\eqref{eq:scn-dsgn,fisher}-\eqref{eq:scn-dsgn,crb}).
 
@@ -719,22 +741,23 @@ Expression~\eqref{eq:krr,cov-x} approximates
 latent parameter noise covariance 
 but is not yet useful
 because it remains a function 
-of known parameter $\bmnu$,
-which varies spatially.
+of $\bmy$ and $\bmnu$,
+both of which vary spatially.
 As a simple solution,
 one could set regularization parameters $\rho_1,\dots,\rho_L$
 using diagonal elements of
 \begin{align}
-	\inv{N \gradxvs\ctpose \inv{\bmSig} \gradxvs},
+	\inv{N \gradxvs\ctpose \pinv{\cov{\bar{\bmy}}-\bmSig} \gradxvs},
 	\label{eq:krr,cov-x,approx}
 \end{align}
-where $\expx$ is taken
-with respect to 
-the distributions 
-used to sample training points 
-and $\nubar := \frac{1}{V} \sum_1^V \bmnu\paren{\bmr_v}$
-is the sample mean 
-of the known object parameters.
+where 
+$\bar{\bmy} := \frac{1}{V} \sum_{v=1}^V \bmy\paren{\bmr_v}$
+and 
+$\nubar := \frac{1}{V} \sum_1^V \bmnu\paren{\bmr_v}$
+are sample means
+of the unlabeled real test data
+and the known object parameters,
+respectively.
 
 Regularization parameter selection 
 via \eqref{eq:krr,cov-x,approx}
@@ -748,6 +771,9 @@ $\Cxx := \frac{1}{N}\bmX \bmM \bmX\tpose$
 from simulated training data points 
 and set $\rho_1,\dots,\rho_L$
 as diagonal elements of $\frac{1}{N}\Cxx$.
+In the ensuing preliminary experiment,
+we set regularization parameters
+using the sample covariance matrix.
 
 \subsubsection{Choosing Smoothing Length Scale}
 \label{sss,krr,pract,mod,lam}
@@ -755,9 +781,8 @@ as diagonal elements of $\frac{1}{N}\Cxx$.
 With online training,
 it is intuitive
 to set the Gaussian kernel's 
-smoothing length scale 
-based on test data sample means
-$\bar{\bmy} := \frac{1}{V} \sum_{v=1}^V \bmy\paren{\bmr_v}$
+smoothing length scale $\bmL$
+based on test data sample means $\bar{\bmy}$
 and known parameter sample means $\nubar$:
 \begin{align}
 	\bmL \gets \lambda_0 
@@ -784,7 +809,7 @@ We examine this bound over others
 because it requires intuitive selection 
 of only one error criterion;
 tighter bounds are available,
-but may not be as simple to use.
+but may be more challenging to use.
 \begin{thm}[\cite{sutherland:15:ote}]
 	Let $\setQ$ 
 	be a compact subset of $\reals{Q}$
@@ -858,18 +883,44 @@ Our overall bound is then
 		\paren{\frac{1}{\sqrt{e}} + \frac{\sqrt{2\log{Z}} + \sqrt{Q}}{2\pi}}.
 		\label{eq:approx-loose}
 \end{align}	
-Error bound \eqref{eq:approx-tight} is conservative 
-due to large constants,
-but at least ensures asymptotically
-that scaling $Z$ quadratically 
-with $Q$ 
-will maintain a given expected maximal approximation error tolerance.
-Error bound \eqref{eq:approx-loose} is looser,
-but more clearly shows 
-that selecting $\bmL$ 
+After observing unlabeled real test data 
+and selecting $\bmL$ 
+(perhaps automatically via \eqref{eq:krr,length}),
+all quantities except $Z$ 
+on the right-hand side 
+of inequality \eqref{eq:approx-tight}
+are known.
+Thus,
+one could intuitively set $Z$
+by choosing a expected maximal approximation error threshold
+and finding the minimum $Z$ 
+for which the right-hand side of \eqref{eq:approx-tight}
+is less than the threshold.
+
+In practice, we find 
+that this procedure 
+yields conservatively large choices for $Z$,
+and so we presently instead tune $Z$ manually
+to yield low empirical approximation error.
+Nevertheless,
+we have gained 
+from the above analysis 
+two points of intuition
+that may aid in guiding manual tuning.
+First,
+we observe 
+that scaling $Z$ quadratically with $Q$ 
+will asymptotically maintain 
+a given expected maximal approximation error tolerance.
+Second, we see
+(more clearly via loosened bound \eqref{eq:approx-loose})
+that selecting $\bmL$
 via \eqref{eq:krr,length}
-makes the bound somewhat invariant
-to the scale of test data.
+makes the approximation error largely invariant
+to the scale of test data;
+thus $Z$ can be reasonably selected
+predominantly based on regressor dimension $Q$
+(as opposed to other model parameters).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimentation}
@@ -885,7 +936,7 @@ a challenging application of clinical interest,
 (application details in Chapter~\ref{c,mwf}).
 Specifically,
 we use a simple model of two non-exchanging compartments
-and seek to estimate the associated latent parameters;
+and seek to estimate the (six) associated latent parameters;
 more complex models would only add parameters
 and thereby increase the need for an alternative to grid search.
 
@@ -899,8 +950,7 @@ fast steady-state pulse sequences
 were recently proposed 
 for two-compartment parameter estimation
 \cite{deoni:08:gmt, deoni:11:com}.
-We similarly take interest
-in steady-state sequences,
+We similarly investigate steady-state sequences,
 but modify acquisition details
 to address possible concerns
 of insufficient estimation precision
@@ -926,8 +976,9 @@ and a complex proportionality constant
 \footnote{We collect off-resonance effects in $\mzero$
 by approximating broadening distributions
 to be constant across compartments,
-as in prior works \cite{deoni:08:gmt, deoni:11:com}.
-We acknowledge this could lead to some bias in practice.}
+as in \cite{deoni:08:gmt, deoni:11:com}.
+We acknowledge this simplification
+could lead to some bias in practice.}
 $\mzero$.
 We assume prior knowledge of $\bmnu \gets \stx$ 
 (which in practice can be estimated
@@ -954,8 +1005,8 @@ to be nuisance parameters
 and thus do not evaluate the performance of their estimators
 in the following.
 
-We simulate data to arise
-from two non-exchanging water pools
+We simulate data arising
+from two non-exchanging water compartments
 with nominal fast 
 $\paren{\tf{1},\tf{2}} \gets \paren{500,20}$ms
 and slow 
@@ -971,7 +1022,7 @@ as $1-\ff$.
 We prescribe these parameter values 
 to the anatomy of the BrainWeb digital phantom
 \cite{collins:98:dac}
-to produce ground truth parameter maps.
+to produce realistic ground truth parameter maps.
 Using optimized acquisition parameters
 and allowing $\stx$ to model $\pm20\%$ flip angle variation,
 we apply two-compartment SPGR and DESS models
@@ -1004,9 +1055,21 @@ but are otherwise conservative)
 and directly measure 
 known parameter $\bmnu$ and noise $\bmeps$ distributions
 from test data.
-We take $\ff$ to be uniformly distributed
-on $\brac{-0.1,0.4}$ 
-and $\tf{1}$, $\tf{2}$, $\ts{1}$, $\ts{2}$ 
+We take fast-compartment fraction $\ff$ 
+to be uniformly distributed
+on $\brac{-0.1,0.4}$,
+and note
+that we sample negative values
+\footnote{Observe that our two-compartment signal models
+	are linear in $\ff$
+	and are therefore well-defined
+	for zero or even negative $\ff$ values.
+} 
+with nonzero probability
+to ensure sampling bias does not contribute significantly
+to $\ff$ estimation bias 
+(especially in low-$\ff$ regions).
+We take $\tf{1}$, $\tf{2}$, $\ts{1}$, $\ts{2}$ 
 to be log-uniformly distributed
 on $\brac{50,700}$ms, $\brac{5,50}$ms, $\brac{700,2000}$ms, $\brac{50,300}$ms,
 respectively.
@@ -1135,7 +1198,7 @@ and comparable to VPM in GM ($0.0260$ versus $0.0232$).
 \label{s,krr,summ}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter is introducing
+This chapter introduced
 a fast and computationally efficient method
 for MRI parameter estimation
 from nonlinear models
@@ -1190,7 +1253,7 @@ To this end,
 kernel ridge regression
 is one of several so-called 
 \emph{structural risk minimization} problems
-in statistical machine learning,
+in statistical machine learning \cite{cortes:95:svn},
 for which well-established analytical results are available.
 While these results may aid 
 in proving that our method 

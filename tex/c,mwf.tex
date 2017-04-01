@@ -5,6 +5,17 @@
 \label{s,mwf,intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+This chapter applies techniques
+for QMRI acquisition design
+and parameter estimation
+(both developed in earlier chapters) 
+to design new methods 
+for imaging a specific MR biomarker
+of clinical interest.
+In particular,
+we study \emph{myelin content} 
+in the human brain.
+
 Myelin is a lipid-rich material
 that forms an insulating sheath
 encasing neuronal axons 
@@ -54,9 +65,16 @@ of MR relaxation time constants
 and associating certain ranges of time constants
 with particular ``compartments'' or ``pools'' of water molecules
 that exist in similar macromolecular environments.
-Several \invitro NMR studies
+\emph{In vitro} NMR studies
 of nervous animal tissue
-prescribed a fast-relaxing water compartment
+ascribed a fast-relaxing
+\footnote{The fast-relaxing compartment bears its name 
+	with reference to the portion 
+	of the $\Tt$ distribution in water
+	(from about $10$ms to at least $1000$ms)
+	that is typically observable in MRI.
+}
+water compartment
 with $\Tt\sim$10-40ms 
 initially to general protein 
 and phospholipid structures \cite{vasilescu:78:wci}
@@ -93,7 +111,7 @@ in MS patients \cite{laule:06:mwi}.
 Thus,
 there is reasonably strong evidence
 that MWF
-(as originally measured in \cite{mackay:94:ivv})
+(as defined in \cite{mackay:94:ivv})
 is a specific and non-invasive biomarker
 for myelin content in WM.
 
@@ -129,7 +147,7 @@ to be incomparable with MWF images
 from MESE pulse sequences
 \cite{zhang:15:com},
 likely due in part
-to insufficient unbiased parameter estimation precision
+to insufficient parameter estimation precision
 \cite{lankford:13:oti}.
 
 This chapter introduces
@@ -188,12 +206,11 @@ the Bloch-matrix representation
 to derive analogous 
 (but previously unpublished)
 multi-compartmental DESS signal models. 
-Though in the derivations below
-we focus for simplicity
+Though the derivations below
+focus for simplicity
 on only two exchanging compartments,
-the Bloch-matrix formulation allows
-for straightforward generalization
-to three or more interacting compartments.
+the Bloch-matrix formulation generalizes readily
+to greater numbers of interacting compartments.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{A Two-Compartment SPGR Signal Model}
@@ -201,10 +218,41 @@ to three or more interacting compartments.
 
 The McConnell equations \cite{mcconnell:58:rrb}
 extend the Bloch equations \cite{bloch:1946:ni-paper}
-to account for first-order reversible chemical exchange
-between two or more intra-voxel compartments. 
+to account for physical exchange
+\footnote{The word ``exchange'' 
+is often a source of confusion 
+because it is used in different contexts
+to refer to a variety of transport phenomena.
+As originally described in \cite{mcconnell:58:rrb},
+\emph{chemical exchange} specifically refers 
+to the rapid reversible transfer
+of a nucleus 
+between two or more molecular environments
+(\eg, hydrogen bonding in water
+or proton exchange 
+between water and a macromolecule). 
+More recently,
+exchange has also been loosely used 
+to describe several other processes
+that can be characterized
+with similar physical equations
+but where explicit nuclear transfer does not occur.
+One such process
+that we denote for clarity
+as \emph{physical exchange}
+involves the transfer
+of intact molecules 
+between different compartments
+(\eg, water molecules across a membrane).
+In the ensuing derivations,
+we refer specifically
+to physical exchange
+but note that the McConnell equations
+describe chemical exchange as well.
+}
+between two or more intra-voxel compartments.
 Here,
-we specifically consider the interaction
+we consider the interaction
 of a fast-relaxing water compartment
 (characterized by comparatively short spin-lattice $\tf{1}$ 
 and spin-spin $\tf{2}$ relaxation times) 
@@ -222,7 +270,7 @@ $\bmmps := \brac{\mxps, \myps, \mzps}\tpose$
 are coupled via first-order exchange rates 
 $\rfs$ (from fast to slow compartment) 
 and $\rsf$ (vice-versa).
-In the absence of RF excitation,
+During periods when no RF excitation is present,
 these magnetization dynamics
 decouple in transverse and longitudinal components;
 the two-compartment transverse equations 
@@ -248,7 +296,7 @@ $\ompf\pr \in \real$ and $\omps\pr \in \real$
 allow for compartment-specific 
 but time-invariant off-resonance effects;
 and $\gam \in \real$ is the gyromagnetic ratio.
-Without excitation,
+During periods when no excitation is present,
 analogous two-compartment longitudinal equations 
 extend \eqref{eq:bloch-free-mzp} to read
 \begin{align}
@@ -286,9 +334,21 @@ in matrix form as
 \end{align}	
 where $\bmmp\prt := \vect{\brac{\bmmpf\prt, \bmmps\prt}\tpose} \in \reals{6}$
 collects the compartmental magnetization vectors
-and $\vect{\cdot}$ denotes vectorization;
+and $\vect{\cdot}$ denotes vectorization.
+Here,
 system matrix $\bmA\pr \in \reals{6 \times 6}$ 
 admits a block diagonal form
+\footnote{For conciseness we introduce here 
+	the \matlab-like shorthand 
+	$$\brac{\bmM_{1,1}, \bmM_{1,2}; \bmM_{2,1}, \bmM_{2,2}} 
+		\equiv
+		\begin{bmatrix}
+			\bmM_{1,1} \bmM_{1,2} \\
+			\bmM_{2,1} \bmM_{2,2}
+		\end{bmatrix}$$
+	for all appropriately sized submatrices 
+	$\bmM_{1,1}, \bmM_{1,2}, \bmM_{2,1}, \bmM_{2,2}$.
+}
 $\bmA\pr \equiv \brac{\bmAxy\pr, \zeros{4 \times 2}; \zeros{2 \times 4}, \bmAz\pr}$,
 with $\bmAxy\pr :=$
 \begin{align}
@@ -311,15 +371,15 @@ collecting transverse dynamics and
 \end{align}
 collecting longitudinal dynamics; and
 $\bmc\pr := \brac{0, 0, 0, 0, 
-\frac{\ff\pr \mzero\pr}{\tf{1}}, 
-\frac{\fs\pr \mzero\pr}{\ts{1}}}\tpose$.
+\frac{\ff\pr \mzero\pr}{\tf{1}\pr}, 
+\frac{\fs\pr \mzero\pr}{\ts{1}\pr}}\tpose$.
 If $\bmA\pr$ is invertible,
 a matrix exponential solution 
 to \eqref{eq:mwf,mdot}
 exists and reads
 \begin{align}
-	\bmmp\prt = e^{t\bmA\pr} \bmmp\prtz +
-		\paren{e^{t\bmA\pr} - \eye{6}} \inv{\bmA\pr} \bmc\pr
+	\bmmp\prt = e^{\paren{t-t_0}\bmA\pr} \bmmp\prtz +
+		\paren{e^{\paren{t-t_0}\bmA\pr} - \eye{6}} \inv{\bmA\pr} \bmc\pr
 		\qquad \forall t \geq t_0,
 		\label{eq:mwf,epr}
 \end{align}
@@ -333,10 +393,10 @@ a direct calculation involving
 compartmental equilibrium magnetization
 $\bmmzero\pr := \brac{0,0,0,0,\ff\pr\mzero\pr,\fs\pr\mzero\pr}\tpose$
 reveals that $\bmA\pr \bmmzero\pr = -\bmc\pr$,
-in which case \eqref{eq:mwf,epr} may be simplified as
+in which case \eqref{eq:mwf,epr} simplifies to
 \begin{align}
-	\bmmp\prt = e^{t\bmA\pr} \bmmp\prtz +
-		\paren{\eye{6} - e^{t\bmA\pr}} \bmmzero\pr
+	\bmmp\prt = e^{\paren{t-t_0}\bmA\pr} \bmmp\prtz +
+		\paren{\eye{6} - e^{\paren{t-t_0}\bmA\pr}} \bmmzero\pr
 		\qquad \forall t \geq t_0,
 		\label{eq:mwf,epr-eq}
 \end{align}
@@ -405,13 +465,17 @@ after the midpoint of RF excitation:
 		+ \paren{\eye{6} - e^{\paren{\TE-\frac{\TP}{2}}\bmA\pr}} \bmmzero\pr.
 	\label{eq:mwf,spgr-daq}
 \end{align}
-Following signal reception,
+Following signal reception
+(which we assume 
+as in Footnote~\ref{foot:reception} 
+of Chapter~\ref{c,bkgrd}
+to negligibly influence magnetization),
+the SPGR sequence spoils
 the remaining transverse magnetization
-(in both compartments) 
-is spoiled 
-while longitudinal magnetization components
-in each compartment
-remain unaffected.
+in both compartments
+while leaving unaffected 
+the longitudinal magnetization components
+in each compartment.
 We model ideal spoiling 
 in both compartments as 
 \begin{align}
@@ -420,7 +484,9 @@ in both compartments as
 \end{align}
 where $\bmSsix := \bmS \otimes \eye{2} \in \reals{6 \times 6}$
 is a compartment-wise spoiling operator
-and $\bmS$ is defined in \eqref{eq:spgr-spoil}.
+and $\bmS \in \reals{3 \times 3}$
+is the diagonal binary matrix 
+defined in \eqref{eq:spgr-spoil}.
 After spoiling,
 compartments continue to exchange
 while their longitudinal magnetization components
@@ -473,10 +539,10 @@ at the echo time.
 
 The matrix exponentials 
 in \eqref{eq:mwf,spgr-m-t0} 
-are cumbersome to expand in general
+would be cumbersome to expand in general
 but fortunately always arise
-prepended by ideal spoiling operator $\bmSsix$.
-The combined form simplifies as
+prepended by spoiling matrix $\bmSsix$.
+The combined form reduces to
 \begin{align}
 	\bmSsix e^{\paren{\TR-\TP}\bmA\pr} \equiv
 		\brac{\zeros{4 \times 4}, \zeros{4 \times 2}; 
@@ -486,8 +552,28 @@ The combined form simplifies as
 and admits 
 an explicit representation 
 for \eqref{eq:mwf,spgr-m-t0}
-that can be found 
-via standard solvers. 
+that we find
+via standard solvers
+\footnote{Since we require many signal evaluations
+	for acquisition design
+	and parameter estimation,
+	it is well worthwhile 
+	from a computational standpoint
+	to symbolically solve
+	algebraic systems of equations
+	whenever possible.
+	However, 
+	for complicated equation systems 
+	such as \eqref{eq:mwf,spgr-m-t0}, 
+	the manipulations required 
+	are tedious and error-prone.
+	In \matlab,
+	we used the Symbolic Toolbox 
+	and the function \texttt{matlabFunction}
+	to symbolically solve \eqref{eq:mwf,spgr-m-t0}
+	and automatically generate 
+	memory-friendly function handles. 
+}. 
 Note that
 if RF pulses are assumed instantaneous
 (\ie, $\TP \gets 0$)
@@ -558,13 +644,17 @@ in \S\ref{sss,bkgrd,mri,ss,spgr}:
 	\item 
 		We assume 
 		for short echo time $\TE$
-		that negligible exchange occurs
+		that minimal exchange occurs
 		between excitation and signal reception.
-		This assumption facilitates expansion 
-		of the matrix exponentials
-		in \eqref{eq:mwf,spgr-daq}
-		and separates broadening integrals 
+		This strong assumption 
+		is only used 
+		to facilitate first-order expansion
+		of the matrix exponential 
+		in \eqref{eq:mwf,spgr,int-freq},
+		thereby separating broadening integrals 
 		by compartment.
+		Without this assumption,
+		\eqref{eq:mwf,spgr,int-freq} remains valid.
 		\label{item:spgr,exchg0}
 \end{enumerate}
 With these assumptions,
@@ -574,9 +664,10 @@ centered at position $\bmr$
 and with volume defined by $\setV\pr$ 
 is (to within constants):
 \begin{alignat}{2}
-	\spgr\paren{\bmr,t_0+\frac{\TP}{2}+\TE} 
-		&\propto&
-			&\int_{\setV\pr} \brac{1, 1, i, i, 0, 0} \bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \dercubed{\bmr} 
+	\spgr\bigg(\bmr,t_0+
+		&\frac{\TP}{2}&
+		+ &\TE\bigg) \propto
+			\int_{\setV\pr} \brac{1, 1, i, i, 0, 0} \bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE} \dercubed{\bmr} 
 			\label{eq:mwf,spgr,int} \\
 		&\approx& 
 			&\paren{\int_{\real^2} \brac{1, 1, i, i, 0, 0}
@@ -584,7 +675,7 @@ is (to within constants):
 				\dista{\ompf} \dista{\omps} \der{\ompf} \der{\omps}} 
 				\bmmp\paren{\bmr,t_0+\TP} 
 				\label{eq:mwf,spgr,int-freq} \\
-		&=&
+		&\approx&
 			&\begin{bmatrix}
 				e^{-\paren{1/\tf{2}\pr+\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
 				e^{-\paren{1/\ts{2}\pr+\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}} \\
@@ -656,7 +747,8 @@ To develop two-compartment DESS signal models,
 we first adapt the McConnell equation solutions
 of Subsection~\ref{ss,mwf,model,spgr}
 to describe compartmental magnetization evolution
-in the presence of time-dependent field inhomogeneities.
+in the presence of time-dependent field inhomogeneities
+(such as the unbalanced dephasing gradient used in DESS).
 We then modify corresponding derivations
 of single-compartment DESS models
 (presented in Subsection~\ref{sss,bkgrd,mri,ss,dess}),
@@ -676,7 +768,8 @@ DESS signal dynamics
 cannot in general be described
 by matrix exponential solution \eqref{eq:mwf,epr-eq}.
 Instead, 
-the dynamics (without excitation) arise as a solution to
+the dynamics (during periods without excitation) 
+arise as a solution to
 \begin{align}
 	\dela{t} \bmmp\prt = \bmA\prt \bmmp\prt + \bmc\pr,
 	\label{eq:mwf,mdot,t-dep}
@@ -706,28 +799,27 @@ Here,
 we utilize a first-order Magnus expansion 
 that in chemical equilibrium yields
 a simple approximate 
-\footnote{
-Approximation \eqref{eq:mwf,epr-eq,t-dep} is exact 
-if commutation relation
-$$\bmA\paren{\bmr,t_1}\bmA\paren{\bmr,t_2} = \bmA\paren{\bmr,t_2} \bmA\paren{\bmr,t_1}$$
-holds for all $t_1,t_2 \geq t_0$,
-which in turn holds pointwise if and only if
-\begin{align}
-	\rfs\pr \paren{\ompf\paren{\bmr,t_1} - \omps\paren{\bmr,t_1} -
-		\paren{\ompf\paren{\bmr,t_2} - \omps\paren{\bmr,t_2}}} &= 0;
-		\label{eq:mwf,epr,appx-conf-rfs} \\
-	\rsf\pr \paren{\ompf\paren{\bmr,t_1} - \omps\paren{\bmr,t_1} -
-		\paren{\ompf\paren{\bmr,t_2} - \omps\paren{\bmr,t_2}}} &= 0.
-		\label{eq:mwf,epr,appx-conf-rsf}
-\end{align}
-Conditions~\eqref{eq:mwf,epr,appx-conf-rfs}-\eqref{eq:mwf,epr,appx-conf-rsf} hold exactly
-in the special cases 
-of equal field inhomogeneity across compartments
-(\ie, $\ompf = \omps$);
-no exchange 
-(\ie, $\rfs \gets 0$ and $\rsf \gets 0$); 
-or time-independent off-resonance 
-(\ie, $\ompf\prt \equiv \ompf\pr$ and $\omps\prt \equiv \omps\pr\, \forall \bmr,t$).
+\footnote{Approximation \eqref{eq:mwf,epr-eq,t-dep} is exact 
+	if commutation relation
+	$$\bmA\paren{\bmr,t_1}\bmA\paren{\bmr,t_2} = \bmA\paren{\bmr,t_2} \bmA\paren{\bmr,t_1}$$
+	holds for all $t_1,t_2 \geq t_0$,
+	which in turn holds pointwise if and only if
+	\begin{align}
+  	\rfs\pr \paren{\ompf\paren{\bmr,t_1} - \omps\paren{\bmr,t_1} -
+  		\paren{\ompf\paren{\bmr,t_2} - \omps\paren{\bmr,t_2}}} &= 0;
+  		\label{eq:mwf,epr,appx-conf-rfs} \\
+  	\rsf\pr \paren{\ompf\paren{\bmr,t_1} - \omps\paren{\bmr,t_1} -
+  		\paren{\ompf\paren{\bmr,t_2} - \omps\paren{\bmr,t_2}}} &= 0.
+  		\label{eq:mwf,epr,appx-conf-rsf}
+  \end{align}
+  Conditions~\eqref{eq:mwf,epr,appx-conf-rfs}-\eqref{eq:mwf,epr,appx-conf-rsf} hold exactly
+  in the special cases 
+  of equal field inhomogeneity across compartments
+  (\ie, $\ompf = \omps$);
+  no exchange 
+  (\ie, $\rfs \gets 0$ and $\rsf \gets 0$); 
+  or time-independent off-resonance 
+  (\ie, $\ompf\prt \equiv \ompf\pr$ and $\omps\prt \equiv \omps\pr\, \forall \bmr,t$).
 }
 solution for all $t \geq t_0$:
 \begin{align}
@@ -743,7 +835,7 @@ and are not considered hereafter
 for simplicity.
 
 We next use \eqref{eq:mwf,epr-eq,t-dep}
-to proceed in developing a two-compartment DESS signal model.
+to develop a two-compartment DESS signal model.
 As before,
 let $\bmmp\prtz$ denote the two-compartment magnetization 
 at an initial time $t_0$
@@ -774,11 +866,9 @@ to a second (smaller, but nonzero) acquired signal.
 We assume that the dephasing gradient 
 is of sufficiently small gradient area
 so as to contribute
-mainly to compartmental off-resonance phase accrual 
-and
-negligibly to self-diffusion 
-within each compartment
-or inter-diffusion between compartments.
+mainly to compartmental off-resonance phase accrual
+and negligibly to compartmental magnetization attenuation
+due to self-diffusion.
 Then, compartmental magnetization evolution
 during data acquisition 
 and gradient dephasing
@@ -798,7 +888,7 @@ entirely through compartmental phase functions
 $\phipf\pr := \int_{t_0+\TP}^{\TR} \ompf\paren{\bmr,t'} \der t'$
 and
 $\phips\pr := \int_{t_0+\TP}^{\TR} \omps\paren{\bmr,t'} \der t'$,
-which will later aid across-voxel integration. 
+which will later aid intra-voxel integration. 
 
 In steady state,
 one cycle of excitation,
@@ -921,7 +1011,7 @@ $\phipf\pr$ and $\phips\pr$:
 		We assume 
 		that the dephasing gradient imparts 
 		a sufficiently large integral number $\cyc$ 
-		of across-voxel phase cycles
+		of intra-voxel phase cycles
 		such that full-repetition compartmental phase accruals
 		$\phipf$ and $\phips$ 
 		are distributed essentially uniformly
@@ -1040,10 +1130,17 @@ Thus,
 even with the simple first-order Magnus expansion
 taken in \eqref{eq:mwf,epr-eq,t-dep},
 we find in DESS 
-that magnetization compartments mix 
-due not only to exchange effects
-but also to differences across compartments
+that exchange causes magnetization compartments
+to interact not only via exchange rates
+but also through differences across compartments
 in off-resonance phase accrual.
+In other words,
+additional assumptions on the relationship 
+between compartmental off-resonance distributions
+(\eg, that they are the same)
+would affect the DESS models
+\emph{even if} the signal were received
+immediately following excitation (at $\TE \gets \frac{\TP}{2}$).
 
 In the special case
 where exchange is altogether neglected
@@ -1060,11 +1157,11 @@ and admit the closed-form expressions
 		\label{eq:mwf,dess-def,mod-exchg0} \\
 	&\times 
 		\bigg(
-			\paren{1-\frac{\etaf\paren{\bmr,\TR-\TP}}{\xif\paren{\bmr,\TR-\TP}}}
+			\ff\pr \paren{1-\frac{\etaf\paren{\bmr,\TR-\TP}}{\xif\paren{\bmr,\TR-\TP}}}
 			e^{-\paren{1/\tf{2}\pr+\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}}
 			\nonumber \\
 	&+	
-			\paren{1-\frac{\etas\paren{\bmr,\TR-\TP}}{\xis\paren{\bmr,\TR-\TP}}}
+			\fs\pr \paren{1-\frac{\etas\paren{\bmr,\TR-\TP}}{\xis\paren{\bmr,\TR-\TP}}}
 			e^{-\paren{1/\ts{2}\pr+\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}}
 		\bigg);
 		\nonumber \\
@@ -1073,11 +1170,11 @@ and admit the closed-form expressions
 		\label{eq:mwf,dess-ref,mod-exchg0} \\
 	&\times
 		\bigg(
-			\paren{1-\etaf\paren{\bmr,\TR-\TP}}
+			\ff\pr \paren{1-\etaf\paren{\bmr,\TR-\TP}}
 			e^{+\paren{1/\tf{2}\pr-\Rtpf\pr+i\ompfmed\pr}\paren{\TE-\frac{\TP}{2}}}
 			\nonumber \\
 	&+
-			\paren{1-\etas\paren{\bmr,\TR-\TP}}
+			\fs\pr \paren{1-\etas\paren{\bmr,\TR-\TP}}
 			e^{+\paren{1/\ts{2}\pr-\Rtps\pr+i\ompsmed\pr}\paren{\TE-\frac{\TP}{2}}}
 		\bigg),
 		\nonumber
@@ -1086,16 +1183,20 @@ where $\etaf$, $\etas$, $\xif$, and $\xis$
 are intermediate variables defined as
 \begin{align}
 	\etaf\prt &:=
-		\sqrt{\frac{1-\paren{\expa{-t/\tf{2}}}^2}{1-\paren{\expa{-t/\tf{2}}/\xif\prt}^2}}
-		\qquad
+		\sqrt{\frac{1-\paren{\expa{-t/\tf{2}\pr}}^2}
+		{1-\paren{\expa{-t/\tf{2}\pr}/\xif\prt}^2}};
+		\nonumber \\
 	\xif\prt &:=
-		\frac{1-\expa{-t/\tf{1}}\cos{\flip\pr}}{\expa{-t/\tf{1}}-\cos{\flip\pr}};
+		\frac{1-\expa{-t/\tf{1}\pr}\cos{\flip\pr}}
+		{\expa{-t/\tf{1}\pr}-\cos{\flip\pr}};
 		\nonumber \\
 	\etas\prt &:=
-		\sqrt{\frac{1-\paren{\expa{-t/\ts{2}}}^2}{1-\paren{\expa{-t/\tf{2}}/\xis\prt}^2}}
-		\qquad
+		\sqrt{\frac{1-\paren{\expa{-t/\ts{2}\pr}}^2}
+		{1-\paren{\expa{-t/\ts{2}\pr}/\xis\prt}^2}};
+		\nonumber \\
 	\xis\prt &:=
-		\frac{1-\expa{-t/\ts{1}}\cos{\flip\pr}}{\expa{-t/\ts{1}}-\cos{\flip\pr}}.
+		\frac{1-\expa{-t/\ts{1}\pr}\cos{\flip\pr}}
+		{\expa{-t/\ts{1}\pr}-\cos{\flip\pr}}.
 		\nonumber
 \end{align}
 Eqs.~\eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0}
@@ -1129,7 +1230,7 @@ to design a fast SPGR/DESS acquisition
 for precise MWF imaging.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{SPGR/DESS Acquisition Design}
+\subsection{Scalable Acquisition Design}
 \label{ss,mwf,acq,design}
 
 Recall from Subsection~\ref{ss,scn-dsgn,crb,sig} 
@@ -1242,10 +1343,12 @@ is given by
    \label{eq:mwf,fisher}
 \end{align}
 where $\bms := \brac{s_1,\dots,s_D}\tpose$ 
-is the signal model.
-Furthermore, if datasets are assumed independent
+is the noiseless signal model.
+Furthermore, 
+if elements of each measurement vector
+are assumed independent
 (as is typical),
-$\bmSig$ takes diagonal structure
+$\bmSig$ takes the diagonal structure
 $\bmSig \gets \diag{\sigma_1^2,\dots,\sigma_D^2}$
 and
 \begin{align}
@@ -1292,8 +1395,8 @@ for the gradient of the expected cost,
 as desired.
 
 If \eqref{eq:mwf,expcost-Pgrad} exists,
-\eqref{eq:mwf,P-hat} can be solved iteratively
-for a convex search space $\setP$
+one could solve \eqref{eq:mwf,P-hat} iteratively
+for convex search space $\setP$
 via updates
 \begin{align}
 	\iter{\bmP}{i} \gets 
@@ -1310,7 +1413,7 @@ and the locally convergent minimizer
 depends on initialization.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Scan Design Implementation Details}
+\subsection{SPGR/DESS Scan Design Implementation Details}
 \label{ss,mwf,acq,detail}
 
 This subsection applies 
@@ -1334,8 +1437,9 @@ and in fact here
 (as in \cite{deoni:11:com, deoni:13:oct})
 are largely neglected.
 
-Specifically,
-we assume (as in Section~\ref{s,krr,exp}) 
+For the preliminary study
+discussed in the remainder of this chapter,
+we specifically assume (as in Section~\ref{s,krr,exp}) 
 that signal arises
 from two non-exchanging water compartments
 (\ie, $\rfs \gets 0$, $\rsf \gets 0$, and $\ff + \fs = 1$)
@@ -1391,9 +1495,10 @@ estimation precision.
 Here, 
 fast-fraction variance weight 
 $\inv{\expect{\bmx,\bmnu}{\ff}}$ assigns interpretable meaning
-to $\sqrt{\expcost\paren{\bmP}}$
+to $\sqrt{\expcost\paren{\bmP}}$ (equivalently, $\expcost\paren{\bmP}$)
 as a unitless measure
 of the expected relative standard deviation 
+(equivalently, expected coefficient of variation)
 afforded by $\bmP$ 
 in asymptotically unbiased estimates of $\ff$. 
 
@@ -1451,7 +1556,7 @@ To control RF energy deposition,
 we restrict DESS flip angles 
 to range between $\degrees{1}$ and $\degrees{60}$.
 We further restrict SPGR flip angles
-to be within $\degrees{1}$ and $\degrees{40}$
+to be between $\degrees{1}$ and $\degrees{40}$
 to avoid excessive model mismatch 
 due to partial spoiling effects \cite{zur:91:sot}.
 To comply with other fixed pulse sequence timing requirements,
@@ -1472,7 +1577,7 @@ as in a state-of-the-art fast steady-state acquisition
 These constraints together define a convex search space
 over which $\expcost$ can be locally optimized.
 
-\begin{figure}
+\begin{figure}[!ht]
   \centering
   \begin{tikzpicture}[node distance=1em]
   
@@ -1564,11 +1669,11 @@ our total scan time constraint
 such that only three such scan profiles were feasible,
 each of which we studied explicitly.
 However in MWF imaging,
-a greater number of datasets are required
+more datasets are required
 for well-conditioned estimation
 of a larger number of latent parameters.
 To permit scan profiles
-with greater numbers of datasets,
+with many datasets,
 we must optimize with respect
 to a larger time constraint
 that allows combinatorially many more scan profiles.
@@ -1617,7 +1722,9 @@ $\sqrt{\expcost(\est{\bmP})}$.
   \caption{
 		SPGR/DESS flip angles and repetition times
 		that comprise $\est{\bmP}$,
-		a scan parameter designed
+		a scan parameter matrix designed
+		under total repetition time budget 
+		$\sum_{d=1}^D \TRd \leq 263.7$ms
 		for precise $\ff$ estimation in WM
 		via the sequence of optimization problems
 		described in Figure~\ref{fig:mwf,schem}. 
@@ -1630,7 +1737,8 @@ $\sqrt{\expcost(\est{\bmP})}$.
 		and DESS \eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0}
 		signal models.
 		Remarkably, 
-		this optimized scan profile involving $\TR$ variation
+		this optimized scan profile 
+		involving (substantial) $\TR$ variation
 		achieves better $\ff$ estimation precision
 		than a similarly optimized scan profile
 		with fixed minimum-$\TR$ acquisitions,
@@ -1919,14 +2027,15 @@ Nevertheless,
 it warrants mention 
 that MWF in healthy GM 
 was reported in \cite[Fig.~3]{zhang:15:com}
-to be $\sim0.05$ using GRASE.
+to be about $0.05$ using GRASE.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Future Work}
 \label{s,mwf,summ}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter is developing a fast steady-state acquisition
+This chapter describes initial work 
+on developing a fast steady-state acquisition
 for precise MWF imaging.
 We have thus far developed
 a two-compartment signal model 
@@ -1947,7 +2056,7 @@ in healthy WM
 to state-of-the-art literature MESE results,
 thorough validation is required
 and will constitute a major portion 
-of relevant future work,
+of future work,
 discussed in the following.
 
 % need to first build support for claim that ff as measured by spgr/dess 
@@ -2034,7 +2143,7 @@ is important for systematic validation
 but is overkill in practice.
 For a more interesting usage,
 we will next consider joint estimation
-of MWF and transmit field variation $\ff$
+of MWF and transmit field variation $\stx$
 (still assuming knowledge of other latent parameters)
 from the same MESE dataset.
 NNLS is inapplicable 

@@ -473,30 +473,49 @@ after the (midpoint of) RF excitation:
 	&+ \bmmzero\paren{\bmr,\frac{\TP}{2}+\TE;\TP}.
 	\label{eq:spgr-daq}
 \end{align}
-Following signal reception,
-the remaining transverse magnetization 
-is spoiled 
+The remaining transverse magnetization is spoiled
 \footnote{Transverse signal spoiling 
-is often (nearly) achieved in practice
-using strong induced field inhomogeneities 
-(which cause rapid transverse signal dephasing)
-in tandem with RF excitations
-that additionally impart nonlinear
-(often quadratically increasing)
-transverse magnetization phase
-\cite{zur:91:sot}.
-Though the nonlinear RF phase
-used in so-called ``RF-spoiling'' 
-prevents any one spin
-from reaching a true steady-state,
-the signal integrated
-over a typically-sized voxel
-achieves SS-like behavior
-\cite{denolin:05:nii}.
+	is often (nearly) achieved in practice
+	using \emph{gradient fields}, 
+	or strong induced field inhomogeneities 
+	that cause rapid transverse signal dephasing,
+	in tandem with RF excitations
+	that additionally impart nonlinear
+	(often quadratically increasing)
+	transverse magnetization phase
+	\cite{zur:91:sot}.
+	Though the nonlinear RF phase
+	used in so-called ``RF-spoiling'' 
+	prevents any one spin
+	from reaching a true steady-state,
+	the signal integrated
+	over a typically-sized voxel
+	achieves SS-like behavior
+	\cite{denolin:05:nii}.
+	\label{foot:spoil}
 }
-while the longitudinal component
-is unaffected. 
-We model an ideal spoiling operation as
+following signal reception
+\footnote{MRI signal reception 
+	also uses gradient fields
+	to spatially localize signal;
+	thus signal reception
+	would in general 
+	impart additional magnetization phase.
+	However, 
+	we assume hereafter
+	that MR signal is received
+	using ``balanced'' imaging gradients
+	that impart zero net phase
+	per repetition cycle;
+	under this restriction,
+	balanced imaging gradients
+	have a negligible net affect
+	on the magnetization vector.
+	\label{foot:reception}
+}
+while the longitudinal component is unaffected.
+We model an ideal spoiling
+operation as
 \begin{align}
 	\bmS \bmmp\paren{\bmr,t_0+\frac{\TP}{2}+\TE}, \where \qquad
 	\bmS := 
