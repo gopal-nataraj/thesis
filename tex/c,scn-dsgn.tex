@@ -1758,10 +1758,10 @@ However, prior distributions are generally unknown,
 and may need to be estimated from data, 
 as in \cite{lewis:16:ddo}.
 
-Careful calibration of flip angle scaling $\bmstx$ is essential 
+Careful calibration of flip angle scaling $\stx$ is essential 
 for accurate $\bmTo, \bmTt$ estimation 
 from SPGR/DESS scan profiles. 
-In this work, we estimate $\bmstx$ 
+In this work, we estimate $\stx$ 
 from \emph{separate} acquisitions 
 and adjust nominal flip angles prior to reconstruction, 
 but acknowledge that non-idealities 
@@ -1770,7 +1770,7 @@ cause resultant transmit field estimation errors
 to propagate into our $\bmTo,\bmTt$ estimates. 
 To reduce error propagation, 
 it may be desirable to instead design scan profiles 
-to permit \emph{joint} estimation of $\bmstx$, 
+to permit \emph{joint} estimation of $\stx$, 
 in addition to other latent object parameters.
 Unfortunately, 
 we find that optimizing the $(2,1)$ or $(0,2)$ profile 
@@ -1783,7 +1783,7 @@ from the $(2,1)$ or $(0,2)$ profile
 is possible \cite{nataraj:14:mbe}.) 
 It remains an open scan design question 
 as to whether time spent collecting Bloch-Siegert data 
-for separate $\bmstx$ mapping could instead be better spent 
+for separate $\stx$ mapping could instead be better spent 
 collecting additional SPGR, DESS, 
 and/or other data for joint estimation.
 

@@ -973,19 +973,20 @@ fast-relaxing compartmental fraction $\ff$;
 for the fast-relaxing $\paren{\tf{1},\tf{2}}$
 and slow-relaxing $\paren{\ts{1},\ts{2}}$ compartments;
 and a complex proportionality constant
-\footnote{We collect off-resonance effects in $\mzero$
+\footnote{We collect off-resonance effects in $\const{3}$
 by approximating broadening distributions
 to be constant across compartments,
 as in \cite{deoni:08:gmt, deoni:11:com}.
 We acknowledge this simplification
 could lead to some bias in practice.}
-$\mzero$.
+$\const{3}$ 
+(defined explicitly in Section~\ref{s,mwf,exp}).
 We assume prior knowledge of $\bmnu \gets \stx$ 
 (which in practice can be estimated
 from separate fast acquisitions, 
 \eg \cite{sacolick:10:bmb})
 and collect the remaining $L \gets 6$ latent parameters as
-$\bmx \gets \brac{\ff,\tf{1},\tf{2},\ts{1},\ts{2},\mzero}\tpose$.
+$\bmx \gets \brac{\ff,\tf{1},\tf{2},\ts{1},\ts{2},\const{3}}\tpose$.
 
 In light of clinical need,
 we focus on estimating fast-relaxing fraction $\ff$
@@ -1039,7 +1040,7 @@ and 26.4-49.5dB SNR in GM.
 Because the first and second DESS signals depend differently
 on phase accrual due to off-resonance effects \cite{nataraj::oms},
 off-resonance related phase (unlike signal loss) 
-cannot be collected into $\mzero$.
+cannot be collected into $\const{3}$.
 To avoid (separate or joint) estimation
 of an off-resonance field map, 
 we elect to estimate parameters 
@@ -1075,7 +1076,7 @@ on $\brac{50,700}$ms, $\brac{5,50}$ms, $\brac{700,2000}$ms, $\brac{50,300}$ms,
 respectively.
 We match the scaling of test data
 in training
-by taking $\mzero$ 
+by taking $\const{3}$ 
 to be uniformly distributed on $\brac{\eps,u}$, 
 where $u$ is set as 5$\times$ the maximum value of test data.
 We estimate the distribution of $\bmnu$
@@ -1276,7 +1277,7 @@ between training and testing.
 The present formulation 
 addresses scaling ambiguity
 by setting the sampling distribution
-of proportionality constant $\mzero$
+of proportionality constant $\const{3}$
 based on test data,
 thereby matching simulated training data scale
 to test data scale.
@@ -1284,18 +1285,18 @@ This strategy requires retraining
 between acquisitions,
 which may be undesirable in practice.
 
-Since $\mzero$ is the only latent parameter
+Since $\const{3}$ is the only latent parameter
 that is affected by data scale,
 it is natural
 to seek problem structure
-in $\mzero$ 
+in $\const{3}$ 
 to build scale invariance
 into KRR-based MRI parameter estimation.
 Here we surmise 
 that appropriately leveraging the partial linearity
-of most MR signal models in $\mzero$
+of most MR signal models in $\const{3}$
 will allow us
-to separate estimating scale-variant $\mzero$
+to separate estimating scale-variant $\const{3}$
 (via standard linear estimators)
 from estimating scale-invariant nonlinear parameters
 (via kernel regression).

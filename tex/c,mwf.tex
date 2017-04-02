@@ -6,14 +6,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This chapter applies techniques
+(developed in earlier chapters)
 for QMRI acquisition design
 and parameter estimation
-(both developed in earlier chapters) 
 to design new methods 
 for imaging a specific MR biomarker
 of clinical interest.
 In particular,
-we study \emph{myelin content} 
+we study a biomarker 
+for \emph{myelin content} 
 in the human brain.
 
 Myelin is a lipid-rich material
@@ -814,12 +815,14 @@ a simple approximate
   \end{align}
   Conditions~\eqref{eq:mwf,epr,appx-conf-rfs}-\eqref{eq:mwf,epr,appx-conf-rsf} hold exactly
   in the special cases 
-  of equal field inhomogeneity across compartments
-  (\ie, $\ompf = \omps$);
-  no exchange 
-  (\ie, $\rfs \gets 0$ and $\rsf \gets 0$); 
-  or time-independent off-resonance 
-  (\ie, $\ompf\prt \equiv \ompf\pr$ and $\omps\prt \equiv \omps\pr\, \forall \bmr,t$).
+  of a time-independent difference 
+  in compartmental off-resonance frequencies
+  (\ie, $\ompf\paren{\bmr,t_1} - \omps\paren{\bmr,t_1} =
+  	\ompf\paren{\bmr,t_2} - \omps\paren{\bmr,t_2}\, 
+		\forall \bmr, \forall t_1,t_2 \geq t_0$)
+  or no exchange 
+  (\ie, $\rfs\pr \gets 0$ and $\rsf\pr  \gets 0\,
+  	\forall \bmr$).
 }
 solution for all $t \geq t_0$:
 \begin{align}
