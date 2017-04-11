@@ -1,47 +1,46 @@
-This is BibTeX, Version 0.99d (TeX Live 2014)
+This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: root.aux
 The style file: ieeetr.bst
 Database file #1: ../bib/master.bib.bib
-Database file #2: ../bib/tmp.bib.bib
 You've used 144 entries,
             1876 wiz_defined-function locations,
-            1223 strings with 26316 characters,
-and the built_in function-call counts, 50548 in all, are:
-= -- 5411
-> -- 1732
+            1215 strings with 26166 characters,
+and the built_in function-call counts, 51039 in all, are:
+= -- 5503
+> -- 1743
 < -- 1
-+ -- 635
-- -- 491
-* -- 3639
-:= -- 6633
-add.period$ -- 157
++ -- 638
+- -- 494
+* -- 3682
+:= -- 6680
+add.period$ -- 155
 call.type$ -- 144
 change.case$ -- 138
 chr.to.int$ -- 0
 cite$ -- 144
-duplicate$ -- 2545
-empty$ -- 4259
-format.name$ -- 491
-if$ -- 12426
+duplicate$ -- 2560
+empty$ -- 4272
+format.name$ -- 494
+if$ -- 12504
 int.to.chr$ -- 0
 int.to.str$ -- 144
 missing$ -- 147
-newline$ -- 448
+newline$ -- 446
 num.names$ -- 144
-pop$ -- 278
+pop$ -- 277
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2386
+skip$ -- 2418
 stack$ -- 0
-substring$ -- 4611
-swap$ -- 1454
+substring$ -- 4729
+swap$ -- 1472
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 505
+while$ -- 528
 width$ -- 147
-write$ -- 1436
+write$ -- 1433

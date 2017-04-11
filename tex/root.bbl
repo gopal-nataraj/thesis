@@ -46,11 +46,10 @@ G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Model-based estimation of {T2}
   maps with dual-echo steady-state {MR} imaging,'' in {\em {Proc. IEEE Intl.
   Conf. on Image Processing}}, pp.~{1877--81}, 2014.
 
-\bibitem{nataraj::oms}
+\bibitem{nataraj:17:oms}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Optimizing {MR} scan design for
   model-based {T1,} {T2} estimation from steady-state sequences,'' {\em {IEEE
-  Trans. Med. Imag.}}, 2017.
-\newblock To appear.
+  Trans. Med. Imag.}}, vol.~36, pp.~{467--77}, Feb. 2017.
 
 \bibitem{nataraj:15:amm}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``A min-max {CRLB} optimization
@@ -66,7 +65,7 @@ G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Dictionary-free {MRI} parameter
 \bibitem{nataraj:17:mwf}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Myelin water fraction
   estimation from optimized steady-state sequences using kernel ridge
-  regression,'' in {\em {Proc. Intl. Soc. Mag. Res. Med.}}, 2017.
+  regression,'' in {\em {Proc. Intl. Soc. Mag. Res. Med.}}, p.~5076, 2017.
 \newblock To appear.
 
 \bibitem{macovski:83}
@@ -107,12 +106,12 @@ Y.~Zur, M.~L. Wood, and L.~J. Neuringer, ``Spoiling of transverse magnetization
 
 \bibitem{denolin:05:nii}
 V.~Denolin, C.~Azizieh, and T.~Metens, ``New insights into the mechanisms of
-  signal formation in rf-spoiled gradient echo sequences,'' {\em {Mag. Res.
+  signal formation in {RF-spoiled} gradient echo sequences,'' {\em {Mag. Res.
   Med.}}, vol.~54, pp.~{937--54}, Oct. 2005.
 
 \bibitem{redpath:88:fan}
-T.~Redpath and R.~A. Jones, ``Fade-a new fast imaging sequence,'' {\em {Mag.
-  Res. Med.}}, vol.~6, pp.~{224--34}, Feb. 1988.
+T.~W. Redpath and R.~A. Jones, ``{FADE-A} new fast imaging sequence,'' {\em
+  {Mag. Res. Med.}}, vol.~6, pp.~{224--34}, Feb. 1988.
 
 \bibitem{bruder:88:ans}
 H.~Bruder, H.~Fischer, R.~Graumann, and M.~Deimling, ``A new steady-state
@@ -404,7 +403,6 @@ M.~{\Akcakaya}, S.~{\Weingartner}, {\Sebastien}.~Roujol, and R.~Nezafat, ``On
 C.~M. Lewis, S.~A. Hurley, M.~E. Meyerand, and C.~G. Koay, ``Data-driven
   optimized flip angle selection for {T1} estimation from spoiled gradient echo
   acquisitions,'' {\em {Mag. Res. Med.}}, vol.~76, pp.~{792--802}, Sept. 2016.
-\newblock To appear.
 
 \bibitem{liu:17:gmm}
 Y.~Liu, J.~R. Buck, and V.~N. Ikonomidou, ``Generalized min-max bound-based
@@ -547,7 +545,7 @@ B.~Zhao, K.~Setsompop, H.~Ye, S.~Cauley, and L.~L. Wald, ``Maximum likelihood
   Med. Imag.}}, vol.~35, pp.~{1812--23}, Aug. 2016.
 
 \bibitem{feinberg:85:mri}
-D.~A. Feinberg, L.~E. Crooks, P.~Sheldon, J.~H. III, J.~Watts, and M.~Arakawa,
+D.~A. Feinberg, L.~E. Crooks, P.~Sheldon, J.~H. Iii, J.~Watts, and M.~Arakawa,
   ``Magnetic resonance imaging the velocity vector components of fluid flow,''
   {\em {Mag. Res. Med.}}, vol.~2, pp.~{555--66}, Dec. 1985.
 
@@ -578,22 +576,22 @@ S.~C.~L. Deoni, L.~Matthews, and S.~H. Kolind, ``One component? {Two}
   {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~70, pp.~{147--54}, July 2013.
 
 \bibitem{kimeldorf:70:acb}
-G.~S. Kimeldorf and G.~A. Wahba, ``A correspondence between bayesian estimation
-  on stochastic processes and smoothing by splines,'' {\em {Ann. Math.
-  Statist.}}, vol.~41, no.~2, pp.~{495--502}, 1970.
+G.~S. Kimeldorf and G.~A. Wahba, ``A correspondence between {Bayesian}
+  estimation on stochastic processes and smoothing by splines,'' {\em {Ann.
+  Math. Stat.}}, vol.~41, pp.~{495--502}, Apr. 1970.
 
 \bibitem{aronszajn:50:tor}
-N.~Aronszajn, ``Theory of reproducing kernels,'' {\em {tams}}, vol.~68,
-  pp.~{337--404}, May 1950.
+N.~Aronszajn, ``Theory of reproducing kernels,'' {\em {Trans. Amer. Math.
+  Soc.}}, vol.~68, pp.~{337--404}, May 1950.
 
 \bibitem{cortes:95:svn}
-C.~Cortes and V.~Vapnik, ``Support-vector networks,'' {\em Mach. Learn.},
+C.~Cortes and V.~Vapnik, ``Support-vector networks,'' {\em {Mach. Learn.}},
   vol.~20, pp.~{273--97}, Sept. 1995.
 
 \bibitem{saunders:98:rrl}
 C.~Saunders, A.~Gammerman, and V.~Vovk, ``Ridge regression learning algorithm
-  in dual variables,'' in {\em In Proceedings of the 15th International
-  Conference on Machine Learning}, pp.~{515--21}, Morgan Kaufmann, 1998.
+  in dual variables,'' in {\em {Proc. Intl. Conf. Mach. Learn}}, pp.~{515--21},
+  1998.
 
 \bibitem{scholkopf:01:agr}
 B.~{Sch\"olkopf}, R.~Herbrich, and A.~J. Smola, ``A generalized representer
@@ -611,9 +609,8 @@ A.~Rahimi and B.~Recht, ``Random features for large-scale kernel machines,'' in
   {\em {NIPS}}, 2007.
 
 \bibitem{sutherland:15:ote}
-D.~J. Sutherland and J.~Schneider, ``On the error of random fourier features,''
-  in {\em In Proceedings of the 31st International Conference on Uncertainty in
-  Artificial Intelligence}, 2015.
+D.~J. Sutherland and J.~Schneider, ``On the error of random {Fourier}
+  features,'' in {\em {Proc. Intl. Conf. on Uncertainty in AI}}, 2015.
 
 \bibitem{wu:97:gbt}
 Z.~Wu, ``Generalized {Bochner's} theorem for radial function,'' {\em
@@ -629,9 +626,9 @@ E.~Parzen, ``On estimation of a probability density function and mode,'' {\em
   {Ann. Math. Stat.}}, vol.~33, pp.~{1065--76}, Sept. 1962.
 
 \bibitem{rasmussen:05:gpf}
-C.~E. Rasmussen and C.~K.~I. Williams, {\em Gaussian Processes for Machine
-  Learning (Adaptive Computation and Machine Learning)}.
-\newblock The MIT Press, 2005.
+C.~E. Rasmussen and C.~K.~I. Williams, {\em Gaussian processes for machine
+  learning (adaptive computation and machine learning)}.
+\newblock MIT Press, 2005.
 
 \bibitem{siddiqui:64:sif}
 M.~M. Siddiqui, ``Statistical inference for {Rayleigh} distributions,'' {\em
@@ -643,40 +640,40 @@ P.~Morell, {\em Myelin}.
 \newblock Springer, 1984.
 
 \bibitem{goldenberg:12:msr}
-M.~M. Goldenberg, ``Multiple sclerosis review,'' {\em Pharmacy and
-  Therapeutics}, vol.~37, no.~3, pp.~{175--84}, 2012.
+M.~M. Goldenberg, ``Multiple sclerosis review,'' {\em {Pharmacy and
+  Therapeutics}}, vol.~37, pp.~{175--84}, Mar. 2012.
 
 \bibitem{vasilescu:78:wci}
 V.~Vasilescu, E.~Katona, V.~Simplaceanu, and D.~Demco, ``Water compartments in
-  the myelinated nerve. iii. pulsed nmr results,'' {\em Experientia}, vol.~34,
-  pp.~{1443--4}, Nov. 1978.
+  the myelinated nerve. {III.} {Pulsed} {NMR} results,'' {\em {Experientia}},
+  vol.~34, pp.~{1443--4}, Nov. 1978.
 
 \bibitem{menon:91:aoc}
 R.~S. Menon and P.~S. Allen, ``Application of continuous relaxation time
   distributions to the fitting of data from model systems and excised tissue,''
-  {\em Magn. Res. Med.}, vol.~20, pp.~{214--27}, Aug. 1991.
+  {\em {Mag. Res. Med.}}, vol.~20, pp.~{214--27}, Aug. 1991.
 
 \bibitem{stewart:93:ssr}
 W.~A. Stewart, A.~L. Mackay, K.~P. Whittall, G.~R.~W. Moore, and D.~W. Paty,
-  ``Spin-spin relaxation in experimental allergic encephalomyelitis. analysis
-  of cpmg data using a non-linear least-squares method and linear inverse
-  theory,'' {\em Magn. Res. Med}, vol.~29, pp.~{767--775}, June 1993.
+  ``Spin-spin relaxation in experimental allergic encephalomyelitis. {Analysis}
+  of {CPMG} data using a non-linear least-squares method and linear inverse
+  theory,'' {\em {Mag. Res. Med.}}, vol.~29, pp.~{767--75}, June 1993.
 
 \bibitem{gareau:00:mta}
 P.~J. Gareau, B.~K. Rutt, S.~J. Karlik, and J.~R. Mitchell, ``Magnetization
-  transfer and multicomponent t2 relaxation measurements with histopathologic
-  correlation in an experimental model of ms,'' {\em Journ. Mag. Res. Med.},
+  transfer and multicomponent {T2} relaxation measurements with histopathologic
+  correlation in an experimental model of {MS},'' {\em {J. Mag. Res. Im.}},
   vol.~11, pp.~{586--95}, June 2000.
 
 \bibitem{webb:03:imt}
-S.~Webb, C.~A. Munro, R.~Midha, and G.~J. Stanisz, ``Is multicomponent t2 a
-  good measure of myelin content in peripheral nerve?,'' {\em Magn. Res. Med.},
-  vol.~49, pp.~{628--45}, Apr. 2003.
+S.~Webb, C.~A. Munro, R.~Midha, and G.~J. Stanisz, ``Is multicomponent {T2} a
+  good measure of myelin content in peripheral nerve?,'' {\em {Mag. Res.
+  Med.}}, vol.~49, pp.~{628--45}, Apr. 2003.
 
 \bibitem{laule:04:wca}
 C.~Laule, I.~M. Vavasour, G.~R.~W. Moore, J.~Oger, D.~K.~B. Li, D.~W. Paty, and
   A.~L. MacKay, ``Water content and myelin water fraction in multiple
-  sclerosis,'' {\em J. Neurol.}, vol.~251, pp.~{284--93}, Mar. 2004.
+  sclerosis,'' {\em {J. Neurol.}}, vol.~251, pp.~{284--93}, Mar. 2004.
 
 \bibitem{laule:06:mwi}
 C.~Laule, E.~Leung, D.~K.~B. Li, A.~L. Traboulsee, D.~W. Paty, A.~L. MacKay,
@@ -687,26 +684,27 @@ C.~Laule, E.~Leung, D.~K.~B. Li, A.~L. Traboulsee, D.~W. Paty, A.~L. MacKay,
 \bibitem{spencer:00:mos}
 R.~G. Spencer and K.~W. Fishbein, ``Measurement of spin-lattice relaxation
   times and concentrations in systems with chemical exchange using the
-  one-pulse sequence: breakdown of the ernst model for partial saturation in
-  nuclear magnetic resonance spectroscopy,'' {\em J. Magn. Res.}, vol.~142,
+  one-pulse sequence: breakdown of the {Ernst} model for partial saturation in
+  nuclear magnetic resonance spectroscopy,'' {\em {J. Mag. Res.}}, vol.~142,
   pp.~{120--35}, Jan. 2000.
 
-\bibitem{miller:10:aot-I}
-K.~L. Miller, ``Asymmetries of the balanced ssfp profile. part i: Theory and
-  observation,'' {\em Mag. Res. Med.}, vol.~63, pp.~{385--95}, Feb. 2010.
+\bibitem{miller:10:aot-1}
+K.~L. Miller, ``Asymmetries of the balanced {SSFP} profile. {Part} {I:}
+  {Theory} and observation,'' {\em {Mag. Res. Med.}}, vol.~63, pp.~{385--95},
+  Feb. 2010.
 
-\bibitem{miller:10:aot-II}
-K.~L. Miller, ``Asymmetries of the balanced ssfp profile. part ii: White
-  matter,'' {\em Mag. Res. Med.}, vol.~63, pp.~{396--406}, Feb. 2010.
+\bibitem{miller:10:aot-2}
+K.~L. Miller, S.~M. Smith, and P.~Jezzard, ``Asymmetries of the balanced {SSFP}
+  profile. {Part} {II:} {White} matter,'' {\em {Mag. Res. Med.}}, vol.~63,
+  pp.~{396--406}, Feb. 2010.
 
 \bibitem{magnus:54:ote}
 W.~Magnus, ``On the exponential solution of differential equations for a linear
-  operator,'' {\em Communications on Pure and Applied Mathematics}, vol.~7,
-  pp.~{649--73}, Nov. 1954.
+  operator,'' {\em {Comm. Pure Appl. Math.}}, vol.~7, pp.~{649--73}, Nov. 1954.
 
 \bibitem{whittall:89:qio}
-K.~P. Whittall, ``Quantitative interpretation of nmr relaxation data,'' {\em
-  Journ. Mag. Res.}, vol.~84, pp.~{134--52}, Aug. 1989.
+K.~P. Whittall and A.~L. MacKay, ``Quantitative interpretation of {NMR}
+  relaxation data,'' {\em {J. Mag. Res.}}, vol.~84, pp.~{134--52}, Aug. 1989.
 
 \bibitem{lawson:74}
 C.~L. Lawson and R.~J. Hanson, {\em Solving least squares problems}.
@@ -714,19 +712,19 @@ C.~L. Lawson and R.~J. Hanson, {\em Solving least squares problems}.
 
 \bibitem{varma:15:mtf}
 G.~Varma, G.~Duhamel, C.~{de Bazelaire}, and D.~C. Alsop, ``Magnetization
-  transfer from inhomogeneously broadened lines: a potential marker for
-  myelin,'' {\em Magn. Res. Med.}, vol.~73, pp.~{614--22}, Feb. 2015.
+  transfer from inhomogeneously broadened lines: {A} potential marker for
+  myelin,'' {\em {Mag. Res. Med.}}, vol.~73, pp.~{614--22}, Feb. 2015.
 
 \bibitem{varma:15:iom}
 G.~Varma, O.~M. Girard, V.~H. Prevost, G.~Duhamel, and D.~C. Alsop,
   ``Interpretation of magnetization transfer from inhomogeneously broadened
-  lines (ihmt) in tissues as a dipolar effect within motion restricted
-  molecules,'' {\em Journ. Mag. Res.}, pp.~{67--76}, Nov. 2015.
+  lines {(ihMT)} in tissues as a dipolar effect within motion restricted
+  molecules,'' {\em {J. Mag. Res.}}, vol.~260, pp.~{67--76}, Nov. 2015.
 
-\bibitem{swanson:16:mda}
+\bibitem{swanson:17:mda}
 S.~D. Swanson, D.~I. Malyarenko, M.~L. Fabiilli, R.~C. Welsh, J.-F. Nielsen,
   and A.~Srinivasan, ``Molecular, dynamic, and structural origin of
-  inhomogeneous magnetization transfer in lipid membranes,'' {\em Magn. Res.
-  Med.}, vol.~77, pp.~{1318--28}, Mar. 2016.
+  inhomogeneous magnetization transfer in lipid membranes,'' {\em {Mag. Res.
+  Med.}}, vol.~77, pp.~{1318--28}, Mar. 2017.
 
 \end{thebibliography}
