@@ -1,0 +1,16 @@
+\beamer@slide {table:profile}{27}
+\beamer@slide {table:numerical}{29}
+\beamer@slide {fig:t1,hpd,ml}{34}
+\beamer@slide {fig:t2,hpd,ml}{34}
+\beamer@slide {table:hpd,sample-std-dev}{35}
+\beamer@slide {fig:brain,t1,jet}{38}
+\beamer@slide {fig:brain,t2,jet}{38}
+\beamer@slide {fig:brain,jet}{38}
+\beamer@slide {eq:model}{46}
+\beamer@slide {eq:krr,cost}{55}
+\beamer@slide {eq:krr,cost}{64}
+\beamer@slide {eq:gen-rep}{64}
+\beamer@slide {eq:krr,sol}{64}
+\beamer@slide {eq:krr,x-hat}{69}
+\beamer@slide {eq:low-rank}{75}
+\beamer@slide {eq:x-cme}{75}

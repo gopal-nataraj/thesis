@@ -1,0 +1,74 @@
+% colors
+\definecolor{mich-blue}{HTML}{00274C}
+\definecolor{mich-maize}{HTML}{FFCB05}
+\definecolor{law-stone}{HTML}{655A52}
+\definecolor{burton-beige}{HTML}{9B9A9D}
+\definecolor{arch-ivy}{HTML}{7E732F}
+
+% use colors
+\setbeamercolor{title}{
+  fg=mich-blue!90!white
+}
+\setbeamercolor{frametitle}{
+  bg=mich-blue,
+  fg=mich-maize
+}
+\setbeamercolor{normal text}{
+  bg=white
+}
+
+% colored citations
+\newcommand{\citec}[1]{%
+  \textcolor{arch-ivy}{\cite{#1}}%
+}
+
+% colored highlighting
+\newcommand{\hlo}[1]{%
+  \textcolor{darkorange}{#1}%
+}
+\newcommand{\hlb}[1]{%
+  \textcolor{blue}{#1}%
+}
+\newcommand{\hlg}[1]{%
+  \textcolor{forestgreen}{#1}%
+}
+\newcommand{\hlv}[1]{%
+  \textcolor{violet}{#1}%
+}
+\newcommand{\hlm}[1]{%
+  \textcolor{magenta}{#1}%
+}
+
+% invisible citations
+\newcommand{\citei}[1]{
+  \textcolor{white}{\cite{#1}}
+}
+	
+% boxed items
+\newcommand*{\boxedcolor}{green}
+\makeatletter
+\newcommand{\cbox}[1]{\textcolor{\boxedcolor}{%
+  \fbox{\normalcolor\m@th$\displaystyle#1$}}}
+\makeatother
+
+% pos/neg bullets
+\newcommand{\gch}{\textcolor{forestgreen}{\Checkmark}}
+\newcommand{\rx}{\textcolor{red}{\XSolidBrush}}
+
+% translucent text
+\newcommand{\tluc}[2][35]{\color{fg!#1}#2}
+
+% covered content invisible before revealed
+% covered content translucent after revealed
+\setbeamercovered{
+  still covered={\opaqueness<1->{0}},
+  again covered={\opaqueness<1->{50}}
+}
+
+% tiny references
+\setbeamerfont{bibliography item}{size=\footnotesize}
+\setbeamerfont{bibliography entry author}{size=\footnotesize}
+\setbeamerfont{bibliography entry title}{size=\footnotesize}
+\setbeamerfont{bibliography entry location}{size=\footnotesize}
+\setbeamerfont{bibliography entry note}{size=\footnotesize}
+

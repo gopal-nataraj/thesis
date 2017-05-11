@@ -1,0 +1,62 @@
+\begin{thebibliography}{}
+
+\bibitem[{\Cramer}, 1946]{cramer:46}
+{\Cramer}, H. (1946).
+\newblock {\em Mathematical methods of statistics}.
+\newblock Princeton Univ. Press, Princeton.
+
+\bibitem[Aronszajn, 1950]{aronszajn:50:tor}
+Aronszajn, N. (1950).
+\newblock Theory of reproducing kernels.
+\newblock {\em {Trans. Amer. Math. Soc.}}, 68(3):{337--404}.
+
+\bibitem[Keenan et~al., 2016]{keenan:16:msm}
+Keenan, K.~E., Stupic, K.~F., Boss, M.~A., Russek, S.~E., Chenevert, T.~L.,
+  Prasad, P.~V., Reddick, W.~E., Cecil, K.~M., Zheng, J., Hu, P., and Jackson,
+  E.~F. (2016).
+\newblock Multi-site, multi-vendor comparison of {T1} measurement using
+  {ISMRM/NIST} system phantom.
+\newblock In {\em {Proc. Intl. Soc. Mag. Res. Med.}}, page 3290.
+
+\bibitem[Ma et~al., 2013]{ma:13:mrf}
+Ma, D., Gulani, V., Seiberlich, N., Liu, K., Sunshine, J.~L., Duerk, J.~L., and
+  Griswold, M.~A. (2013).
+\newblock Magnetic resonance fingerprinting.
+\newblock {\em {Nature}}, 495:{187--93}.
+
+\bibitem[Nataraj et~al., 2017a]{nataraj:17:mwf}
+Nataraj, G., Nielsen, J.-F., and Fessler, J.~A. (2017a).
+\newblock Myelin water fraction estimation from optimized steady-state
+  sequences using kernel ridge regression.
+\newblock In {\em {Proc. Intl. Soc. Mag. Res. Med.}}, page 5076.
+\newblock To appear.
+
+\bibitem[Nataraj et~al., 2017b]{nataraj:17:oms}
+Nataraj, G., Nielsen, J.-F., and Fessler, J.~A. (2017b).
+\newblock Optimizing {MR} scan design for model-based {T1,} {T2} estimation
+  from steady-state sequences.
+\newblock {\em {IEEE Trans. Med. Imag.}}, 36(2):{467--77}.
+
+\bibitem[Rahimi and Recht, 2007]{rahimi:07:rff}
+Rahimi, A. and Recht, B. (2007).
+\newblock Random features for large-scale kernel machines.
+\newblock In {\em {NIPS}}.
+
+\bibitem[Redpath and Jones, 1988]{redpath:88:fan}
+Redpath, T.~W. and Jones, R.~A. (1988).
+\newblock {FADE-A} new fast imaging sequence.
+\newblock {\em {Mag. Res. Med.}}, 6(2):{224--34}.
+
+\bibitem[{Sch\"olkopf} et~al., 2001]{scholkopf:01:agr}
+{Sch\"olkopf}, B., Herbrich, R., and Smola, A.~J. (2001).
+\newblock A generalized representer theorem.
+\newblock In {\em {Proc. Computational Learning Theory (COLT)}}, pages
+  {416--426}.
+\newblock LNCS 2111.
+
+\bibitem[Zur et~al., 1991]{zur:91:sot}
+Zur, Y., Wood, M.~L., and Neuringer, L.~J. (1991).
+\newblock Spoiling of transverse magnetization in steady-state sequences.
+\newblock {\em {Mag. Res. Med.}}, 21(2):{251--63}.
+
+\end{thebibliography}

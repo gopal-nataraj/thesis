@@ -1,0 +1,451 @@
+% kernel regression
+\begin{frame}{Quantitative MRI (QMRI) Parameter Estimation}
+	\uncover<+->{%
+  	\textbf{Given}: MR image sequence informative about a physical process
+  	\begin{itemize}
+  		\item{flow}
+  		\item{diffusion}
+  		\item{\hlg{multi-compartmental relaxation}}
+  		\item{\dots}
+  	\end{itemize}
+	}
+	\uncover<+->{%
+  	\textbf{Task}: estimate MR tissue properties characterizing the process
+  	\begin{itemize}
+  		\item{flow velocity}
+  		\item{diffusivity}
+  		\item{\hlg{compartmental relaxivity}}
+  		\item{\dots}
+  	\end{itemize}
+	}
+\end{frame}
+
+\begin{frame}{QMRI Problem Statement}
+	\uncover<+->{%
+		\textbf{Given}: at each voxel, image sequence $\bmy \in \complexes{D}$ modeled as 
+		\begin{align}
+			\bmy = \bms\paren{\bmx,\bmnu} + \bmeps
+			\label{eq:model}
+		\end{align}
+		\begin{itemize}
+			\item{\makebox[3cm][l]{$\bmx \in \reals{L}$} latent free parameters}
+			\item{\makebox[3cm][l]{$\bmnu \in \reals{K}$} known parameters}
+			\item{\makebox[3cm][l]{$\bms : \reals{L+K} \mapsto \complexes{D}$} 
+				signal model}
+			\item{\makebox[3cm][l]{$\bmeps \in \complexes{D}$} 
+				noise $\sim \cgauss{\zeros{D}}{\bmSig}$
+			}
+		\end{itemize}
+		\vspace{0.5cm}
+	}
+	\uncover<+->{%
+		\textbf{Task}: construct fast estimator $\esta{\bmx}{\bmy,\bmnu}$
+	}
+\end{frame}
+
+\begin{frame}{Prior Work}
+	\uncover<1->{%
+		\textbf{Task}: construct fast estimator $\esta{\bmx}{\bmy,\bmnu}$
+  	
+  	\textbf{Challenges}:
+  	\begin{itemize}
+  		\item{signal $\bms$ often nonlinear in $\bmx$: non-convex inverse problems}
+  		\item{signal $\bms$ might be difficult to write in closed form}
+  	\end{itemize}
+	}
+	\uncover<2->{%
+  	\textbf{Conventional Approaches:}
+	}
+  	\begin{itemize}
+			\item<2-3>{gradient-based local optimization}
+			\begin{itemize}
+				\item{initialization-dependent solution}
+				\item{requires signal gradients}
+			\end{itemize}
+  		\item<3>{stochastic methods (\eg, simulated annealing)}
+  		\begin{itemize}
+  			\item{unclear convergence analysis \hfill \citec{bertsimas:93:sa}}
+  			\item{several unintuitive tuning parameters}
+  		\end{itemize}
+		\item<4>{grid search \hfill \eg, for MR fingerprinting \citec{ma:13:mrf}}
+  	\end{itemize}
+\end{frame}
+
+\begin{frame}{Motivation}
+	\textbf{Grid search} computational costs
+	\begin{table}
+		\centering
+		\begin{tabular}{r|cc}
+			& $L$ & $\sim$number dictionary atoms \\
+			\hline
+			\uncover<1-2>{(1-compartment) relaxivity 		& 3 		& $\sim$$100^2$ \\}
+			\uncover<2>{flow velocity 									& 4 		& $\sim$$100^3$ \\} 
+			\uncover<2>{diffusivity tensor 							& 7 		& $\sim$$100^6$ \\}
+			\uncover<2->{\hlg{2-3 compartment relaxivity}& 6-10 	& $\sim$$100^5-100^9$} 
+			\end{tabular}
+		\end{table}
+		
+		\uncover<3>{
+			\textbf{Can we scale computation with $L$ more gracefully?}
+		}
+\end{frame}
+
+\begin{frame}{Machine Learning for QMRI Parameter Estimation}
+	\uncover<1->{%
+		\textbf{Idea}: learn a \emph{nonlinear} estimator from simulated training data
+	}
+	\begin{itemize}
+		\item<2-3>{%
+			sample $\paren{\bmx_1,\bmnu_1,\bmeps_1},\dots,\paren{\bmx_N,\bmnu_N,\bmeps_N}$
+			from prior distributions
+		}
+		\item<2-3>{%
+			simulate image data vectors $\bmy_1,\dots,\bmy_N$ 
+			via signal model $\bms$
+		}
+		\item<3->{%
+			design \emph{nonlinear} functions $\est{x}_l\paren{\cdot} := \est{h}_l\paren{\cdot} + \est{b}_l$ 
+			for $l \in \set{1,\dots,L}$ \\
+			that map each $\bmq_n := [\re{\bmy_n}\tpose, \im{\bmy_n}\tpose, \bmnu_n\tpose]\tpose \in \setQ$	
+			to $x_{l,n} \in \real$
+		}
+	\end{itemize}	
+	\vspace{-0.5cm}
+	\uncover<4->{%
+		\alt<4-5>{%
+			\begin{align}
+				\paren{\est{h}_l,\est{b}_l} \in \set{
+					\argmin{\substack{h_l \\ b_l \in \real}} 
+					\frac{1}{N} \sum_{n=1}^N \paren{h_l\paren{\bmq_n} + b_l - x_{l,n}}^2
+				}
+				\uncover<5>{
+					\,\,\,\,\, \textcolor{red}{\text{ill-posed!}}
+				}
+				\nonumber
+			\end{align}
+		}{%
+			\begin{align}
+				\paren{\est{h}_l,\est{b}_l} \in \set{
+					\argmin{\substack{h_l \hlb{\in \hilb} \\ b_l \in \real}}
+					\frac{1}{N} \sum_{n=1}^N \paren{h_l\paren{\bmq_n} + b_l - x_{l,n}}^2
+					\hlb{+ \rho_l \norm{h_l}^2_\hilb}
+				}
+				\label{eq:krr,cost}
+			\end{align}
+		}
+	}
+	\uncover<6->{%
+		\textbf{Solution}: solve a \emph{kernel ridge regression} (KRR) problem
+		\begin{itemize}
+			\item{\hlb{restrict function space} over which we optimize}
+			\item{\hlb{include function regularization}}
+		\end{itemize}
+	}	
+\end{frame}
+
+\begin{frame}{A Function Space over which Optimization is Tractable}
+	\uncover<1>{%
+		\textbf{Hilbert space}: complete inner product function space
+		\vspace{0.5cm}
+	}
+	\uncover<2->{%
+  	\hlb{\textbf{Reproducing kernel Hilbert space (RKHS)}} \\
+  	Hilbert space $\hlb{\hilb}$ over input space $\setQ$ with \emph{reproducing property}
+  	$$\innprod{h}{\hlm{k}(\cdot,\bmq)}_{\hlb{\hilb}} = h(\bmq), 
+  		\qquad \forall h \in \hlb{\hilb}, \bmq \in \setQ$$ 
+  	for some $\hlm{k} : \setQ^2 \mapsto \real$ called a \hlm{reproducing kernel (RK)} \\
+  	\vspace{0.5cm}
+	}
+  \uncover<3->{%
+  	\textbf{Relevant facts}
+  	\begin{itemize}
+  		\item{Bijection between RKHS $\hlb{\hilb}$ and RK $\hlm{k}$ 
+  			\hfill \citec{aronszajn:50:tor}}
+			\item{Function $\hlm{k}(\cdot,\bmq) \in \hlb{\hilb}$ 
+  			called a \emph{feature mapping}}
+  	\end{itemize}
+	}
+\end{frame}
+
+\begin{frame}{Function Optimization over a RKHS}
+	\uncover<1-3>{%
+		\textbf{Choose}: RK $\hlm{k} : \setQ^2 \mapsto \real$, 
+			which induces choice of RKHS $\hlb{\hilb}$ 
+	}
+	\only<2>{%
+		\begin{itemize}
+			\item{\emph{Nonlinear} kernel corresponds to \emph{nonlinear} estimation}
+			\item{We use $\hlm{k}(\bmq,\bmq') \gets \expa{-\frac{1}{2}\norm{\bmL^{-1}\paren{\bmq-\bmq'}}_2^2}$}
+		\end{itemize}
+	}
+	\uncover<3->{%
+		\textbf{Solve}: for each desired latent parameter $l \in \set{1,\dots,L}$,
+		\begin{align}
+			\paren{\est{h}_l,\est{b}_l} \in 
+				\set{\argmin{\substack{h_l \in \hlb{\hilb} \\ b_l \in \real}}
+				\frac{1}{N} \sum_{n=1}^N \paren{h_l\paren{\bmq_n} + b_l - x_{l,n}}^2
+				+ \rho_l \norm{h_l}^2_{\hlb{\hilb}}}
+			\label{eq:krr,cost}
+		\end{align}
+	}
+	\begin{itemize}
+		\item<4->{%
+			Optimal $\est{h}_l$ over $\hlb{\hilb}$ takes form \hfill \citec{scholkopf:01:agr}
+			\begin{align}
+				\est{h}_l\paren{\cdot} \equiv \sum_{n=1}^N \est{a}_{l,n} \hlm{k}\paren{\cdot,\bmq_{n}}
+				\label{eq:gen-rep}
+			\end{align}
+		}
+  	\item<5->{%
+  		Plug \eqref{eq:gen-rep} into \eqref{eq:krr,cost}; 
+  			solve now instead for $\paren{\est{a}_l,\est{b}_l}$; construct:
+  		\begin{align}
+  			\est{x}_l\paren{\cdot} = 	
+  				\sum_{n=1}^N \est{a}_{l,n} \hlm{k}\paren{\cdot,\bmq_n} + \est{b}_l
+  			\label{eq:krr,sol}
+  		\end{align}
+  	}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{MRI Parameter Estimation via KRR}
+	Non-iterative closed-form solution, for $l \in \set{1,\dots,L}$: 
+	\begin{align}
+		\est{x}_l\paren{\cdot} = \bmxg{l}\tpose\paren{
+			\frac{1}{N}\ones{N} 
+			+ \bmM\inv{\bmK\bmM + N\rho_l \eye{N}} 
+			\paren{\bmka{\cdot} - \frac{1}{N}\bmK\ones{N}}
+		}
+		\label{eq:krr,x-hat}
+	\end{align}
+	\begin{itemize}
+	\item<1-4>{%
+		\makebox[6cm][l]{$\bmxg{l} := [x_{l,1},\dots,x_{l,N}]\tpose$}
+		training pt regressands
+	}
+	\item<2-4,6>{%
+		\makebox[6cm][l]{%
+			$\bmK := 
+				\begin{bmatrix}
+					\hlm{k}(\bmq_1,\bmq_1) 	& \cdots 	& \hlm{k}(\bmq_1,\bmq_N) \\
+					\vdots									& \ddots	& \vdots \\
+					\hlm{k}(\bmq_N,\bmq_1) 	& \cdots 	& \hlm{k}(\bmq_N,\bmq_N)
+				\end{bmatrix}$
+		}
+		Gram matrix
+	}						
+	\item<3-4>{%
+		\makebox[6cm][l]{$\bmM := \eye{N} - \frac{1}{N}\ones{N}\ones{N}\tpose$}
+		de-meaning operator
+	}
+	\item<4>{%
+		\makebox[6cm][l]{%
+			$\bmka{\cdot} := \brac{\hlm{k}(\cdot,\bmq_1),\dots,\hlm{k}(\cdot,\bmq_N)}\tpose$
+		}
+		nonlin kernel embedding
+	}
+	\end{itemize}
+	\uncover<5>{%
+		Can we scale computation with $L$ more gracefully?
+	}
+	\begin{itemize}
+		\item<5>{Yes, in fact \eqref{eq:krr,x-hat} separable in $l \in \set{1,\dots,L}$ by construction}
+		\item<6>{However, explicitly computing $\bmK$ may be undesirable...}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{KRR as High-Dimensional Affine Regression}
+	\uncover<1->{
+		Suppose there exists``approximate feature mapping'' $\bmztZ : \setQ \mapsto \reals{Z}$ \\
+		such that $\bmZt := \brac{\bmztZa{\bmq_1},\dots,\bmztZa{\bmq_N}}$ has for $\dim\paren{\setQ} \ll Z \ll N$
+		\begin{align}
+			\bmK \approx \bmZt\tpose \bmZt.
+			\label{eq:low-rank}
+		\end{align}
+		\vspace{-0.5cm}
+	}
+	\uncover<2-3>{%
+		\begin{overlayarea}{\textwidth}{2.5cm}
+  		\alt<2>{%
+    		Plugging \eqref{eq:low-rank} into KRR solution \eqref{eq:krr,x-hat} and rearranging gives
+    		\begin{align}
+    			\est{x}_l\paren{\cdot} \approx 
+    				\frac{1}{N}\bmxg{l}\tpose\ones{N} 
+    				+ \frac{1}{N}\bmxg{l}\tpose \bmM \bmZt\tpose
+    				\inv{\frac{1}{N} \bmZt \bmM \bmZt\tpose + \rho_l\eye{Z}}
+    				\paren{\bmztZa{\cdot}-\frac{1}{N}\bmZt\ones{N}}
+    				\nonumber
+    		\end{align}
+    	}{%
+    		Plugging \eqref{eq:low-rank} into KRR solution \eqref{eq:krr,x-hat} and rearranging gives
+    		\begin{align}
+    			\est{x}_l\paren{\cdot} \approx 
+    				\mxl + \cxlzt \inv{\Cztzt + \rho_l\eye{Z}} \paren{\bmztZa{\cdot} - \bmmzt}
+    				\label{eq:x-cme}
+    		\end{align}
+				which is regularized (``ridge'') $Z$-dimensional affine regression!
+    	}
+		\end{overlayarea}
+	}
+	\uncover<4->{%
+		Does such a $\bmzt$ exist and work well in practice?
+		\begin{itemize}
+			\item{Yes, \eg for ``shift invariant'' kernels (like our Gaussian) \\
+				of form 
+				$\hlm{k}(\bmq,\bmq') \equiv \hlm{k}(\bmq-\bmq')$ \hfill \citec{rahimi:07:rff}}
+			\item{In such cases, can reduce from $\sim$$N^2$ to $\sim$$NZ$ computations}
+		\end{itemize}
+	}
+\end{frame}
+
+\begin{frame}{Application: Myelin Water Fraction (MWF) Imaging}
+	\begin{figure}
+		\begin{tikzpicture}
+			\uncover<1->{
+				\node[above] at (2,4) {simple two-compartment model};
+				\draw[thick,fill=gray!10] (0,0) -- (2,0) -- (1,4) -- (0,4) -- (0,0);
+				\draw[thick,fill=gray!30] (2,0) -- (4,0) -- (4,4) -- (1,4);
+				\node[below] at (1,0) {``fast''};
+				\node[below] at (3,0) {``slow''};
+			}
+			\only<2-3>{
+				\node[below right] at (0,0.7) {$\tf{1},\tf{2}$};
+				\node[below left] at (4,0.7) {$\ts{1},\ts{2}$};
+  			\alt<2>{
+  				\node at (2.7,2) {$\paren{1-\ff}\mzero$};
+  				\node at (0.7,2) {$\ff \mzero$};
+  			}{
+  				\node at (2.7,2) {$\paren{1-\hlg{\ff}}\mzero$};
+  				\node at (0.7,2) {$\hlg{\ff} \mzero$};
+  			}
+			}
+		\end{tikzpicture}
+	\end{figure}
+	\uncover<3->{
+		\textbf{Goal}: rapidly estimate $\hlg{\ff}$ (proxy for MWF) in white matter (WM)
+	}
+\end{frame}
+
+\begin{frame}{Application: MWF Imaging}
+	\uncover<1>{%
+		\textbf{Problem dimensions (per voxel)}
+		\begin{itemize}
+			\item{
+				$\bmx \gets \brac{\hlg{\ff}, \tf{1}, \tf{2}, \ts{1}, \ts{2}, \mzero}\tpose$
+			}
+			\item{
+				$\bmnu \gets$ flip angle variation
+			}
+			\item{
+				$\bmy \gets$ voxel values from 10 datasets \hfill \citec{nataraj:17:mwf}
+			}
+		\end{itemize}
+	}
+	\uncover<2>{%
+		\textbf{Use KRR to estimate just $\hlg{\ff}$}
+		\begin{itemize}
+			\item{Separable prior on $\bmx$: $\hlg{\ff},\mzero$ uniform; others log-uniform}
+			\item{$N \gets 10^6$ training points}
+			\item{$Z \gets 10^3$ kernel approximation order}
+		\end{itemize}
+	}
+	\uncover<3>{%
+		\textbf{Compare against grid search}
+		\begin{itemize}
+			\item{unconstrained search would require $\sim$100$^{5}$ dictionary atoms}
+			\item{we artificially constrain search here to limit computation}
+		\end{itemize}
+	}
+\end{frame}
+
+\begin{frame}{MWF Imaging: Simulation Result}
+	Fast-fraction $\hlg{\ff}$ estimates, in simulation: 
+	\uncover<+->{%
+		\begin{figure}[t]
+			\centering
+			\includegraphics[width=\textwidth]{c,krr/sim}%
+		\end{figure}
+	}
+	\uncover<+->{%
+		\makebox[5cm][r]{$\sim$4h}
+		\makebox[4.7cm][r]{$40$s training, $2$s testing}
+	}	
+\end{frame}
+
+\begin{frame}{MWF Imaging: Proof-of-concept In Vivo Result}
+	\uncover<1->{%
+		Fast-fraction $\hlg{\ff}$ estimates, from 3D Cartesian data
+	}
+	\uncover<2->{%
+		\begin{itemize}
+			\item<2>{Full-scale grid search intractable on typical desktop}
+			\item<3-4>{KRR estimates in single slice took about \textbf{70s}}
+			\item<4>{KRR MWF estimates in WM comparable to literature}
+		\end{itemize}
+	}
+	\visible<3-4>{%
+		\begin{figure}
+			\centering
+			\includegraphics[height=5cm]{c,mwf/ff,log2c-0,krr}%
+		\end{figure}
+	}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Summary}
+	\uncover<1-6>{%
+		\textbf{Contributions}
+		\begin{itemize}
+			\item<1-6>{Fast KRR method for nonlin MRI multiparameter estimation}
+			\begin{itemize}
+				\item<2-5>{%
+					Key insight: even with complicated MR signal models, \\
+					can simulate training points ``for free''
+				}
+				\item<3-5>{%
+					Convert \emph{nonlinear estimation} problem 
+					into \emph{nonlinear regression} problem 
+					that we solve in closed-form with kernels
+				}
+			\end{itemize}
+			\item<4-6>{Proof-of-concept \invivo application to MWF imaging}
+		\end{itemize}
+	}
+	\uncover<5>{%
+		\textbf{Ongoing work}
+		\begin{itemize}
+			\item{Conceptual: model selection, performance analysis}
+			\item{Experimental: validation studies}
+		\end{itemize}
+	}
+\end{frame}
+
+% backup
+\begin{frame}{Backup: An Overview of Model Selection}
+	\uncover<1->{%
+		Some model parameters \textbf{require manual selection}...
+	}
+		\begin{itemize}
+			\item<1->{\makebox[3cm][l]{Kernel shape}
+				$k(\bmq,\bmq') \gets \expa{-\frac{1}{2}\norm{\bmL^{-1}\paren{\bmq-\bmq'}}_2^2}$
+			}
+			\item<2>{\makebox[3cm][l]{Prior on $\bmx$}
+				from tissue properties
+			}
+			\item<2>{\makebox[3cm][l]{$N,Z$}
+				empirical methods
+			}
+		\end{itemize}
+	\uncover<3>{%
+		\hfill ...but others \textbf{tuned automatically}
+		\begin{itemize}
+			\item{\makebox[6cm][l]{Kernel smoothing length-scale}
+				$\bmL \gets \diag{\sum_{n=1}^N \bmq_n}$}
+			\item{\makebox[6cm][l]{Regularization parameters}
+				$\rho_l \gets \frac{1}{N^2}\bmxg{l}\tpose\bmM\bmxg{l}$}
+			\item{\makebox[6cm][l]{Prior on known $\bmnu$} 
+				density estimation}
+		\end{itemize}
+	}
+\end{frame}

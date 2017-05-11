@@ -1,0 +1,193 @@
+% !TEX TS-program = latex
+% thesis proposal talk
+
+% beamer
+\documentclass{beamer}
+\usetheme{metropolis}
+
+% doc
+\usepackage{multirow}						% create tables
+\usepackage{multicol}						% create multiple columns
+\usepackage{bbding}							% zapf symbols
+\usepackage{xspace}							% good spacing
+\usepackage{xcolor}
+\usepackage{comment}
+
+% math
+\usepackage{amsmath}						% major math package
+\usepackage{amssymb}						% more math symbols
+\usepackage{amsbsy}
+\usepackage{bm}
+
+% media
+\usepackage{graphicx}						% enhanced graphics support
+\usepackage{float}							% improved interface for floating objects
+\usepackage{subfig}							% generates subfigures
+\usepackage{subfloat}						% enables sub-numbering of floats
+\usepackage{tabu}								% better tabular environment
+\usepackage{multimedia}					% beamer video
+\graphicspath{{../fig/}}
+
+% bib
+\bibliographystyle{apalike}			% note: natbib doesn't work with beamer metropolis
+
+% macros
+\input{../macro/doc.tex}
+\input{../macro/slide.tex}
+\input{../macro/var-talk.tex}
+\input{../macro/math.tex}
+
+\title{
+	Advances in Quantitative MRI: \\
+	Acquisition, Estimation, and Applications
+}
+\author{
+	Gopal Nataraj
+}
+\date{
+}
+\institute{
+	Dissertation Proposal \\
+	May 15, 2017 \\
+	\\
+	Dept. of Electrical Engineering and Computer Science \\
+	University of Michigan
+}
+
+\begin{document}
+
+% title slide
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+% intro
+\begin{frame}{Quantitative MRI (QMRI)}
+	\uncover<1->{
+		\textbf{Goal}: 
+		\hlb{rapidly} and \hlg{reliably} \hlo{localize} \hlm{biomarkers} from MR data
+	}
+	\begin{itemize}
+		\item<2>{
+			\makebox[1.8cm][l]{\hlm{biomarker}} measurable tissue property (\eg, elasticity) that \\
+			\makebox[1.8cm][l]{} characterizes a biological process (\eg, sclerosis) \\
+		}
+		\item<3>{\makebox[1.8cm][l]{\hlo{localize}} produce quantitative MR images}
+		\item<4>{\makebox[1.8cm][l]{\hlb{rapidly}} fast acquisition, fast estimation}
+		\item<5>{\makebox[1.8cm][l]{\hlg{reliably}} accurate signal models, precise estimation}
+	\end{itemize}
+	
+	\uncover<6->{
+		\textbf{Challenges} (beyond conventional MRI):
+		\begin{itemize}
+			\item{complicated, nonlinear signal models}
+			\item{more data required, so longer scan times}
+		\end{itemize}
+	}
+\end{frame}
+
+% overview
+\begin{frame}{Overview}
+	Advances in Quantitative MRI: 
+	\begin{itemize}
+		\item<1>{
+			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch. 4]} \\
+			How can we assemble fast, informative collections of scans \\
+			to enable precise biomarker quantification? 
+		}
+		
+		\item<2>{
+			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch. 5]} \\
+			Given data from an informative acquisition, \\
+			how can we rapidly and accurately quantify these biomarkers?
+		}
+		\item<3>{
+			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch. 6]} \\
+			Using these tools,
+			can we design a state-of-the-art biomarker?
+		}
+	\end{itemize}
+\end{frame}
+
+% overview-acquisition
+\begin{frame}{Overview}
+	Advances in Quantitative MRI: 
+	\begin{itemize}
+		\item<1>{
+			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch. 4]} \\
+			How can we assemble fast, informative collections of scans \\
+			to enable precise biomarker quantification? 
+		}
+		
+		\item<0>{
+			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch. 5]} \\
+			Given data from an informative acquisition, \\
+			how can we rapidly and accurately quantify these biomarkers?
+		}
+		\item<0>{
+			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch. 6]} \\
+			Using these tools,
+			can we design a state-of-the-art biomarker?
+		}
+	\end{itemize}
+\end{frame}
+
+% acquisition
+\input{s,scn-dsgn.tex}
+
+% overview-estimation
+\begin{frame}{Overview}
+	Advances in Quantitative MRI: 
+	\begin{itemize}
+		\item<0>{
+			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch. 4]} \\
+			How can we assemble fast, informative collections of scans \\
+			to enable precise biomarker quantification? 
+		}
+		\item<1>{
+			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch. 5]} \\
+			Given data from an informative acquisition, \\
+			how can we rapidly and accurately quantify these biomarkers?
+		}
+		\item<0>{
+			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch. 6]} \\
+			Using these tools,
+			can we design a state-of-the-art biomarker?
+		}
+	\end{itemize}
+\end{frame}
+
+% estimation
+\input{s,krr.tex}
+
+% overview-application
+\begin{frame}{Overview}
+	Advances in Quantitative MRI: 
+	\begin{itemize}
+		\item<0>{
+			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch. 4]} \\
+			How can we assemble fast, informative collections of scans \\
+			to enable precise biomarker quantification? 
+		}
+		\item<0>{
+			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch. 5]} \\
+			Given data from an informative acquisition, \\
+			how can we rapidly and accurately quantify these biomarkers?
+		}
+		\item<1>{
+			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch. 6]} \\
+			Using these tools,
+			can we design a state-of-the-art biomarker?
+		}
+	\end{itemize}
+\end{frame}
+
+% application
+\input{s,mwf.tex}
+
+% bib
+\begin{frame}[allowframebreaks]{References}
+	\bibliography{../bib/master}
+\end{frame}
+
+\end{document}
