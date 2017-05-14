@@ -10,6 +10,11 @@ Aronszajn, N. (1950).
 \newblock Theory of reproducing kernels.
 \newblock {\em {Trans. Amer. Math. Soc.}}, 68(3):{337--404}.
 
+\bibitem[Bertsimas and Tsitsiklis, 1993]{bertsimas:93:sa}
+Bertsimas, D. and Tsitsiklis, J. (1993).
+\newblock Simulated annealing.
+\newblock {\em Statistical Science}, 8(1):{10--15}.
+
 \bibitem[Keenan et~al., 2016]{keenan:16:msm}
 Keenan, K.~E., Stupic, K.~F., Boss, M.~A., Russek, S.~E., Chenevert, T.~L.,
   Prasad, P.~V., Reddick, W.~E., Cecil, K.~M., Zheng, J., Hu, P., and Jackson,
@@ -17,12 +22,6 @@ Keenan, K.~E., Stupic, K.~F., Boss, M.~A., Russek, S.~E., Chenevert, T.~L.,
 \newblock Multi-site, multi-vendor comparison of {T1} measurement using
   {ISMRM/NIST} system phantom.
 \newblock In {\em {Proc. Intl. Soc. Mag. Res. Med.}}, page 3290.
-
-\bibitem[Ma et~al., 2013]{ma:13:mrf}
-Ma, D., Gulani, V., Seiberlich, N., Liu, K., Sunshine, J.~L., Duerk, J.~L., and
-  Griswold, M.~A. (2013).
-\newblock Magnetic resonance fingerprinting.
-\newblock {\em {Nature}}, 495:{187--93}.
 
 \bibitem[Nataraj et~al., 2017a]{nataraj:17:mwf}
 Nataraj, G., Nielsen, J.-F., and Fessler, J.~A. (2017a).
@@ -41,6 +40,12 @@ Nataraj, G., Nielsen, J.-F., and Fessler, J.~A. (2017b).
 Rahimi, A. and Recht, B. (2007).
 \newblock Random features for large-scale kernel machines.
 \newblock In {\em {NIPS}}.
+
+\bibitem[Rasmussen and Williams, 2005]{rasmussen:05:gpf}
+Rasmussen, C.~E. and Williams, C. K.~I. (2005).
+\newblock {\em Gaussian processes for machine learning (adaptive computation
+  and machine learning)}.
+\newblock MIT Press.
 
 \bibitem[Redpath and Jones, 1988]{redpath:88:fan}
 Redpath, T.~W. and Jones, R.~A. (1988).

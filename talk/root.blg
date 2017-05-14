@@ -1,48 +1,47 @@
-This is BibTeX, Version 0.99d (TeX Live 2015)
+This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: root.aux
 The style file: apalike.bst
 Database file #1: ../bib/master.bib
-Warning--I didn't find a database entry for "bertsimas:93:sa"
-You've used 10 entries,
+Database file #2: ../bib/tmp-v2.bib
+You've used 11 entries,
             1935 wiz_defined-function locations,
-            534 strings with 5169 characters,
-and the built_in function-call counts, 4657 in all, are:
-= -- 455
-> -- 208
-< -- 7
-+ -- 75
-- -- 72
-* -- 387
-:= -- 780
-add.period$ -- 32
-call.type$ -- 10
-change.case$ -- 85
-chr.to.int$ -- 9
-cite$ -- 10
-duplicate$ -- 185
-empty$ -- 321
-format.name$ -- 86
-if$ -- 933
+            539 strings with 5243 characters,
+and the built_in function-call counts, 4810 in all, are:
+= -- 471
+> -- 196
+< -- 9
++ -- 69
+- -- 66
+* -- 391
+:= -- 805
+add.period$ -- 35
+call.type$ -- 11
+change.case$ -- 86
+chr.to.int$ -- 10
+cite$ -- 11
+duplicate$ -- 199
+empty$ -- 344
+format.name$ -- 85
+if$ -- 971
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 11
-newline$ -- 55
-num.names$ -- 30
-pop$ -- 91
+missing$ -- 13
+newline$ -- 60
+num.names$ -- 33
+pop$ -- 94
 preamble$ -- 1
-purify$ -- 86
+purify$ -- 88
 quote$ -- 0
-skip$ -- 135
+skip$ -- 146
 stack$ -- 0
-substring$ -- 321
-swap$ -- 39
+substring$ -- 326
+swap$ -- 40
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 58
+type$ -- 62
 warning$ -- 0
-while$ -- 35
+while$ -- 36
 width$ -- 0
-write$ -- 135
-(There was 1 warning)
+write$ -- 147

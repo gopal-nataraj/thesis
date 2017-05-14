@@ -1,1 +1,93 @@
 % myelin water fraction imaging
+\begin{frame}{Myelin Water Fraction (MWF) Imaging}
+	\begin{figure}
+		\begin{tikzpicture}
+			\uncover<1->{
+				\node[above] at (2,4) {simple two-compartment model};
+				\draw[thick,fill=gray!10] (0,0) -- (2,0) -- (1,4) -- (0,4) -- (0,0);
+				\draw[thick,fill=gray!30] (2,0) -- (4,0) -- (4,4) -- (1,4);
+				\node[below] at (1,0) {``fast''};
+				\node[below] at (3,0) {``slow''};
+			}
+			\only<2-3>{
+				\node[below right] at (0,0.7) {$\tf{1},\tf{2}$};
+				\node[below left] at (4,0.7) {$\ts{1},\ts{2}$};
+  			\alt<2>{
+  				\node at (2.7,2) {$\paren{1-\ff}\mzero$};
+  				\node at (0.7,2) {$\ff \mzero$};
+  			}{
+  				\node at (2.7,2) {$\paren{1-\hlg{\ff}}\mzero$};
+  				\node at (0.7,2) {$\hlg{\ff} \mzero$};
+  			}
+			}
+		\end{tikzpicture}
+	\end{figure}
+	\uncover<3->{
+		\textbf{Goal}: rapidly estimate $\hlg{\ff}$ (proxy for MWF) in white matter (WM)
+	}
+\end{frame}
+
+\begin{frame}{Application: MWF Imaging}
+	\uncover<1>{%
+		\textbf{Problem dimensions (per voxel)}
+		\begin{itemize}
+			\item{
+				$\bmx \gets \brac{\hlg{\ff}, \tf{1}, \tf{2}, \ts{1}, \ts{2}, \mzero}\tpose$
+			}
+			\item{
+				$\bmnu \gets$ flip angle variation
+			}
+			\item{
+				$\bmy \gets$ voxel values from 10 datasets \hfill \citec{nataraj:17:mwf}
+			}
+		\end{itemize}
+	}
+	\uncover<2>{%
+		\textbf{Use KRR to estimate just $\hlg{\ff}$}
+		\begin{itemize}
+			\item{Separable prior on $\bmx$: $\hlg{\ff},\mzero$ uniform; others log-uniform}
+			\item{$N \gets 10^6$ training points}
+			\item{$Z \gets 10^3$ kernel approximation order}
+		\end{itemize}
+	}
+	\uncover<3>{%
+		\textbf{Compare against grid search}
+		\begin{itemize}
+			\item{unconstrained search would require $\sim$100$^{5}$ dictionary atoms}
+			\item{we artificially constrain search here to limit computation}
+		\end{itemize}
+	}
+\end{frame}
+
+\begin{frame}{MWF Imaging: Simulation Result}
+	Fast-fraction $\hlg{\ff}$ estimates, in simulation: 
+	\uncover<+->{%
+		\begin{figure}[t]
+			\centering
+			\includegraphics[width=\textwidth]{c,krr/sim}%
+		\end{figure}
+	}
+	\uncover<+->{%
+		\makebox[5cm][r]{$\sim$4h}
+		\makebox[4.7cm][r]{$40$s training, $2$s testing}
+	}	
+\end{frame}
+
+\begin{frame}{MWF Imaging: Proof-of-concept In Vivo Result}
+	\uncover<1->{%
+		Fast-fraction $\hlg{\ff}$ estimates, from 3D Cartesian data
+	}
+	\uncover<2->{%
+		\begin{itemize}
+			\item<2>{Full-scale grid search intractable on typical desktop}
+			\item<3-4>{KRR estimates in single slice took about \textbf{70s}}
+			\item<4>{KRR MWF estimates in WM comparable to literature}
+		\end{itemize}
+	}
+	\visible<3-4>{%
+		\begin{figure}
+			\centering
+			\includegraphics[height=5cm]{c,mwf/ff,log2c-0,krr}%
+		\end{figure}
+	}
+\end{frame}
