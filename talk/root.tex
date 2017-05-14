@@ -2,7 +2,7 @@
 % thesis proposal talk
 
 % beamer
-\documentclass{beamer}
+\documentclass[draft]{beamer}
 \usetheme{metropolis}
 
 % doc
@@ -36,6 +36,7 @@
 \input{../macro/slide.tex}
 \input{../macro/var-talk.tex}
 \input{../macro/math.tex}
+\input{../macro/tikz.tex}
 
 \title{
 	Advances in Quantitative MRI: \\
@@ -184,6 +185,39 @@
 
 % application
 \input{s,mwf.tex}
+
+% timeline
+\begin{frame}{Future Work}
+	\uncover<1>{%
+  	\begin{table}[!ht] 
+      \centering
+      \caption{Timeline to Defense}
+      \vspace{-0.5cm}
+      \begin{tabular}{r | p{9cm}}
+        \hline
+        \hline
+        start date & task \\
+        \hline
+        2017-05 & validate KRR estimation \\
+        2017-08 & prepare KRR journal paper \\
+        2017-10 & validate $\ff$ estimates from SPGR/DESS acquisition \\
+        2018-01 & prepare fast MWF imaging journal paper \\
+        2018-03 & defend dissertation \\
+        \hline
+        \hline
+      \end{tabular}
+      \label{tab:timeline}
+   	\end{table}
+	}
+	\uncover<2->{%
+		Longer-term research directions
+		\begin{itemize}
+			\item{combine image reconstruction and KRR estimation}
+			\item{correlate our MWF estimates with other myelin biomarkers}
+			\item{apply KRR to other problems}
+		\end{itemize}
+	}
+\end{frame}
 
 % bib
 \begin{frame}[allowframebreaks]{References}

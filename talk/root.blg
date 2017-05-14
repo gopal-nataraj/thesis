@@ -4,44 +4,44 @@ The top-level auxiliary file: root.aux
 The style file: apalike.bst
 Database file #1: ../bib/master.bib
 Database file #2: ../bib/tmp-v2.bib
-You've used 11 entries,
+You've used 18 entries,
             1935 wiz_defined-function locations,
-            539 strings with 5243 characters,
-and the built_in function-call counts, 4810 in all, are:
-= -- 471
-> -- 196
-< -- 9
-+ -- 69
-- -- 66
-* -- 391
-:= -- 805
-add.period$ -- 35
-call.type$ -- 11
-change.case$ -- 86
-chr.to.int$ -- 10
-cite$ -- 11
-duplicate$ -- 199
-empty$ -- 344
-format.name$ -- 85
-if$ -- 971
-int.to.chr$ -- 2
+            585 strings with 6621 characters,
+and the built_in function-call counts, 8062 in all, are:
+= -- 790
+> -- 356
+< -- 11
++ -- 124
+- -- 122
+* -- 722
+:= -- 1373
+add.period$ -- 55
+call.type$ -- 18
+change.case$ -- 149
+chr.to.int$ -- 18
+cite$ -- 18
+duplicate$ -- 284
+empty$ -- 558
+format.name$ -- 152
+if$ -- 1576
+int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 13
-newline$ -- 60
-num.names$ -- 33
-pop$ -- 94
+missing$ -- 20
+newline$ -- 94
+num.names$ -- 54
+pop$ -- 134
 preamble$ -- 1
-purify$ -- 88
+purify$ -- 151
 quote$ -- 0
-skip$ -- 146
+skip$ -- 210
 stack$ -- 0
-substring$ -- 326
-swap$ -- 40
-text.length$ -- 3
+substring$ -- 626
+swap$ -- 38
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 62
+type$ -- 104
 warning$ -- 0
-while$ -- 36
+while$ -- 65
 width$ -- 0
-write$ -- 147
+write$ -- 236

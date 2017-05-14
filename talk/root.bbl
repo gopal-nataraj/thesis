@@ -15,6 +15,19 @@ Bertsimas, D. and Tsitsiklis, J. (1993).
 \newblock Simulated annealing.
 \newblock {\em Statistical Science}, 8(1):{10--15}.
 
+\bibitem[Deoni, 2011]{deoni:11:com}
+Deoni, S. C.~L. (2011).
+\newblock Correction of main and transmit magnetic field {(B0} and {B1)}
+  inhomogeneity effects in multicomponent-driven equilibrium single-pulse
+  observation of {T1} and {T2}.
+\newblock {\em {Mag. Res. Med.}}, 65(4):{1021--35}.
+
+\bibitem[Deoni et~al., 2008]{deoni:08:gmt}
+Deoni, S. C.~L., Rutt, B.~K., Arun, T., Pierpaoli, C., and Jones, D.~K. (2008).
+\newblock Gleaning multicomponent {T1} and {T2} information from steady-state
+  imaging data.
+\newblock {\em {Mag. Res. Med.}}, 60(6):{1372--87}.
+
 \bibitem[Keenan et~al., 2016]{keenan:16:msm}
 Keenan, K.~E., Stupic, K.~F., Boss, M.~A., Russek, S.~E., Chenevert, T.~L.,
   Prasad, P.~V., Reddick, W.~E., Cecil, K.~M., Zheng, J., Hu, P., and Jackson,
@@ -23,18 +36,28 @@ Keenan, K.~E., Stupic, K.~F., Boss, M.~A., Russek, S.~E., Chenevert, T.~L.,
   {ISMRM/NIST} system phantom.
 \newblock In {\em {Proc. Intl. Soc. Mag. Res. Med.}}, page 3290.
 
-\bibitem[Nataraj et~al., 2017a]{nataraj:17:mwf}
-Nataraj, G., Nielsen, J.-F., and Fessler, J.~A. (2017a).
-\newblock Myelin water fraction estimation from optimized steady-state
-  sequences using kernel ridge regression.
-\newblock In {\em {Proc. Intl. Soc. Mag. Res. Med.}}, page 5076.
-\newblock To appear.
+\bibitem[Lankford and Does, 2013]{lankford:13:oti}
+Lankford, C.~L. and Does, M.~D. (2013).
+\newblock On the inherent precision of {mcDESPOT}.
+\newblock {\em {Mag. Res. Med.}}, 69(1):{127--36}.
 
-\bibitem[Nataraj et~al., 2017b]{nataraj:17:oms}
-Nataraj, G., Nielsen, J.-F., and Fessler, J.~A. (2017b).
+\bibitem[Mackay et~al., 1994]{mackay:94:ivv}
+Mackay, A., Whittall, K., Adler, J., Li, D., Paty, D., and Graeb, D. (1994).
+\newblock In vivo visualization of myelin water in brain by magnetic resonance.
+\newblock {\em {Mag. Res. Med.}}, 31(6):{673--7}.
+
+\bibitem[Nataraj et~al., 2017]{nataraj:17:oms}
+Nataraj, G., Nielsen, J.-F., and Fessler, J.~A. (2017).
 \newblock Optimizing {MR} scan design for model-based {T1,} {T2} estimation
   from steady-state sequences.
 \newblock {\em {IEEE Trans. Med. Imag.}}, 36(2):{467--77}.
+
+\bibitem[Prasloski et~al., 2012]{prasloski:12:rwc}
+Prasloski, T., Rauscher, A., MacKay, A.~L., Hodgson, M., Vavasour, I.~M.,
+  Laule, C., and {M\"adler}, B. (2012).
+\newblock Rapid whole cerebrum myelin water imaging using a {3D} {GRASE}
+  sequence.
+\newblock {\em {NeuroImage}}, 63(1):{533--9}.
 
 \bibitem[Rahimi and Recht, 2007]{rahimi:07:rff}
 Rahimi, A. and Recht, B. (2007).
@@ -58,6 +81,26 @@ Redpath, T.~W. and Jones, R.~A. (1988).
 \newblock In {\em {Proc. Computational Learning Theory (COLT)}}, pages
   {416--426}.
 \newblock LNCS 2111.
+
+\bibitem[Spencer and Fishbein, 2000]{spencer:00:mos}
+Spencer, R.~G. and Fishbein, K.~W. (2000).
+\newblock Measurement of spin-lattice relaxation times and concentrations in
+  systems with chemical exchange using the one-pulse sequence: breakdown of the
+  {Ernst} model for partial saturation in nuclear magnetic resonance
+  spectroscopy.
+\newblock {\em {J. Mag. Res.}}, 142(1):{120--35}.
+
+\bibitem[Webb et~al., 2003]{webb:03:imt}
+Webb, S., Munro, C.~A., Midha, R., and Stanisz, G.~J. (2003).
+\newblock Is multicomponent {T2} a good measure of myelin content in peripheral
+  nerve?
+\newblock {\em {Mag. Res. Med.}}, 49(4):{628--45}.
+
+\bibitem[Zhang et~al., 2015]{zhang:15:com}
+Zhang, J., Kolind, S.~H., Laule, C., and MacKay, A.~L. (2015).
+\newblock Comparison of myelin water fraction from multiecho {T2} decay curve
+  and steady-state methods.
+\newblock {\em {Mag. Res. Med.}}, 73(1):{223--32}.
 
 \bibitem[Zur et~al., 1991]{zur:91:sot}
 Zur, Y., Wood, M.~L., and Neuringer, L.~J. (1991).
