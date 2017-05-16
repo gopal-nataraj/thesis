@@ -1,0 +1,934 @@
+script for talk
+
+In conventional mri,
+the reconstructed images 
+are qualitative
+in that the numbers 
+that comprise a conventional mr image
+are informative only relative
+to each other, 
+not individually.
+Conventional mr images are qualitative
+because their voxels are functions
+not only of the so-called biomarkers
+that we want to characterize,
+but also other confounding contrast mechanisms.
+
+
+In contrast,
+the broad aim of quantitative mri
+is to rapidly and reliably localize biomarkers
+directly from MR data.
+
+Here, 
+a biomarker is a measurable tissue property
+like elasticity
+that characterizes some biological process 
+of interest
+like sclerosis,
+or the abnormal hardening of tissue.
+
+By localize,
+we mean that we seek to quantify these biomarkers
+at discretized positions in space.
+
+By rapidly,
+we mean that we seek to localize biomarkers
+using both fast MR acquisitions
+and fast estimation methods.
+
+By reliably,
+we mean that we need to use signal models
+that describe the underlying physiology accurately
+and we need to use data 
+that enables precise estimation.
+
+QMRI has been a popular idea
+since the birth of MR,
+but there remain challenges 
+that preclude QMRI's feasibility
+for routine clinical use.
+For example,
+the models that relate biomarkers
+to image data
+are often complicated and highly nonlinear,
+making biomarker estimation difficult.
+Also,
+because QMRI typically requires more data
+than conventional MRI,
+QMRI typically requires longer scans.
+This thesis seeks
+to address some of these challenges.
+
+
+Specifically,
+I will be describing new answers
+to three questions in this talk.
+First,
+how can we systematically assemble
+fast, informative collections of scans
+to enable precise biomarker quantification?
+
+Second,
+given data from an informative acquisition,
+how can we rapidly and accurately quantify these biomarkers?
+
+Third,
+can we use these tools
+to design a new state-of-the-art biomarker?
+
+
+I will begin 
+with acquisition design.
+
+
+After reconstruction,
+each voxel within a conventional mr image
+can be described
+with this general nonlinear signal model.
+Here,
+s_d relates L latent free parameters x,
+K known parameters nu,
+and A acquisition parameters p_d
+to a single voxel y_d of the dth image,
+barring complex-gaussian noise epsiilon_d.
+
+A scan profile contains capital D such voxels,
+and is characterized
+by a general vector signal model, bold s.
+
+In acquisition design,
+the task is to design acquisition parameter matrix P
+to enable precise unbiased estimation
+of biomarkers of interest,
+which are some subset
+of the elements of latent free parameters x.
+
+
+To build an appropriate objective function,
+we use the Fisher information matrix
+to relate unbiased estimation precision
+to the acquisition parameter matrix.
+For complex Gaussian data,
+the Fisher information takes this simple form.
+
+When the Fisher matrix exists,
+the cramer-rao bound ensures 
+that the covariance of unbiased estimate x-hat
+of latent parameters x
+is bounded below
+by the inverse of the Fisher matrix,
+where this matrix inequality means
+that the difference matrix
+is positive semi-definite.
+
+This inequality is asympotically tight 
+for maximum-likelihood estimators,
+and so for sufficiently high snr data,
+the inverse fisher information
+is a good proxy for unbiased estimator covariance.
+
+Our idea then is to choose acquisition parameters P
+such that the inverse fisher matrix
+is 'small',
+in some matrix sense.
+I'll comment here
+that this idea
+falls in class of problems
+known as 'bayesian experimental design',
+which was studied by statisticians like rao
+in the 1960's;
+our contribution is
+in our application of this idea
+for optimizing different pulse sequence combinations
+in quantitative mri.
+
+
+More concretely,
+we seek P that minimizes an objective function
+that is a weighted sum 
+of the diagonal entries 
+of the inverse Fisher matrix,
+which characterize variances
+of scalar entries of x.
+Here,
+the weights are necessary
+because entries of x
+will have different units.
+
+This objective cannot be optimized directly
+because of its dependance
+on object parameters x and nu,
+which vary spatially.
+
+Instead,
+we consider two alternate problems.
+In min-max scan design,
+we seek candidate scan parameters P-cup
+that minimize the worst-case imprecision,
+viewed over tight object parameter ranges set-X and set-N.
+
+In Bayesian scan design,
+we instead seek candidate scan parameters
+that minimize the expected imprecision,
+where the expectation is with respect to
+some prior joint distribution on x and nu.
+Comparing the two,
+min-max design
+takes milder distributional assumptions
+but involves an objective
+that is non-differentiable in P. 
+
+We study here the min-max design criterion
+and will later return 
+to the Bayesian criterion
+for a more challenging application.
+
+
+As a demonstration of min-max scan design,
+we design a fast acquisition
+for precise estimation
+of relaxation parameters t1,t2
+in white matter and gray matter 
+of the human brain at 3-tesla field strength.
+
+Specifically,
+we consider scan profiles consisting
+of spoiled gradient-recalled echo (spgr)
+and dual-echo steady-state (dess),
+two fast steady-state MR pulse sequeneces.
+
+We choose a time constraint
+that allows two spgr scans and one dess scan,
+a somewhat conventional t1/t2 acquisition,
+and then optimize all scan profiles 
+that are feasible under this time constraint.
+Observe that we take flip angle variation
+to be separately estimated and here assumed known.
+Observe also
+that we take weighting matrix W
+to place no emphasis on scale factor m0 estimation
+and to place roughly equal emphasis on t1,t2 estimation.
+
+
+Under the previously mentioned time constraint,
+three scan profiles are both feasible
+and produce at least as many datasets as latent variables,
+each respectively consisting
+of (2,1), (1,1), or (0,2) spgr/dess scans.
+Here, 
+we summarize their optimized flip angles,
+repetition times,
+and optimized cost function values.
+
+Our main finding is 
+that under this time constraint,
+2 optimized dess sequences alone
+can produce t1,t2 estimates at least as precise
+as spgr/dess scan profiles.
+
+
+We first tested the above three scan profiles
+in simulation.
+We assumed a single pair 
+of t1,t2 values 
+each for wm and gm
+and simulated many realizations
+of noisy voxel data.
+We then studied sample statistics 
+over maximum-likelihood t1,t2 estimates
+from the voxel realizations. 
+
+Here is a table
+of sample means and sample standard deviations.
+It is clear 
+that estimates are essentially unbiased
+and that worst-case standard deviations
+occur in gray matter.
+Furthermore, 
+we see that crb predictions
+tightly bound appropriately weighted sums
+of worst-case sample standard deviations,
+and the relative ordering 
+of scan profiles is preserved.
+
+
+We next tested our optimized acquisitions
+in phantom and in vivo experiments.
+Over a 256x256x8 3D matrix,
+each of the three fast profiles
+took less 2 minutes.
+
+To validate in vivo estimates,
+we also collected a slow reference scan profile
+consisting of 4 inversion recovery
+and 4 single-echo spin echo 2D acquisitions.
+
+Lastly,
+we collected 2 Bloch-Siegert shifted SPGR scans
+for separate flip angle calibration.
+
+
+We first report phantom accuracy results.
+Here,
+we plot sample means and sample standard deviations
+pooled over 100s of voxels
+within 14 regions of interest.
+We compare t1/t2 ml estimates
+from the three candidate and one reference profile,
+versus nist nmr measurements.
+The orange region highlights 
+vials within the 'tight' parameter range.
+Within this regions,
+t1,t2 estimates from all profiles
+exhibit minimal bias.
+
+
+We next report phantom precision results.
+Here,
+we repeated each profile 10 times
+and estimated t1,t2 std dev 
+of typical voxels within each vial
+across the repetitions.
+
+Pooling these sample standard deviation estimates
+within vials 5-7 of interest,
+we can assess the performance
+of min-max scan design
+by examining the relative empirical precision
+across scan profiles.
+
+Comparing against the optimized costs,
+we observe similar trends 
+across profiles
+of empirical vs. predicted standard deviations.
+
+
+Finally,
+we report in vivo results.
+Columns denote the three candidate profiles
+and the slow reference profile;
+rows denote t1 vs t2 maximum-likelihood estimates.
+Overall t1 estimates are similar in wm and gm,
+with exceptions in regions 
+of the (1,1) and (0,2) estimates.
+The (1,1) t2 estimates exhibit much lower precision
+than the other profiles as expected;
+however, 
+there are significant discrepancies across profiles,
+possibly due to multi-compartmental relaxation.
+
+
+In summary,
+we have introduced an MR scan design method
+to enable precise parameter estimation,
+and we have demonstrate the method
+by designing three SPGR/DESS scan profiles
+for t1,t2 estimation in the brain.
+
+Simulation and phantom results validate the method
+as predictive of unbiased estimation precision
+at realistic noise levels,
+but in vivo results reveal discrepancies,
+suggesting sensitivity to model mismatch.
+
+To address this model mismatch,
+we will need to develop more complete in vivo signal models
+that likely involve more latent free parameters.
+To estimate more latent parameters,
+we will need more scalable parameter estimation,
+
+
+which is the topic
+of the second portion of this talk.
+
+
+Here,
+we continue to use a general signal model,
+except we now omit explicit dependence 
+on scan parameter matrix P,
+as it is fixed during parameter estimation.
+
+Our task then is to estimate
+latent parameter x,
+given image data y and known parameter nu,
+on a voxel-by-voxel basis.
+
+
+this can be a challenging problem
+because as mentioned before
+s is often a nonlinear function of x,
+so inverse problems
+based on standard likelihood functions
+are non-convex.
+furthermore,
+signal s might be difficult
+to write down analytically!
+
+In some simpler applications
+where good initializations
+and signal gradients are available,
+gradient-based local optimization
+may be possible.
+
+In more challenging applications,
+researchers have tried 
+stochastic methods like simulated annealing.
+
+In general though,
+the most reliable and popular method
+is based on discretizing the parameters
+over a grid of possible values
+and exhaustively searching 
+for the parameter
+that produces the best fit 
+with the image data.
+In fact, 
+we employed this method
+in the first section.
+
+
+but let's take a look
+at the computational cost of grid search.
+In simple t1,t2 estimation
+(like in fingerprinting) 
+there are 3 latent parameters.
+discretizing over the 2 nonlinear parameters,
+we need about 100 squared or 10,000 dictionary atoms,
+which is manageable. 
+But let's recall 
+some of the more challenging
+applications mentioned before.
+These can have 
+4,7 and even up to 10 latent parameters,
+and the corresponding numbers 
+of dictionary atoms quickly becomes unmanageable.
+
+So our goal is
+to find a method 
+that scales with L more gracefully.
+
+
+We approach this problem
+taking inspiration from machine learning.
+The idea is to learn a nonlinear estimator
+from simulated training data.
+
+Specifically,
+we sample N instances 
+of latent and known parameters
+and noises
+and simulate corresponding image data vectors.
+
+We would like to then construct
+nonlinear functions h_l and offsets b_l
+that in some sense ''inverts'' the signal model
+by mapping image data vectors and known parameters
+back to the lth latent parameter
+
+Mathematically,
+we would like to solve
+this function optimization problem
+
+but cannot because it is ill-posed: 
+there are infinitely many functions
+that fit a finite N training points.
+
+So we instead modify the problem
+to restrict the function space 
+over which we optimize
+and encourage function regularity 
+through function regularization.
+This problem can be solved in closed form
+using so-called kernel functions
+for certain special function spaces,
+which we briefly discuss next.
+
+
+Recall that a Hilbert space 
+is a complete space 
+that is endowed with some inner product.
+
+A reproducing kernel Hilbert space
+is a special type of Hilbert space
+that exhibits an interesting reproducing property,
+which basically states
+that the inner product 
+of any function h in the space
+with some k called the 'reproducing kernel' function
+returns h. 
+
+This relation between the RKHS and kernel
+is a bijection,
+and the partially-evaluated kernel function
+is called a 'feature mapping'.
+
+
+So to solve the previous regularized function optimization problem,
+we first chooose a kernel function k,
+which induces a choice on the rep kernel hilbert space H.
+
+Since we require nonlinear estimation,
+we must choose a kernel function
+that is nonlinear in the regressor;
+we specifically use a Gaussian kernel.
+
+Having fixed the RKHS H,
+we can solve the KRR problem
+
+by applying a classical result in approximation theory
+which ensures that the optimal estimator
+is a linear combination of feature mappings,
+evaluated at the training points.
+
+This transforms the function optimization problem
+into finite-dimensional optimization problem,
+which can be solved via standard methods.
+
+
+When the dust settles,
+the solution can be written in one line.
+Here bold x_l collects the training point regressands,
+
+bold uppercase K is the NxN Gram matrix,
+
+M is a demeaning operator
+and itself introduces identity matrix In 
+and the Nx1 ones vector,
+
+and bold lowercase k is a nonlinear kernel embedding operator.
+
+So let us return to the original goal:
+does this KRR estimator scale better with L?
+Apparently it does, 
+since by construction the estimators
+are constructed separably!
+
+
+However, 
+in practice more complex problems
+will likely require more training samples N,
+for which it is undesirable
+to explicitly compute, store, and/or invert 
+NxN Gram matrix K.
+Fortunately,
+for many useful kernels
+there exist very accurate kernel approximations,
+which as a plus can provide us 
+some intuition about the KRR solution.
+
+Suppose there exists a function z-tilde
+of moderate dimension capital Z
+such the Gram matrix admits this low-rank decomposition.
+Here capital Z should be larger 
+than the dimension of the input space
+(so as to still lift the inputs into higher dimension)
+but also be lower than N
+(to compress).
+
+Plugging this low-rank decomposition
+into the KRR solution
+gives what appears to be a messy expression,
+but recognizing some terms 
+as means and covariances,
+
+we see that KRR appears (at least approximately)
+to perform regular linear regression
+but in a dimension higher 
+than the dimension of the input space!
+
+But does such an approximate feature mapping
+exist and work well?
+Yes, at least for certain shift-invariant PSD kernels
+like the Gaussian.
+In this case, 
+if at least in practice
+the product 'NZ' can be scaled less
+than exponentially with L, 
+we have improved scalability.
+
+
+We next outline guidelines
+for automated selection 
+of as many tuning parameters as possible.
+We focus on 'online' model selection,
+where we train after observing test data.
+
+We use kernel density estimation
+to choose a prior on known parameters nu
+and set noise covariance Sigma
+from empirical estimates 
+in background regions of test data.
+
+We set regularization parameters
+using a Bayesian perspective of KRR.
+Here,
+we assume a Gaussian process prior
+on each regression function,
+with mean function zero 
+and covariance function given by the kernel.
+
+The observed regression function is modeled 
+to include latent parameter variability epsilon_{x_l}
+due to observed regressor q
+being contaminated with noise.
+
+If we further assume this latent parameter variability
+is Gaussian-distributed 
+with variance related to the regularization parameter,
+then the posterior mean function
+happens to equal the KRR solution.
+
+In a Bayesian perspective then,
+it is reasonable to set N times the reg parameter
+to an estimate of the covariance of x_l.
+
+Lastly,
+we set the kernel smoothing parameter
+to the sample mean 
+of the training regressors.
+
+There do remain some parameters
+that still require manual selection.
+We set the prior on latent parameters
+based on tissue properties 
+and we use a Gaussian kernel shape
+because it is simple and 
+its length-scale is easily tunable.
+
+
+In summary,
+we have introduced a fast method 
+for nonlinear quantitative MRI multi-parameter estimation.
+
+Our main insight is
+that even with complicated MR signal models,
+we can simulate training points essentially for free,
+and thereby convert a nonlinear estimation problem
+into a nonlinear regression problem,
+that we can solve in closed form using kernel functions.
+
+As ongoing work,
+we are investigating questions of performance analysis,
+such as how should the number 
+of simulated training points N
+scale with the latent parameter dimension L
+or the regressor dimension Q?
+
+We would also like
+to incorporate invariance 
+to differences in data scale 
+between training and testing.
+Presently,
+we are using the testing data scale
+to choose the marginal prior distribution
+of scale parameter m0,
+but our intuition suggests
+that there is room to improve,
+given the partially linear structure 
+of nearly all mr signal models.
+
+Finally,
+we need to validate KRR
+on both simulated and real data 
+for a compelling problem 
+with many latent parameters,
+
+
+which is the topic 
+of the third and final section
+of this talk.
+
+
+Specifically,
+we investigated a new biomarker
+to characterize the state of myelin.
+Myelin is a lipid-rich substance
+that in normal white matter wraps healthy axons,
+thereby forming an electrically insulating layer,
+like rubber around a copper wire.
+There is water trapped between these myelin layers,
+and naturally when myelin is damaged
+in many diseases such as multiple sclerosis,
+this water is released 
+into the surrounding.
+
+Myelin water fraction
+denotes the proportion of mr signal 
+that arises from water trapped within the myelin layers,
+relative to the total water signal,
+
+and has been shown
+to correlate well with myelin content.
+
+
+Because myelin water
+exhibits a faster t2 relaxation time
+than other water,
+a standard multi-echo spin echo sequence,
+where a 90-excitation is followed 
+by a train of 180-refocusing pulses
+and echoes in between the refocusing pulses
+are used to characterize a multi-exponential t2 decay curve,
+remain the gold-standard acquisition.
+However, 
+these experiments require near-complete t1 recovery
+for good signal-to-noise ratios
+and so are speed-limited by long repetition times.
+
+More recently, 
+combinations of very fast steady-state scans
+using variable flip angles
+(mcDESPOT)
+were shown to produce whole-brain mwf images 
+in about a half-hour of imaging.
+However,
+myelin water fraction estimates
+from mcDESPOT were shown to disagree with MESE estimates,
+likely due to insufficient estimation precision.
+
+So our goal here
+was to design an imaging workflow
+that enables fast, precise MWF quantification.
+This involved new models,
+a new acquisition,
+and new estimation methods,
+each of which I will discuss in turn.
+
+
+Here is a simple voxel-scale model
+of how myelin water influences mr signal.
+Specifically, 
+we now distinguish signal 
+to arise from a 'fast'-relaxing
+and a 'slow'-relaxing water compartment.
+
+The physics of these compartments
+can be described with six free parameters.
+
+Of these,
+we are interested in estimating the fast-relaxing fraction ff,
+a proxy for myelin water fraction
+and a potential biomarker
+for certain wm diseases.
+
+
+Since our previous single-compartment t1,t2 estimates
+from spgr/dess scan profiles
+demonstrated sensitivity to multi-compartmental relaxation,
+we found it natural to study and use
+2-compartment spgr/dess models.
+A 2-compartment spgr model
+including first-order physical exchange 
+of intact water molecules between compartments
+was proposed by spenser and fishbein in 2000.
+
+To study their assumptions,
+we rederived their models
+
+and importantly showed 
+that their absorption of off-resonance effects
+into m0 implies either assuming 
+that different compartments 
+have the same off-resonance broadening distribution
+which is not typical,
+or neglecting exchange
+between excitation and readout,
+which is reasonable only for very short echo times.
+
+Following their ideas,
+we then derived a two-compartment dess signal model,
+which interestingly required additional approximations
+when including exchange
+unlese we assumed that the difference
+of compartmental off-resonance frequencies
+remained constant over time,
+which might be a mild assumption.
+
+Even with all the highlighted assumptions,
+closed-form signal models still remain elusive,
+
+and so for simplicity, 
+we neglect exchange in the ensuing studies.
+This may be a reasonable assumption 
+when describing the interaction
+of myelin water 
+and other water,
+as interactions across the hydrophobic myelin membrane
+are rather slow (~200ms) compared
+to myelin water fraction t2 (~15-40ms).
+
+
+To estimate six free latent parameters,
+at minimum six datasets are required,
+and so the scan parameter optimization 
+for these six datasets is higher-dimensional,
+making grid search to optimize the min-max cost less desirable.
+Instead,
+we use gradient information
+to locally optimize the bayesian scan design cost function.
+
+Here x is six-dimensional,
+nu again assumes known flip angle variation,
+and P again contains nominal flip angles
+and repetition times.
+
+Weighting matrix W is fixed
+to only place emphasis 
+on the fast-fraction ff,
+and using the inverse mean
+rescales the cost function
+to be interpretable 
+as the expected coefficient of variation
+of unbiased estimates of ff in wm.
+
+Expectations are approximated
+via sample means of samples drawn
+from a separable prior,
+
+and the constraint space ensures
+reasonable flip angles
+and enforces a total scan time constraint.
+
+
+Here are the optimized flip angles
+and repetition times
+of a scan profile consisting 
+of 4 spgr and 3 dess scans.
+We see that the predicted mwf relative std dev
+is less than 30%,
+which is a significant improvement
+over similar calculations 
+performed for the mcDESPOT acquisition.
+
+
+We first studied mwf estimation via krr in simulation.
+At each voxel position,
+we simulated ground-truth x,nu
+and a two-compartment vector signal model s
+with optimized scan parameter P-cup
+to generate corresponding single-voxel measurement vector y.
+
+We then used KRR to estimate just the fast-fraction estimate
+and listed here are the only parameters
+that we had to choose manually,
+with the exception of the kernel shape.
+
+We then compared KRR estimates against grid search estimates.
+To limit computation,
+we computed the grid search 
+to a search space
+that was artifically constrained
+to extend only 20% beyond the ground truth.
+
+
+Here are the fast-fraction estimates.
+From left to right are the ground truth,
+grid search estimate,
+and the kernel regression estimate.
+The estimates exhibit similar levels 
+of estimation accuracy and precision,
+
+but kernel regression is more than 300 times faster.
+
+We also tested KRR estimation on in vivo data.
+Over this 3D matrix size,
+the acquisition took less than 12 minutes,
+including time for separate flip angle calibration.
+
+Now, full-scale grid search would be required
+and, at least in matlab,
+would require months of computation time 
+on a typical desktop computer.
+
+On the other hand,
+KRR required about 35s for training 
+and 5s/slice for testing.
+
+We also tried using the KRR estimate
+to initialize iterative local descent
+of a standard nonlinear least squares problem.
+
+For qualitative comparison,
+I'll also show mwf estimates 
+from a recent comparison study
+of GRASE, an accelerated multi-echo spin-echo acquisition
+and mcDESPOT. 
+
+
+Here are the myelin water fraction maps.
+Observe that the top two images are ours
+and the bottom two are from the comparison study,
+so quantitative comparisons can be made
+within but not across rows.
+Iterative ML helps refinement estimates in the csf,
+but leaves wm/gm estimates largely unchanged,
+which is where the acquisition is designed
+for precise mwf estimation.
+Qualitatively,
+we can say that unlike mcDESPOT,
+our MWF estimates are comparable to GRASE mwf estimates.
+
+
+In summary,
+we have introduced a two-compartment dess signal model
+and have used that model
+to design a fast acquisition 
+for precise mwf estimation in wm.
+We first demonstrated krr in simulation
+and then used krr
+to produce proof-of-concept in vivo mwf images
+
+As ongoing work,
+we will need to systematically validate 
+both our dess model
+and the spgr/dess acquisition,
+
+and we will seek
+to further optimize the mwf acquisition
+such that we are truly capable 
+of mwf imaging as fast as mcdespot
+but as precise as grase.
+ 
+
+Here is an intended timeline to defense.
+
+This summer,
+I would like
+to experimentally validate KRR parameter estimation
+with real data 
+in a well-studied application.
+My idea here is 
+to study KRR vs. NNLS estimates
+from mese data.
+
+In the late summer
+I would like to try and answer 
+some of the conceptual questions
+for KRR estimation
+that I mentioned previously,
+and expand chapter 5
+of the thesis 
+into a ieee-tmi journal paper
+about KRR-based MRI parameter estimation.
+
+In the fall,
+I'd like to validate our mwf spgr/dess acquisition
+versus mese mwf estimates,
+and in the winter
+expand chapter 6
+into a mrm journal paper.
+
+Finally,
+I'd like to schedule my defense
+in March 2018.
+
+
+Some longer-term research ideas include
+combining image reconstruction and KRR estimation,
+correlating our MWF estimates with other myelin biomarkers,
+and applying KRR parameter estimation
+to other challenging estimation problems.
+
+
+Thanks for your attention!
