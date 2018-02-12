@@ -1,6 +1,7 @@
 \contentsline {chapter}{List of Figures}{iii}{section*.2}
 \contentsline {chapter}{List of Tables}{v}{section*.3}
 \contentsline {chapter}{List of Appendices}{vii}{section*.4}
+\contentsline {chapter}{Abstract}{viii}{section*.6}
 \vspace {1.3ex}\noindent {\bf Chapter}\vspace {1.3ex}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Thesis Overview}{2}{section.1.1}
@@ -44,7 +45,7 @@
 \contentsline {subsection}{\numberline {4.4.3}\textit {In\nobreakspace {}Vivo} Experiments}{42}{subsection.4.4.3}
 \contentsline {section}{\numberline {4.5}Discussion and Future Work}{46}{section.4.5}
 \contentsline {section}{\numberline {4.6}Conclusion}{47}{section.4.6}
-\contentsline {chapter}{\numberline {5}MRI\nobreakspace {}Parameter\nobreakspace {}Estimation via\nobreakspace {}Kernel\nobreakspace {}Regression}{49}{chapter.5}
+\contentsline {chapter}{\numberline {5}Dictionary-Free MRI Parameter\nobreakspace {}Estimation via\nobreakspace {}Regression with\nobreakspace {}Kernels (PERK)}{49}{chapter.5}
 \contentsline {section}{\numberline {5.1}Introduction}{49}{section.5.1}
 \contentsline {section}{\numberline {5.2}A Function Optimization Problem \& Kernel Solution}{51}{section.5.2}
 \contentsline {section}{\numberline {5.3}Implementation Considerations}{53}{section.5.3}
@@ -56,10 +57,10 @@
 \contentsline {subsubsection}{\numberline {5.3.2.4}Choosing Kernel Approximation Order}{57}{subsubsection.5.3.2.4}
 \contentsline {section}{\numberline {5.4}Experimentation}{58}{section.5.4}
 \contentsline {section}{\numberline {5.5}Summary and Future Work}{61}{section.5.5}
-\contentsline {paragraph}{Performance Analysis}{62}{section*.6}
-\contentsline {paragraph}{Exploiting Partially Linear Structure to Incorporate Scale Invariance}{62}{section*.7}
-\contentsline {paragraph}{Joint Image Reconstruction and Parameter Estimation}{62}{section*.8}
-\contentsline {chapter}{\numberline {6}Myelin\nobreakspace {}Water\nobreakspace {}Fraction\nobreakspace {}Estimation from\nobreakspace {}Steady-State\nobreakspace {}Sequences}{64}{chapter.6}
+\contentsline {paragraph}{Performance Analysis}{62}{section*.7}
+\contentsline {paragraph}{Exploiting Partially Linear Structure to Incorporate Scale Invariance}{62}{section*.8}
+\contentsline {paragraph}{Joint Image Reconstruction and Parameter Estimation}{62}{section*.9}
+\contentsline {chapter}{\numberline {6}Fast\nobreakspace {}Myelin\nobreakspace {}Water\nobreakspace {}Fraction\nobreakspace {}Imaging via\nobreakspace {}Scan\nobreakspace {}Design\nobreakspace {}and\nobreakspace {}PERK}{64}{chapter.6}
 \contentsline {section}{\numberline {6.1}Introduction}{64}{section.6.1}
 \contentsline {section}{\numberline {6.2}Multi-Compartmental Models for SS Sequences}{66}{section.6.2}
 \contentsline {subsection}{\numberline {6.2.1}A Two-Compartment SPGR Signal Model}{66}{subsection.6.2.1}
@@ -69,9 +70,9 @@
 \contentsline {subsection}{\numberline {6.3.2}SPGR/DESS Scan Design Implementation Details}{80}{subsection.6.3.2}
 \contentsline {section}{\numberline {6.4}Experimentation}{83}{section.6.4}
 \contentsline {section}{\numberline {6.5}Summary and Future Work}{86}{section.6.5}
-\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{86}{section*.9}
-\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{87}{section*.10}
+\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{86}{section*.10}
+\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{87}{section*.11}
 \contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{88}{chapter.7}
-\contentsline {chapter}{Appendices}{90}{section*.11}
+\contentsline {chapter}{Appendices}{90}{section*.12}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{92}{section*.14}
+\contentsline {chapter}{Bibliography}{92}{section*.15}

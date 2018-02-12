@@ -318,8 +318,7 @@
    \vfill %
    % Text from guidelines
    % gn 2017-03-21
-%   A dissertation submitted in partial fulfillment \\ %
-   A dissertation proposal submitted in partial fulfillment \\ %
+   A dissertation submitted in partial fulfillment \\ %
    of the requirements for the degree of \\ %
    % Name of degree
    \insertdegree \\ %

@@ -1,12 +1,12 @@
 % !TEX TS-program = latex
 % gopal nataraj thesis proposal
-\documentclass[thesis]{../cls/thesis-umich}
-%\documentclass[draft]{../cls/thesis-umich}
+%\documentclass[thesis]{../cls/thesis-umich}
+\documentclass[draft]{../cls/thesis-umich}
 
 % doc
 \usepackage{subfiles} 				% partial compilation
 \usepackage{xspace}						% good spacing
-% \usepackage[left]{showlabels}	% show labels
+\usepackage[left]{showlabels}	% show labels
 
 % media
 \usepackage{tabu}							% nice tables
@@ -36,7 +36,7 @@
 	Acquisition,
 	Estimation,
 	and 
-	Applications
+	Application
 }
 
 % author
@@ -72,17 +72,15 @@
 \committee{%
 	Professor Jeffrey A. Fessler, Co-Chair \\
 	Assistant Research Scientist Jon-Fredrik Nielsen, Co-Chair \\
-	% Professor Thomas Chenevert (?) \\
-	% Professor Alfred O. Hero III (?) \\
 	Professor Douglas C. Noll \\
 	Associate Professor Clayton Scott \\
 	Associate Research Scientist Scott Swanson
-}
+}%
 
 % chair entered separately for formatting
 \cochair{%
 	Jeffrey A. Fessler and Jon-Fredrik Nielsen
-}
+}%
 
 % hide/show lists of figures, tables, etc.
 \showlistoftables
@@ -96,16 +94,14 @@
 \abbreviations{%
  \acro{CFD}{Computational Fluid Dynamics}
  \acro{MSRSF}{Monotonic, Single-Root Scalar Function}
-}
+}%
 \end{comment}
 
 % abstract
-\begin{comment}
-\abstract{
-todo
-}
+\abstract{%
+	todo
+}%
 \hideabstractpagenumber
-\end{comment}
 
 % document
 \begin{document}
@@ -127,17 +123,13 @@ todo
 \label{c,scn-dsgn}
 \input{c,scn-dsgn}
 
-\chapter{MRI~Parameter~Estimation via~Kernel~Regression}
-\label{c,krr}
-\input{c,krr}
+\chapter{Dictionary-Free MRI Parameter~Estimation via~Regression with~Kernels (PERK)}
+\label{c,perk}
+\input{c,perk}
 
-\chapter{Myelin~Water~Fraction~Estimation from~Steady-State~Sequences}
+\chapter{Fast~Myelin~Water~Fraction~Imaging via~Scan~Design~and~PERK}
 \label{c,mwf}
 \input{c,mwf}
-
-%\chapter{Steady-State~RF~Pulse~Design}
-%\label{c,ss-rf}
-%\input{c,ss-rf}
 
 \chapter{Future~Work}
 \label{c,future}
@@ -156,6 +148,5 @@ todo
 % bibliography
 \bibliographystyle{ieeetr}
 \bibliography{../bib/master.bib}
-%\bibliography{../bib/master.bib,../bib/tmp.bib}
 
 \end{document}

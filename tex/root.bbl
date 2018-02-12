@@ -59,14 +59,12 @@ G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``A min-max {CRLB} optimization
 \bibitem{nataraj:17:dfm}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Dictionary-free {MRI} parameter
   estimation via kernel ridge regression,'' in {\em {Proc. IEEE Intl. Symp.
-  Biomed. Imag.}}, 2017.
-\newblock To appear.
+  Biomed. Imag.}}, pp.~{5--9}, 2017.
 
 \bibitem{nataraj:17:mwf}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Myelin water fraction
   estimation from optimized steady-state sequences using kernel ridge
   regression,'' in {\em {Proc. Intl. Soc. Mag. Res. Med.}}, p.~5076, 2017.
-\newblock To appear.
 
 \bibitem{macovski:83}
 A.~Macovski, {\em Medical imaging systems}.
@@ -151,7 +149,7 @@ A.~Macovski, ``Noise in {MRI},'' {\em {Mag. Res. Med.}}, vol.~36, pp.~{494--7},
 
 \bibitem{lei:07:som}
 T.~Lei, ``Statistics of {MR} signals: revisited,'' in {\em {Proc. SPIE 6510
-  Medical Imaging 2007: Phys. Med. Im.}}, p.~651052, 2007.
+  Medical Imaging: Phys. Med. Im.}}, p.~651052, 2007.
 
 \bibitem{gudbjartsson:95:trd}
 H.~Gudbjartsson and S.~Patz, ``The {Rician} distribution of noisy {MRI} data,''
@@ -407,7 +405,7 @@ C.~M. Lewis, S.~A. Hurley, M.~E. Meyerand, and C.~G. Koay, ``Data-driven
 \bibitem{liu:17:gmm}
 Y.~Liu, J.~R. Buck, and V.~N. Ikonomidou, ``Generalized min-max bound-based
   {MRI} pulse sequence design framework for wide-range {T1} relaxometry: {A}
-  case study on the tissue specific imaging sequence,'' {\em {PLOS ONE}},
+  case study on the tissue specific imaging sequence,'' {\em {PLoS One}},
   vol.~12, pp.~{1--20}, 02 2017.
 
 \bibitem{fisher:1925:tos}
