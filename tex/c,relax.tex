@@ -36,9 +36,8 @@ and discusses practical implementation issues.
 Section~\ref{s,relax,exp}
 demonstrates the utility
 of likelihood-based parameter estimation
-over conventional methods
-through 
-simulation experiments.
+over conventional estimators
+through comparisons in simulation.
 Section~\ref{s,relax,summ}
 provides concluding remarks
 and motivates the future work items
@@ -150,7 +149,7 @@ and that we study through experiments
 later in this chapter.
 
 \subsubsection{Example: An SPGR Scan Profile for $\To$ estimation}
-\label{sss,relax,meth,sig,t1}
+\label{sss,relax,meth,prof,t1}
 
 We first consider the problem
 of $\To\pr$ estimation at $\bmr$ 
@@ -187,7 +186,7 @@ to produce $D \geq L \gets 2$ datasets
 for well-conditioned estimation.
 
 \subsubsection{Example: A DESS Scan Profile for $\Tt$ estimation}
-\label{sss,relax,meth,sig,t2}
+\label{sss,relax,meth,prof,t2}
 
 We next consider 
 the problem of $\Tt\pr$ estimation at $\bmr$
@@ -253,8 +252,6 @@ need not require scan repetition,
 since $\Sd$ DESS scan repetitions
 produce $D \gets 2\Sd$ datasets.
 
-%\subsection{Signal Model for MRI Parameter Estimation}
-%\label{ss,relax,meth,sig}
 \subsection{Latent Object Parameter Estimation}
 \label{ss,relax,meth,est}
 
@@ -311,8 +308,9 @@ that describes the probability
 of observing image data $\bmY$
 given latent parameters $\bmX$.
 We then formulate 
-ML latent parameter estimate $\estaML{\bmX}{\bmY; \bmN, \bmP}$ 
-by finding an $\bmX$
+ML latent parameter estimator $\estML{\bmX}$
+by finding an estimate $\estaML{\bmX}{\bmY; \bmN, \bmP}$ 
+of $\bmX$
 that maximizes this likelihood function. 
 
 We first construct the likelihood function
@@ -421,7 +419,6 @@ we use the regularizer
 	\gamma_l^2 \paren{\sqrt{1 + \abs{\cdot/\gamma_l}^2} - 1}
 \end{align}
 is a differentiable approximation
-%(with shape parameter $\gamma_l$)
 of the absolute value function;
 $\bmJ \in \reals{J\times V}$ 
 evaluates $J$ (multi-dimensional) finite-differencing operations;
@@ -451,7 +448,7 @@ based on their units and relative scale.
 In general, 
 QMRI image signal model $\bmS$ is nonlinear in $\bmX$
 and so RL estimation problem \eqref{eq:relax,rl-est}
-requries non-convex optimization.
+requires non-convex optimization.
 Unlike in ML estimation,
 \eqref{eq:relax,rl-est} is not separable across voxels
 due to regularization, 
@@ -470,8 +467,223 @@ via iterative constrained local optimization
 \section{Experimentation}
 \label{s,relax,exp}
 % experiments and results
+
+This section demonstrates likelihood-based estimation
+through two experiments in simulation
+that correspond to the simple problems defined
+in Section~\ref{ss,relax,meth,prof}.
+Subsection~\ref{ss,relax,exp,t1} continues Example~\ref{sss,relax,meth,prof,t1}
+in studying $\To$ estimation
+from two SPGR scans.
+Subsection~\ref{ss,relax,exp,t2} continues Example~\ref{sss,relax,meth,prof,t2}
+in studying $\Tt$ estimation
+from one DESS scan.
+
+\subsection{$\To$ estimation from two SPGR scans}
+\label{ss,relax,exp,t1}
 % t1 estimation from spgr
+
+We selected $\To$ and $\Tt$ WM and GM values
+based on previously reported measurements at 3T 
+\cite{wansapura:99:nrt, stanisz:05:ttr}
+and extrapolated other nuisance latent object parameters
+$\mzero$ and $\Tts$
+from measurements at 1.5T \cite{kwan:99:msb}.
+For simplicity,
+we assumed no flip angle variation $\stx \gets 1$ 
+and no phase accrual due to off-resonance effects $\ompmed \gets 0$.
+We assigned these parameter values
+to the 81st slice
+of the BrainWeb digital phantom
+\cite{collins:98:dac, kwan:99:msb}
+to create ground truth $\bmMz, \bmTo, \bmTt, \bmTts \in \reals{V}$ maps.
+We simulated $217 \times 181$
+noiseless single-coil SPGR image datasets,
+varying nominal flip angles $\flipnom \gets 5,30^{\circ}$
+and fixing repetition times $\TR \gets 12.2$ms 
+and echo times $\TE \gets 4.67$ms across $\Ss \gets 2$ scans.
+We corrupted noiseless datasets
+with additive complex Gaussian noise
+to yield $D \gets 2$ noisy complex datasets
+with signal-to-noise ratio (SNR) ranging from 105-122,
+where SNR is defined here as
+\begin{align}
+	\snr{\bmS,\bmY} := \frac{\frob{\bmS}}{\frob{\bmY-\bmS}}.
+	\label{eq:relax,snr}
+\end{align}
+
+We estimated latent parameter maps $\bmTo,\Const{1}$ 
+using a conventional method-of-moments (MOM) estimator \cite{gupta:77:anl},
+the ML estimator \eqref{eq:relax,ml-est}, 
+and the RL estimator \eqref{eq:relax,rl-est}.
+The MOM estimator applies linear regression voxel-by-voxel
+to an appropriately transformed version
+of the noiseless magnitude SPGR signal model
+that is linear in $\To,\const{1}$;
+see \eg \cite{gupta:77:anl,deoni:03:rct} for details.
+We next describe our implementations 
+of ML and RL estimation in turn.
+
+The ML estimator applies the variable projection method
+(VPM; described in Subsection~\ref{ss,bkgrd,opt,vpm})
+to separate nonlinear $\bmTo$ estimation 
+from linear $\Const{1}$ estimation.
+Specifically,
+the algorithm first estimates $\bmTo$ voxel-by-voxel
+via an exhaustive grid search 
+(over $1000$ $\To$ values
+logarithmically spaced between $(10^{1.5}, 10^{3.5})$ms)
+for a maximizer
+of the separated least squares cost \eqref{eq:sep-ls-nonlin}.
+It then estimates $\Const{1}$ 
+via per-voxel linear regression \eqref{eq:sep-ls-fullrnk}.
+
+The RL estimator applies a preconditioned variant
+of the classical gradient projection method 
+(GPM; described in Subsection~\ref{ss,bkgrd,opt,loc})
+to iteratively descend 
+towards a local optimizer 
+of the RL cost
+defined in \eqref{eq:relax,rl-est}.
+We designed the preconditioner
+as the inverse
+of a positive definite diagonal majorizer
+of the RL cost function's Hessian matrix,
+updated for the first five iterations
+and fixed thereafter.
+We employed a diagonal preconditioner
+to retain the linear convergence guarantees
+of GPM \cite{bertsekas:82:pnm}
+yet approach the practical performance
+of other unprojected second-order methods
+(\eg, Newton's method).
+We employed a simple step-halving line search
+at each iteration
+to ensure monotone local convergence in cost.
+We initialized GPM 
+with the ML estimates.
+We selected regularization parameters
+as described in Subsection~\ref{sss,scn-dsgn,exp,phant,roi}.
+We used the Michigan image reconstruction toolbox \cite{fessler:16:irt}
+to construct the regularizer
+and rapidly evaluate its gradient and Hessian.
+We used the \matlab symbolic toolbox
+to generate analytical expressions
+for the gradient and Hessian 
+of the SPGR signal model.
+At each iteration,
+we used these gradient and Hessian expressions
+to compute a preconditioned descent direction,
+update the iterate
+(possibly after backtracking to ensure descent),
+and project each voxel's $\To$ iterate
+to within $\brac{10,3000}$ms.
+We continued iterations
+until the convergence criterion
+\begin{align}
+   \frob{\bmOmega^{-1}\paren{\iter{\bmX}{i}-\iter{\bmX}{i-1}}} 
+   		< 10^{-7} \frob{\bmOmega^{-1}\paren{\iter{\bmX}{i}}}
+   \label{eq:relax,conv-crit}
+\end{align}
+was satisfied,
+where $\iter{\paren{\cdot}}{i}$ denotes the $i$th iterate,
+$\bmOmega := \diag{\med{\iter{\bmX}{0}}}$
+is a weighting matrix,
+and $\med{\cdot}$ takes the median 
+across the columns of its argument.
+
+\begin{figure}[!t]
+	\centering
+	\subfigure{%
+		\includegraphics [width=15.4cm] {%
+			sp2de0,sl-81,t1,im,jet.eps%
+		}
+		\label{fig:relax,sim,t1,im,jet}
+	}
+	\hspace{0cm}
+	\subfigure{%
+		\includegraphics [width=15.2cm,trim=0 0 0 25,clip] {%
+			sp2de0,sl-81,t1,err,jet.eps%
+		}
+		\label{fig:relax,sim,t1,err,jet}
+	}
+	\caption{%
+		$\bmTo$ MOM, ML, and RL estimates
+		and corresponding error images,
+		from two simulated SPGR scans.
+		Magnitude error images are $10\times$ magnified.
+		Voxels not assigned WM- or GM-like relaxation times
+		are masked out in post-processing for display.
+		Table~\ref{tab:relax,sim,t1} 
+		presents corresponding sample statistics.
+	}
+	\label{fig:relax,sim,t1}
+\end{figure}
+
+\begin{table}[!t]
+	\small
+	\centering
+	\begin{tabular}{c | r | r r r}
+		\hline
+		\hline
+										& Truth 	& MOM 										& ML 												& RL \\
+		\hline
+		WM $\To$ 				& $832$		& \mnstd{832.7}{15.6} 		& \mnstd{832.7}{15.6} 			& \mnstd{834.00}{2.77} \\
+		GM $\To$ 				& $1331$ 	& \mnstd{1332}{34.9} 			& \mnstd{1332}{34.9} 				& \mnstd{1332.2}{6.3} \\
+		\hline
+		WM $\const{1}$ 	& $0.77$ 	& \mnstd{0.7266}{0.00744}	& \mnstd{0.7314}{0.00749} 	& \mnstd{0.73184}{0.00475} \\
+		GM $\const{1}$ 	& $0.86$ 	& \mnstd{0.8245}{0.0108} 	& \mnstd{0.8301}{0.0109} 		& \mnstd{0.8287}{0.0059} \\
+		\hline
+		\hline
+	\end{tabular}
+	\caption{%
+		Sample means $\pm$ sample standard deviations
+		of MOM, ML, and RL $\To,\const{1}$ estimates
+		from two simulated SPGR datasets,
+		computed over $3001$ WM-like and $1151$ GM-like voxels.
+		Each sample statistic is rounded off
+		to the highest place value
+		of its (unreported) standard error,
+		computed via formulas in \cite{ahn:03:seo}.
+		$\To$ values are in milliseconds.
+		$\const{1}$ values are unitless.
+		Fig.~\ref{fig:relax,sim,t1} 
+		presents corresponding images.
+	}
+	\label{tab:relax,sim,t1}
+\end{table}
+
+Fig.~\ref{fig:relax,sim,t1} compares 
+MOM, ML, and RL $\bmTo$ estimates
+alongside $10\times$ magnified absolute difference images
+with respect to the ground truth.
+Overall, 
+all three estimators produce reasonable $\bmTo$ maps.
+The MOM and ML $\bmTo$ estimates are visually quite similar.
+The RL $\bmTo$ estimate exhibits less variability 
+well within WM and GM regions of interest (ROIs),
+but incurs systematic bias along edges
+and provides reduced spatial resolution.
+
+Table~\ref{tab:relax,sim,t1} presents
+$\To,\const{1}$ samples statistics
+within WM-like and GM-like ROIs
+selected to contain voxels
+that are well away from tissue interfaces. 
+In both WM and GM,
+MOM and ML $\bmTo,\Const{1}$ estimates are comparable.
+RL estimates consistently exhibit lower variability
+but the RL $\bmTo$ estimate exhibits greater bias in WM.
+All RL bias values would be significantly greater
+if ROIs instead contained voxels at tissue interfaces.
+
+\subsection{$\Tt$ estimation from one DESS scan}
+\label{ss,relax,exp,t2}
 % t2 estimation from dess
+
+
+\section{Summary}
+\label{s,relax,summ}
 
 In the completed thesis,
 this section will demonstrate likelihood-based estimation
@@ -487,9 +699,6 @@ The results will motivate our use
 in Chapter~\ref{c,scn-dsgn}
 of likelihood-based estimation
 over more conventional methods.
-
-\section{Summary}
-\label{s,relax,summ}
 
 In the completed thesis,
 this section will call into question

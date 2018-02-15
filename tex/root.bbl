@@ -155,6 +155,48 @@ T.~Lei, ``Statistics of {MR} signals: revisited,'' in {\em {Proc. SPIE 6510
 H.~Gudbjartsson and S.~Patz, ``The {Rician} distribution of noisy {MRI} data,''
   {\em {Mag. Res. Med.}}, vol.~34, pp.~{910--4}, Dec. 1995.
 
+\bibitem{wansapura:99:nrt}
+J.~P. Wansapura, S.~K. Holland, R.~S. Dunn, and W.~S. Ball, ``{NMR} relaxation
+  times in the human brain at 3.0 {Tesla},'' {\em {J. Mag. Res.}}, vol.~9,
+  pp.~{531--8}, Apr. 1999.
+
+\bibitem{stanisz:05:ttr}
+G.~J. Stanisz, E.~E. Odrobina, J.~Pun, M.~Escaravage, S.~J. Graham, M.~J.
+  Bronskill, and R.~M. Henkelman, ``{$T_1$,} {$T_2$} relaxation and
+  magnetization transfer in tissue at {3T},'' {\em {Mag. Res. Med.}}, vol.~54,
+  pp.~{507--12}, Sept. 2005.
+
+\bibitem{kwan:99:msb}
+R.~K.-S. Kwan, A.~C. Evans, and G.~B. Pike, ``{MRI} simulation-based evaluation
+  of image-processing and classification methods,'' {\em {IEEE Trans. Med.
+  Imag.}}, vol.~18, pp.~{1085--97}, Nov. 1999.
+
+\bibitem{collins:98:dac}
+D.~L. Collins, A.~P. Zijdenbos, V.~Kollokian, J.~G. Sled, N.~J. Kabani, C.~J.
+  Holmes, and A.~C. Evans, ``Design and construction of a realistic digital
+  brain phantom,'' {\em {IEEE Trans. Med. Imag.}}, vol.~17, pp.~{463--8}, June
+  1998.
+
+\bibitem{gupta:77:anl}
+R.~K. Gupta, ``A new look at the method of variable nutation angle for the
+  measurement of spin-lattice relaxation times using {Fourier} transform
+  {NMR},'' {\em {J. Mag. Res.}}, vol.~25, pp.~{231--5}, Jan. 1977.
+
+\bibitem{deoni:03:rct}
+S.~C.~L. Deoni, B.~K. Rutt, and T.~M. Peters, ``Rapid combined {T1} and {T2}
+  mapping using gradient recalled acquisition in the steady state,'' {\em {Mag.
+  Res. Med.}}, vol.~49, pp.~{515--26}, Mar. 2003.
+
+\bibitem{bertsekas:82:pnm}
+D.~P. Bertsekas, ``Projected {Newton} methods for optimization problems with
+  simple constraints,'' {\em {SIAM J. Cont. Opt.}}, vol.~20, no.~2,
+  pp.~{221--46}, 1982.
+
+\bibitem{fessler:16:irt}
+J.~A. Fessler, ``Michigan image reconstruction toolbox {(MIRT)} for {Matlab},''
+  2016.
+\newblock Available from \myurl.
+
 \bibitem{cheng:12:pma}
 H.-L.~M. Cheng, N.~Stikov, N.~R. Ghugre, and G.~A. Wright, ``Practical medical
   applications of quantitative {MR} relaxometry,'' {\em {J. Mag. Res. Im.}},
@@ -295,11 +337,6 @@ F.~Farzaneh, S.~J. Riederer, and N.~J. Pelc, ``Analysis of {T2} limitations and
   off-resonance effects on spatial resolution and artifacts in echo-planar
   imaging,'' {\em {Mag. Res. Med.}}, vol.~14, pp.~{123--39}, Apr. 1990.
 
-\bibitem{deoni:03:rct}
-S.~C.~L. Deoni, B.~K. Rutt, and T.~M. Peters, ``Rapid combined {T1} and {T2}
-  mapping using gradient recalled acquisition in the steady state,'' {\em {Mag.
-  Res. Med.}}, vol.~49, pp.~{515--26}, Mar. 2003.
-
 \bibitem{chang:08:lls}
 L.-C. Chang, C.~G. Koay, P.~J. Basser, and C.~Pierpaoli, ``Linear least-squares
   method for unbiased estimation of {T1} from {SPGR} signals,'' {\em {Mag. Res.
@@ -419,28 +456,6 @@ H.~{\Cramer}, {\em Mathematical methods of statistics}.
 \bibitem{chernoff:53:lod}
 H.~Chernoff, ``Locally optimal designs for estimating parameters,'' {\em {Ann.
   Math. Stat.}}, vol.~24, pp.~{586--602}, Dec. 1953.
-
-\bibitem{wansapura:99:nrt}
-J.~P. Wansapura, S.~K. Holland, R.~S. Dunn, and W.~S. Ball, ``{NMR} relaxation
-  times in the human brain at 3.0 {Tesla},'' {\em {J. Mag. Res.}}, vol.~9,
-  pp.~{531--8}, Apr. 1999.
-
-\bibitem{stanisz:05:ttr}
-G.~J. Stanisz, E.~E. Odrobina, J.~Pun, M.~Escaravage, S.~J. Graham, M.~J.
-  Bronskill, and R.~M. Henkelman, ``{$T_1$,} {$T_2$} relaxation and
-  magnetization transfer in tissue at {3T},'' {\em {Mag. Res. Med.}}, vol.~54,
-  pp.~{507--12}, Sept. 2005.
-
-\bibitem{kwan:99:msb}
-R.~K.-S. Kwan, A.~C. Evans, and G.~B. Pike, ``{MRI} simulation-based evaluation
-  of image-processing and classification methods,'' {\em {IEEE Trans. Med.
-  Imag.}}, vol.~18, pp.~{1085--97}, Nov. 1999.
-
-\bibitem{collins:98:dac}
-D.~L. Collins, A.~P. Zijdenbos, V.~Kollokian, J.~G. Sled, N.~J. Kabani, C.~J.
-  Holmes, and A.~C. Evans, ``Design and construction of a realistic digital
-  brain phantom,'' {\em {IEEE Trans. Med. Imag.}}, vol.~17, pp.~{463--8}, June
-  1998.
 
 \bibitem{pauly:91:prf}
 J.~Pauly, P.~{Le Roux}, D.~Nishimura, and A.~Macovski, ``Parameter relations
