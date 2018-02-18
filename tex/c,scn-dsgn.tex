@@ -215,10 +215,13 @@ the likelihood function \eqref{eq:relax,lf-vec} is
 		\expa{-\norm{\bmy - \bms\paren{\bmx; \bmnu, \bmP}}^2_{\bmSig^{-1}}}.
 	\label{eq:scn-dsgn,lf-vec}
 \end{align}
-Under suitable regularity conditions
-\footnote{In particular,
-$\bms$ must be analytic in complex components
-of $\bmx$.},
+Under suitable
+\footnote{%
+	In particular,
+	$\bms$ must be analytic in complex components
+	of $\bmx$.
+}
+regularity conditions,
 the Fisher information matrix 
 $\Fisher{\bmx; \bmnu, \bmP} \in \complexes{L \times L}$
 \cite{fisher:1925:tos}
@@ -242,7 +245,8 @@ with respect to $\bmy$.
 In particular,
 the matrix CRB \cite{cramer:46} ensures
 that any unbiased
-\footnote{Provided that signal model $\bms\paren{\cdot}$
+\footnote{%
+	Provided that signal model $\bms\paren{\cdot}$
 	is injective and continuously differentiable in $\bmx$, 
 	maximum-likelihood (ML) estimates of $\bmx$
 	(discussed in Subsection~\ref{sss,relax,meth,est,ml})
@@ -257,12 +261,12 @@ that any unbiased
 	ML estimates will exhibit minimal estimation bias,
 	and the CRB can be used 
 	to reliably predict ML estimation error.
-	Table~\ref{table:numerical} in Subsection~\ref{ss,scn-dsgn,exp,sim}
+	Table~\ref{tab:scn-dsgn,sim} in Subsection~\ref{ss,scn-dsgn,exp,sim}
 	empirically explores the validity
 	of this high-SNR assumption,
 	through simulations
 	at realistic noise levels.
-} 
+}
 estimator $\est{\bmx}$ satisfies
 \begin{align}
 	\cov{\est{\bmx}; \bmnu, \bmP} \succeq
@@ -424,7 +428,7 @@ we consider combinations
 of magnitude SPGR and DESS scans
 for estimating the $L\gets3$ latent parameters
 $\To,\Tt$, and proportionality constant $\const{2}$
-(defined in Example~\ref{sss,relax,meth,sig,t2}),
+(defined in Example~\ref{sss,relax,meth,prof,t2}),
 given knowledge 
 of transmit field inhomogeneity $\stx$
 as $K \gets 1$ known parameter.
@@ -448,7 +452,7 @@ may help estimators disentangle $\Tt$
 from other unknown sources of DESS signal contrast.
 
 As respectively discussed
-in Examples~\ref{sss,relax,meth,sig,t1}-\ref{sss,relax,meth,sig,t2},
+in Examples~\ref{sss,relax,meth,prof,t1}-\ref{sss,relax,meth,prof,t2},
 each SPGR and DESS scan leaves 
 $\bmp \gets [\flipnom, \TR]\tpose$
 as $A \gets 2$ acquisition parameters
@@ -616,15 +620,15 @@ on a 3.5GHz desktop with 32GB RAM.
 		Flip angles are in degrees; 
 		all other values are in milliseconds.
 	}
-	\label{table:profile}
+	\label{tab:scn-dsgn,prof}
 \end{table*}
 
-Table~\ref{table:profile} compares optimized scan parameters 
+Table~\ref{tab:scn-dsgn,prof} compares optimized scan parameters 
 for profiles consisting 
 of $(2,1)$, $(1,1)$, and $(0,2)$ SPGR and DESS scans, 
 respectively. 
 In addition to $\sigwot(\bmPs)$ and $\sigwtt(\bmPs)$, 
-Table~\ref{table:profile} presents 
+Table~\ref{tab:scn-dsgn,prof} presents 
 analogous worst-case standard deviations 
 $\sigwob(\bmPs)$ and $\sigwtb(\bmPs)$ 
 over $\setXb \times \setNb$ 
@@ -730,10 +734,10 @@ due to its robustness to a wide range of object parameters.
 		Colorbar ranges are $[0,100]$, $[0,10]$, and $[0,20]$ milliseconds for rows of $\sigwot$, $\sigwtt$, and $\costwt$ subfigures, respectively. 
 		The optimized $(0,2)$ profile appears most robust to transmit field spatial variation.
 	}
-	\label{fig:heat,maps}
+	\label{fig:scn-dsgn,heat-map}
 \end{sidewaysfigure}
 
-Fig.~\ref{fig:heat,maps} displays heat maps 
+Fig.~\ref{fig:scn-dsgn,heat-map} displays heat maps 
 of worst-case latent parameter standard deviations 
 $\sigwot$, $\sigwtt$ 
 and worst-case cost $\costwt$ 
@@ -820,7 +824,7 @@ of the BrainWeb digital phantom
 \cite{collins:98:dac, kwan:99:msb} 
 to create ground truth $\bmMz, \bmTo, \bmTt, \bmTts \in \reals{V}$ maps. 
 We then choose acquisition parameters based 
-on Table~\ref{table:profile} 
+on Table~\ref{tab:scn-dsgn,prof} 
 (with fixed $\TE~=~4.67$ms) 
 and apply models \eqref{eq:spgr-model} 
 and \eqref{eq:dess-def-model}-\eqref{eq:dess-ref-model} 
@@ -895,11 +899,11 @@ for each tested scan design $\bmPs$.
 		\hline \hline
 	\end{tabu}}
 	\vspace{1mm}
-	\caption{Sample means $\pm$ sample standard deviations of $\bmTo$ and $\bmTt$ ML estimates in WM and GM ROIs of simulated data, compared across different optimized scan profiles. Sample means exhibit insignificant bias, and sample standard deviations are consistent with worst-case standard deviations $\sigwot$ and $\sigwtt$ reported in Table \ref{table:profile}. All values are reported in milliseconds.}
-	\label{table:numerical}
+	\caption{Sample means $\pm$ sample standard deviations of $\bmTo$ and $\bmTt$ ML estimates in WM and GM ROIs of simulated data, compared across different optimized scan profiles. Sample means exhibit insignificant bias, and sample standard deviations are consistent with worst-case standard deviations $\sigwot$ and $\sigwtt$ reported in Table \ref{tab:scn-dsgn,prof}. All values are reported in milliseconds.}
+	\label{tab:scn-dsgn,sim}
 \end{table}
 
-Table~\ref{table:numerical} verifies
+Table~\ref{tab:scn-dsgn,sim} verifies
 \footnote{Each sample statistic presented 
 in this chapter 
 is rounded off to the highest place value 
@@ -912,7 +916,7 @@ Decimal points indicate the significance of trailing zeros.
 that, 
 despite model nonlinearity and Rician noise,
 estimation bias in WM- and GM-like voxels is negligible.
-Sample standard deviations are consistent with $\sigwot$ and $\sigwtt$ (\emph{cf.}~Table~\ref{table:profile}). 
+Sample standard deviations are consistent with $\sigwot$ and $\sigwtt$ (\emph{cf.}~Table~\ref{tab:scn-dsgn,prof}). 
 We observe that the $(1,1)$ and $(0,2)$ profiles afford high 
 $\bmToest^\mathrm{ML}$ precision, 
 while the $(2,1)$ and $(0,2)$ scans afford high 
@@ -968,16 +972,16 @@ containing SPGR/DESS combinations.
 		Thus, the CRB reliably approximates 
 		$\ToML$ and $\TtML$ errors.
 	}
-	\label{fig:normality}
+	\label{fig:scn-dsgn,normal}
 \end{figure}
 
-Fig.~\ref{fig:normality} histograms (voxel-wise independent) ML estimates 
+Fig.~\ref{fig:scn-dsgn,normal} histograms (voxel-wise independent) ML estimates 
 $\widehat{T}_1^{\mathrm{ML}}$ and $\widehat{T}_2^{\mathrm{ML}}$ 
 from the $(0,2)$ scan profile.
 Each histogram is over a WM or GM ROI, 
 within which all voxels are assigned 
 the same single-component true $\To$ and $\Tt$ nominal value, 
-listed in Table~\ref{table:numerical}.
+listed in Table~\ref{tab:scn-dsgn,sim}.
 
 Overlaid in dashed maroon are normal distributions 
 with latent means $\To$ and $\Tt$ 
@@ -993,7 +997,7 @@ in $\To$ and $\Tt$
 from other profiles are similar). 
 
 % tradeoff: bigger range of interest, further from optimal variance 
-The subfigures of Fig.~\ref{fig:normality} superimpose 
+The subfigures of Fig.~\ref{fig:scn-dsgn,normal} superimpose 
 in solid green a second set of normal distributions, 
 with the same means $\To$ and $\Tt$ as before, 
 but worst-case standard deviations $\sigwot$ and $\sigwtt$. 
@@ -1015,14 +1019,14 @@ in \emph{both} WM \emph{and} GM.
 This subsection describes two experiments. 
 In the first experiment, 
 we compare SPGR/DESS scan profiles 
-described in Table~\ref{table:profile} 
+described in Table~\ref{tab:scn-dsgn,prof} 
 (as well as a reference profile consisting of IR and SE scans) 
 against nuclear magnetic resonance (NMR) measurements 
 from the National Institute for Standards and Technology (NIST) 
 \cite{keenan:16:msm}.
 These measurements provide information 
 about \emph{ROI sample means} and \emph{ROI sample standard deviations} 
-(Fig.~\ref{fig:hpd,ml-rls}), 
+(Fig.~\ref{fig:scn-dsgn,hpd,ml-rls}), 
 which we define as first- and second-order statistics 
 computed across voxels within an ROI.
 In the second experiment, 
@@ -1031,7 +1035,7 @@ and compute \emph{sample standard deviation maps}
 across repetitions. 
 Taking ROI sample means of these maps 
 gives \emph{pooled sample standard deviations} 
-(Table~\ref{table:hpd,sample-std-dev}), 
+(Table~\ref{tab:scn-dsgn,hpd,std-dev}), 
 which indicate relative scan profile precision.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
@@ -1044,7 +1048,7 @@ of a High Precision Devices\regis MR system phantom $\Tt$ array.
 For each scan profile, 
 we prescribe the optimized flip angles $\bmflipnomest$ 
 and repetition times $\bmTRest$ 
-listed in Table~\ref{table:profile},
+listed in Table~\ref{tab:scn-dsgn,prof},
  and hold all other scan parameters fixed. 
 We achieve the desired nominal flip angles 
 by scaling a 20mm slab-selective Shinnar-Le Roux excitation \cite{pauly:91:prf}, 
@@ -1143,7 +1147,7 @@ of anticipated standard deviations.
 We iteratively update $\bmX$ until convergence criterion 
 \begin{align}
 	\frob{\iter{\bmX}{i}-\iter{\bmX}{i-1}} < 10^{-7} \frob{\iter{\bmX}{i}}
-	\label{eq:conv,crit}
+	\label{eq:scn-dsgn,conv-crit}
 \end{align}
 is satisfied. 
 For all steady-state profiles tested, 
@@ -1207,11 +1211,11 @@ to those of SPGR/DESS reconstructions.
 		(2 SPGR, 1 DESS), (1 SPGR, 1 DESS), (0 SPGR, 2 DESS),
 		and (4 IR, 4 SE) acquisitions. 
 		Rows distinguish $\bmTo$ and $\bmTt$ ML and RL estimators. 
-		Fig.~\ref{fig:hpd,gray} provides identical grayscale images
+		Fig.~\ref{fig:scn-dsgn,hpd,gray} provides identical grayscale images
 		that enumerate vials.
 		Colorbar ranges are in milliseconds.
 	}
-	\label{fig:hpd,jet}
+	\label{fig:scn-dsgn,hpd,jet}
 \end{figure*}
 
 % nist t1/t2 maps, gray
@@ -1234,19 +1238,19 @@ to those of SPGR/DESS reconstructions.
 		and (4 IR, 4 SE) acquisitions. 
 		Rows distinguish $\bmTo$ and $\bmTt$ ML and RL estimators. 
 		Vials are enumerated and color-coded
-		to correspond with data points in Fig.~\ref{fig:hpd,ml-rls}.
-		Fig.~\ref{fig:hpd,jet} provides identical colorized images.
+		to correspond with data points in Fig.~\ref{fig:scn-dsgn,hpd,ml-rls}.
+		Fig.~\ref{fig:scn-dsgn,hpd,jet} provides identical colorized images.
 		Colorbar ranges are in milliseconds.
 	}
-	\label{fig:hpd,gray}
+	\label{fig:scn-dsgn,hpd,gray}
 \end{figure*}
 
-Figs.~\ref{fig:hpd,jet}-\ref{fig:hpd,gray} compare
+Figs.~\ref{fig:scn-dsgn,hpd,jet}-\ref{fig:scn-dsgn,hpd,gray} compare
 in color and grayscale  
 phantom $\bmTo$ and $\bmTt$ ML and RL estimates 
 from optimized scan profiles. 
 Vials are enumerated 
-in Fig.~\ref{fig:hpd,ml-rls} 
+in Fig.~\ref{fig:scn-dsgn,hpd,ml-rls} 
 in descending $\To$ and $\Tt$ order. 
 Vials corresponding to tight $\setXt$ 
 and broad $\setXb$ parameter ranges are highlighted 
@@ -1296,10 +1300,10 @@ against $\To$ estimation bias.
 		Markers and error bars indicate 
 		ROI sample means and ROI sample standard deviations 
 		within the 14 labeled and color-coded vials 
-		in Fig.~\ref{fig:hpd,gray}.
+		in Fig.~\ref{fig:scn-dsgn,hpd,gray}.
 		Tight $\setXt$ and broad $\setXb$ latent parameter ranges are highlighted 
 		in orange and yellow, respectively.
-		Table~\ref{table:hpd,accuracy} replicates sample statistics 
+		Table~\ref{tab:scn-dsgn,hpd,accuracy} replicates sample statistics 
 		within Vials 5-8.
 		Our MR measurements are at 293K 
 		and NIST NMR measurements are at 293.00K.
@@ -1307,7 +1311,7 @@ against $\To$ estimation bias.
 		estimates from different acquisitions 
 		are in reasonable agreement with NIST measurements.
 	}
-	\label{fig:hpd,ml-rls}
+	\label{fig:scn-dsgn,hpd,ml-rls}
 \end{figure*}
 
 % t1/t2 ml/rls hpd accuracy-table
@@ -1351,15 +1355,15 @@ against $\To$ estimation bias.
 		For sake of brevity, 
 		sample statistics corresponding only to phantom vials 
 		within (or nearly within) tight design range $\setXt$ 
-		(color-coded orange in Fig.~\ref{fig:hpd,gray}) are reported. 
-		Fig.~\ref{fig:hpd,ml-rls} plots sample statistics for all vials.
+		(color-coded orange in Fig.~\ref{fig:scn-dsgn,hpd,gray}) are reported. 
+		Fig.~\ref{fig:scn-dsgn,hpd,ml-rls} plots sample statistics for all vials.
 		`V\#' abbreviates vial numbers. 
 		All values are reported in milliseconds.
 	}
-	\label{table:hpd,accuracy}
+	\label{tab:scn-dsgn,hpd,accuracy}
 \end{table*}
 
-Fig.~\ref{fig:hpd,ml-rls} plots 
+Fig.~\ref{fig:scn-dsgn,hpd,ml-rls} plots 
 sample means and sample standard deviations 
 computed within circular ROIs 
 of phantom $\bmTo$ and $\bmTt$ ML and RL estimates.
@@ -1383,8 +1387,8 @@ and the IR/SE profile likely underestimates
 short ($\le$30ms) and very short ($\le$15ms) $\Tt$ values, 
 respectively, 
 due to poorly conditioned estimation. 
-Table~\ref{table:hpd,accuracy} replicates sample statistics 
-in Fig.~\ref{fig:hpd,ml-rls} for vials 5-8.
+Table~\ref{tab:scn-dsgn,hpd,accuracy} replicates sample statistics 
+in Fig.~\ref{fig:scn-dsgn,hpd,ml-rls} for vials 5-8.
 Compared to ML initializations, 
 (weakly) regularized estimates reduce error bars 
 without introducing substantial additional bias.
@@ -1422,12 +1426,12 @@ without introducing substantial additional bias.
 		to phantom vials within 
 		(or nearly within) 
 		tight design range $\setXt$
-		(color-coded orange in Fig.~\ref{fig:hpd,gray}) 
+		(color-coded orange in Fig.~\ref{fig:scn-dsgn,hpd,gray}) 
 		are reported. 	
 		`V\#' abbreviates vial numbers. 
 		All values are reported in milliseconds.
 	}
-	\label{table:hpd,sample-std-dev}
+	\label{tab:scn-dsgn,hpd,std-dev}
 \end{table*}
 
 In a second study, 
@@ -1452,19 +1456,19 @@ of voxel population means
 such as Gibbs ringing 
 due to $\mathbf{k}$-space truncation).
 	
-Table~\ref{table:hpd,sample-std-dev} reports 
+Table~\ref{tab:scn-dsgn,hpd,std-dev} reports 
 pooled sample standard deviations 
 and pooled standard errors of the sample standard deviations 
 (computed via expressions in \cite{ahn:03:seo}) 
 for phantom vials within (or nearly within) 
 tight design range $\setXt$ 
-(marked orange in Fig.~\ref{fig:hpd,gray}).
+(marked orange in Fig.~\ref{fig:scn-dsgn,hpd,gray}).
 Due to error propagation from coil combination 
 and $\bmstx$ estimation, 
 pooled ML sample standard deviations 
 cannot be compared \emph{in magnitude} 
 to worst-case predicted standard deviations 
-(Table~\ref{table:profile}); 
+(Table~\ref{tab:scn-dsgn,prof}); 
 however, \emph{trends} 
 of empirical and theoretical standard deviations 
 are overall similar.
@@ -1486,7 +1490,7 @@ than the optimized $(1,1)$ profile.
 In a single long study of a healthy volunteer, 
 we acquire the same optimized scan profiles 
 containing $(2,1)$, $(1,1)$, and $(0,2)$ SPGR/DESS scans 
-(\emph{cf.} Table~\ref{table:profile}), 
+(\emph{cf.} Table~\ref{tab:scn-dsgn,prof}), 
 as well as the reference profile 
 containing $(4,4)$ IR/SE scans.
 We obtain axial slices 
@@ -1537,14 +1541,14 @@ of brain datasets require less than 3m30s and 9s, respectively.
 		of (2~SPGR,~1~DESS), (1~SPGR,~1~DESS), (0~SPGR,~2~DESS), 
 		and (4~IR,~4~SE) acquisitions.  
 		Rows distinguish $\bmTo$ and $\bmTt$ ML and RL estimators.
-		Table~\ref{table:brain} presents corresponding WM/GM 
+		Table~\ref{tab:scn-dsgn,brain} presents corresponding WM/GM 
 		within-ROI sample statistics.
 		Colorbar ranges are in milliseconds.
 	}
-	\label{fig:brain,jet}
+	\label{fig:scn-dsgn,brain,jet}
 \end{figure*}
 
-Fig.~\ref{fig:brain,jet} compares 
+Fig.~\ref{fig:scn-dsgn,brain,jet} compares 
 brain $\bmTo$ and $\bmTt$ ML and RL estimates 
 from optimized scan profiles.
 Though in-plane motion is largely compensated via registration, 
@@ -1579,7 +1583,7 @@ against estimation bias in high-$\To$ regions.
 	\small
 	\begin{minipage}{0.18\textwidth}
 		\includegraphics [width=2.8cm] {2016-05-31,brain,roi,gray.eps}
-		\label{fig:brain,roi,gray}
+		\label{fig:scn-dsgn,brain,roi,gray}
 	\end{minipage}
 	\begin{minipage}{0.8\textwidth}
 		\begin{tabu} {c | c | r r r | r}
@@ -1634,15 +1638,15 @@ against estimation bias in high-$\To$ regions.
 		within-ROI sample standard deviations 
 		of $\bmTo$ and $\bmTt$ ML and RL estimates 
 		from the brain of a healthy volunteer
-		(Fig.~\ref{fig:brain,jet} presents corresponding images).
+		(Fig.~\ref{fig:scn-dsgn,brain,jet} presents corresponding images).
 		Sample statistics are computed 
 		within ROIs indicated in the anatomical image.  
 		All values are reported in milliseconds.
 	}
-	\label{table:brain}
+	\label{tab:scn-dsgn,brain}
 \end{table*} 
 
-Table~\ref{table:brain} summarizes 
+Table~\ref{tab:scn-dsgn,brain} summarizes 
 within-ROI sample means and sample standard deviations 
 computed\footnote{We have taken effort 
 to select ROIs that reflect expected anatomy 
@@ -1656,7 +1660,7 @@ over four separate WM ROIs containing 96, 69, 224, and 148 voxels
 and one pooled cortical GM ROI containing 156 voxels.	
 Within-ROI $\bmToest$ sample standard deviations are comparable 
 across SS profiles.
-In agreement with Table~\ref{table:profile}, 
+In agreement with Table~\ref{tab:scn-dsgn,prof}, 
 $\bmTt$ estimates from the optimized $(1,1)$ scan profile 
 exhibit higher within-ROI sample variation 
 than corresponding $(2,1)$ and $(0,2)$ $\bmTtest$ maps.

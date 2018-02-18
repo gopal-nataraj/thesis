@@ -1,8 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  17 FEB 2018 21:47
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  17 FEB 2018 22:08
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**root
+**root.tex
 (./root.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
@@ -1313,72 +1314,59 @@ CHAPTER 4.
 (./c,scn-dsgn.tex [29
 
 ] [30] [31] [32]
-Overfull \hbox (3.16121pt too wide) in paragraph at lines 395--395
+Overfull \hbox (3.16121pt too wide) in paragraph at lines 399--399
 []\OT1/ptm/b/n/17.28 Optimizing SS Se-quences for Re-lax-om-e-try in the Brain 
 |
  []
 
-
-LaTeX Warning: Reference `sss,relax,meth,sig,t2' on page 33 undefined on input 
-line 427.
-
-[33]
-
-LaTeX Warning: Reference `sss,relax,meth,sig,t1' on page 34 undefined on input 
-line 451.
-
-
-LaTeX Warning: Reference `sss,relax,meth,sig,t2' on page 34 undefined on input 
-line 451.
-
-[34] [35] [36] [37] [38] [39] [40]
-Overfull \hbox (6.94366pt too wide) in paragraph at lines 1015--1036
+[33] [34] [35] [36] [37] [38] [39] [40]
+Overfull \hbox (6.94366pt too wide) in paragraph at lines 1019--1040
 \OT1/ptm/m/n/12 This sub-sec-tion de-scribes two ex-per-i-ments. In the first e
 x-per-i-ment, we com-pare SPGR/DESS|
  []
 
 [41] [42]
-Overfull \hbox (10.55226pt too wide) in paragraph at lines 1197--1213
+Overfull \hbox (10.55226pt too wide) in paragraph at lines 1201--1217
  [][] |
  []
 
 
-Overfull \hbox (4.8618pt too wide) in paragraph at lines 1197--1213
+Overfull \hbox (4.8618pt too wide) in paragraph at lines 1201--1217
  [] |
  []
 
 
-Overfull \hbox (10.55226pt too wide) in paragraph at lines 1223--1240
+Overfull \hbox (10.55226pt too wide) in paragraph at lines 1227--1244
  [][] |
  []
 
 
-Overfull \hbox (4.8618pt too wide) in paragraph at lines 1223--1240
+Overfull \hbox (4.8618pt too wide) in paragraph at lines 1227--1244
  [] |
  []
 
 [43] [44]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1483.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1487.
 
  [45] [46]
-Overfull \hbox (10.55226pt too wide) in paragraph at lines 1527--1543
+Overfull \hbox (10.55226pt too wide) in paragraph at lines 1531--1547
  [][] |
  []
 
 
-Overfull \hbox (4.8618pt too wide) in paragraph at lines 1527--1543
+Overfull \hbox (4.8618pt too wide) in paragraph at lines 1531--1547
  [] |
  []
 
 [47] [48]
-Overfull \hbox (5.11899pt too wide) in paragraph at lines 1559--1575
+Overfull \hbox (5.11899pt too wide) in paragraph at lines 1563--1579
 []\OT1/ptm/m/n/12 Visually, $[]$ maps from steady-state pro-files ex-hibit sim-
 i-lar lev-els of con-trast in WM/GM|
  []
 
 
-Overfull \hbox (1.61938pt too wide) in paragraph at lines 1581--1583
+Overfull \hbox (1.61938pt too wide) in paragraph at lines 1585--1587
 [][]|
  []
 
@@ -1442,7 +1430,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 1599--1599
  []
 
 Missing character: There is no ; in font nullfont!
-[86] [87] [88]
+[86] [87]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1887.
+
+
+LaTeX Warning: Reference `eq:conv,crit' on page 88 undefined on input line 1887
+.
+
+[88]
 Overfull \hbox (41.06522pt too wide) in paragraph at lines 1898--1899
  [][] |
  []
@@ -1495,12 +1491,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 153.
  ) 
 Here is how much of TeX's memory you used:
- 23789 strings out of 493489
- 440673 string characters out of 3141349
- 637827 words of memory out of 3000000
- 26411 multiletter control sequences out of 15000+200000
- 32839 words of font info for 105 fonts, out of 3000000 for 9000
+ 23790 strings out of 493489
+ 440844 string characters out of 3141349
+ 637917 words of memory out of 3000000
+ 26412 multiletter control sequences out of 15000+200000
+ 33358 words of font info for 106 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 70i,21n,402p,1918b,1170s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 70i,21n,402p,1922b,1170s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (118 pages, 572848 bytes).
+Output written on root.dvi (118 pages, 572968 bytes).
