@@ -1,7 +1,7 @@
 \contentsline {chapter}{List of Figures}{iii}{section*.2}
-\contentsline {chapter}{List of Tables}{v}{section*.3}
-\contentsline {chapter}{List of Appendices}{vii}{section*.4}
-\contentsline {chapter}{Abstract}{viii}{section*.6}
+\contentsline {chapter}{List of Tables}{vi}{section*.3}
+\contentsline {chapter}{List of Appendices}{viii}{section*.4}
+\contentsline {chapter}{Abstract}{ix}{section*.6}
 \vspace {1.3ex}\noindent {\bf Chapter}\vspace {1.3ex}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Thesis Overview}{2}{section.1.1}
@@ -30,51 +30,52 @@
 \contentsline {section}{\numberline {3.3}Experimentation}{23}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}$T_1$ estimation from two SPGR scans}{23}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}$T_2$ estimation from one DESS scan}{25}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Summary}{25}{section.3.4}
-\contentsline {chapter}{\numberline {4}Optimizing\nobreakspace {}MR\nobreakspace {}Scan\nobreakspace {}Design for\nobreakspace {}Model-Based\nobreakspace {}Relaxometry}{26}{chapter.4}
-\contentsline {section}{\numberline {4.1}Introduction}{26}{section.4.1}
-\contentsline {section}{\numberline {4.2}A CRB-Inspired Scan Selection Method}{28}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}The CRB and its Relevance to QMRI}{28}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Min-max Optimization Problem for Scan Design}{29}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Optimizing SS Sequences for Relaxometry in the Brain}{30}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Scan Design Details}{31}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Scan Profile Comparisons}{32}{subsection.4.3.2}
-\contentsline {section}{\numberline {4.4}Experimental Validation and Results}{35}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Numerical Simulations}{35}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Phantom Experiments}{38}{subsection.4.4.2}
-\contentsline {subsubsection}{\numberline {4.4.2.1}Within-ROI Statistics}{38}{subsubsection.4.4.2.1}
-\contentsline {subsubsection}{\numberline {4.4.2.2}Across-Repetition Statistics}{40}{subsubsection.4.4.2.2}
-\contentsline {subsection}{\numberline {4.4.3}\textit {In\nobreakspace {}Vivo} Experiments}{44}{subsection.4.4.3}
-\contentsline {section}{\numberline {4.5}Discussion and Future Work}{48}{section.4.5}
-\contentsline {section}{\numberline {4.6}Conclusion}{49}{section.4.6}
-\contentsline {chapter}{\numberline {5}Dictionary-Free MRI Parameter\nobreakspace {}Estimation via\nobreakspace {}Regression with\nobreakspace {}Kernels (PERK)}{51}{chapter.5}
-\contentsline {section}{\numberline {5.1}Introduction}{51}{section.5.1}
-\contentsline {section}{\numberline {5.2}A Function Optimization Problem \& Kernel Solution}{53}{section.5.2}
-\contentsline {section}{\numberline {5.3}Implementation Considerations}{55}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}A Kernel Approximation}{55}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Model Selection}{57}{subsection.5.3.2}
-\contentsline {subsubsection}{\numberline {5.3.2.1}Choosing Sampling Distributions}{57}{subsubsection.5.3.2.1}
-\contentsline {subsubsection}{\numberline {5.3.2.2}Choosing Regularization Parameters}{57}{subsubsection.5.3.2.2}
-\contentsline {subsubsection}{\numberline {5.3.2.3}Choosing Smoothing Length Scale}{59}{subsubsection.5.3.2.3}
-\contentsline {subsubsection}{\numberline {5.3.2.4}Choosing Kernel Approximation Order}{59}{subsubsection.5.3.2.4}
-\contentsline {section}{\numberline {5.4}Experimentation}{60}{section.5.4}
-\contentsline {section}{\numberline {5.5}Summary and Future Work}{63}{section.5.5}
-\contentsline {paragraph}{Performance Analysis}{64}{section*.7}
-\contentsline {paragraph}{Exploiting Partially Linear Structure to Incorporate Scale Invariance}{64}{section*.8}
-\contentsline {paragraph}{Joint Image Reconstruction and Parameter Estimation}{64}{section*.9}
-\contentsline {chapter}{\numberline {6}Fast\nobreakspace {}Myelin\nobreakspace {}Water\nobreakspace {}Fraction\nobreakspace {}Imaging via\nobreakspace {}Scan\nobreakspace {}Design\nobreakspace {}and\nobreakspace {}PERK}{66}{chapter.6}
-\contentsline {section}{\numberline {6.1}Introduction}{66}{section.6.1}
-\contentsline {section}{\numberline {6.2}Multi-Compartmental Models for SS Sequences}{68}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}A Two-Compartment SPGR Signal Model}{68}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}A Two-Compartment DESS Signal Model}{74}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}A Fast Acquisition for Precise MWF Estimation}{80}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Scalable Acquisition Design}{80}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}SPGR/DESS Scan Design Implementation Details}{82}{subsection.6.3.2}
-\contentsline {section}{\numberline {6.4}Experimentation}{85}{section.6.4}
-\contentsline {section}{\numberline {6.5}Summary and Future Work}{88}{section.6.5}
-\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{88}{section*.10}
-\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{89}{section*.11}
-\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{90}{chapter.7}
-\contentsline {chapter}{Appendices}{92}{section*.12}
+\contentsline {section}{\numberline {3.4}Discussion}{27}{section.3.4}
+\contentsline {section}{\numberline {3.5}Conclusion}{28}{section.3.5}
+\contentsline {chapter}{\numberline {4}Optimizing\nobreakspace {}MR\nobreakspace {}Scan\nobreakspace {}Design for\nobreakspace {}Model-Based\nobreakspace {}Relaxometry}{29}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{29}{section.4.1}
+\contentsline {section}{\numberline {4.2}A CRB-Inspired Scan Selection Method}{31}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}The CRB and its Relevance to QMRI}{31}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Min-max Optimization Problem for Scan Design}{32}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Optimizing SS Sequences for Relaxometry in the Brain}{33}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Scan Design Details}{34}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Scan Profile Comparisons}{35}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Experimental Validation and Results}{38}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Numerical Simulations}{38}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Phantom Experiments}{41}{subsection.4.4.2}
+\contentsline {subsubsection}{\numberline {4.4.2.1}Within-ROI Statistics}{41}{subsubsection.4.4.2.1}
+\contentsline {subsubsection}{\numberline {4.4.2.2}Across-Repetition Statistics}{43}{subsubsection.4.4.2.2}
+\contentsline {subsection}{\numberline {4.4.3}\textit {In\nobreakspace {}Vivo} Experiments}{47}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}Discussion and Future Work}{51}{section.4.5}
+\contentsline {section}{\numberline {4.6}Conclusion}{52}{section.4.6}
+\contentsline {chapter}{\numberline {5}Dictionary-Free MRI Parameter\nobreakspace {}Estimation via\nobreakspace {}Regression with\nobreakspace {}Kernels (PERK)}{54}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{54}{section.5.1}
+\contentsline {section}{\numberline {5.2}A Function Optimization Problem \& Kernel Solution}{56}{section.5.2}
+\contentsline {section}{\numberline {5.3}Implementation Considerations}{58}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}A Kernel Approximation}{58}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Model Selection}{60}{subsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.2.1}Choosing Sampling Distributions}{60}{subsubsection.5.3.2.1}
+\contentsline {subsubsection}{\numberline {5.3.2.2}Choosing Regularization Parameters}{60}{subsubsection.5.3.2.2}
+\contentsline {subsubsection}{\numberline {5.3.2.3}Choosing Smoothing Length Scale}{62}{subsubsection.5.3.2.3}
+\contentsline {subsubsection}{\numberline {5.3.2.4}Choosing Kernel Approximation Order}{62}{subsubsection.5.3.2.4}
+\contentsline {section}{\numberline {5.4}Experimentation}{63}{section.5.4}
+\contentsline {section}{\numberline {5.5}Summary and Future Work}{66}{section.5.5}
+\contentsline {paragraph}{Performance Analysis}{67}{section*.7}
+\contentsline {paragraph}{Exploiting Partially Linear Structure to Incorporate Scale Invariance}{67}{section*.8}
+\contentsline {paragraph}{Joint Image Reconstruction and Parameter Estimation}{67}{section*.9}
+\contentsline {chapter}{\numberline {6}Fast\nobreakspace {}Myelin\nobreakspace {}Water\nobreakspace {}Fraction\nobreakspace {}Imaging via\nobreakspace {}Scan\nobreakspace {}Design\nobreakspace {}and\nobreakspace {}PERK}{69}{chapter.6}
+\contentsline {section}{\numberline {6.1}Introduction}{69}{section.6.1}
+\contentsline {section}{\numberline {6.2}Multi-Compartmental Models for SS Sequences}{71}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}A Two-Compartment SPGR Signal Model}{71}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}A Two-Compartment DESS Signal Model}{77}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}A Fast Acquisition for Precise MWF Estimation}{83}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Scalable Acquisition Design}{83}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}SPGR/DESS Scan Design Implementation Details}{85}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}Experimentation}{88}{section.6.4}
+\contentsline {section}{\numberline {6.5}Summary and Future Work}{91}{section.6.5}
+\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{91}{section*.10}
+\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{92}{section*.11}
+\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{93}{chapter.7}
+\contentsline {chapter}{Appendices}{95}{section*.12}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{94}{section*.15}
+\contentsline {chapter}{Bibliography}{97}{section*.15}

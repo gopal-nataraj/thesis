@@ -243,7 +243,7 @@ collects the remaining $A \gets 2$
 tunable scan parameters
 that appear explicitly in
 \eqref{eq:dess-def-model} and \eqref{eq:dess-ref-model}.
-As in Example~\ref{sss,relax,meth,sig,t1},
+As in Example~\ref{sss,relax,meth,prof,t1},
 $D \geq L \gets 2$ datasets are necessary
 for well-conditioned estimation.
 Unlike before however,
@@ -298,7 +298,7 @@ known parameter images $\bmN$.
 % ml cost
 
 In maximum likelihood (ML) estimation,
-one seeks to find model parameters
+one seeks model parameters
 that maximize the likelihood
 of observing output data.
 We apply ML estimation to QMRI
@@ -499,13 +499,13 @@ of the BrainWeb digital phantom
 to create ground truth $\bmMz, \bmTo, \bmTt, \bmTts \in \reals{V}$ maps.
 We simulated $217 \times 181$
 noiseless single-coil SPGR image datasets,
-varying nominal flip angles $\flipnom \gets 5,30^{\circ}$
+varying nominal flip angles $\flipnom \gets \degrees{5,30}$
 and fixing repetition times $\TR \gets 12.2$ms 
 and echo times $\TE \gets 4.67$ms across $\Ss \gets 2$ scans.
 We corrupted noiseless datasets
 with additive complex Gaussian noise
 to yield $D \gets 2$ noisy complex datasets
-with signal-to-noise ratio (SNR) ranging from 105-122,
+with signal-to-noise ratio (SNR) ranging from 57-93,
 where SNR is defined here as
 \begin{align}
 	\snr{\bmS,\bmY} := \frac{\frob{\bmS}}{\frob{\bmY-\bmS}}.
@@ -516,6 +516,8 @@ We estimated latent parameter maps $\bmTo,\Const{1}$
 using a conventional method-of-moments (MOM) estimator \cite{gupta:77:anl},
 the ML estimator \eqref{eq:relax,ml-est}, 
 and the RL estimator \eqref{eq:relax,rl-est}.
+The MOM, ML, and RL estimators 
+respectively took $0.11$s, $0.75$s, and $31$s. 
 The MOM estimator applies linear regression voxel-by-voxel
 to an appropriately transformed version
 of the noiseless magnitude SPGR signal model
@@ -536,7 +538,7 @@ logarithmically spaced between $(10^{1.5}, 10^{3.5})$ms)
 for a maximizer
 of the separated least squares cost \eqref{eq:sep-ls-nonlin}.
 It then estimates $\Const{1}$ 
-via per-voxel linear regression \eqref{eq:sep-ls-fullrnk}.
+via per-voxel linear regression.
 
 The RL estimator applies a preconditioned variant
 of the classical gradient projection method 
@@ -544,7 +546,7 @@ of the classical gradient projection method
 to iteratively descend 
 towards a local optimizer 
 of the RL cost
-defined in \eqref{eq:relax,rl-est}.
+described in \eqref{eq:relax,rl-est}.
 We designed the preconditioner
 as the inverse
 of a positive definite diagonal majorizer
@@ -574,9 +576,9 @@ of the SPGR signal model.
 At each iteration,
 we used these gradient and Hessian expressions
 to compute a preconditioned descent direction,
-update the iterate
+updated the iterate
 (possibly after backtracking to ensure descent),
-and project each voxel's $\To$ iterate
+and projected each voxel's $\To$ iterate
 to within $\brac{10,3000}$ms.
 We continued iterations
 until the convergence criterion
@@ -620,6 +622,21 @@ across the columns of its argument.
 	\label{fig:relax,sim,t1}
 \end{figure}
 
+Fig.~\ref{fig:relax,sim,t1} compares 
+MOM, ML, and RL $\bmTo$ estimates
+alongside $10\times$ magnified absolute difference images
+with respect to the ground truth.
+Overall, 
+all three estimators produce reasonable $\bmTo$ maps.
+The MOM and ML $\bmTo$ estimates are visually similar.
+The RL $\bmTo$ estimates are smoother
+than the MOM and ML $\bmTo$ estimates
+away from tissue interfaces,
+but the RL $\bmTo$ estimate 
+incurs systematically higher errors
+near tissue boundaries
+and provides reduced spatial resolution.
+
 \begin{table}[!t]
 	\small
 	\centering
@@ -653,18 +670,6 @@ across the columns of its argument.
 	\label{tab:relax,sim,t1}
 \end{table}
 
-Fig.~\ref{fig:relax,sim,t1} compares 
-MOM, ML, and RL $\bmTo$ estimates
-alongside $10\times$ magnified absolute difference images
-with respect to the ground truth.
-Overall, 
-all three estimators produce reasonable $\bmTo$ maps.
-The MOM and ML $\bmTo$ estimates are visually quite similar.
-The RL $\bmTo$ estimate exhibits less variability 
-well within WM and GM regions of interest (ROIs),
-but incurs systematic bias along edges
-and provides reduced spatial resolution.
-
 Table~\ref{tab:relax,sim,t1} presents
 $\To,\const{1}$ samples statistics
 within WM-like and GM-like ROIs
@@ -672,8 +677,10 @@ selected to contain voxels
 that are well away from tissue interfaces. 
 In both WM and GM,
 MOM and ML $\bmTo,\Const{1}$ estimates are comparable.
-RL estimates consistently exhibit lower variability
-but the RL $\bmTo$ estimate exhibits greater bias in WM.
+RL estimates consistently exhibit
+the lowest variation,
+but the RL $\bmTo$ estimate
+exhibits the greatest bias in WM.
 All RL bias values would be significantly greater
 if ROIs instead contained voxels at tissue interfaces.
 
@@ -681,9 +688,278 @@ if ROIs instead contained voxels at tissue interfaces.
 \label{ss,relax,exp,t2}
 % t2 estimation from dess
 
+Using the same ground truth parameters maps
+as in Subsection~\ref{ss,relax,exp,t1},
+we simulated noiseless single-coil DESS image datasets
+arising from $\Sd \gets 1$ DESS scan
+with nominal flip angle $\flipnom \gets \degrees{45}$,
+repetition time $\TR \gets 17.5$ms,
+and symmetric echo times $\TE \gets 4.67$ms.
+We corrupted noiseless datasets
+with additive complex Gaussian noise 
+to yield $D \gets 2$ noisy complex datasets
+with SNR ranging from 97-134,
+where SNR is defined as in \eqref{eq:relax,snr}.
 
-\section{Summary}
-\label{s,relax,summ}
+We estimated latent parameter maps $\bmTt, \Const{2}$ 
+using a conventional MOM estimator \cite{bruder:88:ans},
+the ML estimator \eqref{eq:relax,ml-est},
+and the RL estimator \eqref{eq:relax,rl-est}.
+The MOM, ML, and RL estimators 
+respectively took $0.09$s, $0.76$s, and $26$s;
+we describe their implementations next in turn.
+For symmetric echo times,
+the voxel-by-voxel MOM estimator assigns
+\begin{align}
+	\est{T}_2\paren{y_1,y_2} \gets -\frac{2\paren{\TR-\TE}}{\log{\abs{y_2/y_1}}},
+	\label{eq:relax,dess,mom}
+\end{align}
+where $y_1$ and $y_2$ are noisy measurements
+of the defocused \eqref{eq:dess-def-model}
+and refocused \eqref{eq:dess-ref-model} DESS signals,
+respectively.
+With $\est{\mathbf{T}}_2$ fixed,
+the MOM method then estimates $\Const{2}$ 
+via per-voxel linear regression.
+This MOM estimator incurs strong bias
+for flip angles 
+that provide practical SNR levels,
+mainly because it neglects $\To$ effects.
+This MOM estimator also amplifies noise 
+due to the division operation.
+
+Similar to Subsection~\ref{ss,relax,exp,t1},
+the ML estimator applies VPM
+to separate nonlinear $\bmTt$ estimation
+from linear $\Const{2}$ estimation.
+The algorithm first estimates $\bmTt$ voxel-by-voxel
+via an exhaustive grid search
+over 1000 $\Tt$ values
+logarithmically spaced between $\paren{10^{0.5},10^3}$ms.
+It then estimates $\Const{2}$ 
+via per-voxel linear regression.
+
+The RL estimator applies preconditioned GPM
+to iteratively descend towards a local optimizer
+of the RL cost 
+described in \eqref{eq:relax,rl-est}.
+GPM implementation details
+remain largely unchanged 
+from those described 
+in Subsection~\ref{ss,relax,exp,t1}.
+At each iteration,
+we computed a preconditioned descent direction
+(using \matlab-generated analytical expressions
+for the gradient and Hessian
+of the DESS signal models),
+updated the iterate
+(possibly after backtracking 
+to ensure monotone descent),
+and projected each voxel's $\Tt$ iterate
+to within $\brac{1,700}$ms.
+We continued iterations
+until convergence criterion \eqref{eq:relax,conv-crit}
+was satisfied.
+
+\begin{figure}[!t]
+	\centering
+	\subfigure{%
+		\includegraphics [width=15.4cm] {%
+			sp0de1,sl-81,t2,im,jet.eps%
+		}
+		\label{fig:relax,sim,t2,im,jet}
+	}
+	\hspace{0cm}
+	\subfigure{%
+		\includegraphics [width=15.2cm,trim=0 0 0 25,clip] {%
+			sp0de1,sl-81,t2,err,jet.eps%
+		}
+		\label{fig:relax,sim,t2,err,jet}
+	}
+	\caption{%
+		$\bmTt$ MOM, ML, and RL estimates
+		and corresponding error images,
+		from one simulated DESS scan.
+		Magnitude error images are $10\times$ magnified.
+		Voxels not assigned WM- or GM-like relaxation times
+		are masked out in post-processing for display.
+		Table~\ref{tab:relax,sim,t2} 
+		presents corresponding sample statistics.
+	}
+	\label{fig:relax,sim,t2}
+\end{figure}
+
+Fig.~\ref{fig:relax,sim,t2} compares
+MOM, ML, and RL $\bmTt$ estimates
+alongside $10\times$ magnified absolute difference images 
+with respect to the ground truth.
+Overall, 
+the ML and RL estimators 
+produce more reasonable $\bmTt$ maps
+than does the MOM estimator
+(but utilize additional $\stx,\To$ information).
+The RL $\bmTt$ estimates are smoother
+than ML $\bmTt$ estimates 
+away from tissue interfaces,
+but the RL $\bmTt$ estimate incurs 
+systematically higher errors 
+near tissue boundaries
+and provides reduced spatial resolution.
+
+\begin{table}[!t]
+	\small
+	\centering
+	\begin{tabular}{c | r | r r r}
+		\hline
+		\hline
+										& Truth 	& MOM 										& ML 												& RL \\
+		\hline
+		WM $\Tt$ 				& $79.6$ 	& \mnstd{68.13}{1.64} 		& \mnstd{79.36}{2.18} 			& \mnstd{76.402}{0.411} \\
+		GM $\Tt$ 				& $110.$ 	& \mnstd{95.86}{3.21}			& \mnstd{110.2}{4.19} 			& \mnstd{111.57}{0.88} \\
+		\hline
+		WM $\const{2}$ 	& $0.77$ 	& \mnstd{0.8578}{0.0148}	& \mnstd{0.7852}{0.0149} 		& \mnstd{0.79290}{0.00457} \\
+		GM $\const{2}$ 	& $0.86$ 	& \mnstd{0.9523}{0.0241} 	& \mnstd{0.8545}{0.0240} 		& \mnstd{0.8510}{0.0063} \\
+		\hline
+		\hline
+	\end{tabular}
+	\caption{%
+		Sample means $\pm$ sample standard deviations
+		of MOM, ML, and RL $\Tt,\const{2}$ estimates
+		from one simulated DESS dataset,
+		computed over $3001$ WM-like and $1151$ GM-like voxels.
+		Each sample statistic is rounded off
+		to the highest place value
+		of its (unreported) standard error,
+		computed via formulas in \cite{ahn:03:seo}.
+		$\Tt$ values are in milliseconds.
+		$\const{2}$ values are unitless.
+		Fig.~\ref{fig:relax,sim,t2} 
+		presents corresponding images.
+	}
+	\label{tab:relax,sim,t2}
+\end{table}
+
+Table~\ref{tab:relax,sim,t2} presents 
+$\Tt,\const{2}$ sample statistics
+within the same well-isolated ROIs
+as was used in Table~\ref{tab:relax,sim,t1}.
+MOM estimates are consistently most biased.
+The MOM and ML $\bmTt$ estimates
+exhibit similar levels of variability.
+RL estimates consistently exhibit
+more bias and less variation
+than ML estimates.
+
+\section{Discussion}
+\label{s,relax,disc}
+
+% result summary
+% ml and rl estimators often better than mom
+% 	ex 1: small accuracy gains in c1 due to consideration of complex data
+% 	ex 2: much larger gains in c2/t2 by avoiding bias-inducing assumptions for closed-form expressions (though avoiding these assumptions either requires prior knowledge as here or joint estimation which can reduce precision)
+% 	both examples: consider noise statistics
+% 	both examples: regularization increases precision but introduces edge effects
+% however often require greater computation
+The simulated experiments in this chapter
+serve to illustrate
+that MRI parameter estimation
+from likelihood models  
+can often offer greater accuracy
+than conventional MOM estimation,
+though usually at the expense 
+of greater computation.
+Simulations corresponding to Ex.~\ref{sss,relax,meth,prof,t1}
+demonstrated small but consistent ML and RL accuracy gains 
+over MOM $\const{1}$ estimation,
+primarily because likelihood-based estimators 
+here considered complex image noise statistics.
+Simulations corresponding to Ex.~\ref{sss,relax,meth,prof,t2}
+demonstrated larger ML and RL accuracy gains
+over MOM $\Tt,\const{2}$ estimation,
+primarily because likelihood-based estimators
+here required fewer bias-inducing signal model approximations.
+In general,
+such accuracy gains 
+will be more substantial
+in more complicated QMRI estimation problems
+that for MOM estimation 
+will require stronger model approximations.
+
+%	ml and rl methods are more general
+% can often be used in more complicated problems where mom estimator unavailable
+% this is reason we focus on ml and rl in later chapters
+Because likelihood-based estimators do not rely 
+on (possibly intractable) algebraic manipulations 
+of the application-specific signal model,
+they are also more general-purpose tools 
+than are MOM estimators.
+Indeed, 
+algorithms for implementing the ML \eqref{eq:relax,ml-est}
+(\ie, VPM with grid search)
+or RL \eqref{eq:relax,rl-est} estimators
+(\ie, GPM)
+are typically available
+even when the associated inverse problem
+is poorly conditioned.
+In such cases,
+ML estimates still need not necessarily be imprecise
+in all latent parameter entries,
+a behavior that Ch.~\ref{c,scn-dsgn}
+characterizes and then exploits.
+Because of their relative flexibility,
+we utilize likelihood-based estimators
+over MOM estimators
+for the more complex QMRI problems
+studied in Ch.~\ref{c,scn-dsgn}.
+
+% ml and rl have bias-variance tradeoff
+% ml may be better when fully-sampled in qmri since accuracy important
+% rl has many tuning parameters (2L with this regularizer)
+% since this thesis uses fully-sampled data, will not emphasize spatial reg
+% however it is used in chapter 4
+Simulations herein demonstrate
+that ML versus RL estimation performance
+can be characterized by a bias-variance tradeoff: 
+RL estimation reduces variation 
+in regions well away from tissue interfaces,
+but increases bias near interfaces.
+Thus, 
+a decision of whether to include regularization 
+(and with what strength)
+should consider the degree 
+to which regions of interest contain interfaces.
+Since the applications studied in later chapters
+take interest in resolving subtle WM/GM boundaries 
+with high spatial resolution
+and associated experiments use fully-sampled $\bmk$-space data,
+we hereafter employ ML estimation by default
+(though Ch.~\ref{c,scn-dsgn} also provides comparisons with RL estimation).
+In other QMRI problems
+that utilize low spatial frequency or highly under-sampled data
+or involve poorly-conditioned parameter estimation,
+including regularization may instead be preferable.
+
+% here used acquisition parameters similar to those used in earlier works
+% call into question this somewhat arbitrary choice
+% chapter 4 provides more principled way to choose these
+Both simulated experiments
+used acquisition parameters
+similar to those used 
+in earlier studies \cite{deoni:03:rct,heule:14:reo}.
+While these studies provide intuitive reasoning
+for some acquisition parameter choices,
+it is unclear 
+whether these choices are
+in any sense optimal
+for the respective tasks of $\To$ or $\Tt$ estimation.
+Motivated by this question,
+Ch.~\ref{c,scn-dsgn} defines one notion
+of acquisition parameter optimality
+and investigates how optimized acquisition parameters
+can improve $\To,\Tt$ ML estimation performance.
+
+\section{Conclusion}
+\label{s,relax,conc}
 
 In the completed thesis,
 this section will demonstrate likelihood-based estimation

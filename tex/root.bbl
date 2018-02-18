@@ -197,6 +197,11 @@ J.~A. Fessler, ``Michigan image reconstruction toolbox {(MIRT)} for {Matlab},''
   2016.
 \newblock Available from \myurl.
 
+\bibitem{heule:14:reo}
+R.~Heule, C.~Ganter, and O.~Bieri, ``Rapid estimation of cartilage {T2} with
+  reduced {T1} sensitivity using double echo steady state imaging,'' {\em {Mag.
+  Res. Med.}}, vol.~71, pp.~{1137--43}, Mar. 2014.
+
 \bibitem{cheng:12:pma}
 H.-L.~M. Cheng, N.~Stikov, N.~R. Ghugre, and G.~A. Wright, ``Practical medical
   applications of quantitative {MR} relaxometry,'' {\em {J. Mag. Res. Im.}},
@@ -367,11 +372,6 @@ G.~H. Welsch, K.~Scheffler, T.~C. Mamisch, T.~Hughes, S.~Millington,
   M.~Deimling, and S.~Trattnig, ``Rapid estimation of cartilage {T2} based on
   double echo at steady state {(DESS)} with 3 {Tesla},'' {\em {Mag. Res.
   Med.}}, vol.~62, pp.~{544--9}, Aug. 2009.
-
-\bibitem{heule:14:reo}
-R.~Heule, C.~Ganter, and O.~Bieri, ``Rapid estimation of cartilage {T2} with
-  reduced {T1} sensitivity using double echo steady state imaging,'' {\em {Mag.
-  Res. Med.}}, vol.~71, pp.~{1137--43}, Mar. 2014.
 
 \bibitem{stocker:14:mpq}
 T.~{\Stocker}, F.~Keil, K.~Vahedipour, D.~Brenner, E.~Pracht, and N.~J. Shah,
