@@ -30,18 +30,18 @@ is organized as follows.
 Section~\ref{s,relax,meth}
 introduces the notion of a QMRI scan profile,
 describes a signal model for parameter estimation,
-formulates several likelihood-based estimators
-using this model,
-and discusses practical implementation issues.
+and formulates two likelihood-based estimators
+using this model.
 Section~\ref{s,relax,exp}
-demonstrates the utility
-of likelihood-based parameter estimation
-over conventional estimators
-through comparisons in simulation.
-Section~\ref{s,relax,summ}
-provides concluding remarks
-and motivates the future work items
-studied in subsequent chapters.
+demonstrates these likelihood-based estimators
+through simulation experiments
+in two simple applications
+where conventional estimators are available.
+Section~\ref{s,relax,disc} 
+discusses advantages and drawbacks 
+of these two likelihood-based estimators.
+Section~\ref{s,relax,conc} 
+provides concluding remarks.
 
 \section{Likelihood-Based Estimation in QMRI}
 \label{s,relax,meth}
@@ -961,29 +961,27 @@ can improve $\To,\Tt$ ML estimation performance.
 \section{Conclusion}
 \label{s,relax,conc}
 
-In the completed thesis,
-this section will demonstrate likelihood-based estimation
-in two simulation experiments
-that correspond to the problems
-defined in Examples~\ref{sss,relax,meth,sig,t1}-\ref{sss,relax,meth,sig,t2}.
-The results will involve minor implementation improvements
-to similar results presented 
-in early conference papers 
-\cite{nataraj:14:rje} and \cite{nataraj:14:mbe},
-respectively.
-The results will motivate our use 
-in Chapter~\ref{c,scn-dsgn}
-of likelihood-based estimation
-over more conventional methods.
-
-In the completed thesis,
-this section will call into question
-the somewhat arbitrary choices
-of acquisition parameters 
-used in the previous examples
-and ask whether these acquisition parameters
-can themselves be designed 
-through optimization.
-This question will serve 
-as motivation for 
-and as transition into Chapter~\ref{c,scn-dsgn}.
+This transitional chapter 
+has developed a formalism
+to describe a general QMRI scan profile
+and has described two likelihood-based estimators
+for QMRI parameter estimation.
+We have demonstrated these ML and RL estimators
+in two simple applications
+where conventional MOM estimators are available,
+namely $\To$ estimation from two SPGR scans
+and $\Tt$ estimation from one DESS scan.
+Simulations illustrate 
+that ML and RL estimators
+can often offer greater accuracy
+than MOM estimators,
+though usually at the expense
+of greater computation.
+Because of their accuracy and generality,
+likelihood-based QMRI estimators
+will be used 
+to validate a new method for scan design
+in Ch.~\ref{c,scn-dsgn}
+and for comparison 
+with a new QMRI parameter estimation method
+in Ch.~\ref{c,perk}.

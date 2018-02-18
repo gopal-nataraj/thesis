@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  17 FEB 2018 19:50
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  17 FEB 2018 21:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1280,11 +1280,7 @@ Overfull \hbox (43.6091pt too wide) in paragraph at lines 789--789
 
 [12] [13] [14] [15] [16]) [17]
 CHAPTER 3.
-(./c,relax.tex
-
-LaTeX Warning: Reference `s,relax,summ' on page 18 undefined on input line 41.
-
-[18
+(./c,relax.tex [18
 
 ] [19] [20] [21] [22] [23]
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 604.
@@ -1312,16 +1308,7 @@ Overfull \hbox (1.8618pt too wide) in paragraph at lines 771--788
  [] |
  []
 
-[26] [27]
-
-LaTeX Warning: Reference `sss,relax,meth,sig,t1' on page 28 undefined on input 
-line 968.
-
-
-LaTeX Warning: Reference `sss,relax,meth,sig,t2' on page 28 undefined on input 
-line 968.
-
-) [28]
+[26] [27]) [28]
 CHAPTER 4.
 (./c,scn-dsgn.tex [29
 
@@ -1508,12 +1495,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 153.
  ) 
 Here is how much of TeX's memory you used:
- 23790 strings out of 493489
- 440687 string characters out of 3141349
+ 23789 strings out of 493489
+ 440673 string characters out of 3141349
  637827 words of memory out of 3000000
- 26412 multiletter control sequences out of 15000+200000
+ 26411 multiletter control sequences out of 15000+200000
  32839 words of font info for 105 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  70i,21n,402p,1918b,1170s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (118 pages, 572836 bytes).
+Output written on root.dvi (118 pages, 572848 bytes).
