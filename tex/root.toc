@@ -17,7 +17,7 @@
 \contentsline {section}{\numberline {2.2}Optimization in QMRI}{15}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Iterative Local Optimization with Constraints}{15}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Partially Linear Models and the Variable Projection Method}{16}{subsection.2.2.2}
-\contentsline {chapter}{\numberline {3}MRI\nobreakspace {}Parameter\nobreakspace {}Estimation from\nobreakspace {}Likelihood\nobreakspace {}Models}{18}{chapter.3}
+\contentsline {chapter}{\numberline {3}QMRI\nobreakspace {}Parameter\nobreakspace {}Estimation using\nobreakspace {}Likelihood\nobreakspace {}Models}{18}{chapter.3}
 \contentsline {section}{\numberline {3.1}Introduction}{18}{section.3.1}
 \contentsline {section}{\numberline {3.2}Likelihood-Based Estimation in QMRI}{18}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}The QMRI Scan Profile}{18}{subsection.3.2.1}
@@ -32,7 +32,7 @@
 \contentsline {subsection}{\numberline {3.3.2}$T_2$ estimation from one DESS scan}{25}{subsection.3.3.2}
 \contentsline {section}{\numberline {3.4}Discussion}{27}{section.3.4}
 \contentsline {section}{\numberline {3.5}Conclusion}{28}{section.3.5}
-\contentsline {chapter}{\numberline {4}Optimizing\nobreakspace {}MR\nobreakspace {}Scan\nobreakspace {}Design for\nobreakspace {}Model-Based\nobreakspace {}Relaxometry}{29}{chapter.4}
+\contentsline {chapter}{\numberline {4}QMRI\nobreakspace {}Acquisition\nobreakspace {}Design via Min-Max\nobreakspace {}Optimization}{29}{chapter.4}
 \contentsline {section}{\numberline {4.1}Introduction}{29}{section.4.1}
 \contentsline {section}{\numberline {4.2}A CRB-Inspired Scan Selection Method}{31}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}The CRB and its Relevance to QMRI}{31}{subsection.4.2.1}
@@ -48,7 +48,7 @@
 \contentsline {subsection}{\numberline {4.4.3}\textit {In\nobreakspace {}Vivo} Experiments}{47}{subsection.4.4.3}
 \contentsline {section}{\numberline {4.5}Discussion and Future Work}{51}{section.4.5}
 \contentsline {section}{\numberline {4.6}Conclusion}{52}{section.4.6}
-\contentsline {chapter}{\numberline {5}Dictionary-Free MRI Parameter\nobreakspace {}Estimation via\nobreakspace {}Regression with\nobreakspace {}Kernels (PERK)}{54}{chapter.5}
+\contentsline {chapter}{\numberline {5}QMRI Parameter\nobreakspace {}Estimation via\nobreakspace {}Regression with\nobreakspace {}Kernels (PERK)}{54}{chapter.5}
 \contentsline {section}{\numberline {5.1}Introduction}{54}{section.5.1}
 \contentsline {section}{\numberline {5.2}A Function Optimization Problem \& Kernel Solution}{56}{section.5.2}
 \contentsline {section}{\numberline {5.3}Implementation Considerations}{58}{section.5.3}
@@ -63,12 +63,12 @@
 \contentsline {paragraph}{Performance Analysis}{67}{section*.7}
 \contentsline {paragraph}{Exploiting Partially Linear Structure to Incorporate Scale Invariance}{67}{section*.8}
 \contentsline {paragraph}{Joint Image Reconstruction and Parameter Estimation}{67}{section*.9}
-\contentsline {chapter}{\numberline {6}Fast\nobreakspace {}Myelin\nobreakspace {}Water\nobreakspace {}Fraction\nobreakspace {}Imaging via\nobreakspace {}Scan\nobreakspace {}Design\nobreakspace {}and\nobreakspace {}PERK}{69}{chapter.6}
+\contentsline {chapter}{\numberline {6}Fast\nobreakspace {}Myelin\nobreakspace {}Water\nobreakspace {}Fraction\nobreakspace {}Imaging via\nobreakspace {}Acquisition\nobreakspace {}Design\nobreakspace {}and\nobreakspace {}PERK}{69}{chapter.6}
 \contentsline {section}{\numberline {6.1}Introduction}{69}{section.6.1}
 \contentsline {section}{\numberline {6.2}Multi-Compartmental Models for SS Sequences}{71}{section.6.2}
 \contentsline {subsection}{\numberline {6.2.1}A Two-Compartment SPGR Signal Model}{71}{subsection.6.2.1}
 \contentsline {subsection}{\numberline {6.2.2}A Two-Compartment DESS Signal Model}{77}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}A Fast Acquisition for Precise MWF Estimation}{83}{section.6.3}
+\contentsline {section}{\numberline {6.3}A Fast SS Acquisition for Precise MWF Imaging}{83}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}Scalable Acquisition Design}{83}{subsection.6.3.1}
 \contentsline {subsection}{\numberline {6.3.2}SPGR/DESS Scan Design Implementation Details}{85}{subsection.6.3.2}
 \contentsline {section}{\numberline {6.4}Experimentation}{88}{section.6.4}

@@ -5,11 +5,11 @@
 \label{s,mwf,intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter applies techniques
-(developed in earlier chapters)
-for QMRI acquisition design
-and parameter estimation
-to design new methods 
+This chapter adapts acquisition design 
+(developed in Ch.~\ref{c,scn-dsgn})
+and applies parameter estimation 
+(developed in Ch.~\ref{c,perk})
+to design a new method
 for imaging a specific MR biomarker
 of clinical interest.
 In particular,
@@ -69,7 +69,8 @@ that exist in similar macromolecular environments.
 \emph{In vitro} NMR studies
 of nervous animal tissue
 ascribed a fast-relaxing
-\footnote{The fast-relaxing compartment bears its name 
+\footnote{%
+	The fast-relaxing compartment bears its name 
 	with reference to the portion 
 	of the $\Tt$ distribution in water
 	(from about $10$ms to at least $1000$ms)
@@ -102,7 +103,7 @@ of nerve injury \cite{gareau:00:mta}
 and demyelination \cite{webb:03:imt}.
 In humans, 
 MWF has also been measured 
-to be markedly lower
+to be significantly lower
 in ``normally appearing'' WM 
 of MS patients versus controls \cite{laule:04:wca},
 and to correlate strongly 
@@ -110,11 +111,10 @@ with post-mortem histological measurements
 of myelin content
 in MS patients \cite{laule:06:mwi}.
 Thus,
-there is reasonably strong evidence
-that MWF
-(as defined in \cite{mackay:94:ivv})
-is a specific and non-invasive biomarker
-for myelin content in WM.
+there is strong evidence
+that MWF as defined in \cite{mackay:94:ivv}
+is a specific biomarker
+for WM myelin content.
 
 % all aforementioned studies used MESE 
 % MESE typically uses long tr to ensure full recovery between excitations
@@ -133,9 +133,24 @@ in nervous tissue.
 Whole-brain MWF imaging 
 using such long-$\TR$ MESE acquisitions
 at a typical imaging resolution
-would require hours of scan time
-and thus may not be clinically feasible.
-As a more practical alternative,
+would require hours of scan time.
+To enable more clinically practical scan times,
+researchers have more recently shown
+that MESE-based MWF imaging
+can be accelerated
+without significantly changing
+the resulting MWF images \cite{does:00:rat,prasloski:12:rwc}
+by acquiring multiple gradient echoes
+per refocusing pulse \cite{feinberg:91:gga}.
+However, 
+these and other acquisition modifications
+used in \cite{prasloski:12:rwc}
+do not address the fundamental long-$\TR$ requirement
+of MESE acquisitions
+and thus would still require long scan times
+for whole-brain MWF imaging
+at millimeter-scale resolution.
+As an alternative to MESE acquisitions,
 scan profiles consisting of short-$\TR$ steady-state (SS) sequences
 were proposed 
 for whole-brain MWF imaging in about 30m scan time
@@ -147,14 +162,14 @@ have thus far been shown
 to be incomparable with MWF images
 from MESE pulse sequences
 \cite{zhang:15:com},
-likely due in part
+likely due at least in part
 to insufficient parameter estimation precision
 \cite{lankford:13:oti}.
 
 This chapter introduces
-a rapid SS MRI scan profile
+a fast SS MRI scan profile
 for precise MWF imaging.
-We apply QMRI acquisition design
+We adapt QMRI acquisition design
 (developed in Chapter~\ref{c,scn-dsgn})
 to optimize the flip angles and repetition times
 of combinations 
@@ -166,29 +181,31 @@ for precise MWF estimation.
 We rapidly estimate MWF and 
 other nuisance latent object parameters
 using QMRI parameter estimation
-via kernel ridge regression (KRR)
-(developed in Chapter~\ref{c,krr}).
-We obtain proof-of-concept MWF maps \invivo
-that are comparable
-to results reported
-in MESE literature.
-
-The remainder of this chapter
-is organized as follows.
-Section~\ref{s,mwf,model} reviews and develops
-simple two-compartment signal models
-for SPGR and DESS pulse sequences, 
-respectively.
-Section~\ref{s,mwf,acq} designs 
-a new SPGR/DESS scan profile 
-for precisely estimating MWF parameter images
-from SPGR/DESS image data.
-Section~\ref{s,mwf,exp} applies
-the proposed acquisition \invivo
-and qualitatively compares resultant MWF images
-to state-of-the-art MESE results.
-Section~\ref{s,mwf,summ} summarizes contributions thus far
-and discusses future work. 
+via regression with kernels (PERK)
+(developed in Chapter~\ref{c,perk}).
+\edit{%
+  We obtain proof-of-concept MWF maps \invivo
+  that are comparable
+  to results reported
+  in MESE literature.
+  
+  The remainder of this chapter
+  is organized as follows.
+  Section~\ref{s,mwf,model} reviews and develops
+  simple two-compartment signal models
+  for SPGR and DESS pulse sequences, 
+  respectively.
+  Section~\ref{s,mwf,acq} designs 
+  a new SPGR/DESS scan profile 
+  for precisely estimating MWF parameter images
+  from SPGR/DESS image data.
+  Section~\ref{s,mwf,exp} applies
+  the proposed acquisition \invivo
+  and qualitatively compares resultant MWF images
+  to state-of-the-art MESE results.
+  Section~\ref{s,mwf,summ} summarizes contributions thus far
+  and discusses future work. 
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Multi-Compartmental Models for SS Sequences}
@@ -220,36 +237,37 @@ to greater numbers of interacting compartments.
 The McConnell equations \cite{mcconnell:58:rrb}
 extend the Bloch equations \cite{bloch:1946:ni-paper}
 to account for physical exchange
-\footnote{The word ``exchange'' 
-is often a source of confusion 
-because it is used in different contexts
-to refer to a variety of transport phenomena.
-As originally described in \cite{mcconnell:58:rrb},
-\emph{chemical exchange} specifically refers 
-to the rapid reversible transfer
-of a nucleus 
-between two or more molecular environments
-(\eg, hydrogen bonding in water
-or proton exchange 
-between water and a macromolecule). 
-More recently,
-exchange has also been loosely used 
-to describe several other processes
-that can be characterized
-with similar physical equations
-but where explicit nuclear transfer does not occur.
-One such process
-that we denote for clarity
-as \emph{physical exchange}
-involves the transfer
-of intact molecules 
-between different compartments
-(\eg, water molecules across a membrane).
-In the ensuing derivations,
-we refer specifically
-to physical exchange
-but note that the McConnell equations
-describe chemical exchange as well.
+\footnote{%
+	The word ``exchange'' 
+  is often a source of confusion 
+  because it is used in different contexts
+  to refer to a variety of transport phenomena.
+  As originally described in \cite{mcconnell:58:rrb},
+  \emph{chemical exchange} specifically refers 
+  to the rapid reversible transfer
+  of a nucleus 
+  between two or more molecular environments
+  (\eg, hydrogen bonding in water
+  or proton exchange 
+  between water and a macromolecule). 
+  More recently,
+  exchange has also been loosely used 
+  to describe several other processes
+  that can be characterized
+  with similar physical equations
+  but where explicit nuclear transfer does not occur.
+  One such process
+  that we denote for clarity
+  as \emph{physical exchange}
+  involves the transfer
+  of intact molecules 
+  between different compartments
+  (\eg, water molecules across a membrane).
+  In the ensuing derivations,
+  we refer specifically
+  to physical exchange
+  but note that the McConnell equations
+  describe chemical exchange as well.
 }
 between two or more intra-voxel compartments.
 Here,
@@ -314,7 +332,8 @@ where $\ff\pr \in \brac{0,1}$ and $\fs\pr \in \brac{0,1}$
 denote fast- and slow-relaxing
 compartmental fractions
 and $\mzero\pr$ denotes the total 
-\footnote{The numerous parameters introduced here
+\footnote{%
+	The numerous parameters introduced here
 	are often interdependent. 
 	In regions with only two water compartments present,
 	$\ff\pr + \fs\pr = 1$.
@@ -339,7 +358,8 @@ and $\vect{\cdot}$ denotes vectorization.
 Here,
 system matrix $\bmA\pr \in \reals{6 \times 6}$ 
 admits a block diagonal form
-\footnote{For conciseness we introduce here 
+\footnote{%
+	For conciseness we introduce here 
 	the \matlab-like shorthand 
 	$$\brac{\bmM_{1,1}, \bmM_{1,2}; \bmM_{2,1}, \bmM_{2,2}} 
 		\equiv
@@ -555,7 +575,8 @@ an explicit representation
 for \eqref{eq:mwf,spgr-m-t0}
 that we find
 via standard solvers
-\footnote{Since we require many signal evaluations
+\footnote{%
+	Since we require many signal evaluations
 	for acquisition design
 	and parameter estimation,
 	it is well worthwhile 
@@ -800,7 +821,8 @@ Here,
 we utilize a first-order Magnus expansion 
 that in chemical equilibrium yields
 a simple approximate 
-\footnote{Approximation \eqref{eq:mwf,epr-eq,t-dep} is exact 
+\footnote{%
+	Approximation \eqref{eq:mwf,epr-eq,t-dep} is exact 
 	if commutation relation
 	$$\bmA\paren{\bmr,t_1}\bmA\paren{\bmr,t_2} = \bmA\paren{\bmr,t_2} \bmA\paren{\bmr,t_1}$$
 	holds for all $t_1,t_2 \geq t_0$,
@@ -1210,7 +1232,7 @@ that compartmental signals simply add
 if exchange is neglected.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{A Fast Acquisition for Precise MWF Estimation}
+\section{A Fast SS Acquisition for Precise MWF Imaging}
 \label{s,mwf,acq}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1229,8 +1251,8 @@ Subsection~\ref{ss,mwf,acq,detail}
 details how we use scalable scan design
 (with the two-compartment signal models developed 
 in Section~\ref{s,mwf,model})
-to design a fast SPGR/DESS acquisition 
-for precise MWF imaging.
+to design a fast SS acquisition 
+for precise MWF estimation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scalable Acquisition Design}
