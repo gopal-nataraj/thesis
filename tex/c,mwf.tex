@@ -1246,7 +1246,8 @@ in MWF imaging
 and then adapts our method 
 for QMRI scan design
 (introduced for a simpler problem 
-in Chapter~\ref{c,scn-dsgn}) appropriately.
+in Chapter~\ref{c,scn-dsgn}) 
+appropriately.
 Subsection~\ref{ss,mwf,acq,detail}
 details how we use scalable scan design
 (with the two-compartment signal models developed 
@@ -1462,15 +1463,14 @@ and in fact here
 (as in \cite{deoni:11:com, deoni:13:oct})
 are largely neglected.
 
-For the preliminary study
+For the proof-of-concept study
 discussed in the remainder of this chapter,
-we specifically assume (as in Section~\ref{s,krr,exp}) 
-that signal arises
+we assumed that signal arises
 from two non-exchanging water compartments
 (\ie, $\rfs \gets 0$, $\rsf \gets 0$, and $\ff + \fs = 1$)
 with identical broadening distributions
 (\ie, $\Rtpf \equiv \Rtps$ and $\ompfmed \equiv \ompsmed$).
-These simplifications provide closed-form expressions
+These simplifications provided closed-form expressions
 for the SPGR 
 \eqref{eq:mwf,spgr,mod-exchg0}
 and DESS 
@@ -1479,14 +1479,13 @@ signal models
 as well as their gradients.
 To reduce SPGR/DESS signal dependence
 on off-resonance effects,
-we use magnitude signal models
+we used magnitude signal models
 for scan design
-and highlight 
-that Rician distributed noise 
+and note that Rician distributed noise 
 in corresponding magnitude image data
 is well-approximated as Gaussian
 for sufficiently large SNR \cite{gudbjartsson:95:trd}. 
-We further fix $\TP$, $\TE$ across scans
+We further fixed $\TP, \TE$ across scans
 and thereby reduce model dependencies 
 to seven free object parameters per voxel:
 $\ff$, $\tf{1}$, $\tf{2}$, $\ts{1}$, $\ts{2}$, $\stx$, and
@@ -1494,7 +1493,7 @@ $\const{3} := \mzero e^{-\Rtpf \TE} \equiv \mzero e^{-\Rtps \TE}$;
 and two acquisition parameters per dataset:
 $\bmp_d \gets \brac{\flipnom, \TR}\tpose, \forall d \in \set{1,\dots,D}$.
 As in Chapter~\ref{c,scn-dsgn},
-we assume prior knowledge 
+we assumed prior knowledge 
 of transmit field sensitivity $\bmnu \gets \stx$ 
 (which in practice can be estimated
 from separate fast acquisitions, \eg \cite{sacolick:10:bmb})
@@ -1506,24 +1505,23 @@ as $\bmx \gets \brac{\ff, \tf{1}, \tf{2}, \ts{1}, \ts{2}, \const{3}}$.
 % suffices to design W as zero everywhere but for ff
 % actually design W as inv of mean^2 
 % then for symmetric distribution, sqrt(cost) interpretable as rstd
-We take fast-relaxing compartmental fraction $\ff$ 
-to be a proxy for MWF.
-To design a MWF imaging acquisition,
-we therefore tailor our design criterion
-to encourage precise $\ff$ estimation.
-We consider the other five latent parameters
-to be nuisance parameters
-and accordingly set weighting matrix
-$\bmW \gets \diag{\inv{\expect{\bmx,\bmnu}{\ff}}, \zeros{5}}$,
-thereby ignoring nuisance parameter
-estimation precision.
+We took fast-relaxing compartmental fraction $\ff$ 
+to be a proxy for MWF
+and tailored acquisition design cost \eqref{eq:mwf,expcost}
+to encourage scan combinations
+that enable precise $\ff$ estimation.
+Specifically,
+we set weighting matrix 
+$\bmW \gets \diag{\inv{\expect{\bmx,\bmnu}{\ff}}, \zeros{5}}$
+to only penalize $\ff$ imprecision,
+thereby ignoring nuisance parameter estimation precision.
 Here, 
 fast-fraction variance weight 
 $\inv{\expect{\bmx,\bmnu}{\ff}}$ assigns interpretable meaning
-to $\sqrt{\expcost\paren{\bmP}}$ (equivalently, $\expcost\paren{\bmP}$)
+to $\sqrt{\expcost\paren{\bmP}}$ 
 as a unitless measure
-of the expected relative standard deviation 
-(equivalently, expected coefficient of variation)
+of the expected relative standard deviation
+(alternately, expected coefficient of variation)
 afforded by $\bmP$ 
 in asymptotically unbiased estimates of $\ff$. 
 
@@ -1534,28 +1532,28 @@ in asymptotically unbiased estimates of $\ff$.
 % since W places no weight on c3, suffices to fix it to 1
 % nu dist as unif on [0.9,1.1] to account for 10% var in flip
 % constant noise variance 1.49 times 10^-7 matches norm measurements from before
-We approximate expectations 
+We approximated expectations 
 of form $\expect{\bmx,\bmnu}{\cdot}$
 by taking empirical averages
 using samples of $\bmx,\bmnu$ drawn 
 from the prior distribution defined as follows.
-We assume for simplicity
+We assumed for simplicity
 that all components of $\bmx,\bmnu$ are independent.
-We model 
+We modeled 
 $\ff \sim \unif{0.03, 0.21}$
 to conservatively contain
 state-of-the-art MESE MWF measurements in WM
 \cite{zhang:15:com}.
-We assume $\tf{1}$, $\tf{2}$, $\ts{1}$, and $\ts{2}$
+We assumed $\tf{1}$, $\tf{2}$, $\ts{1}$, and $\ts{2}$
 are Gaussian distributed,
 with means $400$ms, $20$ms, $1000$ms, and $80$ms
 selected from literature measurements 
 \cite{mackay:94:ivv, deoni:11:com}
 and standard deviations
 that are $20$\% of corresponding means.
-Since $\bmW$ places zero weight 
+Since $\bmW$ placed zero weight 
 on estimating $\const{3}$, 
-it suffices to fix $\const{3} \gets 1$
+it sufficed to fix $\const{3} \gets 1$
 and to assign noise variance
 $\bmSig \gets \paren{1.49 \times 10^{-7}}\eye{10}$
 based on separate measurements
@@ -1563,7 +1561,7 @@ in unit-normalized image data
 (\cf Section~\ref{sss,scn-dsgn,exp,phant,roi}
 for acquisition details).
 Lastly, 
-we model $\stx \sim \unif{0.9,1.1}$ 
+we modeled $\stx \sim \unif{0.9,1.1}$ 
 to account for 10\% flip angle spatial variation.
 
 % constrain search space based on hardware limitations, safety limitations, where model expected to be accurate, and to encourage fast scan
@@ -1574,163 +1572,54 @@ to account for 10\% flip angle spatial variation.
 % spgr tr geq 12.2 ms
 % total time leq 263.7ms selected to allow equal data with our hardware restrictions as in Deoni, at minimal TR for each scan
 % all constraints define a convex search space, so eq:mwf,P-iter converges
-We constrain our search space $\setP$
+We constrained our search space $\setP$
 to reflect hardware, safety, and model-accuracy limitations
 and to avoid undesirably long acquisitions.
 To control RF energy deposition,
-we restrict DESS flip angles 
+we restricted DESS flip angles 
 to range between $\degrees{1}$ and $\degrees{60}$.
-We further restrict SPGR flip angles
+We further restricted SPGR flip angles
 to be between $\degrees{1}$ and $\degrees{40}$
 to avoid excessive model mismatch 
 due to partial spoiling effects \cite{zur:91:sot}.
 To comply with other fixed pulse sequence timing requirements,
-we require DESS and SPGR repetition times
+we required DESS and SPGR repetition times
 to be no less
 than $17.5$ms and $11.8$ms respectively.
-We of course insist each pair
+We of course insisted each pair
 of DESS defocusing- and refocusing-echo datasets
 be assigned the same flip angle and repetition time.
 Lastly, 
-we impose a total scan time constraint 
-$\sum_{d=1}^D \TRd \leq 263.7$ms
-that permits equal data collection 
-at minimal $\TR$
-(given our acquisition timing restrictions)
-as in a state-of-the-art fast steady-state acquisition
-\cite{deoni:11:com}.
-These constraints together define a convex search space
-over which $\expcost$ can be locally optimized.
+we imposed a somewhat aggressive total scan time constraint 
+$\sum_{d=1}^D \TRd \leq 108$ms
+that ensured all feasible points described acquisitions
+at least as fast
+as the state-of-the-art fast steady-state acquisition
+proposed in \cite{deoni:11:com}.
+These constraints together defined a convex search space
+over which $\expcost$ was optimized.
 
-\begin{figure}[!ht]
-  \centering
-  \begin{tikzpicture}[node distance=1em]
-  
-	% nodes
-	\node[input] at (0,2.75) (start) 
-		{\vwidth{6em}{init: $\iter{\bmP}{0}$}};
-	\node[block] at (0,0) (opt0) 
-		{$\argmin{\bmP} \expcost$};
-	\node[block] at (2.5,0) (update) 
-		{\vwidth{7em}{update $\bmPc$}};
-	\node[sum] at (4,1) (sum1) {$+$};
-	\node[sum] at (4,-1) (sum2) {$+$};
-	\node[input] at (4,2.75) (spgr) 
-		{\vwidth{8em}{new SPGR scan: rand $\flip$, min $\TR$}};
-	\node[input] at (4,-2.75) (dess) 
-		{\vwidth{8em}{new DESS scan: rand $\flip$, min $\TR$}};
-	\node[block] at (6,1) (opt1) {$\argmin{\bmP} \expcost$};
-	\node[block] at (6,-1) (opt2) {$\argmin{\bmP} \expcost$};
-	\node[block] at (7.5,0) (opt3) {choose candidate};
-	\node[decision] at (11.5,0) (comp) {candidate reduced $\expcost$?};
-	\node[output] at (11.5,-2.75) (end) {return: $\est{\bmP}$};
-	
-	% connections
-	\draw[arrow] (start) -- (opt0);
-	\draw[arrow] (opt0) -- (update);
-	\draw[arrow] (update) -| (sum1);
-	\draw[arrow] (update) -| (sum2);
-	\draw[arrow, name path=int1] (spgr) -- (sum1);
-	\draw[arrow] (dess) -- (sum2);
-	\draw[arrow] (sum1) -- (opt1);
-	\draw[arrow] (sum2) -- (opt2);
-	\draw[arrow] (opt1) -| (opt3);
-	\draw[arrow] (opt2) -| (opt3);
-	\draw[arrow] (opt3) -- (comp);
-	\path[arrow, name path=int2] 
-		(comp) -- node[name=yes, anchor=west]{Y} (11.5,2) -- (3,2) -- (update);
-	\draw[arrow] (comp) -- node[name=no, anchor=west]{N} (end);
-	
-	% intersection
-	\path[name intersections={of = int1 and int2}];
-	\coordinate (S) at (intersection-1);
-	\path[name path=circ] (S) circle(0.5em);
-	\path [name intersections={of = circ and int2}];
-	\coordinate (I1) at (intersection-1);
-	\coordinate (I2) at (intersection-2);
-	\draw[line] (comp) -- (11.5,2) -- (I2);
-	\draw[arrow] (I1) -- (2.5,2) -- (update);
-	\tkzDrawArc[color=black, very thick](S,I1)(I2);
-  \end{tikzpicture}
-  \caption{
-	Block diagram of greedy scan profile construction.
-	We set an original acquisition
-	consisting of three SPGR and three DESS scans
-	whose flip angles and repetition times 
-	are respectively initialized randomly and minimally.
-	We optimize the original acquisition subject to several constraints: 
-	$\flip \in \brac{1,40}^\circ$ and $\TR\geq11.8$ms for SPGR; 
-	$\flip \in \brac{1,60}^\circ$ and $\TR\geq17.5$ms for DESS;
-	and $\sum_{d=1}^D \TRd \leq 263.7$ms
-	(selected to allow 9 SPGR and 9 DESS scans
-	each at minimal $\TR$,
-	comparable to \cite{deoni:11:com}).
-	We then seek to improve the acquisition 
-	by appending another SPGR or DESS scan
-	and repeating (constrained) optimization.
-	This process iterates
-	until additional scans no longer 
-	improve estimation precision. 
-  }
-  \label{fig:mwf,schem}
-\end{figure}
-
-% since local opt, desirable to have good initialization
-% however, unclear a priori how to best allocate scan time among init spgr/dess scans
-% Fig diagrams greedy design approach... (ismrm abstract)
-% idea is to first optimize a small scan profile
-% only add scans as necessary
-% solve sequence of opt problems
-% note that while this approach not optimal, we can track quality of solution through coef of var cost
-To this point,
-we have only considered scan design
-via acquisition parameter optimization
-for a fixed combination 
-of SPGR and DESS scans.
-In single-component $\To,\Tt$ relaxometry
-(studied in Section~\ref{s,scn-dsgn,opt}),
-we were able to restrict 
-our total scan time constraint
-such that only three such scan profiles were feasible,
-each of which we studied explicitly.
-However in MWF imaging,
-more datasets are required
-for well-conditioned estimation
-of a larger number of latent parameters.
-To permit scan profiles
-with many datasets,
-we must optimize with respect
-to a larger time constraint
-that allows combinatorially many more scan profiles.
-As an alternative
-to exhaustively comparing all scan profiles
-(that too, only via local optima),
-we employ a greedy method 
-for scan profile construction,
-diagrammed in Figure~\ref{fig:mwf,schem}.
-We first optimize
-an initial scan profile consisting 
-of only $3$ SPGR and $3$ DESS scans.
-We then seek 
-to improve the acquisition 
-by appending another SPGR or DESS scan
-to the previously optimized scan profile
-and repeating constrained optimization.
-If we find
-that at least one appended scan profile
-reduces the objective 
-while meeting all constraints,
-we update the previous scan profile
-with the appended scan profile
-that better improved the objective
-and repeat the process. 
-Otherwise, 
-we return the previously optimized scan profile.
-Observe that while this approach
-is far from optimal,
-we can easily assess solution quality 
-via expected $\ff$ relative standard deviation 
-$\sqrt{\expcost(\est{\bmP})}$.
+We separately optimized \eqref{eq:mwf,expcost}
+for each of the 36
+nontrivial candidate SPGR/DESS scan profiles
+that are feasible under the above time constraint.
+For a candidate profile containing $D$ datasets,
+we separately solved \eqref{eq:mwf,P-hat}
+with $200D$ initializations
+selected uniformly randomly 
+within the feasible set.
+For each profile
+and each initialization,
+we solved \eqref{eq:mwf,P-hat}
+using the built-in \matlab function \texttt{fmincon}
+with the \texttt{active-set} algorithm,
+a cost function convergence tolerance of $10^{-7}$,
+a maximum of $500$ iterations,
+and otherwise default options.
+We performed scan optimization
+running \matlab R2017a 
+with a pool of 12 workers
+on two Xeon-X5650 2.67GHz hexa-core CPUs.
 
 \begin{table}[!tb]
   \centering
@@ -1739,8 +1628,8 @@ $\sqrt{\expcost(\est{\bmP})}$.
     \hline
     & Optimized flip angles (deg) & Optimized repetition times (ms) \\
     \hline
-    SPGR & $[38.1,12.9,9.2,33.5]^\mathsf{T}$ & $[50.2,32.4,16.4,11.8]^\mathsf{T}$ \\
-    DESS & $[32.0,40.3,52.9]^\mathsf{T}$ & $[17.5,98.0,37.6]^\mathsf{T}$ \\
+    SPGR & -- 														& -- \\
+    DESS & $\brac{33.0,18.3,15.1}\tpose$ 	& $\brac{17.5,30.2,60.3}\tpose$ \\
     \hline
     \hline
   \end{tabular}
@@ -1748,84 +1637,34 @@ $\sqrt{\expcost(\est{\bmP})}$.
 		SPGR/DESS flip angles and repetition times
 		that comprise $\est{\bmP}$,
 		a scan parameter matrix designed
-		under total repetition time budget 
-		$\sum_{d=1}^D \TRd \leq 263.7$ms
-		for precise $\ff$ estimation in WM
-		via the sequence of optimization problems
-		described in Figure~\ref{fig:mwf,schem}. 
+		under total time budget 
+		$\sum_{d=1}^D \TRd \leq 108$ms
+		for precise $\ff$ estimation in WM.
 		For our noise variance measurements,
 		this acquisition is expected
-		to yield $28.5$\% relative standard deviation
+		to yield $42.5$\% relative standard deviation
 		in asymptotically unbiased $\ff$ estimates
-		from two-compartment
-		SPGR \eqref{eq:mwf,spgr,mod-exchg0}
-		and DESS \eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0}
-		signal models.
-		Remarkably, 
-		this optimized scan profile 
-		involving (substantial) $\TR$ variation
-		achieves better $\ff$ estimation precision
-		than a similarly optimized scan profile
-		with fixed minimum-$\TR$ acquisitions,
-		even though the latter 
-		can utilize many more scans 
-		for the given time budget.
+		from two-compartment signal models.
+		Interestingly,
+		the optimized scan profile
+		omits SPGR scans entirely.
   }
   \label{tab:mwf,acq}
 \end{table}
 
-% Table shows resulting optimized scan parameters
-% these parameters have rstd of 0.2853 (reduced from 1.1508)
-% time of 64s
-% using fmincon with tolFun and tolX of 10^-7 and maxIter 500 for each opt
-% hardware info, etc 
-% using (9,9) got about 0.3873 rstd 
-% tr variation does seem to help!
 Table~\ref{tab:mwf,acq} summarizes
 the optimized scan parameter $\est{\bmP}$ 
-that arises
-from one representative realization 
-of our scan profile construction procedure.
-Using \texttt{fmincon} 
-in \matlab R2013a
-for each inner-step optimization
-(with the ``active set'' option and
-with an objective function convergence tolerance of $10^{-7}$),
-this realization took 64s run time
-on a 3.5GHz desktop computer with 32GB RAM.
-We find that $\sqrt{\expcost(\est{\bmP})} = 0.285$, 
-meaning that at a realistic noise level,
-the SPGR/DESS acquisition defined by $\est{\bmP}$
-is expected to yield $28.5$\% relative standard deviation
-in asymptotically unbiased $\ff$ estimates
-from SPGR \eqref{eq:mwf,spgr,mod-exchg0} 
-and DESS 
-\eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0}
-non-exchanging two-compartment signal models.
-
+that minimizes \eqref{eq:mwf,expcost}
+over all profiles and all initializations.
 Interestingly,
-we observe empirically
-that the above scan profile construction procedure
-tends to append far fewer additional scans
-than is possible under our time budget: 
-here, it halts at a small scan profile
-consisting of only 4 SPGR and 3 DESS scans. 
-We investigated this phenomenon further
-by repeating the above procedure
-under the same time constraint,
-but now initializing with a profile
-consisting of $9$ SPGR and $9$ DESS scans
-whose repetition times are implicitly restricted
-to be minimal. 
-Over many random flip angle initializations,
-we found after optimization
-that this expanded minimum-$\TR$ scan profile could achieve
-an expected $\ff$ relative standard deviation
-no better than $0.387$,
-suggesting that $\TR$ variation 
-across scans is important 
-for building scan profiles
-that permit precise $\ff$ estimation.
+the optimized scan profile 
+contains DESS scans only.
+We find that $\sqrt{\expcost(\est{\bmP})} = 0.425$, 
+meaning that at a realistic noise level,
+the acquisition defined by $\est{\bmP}$
+is expected to yield $42.5$\% relative standard deviation
+in asymptotically unbiased $\ff$ estimates
+from non-exchanging two-compartment signal models.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimentation}
@@ -2053,6 +1892,41 @@ it warrants mention
 that MWF in healthy GM 
 was reported in \cite[Fig.~3]{zhang:15:com}
 to be about $0.05$ using GRASE.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+\label{s,mwf,disc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% dess known to be sensitive to single-component t2
+% evidence here suggests sensitive to multi-component t2 also
+
+% adapt this to talk about tr diversity
+\edit{%
+	Interestingly,
+  we observe empirically
+  that the above scan profile construction procedure
+  tends to append far fewer additional scans
+  than is possible under our time budget: 
+  here, it halts at a small scan profile
+  consisting of only 4 SPGR and 3 DESS scans. 
+  We investigated this phenomenon further
+  by repeating the above procedure
+  under the same time constraint,
+  but now initializing with a profile
+  consisting of $9$ SPGR and $9$ DESS scans
+  whose repetition times are implicitly restricted
+  to be minimal. 
+  Over many random flip angle initializations,
+  we found after optimization
+  that this expanded minimum-$\TR$ scan profile could achieve
+  an expected $\ff$ relative standard deviation
+  no better than $0.387$,
+  suggesting that $\TR$ variation 
+  across scans is important 
+  for building scan profiles
+  that permit precise $\ff$ estimation.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Future Work}

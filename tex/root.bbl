@@ -6,12 +6,6 @@ K.~E. Keenan, K.~F. Stupic, M.~A. Boss, S.~E. Russek, T.~L. Chenevert, P.~V.
   ``Multi-site, multi-vendor comparison of {T1} measurement using {ISMRM/NIST}
   system phantom,'' in {\em {Proc. Intl. Soc. Mag. Res. Med.}}, p.~3290, 2016.
 
-\bibitem{deoni:11:com}
-S.~C.~L. Deoni, ``Correction of main and transmit magnetic field {(B0} and
-  {B1)} inhomogeneity effects in multicomponent-driven equilibrium single-pulse
-  observation of {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~65,
-  pp.~{1021--35}, Apr. 2011.
-
 \bibitem{prasloski:12:rwc}
 T.~Prasloski, A.~Rauscher, A.~L. MacKay, M.~Hodgson, I.~M. Vavasour, C.~Laule,
   and B.~{M\"adler}, ``Rapid whole cerebrum myelin water imaging using a {3D}
@@ -21,6 +15,12 @@ T.~Prasloski, A.~Rauscher, A.~L. MacKay, M.~Hodgson, I.~M. Vavasour, C.~Laule,
 A.~Mackay, K.~Whittall, J.~Adler, D.~Li, D.~Paty, and D.~Graeb, ``In vivo
   visualization of myelin water in brain by magnetic resonance,'' {\em {Mag.
   Res. Med.}}, vol.~31, pp.~{673--7}, June 1994.
+
+\bibitem{deoni:11:com}
+S.~C.~L. Deoni, ``Correction of main and transmit magnetic field {(B0} and
+  {B1)} inhomogeneity effects in multicomponent-driven equilibrium single-pulse
+  observation of {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~65,
+  pp.~{1021--35}, Apr. 2011.
 
 \bibitem{lankford:13:oti}
 C.~L. Lankford and M.~D. Does, ``On the inherent precision of {mcDESPOT},''

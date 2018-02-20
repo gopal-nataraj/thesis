@@ -1,9 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=latex 2017.5.23)  19 FEB 2018 15:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=latex 2017.5.23)  19 FEB 2018 19:18
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**root.tex
+**root
 (./root.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
@@ -1213,7 +1212,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 \openout5 = `root.toc'.
 
  [2] (./root.lof [3]
-Overfull \hbox (12.91975pt too wide) in paragraph at lines 40--40
+Overfull \hbox (12.91975pt too wide) in paragraph at lines 39--39
  \OT1/ptm/m/n/12 MWF es-ti-mates are from healthy vol-un-teers, but those from 
 GRASE/mcDESPOT |
  []
@@ -1222,7 +1221,7 @@ GRASE/mcDESPOT |
 \tf@lof=\write6
 \openout6 = `root.lof'.
 
- [4] [5] (./root.lot [6]
+ [4] (./root.lot [5]
 Overfull \hbox (10.60287pt too wide) in paragraph at lines 11--11
  \OT1/ptm/m/n/12 IR) im-age. Sep-a-rate WM ROIs are dis-tin-guished by anterior
 -right ([]AR[]), anterior- |
@@ -1232,16 +1231,16 @@ Overfull \hbox (10.60287pt too wide) in paragraph at lines 11--11
 \tf@lot=\write7
 \openout7 = `root.lot'.
 
- [7] (./root.loa)
+ [6] (./root.loa)
 \tf@loa=\write8
 \openout8 = `root.loa'.
 
- [8]
+ [7]
 Underfull \hbox (badness 10000) in paragraph at lines 108--108
 
  []
 
-[9] ABD: EveryShipout initializing macros
+[8] ABD: EveryShipout initializing macros
 CHAPTER 1.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 111.
@@ -1440,31 +1439,20 @@ Overfull \hbox (1.16919pt too wide) in paragraph at lines 719--719
 [] |
  []
 
-[76] [77] [78] [79] [80] [81] [82] [83] [84] [85]
-Underfull \hbox (badness 8189) in paragraph at lines 1619--1619
-[]\OT1/ptm/m/n/12 new SPGR scan:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1621--1621
-[]\OT1/ptm/m/n/12 new DESS scan:
- []
-
-Missing character: There is no ; in font nullfont!
-[86] [87]
+[76] [77] [78] [79] [80] [81] [82] [83] [84] [85] [86]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1909.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1748.
 
 
-LaTeX Warning: Reference `eq:conv,crit' on page 88 undefined on input line 1909
+LaTeX Warning: Reference `eq:conv,crit' on page 87 undefined on input line 1748
 .
 
-[88]
-Overfull \hbox (41.06522pt too wide) in paragraph at lines 1920--1921
+
+Overfull \hbox (41.06522pt too wide) in paragraph at lines 1759--1760
  [][] |
  []
 
-[89] [90] [91]) [92]
+[87] [88] [89] [90]) [91] [92]
 CHAPTER 7.
 (./c,future.tex
 
@@ -1511,12 +1499,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 153.
  ) 
 Here is how much of TeX's memory you used:
- 27038 strings out of 492996
- 524869 string characters out of 6132730
- 710830 words of memory out of 5000000
- 29880 multiletter control sequences out of 15000+600000
+ 26745 strings out of 492996
+ 518969 string characters out of 6132730
+ 689185 words of memory out of 5000000
+ 29587 multiletter control sequences out of 15000+600000
  33358 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 73i,21n,408p,1922b,1071s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,21n,68p,1918b,519s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on root.dvi (118 pages, 583876 bytes).
+Output written on root.dvi (117 pages, 562516 bytes).

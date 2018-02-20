@@ -1,7 +1,7 @@
 \contentsline {chapter}{List of Figures}{iii}{section*.2}
-\contentsline {chapter}{List of Tables}{vi}{section*.3}
-\contentsline {chapter}{List of Appendices}{viii}{section*.4}
-\contentsline {chapter}{Abstract}{ix}{section*.6}
+\contentsline {chapter}{List of Tables}{v}{section*.3}
+\contentsline {chapter}{List of Appendices}{vii}{section*.4}
+\contentsline {chapter}{Abstract}{viii}{section*.6}
 \vspace {1.3ex}\noindent {\bf Chapter}\vspace {1.3ex}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Thesis Overview}{2}{section.1.1}
@@ -48,7 +48,7 @@
 \contentsline {subsection}{\numberline {4.4.3}\textit {In\nobreakspace {}Vivo} Experiments}{47}{subsection.4.4.3}
 \contentsline {section}{\numberline {4.5}Discussion and Future Work}{51}{section.4.5}
 \contentsline {section}{\numberline {4.6}Conclusion}{52}{section.4.6}
-\contentsline {chapter}{\numberline {5}QMRI Parameter\nobreakspace {}Estimation via\nobreakspace {}Regression with\nobreakspace {}Kernels (PERK)}{54}{chapter.5}
+\contentsline {chapter}{\numberline {5}QMRI Parameter\nobreakspace {}Estimation via\nobreakspace {}Regression\nobreakspace {}with\nobreakspace {}Kernels (PERK)}{54}{chapter.5}
 \contentsline {section}{\numberline {5.1}Introduction}{54}{section.5.1}
 \contentsline {section}{\numberline {5.2}A Function Optimization Problem \& Kernel Solution}{56}{section.5.2}
 \contentsline {section}{\numberline {5.3}Implementation Considerations}{58}{section.5.3}
@@ -71,10 +71,11 @@
 \contentsline {section}{\numberline {6.3}A Fast SS Acquisition for Precise MWF Imaging}{83}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}Scalable Acquisition Design}{83}{subsection.6.3.1}
 \contentsline {subsection}{\numberline {6.3.2}SPGR/DESS Scan Design Implementation Details}{85}{subsection.6.3.2}
-\contentsline {section}{\numberline {6.4}Experimentation}{88}{section.6.4}
-\contentsline {section}{\numberline {6.5}Summary and Future Work}{91}{section.6.5}
-\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{91}{section*.10}
-\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{92}{section*.11}
+\contentsline {section}{\numberline {6.4}Experimentation}{87}{section.6.4}
+\contentsline {section}{\numberline {6.5}Discussion}{89}{section.6.5}
+\contentsline {section}{\numberline {6.6}Summary and Future Work}{90}{section.6.6}
+\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{90}{section*.10}
+\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{91}{section*.11}
 \contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{93}{chapter.7}
 \contentsline {chapter}{Appendices}{95}{section*.12}
 \global \c@tocdepth 1\relax 
