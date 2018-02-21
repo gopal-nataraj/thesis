@@ -2188,8 +2188,319 @@ of typical literature measurements at 3T
 \label{s,perk,robust}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% a. mismatch noise var
-% b. bad latent parameter distributions
+This section investigates PERK robustness
+to two types of non-idealities
+that may be encountered 
+in other applications.
+Subsection~\ref{ss,perk,robust,noise} 
+studies PERK performance sensitivity
+to mismatch between training and testing noise variance.
+Subsection~\ref{ss,perk,robust,dist}
+studies PERK performance degradation
+when trained 
+with latent parameter distributions
+that have wider support
+than the parameter ranges
+used for optimizing the scan design
+in \cite{nataraj:17:oms}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mismatch in Training vs. Testing Noise Statistics}
+\label{ss,perk,robust,noise}
+
+\begin{figure}[!t]
+	\centering
+	\subfigure{%
+		\includegraphics [width=0.47\textwidth] {%
+			tune/robust,broad,w-t12.eps%
+		}
+		\label{fig,robust,broad}
+	}
+	\hspace{0cm}
+	\subfigure{%
+		\includegraphics [width=0.47\textwidth] {%
+			tune/robust,tight,w-t12.eps%
+		}
+		\label{fig,robust,tight}
+	}
+	\caption{%
+		Performance criterion $\costa{\sigma}$
+		versus PERK training noise standard deviation $\sigma$,
+		over two different scales.
+		Similar to Fig.~\ref{fig,holdout},
+		each point on the blue curve
+		is the weighted normalized root mean squared error
+		of a separately trained PERK estimator.
+		In each subplot,
+		a black star marks 
+		the performance criterion minimizer
+		$\est{\sigma} \gets 2^{-8.8}$
+		while a dashed red line
+		marks the (latent) test data noise standard deviation 
+		$\sigma^\star \gets 2^{-8.736}$.
+		To within quantization error,
+		PERK performs best 
+		when trained with training data
+		whose noise statistics 
+		match test data noise statistics.
+		Performance degradation as measured by $\cost$ 
+		does not exceed $10\%$
+		for $\sigma$ values within a factor of two
+		of $\sigma^\star$.
+		This result suggests 
+		that PERK is somewhat robust
+		to moderate misspecification of the noise level.
+	}%
+	\label{fig,robust}
+\end{figure}
+
+To assess the importance
+of training PERK
+with appropriately noisy training data,
+we investigated PERK's performance sensitivity
+to the standard deviation $\sigma$
+of the noise distribution 
+from which noise realizations are drawn
+to generate training data.
+Instead of setting $\sigma$ online
+as in other experiments,
+here we fixed $\sigma$ offline
+to one of many discretized values
+spanning many orders of magnitude.
+Otherwise as described 
+in Subsection~\ref{ss,perk,exp,meth},
+we trained a PERK estimator
+for each $\sigma$ setting.
+Similar to Subsection~\ref{sss,perk,exp,meth,holdout},
+we tested each PERK estimator 
+on a separate simulated dataset
+consisting of $10^5$ samples 
+from training prior distribution $\dist{\bmx,\bmnu}$.
+We assessed performance sensitivity
+by comparing evaluations $\costa{\sigma}$ 
+of holdout cost \eqref{eq,holdout}
+at each $\sigma$ setting.
+	
+Fig.~\ref{fig,robust} plots $\costa{\sigma}$
+as $\sigma$ is varied 
+over two different scales.
+In each subplot,
+a black star marks the minimizer 
+$\hat{\sigma} \gets 2^{-8.8}$
+while a dashed red line marks
+the (latent) test data noise standard deviation 
+$\sigma^\star \gets 2^{-8.736}$.
+To within quantization error,
+PERK performs best 
+when trained with training data
+whose noise statistics 
+match test data noise statistics.
+As measured by $\cost$, 
+PERK performance degrades by at most $10\%$ 
+for choices of $\sigma \in \brac{2^{-10.2},2^{-8}}$.
+Results suggest
+that for good PERK performance,
+it is desirable
+to set $\sigma$
+to within about a factor of two
+of the test data noise standard deviation $\sigma^\star$.
+Nevertheless,
+there is a zone near $\sigma^\star$
+where PERK performance is reasonably similar,
+indicating that PERK is somewhat robust
+to some misspecification of the noise level.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mismatch in Scan Design vs. Sampling Distribution Support}
+\label{ss,perk,robust,dist}
+
+Although the SPGR/DESS acquisition
+was optimized in \cite{nataraj:17:oms}
+for a certain range of $\To,\Tt$ values,
+it is interesting to investigate
+how well PERK can perform 
+outside that parameter range
+if presented (simulated) training data
+over a wider range of latent parameters.
+It is also interesting to explore
+whether using such a wider range 
+of latent parameters for training
+degrades performance
+for the parameter range 
+of primary interest.
+Thus, 
+we repeated the phantom experiment
+described in Subsection~\ref{ss,perk,exp,phant}
+except now using a PERK estimator
+trained using a sampling prior distribution
+with broader support.
+We still assume a separable prior distribution
+$\dist{\bmx,\bmnu} \gets \dist{\mzero}\dist{\To}\dist{\Tt}\dist{\kappa}$ 
+(with $\dist{\mzero}$ and $\dist{\kappa}$ set as before)
+but now set 
+$\dist{\To} \gets \logunif{10^{1.5}, 10^{3.5}}$ 
+and 
+$\dist{\Tt} \gets \logunif{10^{0.5}, 10^{3.5}}$ 
+to have wider supports.
+These support endpoints 
+now match the grid search support
+used by the VPM.
+All other training and testing details are unchanged from before.
+
+\begin{figure*}[!t]
+	\centering
+	\subfigure{%
+		\includegraphics [width=0.47\textwidth]{%
+			hpd-broad/sp2de1,sl-6,t1,plot%
+		}
+		\label{fig,hpd-broad,t1,plot}
+	}
+	\hspace{0.3cm}
+	\subfigure{%
+		\includegraphics [width=0.47\textwidth] {%
+			hpd-broad/sp2de1,sl-6,t2,plot%
+		}
+		\label{fig,hpd-broad,t2,plot}
+	}
+	\vspace{0.3cm}
+	\begin{tabular}{c || r | r r r}
+		\hline
+		\hline
+		 					& NMR										& VPM 							& PGPM 									& PERK 								\\
+		\hline
+		V4 $\To$	& \mnstd{1604}{7.2} 		& \mnstd{1645}{48} 	& \mnstd{1639}{48}			& \mnstd{1649}{51} 		\\        
+    V5 $\To$	& \mnstd{1332}{0.8} 		& \mnstd{1335}{61} 	& \mnstd{1331}{41}			& \mnstd{1343}{40.} 	\\        
+    V6 $\To$	& \mnstd{1044}{3.2} 		& \mnstd{1055}{28} 	& \mnstd{1060.}{29}			& \mnstd{1083}{32} 		\\        
+    V7 $\To$	& \mnstd{801.7}{1.70}		& \mnstd{834}{21} 	& \mnstd{840.}{23}			& \mnstd{821}{25} 		\\         
+    V8 $\To$	& \mnstd{608.6}{1.03} 	& \mnstd{627}{25} 	& \mnstd{623}{12}				& \mnstd{604}{18} 		\\  
+		\hline
+		\hline
+		V4 $\Tt$	& \mnstd{190.94}{0.011}	&	\mnstd{194}{5.5}	& \mnstd{193.1}{5.2}		& \mnstd{197}{11}			\\    
+    V5 $\Tt$	& \mnstd{133.27}{0.073} &	\mnstd{131.2}{5.3}& \mnstd{131}{5.5} 			& \mnstd{138}{8}  		\\       
+    V6 $\Tt$	& \mnstd{96.89}{0.049}  &	\mnstd{90.8}{3.5} & \mnstd{90.8}{3.5}			& \mnstd{106.6}{3.6} 	\\         
+    V7 $\Tt$	& \mnstd{64.07}{0.034}  &	\mnstd{64.6}{2.2} & \mnstd{64.5}{2.1} 		& \mnstd{89.2}{3.7} 	\\        
+    V8 $\Tt$	& \mnstd{46.42}{0.014}  &	\mnstd{46.4}{1.5} & \mnstd{46.4}{1.5} 		& \mnstd{48.9}{4.6} 	\\
+    \hline
+    \hline      
+	\end{tabular}
+	\caption{%
+		Phantom sample statistics
+		of more aggressively trained 
+		VPM, PGPM, and PERK $\To,\Tt$ estimates
+		and NIST NMR reference measurements \cite{keenan:16:msm}.
+		Unlike analogous results in Fig.~\ref{fig,hpd-tight,plot},
+		here the PERK estimator was trained
+		with a sampling distribution
+		whose support extended 
+		well beyond the range of $\To,\Tt$ values
+		for which the acquisition was optimized 
+		in \cite{nataraj:17:oms}.
+		Comparing to Fig.~\ref{fig,hpd-tight,plot},
+		we find that PERK estimator performance degrades 
+		within the highlighted $\To,\Tt$ range of interest.
+		Plot markers and error bars
+		indicate sample means and sample standard deviations
+		computed over ROIs
+		within the 14 vials
+		labeled and color-coded
+		in Fig.~\ref{fig,hpd-broad}.
+		Corresponding tables replicate 
+		sample means $\pm$ sample standard deviations
+		for vials within the highlighted range.
+		Each value is rounded off
+		to the highest place value 
+		of its (unreported) standard error,
+		computed via formulas in \cite{ahn:03:seo}.
+		All values are in milliseconds.
+	}
+	\label{fig,hpd-broad,plot}
+\end{figure*}
+
+\begin{figure}[!t]
+	\centering
+	\begin{minipage}{\textwidth}
+  	\subfigure{%
+  		\includegraphics [width=0.96\textwidth] {%
+  			hpd-broad/sp2de1,sl-6,m0,im-gray.eps%
+  		}
+  		\label{fig,hpd-broad,m0,im-gray}
+  	}
+  	\hspace{0cm}
+  	\subfigure{%
+  		\includegraphics [width=0.982\textwidth,trim=0 0 0 25,clip] {%
+  			hpd-broad/sp2de1,sl-6,t1,im-jet.eps%
+  		}
+  		\label{fig,hpd-broad,t1,im-jet}
+  	}
+  	\hspace{0cm}
+  	\subfigure{%
+  		\includegraphics [width=0.97\textwidth,trim=0 0 0 25,clip] {%
+  			hpd-broad/sp2de1,sl-6,t2,im-jet.eps%
+  		}
+  		\label{fig,hpd-broad,t2,im-jet}
+  	}
+	\end{minipage}
+	\caption{%
+		More aggressively trained 
+		VPM, PGPM, and PERK $\mzero,\To,\Tt$ estimates
+		in a quantitative phantom.
+		Here the PERK estimator was trained
+		with a sampling distribution
+		whose support extended
+		over less well identified $\To,\Tt$ values.
+		Comparing with analogous images 
+		in Fig.~\ref{fig,hpd-tight},
+		PERK performance within vials 4-8 degrades,
+		though in other vials 
+		performance clearly improves. 
+		Vials are enumerated and highlighted
+		to correspond with markers and colored boxes
+		in Fig.~\ref{fig,hpd-broad,plot}.
+	}
+	\label{fig,hpd-broad}
+\end{figure}
+
+Fig.~\ref{fig,hpd-broad,plot} 
+is analogous to Fig.~\ref{fig,hpd-tight,plot}
+in that it plots sample means and sample standard deviations
+computed within ROIs 
+of VPM, PGPM, and PERK $\To,\Tt$ estimates,
+except now using a PERK estimator trained
+over the broader sampling distribution.
+Fig.~\ref{fig,hpd-broad} presents corresponding images. 
+The yellow boxes are unchanged
+from Fig.~\ref{fig,hpd-tight,plot}
+and so their boundaries no longer correspond
+to projections of the PERK sampling distribution's support.
+Rather,
+they serve to clearly highlight 
+that PERK estimator performance
+can significantly deteriorate
+even over the parameter range of interest,
+when trained using a range of parameters
+that exceeds the design criteria
+of the acquisition.
+
+Fig.~\ref{fig,hpd-broad,plot}
+also tabulates sample means and sample standard deviations
+computed within ROIs of vials 4-8.
+Comparing again with Fig.~\ref{fig,hpd-tight,plot},
+PERK $\Tt$ estimation accuracy
+is more severely affected 
+than $\To$ estimation accuracy
+(interestingly,
+$\To$ estimation accuracy 
+is in fact improved for many vials).
+PERK $\To,\Tt$ estimation precision
+is consistently worse in vials 4-8
+when trained over the broader sampling range.
+
+These observations highlight the importance 
+of considering acquisition design
+and parameter estimation in tandem,
+and with consideration
+of the latent parameter ranges of interest
+in a given application.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}

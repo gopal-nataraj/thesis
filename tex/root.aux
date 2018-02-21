@@ -22,15 +22,18 @@
 \citation{keenan:16:msm}
 \citation{keenan:16:msm}
 \citation{ahn:03:seo}
+\citation{keenan:16:msm}
+\citation{nataraj:17:oms}
+\citation{ahn:03:seo}
 \citation{ahn:03:seo}
 \citation{ahn:03:seo}
 \citation{keenan:16:msm}
-\@writefile{toc}{\contentsline {chapter}{List of Tables}{vi}{section*.3}}
+\@writefile{toc}{\contentsline {chapter}{List of Tables}{vii}{section*.3}}
 \citation{ahn:03:seo}
 \citation{ahn:03:seo}
-\@writefile{toc}{\contentsline {chapter}{List of Appendices}{viii}{section*.4}}
-\@writefile{toc}{\contentsline {chapter}{Abstract}{ix}{section*.6}}
-\HyPL@Entry{11<</S/D>>}
+\@writefile{toc}{\contentsline {chapter}{List of Appendices}{ix}{section*.4}}
+\@writefile{toc}{\contentsline {chapter}{Abstract}{x}{section*.6}}
+\HyPL@Entry{12<</S/D>>}
 \@writefile{toc}{\vspace  {1.3ex}\noindent {\bf  Chapter}\vspace  {1.3ex}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}}
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -723,32 +726,64 @@
 \newlabel{fig,brain}{{5.8}{77}{VPM, PGPM and PERK estimates of $\mzero ,\To ,\Tt $ in the brain of a healthy volunteer. Separate WM ROIs are distinguished by anterior/posterior (A/P) and right/left (R/L) directions. Four small anterior cortical GM polygons are pooled into a single GM ROI. Images are cropped in post-processing for display}{figure.5.8}{}}
 \citation{wansapura:99:nrt}
 \citation{stanisz:05:ttr}
+\citation{nataraj:17:oms}
 \@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces \emph  {In vivo}\xspace  sample means $\pm $ sample standard deviations of VPM, PGPM, and PERK $T_1,T_2$ estimates, computed over color-coded ROIs indicated in Fig.\nobreakspace  {}\ref  {fig,brain}. Each value is rounded off to the highest place value of its (unreported) standard error, computed via formulas in \cite  {ahn:03:seo}. All values are in milliseconds. }}{78}{table.5.2}}
 \newlabel{tab,brain}{{5.2}{78}{\Invivo sample means $\pm $ sample standard deviations of VPM, PGPM, and PERK $\To ,\Tt $ estimates, computed over color-coded ROIs indicated in Fig.~\ref {fig,brain}. Each value is rounded off to the highest place value of its (unreported) standard error, computed via formulas in \cite {ahn:03:seo}. All values are in milliseconds}{table.5.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.8}Robustness Studies}{78}{section.5.8}}
 \newlabel{s,perk,robust}{{5.8}{78}{Robustness Studies\relax }{section.5.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.9}Discussion}{78}{section.5.9}}
-\newlabel{s,perk,disc}{{5.9}{78}{Discussion\relax }{section.5.9}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.10}Conclusion}{78}{section.5.10}}
-\newlabel{s,perk,conc}{{5.10}{78}{Conclusion\relax }{section.5.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.1}Mismatch in Training vs. Testing Noise Statistics}{78}{subsection.5.8.1}}
+\newlabel{ss,perk,robust,noise}{{5.8.1}{78}{Mismatch in Training vs. Testing Noise Statistics\relax }{subsection.5.8.1}{}}
+\citation{nataraj:17:oms}
+\newlabel{fig,robust,broad}{{5.9(a)}{79}{Subfigure 5 5.9(a)\relax }{subfigure.5.9.1}{}}
+\newlabel{sub@fig,robust,broad}{{(a)}{79}{Subfigure 5 5.9(a)\relax }{subfigure.5.9.1}{}}
+\newlabel{fig,robust,tight}{{5.9(b)}{79}{Subfigure 5 5.9(b)\relax }{subfigure.5.9.2}{}}
+\newlabel{sub@fig,robust,tight}{{(b)}{79}{Subfigure 5 5.9(b)\relax }{subfigure.5.9.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Performance criterion $\Psi \mathopen {}\mathclose \bgroup \originalleft (\sigma \aftergroup \egroup \originalright )$ versus PERK training noise standard deviation $\sigma $, over two different scales. Similar to Fig.\nobreakspace  {}\ref  {fig,holdout}, each point on the blue curve is the weighted normalized root mean squared error of a separately trained PERK estimator. In each subplot, a black star marks the performance criterion minimizer $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \sigma $}\mathaccent "0362{\sigma } \gets 2^{-8.8}$ while a dashed red line marks the (latent) test data noise standard deviation $\sigma ^\star \gets 2^{-8.736}$. To within quantization error, PERK performs best when trained with training data whose noise statistics match test data noise statistics. Performance degradation as measured by $\Psi $ does not exceed $10\%$ for $\sigma $ values within a factor of two of $\sigma ^\star $. This result suggests that PERK is somewhat robust to moderate misspecification of the noise level. }}{79}{figure.5.9}}
+\newlabel{fig,robust}{{5.9}{79}{Performance criterion $\costa {\sigma }$ versus PERK training noise standard deviation $\sigma $, over two different scales. Similar to Fig.~\ref {fig,holdout}, each point on the blue curve is the weighted normalized root mean squared error of a separately trained PERK estimator. In each subplot, a black star marks the performance criterion minimizer $\est {\sigma } \gets 2^{-8.8}$ while a dashed red line marks the (latent) test data noise standard deviation $\sigma ^\star \gets 2^{-8.736}$. To within quantization error, PERK performs best when trained with training data whose noise statistics match test data noise statistics. Performance degradation as measured by $\cost $ does not exceed $10\%$ for $\sigma $ values within a factor of two of $\sigma ^\star $. This result suggests that PERK is somewhat robust to moderate misspecification of the noise level}{figure.5.9}{}}
+\citation{keenan:16:msm}
+\citation{nataraj:17:oms}
+\citation{ahn:03:seo}
+\citation{keenan:16:msm}
+\citation{nataraj:17:oms}
+\citation{ahn:03:seo}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8.2}Mismatch in Scan Design vs. Sampling Distribution Support}{80}{subsection.5.8.2}}
+\newlabel{ss,perk,robust,dist}{{5.8.2}{80}{Mismatch in Scan Design vs. Sampling Distribution Support\relax }{subsection.5.8.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.9}Discussion}{80}{section.5.9}}
+\newlabel{s,perk,disc}{{5.9}{80}{Discussion\relax }{section.5.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.10}Conclusion}{80}{section.5.10}}
+\newlabel{s,perk,conc}{{5.10}{80}{Conclusion\relax }{section.5.10}{}}
+\newlabel{fig,hpd-broad,t1,plot}{{5.10(a)}{81}{Subfigure 5 5.10(a)\relax }{subfigure.5.10.1}{}}
+\newlabel{sub@fig,hpd-broad,t1,plot}{{(a)}{81}{Subfigure 5 5.10(a)\relax }{subfigure.5.10.1}{}}
+\newlabel{fig,hpd-broad,t2,plot}{{5.10(b)}{81}{Subfigure 5 5.10(b)\relax }{subfigure.5.10.2}{}}
+\newlabel{sub@fig,hpd-broad,t2,plot}{{(b)}{81}{Subfigure 5 5.10(b)\relax }{subfigure.5.10.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Phantom sample statistics of more aggressively trained VPM, PGPM, and PERK $T_1,T_2$ estimates and NIST NMR reference measurements \cite  {keenan:16:msm}. Unlike analogous results in Fig.\nobreakspace  {}\ref  {fig,hpd-tight,plot}, here the PERK estimator was trained with a sampling distribution whose support extended well beyond the range of $T_1,T_2$ values for which the acquisition was optimized in \cite  {nataraj:17:oms}. Comparing to Fig.\nobreakspace  {}\ref  {fig,hpd-tight,plot}, we find that PERK estimator performance degrades within the highlighted $T_1,T_2$ range of interest. Plot markers and error bars indicate sample means and sample standard deviations computed over ROIs within the 14 vials labeled and color-coded in Fig.\nobreakspace  {}\ref  {fig,hpd-broad}. Corresponding tables replicate sample means $\pm $ sample standard deviations for vials within the highlighted range. Each value is rounded off to the highest place value of its (unreported) standard error, computed via formulas in \cite  {ahn:03:seo}. All values are in milliseconds. }}{81}{figure.5.10}}
+\newlabel{fig,hpd-broad,plot}{{5.10}{81}{Phantom sample statistics of more aggressively trained VPM, PGPM, and PERK $\To ,\Tt $ estimates and NIST NMR reference measurements \cite {keenan:16:msm}. Unlike analogous results in Fig.~\ref {fig,hpd-tight,plot}, here the PERK estimator was trained with a sampling distribution whose support extended well beyond the range of $\To ,\Tt $ values for which the acquisition was optimized in \cite {nataraj:17:oms}. Comparing to Fig.~\ref {fig,hpd-tight,plot}, we find that PERK estimator performance degrades within the highlighted $\To ,\Tt $ range of interest. Plot markers and error bars indicate sample means and sample standard deviations computed over ROIs within the 14 vials labeled and color-coded in Fig.~\ref {fig,hpd-broad}. Corresponding tables replicate sample means $\pm $ sample standard deviations for vials within the highlighted range. Each value is rounded off to the highest place value of its (unreported) standard error, computed via formulas in \cite {ahn:03:seo}. All values are in milliseconds}{figure.5.10}{}}
+\newlabel{fig,hpd-broad,m0,im-gray}{{5.11(a)}{82}{Subfigure 5 5.11(a)\relax }{subfigure.5.11.1}{}}
+\newlabel{sub@fig,hpd-broad,m0,im-gray}{{(a)}{82}{Subfigure 5 5.11(a)\relax }{subfigure.5.11.1}{}}
+\newlabel{fig,hpd-broad,t1,im-jet}{{5.11(b)}{82}{Subfigure 5 5.11(b)\relax }{subfigure.5.11.2}{}}
+\newlabel{sub@fig,hpd-broad,t1,im-jet}{{(b)}{82}{Subfigure 5 5.11(b)\relax }{subfigure.5.11.2}{}}
+\newlabel{fig,hpd-broad,t2,im-jet}{{5.11(c)}{82}{Subfigure 5 5.11(c)\relax }{subfigure.5.11.3}{}}
+\newlabel{sub@fig,hpd-broad,t2,im-jet}{{(c)}{82}{Subfigure 5 5.11(c)\relax }{subfigure.5.11.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces More aggressively trained VPM, PGPM, and PERK $m_0,T_1,T_2$ estimates in a quantitative phantom. Here the PERK estimator was trained with a sampling distribution whose support extended over less well identified $T_1,T_2$ values. Comparing with analogous images in Fig.\nobreakspace  {}\ref  {fig,hpd-tight}, PERK performance within vials 4-8 degrades, though in other vials performance clearly improves. Vials are enumerated and highlighted to correspond with markers and colored boxes in Fig.\nobreakspace  {}\ref  {fig,hpd-broad,plot}. }}{82}{figure.5.11}}
+\newlabel{fig,hpd-broad}{{5.11}{82}{More aggressively trained VPM, PGPM, and PERK $\mzero ,\To ,\Tt $ estimates in a quantitative phantom. Here the PERK estimator was trained with a sampling distribution whose support extended over less well identified $\To ,\Tt $ values. Comparing with analogous images in Fig.~\ref {fig,hpd-tight}, PERK performance within vials 4-8 degrades, though in other vials performance clearly improves. Vials are enumerated and highlighted to correspond with markers and colored boxes in Fig.~\ref {fig,hpd-broad,plot}}{figure.5.11}{}}
 \citation{ying:07:jir}
-\@writefile{toc}{\contentsline {chapter}{Appendices}{79}{section*.7}}
+\@writefile{toc}{\contentsline {chapter}{Appendices}{83}{section*.7}}
 \@writefile{toc}{\global \c@tocdepth 1\relax }
-\@writefile{loa}{\contentsline {chapter}{\numberline {A}Coil Data Combination from Multiple Datasets}{79}{section*.8}}
+\@writefile{loa}{\contentsline {chapter}{\numberline {A}Coil Data Combination from Multiple Datasets}{83}{section*.8}}
 \@writefile{lof}{\addvspace {8pt}}
 \@writefile{lot}{\addvspace {8pt}}
 \@writefile{lom}{\addvspace {8pt}}
 \@writefile{lop}{\addvspace {8pt}}
 \@writefile{loi}{\addvspace {8pt}}
-\newlabel{a,cc-multi}{{A}{79}{Conclusion\relax }{section*.8}{}}
+\newlabel{a,cc-multi}{{A}{83}{Conclusion\relax }{section*.8}{}}
 \bibstyle{ieeetr}
-\@writefile{loa}{\contentsline {chapter}{\numberline {B}DESS in the Presence of Diffusion}{80}{section*.9}}
+\@writefile{loa}{\contentsline {chapter}{\numberline {B}DESS in the Presence of Diffusion}{84}{section*.9}}
 \@writefile{lof}{\addvspace {8pt}}
 \@writefile{lot}{\addvspace {8pt}}
 \@writefile{lom}{\addvspace {8pt}}
 \@writefile{lop}{\addvspace {8pt}}
 \@writefile{loi}{\addvspace {8pt}}
-\newlabel{a,dess-diff}{{B}{80}{Conclusion\relax }{section*.9}{}}
+\newlabel{a,dess-diff}{{B}{84}{Conclusion\relax }{section*.9}{}}
 \bibdata{../bib/master.bib,../bib/new.bib}
 \bibcite{keenan:16:msm}{1}
 \bibcite{ahn:03:seo}{2}
@@ -762,7 +797,7 @@
 \bibcite{haacke:99}{10}
 \bibcite{nishimura:96:pom}{11}
 \bibcite{bloch:1946:ni-paper}{12}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{81}{section*.10}}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{85}{section*.10}}
 \bibcite{hinshaw:76:ifb}{13}
 \bibcite{scheffler:99:apd}{14}
 \bibcite{hargreaves:01:car}{15}

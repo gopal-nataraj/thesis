@@ -1,10 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: root.aux
-White space in argument---line 641 of file root.aux
- : \citation{nataraj:17:oms
- :                          }
-I'm skipping whatever remains of this command
 The style file: ieeetr.bst
 Database file #1: ../bib/master.bib.bib
 Database file #2: ../bib/new.bib.bib
@@ -49,4 +45,3 @@ warning$ -- 0
 while$ -- 503
 width$ -- 142
 write$ -- 1378
-(There was 1 error message)
