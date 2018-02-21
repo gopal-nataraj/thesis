@@ -2507,6 +2507,320 @@ in a given application.
 \label{s,perk,disc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% better for high-dim problems
+The single-slice experiments show
+that PERK can achieve similar 
+WM/GM $\To,\Tt$ estimation performance 
+as dictionary-based grid search via VPM
+or iterative optimization via PGPM,
+but in more than 2 orders of magnitude less time.
+This acceleration factor will grow
+to at least 3 orders of magnitude 
+for $\To,\Tt$ estimation 
+over a typical full imaging volume
+(because PERK training time scales negligibly 
+with the number of voxels) and
+may grow even higher
+for full-volume parameter estimation
+in problems involving 
+more unknowns per voxel 
+(see \cite{nataraj:17:dfm}
+for a demonstration in simulation).
+Even with recent low-rank dictionary approximations 
+\cite{%
+	mcgivney:14:scf,%
+	cauley:15:fgm,%
+	asslander::lra,%
+	yang::lra%
+}
+dictionary-based methods are unlikely 
+to achieve the large-scale speed 
+of PERK.
+
+% no clusters for nu
+% no quantization error
+PERK also handles known parameters $\bmnu$ more naturally
+than does dictionary-based grid search.
+Grid search necessitates pre-clustering $\bmnu$ voxel values
+and generating one dictionary per cluster;
+however,
+it is in general unclear \emph{a priori} 
+how many clusters are needed
+to balance accuracy and computation.
+In contrast,
+PERK simply considers the coordinates 
+of each $\bmnu$ sample
+as additional regressor dimensions.
+As the Gaussian PERK estimator 
+is continuous in $\bmnu$ (and $\bmymag$),
+Gaussian PERK does not suffer 
+from either cluster (or grid) 
+quantization bias.
+
+% covariance matrix storage 
+% here implemented ZN for speed in matlab; can do just Z^2
+Interestingly, 
+PERK storage requirements
+grow more directly with regressor dimension $\dimQ$ 
+than with regressand dimension $L$. 
+Using formulas for rank-one covariance matrix updates,
+constructing $\esta{\bmx}{\cdot}$ element-wise
+via $L$ evaluations of \eqref{eq,xl-apx}
+can be implemented 
+to use $\BigOh{Z^2}$ memory units 
+when $\rho_l \gets \rho\,\, \forall l \in \set{1,\dots,L}$
+(as recommended in Subsection~\ref{sss,perk,pract,mod,reg}).
+Direct application of \cite[Proposition~4]{sutherland:15:ote}
+to the case of Gaussian kernel \eqref{eq,kern}
+reveals that $Z$ should be scaled 
+subquadratically but superlinearly with $\dimQ$ 
+to conservatively maintain a given threshold
+of maximal kernel approximation error.
+Thus, PERK memory requirements need grow no faster than $\BigOh{\dimQ^4}$
+to maintain a given level of kernel approximation error.
+
+% application to mrf
+The $\BigOh{\dimQ^4}$ PERK memory requirement ensures improvement 
+over large-scale grid search 
+in modestly overdetermined estimation problems, 
+\ie when $\dimQ \approx L$.
+In applications where 
+the number of measurements far exceeds $L$
+(\eg, MR fingerprinting \cite{ma:13:mrf}),
+PERK may still provide performance gains
+if images are projected \cite{mcgivney:14:scf}
+or directly reconstructed \cite{asslander::lra}
+into a low-dimensional measurement subspace
+prior to per-voxel processing.
+Using this idea,
+we recently applied PERK
+to MR fingerprinting
+in \cite{nataraj:17:slw}.
+
+% add low-order polynomial feature for extrapolation
+Phantom experiments most clearly demonstrate
+that while PERK $\To,\Tt$ estimates are accurate
+within a properly selected training range,
+PERK may extrapolate poorly
+outside the sampling distribution's support
+(an improperly selected support 
+can significantly degrade performance; 
+see Subsection~\ref{ss,perk,robust,dist} for a demonstration).
+If more graceful degradation is desired,
+it may be helpful
+to additionally fit coefficients 
+of a low-order polynomial
+and thereby form estimates of form, \eg, 
+$\est{x}_l\paren{\bmq} := 
+	\est{h}_l\paren{\bmq} + \est{b}_l + \est{\mathbf{c}}_l\tpose \bmq$.
+However,
+greater model complexity
+may require more training samples
+to prevent overfitting.
+
+% in-vivo discrepancies may be due to model mismatch
+\Invivo experiments demonstrated
+that VPM, PGPM, and PERK $\To,\Tt$ estimates
+are overall comparable
+in WM and GM regions of interest.
+Nevertheless,
+small but consistently unidirectional discrepancies persist
+between the ML and PERK $\To$ estimates in WM,
+one of which is statistically significant. 
+These subtle discrepancies may indicate
+that ML and PERK estimators behave differently
+in regions with increased model mismatch.
+One possible source 
+of \invivo model mismatch
+could be diffusive signal loss,
+to which DESS is especially sensitive 
+\cite{wu:90:eod,carney:91:asa}.
+In particular,
+unaccounted diffusive signal loss
+could reduce the DESS second echo's already low SNR in WM
+to a point where non-Gaussian noise statistics
+become important to consider.
+Whereas PERK was trained 
+with simulated data
+corrupted by Rician-distributed noise,
+the ML estimators used in this work
+take a (standard) Gaussian noise assumption
+and may thus be more prone than PERK
+to noise-related bias at low SNR.
+Taking these statements together,
+unaccounted diffusive effects 
+might bias Gaussian ML estimators more
+than a properly trained PERK estimator
+and might explain minor discrepancies
+between ML and PERK $\To$ estimates in WM.
+
+% vector estimator
+The present formulation 
+constructs separate scalar estimators
+for each coordinate of $\est{\bmx}$. 
+A natural extension might instead seek 
+to construct vector estimators
+that consist of linear combinations
+of vector features
+that reside in an RKHS
+of vector-valued functions
+(see \cite{alvarez:11:kfv}
+for a review).
+Here,
+the associated reproducing kernel
+would now be matrix-valued 
+and might encode expected dependencies
+among the outputs of $\est{\bmx}$.
+With enough training points,
+the resulting vector estimator
+could achieve improved estimator performance
+in terms of accuracy and precision,
+at the expense of tuning more model parameters
+and increased computational burden.
+
+% space-varying noise statistics
+In this work,
+we trained PERK 
+using simulated training data
+corrupted by noise realizations 
+drawn from a single noise distribution,
+whose statistics were estimated once
+from background regions
+of unlabeled test image data.
+This training strategy
+produced reasonable results
+perhaps in part 
+because our experiments 
+used fully-sampled Cartesian data,
+for which coil-combined images
+exhibit little spatial variation
+in the noise distribution 
+due to receive coil sensitivity 
+spatial variation \cite{ajafernandez:16:sao}.
+To apply PERK in applications
+where input measurement images
+exhibit large spatial variation
+in the noise variance
+(\eg, multiple-coil acquisitions
+with parallel imaging acceleration),
+it may be advantageous 
+to train PERK
+using simulated training data
+corrupted by noise realizations
+drawn from an appropriate distribution 
+over noise distributions.
+If noise variance maps are available,
+one could alternately 
+train several PERK estimators 
+with training datasets 
+corrupted by different amounts of noise
+and apply each estimator 
+to correspondingly noisy measurement image voxels.
+
+% scale ambiguity
+Because there is ambiguity
+in MR data scale
+due to receive gains
+and other amplitude scaling factors,
+it is desirable
+to construct an estimator
+that is unaffected
+by changes in data scale
+between training and testing.
+In experiments,
+we address scaling ambiguity
+by setting the marginal $\mzero$ sampling distribution $\dist{\mzero}$
+based on test measurements,
+thereby matching simulated training measurement scale
+to test measurement scale.
+This strategy would require retraining between acquisitions
+that are different in scale 
+but are otherwise identical,
+which may be undesirable in practice.
+Alternatively,
+one could preprocess 
+each noisy training regressor
+and each noisy test measurement
+by rescaling each such that 
+(without loss of generality) 
+its first entry is unity,
+is subsequently uninformative,
+and can thus be safely pruned
+to reduce problem dimensionality.
+Training and testing estimators
+(for latent parameters other than $\mzero$)
+using these preprocessed regressors and test points
+is then largely invariant
+to the support 
+of $\dist{\mzero}$ \cite{nataraj:17:slw}.
+One drawback 
+to this approach
+is that normalization
+by noisy training regressors and test measurements
+could increase estimation variance.
+
+% online vs offline training
+As explained further 
+in Subsection~\ref{ss,perk,pract,mod},
+we chose to train PERK
+after observation of unlabeled test data,
+a strategy that permits automatic selection
+of some tuning parameters
+but requires training at test time.
+Other applications may require
+many more training points 
+than was required in our experiments
+for reasonable PERK performance,
+in which case such online training
+might be less practical.
+Using our PERK implementation,
+offline training would require additional selection
+of test measurement scale,
+known object parameter distribution $\dist{\nu}$,
+and noise variance $\sigma^2$.
+Test measurement scale selection
+could be avoided 
+using the scale-invariant training strategy
+discussed in the previous paragraph.
+As emphasized 
+in Subsection~\ref{sss,perk,pract,mod,dist}
+and demonstrated 
+in Subsection~\ref{ss,perk,robust,dist},
+PERK performance is quite sensitive
+to the object parameter distribution's support,
+and so at least the support of $\dist{\nu}$
+would need to be carefully selected
+based on separate prior parameter estimates
+or problem-specific intuition.
+As demonstrated 
+in Subsection~\ref{ss,perk,robust,noise},
+PERK performs best 
+when training and testing data noise statistics coincide
+but degrades gracefully 
+with mild levels of mismatch,
+so $\sigma^2$ could be selected
+based on separate SNR approximations.
+
+% deep learning
+As an alternative to PERK,
+researchers have recently proposed
+MRI parameter estimation 
+via deep neural network learning
+\cite{cohen:17:dlf-arxiv,virtue:17:btr}.
+Deep learning requires 
+enormous numbers of training points
+to train many model parameters without overfitting,
+and its limited theoretical basis
+renders its practical use largely an art.
+Here,
+we have introduced and investigated PERK
+with an emphasis on its simplicity
+and its relatively intuitive model selection
+(see Subsection~\ref{ss,perk,pract,mod});
+a thorough comparison
+with deep learning 
+is a possible topic for future work.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
 \label{s,perk,conc}

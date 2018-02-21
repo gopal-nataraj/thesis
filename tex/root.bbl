@@ -11,6 +11,11 @@ S.~Ahn and J.~A. Fessler, ``Standard errors of mean, variance, and standard
   deviation estimators,'' Tech. Rep. 413, Comm. and Sign. Proc. Lab., Dept. of
   EECS, Univ. of Michigan, Ann Arbor, MI, 48109-2122, July 2003.
 
+\bibitem{nataraj:17:oms}
+G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Optimizing {MR} scan design for
+  model-based {T1,} {T2} estimation from steady-state sequences,'' {\em {IEEE
+  Trans. Med. Imag.}}, vol.~36, pp.~{467--77}, Feb. 2017.
+
 \bibitem{nataraj:14:rje}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Regularized, joint estimation
   of {T1} and {M0} maps,'' in {\em {Proc. Intl. Soc. Mag. Res. Med.}}, p.~3128,
@@ -20,11 +25,6 @@ G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Regularized, joint estimation
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Model-based estimation of {T2}
   maps with dual-echo steady-state {MR} imaging,'' in {\em {Proc. IEEE Intl.
   Conf. on Image Processing}}, pp.~{1877--81}, 2014.
-
-\bibitem{nataraj:17:oms}
-G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Optimizing {MR} scan design for
-  model-based {T1,} {T2} estimation from steady-state sequences,'' {\em {IEEE
-  Trans. Med. Imag.}}, vol.~36, pp.~{467--77}, Feb. 2017.
 
 \bibitem{nataraj:15:amm}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``A min-max {CRLB} optimization
@@ -698,5 +698,31 @@ J.~He, Q.~Liu, A.~G. Christodoulou, C.~Ma, F.~Lam, and Z.-P. Liang,
   ``Accelerated high-dimensional {MR} imaging with sparse sampling using
   low-rank tensors,'' {\em {IEEE Trans. Med. Imag.}}, vol.~35, pp.~{2119--29},
   Sept. 2016.
+
+\bibitem{nataraj:17:slw}
+G.~Nataraj, M.~Gao, J.~{\Asslander}, C.~Scott, and J.~A. Fessler, ``Shallow
+  learning with kernels for dictionary-free magnetic resonance
+  fingerprinting,'' in {\em {ISMRM Workshop on MR Fingerprinting}}, 2017.
+
+\bibitem{alvarez:11:kfv}
+M.~A. Alvarez, L.~Rosasco, and N.~D. Lawrence, ``Kernels for vector-valued
+  functions: {A} review,'' Tech. Rep. MIT-CSAIL-TR-2011-033, MIT, CSAIL, June
+  2011.
+
+\bibitem{ajafernandez:16:sao}
+S.~Aja-\Fernandez and G.~Vegas-\Sanchez-Ferrero, {\em Statistical analysis of
+  noise in {MRI:} modeling, filtering and estimation}.
+\newblock Springer, 2016.
+
+\bibitem{cohen:17:dlf-arxiv}
+O.~Cohen, B.~Zhu, and M.~S. Rosen, ``Deep learning for rapid sparse {MR}
+  fingerprinting reconstruction,'' 2017.
+\newblock arxiv 1710.05267.
+
+\bibitem{virtue:17:btr}
+P.~Virtue, S.~X. Yu, and M.~Lustig, ``Better than real: {Complex-valued} neural
+  nets for {MRI} fingerprinting,'' in {\em {Proc. IEEE Intl. Conf. on Image
+  Processing}}, 2017.
+\newblock To appear.
 
 \end{thebibliography}
