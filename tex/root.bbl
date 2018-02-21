@@ -663,4 +663,25 @@ A.~E. Hoerl and R.~W. Kennard, ``Ridge regression: biased estimation for
 I.~Steinwart and A.~Christmann, {\em Support vector machines}.
 \newblock Springer, 2008.
 
+\bibitem{rahimi:07:rff}
+A.~Rahimi and B.~Recht, ``Random features for large-scale kernel machines,'' in
+  {\em {NIPS}}, 2007.
+
+\bibitem{sutherland:15:ote}
+D.~J. Sutherland and J.~Schneider, ``On the error of random {Fourier}
+  features,'' in {\em {Proc. Intl. Conf. on Uncertainty in AI}}, 2015.
+
+\bibitem{wu:97:gbt}
+Z.~Wu, ``Generalized {Bochner's} theorem for radial function,'' {\em
+  {Approximation Theory and its Applications}}, vol.~13, no.~3, pp.~{47--57},
+  1997.
+
+\bibitem{woodbury:50:imm}
+M.~A. Woodbury, ``Inverting modified matrices,'' 1950.
+\newblock Tech. Report 42, Stat. Res. Group, Princeton Univ.
+
+\bibitem{vapnik:98:slt}
+V.~N. Vapnik, {\em Statistical learning theory}.
+\newblock Wiley-Interscience, 1998.
+
 \end{thebibliography}

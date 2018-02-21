@@ -242,6 +242,8 @@ Section~\ref{s,perk,perf} studies bias and covariance
 of the resulting PERK estimator.
 Section~\ref{s,perk,pract} addresses practical implementation issues
 such as computational complexity and model selection.
+Section~\ref{s,perk,demo} provides intuition into PERK
+through a simple toy problem.
 Section~\ref{s,perk,exp} demonstrates PERK
 in numerical simulations
 as well as phantom and \invivo experiments.
@@ -834,10 +836,458 @@ but also by the local training point sampling density.
 \label{s,perk,pract}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+This section focuses 
+on important practical implementation issues.
+Subsection~\ref{ss,perk,pract,apprx} discusses
+a conceptually intuitive approximation
+of PERK estimator \eqref{eq,xl-hat}
+that in many problems
+can significantly improve computational performance.
+Subsection~\ref{ss,perk,pract,mod} describes strategies 
+for data-driven model selection.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{A Kernel Approximation}
+\label{ss,perk,pract,apprx}
+
+In practical problems
+with even moderately large ambient dimension $\dimQ$,
+the necessarily large number of training samples $N$ 
+complicates storage of (dense) $N\times N$ Gram matrix $\bmK$.
+Using a kernel approximation 
+can mitigate storage and processing issues.
+Here we employ \emph{random Fourier features} \cite{rahimi:07:rff},
+a recent method 
+for approximating translation-invariant kernels
+having form $k\paren{\bmq,\bmq'} \equiv k\paren{\bmq-\bmq'}$.
+This subsection reviews the main result of \cite{rahimi:07:rff}
+for the purpose of constructing 
+an intuitive and computationally efficient approximation 
+of \eqref{eq,xl-hat}.
+
+The strategy of \cite{rahimi:07:rff}
+is to construct independent probability distributions 
+$\dist{\bmv}$ and $\dist{s}$
+associated with
+random $\bmv \in \reals{\dimQ}$ 
+and random $s \in \real$ 
+as well as a function 
+(that is parameterized by $\bmq$) 
+$\zt\paren{\cdot,\cdot;\bmq} : 
+	\reals{\dimQ} \times \real \times \reals{\dimQ} \mapsto \real$,
+such that
+\begin{align}
+	\expect{\bmv,s}{
+		\zta{\bmv,s;\bmq}
+		\zta{\bmv,s;\bmq'} 
+	}
+	= k(\bmq-\bmq'),
+	\label{eq,exp}
+\end{align}
+where 
+$\expect{\bmv,s}{\cdot}$
+denotes expectation with respect to $\dist{\bmv}\dist{s}$.
+When such a construction exists,
+one can build
+approximate feature maps $\bmztZ$
+by concatenating and normalizing evaluations 
+of $\zt$ 
+on $Z$ samples 
+$\set{\paren{\bmv_1,s_1},\dots,\paren{\bmv_Z,s_Z}}$
+of $\paren{\bmv,s}$
+(drawn jointly albeit independently),
+to produce approximate features
+\begin{align}
+	\bmztZa{\bmq} := \sqrt{\frac{2}{Z}}
+		\brac{\zta{\bmv_1,s_1;\bmq},\dots,\zta{\bmv_Z,s_Z;\bmq}}\tpose
+	\label{eq,feat}
+\end{align}
+for any $\bmq$. 
+Then by the strong law of large numbers,
+\begin{align}
+	\lim_{Z \to \infty} \innprod{
+		\bmztZa{\bmq}}{
+		\bmztZa{\bmq'}
+	}_{\reals{Z}} \overset{a.s.}{\to} k(\bmq,\bmq') \qquad \forall \bmq,\bmq'
+	\label{eq,lln}
+\end{align}
+which, 
+in conjunction 
+with strong performance guarantees
+for finite $Z$ \cite{rahimi:07:rff,sutherland:15:ote}, 
+justifies interpreting $\bmztZ$ 
+as an approximate 
+(and now finite-dimensional) feature map.
+
+We use the Fourier construction 
+of \cite{rahimi:07:rff}
+that assigns
+$\zt\paren{\bmv,s;\bmq} 
+\gets 
+\cosa{2\pi\paren{\bmv\tpose \bmq + s}}$.
+If also $\dist{s}\gets\unif{0,1}$, 
+then 
+$\expect{\bmv,s}{
+	\zt\paren{\bmv,s;\bmq}
+	\zt\paren{\bmv,s;\bmq'} 
+}$
+simplifies to
+\begin{align}
+	\int_{\reals{\dimQ}} \cosa{2\pi\bmv\tpose\paren{\bmq-\bmq'}} \dist{\bmv}\paren{\bmv} \der{\bmv}.
+	\label{eq,ft}
+\end{align}
+For symmetric $\dist{\bmv}$,
+\eqref{eq,ft} exists \cite{wu:97:gbt}
+and is a Fourier transform.
+Thus choosing 
+$\dist{\bmv}\gets\gauss{\zeros{\dimQ}}{\paren{2\pi\bmL}^{-2}}$
+satisfies \eqref{eq,exp}
+for Gaussian kernel \eqref{eq,kern},
+where $\zeros{\dimQ} \in \reals{\dimQ}$ is a vector of zeros.
+
+Sampling $\dist{\bmv},\dist{s}$ $Z$ times
+and subsequently constructing 
+$\bmZt := 
+	\brac{\bmztZa{\bmq_1},\dots,\bmztZa{\bmq_N}} \in \reals{Z \times N}$
+via repeated evaluations of \eqref{eq,feat}
+gives for $Z \ll N$
+a low-rank approximation $\bmZt\tpose\bmZt$ 
+of Gram matrix $\bmK$.
+Substituting this approximation into \eqref{eq,xl-hat}
+and applying the matrix inversion lemma \cite{woodbury:50:imm} 
+yields
+\begin{align}
+	\est{x}_l\paren{\cdot} \gets \mxl + 
+		\cztxl\tpose\inv{\paren{\Cztzt + \rho_l\eye{Z}}} \paren{\bmztZa{\cdot}-\bmmzt},
+	\label{eq,xl-apx}
+\end{align}
+where 
+$\mxl := \frac{1}{N}\bmxt{l}\tpose\ones{N}$ 
+and 
+$\bmmzt := \frac{1}{N}\bmZt\ones{N}$ 
+are sample means; 
+and
+$\cztxl := \frac{1}{N}\bmZt\bmM\bmxt{l}$
+and 
+$\Cztzt := \frac{1}{N}\bmZt\bmM\bmZt\tpose$ 
+are sample covariances.
+Estimator \eqref{eq,xl-apx} 
+is an affine minimum mean-squared error estimator
+on the approximate features,
+and illustrates
+that Gaussian PERK 
+via estimator \eqref{eq,xl-hat}
+is asymptotically (in $Z$) equivalent
+to regularized affine regression
+after nonlinear, high-dimensional feature mapping.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tuning Parameter Selection}
+\label{ss,perk,pract,mod}
+
+This subsection proposes guidelines
+for data-driven selection
+of user-selectable parameters.
+Our goal here is
+to use problem intuition
+to automatically choose 
+as many tuning parameters as possible,
+thereby leaving as few parameters as possible
+to manual selection.
+In this spirit,
+we focus on ``online'' model selection,
+where one chooses tuning parameters
+for training the estimator $\esta{\bmx}{\cdot}$
+\emph{after} acquiring (unlabeled) real test data.
+This online approach 
+can be considered a form 
+of \emph{transductive learning} \cite[Ch.~8]{vapnik:98:slt}
+since we train our estimator
+with knowledge of unlabeled test data
+in addition to labeled training data.
+Observe that since
+many voxel-wise separable MRI parameter estimation problems
+are comparatively low-dimensional,
+PERK estimators can often be quickly trained
+using only a moderate number
+of simulated training examples;
+in fact,
+training can in some problems take
+comparable or even less time
+than evaluating the PERK estimator
+on full-volume high-resolution measurement images.
+For these reasons,
+online PERK model selection is often practical.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Choosing Sampling Distribution}
+\label{sss,perk,pract,mod,dist}
+
+% for good krr performance, want parameters well-identified over samp dist
+% we quantify identifiability using fisher matrix
+% fisher inverse lower-bounds cov for any unbiased est
+% ml estimator is one estimator that asymptotically achieves crb 
+% with above assumptions, ml is continuous in y,nu
+% thus when crb well behaved there exists one cts estimator identifies x from y,nu
+% universal kernels can approx any cts function to arbitrary accuracy 
+% ...
+
+For reasonable PERK performance,
+it is important 
+to choose the joint distribution
+of latent and known parameters $\dist{\bmx,\bmnu}$
+such that latent parameters
+can be estimated precisely
+over the joint distribution's support $\supp{\dist{\bmx,\bmnu}}$. 
+For continuously differentiable 
+magnitude signal model $\bmmu$,
+we quantify precision
+at a single point $\paren{\bmx,\bmnu}$
+using the Fisher information matrix
+\begin{IEEEeqnarray}{rCl}
+	\bmFa{\bmx,\bmnu} 
+		&:=& 
+			\expect{\bmymag|\bmx,\bmnu}{%
+				\paren{\grada{\bmx}\log{\dist{\bmymag|\bmx,\bmnu}}}\tpose 
+				\grada{\bmx}\log{\dist{\bmymag|\bmx,\bmnu}}
+			}% 
+			\nonumber \\	
+		&\approx& 	
+			\paren{\grada{\bmx}{\bmmu\paren{\bmx,\bmnu}}}\tpose
+				\inv{\bmSig} \grada{\bmx}{\bmmu\paren{\bmx,\bmnu}}
+	\label{eq,fisher}
+\end{IEEEeqnarray}
+where $\grada{\bmx}\paren{\cdot}$ denotes row gradient
+with respect to $\bmx$
+and the approximation holds well
+for moderately high-SNR measurements \cite{gudbjartsson:95:trd}.
+When it exists,
+the inverse of $\bmFa{\bmx,\bmnu}$ 
+provides a lower-bound
+on the conditional covariance
+of any unbiased estimator 
+of $\bmx$ \cite{cramer:46}.
+For good performance,
+it is thus reasonable
+to ensure $\bmFa{\bmx,\bmnu}$ is well-conditioned
+over $\supp{\dist{\bmx,\bmnu}}$.
+
+There are many strategies one could employ
+to control the condition number 
+of $\bmFa{\bmx,\bmnu}$ 
+over $\supp{\dist{\bmx,\bmnu}}$.
+In our experiments,
+we used data \cite{nataraj:17:oms}
+from acquisitions designed 
+to \emph{minimize} a cost function
+related to the \emph{maximum}
+of $\bmF^{-1}\paren{\bmx,\bmnu}$
+over bounded latent and known parameter ranges of interest
+(Subsection~\ref{ss,perk,exp,meth} provides application-specific details).
+We then assigned $\supp{\dist{\bmx,\bmnu}}$
+to coincide with the support 
+of these acquisition design parameter ranges of interest.
+Assessing worst-case imprecision
+via the conservative minimax criterion is appropriate here
+because point-wise poor conditioning
+at any $\paren{\bmx,\bmnu} \in \supp{\dist{\bmx,\bmnu}}$
+can induce PERK estimation error 
+over larger subsets 
+of $\supp{\dist{\bmx,\bmnu}}$.
+% tradeoff between volume of support over which we expect accuracy vs precision within support
+% actually only true if max achieved at boundary
+
+If many separate prior parameter estimates are available,
+one can estimate the particular shape 
+of $\dist{\bmx,\bmnu}$ empirically 
+and then clip and renormalize $\dist{\bmx,\bmnu}$
+so as to assign nonzero probability
+only within an appropriate support.
+When prior estimates are unavailable,
+it may in certain problems be reasonable 
+to instead assume
+a separable distributional structure
+$\dist{\bmx,\bmnu} \equiv \dist{\bmx}\dist{\bmnu}$
+in which case
+one can still estimate $\dist{\bmnu}$ empirically
+but must set $\dist{\bmx}$ manually
+based on typical ranges
+of latent parameters.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Choosing Regularization Parameters}
+\label{sss,perk,pract,mod,reg}
+
+% as presented krr est 11 and approx 17 provide freedom to choose rho diff for rho1 to rhoL
+% however, the unitless matrices K and Czz whose conditionalities they improve before inversion do not change across parameters
+% thus it is reasonable to set rho1 to rhoL to a fixed rho>0 across latent parameters
+% added benefit of requiring only one NxN or ZxZ matrix inversion for training respectively, an acceleration especially helpful for online training
+As presented,
+PERK estimator \eqref{eq,xl-hat}
+and its approximation \eqref{eq,xl-apx}
+leave freedom to select different regularization parameters
+$\rho_1,\dots,\rho_L$
+for estimating each of the $L$ latent parameters.
+However,
+the respective unitless matrices 
+$\bmM\bmK\bmM$ and $\Cztzt$ 
+whose condition numbers are influenced 
+by $\rho_1,\dots,\rho_L$
+do not vary with $l$.
+Thus it is reasonable 
+to assign each $\rho_l \gets \rho\,\, \forall l \in \set{1,\dots,L}$ 
+some fixed $\rho > 0$.
+This simplification significantly reduces training computation
+to just one
+rather than $L$
+large matrix inversions.
+We select the scalar regularization parameter $\rho$
+using the holdout process 
+described in Subsection~\ref{s,holdout}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Choosing Kernel Bandwidth}
+\label{sss,perk,pract,mod,length}
+
+It is desirable 
+to choose the Gaussian kernel's bandwidth matrix $\bmL$ 
+such that PERK estimates are invariant 
+to the overall scale of test data. 
+We use
+(after observing test data,
+and for both training and testing)
+\begin{align}
+	\bmL \gets \lambda \diag{\brac{\bmmybar\tpose, \bmmnu\tpose}\tpose},
+	\label{eq,bw}
+\end{align}
+where 
+$\bmmybar \in \reals{D}$ 
+and 
+$\bmmnu \in \reals{K}$
+are sample means across voxels
+of magnitude test image data
+and known parameters,
+respectively;
+and $\diag{\cdot}$ assigns its argument 
+to the diagonal entries
+of an otherwise zero matrix.
+We select the
+only scalar bandwidth parameter $\lambda>0$
+using holdout as well.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{PERK Demonstration in a 1-D Toy Problem}
+\label{s,perk,demo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[!ht]
+	\centering
+	\subfigure[$N\gets10$]{%
+		\includegraphics [width=0.47\textwidth]{%
+			toy-1d,t2-se,n-10%
+		}
+		\label{fig,toy,n-10}
+	}
+	\hspace{0.3cm}
+	\subfigure[$N\gets20$]{%
+		\includegraphics [width=0.47\textwidth] {%
+			toy-1d,t2-se,n-20%
+		}
+		\label{fig,toy,n-20}
+	}
+	
+	\subfigure[$N\gets50$]{%
+		\includegraphics [width=0.47\textwidth]{%
+			toy-1d,t2-se,n-50%
+		}
+		\label{fig,toy,n-50}
+	}
+	\hspace{0.3cm}
+	\subfigure[$N\gets200$]{%
+		\includegraphics [width=0.47\textwidth] {%
+			toy-1d,t2-se,n-200%
+		}
+		\label{fig,toy,n-200}
+	}
+	\caption{%
+		Illustrations of PERK 
+		for $\Tt$ estimation
+		from a single spin echo measurement.
+		Subfigures vary the number $N$
+		of PERK training points,
+		marked with black circles.
+		The orange and yellow curves plot
+		PERK $\TtPERK$ and MOM $\TtMOM$ estimators
+		evaluated at test points,
+		marked with blue dots.
+		Dashed black lines denote 
+		the sampling distribution support $\supp{\dist{\Tt}}$
+		over which each PERK estimator was trained.
+		As $N$ increases,
+		$\TtPERK$ appears more similar to $\TtMOM$
+		within well-sampled regions
+		of $\supp{\dist{\Tt}}$.
+	}%
+	\label{fig,toy}
+\end{figure}
+
+To build intuition
+and for ease of visualization,
+we first apply PERK
+in a one-dimensional toy problem,
+namely $\Tt$ estimation
+from a single spin-echo measurement.
+We generated training data
+using a mono-exponential (unity-$\mzero$) signal model
+$y = e^{-\TE/\Tt} + \epsilon$,
+where $y$ is a complex spin-echo measurement,
+$\TE \gets 30$ms is the echo time
+and $\epsilon \sim \cgauss{0}{0.01^2}$ is complex Gaussian noise.
+We sampled $N \gets 10$, $20$, $50$, $200$ regressands
+from $\Tt$ sampling distribution $\dist{\Tt} \gets \logunif{10,500}$
+and took the magnitude 
+of noisy complex signal model evaluations
+to generate corresponding magnitude regressors.
+We trained PERK separately
+using each of the four labeled training datasets,
+holding fixed hyperparameters $(\lambda,\rho) \gets (2^{-1.5},2^{-20})$
+that were manually chosen
+to aid in illustrating PERK's typical behavior.
+	
+Fig.~\ref{fig,toy} illustrates the 1-D PERK estimator $\TtPERK$
+and shows how its performance improves
+as $N$ is increased. 
+To produce each subfigure,
+we uniformly sampled 100,000 true (latent) $\Tt$ values,
+evaluated the noisy signal model as in training
+to generate magnitude test points (blue dots),
+and evaluated each PERK estimator 
+at the unlabeled test points (orange curves).
+For comparison,
+subfigures within Fig.~\ref{fig,toy} also plot
+the intuitive method-of-moments (MOM) estimator
+$\TtMOM\paren{\cdot} := -\TE/\log{\abs{\cdot}}$ (yellow curves).
+As $N$ increases,
+$\TtPERK$ appears more similar to $\TtMOM$
+within well-sampled regions of $\supp{\dist{\Tt}}$ 
+(marked by dashed black lines).
+PERK will be more useful
+in nonlinear estimation problems
+where such a minimally biased 
+and low-dimensional MOM estimator is unavailable.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimentation}
 \label{s,perk,exp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Robustness Studies}
+\label{s,perk,robust}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% a. mismatch noise var
+% b. bad latent parameter distributions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}

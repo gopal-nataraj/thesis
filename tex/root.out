@@ -9,33 +9,31 @@
 \BOOKMARK [0][-]{chapter.2}{Background}{}% 9
 \BOOKMARK [1][-]{section.2.1}{Relevant MR Physics}{chapter.2}% 10
 \BOOKMARK [1][-]{section.2.2}{Optimization in QMRI}{chapter.2}% 11
-\BOOKMARK [0][-]{chapter.3}{MRI Parameter Estimation from Likelihood Models}{}% 12
+\BOOKMARK [0][-]{chapter.3}{QMRI Parameter Estimation using Likelihood Models}{}% 12
 \BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 13
 \BOOKMARK [1][-]{section.3.2}{Likelihood-Based Estimation in QMRI}{chapter.3}% 14
 \BOOKMARK [1][-]{section.3.3}{Experimentation}{chapter.3}% 15
 \BOOKMARK [1][-]{section.3.4}{Discussion}{chapter.3}% 16
 \BOOKMARK [1][-]{section.3.5}{Conclusion}{chapter.3}% 17
-\BOOKMARK [0][-]{chapter.4}{Optimizing MR Scan Design for Model-Based Relaxometry}{}% 18
+\BOOKMARK [0][-]{chapter.4}{QMRI Acquisition Design via Min-Max Optimization}{}% 18
 \BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 19
 \BOOKMARK [1][-]{section.4.2}{A CRB-Inspired Scan Selection Method}{chapter.4}% 20
 \BOOKMARK [1][-]{section.4.3}{Optimizing SS Sequences for Relaxometry in the Brain}{chapter.4}% 21
 \BOOKMARK [1][-]{section.4.4}{Experimental Validation and Results}{chapter.4}% 22
 \BOOKMARK [1][-]{section.4.5}{Discussion and Future Work}{chapter.4}% 23
 \BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 24
-\BOOKMARK [0][-]{chapter.5}{Dictionary-Free MRI Parameter Estimation via Regression with Kernels \(PERK\)}{}% 25
+\BOOKMARK [0][-]{chapter.5}{QMRI Parameter Estimation via Regression with Kernels \(PERK\)}{}% 25
 \BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 26
-\BOOKMARK [1][-]{section.5.2}{A Function Optimization Problem \046 Kernel Solution}{chapter.5}% 27
-\BOOKMARK [1][-]{section.5.3}{Implementation Considerations}{chapter.5}% 28
-\BOOKMARK [1][-]{section.5.4}{Experimentation}{chapter.5}% 29
-\BOOKMARK [1][-]{section.5.5}{Summary and Future Work}{chapter.5}% 30
-\BOOKMARK [0][-]{chapter.6}{Fast Myelin Water Fraction Imaging via Scan Design and PERK}{}% 31
-\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 32
-\BOOKMARK [1][-]{section.6.2}{Multi-Compartmental Models for SS Sequences}{chapter.6}% 33
-\BOOKMARK [1][-]{section.6.3}{A Fast Acquisition for Precise MWF Estimation}{chapter.6}% 34
-\BOOKMARK [1][-]{section.6.4}{Experimentation}{chapter.6}% 35
-\BOOKMARK [1][-]{section.6.5}{Summary and Future Work}{chapter.6}% 36
-\BOOKMARK [0][-]{chapter.7}{Future Work}{}% 37
-\BOOKMARK [0][-]{section*.12}{Appendices}{}% 38
-\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 39
-\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 40
-\BOOKMARK [0][-]{section*.15}{Bibliography}{}% 41
+\BOOKMARK [1][-]{section.5.2}{Preliminaries}{chapter.5}% 27
+\BOOKMARK [1][-]{section.5.3}{A Function Optimization Problem \046 Kernel Solution}{chapter.5}% 28
+\BOOKMARK [1][-]{section.5.4}{Bias and Covariance Analysis}{chapter.5}% 29
+\BOOKMARK [1][-]{section.5.5}{Implementation Considerations}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.6}{PERK Demonstration in a 1-D Toy Problem}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.7}{Experimentation}{chapter.5}% 32
+\BOOKMARK [1][-]{section.5.8}{Robustness Studies}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.9}{Discussion}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.10}{Conclusion}{chapter.5}% 35
+\BOOKMARK [0][-]{section*.7}{Appendices}{}% 36
+\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 37
+\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 38
+\BOOKMARK [0][-]{section*.10}{Bibliography}{}% 39
