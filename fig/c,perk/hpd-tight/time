@@ -1,0 +1,17 @@
+vpm
+  927.550s
+
+mom
+  0.186s
+pgpm
+  1256.913s
+
+perk
+  train
+	4.158s
+  test
+	1.910s
+
+speed-up
+  152.86
+

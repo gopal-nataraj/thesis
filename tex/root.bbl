@@ -684,4 +684,19 @@ M.~A. Woodbury, ``Inverting modified matrices,'' 1950.
 V.~N. Vapnik, {\em Statistical learning theory}.
 \newblock Wiley-Interscience, 1998.
 
+\bibitem{siddiqui:64:sif}
+M.~M. Siddiqui, ``Statistical inference for {Rayleigh} distributions,'' {\em
+  {RADIO SCIENCE Journal of Research NBS/USNC-URSI}}, vol.~68D, pp.~{1005--10},
+  Sept. 1964.
+
+\bibitem{gong:92:aft}
+J.~Gong and J.~P. Hornak, ``A fast {T1} algorithm,'' {\em {Mag. Res. Im.}},
+  vol.~10, no.~4, pp.~{623--6}, 1992.
+
+\bibitem{he:16:ahd}
+J.~He, Q.~Liu, A.~G. Christodoulou, C.~Ma, F.~Lam, and Z.-P. Liang,
+  ``Accelerated high-dimensional {MR} imaging with sparse sampling using
+  low-rank tensors,'' {\em {IEEE Trans. Med. Imag.}}, vol.~35, pp.~{2119--29},
+  Sept. 2016.
+
 \end{thebibliography}

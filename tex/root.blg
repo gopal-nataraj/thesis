@@ -1,47 +1,52 @@
 This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: root.aux
+White space in argument---line 641 of file root.aux
+ : \citation{nataraj:17:oms
+ :                          }
+I'm skipping whatever remains of this command
 The style file: ieeetr.bst
 Database file #1: ../bib/master.bib.bib
 Database file #2: ../bib/new.bib.bib
-You've used 136 entries,
+You've used 139 entries,
             1876 wiz_defined-function locations,
-            1167 strings with 24725 characters,
-and the built_in function-call counts, 47925 in all, are:
-= -- 5119
-> -- 1697
+            1182 strings with 25114 characters,
+and the built_in function-call counts, 49075 in all, are:
+= -- 5249
+> -- 1729
 < -- 1
-+ -- 619
-- -- 483
-* -- 3466
-:= -- 6303
-add.period$ -- 145
-call.type$ -- 136
-change.case$ -- 131
++ -- 631
+- -- 492
+* -- 3546
+:= -- 6448
+add.period$ -- 148
+call.type$ -- 139
+change.case$ -- 134
 chr.to.int$ -- 0
-cite$ -- 136
-duplicate$ -- 2404
-empty$ -- 4018
-format.name$ -- 483
-if$ -- 11727
+cite$ -- 139
+duplicate$ -- 2463
+empty$ -- 4113
+format.name$ -- 492
+if$ -- 12012
 int.to.chr$ -- 0
-int.to.str$ -- 136
-missing$ -- 137
-newline$ -- 420
-num.names$ -- 136
-pop$ -- 284
+int.to.str$ -- 139
+missing$ -- 140
+newline$ -- 429
+num.names$ -- 139
+pop$ -- 287
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2241
+skip$ -- 2301
 stack$ -- 0
-substring$ -- 4357
-swap$ -- 1367
+substring$ -- 4475
+swap$ -- 1404
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 491
-width$ -- 139
-write$ -- 1347
+while$ -- 503
+width$ -- 142
+write$ -- 1378
+(There was 1 error message)

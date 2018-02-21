@@ -1,7 +1,7 @@
 \contentsline {chapter}{List of Figures}{iii}{section*.2}
-\contentsline {chapter}{List of Tables}{v}{section*.3}
-\contentsline {chapter}{List of Appendices}{vii}{section*.4}
-\contentsline {chapter}{Abstract}{viii}{section*.6}
+\contentsline {chapter}{List of Tables}{vi}{section*.3}
+\contentsline {chapter}{List of Appendices}{viii}{section*.4}
+\contentsline {chapter}{Abstract}{ix}{section*.6}
 \vspace {1.3ex}\noindent {\bf Chapter}\vspace {1.3ex}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Thesis Overview}{2}{section.1.1}
@@ -63,9 +63,15 @@
 \contentsline {subsubsection}{\numberline {5.5.2.3}Choosing Kernel Bandwidth}{65}{subsubsection.5.5.2.3}
 \contentsline {section}{\numberline {5.6}PERK Demonstration in a 1-D Toy Problem}{65}{section.5.6}
 \contentsline {section}{\numberline {5.7}Experimentation}{67}{section.5.7}
-\contentsline {section}{\numberline {5.8}Robustness Studies}{67}{section.5.8}
-\contentsline {section}{\numberline {5.9}Discussion}{67}{section.5.9}
-\contentsline {section}{\numberline {5.10}Conclusion}{67}{section.5.10}
-\contentsline {chapter}{Appendices}{68}{section*.7}
+\contentsline {subsection}{\numberline {5.7.1}Methods}{67}{subsection.5.7.1}
+\contentsline {subsubsection}{\numberline {5.7.1.1}Model Selection via Holdout}{68}{subsubsection.5.7.1.1}
+\contentsline {subsubsection}{\numberline {5.7.1.2}Evaluation}{70}{subsubsection.5.7.1.2}
+\contentsline {subsection}{\numberline {5.7.2}Numerical Simulations}{71}{subsection.5.7.2}
+\contentsline {subsection}{\numberline {5.7.3}Phantom Experiments}{72}{subsection.5.7.3}
+\contentsline {subsection}{\numberline {5.7.4}\emph {In vivo}\xspace Experiments}{75}{subsection.5.7.4}
+\contentsline {section}{\numberline {5.8}Robustness Studies}{78}{section.5.8}
+\contentsline {section}{\numberline {5.9}Discussion}{78}{section.5.9}
+\contentsline {section}{\numberline {5.10}Conclusion}{78}{section.5.10}
+\contentsline {chapter}{Appendices}{79}{section*.7}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{70}{section*.10}
+\contentsline {chapter}{Bibliography}{81}{section*.10}
