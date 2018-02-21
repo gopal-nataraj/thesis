@@ -430,10 +430,10 @@ between training points:
 		\argmin{\substack{\bmh \in \rkhs^L \\ \bmb \in \reals{L}}}
 		\costa{\bmh, \bmb; \set{\paren{\bmx_n,\bmq_n}}_{1}^N}, 
 		\where \label{eq,prob} \\
-	\costa{\dots} &= 
+	\costa{\bmh, \bmb; \set{\paren{\bmx_n,\bmq_n}}_{1}^N} &= 
 		\sum_{l=1}^L \cost_l\paren{h_l,b_l; \set{\paren{x_{l,n},\bmq_n}}_{1}^N}; 
 		\label{eq,cost} \\
-	\Psi_l(\dots) &= 
+	\Psi_l(h_l,b_l; \set{\paren{x_{l,n},\bmq_n}}_{1}^N) &= 
 		\rho_l \norm{h_l}_\rkhs^2 + 
 		\frac{1}{N} \sum_{n=1}^N \paren{h_l(\bmq_n) + b_l - x_{l,n}}^2.
 		\label{eq,cost-l}
@@ -605,6 +605,229 @@ on the corresponding features.
 \section{Bias and Covariance Analysis}
 \label{s,perk,perf}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This section presents expressions
+for the bias and covariance
+of Gaussian PERK estimator $\esta{\bmx}{\cdot}$,
+conditioned on object parameters $\bmx,\bmnu$.
+We focus on these conditional statistics
+to enable study
+of estimator performance 
+as $\bmx,\bmnu$ are varied.
+Though not mentioned explicitly hereafter,
+both expressions treat the training sample
+$\set{\paren{\bmx_1,\bmq_1},\dots,\paren{\bmx_N,\bmq_N}}$
+and regularization parameters $\rho_1,\dots,\rho_L$
+as fixed.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conditional Bias}
+\label{ss,perk,perf,bias}
+
+The conditional bias 
+of $\est{\bmx} \equiv \esta{\bmx}{\bmymag,\bmnu}$
+is written as
+\begin{align}
+	\biasa{\est{\bmx}|\bmx,\bmnu} 
+		&:= 
+			\expect{\bmymag|\bmx,\bmnu}{\esta{\bmx}{\bmymag,\bmnu}} - \bmx
+			\nonumber \\
+		&= 
+			\bmR \expect{\bmymag|\bmx,\bmnu}{\bmka{\bmymag,\bmnu}} 
+			+ \paren{\bmmx-\bmx},
+			\label{eq,bias}
+\end{align}
+where $\expect{\bmymag|\bmx,\bmnu}{\cdot}$ 
+denotes expectation
+with respect to $\bmymag := \abs{\bmy}$
+and conditioned on $\bmx,\bmnu$.
+Here,
+the $l$th row of $\bmR \in \reals{L \times N}$ 
+and $l$th entry of regressand sample mean 
+$\bmmx \in \reals{L}$
+respectively are $\bmxt{l}\tpose \bmM\inv{\paren{\bmM\bmK\bmM + N \rho_l \eye{N}}}$
+and $\frac{1}{N}\bmxt{l}\tpose\ones{N}$
+for $l \in \set{1,\dots,L}$.
+To proceed analytically, 
+we make two mild assumptions.
+First, 
+we assume 
+that $\bmy \sim \cgauss{\zeros{D}}{\bmSig}$
+has sufficiently high signal-to-noise ratio (SNR)
+such that its complex modulus $\bmymag$ 
+is approximately Gaussian-distributed.
+We specifically consider the typical case
+where covariance matrix $\bmSig$ is diagonal
+with diagonal entries $\sigma_1^2,\dots,\sigma_D^2$,
+in which case measurement amplitude conditional distribution 
+$\dist{\bmymag|\bmx,\bmnu}$
+is simply approximated as
+$\dist{\bmymag|\bmx,\bmnu} \gets \gauss{\bmmu}{\bmSig}$,
+where $\bmmu \in \reals{D}$ 
+has $d$th coordinate $\sqrt{\abs{s_d\paren{\bmx,\bmnu}}^2 + \sigma_d^2}$ 
+for $d \in \set{1,\dots,D}$ \cite{gudbjartsson:95:trd}.
+Second,
+we assume
+that the Gaussian kernel bandwidth matrix $\bmL$ 
+has the block diagonal structure
+\begin{align}
+	\bmL \gets 
+		\begin{bmatrix}
+			\bmLy & \zeros{D \times K} \\
+			\zeros{K \times D} & \bmLnu.
+		\end{bmatrix}
+	\label{eq,sep-bw}
+\end{align}
+where $\bmLy \in \reals{D \times D}$
+and $\bmLnu \in \reals{K \times K}$ 
+are positive definite.
+With these simplifying assumptions,
+the $n$th entry 
+of the expectation in \eqref{eq,bias}
+is well approximated as
+\begin{align}
+	\brac{\expect{\bmymag|\bmx,\bmnu}{\bmka{\bmymag,\bmnu}}}_n
+		&=
+			\int_{\reals{D}} e^{%
+				-\frac{1}{2} \norm{\bmq-\bmq_n}^2_{\bmL^{-2}}
+			}% 
+			\dista{\bmymag|\bmx,\bmnu} \der{\bmymag}
+			\nonumber \\
+		&\approx	
+			\frac{e^{-\frac{1}{2}\norm{\bmnu-\bmnu_n}^2_{\bmLnu^{-2}}}}
+			{\sqrt{\paren{2\pi}^D \det\paren{\bmSig}}}
+			\int_{\reals{D}} e^{%
+				-\frac{1}{2} \paren{%
+					\norm{\bmymag-\bmymag_n}^2_{\bmLy^{-2}} + 
+					\norm{\bmymag-\bmmu}^2_{\bmSig^{-1}}
+				}%
+			}%
+			\der{\bmymag}
+			\nonumber \\
+		&=
+			\frac{%
+				e^{%
+					-\frac{1}{2}\paren{%
+						\norm{\bmnu-\bmnu_n}^2_{\bmLnu^{-2}} +
+						\norm{\bmmu-\bmymag_n}^2_{\paren{\bmLy^{-2}\bmSig + \eye{D}}^{-1}\bmLy^{-2}}
+					}%
+				}
+			}{%
+				\sqrt{\det\paren{\bmLy^{-2}\bmSig + \eye{D}}}
+			},
+			\label{eq,exp-bmk}
+\end{align}
+where $\det\paren{\cdot}$ denotes determinant
+and the Gaussian integral follows 
+after completing the square
+of the integrand's exponent.
+It is clear 
+from \eqref{eq,exp-bmk}
+that as $\bmSig \to \zeros{D\times D}$
+for fixed $\bmLy$,
+$\expect{\bmymag|\bmx,\bmnu}{\bmka{\bmymag,\bmnu}}
+	\to \bmka{\bmmu,\bmnu}$
+and therefore
+\begin{align}
+	\expect{\bmymag|\bmx,\bmnu}{\esta{\bmx}{\bmymag,\bmnu}}
+		\to \esta{\bmx}{\expect{\bmymag|\bmx,\bmnu}{\bmymag},\bmnu}
+		\equiv \esta{\bmx}{\bmmu,\bmnu}
+\end{align}
+which perhaps surprisingly means that 
+the conditional bias asymptotically approaches 
+the noiseless conditional estimation error $\esta{\bmx}{\bmmu,\bmnu}-\bmx$
+despite $\est{\bmx}$ being nonlinear in $\bmymag$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conditional Covariance}
+\label{ss,perk,perf,cov}
+
+The conditional covariance
+of $\est{\bmx} \equiv \esta{\bmx}{\bmymag,\bmnu}$ 
+is written as
+\begin{align}
+	\cova{\est{\bmx}|\bmx,\bmnu} 
+		&:= 
+			\expect{\bmymag|\bmx,\bmnu}{%	
+				\paren{\est{\bmx}-\expect{\bmymag|\bmx,\bmnu}{\est{\bmx}}}
+				\paren{\est{\bmx}-\expect{\bmymag|\bmx,\bmnu}{\est{\bmx}}}\tpose
+			}%
+			\nonumber \\
+		&= 
+			\bmR \expect{\bmymag|\bmx,\bmnu}{%
+				\bmkta{\bmymag,\bmnu}\bmkta{\bmymag,\bmnu}\tpose
+			}
+			\bmR\tpose,	
+			\label{eq,cov}
+\end{align}
+where $\bmkta{\bmymag,\bmnu} 
+	:= \bmka{\bmymag,\bmnu} 
+	- \expect{\bmymag|\bmx,\bmnu}{\bmka{\bmymag,\bmnu}}$.
+To proceed analytically,
+we take the same high-SNR 
+and block-diagonal bandwidth assumptions
+as in Subsection~\ref{ss,perk,perf,bias}.
+Then after straightforward manipulations
+similar to those yielding \eqref{eq,exp-bmk},
+the $\paren{n,n'}$th entry 
+of the expectation in \eqref{eq,cov}
+is well approximated as
+\begin{IEEEeqnarray}{rCl}
+	\IEEEeqnarraymulticol{3}{l}{%
+		\brac{%
+			\expect{\bmymag|\bmx,\bmnu}{%
+				\bmkta{\bmymag,\bmnu}\bmkta{\bmymag,\bmnu}\tpose
+			}%
+		}_{n,n'}%
+		=
+			e^{%
+				-\frac{1}{2}\paren{%
+					\norm{\bmnu-\bmnu_n}^2_{\bmLnu^{-2}} + 
+					\norm{\bmnu-\bmnu_{n'}}^2_{\bmLnu^{-2}}
+				} 
+			}%
+	}%
+	\nonumber \\*
+		&\times& 
+			\paren{%
+				\frac{%
+					e^{%
+						-\frac{1}{2}\paren{%
+							\norm{\bmymagt_n-\bmymagt_{n'}}^2_{\bmDeltaa{0}} +
+							\norm{\bmymagt_n+\bmymagt_{n'}}^2_{\bmDeltaa{2}}
+						}%
+					}%
+				}{%
+					\sqrt{\det\paren{2\bmLy^{-2}\bmSig + \eye{D}}}
+				}%
+				-
+				\frac{%
+					e^{%
+						-\frac{1}{2}\paren{%
+							\norm{\bmymagt_n-\bmymagt_{n'}}^2_{\bmDeltaa{1}} +
+							\norm{\bmymagt_n+\bmymagt_{n'}}^2_{\bmDeltaa{1}}
+						}%
+					}%
+				}{%
+					\det\paren{\bmLy^{-2}\bmSig + \eye{D}}
+				}%
+			},%
+	\label{eq,exp-bmkkt}
+\end{IEEEeqnarray}
+where $\bmymagt_n := \bmmu-\bmymag_n$
+and $\bmDeltaa{t} := 
+	\frac{1}{2}\inv{\paren{t\bmLy^{-2}\bmSig + \eye{D}}} \bmLy^{-2}$
+for $t \in \setN$.
+The emergence 
+of $\bmymagt_n \pm \bmymagt_{n'}$ terms
+in \eqref{eq,exp-bmkkt} 
+show that the conditional covariance 
+(unlike the conditional bias) 
+is directly influenced
+not only by the individual expected test point distances
+to each of the training points
+$\bmymagt_1,\dots,\bmymagt_N$
+but also by the local training point sampling density.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Implementation Considerations}
