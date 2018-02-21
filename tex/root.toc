@@ -52,11 +52,11 @@
 \contentsline {section}{\numberline {5.1}Introduction}{54}{section.5.1}
 \contentsline {section}{\numberline {5.2}Preliminaries}{56}{section.5.2}
 \contentsline {section}{\numberline {5.3}A Function Optimization Problem \& Kernel Solution}{57}{section.5.3}
-\contentsline {section}{\numberline {5.4}Bias and Covariance Analysis}{57}{section.5.4}
-\contentsline {section}{\numberline {5.5}Implementation Considerations}{57}{section.5.5}
-\contentsline {section}{\numberline {5.6}Experimentation}{57}{section.5.6}
-\contentsline {section}{\numberline {5.7}Discussion}{57}{section.5.7}
-\contentsline {section}{\numberline {5.8}Conclusion}{57}{section.5.8}
-\contentsline {chapter}{Appendices}{58}{section*.7}
+\contentsline {section}{\numberline {5.4}Bias and Covariance Analysis}{60}{section.5.4}
+\contentsline {section}{\numberline {5.5}Implementation Considerations}{60}{section.5.5}
+\contentsline {section}{\numberline {5.6}Experimentation}{60}{section.5.6}
+\contentsline {section}{\numberline {5.7}Discussion}{60}{section.5.7}
+\contentsline {section}{\numberline {5.8}Conclusion}{60}{section.5.8}
+\contentsline {chapter}{Appendices}{61}{section*.7}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{60}{section*.10}
+\contentsline {chapter}{Bibliography}{63}{section*.10}

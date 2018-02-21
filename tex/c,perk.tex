@@ -348,7 +348,258 @@ and its associated RK.
 \label{s,perk,meth}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+After image reconstruction,
+many QMRI acquisitions 
+produce at each voxel position
+a sequence of noisy measurements
+$\bmy \in \complexes{D}$, 
+modeled as
+\begin{align}
+	\bmy = \bmsa{\bmx, \bmnu} + \bmeps,
+	\label{eq,model}
+\end{align}
+where $\bmx \in \reals{L}$ denotes $L$ \emph{latent} parameters;
+$\bmnu \in \reals{K}$ denotes $K$ \emph{known} parameters;  
+$\bms : \reals{L} \times \reals{K} \mapsto \complexes{D}$ 
+models $D$ noiseless continuous signal functions;
+and $\bmeps \sim \cgauss{\zeros{D}}{\bmSig}$ is complex Gaussian noise
+with zero mean $\zeros{D} \in \reals{D}$
+and known covariance $\bmSig \in \reals{D \times D}$.
+(As a concrete example,
+for $\Tt$ estimation
+from single spin echo measurements,
+$\bmx$ could collect spin density and $\Tt$;
+$\bmnu$ could collect known longitudinal and transverse field inhomogeneities;
+and 
+$\bmy$ could collect measurements at $D$ echo times.)
+We seek to estimate 
+on a per-voxel basis
+each latent parameter $\bmx$
+from measurement $\bmy$ 
+and known parameter $\bmnu$.
 
+To develop an estimator $\est{\bmx}$,
+we simulate many instances 
+of forward model \eqref{eq,model}
+and use kernels
+to estimate a nonlinear inverse function.
+We sample part of $\reals{L} \times \reals{K} \times \complexes{D}$
+and evaluate \eqref{eq,model} $N$ times
+to produce sets of object parameter and noise realizations
+$\set{\paren{\bmx_1,\bmnu_1,\bmeps_1},\dots,\paren{\bmx_N,\bmnu_N,\bmeps_N}}$
+and corresponding measurements
+$\set{\bmy_1,\dots,\bmy_N}$. 
+We seek a function
+$\est{\bmh}~:~\reals{\dimQ} \mapsto \reals{L}$
+and an offset $\est{\bmb} \in \reals{L}$
+that together map each pure-real
+\footnote{%
+	We present our methodology 
+	assuming pure-real patterns $\bmq$ 
+	and estimators $\est{\bmx}$
+	for simplicity and 
+	to maintain consistency
+	with experiments,
+	in which we choose to use magnitude images
+	for unrelated reasons 
+	(see \S\ref{ss,exp,meth} for details). 
+	It is straightforward 
+	to generalize Theorem~\ref{thm,rep}
+	for complex-valued kernels 
+	and thereby address the cases 
+	of complex patterns and/or estimators.
+}
+regressor $\bmq_n := [\abs{\bmy_n}\tpose, \bmnu_n\tpose]\tpose$
+to an estimate 
+$\bmxha{\bmq_n} := \bmhha{\bmq_n}+\est{\bmb}$ 
+that is ``close'' 
+to corresponding regressand $\bmx_n$,
+where $\dimQ := D+K$,
+$n \in \set{1,\dots,N}$,
+and $\paren{\cdot}\tpose$ denotes vector transpose.
+For any finite $N$,
+there are infinitely many candidate estimators
+that are consistent with training points
+in this manner.
+We use function regularization
+to choose one estimator
+that smoothly interpolates 
+between training points:
+\begin{align}
+	\paren{\est{\bmh},\est{\bmb}} &\in 
+		\argmin{\substack{\bmh \in \rkhs^L \\ \bmb \in \reals{L}}}
+		\costa{\bmh, \bmb; \set{\paren{\bmx_n,\bmq_n}}_{1}^N}, 
+		\where \label{eq,prob} \\
+	\costa{\dots} &= 
+		\sum_{l=1}^L \cost_l\paren{h_l,b_l; \set{\paren{x_{l,n},\bmq_n}}_{1}^N}; 
+		\label{eq,cost} \\
+	\Psi_l(\dots) &= 
+		\rho_l \norm{h_l}_\rkhs^2 + 
+		\frac{1}{N} \sum_{n=1}^N \paren{h_l(\bmq_n) + b_l - x_{l,n}}^2.
+		\label{eq,cost-l}
+\end{align}
+Here, each $h_l~:~\reals{\dimQ} \mapsto \real$ is a scalar function
+that maps to the $l$th component of the output of $\bmh$; 
+each $b_l,x_{l,n} \in \real$ are scalar components of $\bmb,\bmx_n$;
+$\rkhs$ is an RKHS 
+whose norm $\norm{\cdot}_\rkhs$ 
+is induced by inner product 
+$\innprod{\cdot}{\cdot}_\rkhs : \rkhs^2 \mapsto \real$; 
+and each $\rho_l$ controls for regularity in $h_l$.
+
+Since \eqref{eq,cost} is separable 
+in the components of $\bmh$ and $\bmb$, 
+it suffices to consider optimizing each $\paren{h_l,b_l}$ 
+by separately minimizing \eqref{eq,cost-l} 
+for each $l \in \set{1,\dots,L}$.
+Remarkably,
+a generalization of the Representer Theorem \cite{scholkopf:01:agr},
+restated as is relevant here for completeness,
+reduces minimizing \eqref{eq,cost-l} 
+to a finite-dimensional optimization problem.
+\begin{thm}[Generalized Representer, \cite{scholkopf:01:agr}]
+	Define $k : \reals{Q} \times \reals{Q} \mapsto \real$
+	to be the SPD kernel 
+	associated with RKHS $\rkhs$, 
+	such that reproducing property $h_l(\bmq) = \innprod{h_l}{k(\cdot,\bmq)}_\rkhs$
+	holds for all $h_l \in \rkhs$ and $\bmq \in \reals{Q}$. 
+	Then any minimizer $(\est{h}_l,\est{b}_l)$ of \eqref{eq,cost-l}
+	over $\rkhs \times \real$
+	admits a representation for $\est{h}_l$ of the form
+	\label{thm,rep}
+	\begin{align}
+		\est{h}_l(\cdot) \equiv \sum_{n=1}^N a_{l,n} k(\cdot,\bmq_{n}),
+		\label{eq,rep}
+	\end{align}
+	where each $a_{l,n} \in \real$ for $n \in \set{1,\dots,N}$.
+\end{thm}
+
+Thm.~\ref{thm,rep} ensures 
+that any solution
+to the component-wise 
+$\paren{N+1}$-dimensional problem
+\begin{align}
+	(\est{\bma}_l,\est{b}_l) \in 
+	&\argmin{\substack{\bma_l \in \reals{N} \\ b_l \in \real}} 
+	\rho_l \norm{\sum_{n'=1}^N a_{l,n'} k(\cdot,\bmq_{n'})}^2_\rkhs + \nonumber \\
+	&\frac{1}{N} \sum_{n=1}^N \paren{\sum_{n'=1}^N a_{l,n'} k(\bmq_n,\bmq_{n'}) + b_l - x_{l,n}}^2
+	\label{eq,cvx}
+\end{align}
+corresponds via \eqref{eq,rep} 
+to a minimizer of \eqref{eq,cost-l}
+over $\rkhs \times \real$,
+where $\bma_l := [a_{l,1},\dots,a_{l,N}]\tpose$.
+Fortunately, a solution of \eqref{eq,cvx} exists uniquely
+for $\rho_l > 0$
+and can be expressed as
+\begin{align}
+	\est{\bma}_l &= \inv{\paren{\bmM \bmK \bmM + N\rho_l\eye{N}}} \bmM \bmxtl{l};
+	\label{eq,a-hat} \\
+	\est{b}_l &= \frac{1}{N} \ones{N}\tpose \paren{\bmxtl{l} - \bmK \est{\bma}_l},
+	\label{eq,b-hat}
+\end{align}
+where 
+$\bmK \in \reals{N \times N}$ is the Gram matrix 
+consisting of entries $k(\bmq_n,\bmq_{n'})$ for $n,n' \in \set{1,\dots,N}$;
+$\bmM := \eye{N}-\frac{1}{N}\ones{N}\ones{N}\tpose \in \reals{N \times N}$
+is a de-meaning operator;
+$\bmxtl{l} := [x_{l,1},\dots,x_{l,N}]\tpose$;
+$\eye{N} \in \reals{N \times N}$ is the identity matrix;
+and $\ones{N} \in \reals{N}$ is a vector of ones.
+Substituting \eqref{eq,a-hat} into \eqref{eq,rep} 
+yields an expression 
+for the $l$th entry $\est{x}_l$ 
+of MRI parameter estimator $\est{\bmx}$:
+\begin{align}
+	\est{x}_l\paren{\cdot} &\gets \bmxtl{l}\tpose 
+		\paren{\frac{1}{N}\ones{N} + 
+		\bmM\inv{\paren{\bmM\bmK\bmM + N\rho_l\eye{N}}} \bmka{\cdot}},
+		\label{eq,xl-hat}
+\end{align}
+where
+$\bmka{\cdot} := 
+	\brac{k(\cdot,\bmq_1),\dots,k(\cdot,\bmq_N)}\tpose - \frac{1}{N}\bmK\ones{N}
+	: \reals{Q} \mapsto \reals{N}$
+is an embedding operator.
+
+% utility of estimate depends on kernel function
+% valid kernel is q'*q, which corresponds to linear ridge regression
+% more useful kernel is nonlinear fun of q; we use gaussian
+When $\rho_l>0\,\, \forall l \in \set{1,\dots,L}$, 
+estimator $\bmxha{\cdot}$
+with entries \eqref{eq,xl-hat} minimizes \eqref{eq,cost}
+over $\rkhs^L \times \real^L$.
+However, the utility of $\bmxha{\cdot}$
+depends on the choice of kernel $k$,
+which induces a choice on the RKHS $\rkhs$
+and thus the function space $\rkhs^L \times \real^L$
+over which \eqref{eq,prob} optimizes.
+For example, if $k$ was selected as the canonical dot product 
+$k(\bmq,\bmq') \gets \innprod{\bmq}{\bmq'}_{\reals{Q}} := \bmq\tpose \bmq'$
+(for which RKHS $\rkhs \gets \reals{Q}$),
+then \eqref{eq,xl-hat} would reduce 
+to affine ridge regression \cite{hoerl:70:rrb}
+which is optimal over $\reals{Q} \times \real$
+but is unlikely to be useful 
+when signal model $\bms$ is nonlinear in $\bmx$.
+Since we expect a useful estimate $\est{\bmx}\paren{\bmq}$ 
+to depend nonlinearly (but smoothly) 
+on $\bmq$ in general, 
+we instead use 
+an SPD kernel $k$ 
+that is likewise nonlinear in its arguments
+and thus corresponds to an RKHS much richer than $\reals{Q}$. 
+Specifically, we use a Gaussian kernel
+\begin{align}
+	k(\bmq,\bmq') \gets \expa{-\frac{1}{2}{\norm{\bmq-\bmq'}^2_{\bmL^{-2}}}},
+	\label{eq,kern}
+\end{align}
+where positive definite matrix bandwidth $\bmL \in \reals{Q \times Q}$ 
+controls the length scales in $\bmq$ over which 
+the estimator $\est{\bmx}$ smooths
+and $\norm{\cdot}_{\bmG} \equiv \norm{\bmG^{1/2}\paren{\cdot}}_2$
+is a weighted $\ell^2$-norm
+with PSD matrix weights $\bmG$.
+We use a Gaussian kernel
+over other candidates
+because it is a \emph{universal kernel},
+meaning weighted sums of the form 
+$\sum_{n=1}^N a_n k\paren{\cdot,\bmq_n}$
+can approximate $\Ltwo$ functions
+to arbitrary accuracy
+for $N$ sufficiently large
+\cite{steinwart:08:svm}.
+
+Interestingly, 
+the RKHS associated 
+with Gaussian kernel \eqref{eq,kern}
+is infinite-dimensional.
+Thus, 
+Gaussian kernel regression
+can be interpreted as 
+first ``lifting'' 
+via a nonlinear \emph{feature map} 
+$\bmz : \reals{Q} \mapsto \rkhs$ 
+each $\bmq$ 
+into an infinite-dimensional \emph{feature} 
+$\bmza{\bmq} = k\paren{\cdot,\bmq} \in \rkhs$,
+and then performing regularized affine regression
+on the features
+via dot products of the form
+$\innprod{k\paren{\cdot,\bmq}}{k\paren{\cdot,\bmq'}}_{\rkhs}
+	= k\paren{\bmq',\bmq}$.
+From this perspective,
+the challenges of nonlinear estimation 
+via likelihood models
+are avoided 
+because we \emph{select} 
+(through the choice of kernel) 
+characteristics of the nonlinear dependence
+that we wish to model
+and need only \emph{estimate} via \eqref{eq,cvx} 
+the linear dependence
+of each entry in $\est{\bmx}$ 
+on the corresponding features.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bias and Covariance Analysis}
