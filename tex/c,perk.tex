@@ -2825,3 +2825,43 @@ is a possible topic for future work.
 \section{Conclusion}
 \label{s,perk,conc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This paper has introduced PERK,
+a fast and general method
+for dictionary-free MRI parameter estimation.
+PERK first uses prior parameter/noise distributions
+and a general nonlinear MR signal model
+to simulate many parameter-measurement training points
+and then constructs a nonlinear regression function 
+from these training points
+using linear combinations of nonlinear kernels. 
+We have demonstrated PERK
+for $\To,\Tt$ estimation 
+from optimized SPGR/DESS acquisitions \cite{nataraj:17:oms},
+a simple application
+where it is straightforward
+to validate PERK estimates
+against gold-standard VPM estimates,
+iterative PGPM estimates,
+and NIST reference measurements.
+Numerical simulations showed
+that PERK achieves $\To,\Tt$ RMSE comparable to VPM and PGPM
+in WM- and GM-like voxels.
+Phantom experiments showed
+that within a properly chosen sampling distribution support,
+VPM, PGPM, and PERK estimates agree excellently 
+with each other
+and reasonably with NIST NMR measurements.
+\Invivo experiments showed
+that VPM, PGPM, and PERK produce comparable $\To$ estimates
+and nearly indistinguishable $\Tt$ estimates
+in WM and GM ROIs.
+PERK used identical model selection parameters
+across all simulations and experiments
+and consistently provided 
+at least a 140$\times$ acceleration over VPM and PGPM.
+This acceleration factor may increase
+by several orders of magnitude
+for estimation problems
+involving more latent parameters per voxel
+\cite{nataraj:17:dfm, nataraj:17:mwf}.
