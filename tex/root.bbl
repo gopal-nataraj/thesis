@@ -16,6 +16,31 @@ G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Optimizing {MR} scan design for
   model-based {T1,} {T2} estimation from steady-state sequences,'' {\em {IEEE
   Trans. Med. Imag.}}, vol.~36, pp.~{467--77}, Feb. 2017.
 
+\bibitem{prasloski:12:rwc}
+T.~Prasloski, A.~Rauscher, A.~L. MacKay, M.~Hodgson, I.~M. Vavasour, C.~Laule,
+  and B.~{M\"adler}, ``Rapid whole cerebrum myelin water imaging using a {3D}
+  {GRASE} sequence,'' {\em {NeuroImage}}, vol.~63, pp.~{533--9}, Oct. 2012.
+
+\bibitem{mackay:94:ivv}
+A.~Mackay, K.~Whittall, J.~Adler, D.~Li, D.~Paty, and D.~Graeb, ``In vivo
+  visualization of myelin water in brain by magnetic resonance,'' {\em {Mag.
+  Res. Med.}}, vol.~31, pp.~{673--7}, June 1994.
+
+\bibitem{deoni:11:com}
+S.~C.~L. Deoni, ``Correction of main and transmit magnetic field {(B0} and
+  {B1)} inhomogeneity effects in multicomponent-driven equilibrium single-pulse
+  observation of {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~65,
+  pp.~{1021--35}, Apr. 2011.
+
+\bibitem{lankford:13:oti}
+C.~L. Lankford and M.~D. Does, ``On the inherent precision of {mcDESPOT},''
+  {\em {Mag. Res. Med.}}, vol.~69, pp.~{127--36}, Jan. 2013.
+
+\bibitem{zhang:15:com}
+J.~Zhang, S.~H. Kolind, C.~Laule, and A.~L. MacKay, ``Comparison of myelin
+  water fraction from multiecho {T2} decay curve and steady-state methods,''
+  {\em {Mag. Res. Med.}}, vol.~73, pp.~{223--32}, Jan. 2015.
+
 \bibitem{nataraj:14:rje}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Regularized, joint estimation
   of {T1} and {M0} maps,'' in {\em {Proc. Intl. Soc. Mag. Res. Med.}}, p.~3128,
@@ -488,11 +513,6 @@ R.~Heule, P.~{B\"ar}, C.~Mirkes, K.~Scheffler, S.~Trattnig, and O.~Bieri,
   ultra-high fields,'' {\em {NMR in Biomedicine}}, vol.~27, pp.~{1037--45},
   Sept. 2014.
 
-\bibitem{mackay:94:ivv}
-A.~Mackay, K.~Whittall, J.~Adler, D.~Li, D.~Paty, and D.~Graeb, ``In vivo
-  visualization of myelin water in brain by magnetic resonance,'' {\em {Mag.
-  Res. Med.}}, vol.~31, pp.~{673--7}, June 1994.
-
 \bibitem{gill:95:aot}
 R.~D. Gill and B.~Y. Levit, ``Applications of the van {Trees} inequality: {A}
   {Bayesian} {\Cramer-rao} bound,'' {\em {Bernoulli}}, vol.~1, no.~1/2,
@@ -724,5 +744,106 @@ P.~Virtue, S.~X. Yu, and M.~Lustig, ``Better than real: {Complex-valued} neural
   nets for {MRI} fingerprinting,'' in {\em {Proc. IEEE Intl. Conf. on Image
   Processing}}, 2017.
 \newblock To appear.
+
+\bibitem{morell:84}
+P.~Morell, {\em Myelin}.
+\newblock Springer, 1984.
+
+\bibitem{goldenberg:12:msr}
+M.~M. Goldenberg, ``Multiple sclerosis review,'' {\em {Pharmacy and
+  Therapeutics}}, vol.~37, pp.~{175--84}, Mar. 2012.
+
+\bibitem{vasilescu:78:wci}
+V.~Vasilescu, E.~Katona, V.~Simplaceanu, and D.~Demco, ``Water compartments in
+  the myelinated nerve. {III.} {Pulsed} {NMR} results,'' {\em {Experientia}},
+  vol.~34, pp.~{1443--4}, Nov. 1978.
+
+\bibitem{menon:91:aoc}
+R.~S. Menon and P.~S. Allen, ``Application of continuous relaxation time
+  distributions to the fitting of data from model systems and excised tissue,''
+  {\em {Mag. Res. Med.}}, vol.~20, pp.~{214--27}, Aug. 1991.
+
+\bibitem{stewart:93:ssr}
+W.~A. Stewart, A.~L. Mackay, K.~P. Whittall, G.~R.~W. Moore, and D.~W. Paty,
+  ``Spin-spin relaxation in experimental allergic encephalomyelitis. {Analysis}
+  of {CPMG} data using a non-linear least-squares method and linear inverse
+  theory,'' {\em {Mag. Res. Med.}}, vol.~29, pp.~{767--75}, June 1993.
+
+\bibitem{gareau:00:mta}
+P.~J. Gareau, B.~K. Rutt, S.~J. Karlik, and J.~R. Mitchell, ``Magnetization
+  transfer and multicomponent {T2} relaxation measurements with histopathologic
+  correlation in an experimental model of {MS},'' {\em {J. Mag. Res. Im.}},
+  vol.~11, pp.~{586--95}, June 2000.
+
+\bibitem{webb:03:imt}
+S.~Webb, C.~A. Munro, R.~Midha, and G.~J. Stanisz, ``Is multicomponent {T2} a
+  good measure of myelin content in peripheral nerve?,'' {\em {Mag. Res.
+  Med.}}, vol.~49, pp.~{628--45}, Apr. 2003.
+
+\bibitem{laule:04:wca}
+C.~Laule, I.~M. Vavasour, G.~R.~W. Moore, J.~Oger, D.~K.~B. Li, D.~W. Paty, and
+  A.~L. MacKay, ``Water content and myelin water fraction in multiple
+  sclerosis,'' {\em {J. Neurol.}}, vol.~251, pp.~{284--93}, Mar. 2004.
+
+\bibitem{laule:06:mwi}
+C.~Laule, E.~Leung, D.~K.~B. Li, A.~L. Traboulsee, D.~W. Paty, A.~L. MacKay,
+  and G.~R.~W. Moore, ``Myelin water imaging in multiple sclerosis:
+  quantitative correlations with histopathology,'' {\em {Multiple Sclerosis}},
+  vol.~12, pp.~{747--53}, Nov. 2006.
+
+\bibitem{does:00:rat}
+M.~D. Does and J.~C. Gore, ``Rapid acquisition transverse relaxometric
+  imaging,'' {\em {J. Mag. Res.}}, vol.~147, pp.~{116--20}, Nov. 2000.
+
+\bibitem{feinberg:91:gga}
+D.~A. Feinberg and K.~Oshio, ``{GRASE} (gradient- and spin-echo) {MR} imaging:
+  a new fast clinical imaging technique,'' {\em {Radiology}}, vol.~181,
+  pp.~{597--602}, Nov. 1991.
+
+\bibitem{spencer:00:mos}
+R.~G. Spencer and K.~W. Fishbein, ``Measurement of spin-lattice relaxation
+  times and concentrations in systems with chemical exchange using the
+  one-pulse sequence: breakdown of the {Ernst} model for partial saturation in
+  nuclear magnetic resonance spectroscopy,'' {\em {J. Mag. Res.}}, vol.~142,
+  pp.~{120--35}, Jan. 2000.
+
+\bibitem{miller:10:aot-1}
+K.~L. Miller, ``Asymmetries of the balanced {SSFP} profile. {Part} {I:}
+  {Theory} and observation,'' {\em {Mag. Res. Med.}}, vol.~63, pp.~{385--95},
+  Feb. 2010.
+
+\bibitem{miller:10:aot-2}
+K.~L. Miller, S.~M. Smith, and P.~Jezzard, ``Asymmetries of the balanced {SSFP}
+  profile. {Part} {II:} {White} matter,'' {\em {Mag. Res. Med.}}, vol.~63,
+  pp.~{396--406}, Feb. 2010.
+
+\bibitem{magnus:54:ote}
+W.~Magnus, ``On the exponential solution of differential equations for a linear
+  operator,'' {\em {Comm. Pure Appl. Math.}}, vol.~7, pp.~{649--73}, Nov. 1954.
+
+\bibitem{whittall:89:qio}
+K.~P. Whittall and A.~L. MacKay, ``Quantitative interpretation of {NMR}
+  relaxation data,'' {\em {J. Mag. Res.}}, vol.~84, pp.~{134--52}, Aug. 1989.
+
+\bibitem{lawson:74}
+C.~L. Lawson and R.~J. Hanson, {\em Solving least squares problems}.
+\newblock Prentice-Hall, 1974.
+
+\bibitem{varma:15:mtf}
+G.~Varma, G.~Duhamel, C.~{de Bazelaire}, and D.~C. Alsop, ``Magnetization
+  transfer from inhomogeneously broadened lines: {A} potential marker for
+  myelin,'' {\em {Mag. Res. Med.}}, vol.~73, pp.~{614--22}, Feb. 2015.
+
+\bibitem{varma:15:iom}
+G.~Varma, O.~M. Girard, V.~H. Prevost, G.~Duhamel, and D.~C. Alsop,
+  ``Interpretation of magnetization transfer from inhomogeneously broadened
+  lines {(ihMT)} in tissues as a dipolar effect within motion restricted
+  molecules,'' {\em {J. Mag. Res.}}, vol.~260, pp.~{67--76}, Nov. 2015.
+
+\bibitem{swanson:17:mda}
+S.~D. Swanson, D.~I. Malyarenko, M.~L. Fabiilli, R.~C. Welsh, J.-F. Nielsen,
+  and A.~Srinivasan, ``Molecular, dynamic, and structural origin of
+  inhomogeneous magnetization transfer in lipid membranes,'' {\em {Mag. Res.
+  Med.}}, vol.~77, pp.~{1318--28}, Mar. 2017.
 
 \end{thebibliography}

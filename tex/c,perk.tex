@@ -52,7 +52,8 @@ of the underlying latent parameters,
 such likelihood-based estimation
 usually requires non-convex optimization.
 To seek good solutions,
-many works
+Chapter~\ref{c,relax}
+as well as many other works
 (\eg, 
 \cite{%
 	haldar:07:mle,%
@@ -155,7 +156,7 @@ for simple $\Tt$ estimation
 from measurements at multiple echo times,
 one could apply linear regression
 to the logarithm of the measurements
-(Section~\ref{s,demo} builds further intuition
+(Subsection~\ref{s,perk,demo} builds further intuition
 using this simple application).
 However,
 such simple transformations
@@ -247,6 +248,8 @@ through a simple toy problem.
 Section~\ref{s,perk,exp} demonstrates PERK
 in numerical simulations
 as well as phantom and \invivo experiments.
+Section~\ref{s,perk,robust} investigates PERK robustness
+to two types of non-idealities.
 Section~\ref{s,perk,disc} discusses advantages,
 challenges, and extensions.
 Section~\ref{s,perk,conc} summarizes key contributions.
@@ -313,7 +316,7 @@ the assignment
 \begin{align}
 	\innprod{h}{h'}_\rkhs =
 		\sum_{n=1}^N \sum_{n'=1}^N a_n b_{n'} k\paren{\bmq_{n'},\bmq_n}
-	\label{eq,inn-prod}
+	\label{eq:perk,inn-prod}
 \end{align}
 is consistent
 with the inner product on $\rkhs$.
@@ -321,14 +324,14 @@ This inner product exhibits $\forall h\in\rkhs, \bmq\in\setQ$
 an interesting \emph{reproducing property}
 \begin{align}
 	\innprod{h}{k\paren{\cdot,\bmq}}_\rkhs = h\paren{\bmq}
-	\label{eq,rep-prop}
+	\label{eq:perk,rep-prop}
 \end{align}
 that can be seen to directly follow 
-from \eqref{eq,inn-prod}
+from \eqref{eq:perk,inn-prod}
 for $h \in \setH$.
 
 A \emph{reproducing kernel} (RK) is a kernel 
-that satisfies \eqref{eq,rep-prop}
+that satisfies \eqref{eq:perk,rep-prop}
 for some real-valued Hilbert space $\rkhs$.
 A kernel is reproducing if and only if it is SPD.
 There is a bijection between RK $k$ and $\rkhs$,
@@ -350,7 +353,8 @@ and its associated RK.
 \label{s,perk,meth}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-After image reconstruction,
+Recall from Section~\ref{ss,relax,meth,prof}
+that after image reconstruction,
 many QMRI acquisitions 
 produce at each voxel position
 a sequence of noisy measurements
@@ -358,7 +362,7 @@ $\bmy \in \complexes{D}$,
 modeled as
 \begin{align}
 	\bmy = \bmsa{\bmx, \bmnu} + \bmeps,
-	\label{eq,model}
+	\label{eq:perk,model}
 \end{align}
 where $\bmx \in \reals{L}$ denotes $L$ \emph{latent} parameters;
 $\bmnu \in \reals{K}$ denotes $K$ \emph{known} parameters;  
@@ -382,11 +386,11 @@ and known parameter $\bmnu$.
 
 To develop an estimator $\est{\bmx}$,
 we simulate many instances 
-of forward model \eqref{eq,model}
+of forward model \eqref{eq:perk,model}
 and use kernels
 to estimate a nonlinear inverse function.
 We sample part of $\reals{L} \times \reals{K} \times \complexes{D}$
-and evaluate \eqref{eq,model} $N$ times
+and evaluate \eqref{eq:perk,model} $N$ times
 to produce sets of object parameter and noise realizations
 $\set{\paren{\bmx_1,\bmnu_1,\bmeps_1},\dots,\paren{\bmx_N,\bmnu_N,\bmeps_N}}$
 and corresponding measurements
@@ -406,7 +410,7 @@ that together map each pure-real
 	for unrelated reasons 
 	(see Subsection~\ref{ss,perk,exp,meth} for details). 
 	It is straightforward 
-	to generalize Theorem~\ref{thm,rep}
+	to generalize Theorem~\ref{thm:perk,rep}
 	for complex-valued kernels 
 	and thereby address the cases 
 	of complex patterns and/or estimators.
@@ -431,14 +435,14 @@ between training points:
 	\paren{\est{\bmh},\est{\bmb}} &\in 
 		\argmin{\substack{\bmh \in \rkhs^L \\ \bmb \in \reals{L}}}
 		\costa{\bmh, \bmb; \set{\paren{\bmx_n,\bmq_n}}_{1}^N}, 
-		\where \label{eq,prob} \\
+		\where \label{eq:perk,prob} \\
 	\costa{\bmh, \bmb; \set{\paren{\bmx_n,\bmq_n}}_{1}^N} &= 
 		\sum_{l=1}^L \cost_l\paren{h_l,b_l; \set{\paren{x_{l,n},\bmq_n}}_{1}^N}; 
-		\label{eq,cost} \\
+		\label{eq:perk,cost} \\
 	\Psi_l(h_l,b_l; \set{\paren{x_{l,n},\bmq_n}}_{1}^N) &= 
 		\rho_l \norm{h_l}_\rkhs^2 + 
 		\frac{1}{N} \sum_{n=1}^N \paren{h_l(\bmq_n) + b_l - x_{l,n}}^2.
-		\label{eq,cost-l}
+		\label{eq:perk,cost-l}
 \end{align}
 Here, each $h_l~:~\reals{\dimQ} \mapsto \real$ is a scalar function
 that maps to the $l$th component of the output of $\bmh$; 
@@ -449,15 +453,15 @@ is induced by inner product
 $\innprod{\cdot}{\cdot}_\rkhs : \rkhs^2 \mapsto \real$; 
 and each $\rho_l$ controls for regularity in $h_l$.
 
-Since \eqref{eq,cost} is separable 
+Since \eqref{eq:perk,cost} is separable 
 in the components of $\bmh$ and $\bmb$, 
 it suffices to consider optimizing each $\paren{h_l,b_l}$ 
-by separately minimizing \eqref{eq,cost-l} 
+by separately minimizing \eqref{eq:perk,cost-l} 
 for each $l \in \set{1,\dots,L}$.
 Remarkably,
 a generalization of the Representer Theorem \cite{scholkopf:01:agr},
 restated as is relevant here for completeness,
-reduces minimizing \eqref{eq,cost-l} 
+reduces minimizing \eqref{eq:perk,cost-l} 
 to a finite-dimensional optimization problem.
 \begin{thm}[Generalized Representer, \cite{scholkopf:01:agr}]
 	Define $k : \reals{Q} \times \reals{Q} \mapsto \real$
@@ -465,18 +469,18 @@ to a finite-dimensional optimization problem.
 	associated with RKHS $\rkhs$, 
 	such that reproducing property $h_l(\bmq) = \innprod{h_l}{k(\cdot,\bmq)}_\rkhs$
 	holds for all $h_l \in \rkhs$ and $\bmq \in \reals{Q}$. 
-	Then any minimizer $(\est{h}_l,\est{b}_l)$ of \eqref{eq,cost-l}
+	Then any minimizer $(\est{h}_l,\est{b}_l)$ of \eqref{eq:perk,cost-l}
 	over $\rkhs \times \real$
 	admits a representation for $\est{h}_l$ of the form
-	\label{thm,rep}
+	\label{thm:perk,rep}
 	\begin{align}
 		\est{h}_l(\cdot) \equiv \sum_{n=1}^N a_{l,n} k(\cdot,\bmq_{n}),
-		\label{eq,rep}
+		\label{eq:perk,rep}
 	\end{align}
 	where each $a_{l,n} \in \real$ for $n \in \set{1,\dots,N}$.
 \end{thm}
 
-Thm.~\ref{thm,rep} ensures 
+Thm.~\ref{thm:perk,rep} ensures 
 that any solution
 to the component-wise 
 $\paren{N+1}$-dimensional problem
@@ -485,20 +489,20 @@ $\paren{N+1}$-dimensional problem
 	&\argmin{\substack{\bma_l \in \reals{N} \\ b_l \in \real}} 
 	\rho_l \norm{\sum_{n'=1}^N a_{l,n'} k(\cdot,\bmq_{n'})}^2_\rkhs + \nonumber \\
 	&\frac{1}{N} \sum_{n=1}^N \paren{\sum_{n'=1}^N a_{l,n'} k(\bmq_n,\bmq_{n'}) + b_l - x_{l,n}}^2
-	\label{eq,cvx}
+	\label{eq:perk,cvx}
 \end{align}
-corresponds via \eqref{eq,rep} 
-to a minimizer of \eqref{eq,cost-l}
+corresponds via \eqref{eq:perk,rep} 
+to a minimizer of \eqref{eq:perk,cost-l}
 over $\rkhs \times \real$,
 where $\bma_l := [a_{l,1},\dots,a_{l,N}]\tpose$.
-Fortunately, a solution of \eqref{eq,cvx} exists uniquely
+Fortunately, a solution of \eqref{eq:perk,cvx} exists uniquely
 for $\rho_l > 0$
 and can be expressed as
 \begin{align}
 	\est{\bma}_l &= \inv{\paren{\bmM \bmK \bmM + N\rho_l\eye{N}}} \bmM \bmxtl{l};
-	\label{eq,a-hat} \\
+	\label{eq:perk,a-hat} \\
 	\est{b}_l &= \frac{1}{N} \ones{N}\tpose \paren{\bmxtl{l} - \bmK \est{\bma}_l},
-	\label{eq,b-hat}
+	\label{eq:perk,b-hat}
 \end{align}
 where 
 $\bmK \in \reals{N \times N}$ is the Gram matrix 
@@ -508,7 +512,7 @@ is a de-meaning operator;
 $\bmxtl{l} := [x_{l,1},\dots,x_{l,N}]\tpose$;
 $\eye{N} \in \reals{N \times N}$ is the identity matrix;
 and $\ones{N} \in \reals{N}$ is a vector of ones.
-Substituting \eqref{eq,a-hat} into \eqref{eq,rep} 
+Substituting \eqref{eq:perk,a-hat} into \eqref{eq:perk,rep} 
 yields an expression 
 for the $l$th entry $\est{x}_l$ 
 of MRI parameter estimator $\est{\bmx}$:
@@ -516,7 +520,7 @@ of MRI parameter estimator $\est{\bmx}$:
 	\est{x}_l\paren{\cdot} &\gets \bmxtl{l}\tpose 
 		\paren{\frac{1}{N}\ones{N} + 
 		\bmM\inv{\paren{\bmM\bmK\bmM + N\rho_l\eye{N}}} \bmka{\cdot}},
-		\label{eq,xl-hat}
+		\label{eq:perk,xl-hat}
 \end{align}
 where
 $\bmka{\cdot} := 
@@ -529,17 +533,17 @@ is an embedding operator.
 % more useful kernel is nonlinear fun of q; we use gaussian
 When $\rho_l>0\,\, \forall l \in \set{1,\dots,L}$, 
 estimator $\bmxha{\cdot}$
-with entries \eqref{eq,xl-hat} minimizes \eqref{eq,cost}
+with entries \eqref{eq:perk,xl-hat} minimizes \eqref{eq:perk,cost}
 over $\rkhs^L \times \real^L$.
 However, the utility of $\bmxha{\cdot}$
 depends on the choice of kernel $k$,
 which induces a choice on the RKHS $\rkhs$
 and thus the function space $\rkhs^L \times \real^L$
-over which \eqref{eq,prob} optimizes.
+over which \eqref{eq:perk,prob} optimizes.
 For example, if $k$ was selected as the canonical dot product 
 $k(\bmq,\bmq') \gets \innprod{\bmq}{\bmq'}_{\reals{Q}} := \bmq\tpose \bmq'$
 (for which RKHS $\rkhs \gets \reals{Q}$),
-then \eqref{eq,xl-hat} would reduce 
+then \eqref{eq:perk,xl-hat} would reduce 
 to affine ridge regression \cite{hoerl:70:rrb}
 which is optimal over $\reals{Q} \times \real$
 but is unlikely to be useful 
@@ -554,7 +558,7 @@ and thus corresponds to an RKHS much richer than $\reals{Q}$.
 Specifically, we use a Gaussian kernel
 \begin{align}
 	k(\bmq,\bmq') \gets \expa{-\frac{1}{2}{\norm{\bmq-\bmq'}^2_{\bmL^{-2}}}},
-	\label{eq,kern}
+	\label{eq:perk,kern}
 \end{align}
 where positive definite matrix bandwidth $\bmL \in \reals{Q \times Q}$ 
 controls the length scales in $\bmq$ over which 
@@ -574,7 +578,7 @@ for $N$ sufficiently large
 
 Interestingly, 
 the RKHS associated 
-with Gaussian kernel \eqref{eq,kern}
+with Gaussian kernel \eqref{eq:perk,kern}
 is infinite-dimensional.
 Thus, 
 Gaussian kernel regression
@@ -598,7 +602,7 @@ because we \emph{select}
 (through the choice of kernel) 
 characteristics of the nonlinear dependence
 that we wish to model
-and need only \emph{estimate} via \eqref{eq,cvx} 
+and need only \emph{estimate} via \eqref{eq:perk,cvx} 
 the linear dependence
 of each entry in $\est{\bmx}$ 
 on the corresponding features.
@@ -637,7 +641,7 @@ is written as
 		&= 
 			\bmR \expect{\bmymag|\bmx,\bmnu}{\bmka{\bmymag,\bmnu}} 
 			+ \paren{\bmmx-\bmx},
-			\label{eq,bias}
+			\label{eq:perk,bias}
 \end{align}
 where $\expect{\bmymag|\bmx,\bmnu}{\cdot}$ 
 denotes expectation
@@ -678,14 +682,14 @@ has the block diagonal structure
 			\bmLy & \zeros{D \times K} \\
 			\zeros{K \times D} & \bmLnu.
 		\end{bmatrix}
-	\label{eq,sep-bw}
+	\label{eq:perk,sep-bw}
 \end{align}
 where $\bmLy \in \reals{D \times D}$
 and $\bmLnu \in \reals{K \times K}$ 
 are positive definite.
 With these simplifying assumptions,
 the $n$th entry 
-of the expectation in \eqref{eq,bias}
+of the expectation in \eqref{eq:perk,bias}
 is well approximated as
 \begin{align}
 	\brac{\expect{\bmymag|\bmx,\bmnu}{\bmka{\bmymag,\bmnu}}}_n
@@ -717,14 +721,14 @@ is well approximated as
 			}{%
 				\sqrt{\det\paren{\bmLy^{-2}\bmSig + \eye{D}}}
 			},
-			\label{eq,exp-bmk}
+			\label{eq:perk,exp-bmk}
 \end{align}
 where $\det\paren{\cdot}$ denotes determinant
 and the Gaussian integral follows 
 after completing the square
 of the integrand's exponent.
 It is clear 
-from \eqref{eq,exp-bmk}
+from \eqref{eq:perk,exp-bmk}
 that as $\bmSig \to \zeros{D\times D}$
 for fixed $\bmLy$,
 $\expect{\bmymag|\bmx,\bmnu}{\bmka{\bmymag,\bmnu}}
@@ -760,7 +764,7 @@ is written as
 				\bmkta{\bmymag,\bmnu}\bmkta{\bmymag,\bmnu}\tpose
 			}
 			\bmR\tpose,	
-			\label{eq,cov}
+			\label{eq:perk,cov}
 \end{align}
 where $\bmkta{\bmymag,\bmnu} 
 	:= \bmka{\bmymag,\bmnu} 
@@ -770,9 +774,9 @@ we take the same high-SNR
 and block-diagonal bandwidth assumptions
 as in Subsection~\ref{ss,perk,perf,bias}.
 Then after straightforward manipulations
-similar to those yielding \eqref{eq,exp-bmk},
+similar to those yielding \eqref{eq:perk,exp-bmk},
 the $\paren{n,n'}$th entry 
-of the expectation in \eqref{eq,cov}
+of the expectation in \eqref{eq:perk,cov}
 is well approximated as
 \begin{IEEEeqnarray}{rCl}
 	\IEEEeqnarraymulticol{3}{l}{%
@@ -814,7 +818,7 @@ is well approximated as
 					\det\paren{\bmLy^{-2}\bmSig + \eye{D}}
 				}%
 			},%
-	\label{eq,exp-bmkkt}
+	\label{eq:perk,exp-bmkkt}
 \end{IEEEeqnarray}
 where $\bmymagt_n := \bmmu-\bmymag_n$
 and $\bmDeltaa{t} := 
@@ -822,7 +826,7 @@ and $\bmDeltaa{t} :=
 for $t \in \setN$.
 The emergence 
 of $\bmymagt_n \pm \bmymagt_{n'}$ terms
-in \eqref{eq,exp-bmkkt} 
+in \eqref{eq:perk,exp-bmkkt} 
 show that the conditional covariance 
 (unlike the conditional bias) 
 is directly influenced
@@ -840,7 +844,7 @@ This section focuses
 on important practical implementation issues.
 Subsection~\ref{ss,perk,pract,apprx} discusses
 a conceptually intuitive approximation
-of PERK estimator \eqref{eq,xl-hat}
+of PERK estimator \eqref{eq:perk,xl-hat}
 that in many problems
 can significantly improve computational performance.
 Subsection~\ref{ss,perk,pract,mod} describes strategies 
@@ -863,7 +867,7 @@ having form $k\paren{\bmq,\bmq'} \equiv k\paren{\bmq-\bmq'}$.
 This subsection reviews the main result of \cite{rahimi:07:rff}
 for the purpose of constructing 
 an intuitive and computationally efficient approximation 
-of \eqref{eq,xl-hat}.
+of \eqref{eq:perk,xl-hat}.
 
 The strategy of \cite{rahimi:07:rff}
 is to construct independent probability distributions 
@@ -882,7 +886,7 @@ such that
 		\zta{\bmv,s;\bmq'} 
 	}
 	= k(\bmq-\bmq'),
-	\label{eq,exp}
+	\label{eq:perk,exp}
 \end{align}
 where 
 $\expect{\bmv,s}{\cdot}$
@@ -900,7 +904,7 @@ to produce approximate features
 \begin{align}
 	\bmztZa{\bmq} := \sqrt{\frac{2}{Z}}
 		\brac{\zta{\bmv_1,s_1;\bmq},\dots,\zta{\bmv_Z,s_Z;\bmq}}\tpose
-	\label{eq,feat}
+	\label{eq:perk,feat}
 \end{align}
 for any $\bmq$. 
 Then by the strong law of large numbers,
@@ -909,7 +913,7 @@ Then by the strong law of large numbers,
 		\bmztZa{\bmq}}{
 		\bmztZa{\bmq'}
 	}_{\reals{Z}} \overset{a.s.}{\to} k(\bmq,\bmq') \qquad \forall \bmq,\bmq'
-	\label{eq,lln}
+	\label{eq:perk,lln}
 \end{align}
 which, 
 in conjunction 
@@ -934,32 +938,32 @@ $\expect{\bmv,s}{
 simplifies to
 \begin{align}
 	\int_{\reals{\dimQ}} \cosa{2\pi\bmv\tpose\paren{\bmq-\bmq'}} \dist{\bmv}\paren{\bmv} \der{\bmv}.
-	\label{eq,ft}
+	\label{eq:perk,ft}
 \end{align}
 For symmetric $\dist{\bmv}$,
-\eqref{eq,ft} exists \cite{wu:97:gbt}
+the integral in \eqref{eq:perk,ft} exists \cite{wu:97:gbt}
 and is a Fourier transform.
 Thus choosing 
 $\dist{\bmv}\gets\gauss{\zeros{\dimQ}}{\paren{2\pi\bmL}^{-2}}$
-satisfies \eqref{eq,exp}
-for Gaussian kernel \eqref{eq,kern},
+satisfies \eqref{eq:perk,exp}
+for Gaussian kernel \eqref{eq:perk,kern},
 where $\zeros{\dimQ} \in \reals{\dimQ}$ is a vector of zeros.
 
 Sampling $\dist{\bmv},\dist{s}$ $Z$ times
 and subsequently constructing 
 $\bmZt := 
 	\brac{\bmztZa{\bmq_1},\dots,\bmztZa{\bmq_N}} \in \reals{Z \times N}$
-via repeated evaluations of \eqref{eq,feat}
+via repeated evaluations of \eqref{eq:perk,feat}
 gives for $Z \ll N$
 a low-rank approximation $\bmZt\tpose\bmZt$ 
 of Gram matrix $\bmK$.
-Substituting this approximation into \eqref{eq,xl-hat}
+Substituting this approximation into \eqref{eq:perk,xl-hat}
 and applying the matrix inversion lemma \cite{woodbury:50:imm} 
 yields
 \begin{align}
 	\est{x}_l\paren{\cdot} \gets \mxl + 
 		\cztxl\tpose\inv{\paren{\Cztzt + \rho_l\eye{Z}}} \paren{\bmztZa{\cdot}-\bmmzt},
-	\label{eq,xl-apx}
+	\label{eq:perk,xl-apx}
 \end{align}
 where 
 $\mxl := \frac{1}{N}\bmxt{l}\tpose\ones{N}$ 
@@ -971,12 +975,12 @@ $\cztxl := \frac{1}{N}\bmZt\bmM\bmxt{l}$
 and 
 $\Cztzt := \frac{1}{N}\bmZt\bmM\bmZt\tpose$ 
 are sample covariances.
-Estimator \eqref{eq,xl-apx} 
+Estimator \eqref{eq:perk,xl-apx} 
 is an affine minimum mean-squared error estimator
 on the approximate features,
 and illustrates
 that Gaussian PERK 
-via estimator \eqref{eq,xl-hat}
+via estimator \eqref{eq:perk,xl-hat}
 is asymptotically (in $Z$) equivalent
 to regularized affine regression
 after nonlinear, high-dimensional feature mapping.
@@ -1055,7 +1059,7 @@ using the Fisher information matrix
 		&\approx& 	
 			\paren{\grada{\bmx}{\bmmu\paren{\bmx,\bmnu}}}\tpose
 				\inv{\bmSig} \grada{\bmx}{\bmmu\paren{\bmx,\bmnu}}
-	\label{eq,fisher}
+	\label{eq:perk,fisher}
 \end{IEEEeqnarray}
 where $\grada{\bmx}\paren{\cdot}$ denotes row gradient
 with respect to $\bmx$
@@ -1123,8 +1127,8 @@ of latent parameters.
 % thus it is reasonable to set rho1 to rhoL to a fixed rho>0 across latent parameters
 % added benefit of requiring only one NxN or ZxZ matrix inversion for training respectively, an acceleration especially helpful for online training
 As presented,
-PERK estimator \eqref{eq,xl-hat}
-and its approximation \eqref{eq,xl-apx}
+PERK estimator \eqref{eq:perk,xl-hat}
+and its approximation \eqref{eq:perk,xl-apx}
 leave freedom to select different regularization parameters
 $\rho_1,\dots,\rho_L$
 for estimating each of the $L$ latent parameters.
@@ -1143,7 +1147,7 @@ rather than $L$
 large matrix inversions.
 We select the scalar regularization parameter $\rho$
 using the holdout process 
-described in Subsection~\ref{s,holdout}.
+described in Subsection~\ref{sss,perk,exp,meth,holdout}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Choosing Kernel Bandwidth}
@@ -1158,7 +1162,7 @@ We use
 and for both training and testing)
 \begin{align}
 	\bmL \gets \lambda \diag{\brac{\bmmybar\tpose, \bmmnu\tpose}\tpose},
-	\label{eq,bw}
+	\label{eq:perk,bw}
 \end{align}
 where 
 $\bmmybar \in \reals{D}$ 
@@ -1186,28 +1190,28 @@ using holdout as well.
 		\includegraphics [width=0.47\textwidth]{%
 			toy/toy-1d,t2-se,n-10%
 		}
-		\label{fig,toy,n-10}
+		\label{fig:perk,toy,n-10}
 	}
 	\hspace{0.3cm}
 	\subfigure[$N\gets20$]{%
 		\includegraphics [width=0.47\textwidth] {%
 			toy/toy-1d,t2-se,n-20%
 		}
-		\label{fig,toy,n-20}
+		\label{fig:perk,toy,n-20}
 	}
 	
 	\subfigure[$N\gets50$]{%
 		\includegraphics [width=0.47\textwidth]{%
 			toy/toy-1d,t2-se,n-50%
 		}
-		\label{fig,toy,n-50}
+		\label{fig:perk,toy,n-50}
 	}
 	\hspace{0.3cm}
 	\subfigure[$N\gets200$]{%
 		\includegraphics [width=0.47\textwidth] {%
 			toy/toy-1d,t2-se,n-200%
 		}
-		\label{fig,toy,n-200}
+		\label{fig:perk,toy,n-200}
 	}
 	\caption{%
 		Illustrations of PERK 
@@ -1228,7 +1232,7 @@ using holdout as well.
 		within well-sampled regions
 		of $\supp{\dist{\Tt}}$.
 	}%
-	\label{fig,toy}
+	\label{fig:perk,toy}
 \end{figure}
 
 To build intuition
@@ -1254,7 +1258,7 @@ holding fixed hyperparameters $(\lambda,\rho) \gets (2^{-1.5},2^{-20})$
 that were manually chosen
 to aid in illustrating PERK's typical behavior.
 	
-Fig.~\ref{fig,toy} illustrates the 1-D PERK estimator $\TtPERK$
+Fig.~\ref{fig:perk,toy} illustrates the 1-D PERK estimator $\TtPERK$
 and shows how its performance improves
 as $N$ is increased. 
 To produce each subfigure,
@@ -1264,7 +1268,7 @@ to generate magnitude test points (blue dots),
 and evaluated each PERK estimator 
 at the unlabeled test points (orange curves).
 For comparison,
-subfigures within Fig.~\ref{fig,toy} also plot
+subfigures within Fig.~\ref{fig:perk,toy} also plot
 the intuitive method-of-moments (MOM) estimator
 $\TtMOM\paren{\cdot} := -\TE/\log{\abs{\cdot}}$ (yellow curves).
 As $N$ increases,
@@ -1414,7 +1418,7 @@ and $\rho \gets 2^{-41}$
 via a simple holdout process,
 described in Subsection~\ref{sss,perk,exp,meth,holdout}.
 We set Gaussian kernel bandwidth matrix $\bmL$ 
-from test data via \eqref{eq,bw}.
+from test data via \eqref{eq:perk,bw}.
 We sampled $\bmnu,s$ $Z \gets 10^3$ times 
 to construct approximate feature map $\bmztZ$. 
 For each $l$th latent parameter
@@ -1422,7 +1426,7 @@ where $l \in \set{1,\dots,L}$,
 we applied $\bmztZ$ to training data;
 computed sample means $\mxl, \bmmzt$ 
 and sample covariances $\cztxl, \Cztzt$;
-and evaluated \eqref{eq,xl-apx}
+and evaluated \eqref{eq:perk,xl-apx}
 on test image data 
 and the known flip angle scaling map
 on a per-voxel basis. 
@@ -1455,7 +1459,7 @@ of the ``holdout'' cost function
 				\paren{\est{\bmx}_{\lambda,\rho}\paren{\bmq_t}-\bmx_t}
 			}^2_\bmW
 		}
-	\label{eq,holdout}
+	\label{eq:perk,holdout}
 \end{align}
 where $t \in \set{1,\dots,T}$ indexes $T$ test points;
 each $\bmx_t$ is the true latent parameter 
@@ -1488,10 +1492,10 @@ and the latent parameter weighting is specified by $\bmW$.
 		A white star marks the minimizer
 		$\paren{\est{\lambda},\est{\rho}} \gets \paren{2^{0.6},2^{-41}}$.
 	}
-	\label{fig,holdout}
+	\label{fig:perk,holdout}
 \end{figure}
 
-Fig.~\ref{fig,holdout} plots $\costa{\lambda,\rho}$
+Fig.~\ref{fig:perk,holdout} plots $\costa{\lambda,\rho}$
 for $T \gets 10^5$ test points 
 and $\bmW \gets \diag{\brac{0,0.5,0.5}\tpose}$
 selected to place equal emphasis 
@@ -1599,7 +1603,7 @@ until the convergence criterion
 \begin{align}
 	\frob{\inv{\bmOmega}\paren{\iter{\bmX}{i}-\iter{\bmX}{i-1}}} 
 		< 10^{-7} \frob{\inv{\bmOmega}\paren{\iter{\bmX}{i-1}}}
-	\label{eq:conv-crit}
+	\label{eq:perk,conv-crit}
 \end{align}
 was satisfied,
 where $\bmX$ collects latent parameter voxels 
@@ -1663,7 +1667,7 @@ with SNR ranging from 94-154 in WM and 82-154 in GM,
 where SNR is defined
 \begin{align}
 	\snr{\bmyt,\bmepst} := \norm{\bmyt}_2/\norm{\bmepst}_2
-	\label{eq,snr}
+	\label{eq:perk,snr}
 \end{align}
 for image data voxels $\bmyt$ and noise voxels $\bmepst$
 corresponding to a region of interest (ROI)
@@ -1682,14 +1686,14 @@ PERK training and testing respectively took 3.6s and 1.5s.
 		\includegraphics [width=0.99\textwidth] {%
 			sim/sp2de1,sl-81,m0,im,gray.eps%
 		}
-		\label{fig,sim,m0,im,gray}
+		\label{fig:perk,sim,m0,im,gray}
 	}
 	\hspace{0cm}
 	\subfigure{%
 		\includegraphics [width=\textwidth,trim=0 0 0 25,clip] {%
 			sim/sp2de1,sl-81,m0,err,gray.eps%
 		}
-		\label{fig,sim,m0,err,gray}
+		\label{fig:perk,sim,m0,err,gray}
 	}
 	\caption{%
 		$\mzero$ VPM, PGPM, and PERK estimates
@@ -1701,10 +1705,10 @@ PERK training and testing respectively took 3.6s and 1.5s.
 		Difference images demonstrate
 		that all three $\mzero$ estimates
 		exhibit low estimation error.
-		Table~\ref{tab,sim} presents
+		Table~\ref{tab:perk,sim} presents
 		corresponding sample statistics.
 	}
-	\label{fig,sim,m0}
+	\label{fig:perk,sim,m0}
 \end{figure}
 	
 \begin{figure}[!ht]
@@ -1713,14 +1717,14 @@ PERK training and testing respectively took 3.6s and 1.5s.
 		\includegraphics [width=\textwidth] {%
 			sim/sp2de1,sl-81,t1,im,jet.eps%
 		}
-		\label{fig,sim,t1,im,jet}
+		\label{fig:perk,sim,t1,im,jet}
 	}
 	\hspace{0cm}
 	\subfigure{%
 		\includegraphics [width=0.99\textwidth,trim=0 0 0 25,clip] {%
 			sim/sp2de1,sl-81,t1,err,jet.eps%
 		}
-		\label{fig,sim,t1,err,jet}
+		\label{fig:perk,sim,t1,err,jet}
 	}
 	\caption{%
 		$\To$	VPM, PGPM, and PERK estimates
@@ -1732,10 +1736,10 @@ PERK training and testing respectively took 3.6s and 1.5s.
 		Difference images demonstrate
 		that all three $\To$ estimates
 		exhibit low estimation error.
-		Table~\ref{tab,sim} presents
+		Table~\ref{tab:perk,sim} presents
 		corresponding sample statistics.
 	}
-	\label{fig,sim,t1}
+	\label{fig:perk,sim,t1}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -1744,14 +1748,14 @@ PERK training and testing respectively took 3.6s and 1.5s.
 		\includegraphics [width=\textwidth] {%
 			sim/sp2de1,sl-81,t2,im,jet.eps%
 		}
-		\label{fig,sim,t2,im,jet}
+		\label{fig:perk,sim,t2,im,jet}
 	}
 	\hspace{0cm}
 	\subfigure{%
 		\includegraphics [width=0.99\textwidth,trim=0 0 0 25,clip] {%
 			sim/sp2de1,sl-81,t2,err,jet.eps%
 		}
-		\label{fig,sim,t2,err,jet}
+		\label{fig:perk,sim,t2,err,jet}
 	}
 	\caption{%
 		$\Tt$ VPM, PGPM, and PERK estimates
@@ -1763,13 +1767,13 @@ PERK training and testing respectively took 3.6s and 1.5s.
 		Difference images demonstrate
 		that all three $\To$ estimates
 		exhibit low estimation error.
-		Table~\ref{tab,sim} presents
+		Table~\ref{tab:perk,sim} presents
 		corresponding sample statistics.
 	}
-	\label{fig,sim,t2}
+	\label{fig:perk,sim,t2}
 \end{figure}
 
-Figs.~\ref{fig,sim,m0}, \ref{fig,sim,t1}, and \ref{fig,sim,t2}
+Figs.~\ref{fig:perk,sim,m0}, \ref{fig:perk,sim,t1}, and \ref{fig:perk,sim,t2}
 compare VPM, PGPM, and PERK estimates
 of $\mzero$, $\To$, $\Tt$ respectively,
 alongside $10\times$ magnified absolute difference images 
@@ -1817,13 +1821,13 @@ all three methods exhibit low estimation error.
 		computed via formulas in \cite{ahn:03:seo}.
 		$\mzero$ values are unitless.
 		$\To,\Tt$ values are in milliseconds.
-		Figs.~\ref{fig,sim,m0}, \ref{fig,sim,t1}, and \ref{fig,sim,t2}
+		Figs.~\ref{fig:perk,sim,m0}, \ref{fig:perk,sim,t1}, and \ref{fig:perk,sim,t2}
 		present corresponding images.
 	}
-	\label{tab,sim}
+	\label{tab:perk,sim}
 \end{table}
 
-Table~\ref{tab,sim} compares sample statistics
+Table~\ref{tab:perk,sim} compares sample statistics
 of VPM, PGPM, and PERK $\mzero,\To,\Tt$ estimates,
 computed over $7810$ WM-like and $9162$ GM-like voxels.
 Overall,
@@ -1851,21 +1855,21 @@ root mean squared errors (RMSEs).
   		\includegraphics [width=0.96\textwidth] {%
   			hpd-tight/sp2de1,sl-6,m0,im-gray.eps%
   		}
-  		\label{fig,hpd-tight,m0,im-gray}
+  		\label{fig:perk,hpd-tight,m0,im-gray}
   	}
   	\hspace{0cm}
   	\subfigure{%
   		\includegraphics [width=0.982\textwidth,trim=0 0 0 25,clip] {%
   			hpd-tight/sp2de1,sl-6,t1,im-jet.eps%
   		}
-  		\label{fig,hpd-tight,t1,im-jet}
+  		\label{fig:perk,hpd-tight,t1,im-jet}
   	}
   	\hspace{0cm}
   	\subfigure{%
   		\includegraphics [width=0.97\textwidth,trim=0 0 0 25,clip] {%
   			hpd-tight/sp2de1,sl-6,t2,im-jet.eps%
   		}
-  		\label{fig,hpd-tight,t2,im-jet}
+  		\label{fig:perk,hpd-tight,t2,im-jet}
   	}
 	\end{minipage}
 	\caption{%
@@ -1873,14 +1877,14 @@ root mean squared errors (RMSEs).
 		in a quantitative phantom.
 		Vials are enumerated and highlighted
 		to correspond with markers and colored boxes
-		in Fig.~\ref{fig,hpd-tight,plot}.
+		in Fig.~\ref{fig:perk,hpd-tight,plot}.
 		PERK has only been trained 
 		to accurately estimate within vials 4-8;
 		within these vials,
 		VPM, PGPM, and PERK estimates 
 		appear visually similar.
 	}
-	\label{fig,hpd-tight}
+	\label{fig:perk,hpd-tight}
 \end{figure}
 
 \begin{figure*}[!t]
@@ -1889,14 +1893,14 @@ root mean squared errors (RMSEs).
 		\includegraphics [width=0.47\textwidth]{%
 			hpd-tight/sp2de1,sl-6,t1,plot%
 		}
-		\label{fig,hpd-tight,t1,plot}
+		\label{fig:perk,hpd-tight,t1,plot}
 	}
 	\hspace{0.3cm}
 	\subfigure{%
 		\includegraphics [width=0.47\textwidth] {%
 			hpd-tight/sp2de1,sl-6,t2,plot%
 		}
-		\label{fig,hpd-tight,t2,plot}
+		\label{fig:perk,hpd-tight,t2,plot}
 	}
 	\vspace{0.3cm}
 	\begin{tabular}{c || r | r r r}
@@ -1928,7 +1932,7 @@ root mean squared errors (RMSEs).
 		computed over ROIs
 		within the 14 vials
 		labeled and color-coded 
-		in Fig.~\ref{fig,hpd-tight}.
+		in Fig.~\ref{fig:perk,hpd-tight}.
 		Yellow box boundaries 
 		indicate projections
 		of the PERK sampling distribution's support $\supp{\dist{\bmx,\bmnu}}$.
@@ -1947,7 +1951,7 @@ root mean squared errors (RMSEs).
 		with each other
 		and reasonably with NMR measurements.
 	}
-	\label{fig,hpd-tight,plot}
+	\label{fig:perk,hpd-tight,plot}
 \end{figure*}		 
 
 Phantom experiments used datasets 
@@ -1996,7 +2000,7 @@ PGPM took 1257s;
 and PERK training and testing
 respectively took 4.2s and 1.9s.
 
-Fig.~\ref{fig,hpd-tight} compares
+Fig.~\ref{fig:perk,hpd-tight} compares
 VPM, PGPM, and PERK $\mzero,\To,\Tt$ estimates.
 Vials are enumerated in descending $\To,\Tt$ order.
 Vials whose $\To,\Tt$ values
@@ -2011,13 +2015,13 @@ for which the SPGR/DESS scan parameters
 were optimized in \cite{nataraj:17:oms}.
 Circular ROIs are selected well away from vial encasings
 and correspond with sample statistics 
-presented in Fig.~\ref{fig,hpd-tight,plot}.                                                                                                                                                                                 
+presented in Fig.~\ref{fig:perk,hpd-tight,plot}.                                                                                                                                                                                 
 Distilled water surrounds the encased vials.
 Within the highlighted vials of interest,
 VPM, PGPM, and PERK estimates 
 appear visually similar.
 
-Fig.~\ref{fig,hpd-tight,plot} compares
+Fig.~\ref{fig:perk,hpd-tight,plot} compares
 sample means and sample standard deviations
 computed within ROIs 
 of VPM, PGPM, and PERK $\To,\Tt$ estimates
@@ -2028,7 +2032,7 @@ for Standards of Technology (NIST) \cite{keenan:16:msm}.
 Yellow box boundaries indicate projections
 of the PERK sampling distribution's support $\supp{\dist{\bmx,\bmnu}}$.
 ROI labels correspond with vial markers
-depicted in Fig.~\ref{fig,hpd-tight}.
+depicted in Fig.~\ref{fig:perk,hpd-tight}.
 Within $\supp{\dist{\bmx,\bmnu}}$,
 corresponding tables demonstrate
 that VPM, PGPM, and PERK estimates agree excellently 
@@ -2039,7 +2043,7 @@ outside $\supp{\dist{\bmx,\bmnu}}$
 and indeed observe 
 poor ability to extrapolate.
 As discussed in Subsection~\ref{sss,perk,pract,mod,dist}
-and demonstrated in \edit{Subsection~\ref{ss,phant,broad}},
+and demonstrated in Subsection~\ref{ss,perk,robust,dist},
 expanding $\supp{\dist{\bmx,\bmnu}}$
 well beyond the acquisition design 
 parameter range of interest
@@ -2075,21 +2079,21 @@ took 4.2s and 1.6s.
   		\includegraphics [width=0.96\textwidth,trim=0 0 0 10,clip] {%
   			brain/sp2de1,sl-5,m0,im-gray.eps%
   		}%
-  		\label{fig,brain,m0,im-gray}
+  		\label{fig:perk,brain,m0,im-gray}
   	}%
   	\hspace{0cm}
   	\subfigure{%
   		\includegraphics [width=0.982\textwidth,trim=0 0 0 20,clip] {%
   			brain/sp2de1,sl-5,t1,im-jet.eps%
   		}
-  		\label{fig,brain,t1,im-jet}
+  		\label{fig:perk,brain,t1,im-jet}
   	}%
   	\hspace{0cm}
   	\subfigure{%
   		\includegraphics [width=0.97\textwidth,trim=0 0 0 20,clip] {%
   			brain/sp2de1,sl-5,t2,im-jet.eps%
   		}%
-  		\label{fig,brain,t2,im-jet}
+  		\label{fig:perk,brain,t2,im-jet}
   	}%
 	\end{minipage}
 	\caption{%
@@ -2104,7 +2108,7 @@ took 4.2s and 1.6s.
 		Images are cropped in post-processing 
 		for display.
 	}
-	\label{fig,brain}
+	\label{fig:perk,brain}
 \end{figure*}
 
 \begin{table}[!ht]
@@ -2134,17 +2138,17 @@ took 4.2s and 1.6s.
 		\Invivo sample means $\pm$ sample standard deviations
 		of VPM, PGPM, and PERK $\To,\Tt$ estimates,
 		computed over color-coded ROIs
-		indicated in Fig.~\ref{fig,brain}.
+		indicated in Fig.~\ref{fig:perk,brain}.
 		Each value is rounded off 
 		to the highest place value
 		of its (unreported) standard error,
 		computed via formulas in \cite{ahn:03:seo}.
 		All values are in milliseconds.
 	}
-	\label{tab,brain}
+	\label{tab:perk,brain}
 \end{table}
 
-Fig.~\ref{fig,brain} compares 
+Fig.~\ref{fig:perk,brain} compares 
 VPM, PGPM, and PERK $\mzero,\To,\Tt$ estimates.
 The PERK $\mzero$ estimate appears smoothed
 (although no spatial regularization was used)
@@ -2163,7 +2167,7 @@ to cerebrospinal fluid (CSF).
 We neither expect nor observe reasonable PERK performance
 in voxels containing CSF.
 
-Table~\ref{tab,brain} summarizes sample statistics
+Table~\ref{tab:perk,brain} summarizes sample statistics
 of VPM, PGPM, and PERK $\To,\Tt$ estimates,
 computed over four separate WM ROIs 
 containing $96$, $69$, $224$, and $148$ voxels
@@ -2214,20 +2218,20 @@ in \cite{nataraj:17:oms}.
 		\includegraphics [width=0.47\textwidth] {%
 			tune/robust,broad,w-t12.eps%
 		}
-		\label{fig,robust,broad}
+		\label{fig:perk,robust,broad}
 	}
 	\hspace{0cm}
 	\subfigure{%
 		\includegraphics [width=0.47\textwidth] {%
 			tune/robust,tight,w-t12.eps%
 		}
-		\label{fig,robust,tight}
+		\label{fig:perk,robust,tight}
 	}
 	\caption{%
 		Performance criterion $\costa{\sigma}$
 		versus PERK training noise standard deviation $\sigma$,
 		over two different scales.
-		Similar to Fig.~\ref{fig,holdout},
+		Similar to Fig.~\ref{fig:perk,holdout},
 		each point on the blue curve
 		is the weighted normalized root mean squared error
 		of a separately trained PERK estimator.
@@ -2251,7 +2255,7 @@ in \cite{nataraj:17:oms}.
 		that PERK is somewhat robust
 		to moderate misspecification of the noise level.
 	}%
-	\label{fig,robust}
+	\label{fig:perk,robust}
 \end{figure}
 
 To assess the importance
@@ -2278,10 +2282,10 @@ consisting of $10^5$ samples
 from training prior distribution $\dist{\bmx,\bmnu}$.
 We assessed performance sensitivity
 by comparing evaluations $\costa{\sigma}$ 
-of holdout cost \eqref{eq,holdout}
+of holdout cost \eqref{eq:perk,holdout}
 at each $\sigma$ setting.
 	
-Fig.~\ref{fig,robust} plots $\costa{\sigma}$
+Fig.~\ref{fig:perk,robust} plots $\costa{\sigma}$
 as $\sigma$ is varied 
 over two different scales.
 In each subplot,
@@ -2353,14 +2357,14 @@ All other training and testing details are unchanged from before.
 		\includegraphics [width=0.47\textwidth]{%
 			hpd-broad/sp2de1,sl-6,t1,plot%
 		}
-		\label{fig,hpd-broad,t1,plot}
+		\label{fig:perk,hpd-broad,t1,plot}
 	}
 	\hspace{0.3cm}
 	\subfigure{%
 		\includegraphics [width=0.47\textwidth] {%
 			hpd-broad/sp2de1,sl-6,t2,plot%
 		}
-		\label{fig,hpd-broad,t2,plot}
+		\label{fig:perk,hpd-broad,t2,plot}
 	}
 	\vspace{0.3cm}
 	\begin{tabular}{c || r | r r r}
@@ -2388,14 +2392,14 @@ All other training and testing details are unchanged from before.
 		of more aggressively trained 
 		VPM, PGPM, and PERK $\To,\Tt$ estimates
 		and NIST NMR reference measurements \cite{keenan:16:msm}.
-		Unlike analogous results in Fig.~\ref{fig,hpd-tight,plot},
+		Unlike analogous results in Fig.~\ref{fig:perk,hpd-tight,plot},
 		here the PERK estimator was trained
 		with a sampling distribution
 		whose support extended 
 		well beyond the range of $\To,\Tt$ values
 		for which the acquisition was optimized 
 		in \cite{nataraj:17:oms}.
-		Comparing to Fig.~\ref{fig,hpd-tight,plot},
+		Comparing to Fig.~\ref{fig:perk,hpd-tight,plot},
 		we find that PERK estimator performance degrades 
 		within the highlighted $\To,\Tt$ range of interest.
 		Plot markers and error bars
@@ -2403,7 +2407,7 @@ All other training and testing details are unchanged from before.
 		computed over ROIs
 		within the 14 vials
 		labeled and color-coded
-		in Fig.~\ref{fig,hpd-broad}.
+		in Fig.~\ref{fig:perk,hpd-broad}.
 		Corresponding tables replicate 
 		sample means $\pm$ sample standard deviations
 		for vials within the highlighted range.
@@ -2413,7 +2417,7 @@ All other training and testing details are unchanged from before.
 		computed via formulas in \cite{ahn:03:seo}.
 		All values are in milliseconds.
 	}
-	\label{fig,hpd-broad,plot}
+	\label{fig:perk,hpd-broad,plot}
 \end{figure*}
 
 \begin{figure}[!t]
@@ -2423,21 +2427,21 @@ All other training and testing details are unchanged from before.
   		\includegraphics [width=0.96\textwidth] {%
   			hpd-broad/sp2de1,sl-6,m0,im-gray.eps%
   		}
-  		\label{fig,hpd-broad,m0,im-gray}
+  		\label{fig:perk,hpd-broad,m0,im-gray}
   	}
   	\hspace{0cm}
   	\subfigure{%
   		\includegraphics [width=0.982\textwidth,trim=0 0 0 25,clip] {%
   			hpd-broad/sp2de1,sl-6,t1,im-jet.eps%
   		}
-  		\label{fig,hpd-broad,t1,im-jet}
+  		\label{fig:perk,hpd-broad,t1,im-jet}
   	}
   	\hspace{0cm}
   	\subfigure{%
   		\includegraphics [width=0.97\textwidth,trim=0 0 0 25,clip] {%
   			hpd-broad/sp2de1,sl-6,t2,im-jet.eps%
   		}
-  		\label{fig,hpd-broad,t2,im-jet}
+  		\label{fig:perk,hpd-broad,t2,im-jet}
   	}
 	\end{minipage}
 	\caption{%
@@ -2449,27 +2453,27 @@ All other training and testing details are unchanged from before.
 		whose support extended
 		over less well identified $\To,\Tt$ values.
 		Comparing with analogous images 
-		in Fig.~\ref{fig,hpd-tight},
+		in Fig.~\ref{fig:perk,hpd-tight},
 		PERK performance within vials 4-8 degrades,
 		though in other vials 
 		performance clearly improves. 
 		Vials are enumerated and highlighted
 		to correspond with markers and colored boxes
-		in Fig.~\ref{fig,hpd-broad,plot}.
+		in Fig.~\ref{fig:perk,hpd-broad,plot}.
 	}
-	\label{fig,hpd-broad}
+	\label{fig:perk,hpd-broad}
 \end{figure}
 
-Fig.~\ref{fig,hpd-broad,plot} 
-is analogous to Fig.~\ref{fig,hpd-tight,plot}
+Fig.~\ref{fig:perk,hpd-broad,plot} 
+is analogous to Fig.~\ref{fig:perk,hpd-tight,plot}
 in that it plots sample means and sample standard deviations
 computed within ROIs 
 of VPM, PGPM, and PERK $\To,\Tt$ estimates,
 except now using a PERK estimator trained
 over the broader sampling distribution.
-Fig.~\ref{fig,hpd-broad} presents corresponding images. 
+Fig.~\ref{fig:perk,hpd-broad} presents corresponding images. 
 The yellow boxes are unchanged
-from Fig.~\ref{fig,hpd-tight,plot}
+from Fig.~\ref{fig:perk,hpd-tight,plot}
 and so their boundaries no longer correspond
 to projections of the PERK sampling distribution's support.
 Rather,
@@ -2481,10 +2485,10 @@ when trained using a range of parameters
 that exceeds the design criteria
 of the acquisition.
 
-Fig.~\ref{fig,hpd-broad,plot}
+Fig.~\ref{fig:perk,hpd-broad,plot}
 also tabulates sample means and sample standard deviations
 computed within ROIs of vials 4-8.
-Comparing again with Fig.~\ref{fig,hpd-tight,plot},
+Comparing again with Fig.~\ref{fig:perk,hpd-tight,plot},
 PERK $\Tt$ estimation accuracy
 is more severely affected 
 than $\To$ estimation accuracy
@@ -2565,13 +2569,13 @@ grow more directly with regressor dimension $\dimQ$
 than with regressand dimension $L$. 
 Using formulas for rank-one covariance matrix updates,
 constructing $\esta{\bmx}{\cdot}$ element-wise
-via $L$ evaluations of \eqref{eq,xl-apx}
+via $L$ evaluations of \eqref{eq:perk,xl-apx}
 can be implemented 
 to use $\BigOh{Z^2}$ memory units 
 when $\rho_l \gets \rho\,\, \forall l \in \set{1,\dots,L}$
 (as recommended in Subsection~\ref{sss,perk,pract,mod,reg}).
 Direct application of \cite[Proposition~4]{sutherland:15:ote}
-to the case of Gaussian kernel \eqref{eq,kern}
+to the case of Gaussian kernel \eqref{eq:perk,kern}
 reveals that $Z$ should be scaled 
 subquadratically but superlinearly with $\dimQ$ 
 to conservatively maintain a given threshold

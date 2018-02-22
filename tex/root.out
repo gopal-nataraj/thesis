@@ -19,8 +19,8 @@
 \BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 19
 \BOOKMARK [1][-]{section.4.2}{A CRB-Inspired Scan Selection Method}{chapter.4}% 20
 \BOOKMARK [1][-]{section.4.3}{Optimizing SS Sequences for Relaxometry in the Brain}{chapter.4}% 21
-\BOOKMARK [1][-]{section.4.4}{Experimental Validation and Results}{chapter.4}% 22
-\BOOKMARK [1][-]{section.4.5}{Discussion and Future Work}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.4}{Experimentation}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.5}{Discussion}{chapter.4}% 23
 \BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 24
 \BOOKMARK [0][-]{chapter.5}{QMRI Parameter Estimation via Regression with Kernels \(PERK\)}{}% 25
 \BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 26
@@ -33,7 +33,14 @@
 \BOOKMARK [1][-]{section.5.8}{Robustness Studies}{chapter.5}% 33
 \BOOKMARK [1][-]{section.5.9}{Discussion}{chapter.5}% 34
 \BOOKMARK [1][-]{section.5.10}{Conclusion}{chapter.5}% 35
-\BOOKMARK [0][-]{section*.7}{Appendices}{}% 36
-\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 37
-\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 38
-\BOOKMARK [0][-]{section*.10}{Bibliography}{}% 39
+\BOOKMARK [0][-]{chapter.6}{Fast Myelin Water Fraction Imaging via Acquisition Design and PERK}{}% 36
+\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.2}{Multi-Compartmental Models for SS Sequences}{chapter.6}% 38
+\BOOKMARK [1][-]{section.6.3}{A Fast SS Acquisition for Precise MWF Imaging}{chapter.6}% 39
+\BOOKMARK [1][-]{section.6.4}{Experimentation}{chapter.6}% 40
+\BOOKMARK [1][-]{section.6.5}{Discussion}{chapter.6}% 41
+\BOOKMARK [1][-]{section.6.6}{Summary and Future Work}{chapter.6}% 42
+\BOOKMARK [0][-]{section*.9}{Appendices}{}% 43
+\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 44
+\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 45
+\BOOKMARK [0][-]{section*.12}{Bibliography}{}% 46
