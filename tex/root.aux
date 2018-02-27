@@ -915,20 +915,18 @@
 \newlabel{tab:mwf,acq}{{6.1}{104}{SPGR/DESS flip angles and repetition times that comprise $\est {\bmP }$, a scan parameter matrix designed under total time budget $\sum _{d=1}^D \TRd \leq 108$ms for precise $\ff $ estimation in WM. For our noise variance measurements, this acquisition is expected to yield $42.5$\% relative standard deviation in asymptotically unbiased $\ff $ estimates from two-compartment signal models. Interestingly, the optimized scan profile omits SPGR scans entirely}{table.6.1}{}}
 \citation{sacolick:10:bmb}
 \citation{ying:07:jir}
-\citation{prasloski:12:rwc}
-\citation{mackay:94:ivv}
-\citation{deoni:11:com}
-\citation{lankford:13:oti}
-\citation{zhang:15:com}
-\citation{prasloski:12:rwc}
-\citation{mackay:94:ivv}
-\citation{deoni:11:com}
-\citation{lankford:13:oti}
-\citation{zhang:15:com}
 \@writefile{toc}{\contentsline {section}{\numberline {6.4}Experimentation}{105}{section.6.4}}
 \newlabel{s,mwf,exp}{{6.4}{105}{Experimentation\relax }{section.6.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces  MWF estimates, using: our optimized SPGR/DESS scan profile and (\emph  {top left}) KRR $f_\mathrm  {F}$ estimation, followed by (\emph  {top right}) iterative ML estimation; (\emph  {bottom left}) GRASE \cite  {prasloski:12:rwc}, a state-of-the-art acceleration to the slow gold-standard MESE acquisition originally used in \cite  {mackay:94:ivv}; and (\emph  {bottom right}) mcDESPOT \cite  {deoni:11:com}, a fast steady-state acquisition that lacks sufficient estimation precision \cite  {lankford:13:oti}. All MWF estimates are from healthy volunteers, but those from GRASE/mcDESPOT are from a separate study in a different subject and are reprinted from \cite  {zhang:15:com}, a recent comparison study. The proposed precision-optimized SPGR/DESS scan profile is as fast as mcDESPOT and yields MWF images comparable to those of GRASE. }}{106}{figure.6.1}}
-\newlabel{fig:mwf,brain}{{6.1}{106}{MWF estimates, using: our optimized SPGR/DESS scan profile and (\emph {top left}) KRR $\ff $ estimation, followed by (\emph {top right}) iterative ML estimation; (\emph {bottom left}) GRASE \cite {prasloski:12:rwc}, a state-of-the-art acceleration to the slow gold-standard MESE acquisition originally used in \cite {mackay:94:ivv}; and (\emph {bottom right}) mcDESPOT \cite {deoni:11:com}, a fast steady-state acquisition that lacks sufficient estimation precision \cite {lankford:13:oti}. All MWF estimates are from healthy volunteers, but those from GRASE/mcDESPOT are from a separate study in a different subject and are reprinted from \cite {zhang:15:com}, a recent comparison study. The proposed precision-optimized SPGR/DESS scan profile is as fast as mcDESPOT and yields MWF images comparable to those of GRASE}{figure.6.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Methods}{105}{subsection.6.4.1}}
+\newlabel{ss,mwf,exp,meth}{{6.4.1}{105}{Methods\relax }{subsection.6.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Numerical Simulations}{105}{subsection.6.4.2}}
+\newlabel{ss,mwf,exp,sim}{{6.4.2}{105}{Numerical Simulations\relax }{subsection.6.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}\emph  {In vivo}\xspace  Experiments}{105}{subsection.6.4.3}}
+\newlabel{ss,mwf,exp,invivo}{{6.4.3}{105}{\Invivo Experiments\relax }{subsection.6.4.3}{}}
+\citation{prasloski:12:rwc}
+\citation{mackay:94:ivv}
+\citation{deoni:11:com}
+\citation{lankford:13:oti}
 \citation{zhang:15:com}
 \citation{prasloski:12:rwc}
 \citation{mackay:94:ivv}
@@ -936,28 +934,36 @@
 \citation{lankford:13:oti}
 \citation{zhang:15:com}
 \citation{zhang:15:com}
-\newlabel{fig:mwf,brain,roi}{{6.4}{107}{Experimentation\relax }{figure.6.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces  \emph  {Left}: \leavevmode {\color  {magenta}WM}\xspace  /\leavevmode {\color  {cyan}GM}\xspace  ROIs, overlaid on a representative anatomical (coil-combined SPGR) image. Four \leavevmode {\color  {magenta}WM}\xspace  ROIs and four \leavevmode {\color  {cyan}GM}\xspace  ROIs are each pooled into a single \leavevmode {\color  {magenta}WM}\xspace  and a single \leavevmode {\color  {cyan}GM}\xspace  ROI, over which sample statistics are computed. \emph  {Right}: Within-ROI sample means $\pm $ within-ROI sample standard deviations of $f_\mathrm  {F}$ estimates, using KRR only as well as KRR with ML refinement (Fig.\nobreakspace  {}\ref  {fig:mwf,brain} presents corresponding images). }}{107}{table.6.2}}
-\newlabel{tab:mwf,brain}{{6.2}{107}{\emph {Left}: \WM /\GM ROIs, overlaid on a representative anatomical (coil-combined SPGR) image. Four \WM ROIs and four \GM ROIs are each pooled into a single \WM and a single \GM ROI, over which sample statistics are computed. \emph {Right}: Within-ROI sample means $\pm $ within-ROI sample standard deviations of $\ff $ estimates, using KRR only as well as KRR with ML refinement (Fig.~\ref {fig:mwf,brain} presents corresponding images)}{table.6.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Discussion}{107}{section.6.5}}
-\newlabel{s,mwf,disc}{{6.5}{107}{Discussion\relax }{section.6.5}{}}
+\citation{prasloski:12:rwc}
+\citation{mackay:94:ivv}
+\citation{deoni:11:com}
+\citation{lankford:13:oti}
+\citation{zhang:15:com}
+\citation{zhang:15:com}
+\newlabel{fig:mwf,brain,roi}{{6.4.3}{106}{\Invivo Experiments\relax }{figure.6.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces  \emph  {Left}: \leavevmode {\color  {magenta}WM}\xspace  /\leavevmode {\color  {cyan}GM}\xspace  ROIs, overlaid on a representative anatomical (coil-combined SPGR) image. Four \leavevmode {\color  {magenta}WM}\xspace  ROIs and four \leavevmode {\color  {cyan}GM}\xspace  ROIs are each pooled into a single \leavevmode {\color  {magenta}WM}\xspace  and a single \leavevmode {\color  {cyan}GM}\xspace  ROI, over which sample statistics are computed. \emph  {Right}: Within-ROI sample means $\pm $ within-ROI sample standard deviations of $f_\mathrm  {F}$ estimates, using KRR only as well as KRR with ML refinement (Fig.\nobreakspace  {}\ref  {fig:mwf,brain} presents corresponding images). }}{106}{table.6.2}}
+\newlabel{tab:mwf,brain}{{6.2}{106}{\emph {Left}: \WM /\GM ROIs, overlaid on a representative anatomical (coil-combined SPGR) image. Four \WM ROIs and four \GM ROIs are each pooled into a single \WM and a single \GM ROI, over which sample statistics are computed. \emph {Right}: Within-ROI sample means $\pm $ within-ROI sample standard deviations of $\ff $ estimates, using KRR only as well as KRR with ML refinement (Fig.~\ref {fig:mwf,brain} presents corresponding images)}{table.6.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces  MWF estimates, using: our optimized SPGR/DESS scan profile and (\emph  {top left}) KRR $f_\mathrm  {F}$ estimation, followed by (\emph  {top right}) iterative ML estimation; (\emph  {bottom left}) GRASE \cite  {prasloski:12:rwc}, a state-of-the-art acceleration to the slow gold-standard MESE acquisition originally used in \cite  {mackay:94:ivv}; and (\emph  {bottom right}) mcDESPOT \cite  {deoni:11:com}, a fast steady-state acquisition that lacks sufficient estimation precision \cite  {lankford:13:oti}. All MWF estimates are from healthy volunteers, but those from GRASE/mcDESPOT are from a separate study in a different subject and are reprinted from \cite  {zhang:15:com}, a recent comparison study. The proposed precision-optimized SPGR/DESS scan profile is as fast as mcDESPOT and yields MWF images comparable to those of GRASE. }}{107}{figure.6.1}}
+\newlabel{fig:mwf,brain}{{6.1}{107}{MWF estimates, using: our optimized SPGR/DESS scan profile and (\emph {top left}) KRR $\ff $ estimation, followed by (\emph {top right}) iterative ML estimation; (\emph {bottom left}) GRASE \cite {prasloski:12:rwc}, a state-of-the-art acceleration to the slow gold-standard MESE acquisition originally used in \cite {mackay:94:ivv}; and (\emph {bottom right}) mcDESPOT \cite {deoni:11:com}, a fast steady-state acquisition that lacks sufficient estimation precision \cite {lankford:13:oti}. All MWF estimates are from healthy volunteers, but those from GRASE/mcDESPOT are from a separate study in a different subject and are reprinted from \cite {zhang:15:com}, a recent comparison study. The proposed precision-optimized SPGR/DESS scan profile is as fast as mcDESPOT and yields MWF images comparable to those of GRASE}{figure.6.1}{}}
 \citation{mackay:94:ivv}
 \citation{whittall:89:qio}
 \citation{rosen:60:tgp}
 \citation{lawson:74}
-\citation{whittall:89:qio}
-\citation{mackay:94:ivv}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Discussion}{108}{section.6.5}}
+\newlabel{s,mwf,disc}{{6.5}{108}{Discussion\relax }{section.6.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6.6}Summary and Future Work}{108}{section.6.6}}
 \newlabel{s,mwf,summ}{{6.6}{108}{Summary and Future Work\relax }{section.6.6}{}}
 \@writefile{toc}{\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{108}{section*.7}}
-\newlabel{foot:mwf,assumption}{{8}{108}{\relax }{Hfootnote.27}{}}
+\citation{whittall:89:qio}
+\citation{mackay:94:ivv}
 \citation{prasloski:12:rwc}
+\newlabel{foot:mwf,assumption}{{8}{109}{\relax }{Hfootnote.27}{}}
 \citation{varma:15:mtf}
 \citation{varma:15:iom}
 \citation{swanson:17:mda}
 \citation{gareau:00:mta}
 \citation{webb:03:imt}
-\@writefile{toc}{\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{109}{section*.8}}
+\@writefile{toc}{\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{110}{section*.8}}
 \citation{ying:07:jir}
 \@writefile{toc}{\contentsline {chapter}{Appendices}{111}{section*.9}}
 \@writefile{toc}{\global \c@tocdepth 1\relax }

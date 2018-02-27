@@ -1477,27 +1477,26 @@ and DESS
 \eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0}
 signal models 
 as well as their gradients.
-To reduce SPGR/DESS signal dependence
-on off-resonance effects,
-we used magnitude signal models
+We used magnitude signal models
 for scan design
-and note that Rician distributed noise 
+to reduce SPGR/DESS signal dependence
+on off-resonance effects,
+noting that Rician distributed noise 
 in corresponding magnitude image data
 is well-approximated as Gaussian
 for sufficiently large SNR \cite{gudbjartsson:95:trd}. 
-We further fixed $\TP, \TE$ across scans
-and thereby reduce model dependencies 
+We fixed $\TP,\TE$ across scans
+and thereby reduced model dependencies 
 to seven free object parameters per voxel:
 $\ff$, $\tf{1}$, $\tf{2}$, $\ts{1}$, $\ts{2}$, $\stx$, and
 $\const{3} := \mzero e^{-\Rtpf \TE} \equiv \mzero e^{-\Rtps \TE}$;
 and two acquisition parameters per dataset:
 $\bmp_d \gets \brac{\flipnom, \TR}\tpose, \forall d \in \set{1,\dots,D}$.
-As in Chapter~\ref{c,scn-dsgn},
-we assumed prior knowledge 
+We assumed prior knowledge 
 of transmit field sensitivity $\bmnu \gets \stx$ 
 (which in practice can be estimated
 from separate fast acquisitions, \eg \cite{sacolick:10:bmb})
-and collect the remaining $L \gets 6$ latent parameters
+and collected the remaining $L \gets 6$ latent parameters
 as $\bmx \gets \brac{\ff, \tf{1}, \tf{2}, \ts{1}, \ts{2}, \const{3}}$.
 
 % take ff as proxy for mwf
@@ -1670,6 +1669,37 @@ from non-exchanging two-compartment signal models.
 \section{Experimentation}
 \label{s,mwf,exp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This section demonstrates MWF imaging
+using the precision-optimized SS acquisition
+developed in Section~\ref{s,mwf,acq}
+and fast PERK estimation
+(developed in Ch.~\ref{c,perk}). 
+Subsection~\ref{ss,mwf,exp,meth}
+describes implementation details
+that are common
+to both simulations and experiments.
+Subsection~\ref{ss,mwf,exp,sim}
+studies PERK and grid search
+$\ff$ estimator statistics
+in numerical simulations.
+Subsection~\ref{ss,mwf,exp,invivo}
+compares PERK-based $\ff$ maps
+to MWF maps 
+from conventional MESE acquisitions
+through \invivo experiments.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Methods}
+\label{ss,mwf,exp,meth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Numerical Simulations}
+\label{ss,mwf,exp,sim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\Invivo Experiments}
+\label{ss,mwf,exp,invivo}
 
 As a second step toward validation
 (the first being simulation results 
