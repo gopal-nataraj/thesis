@@ -821,13 +821,27 @@ K.~L. Miller, S.~M. Smith, and P.~Jezzard, ``Asymmetries of the balanced {SSFP}
 W.~Magnus, ``On the exponential solution of differential equations for a linear
   operator,'' {\em {Comm. Pure Appl. Math.}}, vol.~7, pp.~{649--73}, Nov. 1954.
 
+\bibitem{lawson:74}
+C.~L. Lawson and R.~J. Hanson, {\em Solving least squares problems}.
+\newblock Prentice-Hall, 1974.
+
+\bibitem{kroeker:86:aob}
+R.~M. Kroeker and R.~M. Henkelman, ``Analysis of biological {NMR} relaxation
+  data with continuous distributions of relaxation data,'' {\em {J. Mag.
+  Res.}}, vol.~69, pp.~{218--35}, Sept. 1986.
+
 \bibitem{whittall:89:qio}
 K.~P. Whittall and A.~L. MacKay, ``Quantitative interpretation of {NMR}
   relaxation data,'' {\em {J. Mag. Res.}}, vol.~84, pp.~{134--52}, Aug. 1989.
 
-\bibitem{lawson:74}
-C.~L. Lawson and R.~J. Hanson, {\em Solving least squares problems}.
-\newblock Prentice-Hall, 1974.
+\bibitem{prasloski:12:aos}
+T.~Prasloski, B.~{M\"adler}, Q.-S. Xiang, A.~MacKay, and C.~Jones,
+  ``Applications of stimulated echo correction to multicomponent {T2}
+  analysis,'' {\em {Mag. Res. Med.}}, vol.~67, no.~6, pp.~{1803--14}, 2012.
+
+\bibitem{hennig:88:mis}
+J.~Hennig, ``Multiecho imaging sequences with low refocusing flip angles,''
+  {\em {J. Mag. Res.}}, vol.~88, pp.~{397--407}, July 1988.
 
 \bibitem{varma:15:mtf}
 G.~Varma, G.~Duhamel, C.~{de Bazelaire}, and D.~C. Alsop, ``Magnetization

@@ -4,44 +4,44 @@ The top-level auxiliary file: root.aux
 The style file: ieeetr.bst
 Database file #1: ../bib/master.bib.bib
 Database file #2: ../bib/new.bib.bib
-You've used 168 entries,
+You've used 171 entries,
             1876 wiz_defined-function locations,
-            1318 strings with 29821 characters,
-and the built_in function-call counts, 58501 in all, are:
-= -- 6254
-> -- 2067
+            1331 strings with 30235 characters,
+and the built_in function-call counts, 59627 in all, are:
+= -- 6382
+> -- 2096
 < -- 2
-+ -- 755
-- -- 587
-* -- 4226
-:= -- 7704
-add.period$ -- 182
-call.type$ -- 168
-change.case$ -- 160
++ -- 766
+- -- 595
+* -- 4305
+:= -- 7846
+add.period$ -- 185
+call.type$ -- 171
+change.case$ -- 163
 chr.to.int$ -- 0
-cite$ -- 168
-duplicate$ -- 2927
-empty$ -- 4915
-format.name$ -- 587
-if$ -- 14311
+cite$ -- 171
+duplicate$ -- 2984
+empty$ -- 5010
+format.name$ -- 595
+if$ -- 14590
 int.to.chr$ -- 0
-int.to.str$ -- 168
-missing$ -- 170
-newline$ -- 521
-num.names$ -- 168
-pop$ -- 350
+int.to.str$ -- 171
+missing$ -- 173
+newline$ -- 530
+num.names$ -- 171
+pop$ -- 353
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2722
+skip$ -- 2779
 stack$ -- 0
-substring$ -- 5299
-swap$ -- 1656
+substring$ -- 5418
+swap$ -- 1691
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 598
-width$ -- 171
-write$ -- 1662
+while$ -- 610
+width$ -- 174
+write$ -- 1693

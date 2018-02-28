@@ -913,16 +913,28 @@
 \citation{deoni:11:com}
 \@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces  SPGR/DESS flip angles and repetition times that comprise $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \mathbf  {P}$}\mathaccent "0362{\mathbf  {P}}$, a scan parameter matrix designed under total time budget $\DOTSB \sum@ \slimits@ _{d=1}^D T_{\mathrm  {R},d}\leq 108$ms for precise $f_\mathrm  {F}$ estimation in WM. For our noise variance measurements, this acquisition is expected to yield $42.5$\% relative standard deviation in asymptotically unbiased $f_\mathrm  {F}$ estimates from two-compartment signal models. Interestingly, the optimized scan profile omits SPGR scans entirely. }}{104}{table.6.1}}
 \newlabel{tab:mwf,acq}{{6.1}{104}{SPGR/DESS flip angles and repetition times that comprise $\est {\bmP }$, a scan parameter matrix designed under total time budget $\sum _{d=1}^D \TRd \leq 108$ms for precise $\ff $ estimation in WM. For our noise variance measurements, this acquisition is expected to yield $42.5$\% relative standard deviation in asymptotically unbiased $\ff $ estimates from two-compartment signal models. Interestingly, the optimized scan profile omits SPGR scans entirely}{table.6.1}{}}
-\citation{sacolick:10:bmb}
-\citation{ying:07:jir}
+\citation{siddiqui:64:sif}
 \@writefile{toc}{\contentsline {section}{\numberline {6.4}Experimentation}{105}{section.6.4}}
 \newlabel{s,mwf,exp}{{6.4}{105}{Experimentation\relax }{section.6.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Methods}{105}{subsection.6.4.1}}
 \newlabel{ss,mwf,exp,meth}{{6.4.1}{105}{Methods\relax }{subsection.6.4.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Numerical Simulations}{105}{subsection.6.4.2}}
-\newlabel{ss,mwf,exp,sim}{{6.4.2}{105}{Numerical Simulations\relax }{subsection.6.4.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}\emph  {In vivo}\xspace  Experiments}{105}{subsection.6.4.3}}
-\newlabel{ss,mwf,exp,invivo}{{6.4.3}{105}{\Invivo Experiments\relax }{subsection.6.4.3}{}}
+\citation{mackay:94:ivv}
+\citation{lawson:74}
+\citation{kroeker:86:aob}
+\citation{whittall:89:qio}
+\newlabel{eq:mwf,nnls}{{6.51}{106}{Methods\relax }{equation.6.4.51}{}}
+\citation{mackay:94:ivv}
+\citation{whittall:89:qio}
+\citation{prasloski:12:aos}
+\citation{hennig:88:mis}
+\citation{arthur:07:kmt}
+\citation{sacolick:10:bmb}
+\newlabel{eq:mwf,rnnls}{{6.52}{107}{Methods\relax }{equation.6.4.52}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Numerical Simulations}{107}{subsection.6.4.2}}
+\newlabel{ss,mwf,exp,sim}{{6.4.2}{107}{Numerical Simulations\relax }{subsection.6.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}\emph  {In vivo}\xspace  Experiments}{107}{subsection.6.4.3}}
+\newlabel{ss,mwf,exp,invivo}{{6.4.3}{107}{\Invivo Experiments\relax }{subsection.6.4.3}{}}
+\citation{ying:07:jir}
 \citation{prasloski:12:rwc}
 \citation{mackay:94:ivv}
 \citation{deoni:11:com}
@@ -940,48 +952,48 @@
 \citation{lankford:13:oti}
 \citation{zhang:15:com}
 \citation{zhang:15:com}
-\newlabel{fig:mwf,brain,roi}{{6.4.3}{106}{\Invivo Experiments\relax }{figure.6.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces  \emph  {Left}: \leavevmode {\color  {magenta}WM}\xspace  /\leavevmode {\color  {cyan}GM}\xspace  ROIs, overlaid on a representative anatomical (coil-combined SPGR) image. Four \leavevmode {\color  {magenta}WM}\xspace  ROIs and four \leavevmode {\color  {cyan}GM}\xspace  ROIs are each pooled into a single \leavevmode {\color  {magenta}WM}\xspace  and a single \leavevmode {\color  {cyan}GM}\xspace  ROI, over which sample statistics are computed. \emph  {Right}: Within-ROI sample means $\pm $ within-ROI sample standard deviations of $f_\mathrm  {F}$ estimates, using KRR only as well as KRR with ML refinement (Fig.\nobreakspace  {}\ref  {fig:mwf,brain} presents corresponding images). }}{106}{table.6.2}}
-\newlabel{tab:mwf,brain}{{6.2}{106}{\emph {Left}: \WM /\GM ROIs, overlaid on a representative anatomical (coil-combined SPGR) image. Four \WM ROIs and four \GM ROIs are each pooled into a single \WM and a single \GM ROI, over which sample statistics are computed. \emph {Right}: Within-ROI sample means $\pm $ within-ROI sample standard deviations of $\ff $ estimates, using KRR only as well as KRR with ML refinement (Fig.~\ref {fig:mwf,brain} presents corresponding images)}{table.6.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces  MWF estimates, using: our optimized SPGR/DESS scan profile and (\emph  {top left}) KRR $f_\mathrm  {F}$ estimation, followed by (\emph  {top right}) iterative ML estimation; (\emph  {bottom left}) GRASE \cite  {prasloski:12:rwc}, a state-of-the-art acceleration to the slow gold-standard MESE acquisition originally used in \cite  {mackay:94:ivv}; and (\emph  {bottom right}) mcDESPOT \cite  {deoni:11:com}, a fast steady-state acquisition that lacks sufficient estimation precision \cite  {lankford:13:oti}. All MWF estimates are from healthy volunteers, but those from GRASE/mcDESPOT are from a separate study in a different subject and are reprinted from \cite  {zhang:15:com}, a recent comparison study. The proposed precision-optimized SPGR/DESS scan profile is as fast as mcDESPOT and yields MWF images comparable to those of GRASE. }}{107}{figure.6.1}}
-\newlabel{fig:mwf,brain}{{6.1}{107}{MWF estimates, using: our optimized SPGR/DESS scan profile and (\emph {top left}) KRR $\ff $ estimation, followed by (\emph {top right}) iterative ML estimation; (\emph {bottom left}) GRASE \cite {prasloski:12:rwc}, a state-of-the-art acceleration to the slow gold-standard MESE acquisition originally used in \cite {mackay:94:ivv}; and (\emph {bottom right}) mcDESPOT \cite {deoni:11:com}, a fast steady-state acquisition that lacks sufficient estimation precision \cite {lankford:13:oti}. All MWF estimates are from healthy volunteers, but those from GRASE/mcDESPOT are from a separate study in a different subject and are reprinted from \cite {zhang:15:com}, a recent comparison study. The proposed precision-optimized SPGR/DESS scan profile is as fast as mcDESPOT and yields MWF images comparable to those of GRASE}{figure.6.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces  MWF estimates, using: our optimized SPGR/DESS scan profile and (\emph  {top left}) KRR $f_\mathrm  {F}$ estimation, followed by (\emph  {top right}) iterative ML estimation; (\emph  {bottom left}) GRASE \cite  {prasloski:12:rwc}, a state-of-the-art acceleration to the slow gold-standard MESE acquisition originally used in \cite  {mackay:94:ivv}; and (\emph  {bottom right}) mcDESPOT \cite  {deoni:11:com}, a fast steady-state acquisition that lacks sufficient estimation precision \cite  {lankford:13:oti}. All MWF estimates are from healthy volunteers, but those from GRASE/mcDESPOT are from a separate study in a different subject and are reprinted from \cite  {zhang:15:com}, a recent comparison study. The proposed precision-optimized SPGR/DESS scan profile is as fast as mcDESPOT and yields MWF images comparable to those of GRASE. }}{109}{figure.6.1}}
+\newlabel{fig:mwf,brain}{{6.1}{109}{MWF estimates, using: our optimized SPGR/DESS scan profile and (\emph {top left}) KRR $\ff $ estimation, followed by (\emph {top right}) iterative ML estimation; (\emph {bottom left}) GRASE \cite {prasloski:12:rwc}, a state-of-the-art acceleration to the slow gold-standard MESE acquisition originally used in \cite {mackay:94:ivv}; and (\emph {bottom right}) mcDESPOT \cite {deoni:11:com}, a fast steady-state acquisition that lacks sufficient estimation precision \cite {lankford:13:oti}. All MWF estimates are from healthy volunteers, but those from GRASE/mcDESPOT are from a separate study in a different subject and are reprinted from \cite {zhang:15:com}, a recent comparison study. The proposed precision-optimized SPGR/DESS scan profile is as fast as mcDESPOT and yields MWF images comparable to those of GRASE}{figure.6.1}{}}
+\newlabel{fig:mwf,brain,roi}{{6.4.3}{110}{\Invivo Experiments\relax }{figure.6.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces  \emph  {Left}: \leavevmode {\color  {magenta}WM}\xspace  /\leavevmode {\color  {cyan}GM}\xspace  ROIs, overlaid on a representative anatomical (coil-combined SPGR) image. Four \leavevmode {\color  {magenta}WM}\xspace  ROIs and four \leavevmode {\color  {cyan}GM}\xspace  ROIs are each pooled into a single \leavevmode {\color  {magenta}WM}\xspace  and a single \leavevmode {\color  {cyan}GM}\xspace  ROI, over which sample statistics are computed. \emph  {Right}: Within-ROI sample means $\pm $ within-ROI sample standard deviations of $f_\mathrm  {F}$ estimates, using KRR only as well as KRR with ML refinement (Fig.\nobreakspace  {}\ref  {fig:mwf,brain} presents corresponding images). }}{110}{table.6.2}}
+\newlabel{tab:mwf,brain}{{6.2}{110}{\emph {Left}: \WM /\GM ROIs, overlaid on a representative anatomical (coil-combined SPGR) image. Four \WM ROIs and four \GM ROIs are each pooled into a single \WM and a single \GM ROI, over which sample statistics are computed. \emph {Right}: Within-ROI sample means $\pm $ within-ROI sample standard deviations of $\ff $ estimates, using KRR only as well as KRR with ML refinement (Fig.~\ref {fig:mwf,brain} presents corresponding images)}{table.6.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Discussion}{110}{section.6.5}}
+\newlabel{s,mwf,disc}{{6.5}{110}{Discussion\relax }{section.6.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}Summary and Future Work}{110}{section.6.6}}
+\newlabel{s,mwf,summ}{{6.6}{110}{Summary and Future Work\relax }{section.6.6}{}}
 \citation{mackay:94:ivv}
 \citation{whittall:89:qio}
 \citation{rosen:60:tgp}
 \citation{lawson:74}
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Discussion}{108}{section.6.5}}
-\newlabel{s,mwf,disc}{{6.5}{108}{Discussion\relax }{section.6.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.6}Summary and Future Work}{108}{section.6.6}}
-\newlabel{s,mwf,summ}{{6.6}{108}{Summary and Future Work\relax }{section.6.6}{}}
-\@writefile{toc}{\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{108}{section*.7}}
 \citation{whittall:89:qio}
 \citation{mackay:94:ivv}
 \citation{prasloski:12:rwc}
-\newlabel{foot:mwf,assumption}{{8}{109}{\relax }{Hfootnote.27}{}}
+\@writefile{toc}{\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{111}{section*.7}}
+\newlabel{foot:mwf,assumption}{{9}{111}{\relax }{Hfootnote.28}{}}
 \citation{varma:15:mtf}
 \citation{varma:15:iom}
 \citation{swanson:17:mda}
 \citation{gareau:00:mta}
 \citation{webb:03:imt}
-\@writefile{toc}{\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{110}{section*.8}}
+\@writefile{toc}{\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{112}{section*.8}}
 \citation{ying:07:jir}
-\@writefile{toc}{\contentsline {chapter}{Appendices}{111}{section*.9}}
+\@writefile{toc}{\contentsline {chapter}{Appendices}{113}{section*.9}}
 \@writefile{toc}{\global \c@tocdepth 1\relax }
-\@writefile{loa}{\contentsline {chapter}{\numberline {A}Coil Data Combination from Multiple Datasets}{111}{section*.10}}
+\@writefile{loa}{\contentsline {chapter}{\numberline {A}Coil Data Combination from Multiple Datasets}{113}{section*.10}}
 \@writefile{lof}{\addvspace {8pt}}
 \@writefile{lot}{\addvspace {8pt}}
 \@writefile{lom}{\addvspace {8pt}}
 \@writefile{lop}{\addvspace {8pt}}
 \@writefile{loi}{\addvspace {8pt}}
-\newlabel{a,cc-multi}{{A}{111}{Comparisons with Different Myelin Biomarkers\relax }{section*.10}{}}
+\newlabel{a,cc-multi}{{A}{113}{Comparisons with Different Myelin Biomarkers\relax }{section*.10}{}}
 \bibstyle{ieeetr}
-\@writefile{loa}{\contentsline {chapter}{\numberline {B}DESS in the Presence of Diffusion}{112}{section*.11}}
+\@writefile{loa}{\contentsline {chapter}{\numberline {B}DESS in the Presence of Diffusion}{114}{section*.11}}
 \@writefile{lof}{\addvspace {8pt}}
 \@writefile{lot}{\addvspace {8pt}}
 \@writefile{lom}{\addvspace {8pt}}
 \@writefile{lop}{\addvspace {8pt}}
 \@writefile{loi}{\addvspace {8pt}}
-\newlabel{a,dess-diff}{{B}{112}{Comparisons with Different Myelin Biomarkers\relax }{section*.11}{}}
+\newlabel{a,dess-diff}{{B}{114}{Comparisons with Different Myelin Biomarkers\relax }{section*.11}{}}
 \bibdata{../bib/master.bib,../bib/new.bib}
 \bibcite{keenan:16:msm}{1}
 \bibcite{ahn:03:seo}{2}
@@ -994,7 +1006,7 @@
 \bibcite{nataraj:14:rje}{9}
 \bibcite{nataraj:14:mbe}{10}
 \bibcite{nataraj:15:amm}{11}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{113}{section*.12}}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{115}{section*.12}}
 \bibcite{nataraj:17:dfm}{12}
 \bibcite{nataraj:17:mwf}{13}
 \bibcite{macovski:83}{14}
@@ -1147,8 +1159,11 @@
 \bibcite{miller:10:aot-1}{161}
 \bibcite{miller:10:aot-2}{162}
 \bibcite{magnus:54:ote}{163}
-\bibcite{whittall:89:qio}{164}
-\bibcite{lawson:74}{165}
-\bibcite{varma:15:mtf}{166}
-\bibcite{varma:15:iom}{167}
-\bibcite{swanson:17:mda}{168}
+\bibcite{lawson:74}{164}
+\bibcite{kroeker:86:aob}{165}
+\bibcite{whittall:89:qio}{166}
+\bibcite{prasloski:12:aos}{167}
+\bibcite{hennig:88:mis}{168}
+\bibcite{varma:15:mtf}{169}
+\bibcite{varma:15:iom}{170}
+\bibcite{swanson:17:mda}{171}

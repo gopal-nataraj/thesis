@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  27 FEB 2018 08:49
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  27 FEB 2018 23:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1493,52 +1493,53 @@ Overfull \hbox (10.7445pt too wide) in paragraph at lines 1023--1034
 ; f[]; T[]; T[]; T[]; T[]; ; r[]; r[]$\OT1/ptm/m/n/12 . This|
  []
 
-[98] [99] [100] [101] [102] [103] [104]
+[98] [99] [100] [101] [102] [103] [104] [105] [106]
 
-LaTeX Warning: Reference `s,krr,exp' on page 105 undefined on input line 1706.
+LaTeX Warning: Reference `s,krr,exp' on page 107 undefined on input line 1908.
 
+[107]
 
-LaTeX Warning: Reference `s,krr,exp' on page 105 undefined on input line 1758.
+LaTeX Warning: Reference `s,krr,exp' on page 108 undefined on input line 1960.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1778.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1980.
 
-LaTeX Warning: Reference `eq:conv,crit' on page 105 undefined on input line 177
-8.
+LaTeX Warning: Reference `eq:conv,crit' on page 108 undefined on input line 198
+0.
 
-[105]
-Overfull \hbox (41.06522pt too wide) in paragraph at lines 1789--1790
+
+Overfull \hbox (41.06522pt too wide) in paragraph at lines 1991--1992
  [][] |
  []
 
-[106] [107]
+[108] [109] [110]
 
-LaTeX Warning: Reference `eq:krr,x-hat' on page 108 undefined on input line 202
-4.
+LaTeX Warning: Reference `eq:krr,x-hat' on page 111 undefined on input line 222
+8.
 
-[108] [109]) [110]
+[111]) [112]
 APPENDIX A.
 (./a,cc-multi.tex
 
-LaTeX Warning: Reference `c,krr' on page 111 undefined on input line 13.
+LaTeX Warning: Reference `c,krr' on page 113 undefined on input line 13.
 
-) [111
+) [113
 
 
 ]
 APPENDIX B.
-(./a,dess-diff.tex) [112
+(./a,dess-diff.tex) [114
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [113
+ [115
 
 
-] [114] [115] [116] [117] [118]
-[119] [120] [121] [122] [123] [124])
+] [116] [117] [118] [119] [120]
+[121] [122] [123] [124] [125] [126])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 157.
- [125]
+ [127]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 157.
  (./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 157.
@@ -1553,12 +1554,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 157.
  ) 
 Here is how much of TeX's memory you used:
- 24150 strings out of 493489
- 448296 string characters out of 3141349
- 640434 words of memory out of 3000000
- 26714 multiletter control sequences out of 15000+200000
+ 24162 strings out of 493489
+ 448457 string characters out of 3141349
+ 640650 words of memory out of 3000000
+ 26726 multiletter control sequences out of 15000+200000
  33358 words of font info for 106 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,21n,61p,1922b,610s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,21n,61p,1922b,615s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (138 pages, 637192 bytes).
+Output written on root.dvi (140 pages, 649396 bytes).

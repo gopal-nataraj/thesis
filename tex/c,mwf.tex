@@ -1693,6 +1693,208 @@ through \invivo experiments.
 \subsection{Methods}
 \label{ss,mwf,exp,meth}
 
+In all simulations and experiments,
+we used data arising 
+from the fast SS scan profile 
+described in Subsection~\ref{ss,mwf,acq,detail}.
+Since this scan profile
+consisted of three DESS scans
+and each DESS scan 
+generates two signals per excitation,
+this acquisition yielded $D \gets 6$ datasets.
+We assumed non-exchanging two-compartment DESS signal models
+\eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0}
+and took the same assumptions
+as in Subsection~\ref{ss,mwf,acq,detail}
+to reduce model dependencies
+to $L \gets 6$ latent parameters 
+$\bmx \gets \brac{\ff,\tf{1},\tf{2},\ts{1},\ts{2},\const{3}}\tpose$
+and $K \gets 1$ known parameter 
+$\bmnu \gets \stx$ 
+per voxel.
+We focused on precisely estimating $\ff$ in WM 
+(as a proxy for MWF)
+from this fast DESS acquisition.
+We considered the other five latent parameters
+to be nuisance parameters
+and thus did not evaluate the performance 
+of their (possibly imprecise) estimators.
+
+% perk training/testing 
+We estimated $\ff$ 
+using the PERK estimator
+developed in Ch.~\ref{c,perk}.
+We trained, tuned, and tested PERK
+in much the same way 
+as in Subsection~\ref{ss,perk,exp,meth}.
+We assumed a separable prior distribution
+$\dist{\bmx,\bmnu} \gets 
+	\dist{\ff}\dist{\tf{1}}\dist{\tf{2}}
+	\dist{\ts{1}}\dist{\ts{2}}\dist{\const{3}}\dist{\stx}$.
+We set fast-relaxing fraction marginal distribution 
+$\dist{\ff} \gets \unif{-0.1,0.4}$ 
+and note that we sample negative values
+\footnote{%
+	Observe that our two-compartment signal models
+	are linear in $\ff$
+	and are therefore well-defined
+	for zero or even negative $\ff$ values.
+}
+with nonzero probability
+to ensure sampling bias
+does not contribute significantly
+to $\ff$ estimation bias,
+especially in low-$\ff$ regions.
+We chose relaxation parameter marginal distributions
+$\dist{\tf{1}} \gets \logunif{50,700}$ms,
+$\dist{\tf{2}} \gets \logunif{5,50}$ms,
+$\dist{\ts{1}} \gets \logunif{700,2000}$ms,
+$\dist{\ts{2}} \gets \logunif{50,300}$ms
+similar to those 
+used for scan design
+but with finite support.
+To match the scaling 
+of training and testing data,
+we set $\dist{\const{3}} \gets \unif{2.2 \times 10^{-16},u}$,
+with $u$ set as $10\times$ the maximum value 
+of magnitude test data.
+We estimated flip angle scaling marginal distribution $\dist{\stx}$
+from known $\stx$ map voxels
+via kernel density estimation 
+(implemented using the built-in \matlab function \texttt{fitdist}
+with default options)
+and then clipped the support of $\dist{\stx}$
+to assign nonzero probability
+only within $\brac{0.5,2}$.
+We assumed noise covariance $\bmSig$
+of form $\sigma^2 \eye{6}$ 
+and estimated the (spatially invariant) noise variance $\sigma^2$
+from Rayleigh-distributed regions
+of magnitude test data,
+using estimators described 
+in \cite{siddiqui:64:sif}.
+We sampled $N \gets 10^6$ latent and known parameter realizations
+from these distributions
+and evaluated two-compartment DESS signal models
+\eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0}
+to generate corresponding complex noiseless measurements.
+After adding complex Gaussian noise realizations,
+we concatenated the (Rician) magnitude 
+of these noisy measurements
+with known parameter realizations
+to construct pure-real regressors.
+We used Gaussian kernel \eqref{eq:perk,kern}
+with bandwidth matrix $\bmL$ 
+set based on test data scale
+via \eqref{eq:perk,bw}.
+We separately selected 
+and then held fixed 
+bandwidth scaling parameter $\lambda \gets 2^{0.3}$ 
+and regularization parameter $\rho \gets 2^{-19}$ 
+via holdout.
+In particular,
+we optimized holdout cost function \eqref{eq:perk,holdout}
+with holdout weighting matrix 
+$\bmW \gets \diag{\brac{1, \zeros{5}\tpose}\tpose}$ 
+set to focus only on $\ff$ estimation
+and with $T \gets 10^5$ holdout test points
+drawn from a distribution 
+very similar to $\dist{\bmx,\bmnu}$
+except with $\dist{\ff} \gets \unif{0.03,0.21}$
+to avoid division-by-zero issues.
+All other holdout details
+were identical to those
+described in Subsection~\ref{sss,perk,exp,meth,holdout}.
+We sampled random feature realizations $\bmv,s$ 
+$Z \gets 10^3$ times
+to construct approximate feature map $\bmztZ$ 
+via \eqref{eq:perk,feat}.
+For each $l$th latent parameter where $l \in \set{1,\dots,L}$,
+we applied $\bmztZ$ to training data;
+computed sample means $\mxl,\bmmzt$
+and sample covariances $\cztxl,\Cztzt$;
+and evaluated approximate PERK estimator \eqref{eq:perk,xl-apx}
+on test image data
+and the known flip angle scaling map
+on a per-voxel basis.
+
+We compared PERK $\ff$ estimates
+from the aforementioned DESS acquisition
+to two conventional MWF estimates
+from a MESE acquisition.
+The first conventional MWF estimate \cite{mackay:94:ivv}
+is related to the solution
+of a nonnegative least-squares (NNLS) problem \cite{lawson:74}
+\begin{align}
+	\esta{\bmx}{\bmy} \in \set{\argmin{\bmx \in \setX} \norm{\bmy - \bmA \bmx}_2^2},
+	\label{eq:mwf,nnls}
+\end{align}
+where $\bmy \in \reals{D}$ denotes 
+MESE echo amplitudes at $D$ echo times;
+$\bmA \in \reals{D \times L}$ models the $D$ MESE signals
+as weighted sums of $L$ discrete $\Tt$ component signals;
+$\setX \subset \reals{L}$ is the nonnegative orthant;
+and
+$\bmx \in \setX$ denotes $L$ component weights.
+Whereas solutions to \eqref{eq:mwf,nnls} tend to be sparse
+for $L>D$ as is typical,
+researchers have suggested
+that spectral distributions are more likely smooth
+in biological tissue \cite{kroeker:86:aob}.
+For smoother \invivo spectrum estimates 
+and for improved problem conditioning,
+we also compared 
+to a second MWF estimate \cite{whittall:89:qio}
+that is related to the solution
+of a regularized NNLS problem (RNNLS)
+\begin{align}
+	\esta{\bmx}{\bmy} \in \set{\argmin{\bmx \in \setX} \norm{\bmy - \bmA \bmx}_2^2
+		+ \beta \norm{\bmx}_2^2},
+	\label{eq:mwf,rnnls}
+\end{align}
+where $\beta$ is positive regularization parameter.
+Similar to \cite{mackay:94:ivv} or \cite{whittall:89:qio},
+each of the two conventional MWF estimators 
+are then respectively defined as 
+$\paren{\bmi\tpose \esta{\bmx}{\cdot}}/\norm{\esta{\bmx}{\cdot}}_1$,
+where $\esta{\bmx}{\cdot}$ is given
+by \eqref{eq:mwf,nnls} or \eqref{eq:mwf,rnnls}
+and $\bmi \in \set{0,1}^L$ is in both cases nonzero
+only in entries corresponding to $\Tt \in \brac{15,40}$ms.
+As recommended in recent MESE MWF imaging literature \cite{prasloski:12:aos},
+we computed MESE signal amplitudes
+using the extended phase graph (EPG) formalism \cite{hennig:88:mis}
+to account for stimulated echo contributions
+that persist in MESE due to non-ideal refocusing pulses.
+We accounted for non-ideal refocusing
+by assuming $\stx$ is known. 
+We also partially accounted for incomplete recovery
+by assuming bulk $\To$ is known. 
+To circumvent separate EPG simulations for every voxel,
+we clustered known $\stx,\To$ map voxels
+into $100$ clusters via $k$-means$++$ \cite{arthur:07:kmt}
+and ran only $100$ EPG simulations 
+using each of the cluster means.
+Iterating over clusters,
+we generated each cluster's system matrix 
+and solved \eqref{eq:mwf,nnls} and \eqref{eq:mwf,rnnls} 
+for MESE image voxels assigned to that cluster.
+We constructed NNLS and RNNLS MWF estimates
+by estimating $L \gets 100$ spectral component images
+from $D \gets 32$ MESE measurement images.
+We manually fixed RNNLS regularization parameter $\beta \gets 2^{-13}$
+as a small value that provided reasonable \invivo results.
+We solved \eqref{eq:mwf,nnls} and \eqref{eq:mwf,rnnls}
+using the \matlab function \texttt{lsqnonneg} 
+with default options.
+
+We performed simulations and experiments
+running \matlab R2013a 
+on a 3.5GHz desktop computer with 32GB RAM.
+In the interest of reproducible research,
+code and data will be freely available
+at \url{https://gitlab.eecs.umich.edu/fessler/qmri}.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Numerical Simulations}
 \label{ss,mwf,exp,sim}
@@ -1957,6 +2159,8 @@ to be about $0.05$ using GRASE.
   for building scan profiles
   that permit precise $\ff$ estimation.
 }
+
+% evidence of perk scalability
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Future Work}

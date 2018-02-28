@@ -84,12 +84,12 @@
 \contentsline {subsection}{\numberline {6.3.2}SPGR/DESS Scan Design Implementation Details}{103}{subsection.6.3.2}
 \contentsline {section}{\numberline {6.4}Experimentation}{105}{section.6.4}
 \contentsline {subsection}{\numberline {6.4.1}Methods}{105}{subsection.6.4.1}
-\contentsline {subsection}{\numberline {6.4.2}Numerical Simulations}{105}{subsection.6.4.2}
-\contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{105}{subsection.6.4.3}
-\contentsline {section}{\numberline {6.5}Discussion}{108}{section.6.5}
-\contentsline {section}{\numberline {6.6}Summary and Future Work}{108}{section.6.6}
-\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{108}{section*.7}
-\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{110}{section*.8}
-\contentsline {chapter}{Appendices}{111}{section*.9}
+\contentsline {subsection}{\numberline {6.4.2}Numerical Simulations}{107}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{107}{subsection.6.4.3}
+\contentsline {section}{\numberline {6.5}Discussion}{110}{section.6.5}
+\contentsline {section}{\numberline {6.6}Summary and Future Work}{110}{section.6.6}
+\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{111}{section*.7}
+\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{112}{section*.8}
+\contentsline {chapter}{Appendices}{113}{section*.9}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{113}{section*.12}
+\contentsline {chapter}{Bibliography}{115}{section*.12}
