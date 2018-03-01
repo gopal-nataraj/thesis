@@ -1,7 +1,7 @@
 \contentsline {chapter}{List of Figures}{iv}{section*.2}
 \contentsline {chapter}{List of Tables}{viii}{section*.3}
-\contentsline {chapter}{List of Appendices}{x}{section*.4}
-\contentsline {chapter}{Abstract}{xi}{section*.6}
+\contentsline {chapter}{List of Appendices}{xi}{section*.4}
+\contentsline {chapter}{Abstract}{xii}{section*.6}
 \vspace {1.3ex}\noindent {\bf Chapter}\vspace {1.3ex}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Thesis Overview}{2}{section.1.1}
@@ -85,11 +85,13 @@
 \contentsline {section}{\numberline {6.4}Experimentation}{105}{section.6.4}
 \contentsline {subsection}{\numberline {6.4.1}Methods}{105}{subsection.6.4.1}
 \contentsline {subsection}{\numberline {6.4.2}Numerical Simulations}{107}{subsection.6.4.2}
-\contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{107}{subsection.6.4.3}
-\contentsline {section}{\numberline {6.5}Discussion}{110}{section.6.5}
-\contentsline {section}{\numberline {6.6}Summary and Future Work}{110}{section.6.6}
-\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{111}{section*.7}
-\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{112}{section*.8}
-\contentsline {chapter}{Appendices}{113}{section*.9}
+\contentsline {subsubsection}{\numberline {6.4.2.1}Two-Compartment Simulation without Model Mismatch}{108}{subsubsection.6.4.2.1}
+\contentsline {subsubsection}{\numberline {6.4.2.2}Three-Compartment Simulation with Model Mismatch}{110}{subsubsection.6.4.2.2}
+\contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{110}{subsection.6.4.3}
+\contentsline {section}{\numberline {6.5}Discussion}{113}{section.6.5}
+\contentsline {section}{\numberline {6.6}Summary and Future Work}{113}{section.6.6}
+\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{113}{section*.7}
+\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{115}{section*.8}
+\contentsline {chapter}{Appendices}{116}{section*.9}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{115}{section*.12}
+\contentsline {chapter}{Bibliography}{118}{section*.12}

@@ -1,0 +1,16 @@
+nnls
+  40.340s
+
+rnnls
+  49.635s
+
+vpm
+  17726s (4.92h)
+pgpm
+  162s
+
+perk-train
+  33.775s
+perk-test
+  0.987s
+  

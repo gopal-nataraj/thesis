@@ -1680,9 +1680,8 @@ describes implementation details
 that are common
 to both simulations and experiments.
 Subsection~\ref{ss,mwf,exp,sim}
-studies PERK and grid search
-$\ff$ estimator statistics
-in numerical simulations.
+studies PERK and three other estimators' statistics
+in two numerical simulations.
 Subsection~\ref{ss,mwf,exp,invivo}
 compares PERK-based $\ff$ maps
 to MWF maps 
@@ -1696,7 +1695,7 @@ through \invivo experiments.
 In all simulations and experiments,
 we used data arising 
 from the fast SS scan profile 
-described in Subsection~\ref{ss,mwf,acq,detail}.
+described in Table~\ref{tab:mwf,acq}.
 Since this scan profile
 consisted of three DESS scans
 and each DESS scan 
@@ -1856,7 +1855,7 @@ where $\beta$ is positive regularization parameter.
 Similar to \cite{mackay:94:ivv} or \cite{whittall:89:qio},
 each of the two conventional MWF estimators 
 are then respectively defined as 
-$\paren{\bmi\tpose \esta{\bmx}{\cdot}}/\norm{\esta{\bmx}{\cdot}}_1$,
+$\mwfest := \paren{\bmi\tpose \esta{\bmx}{\cdot}}/\norm{\esta{\bmx}{\cdot}}_1$,
 where $\esta{\bmx}{\cdot}$ is given
 by \eqref{eq:mwf,nnls} or \eqref{eq:mwf,rnnls}
 and $\bmi \in \set{0,1}^L$ is in both cases nonzero
@@ -1898,6 +1897,237 @@ at \url{https://gitlab.eecs.umich.edu/fessler/qmri}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Numerical Simulations}
 \label{ss,mwf,exp,sim}
+
+This subsection studies
+PERK and maximum likelihood (ML) $\ff$ estimator statistics
+as well as 
+NNLS and RNNLS $\mwf$ estimator statistics 
+in two increasingly realistic simulations.
+Simulation~\ref{sss,mwf,exp,sim,2comp}
+investigates estimator performance
+when voxel data is simulated to arise 
+from two water compartments
+that recover with the same bulk $\To$ time constant,
+in which case none of the above estimators
+incur bias due to model mismatch.
+Simulation~\ref{sss,mwf,exp,sim,3comp}
+investigates estimator performance
+when voxel data is simulated 
+to more realistically arise
+from three water compartments
+that recover with compartment-specific $\To$ time constants,
+in which case any of the above estimators
+could incur bias due to model mismatch.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Two-Compartment Simulation without Model Mismatch}
+\label{sss,mwf,exp,sim,2comp}
+
+We first simulated data 
+to arise from two non-exchanging water compartments
+with different fast $\tf{2} \gets 20$ms
+and slow $\ts{2} \gets 80$ms
+transverse relaxation time constants
+(selected based on \cite{mackay:94:ivv,deoni:11:com})
+but the same bulk longitudinal relaxation time constant
+$\To \gets 832$ms in WM
+and $\To \gets 1331$ms in GM
+(selected based on \cite{wansapura:99:nrt}).
+With this two-compartment ground truth, 
+MWF $\mwf$ and fast-relaxing fraction $\ff$
+are equivalent and directly comparable.
+We assigned 
+$\mwf \equiv \ff \gets 0.15$ in WM
+and 
+$\mwf \equiv \ff \gets 0.03$ in GM
+and constrained corresponding slow-compartment fractions
+as $1-\ff$.
+We prescribed these parameter values
+to the $81$st slice
+of the BrainWeb digital phantom \cite{collins:98:dac}
+to produce $217 \times 181$ ground truth parameter maps.
+We allowed $\stx$ to model $20$\% flip angle spatial variation.
+Using extended phase graphs 
+to model stimulated echo contributions,
+we simulated noiseless single-coil $32$-echo MESE image data
+with nominal $90$ degrees excitation 
+and nominal $180$ degrees refocusing flip angles;
+$\TE \gets 10$ms echo interval spacing; 
+$\TR \gets 600$ms repetition time;
+and two cycles of gradient dephasing 
+before and after each refocusing pulse.
+We corrupted noiseless MESE images
+with additive complex Gaussian noise
+to yield noisy complex datasets
+with SNR ranging 
+from 17-868 in WM
+and 15-697 in GM,
+where SNR is defined
+\begin{align}
+	\snr{\bmyt,\bmepst} := \norm{\bmyt}_2/\norm{\bmepst}_2
+  \label{eq:mwf,snr}
+\end{align}
+for image data voxels $\bmyt$ and noise voxels $\bmepst$
+corresponding to a region of interest (ROI)
+within one image.
+We estimated MWF 
+from noisy magnitude MESE images
+and known $\To,\stx$ maps
+by solving NNLS \eqref{eq:mwf,nnls}
+and RNNLS \eqref{eq:mwf,rnnls} problems
+as explained in Subsection~\ref{ss,mwf,exp,meth}.
+NNLS and RNNLS respectively took $40.3$s and $49.6$s.
+
+Using non-exchanging two-compartment models 
+\eqref{eq:mwf,dess-def,mod-exchg0}-\eqref{eq:mwf,dess-ref,mod-exchg0},
+we also simulated noiseless single-coil DESS image data
+using the precision-optimized nominal flip angles and repetition times
+presented in Table~\ref{tab:mwf,acq}
+and fixed symmetric defocusing and refocusing echo times $\TE \gets 5.29$ms.
+We corrupted noiseless DESS images
+with additive complex Gaussian noise
+to yield noisy complex datasets
+with SNR ranging
+from 22-222 in WM 
+and 25-242 in GM,
+where SNR is computed via \eqref{eq:mwf,snr}.
+As detailed in Subsection~\ref{ss,mwf,exp,meth},
+we used PERK to estimate $\ff$
+from noisy magnitude DESS images
+and known $\stx$ maps.
+In simulations only,
+we compared PERK $\ff$ estimates
+to ML $\ff$ estimates
+achieved via the variable projection method \cite{golub:03:snl}
+and grid search.
+The ML estimate utilizes $20$ dictionaries 
+each consisting of nearly $8 \times 10^6$ signal vectors
+computed using finely spaced samples
+on an unrealistically narrow feasible region
+consisting of a hypercube
+with boundaries set 
+as $\brac{-0.1,0.4}$ in $\ff$ 
+and $\pm 20$\% away from the truth
+in other latent parameter dimensions.
+PERK training and testing respectively took $33.8$s and $1.0$s
+while ML estimation took $17726$s (nearly $5$h).
+
+\begin{figure}[!t]
+	\centering
+	\subfigure{%
+		\includegraphics [width=\textwidth] {%
+			2comp/mese-mw,dess-ff,sl-81,im.eps%
+		}
+		\label{fig:mwf,2comp,im}
+	}
+	\hspace{0cm}
+	\subfigure{%
+		\includegraphics [width=\textwidth,trim=0 0 0 25,clip] {%
+			2comp/mese-mw,dess-ff,sl-81,err.eps%
+		}
+		\label{fig:mwf,2comp,im}
+	}
+	\caption{%
+		NNLS/RNNLS MESE $\mwf$ and ML/PERK DESS $\ff$ estimates 
+		alongside corresponding magnitude error images,
+		in a two-compartment simulation
+		where none of the associated estimators
+		incur bias due to model mismatch.
+		Voxels not assigned WM- or GM-like compartmental fractions
+		are masked out in post-processing for display.
+		Table~\ref{tab:mwf,2comp} presents corresponding sample statistics.
+	}
+	\label{fig:mwf,2comp}
+\end{figure}
+
+% nnls and rnnls exhibit bias due to flip angle variation, even though perfectly known
+% rnnls underestimates due to regularization
+% perk clearly gives smaller wm error over ml
+Fig.~\ref{fig:mwf,2comp} compares NNLS and RNNLS $\mwf$ estimates
+as well as ML and PERK $\ff$ estimates 
+alongside magnitude difference images
+with respect to the ground truth $\mwf \equiv \ff$ map.
+Unlike both $\ff$ estimates,
+both $\mwf$ estimates visibly exhibit systematic error
+due to flip angle spatial variation
+despite perfect knowledge of $\stx$.
+The RNNLS $\mwf$ estimate exhibits greater error
+than the NNLS $\mwf$ estimate
+in both WM- and GM-like voxels
+due to regularization.
+The PERK $\ff$ estimate visibly exhibits less error 
+in WM-like voxels
+than the ML $\ff$ estimate,
+perhaps in part because PERK tuning parameters $\paren{\lambda,\rho}$
+were optimized via holdout 
+for estimating WM-like $\ff$ values.
+  
+\begin{table}[!t]
+	\centering
+	\begin{tabular}{r | r r}
+		\hline
+		\hline
+													& WM 															& GM \\
+		\hline
+		True $\mwf\equiv\ff$	& $0.15$ 													& $0.03$ \\
+		\hline
+		MESE-NNLS $\mwfest$ 	&	\mnstd{0.1375}{0.0187} (0.0225) & \mnstd{0.0203}{0.01296} (0.0162) \\
+		MESE-RNNLS $\mwfest$ 	& \mnstd{0.1285}{0.0146} (0.0260) & \mnstd{0.00207}{0.00524} (0.0284) \\
+		\hline
+		DESS-ML $\ffest$ 			& \mnstd{0.1590}{0.0433} (0.0442) & \mnstd{0.0334}{0.0272} (0.0274) \\
+		DESS-PERK $\ffest$ 		& \mnstd{0.1352}{0.0267} (0.0305) & \mnstd{0.0436}{0.0267} (0.0299) \\
+		\hline
+		\hline
+	\end{tabular}
+	\caption{%
+		Sample means $\pm$ sample standard deviations (RMSEs)
+		of NNLS/RNNLS MESE $\mwf$ estimates
+		and ML/PERK DESS $\ff$ estimates
+		in a two-compartment simulation
+		where none of the associated estimators
+		incur bias due to model mismatch.
+		Sample statistics are computed 
+		over $7810$ WM-like and $9162$ GM-like voxels.
+		Each sample statistic is rounded off 
+		to the highest place value
+		of its (unreported) standard error,
+		computed via formulas in \cite{ahn:03:seo}.
+		Fig.~\ref{fig:mwf,2comp} presents corresponding images.
+	}
+	\label{tab:mwf,2comp}
+\end{table}
+
+% with exception of mese-rnnls in gm, all estimates agree with truth to within one std
+% nnls more accurate but less precise than rnnls
+% nnls has least error overall, perhaps due to discrete compartments
+% perk more precise but less accurate than ml
+% perk provides better wm rmse than ml 
+% perk provides slightly worse gm rmse than ml
+Table~\ref{tab:mwf,2comp} compares samples statistics 
+of NNLS and RNNLS $\mwf$ estimates
+as well as ML and PERK $\ff$ estimates,
+computed over $7810$ WM-like and $9162$ GM-like voxels.
+With the exception 
+of the MESE-RNNLS GM $\mwf$ estimate,
+all other estimates agree with true values
+to within one standard deviation.
+The MESE-NNLS WM and GM $\ff$ estimates 
+achieve the least root mean-squared errors (RMSEs) overall.
+The RNNLS $\mwf$ estimate
+is more precise but less accurate
+than the NNLS $\mwf$ estimate
+due to regularization.
+The PERK $\ff$ estimate
+is more precise but less accurate
+than the ML $\ff$ estimate,
+perhaps also due to regularization.
+PERK $\ff$ estimates exhibit better WM RMSE
+and slightly worse GM RMSE
+than ML $\ff$ estimates.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Three-Compartment Simulation with Model Mismatch}
+\label{sss,mwf,exp,sim,3comp}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{\Invivo Experiments}
@@ -2072,8 +2302,8 @@ at least comparable in WM to those of GRASE.
 			\hline
 			ROI (\# voxels) & KRR & KRR, then ML \\
 			\hline
-			\WM \ffest ($725$) 	& \mnstd{0.130}{0.074} & \mnstd{0.134}{0.070} \\
-			\GM \ffest ($176$)	& \mnstd{0.063}{0.106} & \mnstd{0.063}{0.098} \\
+			\WM $\ffest$ ($725$) 	& \mnstd{0.130}{0.074} & \mnstd{0.134}{0.070} \\
+			\GM $\ffest$ ($176$)	& \mnstd{0.063}{0.106} & \mnstd{0.063}{0.098} \\
 			\hline
 			\hline
 		\end{tabu}
@@ -2109,12 +2339,12 @@ containing $725$ WM and $176$ GM voxels.
 Compared to its KRR initialization,
 local ML optimization
 does not appreciably change 
-WM/GM \ffest sample means
+WM/GM $\ffest$ sample means
 and mildly reduces sample standard deviations.
-Our WM \ffest sample means
+Our WM $\ffest$ sample means
 agree well with literature MESE measurements
 (\eg, see \cite[Fig.~3]{zhang:15:com}).
-Our GM \ffest sample means
+Our GM $\ffest$ sample means
 are not statistically meaningful
 because of high within-ROI sample variation,
 likely due to the common challenge
@@ -2335,8 +2565,8 @@ under the variable-$\To$ two-compartment model
 a MESE acquisition
 similar to the SPGR/DESS acquisition 
 presented in Table~\ref{tab:mwf,acq}
-and compare resulting SPGR/DESS and MESE \ffest maps. 
-If \ffest from these models do not measure MWF
+and compare resulting SPGR/DESS and MESE $\ffest$ maps. 
+If $\ffest$ from these models do not measure MWF
 with sufficient specificity,
 we could explore similar comparisons
 using more complicated models
