@@ -1,0 +1,6 @@
+mw/ff estimator statistics for slice 81
+	rows denote regions of interest
+	cols denote acquisitions-estimators
+                       Truth                   MESE-NNLS                  MESE-RNNLS                     DESS-ML                   DESS-PERK
+	 0.1500	± 0.0000 (0.0000)	 0.1910	± 0.0463 (0.0618)	 0.1699	± 0.0354 (0.0406)	 0.1987	± 0.0275 (0.0559)	 0.1576	± 0.0243 (0.0254)
+	 0.0300	± 0.0000 (0.0000)	 0.0349	± 0.0192 (0.0198)	 0.0027	± 0.0067 (0.0281)	 0.0632	± 0.0280 (0.0434)	 0.0754	± 0.0231 (0.0510)

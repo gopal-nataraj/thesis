@@ -87,11 +87,11 @@
 \contentsline {subsection}{\numberline {6.4.2}Numerical Simulations}{107}{subsection.6.4.2}
 \contentsline {subsubsection}{\numberline {6.4.2.1}Two-Compartment Simulation without Model Mismatch}{108}{subsubsection.6.4.2.1}
 \contentsline {subsubsection}{\numberline {6.4.2.2}Three-Compartment Simulation with Model Mismatch}{110}{subsubsection.6.4.2.2}
-\contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{110}{subsection.6.4.3}
-\contentsline {section}{\numberline {6.5}Discussion}{113}{section.6.5}
-\contentsline {section}{\numberline {6.6}Summary and Future Work}{113}{section.6.6}
-\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{113}{section*.7}
-\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{115}{section*.8}
-\contentsline {chapter}{Appendices}{116}{section*.9}
+\contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{112}{subsection.6.4.3}
+\contentsline {section}{\numberline {6.5}Discussion}{115}{section.6.5}
+\contentsline {section}{\numberline {6.6}Summary and Future Work}{115}{section.6.6}
+\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{115}{section*.7}
+\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{117}{section*.8}
+\contentsline {chapter}{Appendices}{118}{section*.9}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{118}{section*.12}
+\contentsline {chapter}{Bibliography}{120}{section*.12}

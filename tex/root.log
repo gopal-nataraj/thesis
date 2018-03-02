@@ -1,9 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  1 MAR 2018 12:25
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  2 MAR 2018 08:12
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**root.tex
+**root
 (./root.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
@@ -1095,6 +1094,12 @@ LaTeX Warning: Label `fig:mwf,2comp,im' multiply defined.
 
 LaTeX Warning: Label `sub@fig:mwf,2comp,im' multiply defined.
 
+
+LaTeX Warning: Label `fig:mwf,3comp,im' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:mwf,3comp,im' multiply defined.
+
 )
 \openout1 = `root.aux'.
 
@@ -1579,7 +1584,7 @@ Package xcolor Warning: Incompatible color definition on input line 51.
 Package xcolor Warning: Incompatible color definition on input line 53.
 
 
-LaTeX Warning: Reference `mwf,2comp' on page vii undefined on input line 53.
+Package xcolor Warning: Incompatible color definition on input line 53.
 
 
 Package xcolor Warning: Incompatible color definition on input line 54.
@@ -1588,19 +1593,25 @@ Package xcolor Warning: Incompatible color definition on input line 54.
 Package xcolor Warning: Incompatible color definition on input line 54.
 
 
-Package xcolor Warning: Incompatible color definition on input line 54.
+Package xcolor Warning: Incompatible color definition on input line 55.
 
 
-Package xcolor Warning: Incompatible color definition on input line 54.
+Package xcolor Warning: Incompatible color definition on input line 55.
 
 
-Package xcolor Warning: Incompatible color definition on input line 54.
+Package xcolor Warning: Incompatible color definition on input line 55.
 
 
-Package xcolor Warning: Incompatible color definition on input line 54.
+Package xcolor Warning: Incompatible color definition on input line 55.
 
 
-Overfull \hbox (12.91975pt too wide) in paragraph at lines 54--54
+Package xcolor Warning: Incompatible color definition on input line 55.
+
+
+Package xcolor Warning: Incompatible color definition on input line 55.
+
+
+Overfull \hbox (12.91975pt too wide) in paragraph at lines 55--55
  \OT1/ptm/m/n/12 MWF es-ti-mates are from healthy vol-un-teers, but those from 
 GRASE/mcDESPOT 
  []
@@ -1719,11 +1730,27 @@ Package xcolor Warning: Incompatible color definition on input line 18.
 
 Package xcolor Warning: Incompatible color definition on input line 18.
 
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Overfull \hbox (8.51309pt too wide) in paragraph at lines 18--18
+ [][] [][][]\OT1/ptm/m/n/12 Sample means $\OMS/cmsy/m/n/12 ^^F$ \OT1/ptm/m/n/12
+ sam-ple stan-dard de-vi-a-tions (RM-SEs) of NNLS/RNNLS MESE 
+ []
+
+[9]
+
+Package xcolor Warning: Incompatible color definition on input line 19.
+
+
+Package xcolor Warning: Incompatible color definition on input line 19.
+
 )
 \tf@lot=\write7
 \openout7 = `root.lot'.
 
- [9] [10] (./root.loa
+ [10] (./root.loa
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
@@ -5158,55 +5185,143 @@ Package xcolor Warning: Incompatible color definition on input line 2096.
 Package xcolor Warning: Incompatible color definition on input line 2106.
 
 
-LaTeX Warning: Reference `s,krr,exp' on page 109 undefined on input line 2138.
+Package xcolor Warning: Incompatible color definition on input line 2139.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2142.
+Package xcolor Warning: Incompatible color definition on input line 2139.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2151.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2158.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2162.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2163.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2164.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2168.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2168.
+
+
+Overfull \hbox (2.21584pt too wide) in paragraph at lines 2132--2172
+\OT1/ptm/m/n/12 We next sim-u-lated data to arise from three non-exchanging wa-
+ter com-part-ments with myelin
+ []
+
+
+Overfull \hbox (4.21635pt too wide) in paragraph at lines 2132--2172
+\OT1/ptm/m/n/12 water-like $[][]$ms, cel-lu-lar water-like $[][]$ms, and free w
+ater-like $[][]$ms
+ []
 
 [109]
+File: ../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,im.eps Graphic file (type eps)
+ <../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,im.eps>
+File: ../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,err.eps Graphic file (type eps)
 
-Package xcolor Warning: Incompatible color definition on input line 2153.
-
-
-Package xcolor Warning: Incompatible color definition on input line 2160.
-
-
-Package xcolor Warning: Incompatible color definition on input line 2169.
-
-
-Package xcolor Warning: Incompatible color definition on input line 2170.
+<../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,err.eps>
+Overfull \hbox (3.00002pt too wide) in paragraph at lines 2180--2197
+ [][] 
+ []
 
 
-Package xcolor Warning: Incompatible color definition on input line 2173.
-
-
-Package xcolor Warning: Incompatible color definition on input line 2185.
-
-
-Package xcolor Warning: Incompatible color definition on input line 2187.
-
-
-LaTeX Warning: Reference `s,krr,exp' on page 110 undefined on input line 2190.
-
-
-Package xcolor Warning: Incompatible color definition on input line 2195.
+Overfull \hbox (3.00002pt too wide) in paragraph at lines 2180--2197
+ [][][]  [] 
+ []
 
 
 Package xcolor Warning: Incompatible color definition on input line 2197.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2210.
+Package xcolor Warning: Incompatible color definition on input line 2197.
 
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2210.
 
-LaTeX Warning: Reference `eq:conv,crit' on page 110 undefined on input line 221
-0.
+Package xcolor Warning: Incompatible color definition on input line 2206.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2222.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2228.
 
 [110]
+
+Package xcolor Warning: Incompatible color definition on input line 2263.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2263.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2263.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2263.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2276.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2280.
+
+[111]
+
+LaTeX Warning: Reference `s,krr,exp' on page 112 undefined on input line 2311.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2315.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2326.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2333.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2342.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2343.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2346.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2358.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2360.
+
+
+LaTeX Warning: Reference `s,krr,exp' on page 112 undefined on input line 2363.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2368.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2370.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2383.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2383.
+
+LaTeX Warning: Reference `eq:conv,crit' on page 112 undefined on input line 238
+3.
+
+[112]
 File: ../fig/c,mwf/ff,log2c-0,krr-ml.eps Graphic file (type eps)
  <../fig/c,mwf/ff,log2c-0,krr-ml.eps>
-Overfull \hbox (41.06522pt too wide) in paragraph at lines 2221--2222
+Overfull \hbox (41.06522pt too wide) in paragraph at lines 2394--2395
  [][] 
  []
 
@@ -5215,143 +5330,143 @@ File: ../fig/c,mwf/mwf,grase.eps Graphic file (type eps)
 File: ../fig/c,mwf/mwf,mcdespot.eps Graphic file (type eps)
  <../fig/c,mwf/mwf,mcdespot.eps>
 
-Package xcolor Warning: Incompatible color definition on input line 2254.
+Package xcolor Warning: Incompatible color definition on input line 2427.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2254.
+Package xcolor Warning: Incompatible color definition on input line 2427.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2254.
+Package xcolor Warning: Incompatible color definition on input line 2427.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2254.
+Package xcolor Warning: Incompatible color definition on input line 2427.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2254.
+Package xcolor Warning: Incompatible color definition on input line 2427.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2254.
+Package xcolor Warning: Incompatible color definition on input line 2427.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2254.
+Package xcolor Warning: Incompatible color definition on input line 2427.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2254.
+Package xcolor Warning: Incompatible color definition on input line 2427.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2254.
+Package xcolor Warning: Incompatible color definition on input line 2427.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2254.
+Package xcolor Warning: Incompatible color definition on input line 2427.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2258.
+Package xcolor Warning: Incompatible color definition on input line 2431.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2268.
+Package xcolor Warning: Incompatible color definition on input line 2441.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2269.
+Package xcolor Warning: Incompatible color definition on input line 2442.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2272.
+Package xcolor Warning: Incompatible color definition on input line 2445.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2274.
+Package xcolor Warning: Incompatible color definition on input line 2447.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2276.
+Package xcolor Warning: Incompatible color definition on input line 2449.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2278.
+Package xcolor Warning: Incompatible color definition on input line 2451.
 
 File: ../fig/c,mwf/roi.eps Graphic file (type eps)
 <../fig/c,mwf/roi.eps>
 
-Package xcolor Warning: Incompatible color definition on input line 2326.
+Package xcolor Warning: Incompatible color definition on input line 2499.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2326.
+Package xcolor Warning: Incompatible color definition on input line 2499.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2335.
+Package xcolor Warning: Incompatible color definition on input line 2508.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2346.
+Package xcolor Warning: Incompatible color definition on input line 2519.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2355.
+Package xcolor Warning: Incompatible color definition on input line 2528.
 
-[111] [112]
+[113] [114]
 
-Package xcolor Warning: Incompatible color definition on input line 2435.
-
-
-Package xcolor Warning: Incompatible color definition on input line 2446.
+Package xcolor Warning: Incompatible color definition on input line 2608.
 
 
-LaTeX Warning: Reference `eq:krr,x-hat' on page 113 undefined on input line 245
-8.
+Package xcolor Warning: Incompatible color definition on input line 2619.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2461.
+LaTeX Warning: Reference `eq:krr,x-hat' on page 115 undefined on input line 263
+1.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2463.
+Package xcolor Warning: Incompatible color definition on input line 2634.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2465.
+Package xcolor Warning: Incompatible color definition on input line 2636.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2467.
-
-[113]
-
-Package xcolor Warning: Incompatible color definition on input line 2480.
+Package xcolor Warning: Incompatible color definition on input line 2638.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2485.
+Package xcolor Warning: Incompatible color definition on input line 2640.
+
+[115]
+
+Package xcolor Warning: Incompatible color definition on input line 2653.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2485.
+Package xcolor Warning: Incompatible color definition on input line 2658.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2530.
+Package xcolor Warning: Incompatible color definition on input line 2658.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2532.
+Package xcolor Warning: Incompatible color definition on input line 2703.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2567.
+Package xcolor Warning: Incompatible color definition on input line 2705.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2589.
+Package xcolor Warning: Incompatible color definition on input line 2740.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2594.
+Package xcolor Warning: Incompatible color definition on input line 2762.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2594.
+Package xcolor Warning: Incompatible color definition on input line 2767.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2599.
+Package xcolor Warning: Incompatible color definition on input line 2767.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2599.
+Package xcolor Warning: Incompatible color definition on input line 2772.
 
-) [114] [115]
+
+Package xcolor Warning: Incompatible color definition on input line 2772.
+
+) [116] [117]
 APPENDIX A.
 (./a,cc-multi.tex
 
 Package xcolor Warning: Incompatible color definition on input line 13.
 
 
-LaTeX Warning: Reference `c,krr' on page 116 undefined on input line 13.
+LaTeX Warning: Reference `c,krr' on page 118 undefined on input line 13.
 
 
 Package xcolor Warning: Incompatible color definition on input line 14.
 
-) [116
+) [118
 
 
 ]
@@ -5369,18 +5484,18 @@ Package xcolor Warning: Incompatible color definition on input line 17.
 
 Package xcolor Warning: Incompatible color definition on input line 17.
 
-) [117
+) [119
 
 ] (./root.bbl
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [118
+ [120
 
 
-] [119] [120] [121] [122] [123] [124] [125] [126]
-[127] [128] [129])
+] [121] [122] [123] [124] [125] [126] [127] [128]
+[129] [130] [131])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 157.
- [130]
+ [132]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 157.
  (./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 157.
@@ -5397,12 +5512,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 157.
  ) 
 Here is how much of TeX's memory you used:
- 24306 strings out of 493489
- 452872 string characters out of 3141349
- 650482 words of memory out of 3000000
- 26856 multiletter control sequences out of 15000+200000
+ 24322 strings out of 493489
+ 453220 string characters out of 3141349
+ 651526 words of memory out of 3000000
+ 26865 multiletter control sequences out of 15000+200000
  33142 words of font info for 105 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,21n,61p,1922b,625s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,21n,61p,1918b,629s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (144 pages, 1040096 bytes).
+Output written on root.dvi (146 pages, 1057104 bytes).

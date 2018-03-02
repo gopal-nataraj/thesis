@@ -1970,7 +1970,7 @@ where SNR is defined
 for image data voxels $\bmyt$ and noise voxels $\bmepst$
 corresponding to a region of interest (ROI)
 within one image.
-We estimated MWF 
+We estimated $\mwf$ 
 from noisy magnitude MESE images
 and known $\To,\stx$ maps
 by solving NNLS \eqref{eq:mwf,nnls}
@@ -2072,7 +2072,7 @@ for estimating WM-like $\ff$ values.
 		True $\mwf\equiv\ff$	& $0.15$ 													& $0.03$ \\
 		\hline
 		MESE-NNLS $\mwfest$ 	&	\mnstd{0.1375}{0.0187} (0.0225) & \mnstd{0.0203}{0.01296} (0.0162) \\
-		MESE-RNNLS $\mwfest$ 	& \mnstd{0.1285}{0.0146} (0.0260) & \mnstd{0.00207}{0.00524} (0.0284) \\
+		MESE-RNNLS $\mwfest$ 	& \mnstd{0.1285}{0.0146} (0.0260) & \mnstd{0.00207}{0.00524} (0.02841) \\
 		\hline
 		DESS-ML $\ffest$ 			& \mnstd{0.1590}{0.0433} (0.0442) & \mnstd{0.0334}{0.0272} (0.0274) \\
 		DESS-PERK $\ffest$ 		& \mnstd{0.1352}{0.0267} (0.0305) & \mnstd{0.0436}{0.0267} (0.0299) \\
@@ -2128,6 +2128,179 @@ than ML $\ff$ estimates.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Three-Compartment Simulation with Model Mismatch}
 \label{sss,mwf,exp,sim,3comp}
+
+We next simulated data
+to arise from three non-exchanging water compartments
+with myelin water-like $\paren{500,20}$ms,
+cellular water-like $\paren{1000,80}$ms,
+and 
+free water-like $\paren{3000,3000}$ms
+(longitudinal, transverse) relaxation time constants
+selected based on \cite{mackay:94:ivv,deoni:11:com}.
+With this three-compartment ground truth,
+the aforementioned MESE MWF estimators 
+could incur bias due to their bulk-$\To$ assumption
+and the aforementioned DESS fast-fraction estimators 
+could incur bias due to their two-compartment assumption.
+Thus $\mwf$ and $\ff$ are not equivalent here
+and their estimates need not necessarily be comparable.
+We assigned (myelin, cellular, free) water-like fractions
+of $\paren{0.15,0.82,0.03}$ in WM,
+and $\paren{0.03,0.94,0.03}$ in GM.
+We simulated data 
+otherwise exactly as detailed in Simulation~\ref{sss,mwf,exp,sim,2comp}
+to yield MESE image datasets
+with SNR ranging from $24-795$ in WM
+and $29-862$ in GM
+and to yield DESS image datasets
+with SNR ranging from $24-221$ in WM
+and $30-241$ in GM,
+where SNR is computed via \eqref{eq:mwf,snr}.
+We estimated $\mwf$ 
+from noisy magnitude MESE images
+and known bulk $\To$ and $\stx$ maps
+by solving NNLS \eqref{eq:mwf,nnls}
+and RNNLS \eqref{eq:mwf,rnnls} problems
+as explained in Subsection~\ref{ss,mwf,exp,meth}.
+We estimated $\ff$ 
+from noisy magnitude DESS images and known $\stx$ maps
+using PERK and ML estimators,
+as explained in Subsections~\ref{ss,mwf,exp,meth}-\ref{sss,mwf,exp,sim,2comp} respectively.
+NNLS and RNNLS respectively took $42.7$s and $69.2$s.
+PERK training and testing respectively took $34.2$s and $1.1$s
+while ML estimation took $17681$s (nearly 5h).
+
+\begin{figure}[!t]
+	\centering
+	\subfigure{%
+		\includegraphics [width=\textwidth] {%
+			3comp/mese-mw,dess-ff,sl-81,im.eps%
+		}
+		\label{fig:mwf,3comp,im}
+	}
+	\hspace{0cm}
+	\subfigure{%
+		\includegraphics [width=\textwidth,trim=0 0 0 25,clip] {%
+			3comp/mese-mw,dess-ff,sl-81,err.eps%
+		}
+		\label{fig:mwf,3comp,im}
+	}
+	\caption{%
+		NNLS/RNNLS MESE $\mwf$ and ML/PERK DESS $\ff$ estimates 
+		alongside corresponding magnitude error images,
+		in a three-compartment simulation
+		where any of the associated estimators
+		could incur bias due to model mismatch.
+		Voxels not assigned WM- or GM-like compartmental fractions
+		are masked out in post-processing for display.
+		Table~\ref{tab:mwf,3comp} presents corresponding sample statistics.
+	}
+	\label{fig:mwf,3comp}
+\end{figure}
+
+% all estimates are systematically higher than fig. 2, 
+% 	indicating varying levels of sensitivity to model mismatch
+% still see mese errors due to spatial variation
+% all estimators except mese rnnls have greater error in gm
+% all estimators except dess perk have visibly greater error in wm
+Fig.~\ref{fig:mwf,3comp} compares NNLS and RNNLS $\mwf$ estimates
+as well as ML and PERK $\ff$ estimates
+alongside magnitude difference images
+with respect to the ground truth MWF.
+The PERK $\ff$ estimator achieves the lowest errors in WM
+but overestimates in GM
+(as does the ML $\ff$ estimator),
+causing for reduced WM/GM contrast
+relative to other estimators.
+Unlike both $\ff$ estimates,
+both $\mwf$ estimates visibly exhibit systematic error
+due to flip angle spatial variation,
+despite perfect knowledge of $\stx$.
+All estimates are higher
+(though to varying degrees)
+than corresponding estimates 
+presented in Fig.~\ref{fig:mwf,2comp},
+indicating some sensitivity to model mismatch.
+Except for PERK $\ff$ estimates in WM
+and RNNLS $\mwf$ estimates in GM,
+all estimates exhibit greater error
+than corresponding estimates 
+presented in Fig.~\ref{fig:mwf,2comp},
+indicating that in most cases 
+model mismatch is detrimental to estimation performance.
+
+\begin{table}[!t]
+	\centering
+	\begin{tabular}{r | r r}
+		\hline
+		\hline
+													& WM 															& GM \\
+		\hline
+		True $\mwf\equiv\ff$	& $0.15$ 													& $0.03$ \\
+		\hline
+		MESE-NNLS $\mwfest$ 	&	\mnstd{0.1910}{0.0463} (0.0618) & \mnstd{0.0349}{0.0192} (0.0198) \\
+		MESE-RNNLS $\mwfest$ 	& \mnstd{0.1699}{0.0354} (0.0406) & \mnstd{0.00272}{0.00673} (0.02809) \\
+		\hline
+		DESS-ML $\ffest$ 			& \mnstd{0.1987}{0.0275} (0.0559) & \mnstd{0.0632}{0.0280} (0.0434) \\
+		DESS-PERK $\ffest$ 		& \mnstd{0.1576}{0.0243} (0.0254) & \mnstd{0.0754}{0.0231} (0.0510) \\
+		\hline
+		\hline
+	\end{tabular}
+	\caption{%
+		Sample means $\pm$ sample standard deviations (RMSEs)
+		of NNLS/RNNLS MESE $\mwf$ estimates
+		and ML/PERK DESS $\ff$ estimates
+		in a three-compartment simulation
+		where any of the associated estimators
+		could incur bias due to model mismatch.
+		Sample statistics are computed 
+		over $7810$ WM-like and $9162$ GM-like voxels.
+		Each sample statistic is rounded off 
+		to the highest place value
+		of its (unreported) standard error,
+		computed via formulas in \cite{ahn:03:seo}.
+		Fig.~\ref{fig:mwf,3comp} presents corresponding images.
+	}
+	\label{tab:mwf,3comp}
+\end{table}
+
+% now, several estimates >1sd higher than truth
+% dess-perk most accurate and least rmse in wm (but highest rmse in gm)
+% mese-nnls most accurate and least rmse in gm (but highest rmse in wm)
+% mese-rnnls now both more accurate and more precise than mese-nnls in wm
+% dess-perk now both more accurate and more precise than dess-ml in wm
+% fortunately, mese-rnnls mwf and dess-perk ff estimates do not differ significantly in wm
+% 	though they do in gm
+% 	suggesting that these may be comparable even when characterizing 3-compartment systems,
+% 	at least for the parameters selected here
+Table~\ref{tab:mwf,3comp} compares sample statistics
+of NNLS and RNNLS $\mwf$ estimates
+as well as ML and PERK $\ff$ estimates,
+computed over the same WM-like and GM-like ROIs
+as in Table~\ref{tab:mwf,2comp}.
+Several estimates now differ from true values
+by more than one standard deviation,
+indicating significant bias due to model mismatch
+in these cases.
+The PERK $\ff$ estimator is most accurate 
+and achieves the lowest RMSE in WM,
+but also suffers from the highest RMSE in GM.
+The NNLS $\mwf$ estimator is most accurate
+and achieves the lowest RMSE in GM,
+but also suffers from the highest RMSE in WM.
+RNNLS $\mwf$ (PERK $\ff$) estimates are now
+both more accurate and more precise
+than NNLS $\mwf$ (ML $\ff$) estimates
+in WM,
+suggesting that regularization may be beneficial
+in cases of model mismatch.
+Perhaps surprisingly,
+RNNLS $\mwf$ and PERK $\ff$ estimates 
+do not differ significantly in WM
+(but do differ in GM)
+suggesting that these WM estimates may be comparable
+even when characterizing 3-compartment systems,
+at least for the nominal values selected here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{\Invivo Experiments}
