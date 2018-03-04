@@ -1,0 +1,14 @@
+nnls 
+  57.433s
+
+rnnls
+  122.894s
+
+perk-train
+  37.130s
+perk-test
+  0.968s
+
+pgpm for 100 iterations
+  318.321s
+

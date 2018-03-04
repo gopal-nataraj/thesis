@@ -1,12 +1,5 @@
 % document prep macros
 
-% color
-\definecolor{forestgreen}{RGB}{0, 150, 0}
-\definecolor{blue(munsell)}{rgb}{0.0, 0.5, 0.69}
-\definecolor{gold}{rgb}{1.0, 0.84, 0.0}
-\definecolor{darkorange}{rgb}{1.0, 0.55, 0.0}
-\definecolor{darkred}{RGB}{196, 30, 58}
-
 % revision
 \newcommand{\edit}[1]{{\color{blue}#1}}
 \newcommand{\todo}[1]{{\color{magenta}todo:\,#1}}
@@ -52,16 +45,36 @@
 % showlabel
 \renewcommand{\showlabelfont}{\footnotesize\color{blue}}
 
-% brain
+% c,scn-dsgn and c,perk colors
+\definecolor{forestgreen}{RGB}{0, 150, 0}
+\definecolor{blue(munsell)}{rgb}{0.0, 0.5, 0.69}
+\definecolor{gold}{rgb}{1.0, 0.84, 0.0}
+\definecolor{darkorange}{rgb}{1.0, 0.55, 0.0}
+\definecolor{darkred}{RGB}{196, 30, 58}
+
+% c,scn-dsgn and c,perk brain rois
 \newcommand{\AR}{\textcolor{gold}{AR}\xspace}
 \newcommand{\AL}{\textcolor{magenta}{AL}\xspace}
 \newcommand{\PR}{\textcolor{forestgreen}{PR}\xspace}
 \newcommand{\PL}{\textcolor{blue}{PL}\xspace}
 \newcommand{\A}{\textcolor{cyan}{A}\xspace}
 
+% c,mwf colors
+\definecolor{mat-red}{rgb}{0.6350, 0.0780, 0.1840}
+\definecolor{mat-orange}{rgb}{0.8500, 0.3250, 0.0980}
+\definecolor{mat-yellow}{rgb}{0.9290, 0.6940, 0.1250}
+\definecolor{mat-purple}{rgb}{0.4940, 0.1840, 0.5560}
+\definecolor{mat-green}{rgb}{0.4660, 0.6740, 0.1880}
+\definecolor{mat-cyan}{rgb}{0.3010, 0.7450, 0.9330}
+
+% c,mwf brain rois
+\newcommand{\RA}{\textcolor{mat-red}{AR}\xspace}
+\newcommand{\LA}{\textcolor{mat-orange}{AL}\xspace}
+\newcommand{\RP}{\textcolor{mat-yellow}{PR}\xspace}
+\newcommand{\LP}{\textcolor{mat-purple}{PL}\xspace}
+\newcommand{\IC}{\textcolor{mat-green}{IC}\xspace}
+\newcommand{\AC}{\textcolor{mat-cyan}{AC}\xspace}
+
 % variable width
 \newcommand{\vwidth}[2]{\begin{varwidth}{#1}#2\end{varwidth}}
 
-% wm/gm
-\newcommand{\WM}{\textcolor{magenta}{WM}\xspace}
-\newcommand{\GM}{\textcolor{cyan}{GM}\xspace}

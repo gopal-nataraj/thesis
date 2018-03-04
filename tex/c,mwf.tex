@@ -1863,7 +1863,7 @@ only in entries corresponding to $\Tt \in \brac{15,40}$ms.
 As recommended in recent MESE MWF imaging literature \cite{prasloski:12:aos},
 we computed MESE signal amplitudes
 using the extended phase graph (EPG) formalism \cite{hennig:88:mis}
-to account for stimulated echo contributions
+to account for stimulated echo signal contributions
 that persist in MESE due to non-ideal refocusing pulses.
 We accounted for non-ideal refocusing
 by assuming $\stx$ is known. 
@@ -1948,7 +1948,8 @@ of the BrainWeb digital phantom \cite{collins:98:dac}
 to produce $217 \times 181$ ground truth parameter maps.
 We allowed $\stx$ to model $20$\% flip angle spatial variation.
 Using extended phase graphs 
-to model stimulated echo contributions,
+to model stimulated echo signal contributions
+due to non-ideal refocusing,
 we simulated noiseless single-coil $32$-echo MESE image data
 with nominal $90$ degrees excitation 
 and nominal $180$ degrees refocusing flip angles;
@@ -1991,10 +1992,10 @@ with SNR ranging
 from 22-222 in WM 
 and 25-242 in GM,
 where SNR is computed via \eqref{eq:mwf,snr}.
-As detailed in Subsection~\ref{ss,mwf,exp,meth},
-we used PERK to estimate $\ff$
+We estimated $\ff$ 
 from noisy magnitude DESS images
-and known $\stx$ maps.
+and known $\stx$ maps
+as detailed in Subsection~\ref{ss,mwf,exp,meth}.
 In simulations only,
 we compared PERK $\ff$ estimates
 to ML $\ff$ estimates
@@ -2306,227 +2307,343 @@ at least for the nominal values selected here.
 \subsection{\Invivo Experiments}
 \label{ss,mwf,exp,invivo}
 
-As a second step toward validation
-(the first being simulation results 
-presented in Section~\ref{s,krr,exp}),
-we estimate $\ff$ maps
-from \invivo datasets acquired
-using the precision-optimized scan profile
-developed in Section~\ref{s,mwf,acq}.
-For preliminary discussion,
-we qualitatively compare our $\ff$ maps 
-with other state-of-the-art MWF proxies
-described in recent literature.
-
-In a single continuous study
-of a healthy volunteer,
-we collected a scan profile 
-consisting of $4$ SPGR and $3$ DESS datasets
-whose flip angles and repetition times
-(listed in Table~\ref{tab:mwf,acq}) 
-are optimized 
-to permit precise $\ff$ estimation. 
-We obtained 3D axial slices 
+We acquired \invivo data 
 using a GE Discovery\tmark MR750 3.0T scanner
 with a 32-channel Nova Medical\regis receive head array.
-All other acquisition details were identical
-to those described in Section~\ref{sss,scn-dsgn,exp,phant,roi}.
-Most importantly,
-we acquired all data 
-at fixed $\TE \gets 4.67$ms
-before and after RF excitations,
-which is minimal
-given other pulse sequence timing requirements
-and thus minimizes model mismatch 
-due to compartmental off-resonance effects
-(characterized in Section~\ref{s,mwf,model}).
-Also as in Section~\ref{sss,scn-dsgn,exp,phant,roi},
-we separately estimated
-transmit field sensitivity $\stx$
-from a Bloch-Siegert acquisition \cite{sacolick:10:bmb}
-and took $\stx$ as known
-for $\ff$ estimation.
-For $256\times256\times8$ fully-sampled 3D Cartesian acquisitions
-(each over a $240\times240\times40$mm$^3$ field of view),
-SPGR/DESS and Bloch-Siegert acquisitions respectively took totals
-of 10m8s and 1m40s. 
+In a single long study 
+of a healthy volunteer,
+we collected the DESS acquisition
+described in Subsection~\ref{ss,mwf,acq,detail};
+a MESE acquisition for validation;
+an SPGR acquisition
+for separate bulk $\To$ estimation;
+and a Bloch-Siegert (BS) acquisition
+for separate $\stx$ estimation.
+Each of these acquisitions is described next in turn.
 
-After Fourier transform of the raw coil SPGR/DESS data,
-we normalized and combined 
-one central slice 
-of each coil image
-using an extension of \cite{ying:07:jir}
+We acquired DESS data
+by prescribing the optimized nominal flip angles and repetition times
+presented in Table~\ref{tab:mwf,acq}
+and holding all other scan parameters fixed
+across DESS scans.
+We achieved desired nominal flip angles
+by scaling a 9.0mm slab-selective Shinnar-Le Roux (SLR) pulse \cite{pauly:91:prf}
+of duration 3.0ms and time-bandwidth product 6.
+We interleaved RF excitations 
+with 2 gradient dephasing phase cycles
+over a 3mm slice thickness
+to distinguish the DESS echoes.
+We acquired DESS data
+with a $200\times200\times8$ matrix
+over a $240\times240\times24$mm$^3$ field of view (FOV).
+Using a $31.25$kHz readout bandwidth,
+we acquired 3D axial DESS data at minimum $\TE \gets 5.29$ms
+before and after RF excitations.
+To avoid slice-profile effects,
+we sampled $\bmk$-space over a 3D Cartesian grid.
+Including time to reach steady-state,
+the DESS acquisition took 3m15s scan time.
+
+% same excitation but 90deg
+% 32 nominal 180 ref pulses, 21.0mm slab thickness (centered over excitation slab), 2.0ms duration, tbw2, sep by min te, first at te/2
+% refocusing pulses surrounded by symmetric gradient crusher pairs that impart 14cycles phase across 21.0mm slab thickness (2cycles per slice)
+% acquired 32 echoes te/2 after each refocusing pulse
+% 8 cycles spoiling after last echo to suppress residual transverse mag
+% short tr of 600ms (but account for bulk t1 in recon)
+% repeat twice for better snr
+% acquired mese data over same volume, readout bandwidth, k-space trajectory as above
+% total time including 3 empty repetitions to reach steady state, each MESE scan took 961.8s (16m1.8s) for total MESE acquisition time of 32m3.6s
+We acquired MESE data
+with nominally $90^\circ$ excitation flip angles,
+achieved by scaling the same SLR pulse shape as above.
+A sequence of 32 identical nominally $180^\circ$ refocusing pulses
+succeeded each excitation,
+where the time between excitation and first refocusing pulse peaks
+was fixed to the minimum possible $\frac{\TE}{2} \gets 4.6$ms
+and subsequent refocusing pulse peaks were separated
+by echo spacing $\TE \gets 9.2$ms.
+We implemented each refocusing pulse
+by appropriately scaling a $21.0$mm slab-selective SLR pulse
+of duration $2.0$ms 
+and time-bandwidth product 2.
+We elected to use shaped refocusing pulses
+instead of shorter hard pulses
+to suppress unwanted signal outside the excitation slab
+due to imperfect refocusing.
+To suppress stimulated echo signal contributions,
+we flanked each refocusing pulse
+with a symmetric gradient crusher pair,
+where each crusher imparted $14$ phase cycles
+across the $21.0$mm refocusing slab.
+Immediately following the refocusing pulse train,
+we imparted $8$ gradient dephasing phase cycles 
+over a $3$mm slice thickness
+to suppress residual transverse magnetization.
+To reduce scan time,
+we used a repetition time $\TR \gets 600$ms
+that is shorter than those used
+in recent works (\eg, \cite{prasloski:12:rwc,zhang:15:com})
+and used separate bulk $\To$ estimates
+to account for incomplete recovery.
+We acquired 3D MESE data 
+over the same imaging volume
+and with the same resolution, readout bandwidth, and $\bmk$-space trajectory
+as was used for the DESS acquisition.
+We repeated the MESE scan twice
+to permit averaging in postprocessing 
+for increased SNR.
+Including three prepended repetitions to approach steady-state,
+each MESE scan took $16$m$2$s
+for a total MESE acquisition time of $32$m$4$s.
+
+% spgr
+% 117 deg quad phase increment
+% te 5.09ms
+% tr 13.08ms
+% flips 5:5:45
+% same readout 
+% 8cyc spoiling
+We acquired SPGR data
+for separate bulk $\To$ estimation.
+We varied across nine scans nominal flip angles 
+from $5^\circ$ to $45^\circ$
+with even increments
+and fixed all other scan parameters across scans.
+We achieved desired nominal flip angles
+by scaling the same SLR pulse shape 
+used in the DESS acquisition.
+We acquired 3D data
+at minimal echo time $\TE \gets 5.1$ms
+over the same imaging volume
+and with the same resolution, readout bandwidth, and $\bmk$-space trajectory
+as was used in the DESS acquisition.
+We implemented RF spoiling
+by imparting $8$ gradient dephasing phase cycles
+over a $3$mm slice thickness 
+immediately following each readout
+and by RF phase cycling 
+with an RF phase increment 
+that increases by $117^\circ$ 
+each $\TR \gets 13.1$ms-long repetition \cite{zur:91:sot}.
+Including time to reach steady-state,
+the SPGR acquisition took $3$m$32$s scan time.
+
+% 4khz fermi pulse
+% cautiously long 300ms tr to prevent excess rf heating
+% 50 phase encodes
+% including time for steady state, 4m30s total for both scans
+We acquired a pair 
+of BS-shifted SPGR scans \cite{sacolick:10:bmb}
+for separate flip angle scaling $\stx$ estimation.
+We modified the 3D SPGR sequence just described
+by inserting a $\pm$4kHz off-resonant Fermi pulse
+(of $9.0$ms duration
+and with $0.05$G peak amplitude)
+immediately following on-resonant excitation
+and immediately prior to readout.
+This extended the echo time to $\TE \gets 15.0$ms.
+We also conservatively extended the repetition time to $\TR \gets 300$ms
+to prevent excess RF heating.
+We used a small $5^\circ$ nominal excitation flip angle
+for reduced contrast in BS images
+and thereby smoother $\stx$ estimates.
+We acquired BS data
+with a reduced $200\times50\times8$ matrix.
+All other scan parameters were the same as for the SPGR acquisition.
+Including time to reach steady-state,
+the BS acquisition took $4$m$30$s scan time.
+
+% 3d fft all raw coil data
+% upsampled bs data in phase encoding direction
+% separately normalized and coil-combined all data
+% estimated kap via regularized bs mapping
+% used kap to estimate bulk t1 from spgr via vpm
+% registered kap, t1, dess, both mese scans to first mese scan
+% used kap to estimate ff from dess as described before
+% used kap and bulk-t1 to estimate mwf from mese as described before
+We reconstructed all raw coil images
+via 3D Fourier transform
+and subsequently processed only one image slice
+centered within the excitation slab.
+We upsampled BS coil images 
+along the phase-encoding direction
+to the same image size as other coil images,
+using intermediate zero-padding to suppress ringing.
+We jointly coil-combined all coil images
+\emph{within} each of the four acquisitions
+using a natural extension of \cite{ying:07:jir}
 for the case of multiple datasets,
-detailed in Appendix~\ref{a,cc-multi}.
-We then applied KRR parameter estimation
-exactly as in simulations
-(discussed in Section~\ref{s,krr,exp})
-to estimate $\ff$ and five other nuisance parameter maps
-from magnitude coil-combined SPGR/DESS image data.
-To refine results,
-we lastly solved ML parameter estimation problem
-\eqref{eq:relax,ml-est}
-via iterative local optimization
-\footnote{We ran preconditioned gradient projection method iterations 
-	\eqref{eq:gpm}
-	with the same constraint set 
-	used to sample training points 
-	for KRR 
-	and a diagonal preconditioning matrix
-	defined as the inverse diagonal entries
-	of the cost function's Hessian matrix.
-	We used a step-halved backtracking line search 
-	to ensure monotone descent
-	in cost over iterations.
-	We iterated until convergence criterion \eqref{eq:conv,crit}
-	was met with tolerance $10^{-8}$. 
-},
-using KRR parameter estimates as initialization.
-KRR training (with simulated data),
-KRR testing (with real data),
-and iterative refinement 
-respectively took $35.2$s, $5.4$s, and $27.5$s.
+detailed in Appendix~\ref{a,cc-multi};
+however, we did not coil-combine 
+sharing coil data \emph{across} acquisitions.
+We estimated flip angle spatial variation $\stx$ maps
+by normalizing and calibrating
+regularized transmit field estimates \cite{sun:14:reo}
+from complex coil-combined BS images.
+We estimated bulk $\To$ maps
+from magnitude coil-combined SPGR images and $\stx$ maps
+using variable projection method \cite{golub:03:snl} and grid search
+(the one-dimensional grid search used $50$ dictionaries,
+each computed using $1000$ logarithmically-spaced $\To$ samples 
+between $10$ms and $3000$ms).
+To address bulk motion between acquisitions,
+we rigidly registered coil-combined MESE and DESS images
+as well as $\stx,\To$ maps
+to one coil-combined MESE first-echo image.
+We averaged registered MESE images voxel-by-voxel
+across scan repetitions
+to increase effective SNR.
+We estimated $\mwf$ 
+from magnitude averaged MESE images and $\stx,\To$ maps 
+by solving NNLS \eqref{eq:mwf,nnls}
+and RNNLS \eqref{eq:mwf,rnnls} problems
+as explained in Subsection~\ref{ss,mwf,exp,meth}.
+We estimated $\ff$
+from magnitude DESS images and $\stx$ maps
+by applying PERK
+as explained in Subsection~\ref{ss,mwf,exp,meth}.
+NNLS and RNNLS respectively took $57.4$s and $122.9$s.
+PERK training and testing respectively took $37.1$s and $1.0$s.
 
-\begin{figure}
-    \centering    
-    \begin{minipage}[b]{0.92\textwidth}
-        \centering
-        \includegraphics [height=7.4cm, clip] {ff,log2c-0,krr-ml}
-    \end{minipage}
-    
-    \begin{minipage}[b]{0.96\textwidth}
-        \centering
-        \includegraphics [height=7cm] {mwf,grase}
-        \includegraphics [height=7cm] {mwf,mcdespot}
-    \end{minipage}
-    \caption{
-    	MWF estimates, using:
-			our optimized SPGR/DESS scan profile
-			and (\emph{top left}) KRR $\ff$ estimation,
-			followed by (\emph{top right}) iterative ML estimation;
-    	(\emph{bottom left})
-			GRASE \cite{prasloski:12:rwc},
-			a state-of-the-art acceleration
-			to the slow gold-standard MESE acquisition
-			originally used in \cite{mackay:94:ivv};
-			and (\emph{bottom right})
-			mcDESPOT \cite{deoni:11:com},
-			a fast steady-state acquisition
-			that lacks sufficient estimation precision \cite{lankford:13:oti}.
-			All MWF estimates are from healthy volunteers,
-			but those from GRASE/mcDESPOT
-			are from a separate study
-			in a different subject 
-			and are reprinted 
-			from \cite{zhang:15:com},
-			a recent comparison study.
-			The proposed precision-optimized SPGR/DESS scan profile
-			is as fast as mcDESPOT
-			and yields MWF images
-			comparable to those of GRASE.
-    }
-    \label{fig:mwf,brain}
+\begin{figure}[!t]
+	\centering
+	\includegraphics [width=\textwidth] {brain/mese-mw,dess-ff,sl-5.eps}
+	\caption{%
+		NNLS and RNNLS $\mwf$ estimates 
+		from a MESE acquisition 
+		alongside a PERK $\ff$ estimate 
+		from a precision-optimized DESS acquisition,
+		in the brain of a healthy volunteer.
+		Using similar signal reception imaging parameters,
+		MESE $\mwf$ estimates 
+		required $40$m$6$s total scan time
+		while DESS $\ff$ estimates
+		required $7$m$45$s total scan time. 
+		PERK $\ff$ estimates exhibit less WM variation
+		and more clearly delineate cortical WM/GM boundaries
+		than MESE $\mwf$ estimates.
+		Table~\ref{tab:mwf,invivo} 
+		presents corresponding sample statistics
+		computed over manually selected WM and GM ROIs.
+	}%
+	\label{fig:mwf,invivo}
 \end{figure}
 
-Figure~\ref{fig:mwf,brain} compares resulting $\ff$ estimates 
-using KRR only 
-versus KRR followed by iterative ML estimation.
-ML iterations produce visible improvement
-in cerebrospinal fluid 
-but leave $\ff$ estimates 
-in WM and GM ROIs
-largely unchanged.
+% mese-rnnls and dess-perk lateral wm values appear visually similar
+% rnnls values appear lower but show less variation than nnls maps, due to regularization
+% mese estimates higher in medial regions
+% 	similar spatial pattern to simulations, perhaps due to b1 errors
+% 	lower values in internal capsules may be due to overlap between mw and iew peaks zhang:15:com
+Fig.~\ref{fig:mwf,invivo} compares 
+NNLS and RNNLS $\mwf$ estimates from MESE scans
+as well as PERK $\ff$ estimates from optimized DESS scans.
+PERK $\ff$ estimates exhibit less WM variation
+and more clearly delineate cortical WM/GM boundaries
+than MESE $\mwf$ estimates.
+RNNLS $\mwf$ estimates are visibly lower than NNLS $\mwf$ estimates
+due to regularization
+but exhibit somewhat reduced WM variation,
+somewhat improving visualization of WM tracts. 
+RNNLS $\mwf$ and PERK $\ff$ estimates 
+appear visually similar in lateral WM regions,
+but both MESE $\mwf$ estimates are elevated in medial regions.
+MESE $\mwfest$ overestimation in internal capsules (IC)
+has been attributed 
+to overlap in NNLS $\Tt$ spectrum estimates 
+of the myelin water and cellular water $\Tt$ peaks \cite{zhang:15:com}.
+We additionally observe
+that MESE $\mwf$ estimates exhibit similar spatial variation
+here versus in simulations 
+(\cf Figs.~\ref{fig:mwf,2comp}-\ref{fig:mwf,3comp})
+suggesting that some WM spatial variation
+in MESE $\mwf$ estimates
+may be attributable to flip angle variation,
+despite our compensation for transmit field inhomogeneity.
 
-For qualitative comparison,
-Figure~\ref{fig:mwf,brain} also reprints
-from a comparison study \cite{zhang:15:com}
-MWF proxy estimates
-from two other acquisitions:
-GRASE \cite{prasloski:12:rwc}, 
-a state-of-the-art acceleration
-to the slow gold-standard MESE acquisition \cite{mackay:94:ivv};
-and 
-mcDESPOT \cite{deoni:11:com},
-a faster steady-state acquisition
-that lacks sufficient estimation precision \cite{lankford:13:oti}.
-These images are from a separate study
-of a different healthy volunteer,
-and utilize different algorithms
-to estimate different MWF proxies
-from multi-compartmental signal models 
-of different acquisitions.
-Acknowledging the lack of controls,
-we cautiously observe
-that the proposed optimized SPGR/DESS scan profile
-is as fast as the mcDESPOT acquisition
-(controlling for scanner timing limitations)
-and yields MWF maps
-at least comparable in WM to those of GRASE.
-
-\begin{table*} [tb]
+\begin{table}[!t]
 	\centering
-	\begin{minipage}{0.3\textwidth}
-		\includegraphics [width=4cm] {roi.eps}
-		\label{fig:mwf,brain,roi}
+	\small
+	\begin{minipage}{0.19\textwidth}
+		\includegraphics [width=\textwidth] {brain/roi.eps}
 	\end{minipage}
-	\begin{minipage}{0.6\textwidth}
-		\begin{tabu} {c | r r}
+	\begin{minipage}{0.78\textwidth}
+		\begin{tabu} {c | r r r}
 			\hline
 			\hline
-			ROI (\# voxels) & KRR & KRR, then ML \\
+			ROI 		& MESE-NNLS $\mwfest$ 	& MESE-RNNLS $\mwfest$	& DESS-PERK $\ffest$ 	\\
 			\hline
-			\WM $\ffest$ ($725$) 	& \mnstd{0.130}{0.074} & \mnstd{0.134}{0.070} \\
-			\GM $\ffest$ ($176$)	& \mnstd{0.063}{0.106} & \mnstd{0.063}{0.098} \\
+			\RA WM 	& \mnstd{0.09}{0.096}   & \mnstd{0.074}{0.055} 	& \mnstd{0.117}{0.019}	\\
+   		\LA WM 	& \mnstd{0.066}{0.086}  & \mnstd{0.054}{0.041}  &	\mnstd{0.100}{0.0119}	\\
+   		\RP WM 	& \mnstd{0.047}{0.074}  & \mnstd{0.044}{0.041} 	&	\mnstd{0.093}{0.019}	\\
+   		\LP WM 	& \mnstd{0.116}{0.098}  & \mnstd{0.075}{0.050}  &	\mnstd{0.0870}{0.0114}\\
+  		\IC WM 	& \mnstd{0.211}{0.133}  & \mnstd{0.178}{0.083}  &	\mnstd{0.111}{0.0241}	\\
+ 			\AC GM 	& \mnstd{0.007}{0.024}  & \mnstd{0.010}{0.017} 	&	\mnstd{0.019}{0.045}	\\
 			\hline
 			\hline
 		\end{tabu}
 	\end{minipage}
-	\caption{
+	\caption{%
 		\emph{Left}:
-		\WM/\GM ROIs,
+		WM/GM ROIs,
 		overlaid on a representative anatomical
-		(coil-combined SPGR) image.
-		Four \WM ROIs and four \GM ROIs are each pooled
-		into a single \WM and a single \GM ROI,
-		over which sample statistics are computed.
+		MESE first-echo image.
+		Separate lateral WM ROIs are distinguished
+		by anterior-right (\RA),
+		anterior-left (\LA),
+		posterior-right (\RP),
+		and posterior-left (\LP) directions
+		and are respectively comprised
+		of $90$, $79$, $182$, and $201$ voxels.
+		Two internal capsule (\IC) polygons
+		are pooled into a single medial WM ROI
+		comprised of $347$ voxels.
+		Three small anterior cortical (\AC) GM polygons
+		are pooled into a single GM ROI
+		comprised of $78$ voxels.
 		\emph{Right}:
-		Within-ROI sample means $\pm$ 
-		within-ROI sample standard deviations
-		of $\ff$ estimates,
-		using KRR only 
-		as well as KRR with ML refinement
-		(Fig.~\ref{fig:mwf,brain} presents corresponding images).
-	}
-	\label{tab:mwf,brain}
-\end{table*}
+		Sample means $\pm$ sample standard deviations
+		of NNLS/RNNLS $\mwf$ estimates 
+		from a MESE acquisition
+		as well as PERK $\ff$ estimates 
+		from an optimized DESS acquisition,
+		computed over WM/GM ROIs.
+		Each sample statistic is rounded off
+		to the highest place value
+		of its (unreported) standard error,
+		computed via formulas in \cite{ahn:03:seo}.
+		Fig.~\ref{fig:mwf,invivo} presents corresponding images.
+	}%
+	\label{tab:mwf,invivo}
+\end{table}
 
-% tab:mwf,brain summarizes within-roi sample means and sstd
-% computed over 4 wm , 4 gm rois containing x voxels
-% agree well with grase wm histograms (see fig. 5 in zhang:15:com for example)
-% difficult to compare gm values given very high std dev
-% however, grase did report mean about 0.05 in both cortical and internal gray matter
-Table~\ref{tab:mwf,brain} summarizes 
-within-ROI samples means and sample standard deviations
-computed over manually-selected ROIs 
-containing $725$ WM and $176$ GM voxels.
-Compared to its KRR initialization,
-local ML optimization
-does not appreciably change 
-WM/GM $\ffest$ sample means
-and mildly reduces sample standard deviations.
-Our WM $\ffest$ sample means
-agree well with literature MESE measurements
-(\eg, see \cite[Fig.~3]{zhang:15:com}).
-Our GM $\ffest$ sample means
-are not statistically meaningful
-because of high within-ROI sample variation,
-likely due to the common challenge
-of poor GM ROI selection.
-Nevertheless,
-it warrants mention 
-that MWF in healthy GM 
-was reported in \cite[Fig.~3]{zhang:15:com}
-to be about $0.05$ using GRASE.
+% dess-perk has lower within-roi variation in wm (higher in gm)
+% dess-perk has more similar estimates across wm rois
+% rnnls has lower estimates, less wm variation than nnls (said above)
+% nnls and rnnls sig higher in ic wm than in lateral wm rois
+% dess perk significantly different estimates than mese fm in several wm rois, though comparable to other studies (see alonso-ortiz) for a review)
+% no methods measure significant myelin water content in ac gm
+Table~\ref{tab:mwf,invivo} summarizes sample statistics
+of NNLS/RNNLS $\mwf$ estimates from MESE scans
+and PERK $\ff$ estimates from optimized DESS scans,
+separately computed over four lateral WM ROIs
+containing $90$, $79$, $182$, and $201$ voxels;
+one pooled medial IC WM ROI containing $347$ voxels;
+and one pooled anterior cortical (AC) GM ROI containing $78$ voxels.
+PERK $\ff$ estimates exhibit the lowest variation within WM ROIs
+and the most similar sample means across WM ROIs.
+NNLS and RNNLS $\mwf$ sample means are significantly higher 
+in the IC WM ROI than in lateral WM ROIs,
+possibly due to overlap in NNLS $\Tt$ spectrum peaks
+and/or to flip angle spatial variation
+(as described in the previous paragraph).
+PERK $\ff$ sample means differ significantly 
+from RNNLS $\mwf$ sample means
+in several WM ROIs,
+though PERK $\ff$ sample means are comparable
+with literature MESE measurements
+(\eg, see \cite{alonsoortiz:15:mbm} for a review).
+Neither the NNLS/RNNLS $\mwfest$ nor PERK $\ffest$ estimators
+measured significant myelin water content in AC GM.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
@@ -2535,6 +2652,17 @@ to be about $0.05$ using GRASE.
 
 % dess known to be sensitive to single-component t2
 % evidence here suggests sensitive to multi-component t2 also
+
+% evidence of perk scalability
+
+% omit comparison to mc-despot since may not be statistically meaningful
+
+% mese can also be sped up by grase, but here we focus on accuracy
+
+% exchange
+
+% more compartments
+% exploit comp off-res
 
 % adapt this to talk about tr diversity
 \edit{%
@@ -2563,7 +2691,6 @@ to be about $0.05$ using GRASE.
   that permit precise $\ff$ estimation.
 }
 
-% evidence of perk scalability
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary and Future Work}
