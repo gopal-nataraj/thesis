@@ -192,7 +192,8 @@ by multi-compartmental relaxation.
 We investigate here 
 whether this apparent SPGR/DESS sensitivity
 to multi-compartmental relaxation
-can be exploited fast myelin water imaging. 
+can be exploited 
+for fast myelin water imaging. 
 
 This chapter introduces
 a fast SS MRI acquisition
@@ -2802,13 +2803,14 @@ that enable precise $\ff$ estimation.
 Even with high SNR,
 differences in model assumptions, objective functions, and estimation algorithms
 may limit the quantitative comparability 
-of DESS $\mwf$ and MESE $\ff$ imaging
-as implemented here.
+of DESS $\ff$ imaging as implemented here
+and MESE $\mwf$ imaging as implemented here and in original works 
+\cite{mackay:94:ivv,whittall:89:qio}.
 For more similar model assumptions,
 one could attempt to estimate 
 from a suitably optimized DESS acquisition
 a $\Tt$ (or joint $\paren{\To,\Tt}$) distribution
-using three-compartment models (or more)
+using two-, three-, or higher-compartment models
 and correspondingly estimate from MESE data
 a more coarsely sampled 
 $\Tt$ (or joint $\paren{\To,\Tt}$) distribution.
@@ -2832,34 +2834,40 @@ and may still prove challenging.
 % omit: b1 sensitivity
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Summary and Future Work}
-\label{s,mwf,summ}
+\section{Conclusion}
+\label{s,mwf,conc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter describes initial work 
-on developing a fast steady-state acquisition
-for precise MWF imaging.
-We have thus far developed
-a two-compartment signal model 
-for the DESS pulse sequence;
-used a simple non-exchanging version 
-of this model 
-(along with a similar SPGR model
-from literature)
-to design a fast scan profile
-for precisely estimating 
-fast-relaxing compartmental fraction $\ff$
-as a proxy for MWF;
-and applied this precision-optimized acquisition
-\invivo to produce to our knowledge the first MWF images 
-from combinations of fast SPGR/DESS scans.
-Though preliminary results appear qualitatively comparable
-in healthy WM
-to state-of-the-art literature MESE results,
-thorough validation is required
-and will constitute a major portion 
-of future work,
-discussed in the following.
+This chapter has introduced 
+a fast SS MRI acquisition
+for precise myelin water imaging.
+The acquisition consists
+of three DESS scans
+whose flip angles and repetition times
+have been optimized 
+under an aggressive time constraint
+to enable precise estimation
+of the faster-relaxing signal fraction $\ff$ 
+in a simple two-compartment DESS model.
+Simulations without model mismatch demonstrate
+that PERK and ML $\ff$ estimates
+from the proposed DESS acquisition
+exhibit comparable RMSEs,
+but PERK is more than $500\times$ faster.
+Simulations with modest levels of model mismatch demonstrate
+that conventional MESE $\mwf$ estimates are sensitive 
+to unaccounted variable $\To$-recovery rates across compartments
+and accounted flip angle spatial variation
+while DESS $\ff$ estimates are sensitive 
+to relaxation in an unaccounted third compartment,
+suggesting limited quantitative comparability 
+of MESE $\mwf$ and DESS $\ff$ WM estimates. 
+\Invivo experiments are nevertheless the first to demonstrate
+lateral WM myelin water content estimates
+from a fast SS acquisition
+that are similar 
+to conventional MWF estimates
+from a slower MESE MR acquisition.
 
 % need to first build support for claim that ff as measured by spgr/dess 
 % is a measure of mwf as measured originally by mackay
