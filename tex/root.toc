@@ -79,7 +79,7 @@
 \contentsline {section}{\numberline {6.2}Multi-Compartmental Models for SS Sequences}{89}{section.6.2}
 \contentsline {subsection}{\numberline {6.2.1}A Two-Compartment SPGR Signal Model}{89}{subsection.6.2.1}
 \contentsline {subsection}{\numberline {6.2.2}A Two-Compartment DESS Signal Model}{95}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}A Fast SS Acquisition for Precise MWF Imaging}{101}{section.6.3}
+\contentsline {section}{\numberline {6.3}A Fast SS Acquisition for Precise Myelin Imaging}{101}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}Scalable Acquisition Design}{101}{subsection.6.3.1}
 \contentsline {subsection}{\numberline {6.3.2}SPGR/DESS Scan Design Implementation Details}{103}{subsection.6.3.2}
 \contentsline {section}{\numberline {6.4}Experimentation}{105}{section.6.4}

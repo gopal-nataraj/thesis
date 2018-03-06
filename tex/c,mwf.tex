@@ -153,11 +153,11 @@ at millimeter-scale resolution.
 As an alternative to MESE acquisitions,
 scan profiles consisting of short-$\TR$ steady-state (SS) sequences
 were proposed 
-for whole-brain MWF imaging in about 30m scan time
+for whole-brain myelin water imaging in about 30m scan time
 \cite{deoni:08:gmt}.
 Despite recent further refinements
 \cite{deoni:11:com, deoni:13:oct},
-MWF images from SS pulse sequences 
+Myelin water images from SS pulse sequences 
 have thus far been shown
 to be incomparable with MWF images
 from MESE pulse sequences
@@ -173,7 +173,7 @@ to insufficient precision \cite{lankford:13:oti}.
 % in particular, dess signals long known to be sensitive to single-component t2
 % here, we explore dess sensitivity to multi-compartmental relaxation
 Inspired by \cite{nataraj:17:oms},
-we reconsidered MWF imaging from SS pulse sequences
+we reconsidered myelin water imaging from SS pulse sequences
 from the perspective of statistical experiment design.
 In \cite{nataraj:17:oms},
 we optimized several combinations
@@ -185,7 +185,7 @@ for single-compartment $\To,\Tt$ estimation
 and found that different optimized scan combinations
 gave rise to significantly different \invivo $\Tt$ estimates
 (but comparable phantom $\Tt$ estimates),
-indicating sensitivity to \invivo model mismatch.
+indicating \invivo sensitivity to model nonidealities.
 Further simulation studies suggested
 that these inconsistencies could be explained
 by multi-compartmental relaxation.
@@ -207,7 +207,7 @@ subject to a time constraint.
 The precision-optimized acquisition 
 is as fast as the SS acquisition 
 proposed in \cite{deoni:11:com},
-but enables $\sim$40\% coefficient of variation
+but enables $\sim$40\% expected coefficient of variation
 in unbiased $\ff$ estimates.
 \Invivo experiments are the first to demonstrate
 lateral WM myelin water content estimates
@@ -411,7 +411,7 @@ with $\bmAxy\pr :=$
 	\end{bmatrix}
 	\label{eq:mwf,Axy}
 \end{align}
-collecting transverse dynamics and
+collecting transverse dynamics;
 \begin{align}
 	\bmAz\pr :=
 	\begin{bmatrix}
@@ -1204,7 +1204,7 @@ than Assumption~\ref{item:dess,exchg0},
 especially for longer $\TR$),
 the phase broadening integrals 
 in \eqref{eq:mwf,dess-def,int-exchg0} and \eqref{eq:mwf,dess-ref,int-exchg0}
-separate across voxels
+separate across compartments
 and admit the closed-form expressions
 \begin{align}
 	\dess\paren{\bmr,t_0+\frac{\TP}{2}+\TE} &\propto
@@ -1262,28 +1262,27 @@ that compartmental signals simply add
 if exchange is neglected.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{A Fast SS Acquisition for Precise MWF Imaging}
+\section{A Fast SS Acquisition for Precise Myelin Imaging}
 \label{s,mwf,acq}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This section develops a new scan profile
-consisting of fast steady-state pulse sequences
-for precise MWF estimation.
+This section develops a new acquisition
+consisting of fast SPGR and DESS scans
+for precise myelin water imaging.
 Subsection~\ref{ss,mwf,acq,design} 
-first motivates the need
-for more scalable scan design
-in MWF imaging 
-and then adapts our method 
-for QMRI scan design
-(introduced for a simpler problem 
-in Chapter~\ref{c,scn-dsgn}) 
-appropriately.
+adapts acquisition design
+(introduced in Ch.~\ref{c,scn-dsgn})
+to enable larger-scale scan optimization.
 Subsection~\ref{ss,mwf,acq,detail}
-details how we use scalable scan design
-(with the two-compartment signal models developed 
-in Section~\ref{s,mwf,model})
-to design a fast SS acquisition 
-for precise MWF estimation.
+applies scalable acquisition design
+to design a fast SPGR/DESS acquisition
+that enables precise estimation
+of the faster-relaxing signal fraction $\ff$ 
+in two-compartment SPGR/DESS models.
+Subsequent sections take $\ff$ 
+as a quantitative measure 
+of myelin water content 
+in SS acquisitions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scalable Acquisition Design}
@@ -1329,7 +1328,7 @@ the min-max criterion was studied
 through exhaustive search
 and so non-differentiability did not matter.
 However,
-MWF imaging requires estimation
+myelin water imaging requires estimation
 of several more latent parameters
 and thus necessitates scan parameter selection
 for a greater number of datasets
@@ -1428,11 +1427,10 @@ for each element
 of $\grada{\bmP}{\costa{\bmx; \bmnu, \bmP}}$.
 These expressions are well-defined 
 if $\bmF$ is invertible 
-and if mixed partial derivative matrices
+and if mixed partial derivatives
 $\grada{\bmp_1}{\paren{\grada{\bmx}{s_1}}\tpose},
 \dots,
-\grada{\bmp_D}{\paren{\grada{\bmx}{s_D}}\tpose}
-\in \complexes{L \times A}$
+\grada{\bmp_D}{\paren{\grada{\bmx}{s_D}}\tpose}$
 exist and are continuous in $\bmx,\bmP$. 
 Further assuming 
 that $\grada{\bmP}{\costa{\bmx; \bmnu, \bmP}}$ remains bounded 
@@ -1476,10 +1474,10 @@ This subsection applies
 scalable scan design problem \eqref{eq:mwf,P-hat}
 to optimize fast scan profiles 
 consisting of SPGR and DESS scans
-for precise MWF estimation.
+for precise myelin water imaging.
 Intuitively,
 we study SPGR/DESS scan profiles
-over previously studied steady-state scan combinations
+over previously studied SS scan combinations
 \cite{deoni:08:gmt, deoni:11:com, deoni:13:oct}
 because SPGR/DESS signals
 are relatively insensitive
@@ -1493,7 +1491,7 @@ and in fact here
 (as in \cite{deoni:11:com, deoni:13:oct})
 are largely neglected.
 
-For the proof-of-concept study
+For the feasibility studies
 discussed in the remainder of this chapter,
 we assumed that signal arises
 from two non-exchanging water compartments
@@ -1535,15 +1533,16 @@ as $\bmx \gets \brac{\ff, \tf{1}, \tf{2}, \ts{1}, \ts{2}, \const{3}}$.
 % actually design W as inv of mean^2 
 % then for symmetric distribution, sqrt(cost) interpretable as rstd
 We took fast-relaxing compartmental fraction $\ff$ 
-to be a proxy for MWF
-and tailored acquisition design cost \eqref{eq:mwf,expcost}
+to be a quantitative measure 
+of myelin water content 
+and tailored scan design cost \eqref{eq:mwf,expcost}
 to encourage scan combinations
 that enable precise $\ff$ estimation.
 Specifically,
-we set weighting matrix 
+we set weight matrix 
 $\bmW \gets \diag{\inv{\expect{\bmx,\bmnu}{\ff}}, \zeros{5}}$
 to only penalize $\ff$ imprecision,
-thereby ignoring nuisance parameter estimation precision.
+thereby ignoring nuisance parameter imprecision.
 Here, 
 fast-fraction variance weight 
 $\inv{\expect{\bmx,\bmnu}{\ff}}$ assigns interpretable meaning
@@ -1700,15 +1699,14 @@ from non-exchanging two-compartment signal models.
 \label{s,mwf,exp}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This section demonstrates MWF imaging
+This section demonstrates myelin water imaging
 using the precision-optimized SS acquisition
 developed in Section~\ref{s,mwf,acq}
 and fast PERK estimation
 (developed in Ch.~\ref{c,perk}). 
 Subsection~\ref{ss,mwf,exp,meth}
 describes implementation details
-that are common
-to both simulations and experiments.
+common to both simulations and experiments.
 Subsection~\ref{ss,mwf,exp,sim}
 studies PERK and three other estimators' statistics
 in two numerical simulations.
@@ -1742,7 +1740,6 @@ and $K \gets 1$ known parameter
 $\bmnu \gets \stx$ 
 per voxel.
 We focused on precisely estimating $\ff$ in WM 
-(as a proxy for MWF)
 from this fast DESS acquisition.
 We considered the other five latent parameters
 to be nuisance parameters
@@ -2392,8 +2389,8 @@ where the time between excitation and first refocusing pulse peaks
 was fixed to the minimum possible $\frac{\TE}{2} \gets 4.6$ms
 and subsequent refocusing pulse peaks were separated
 by echo spacing $\TE \gets 9.2$ms.
-We implemented each refocusing pulse
-by appropriately scaling a $21.0$mm slab-selective SLR pulse
+We designed each refocusing pulse
+as a $21.0$mm slab-selective SLR pulse
 of duration $2.0$ms 
 and time-bandwidth product 2.
 We elected to use shaped refocusing pulses
@@ -2743,17 +2740,17 @@ took about $68$ CPU-days
 running on $24$ nodes of a computing cluster
 and did not produce reasonable $\ff$ estimates.
 To avoid the confounding possibility of \invivo ML errors
-due to multiple global minima,
-we included narrowly constrained grid search estimates
+due to multiple global minima, 
+we included narrowly constrained ML grid search estimates
 from a 3-compartment simulation here
 and from poor ML accuracy conclude
-that the ML estimator is more sensitive 
+that the ML estimator is likely more sensitive 
 to model mismatch than the PERK estimator
 for this application.
 These results suggest 
 that PERK scales much better than grid search
 with the number of latent parameters per voxel
-and that PERK may be more more robust than grid search
+and that PERK may be more robust than grid search
 to multi-compartmental modeling errors.
 
 % both here and in other runs, optimized profiles consist of mostly dess scans
@@ -2829,7 +2826,7 @@ of a fast DESS acquisition;
 estimating more unknowns 
 from more complicated (MESE or DESS) models
 will at least necessitate more scans
-and may still prove challenging.
+and may still prove challenging in practice.
 
 % omit: b1 sensitivity
 
