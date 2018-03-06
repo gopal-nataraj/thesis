@@ -89,9 +89,9 @@
 \contentsline {subsubsection}{\numberline {6.4.2.2}Three-Compartment Simulation with Model Mismatch}{110}{subsubsection.6.4.2.2}
 \contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{112}{subsection.6.4.3}
 \contentsline {section}{\numberline {6.5}Discussion}{116}{section.6.5}
-\contentsline {section}{\numberline {6.6}Summary and Future Work}{116}{section.6.6}
-\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{116}{section*.7}
-\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{117}{section*.8}
-\contentsline {chapter}{Appendices}{119}{section*.9}
+\contentsline {section}{\numberline {6.6}Summary and Future Work}{117}{section.6.6}
+\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{117}{section*.7}
+\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{119}{section*.8}
+\contentsline {chapter}{Appendices}{120}{section*.9}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{121}{section*.12}
+\contentsline {chapter}{Bibliography}{122}{section*.12}
