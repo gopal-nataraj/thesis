@@ -3,7 +3,7 @@
 Magnetic resonance imaging (MRI)
 is a non-invasive tool
 that has earned widespread clinical adoption
-due (among other factors) 
+due (among other reasons) 
 to its potential for excellent soft tissue contrast,
 its absence of ionizing radiation,
 and its flexibility to characterize 
@@ -12,36 +12,30 @@ Despite its numerous advantages,
 MRI requires highly specialized hardware,
 ongoing liquid-helium cooling
 of its superconducting main magnet,
-and comparably long scan times.
+and long scan times.
 For these reasons,
 MRI is expensive relative
 to other medical imaging modalities.
-Accordingly,
-one broad initiative 
-recently advocated by the MR community 
+To better warrant expenditures,
+one broad initiative advocated by the MR community 
 is to increase the \emph{value}
 of MRI examinations.
-
-Two reasonable measures
-of an MRI acquisition's value
-are its \emph{sensitivity}
-to a given disorder
-and its \emph{specificity}
-in distinguishing it
-from others.
-The field of \emph{quantitative MRI} (QMRI)
-seeks to use MRI data 
-to build MR \emph{biomarkers},
+One popular (and ambitious) measure of value
+is an MRI acquisition's specificity
+in distinguishing one disorder
+from a collection of candidates.
+The field of quantitative MRI (QMRI)
+seeks to construct MR \emph{biomarkers},
 or measurable tissue properties
-that can increase the sensitivity and specificity of MRI
-for specific disorders of interest.
+that seek to improve MR specificity 
+to particular disorders of interest.
 
 QMRI has potential
 to be more informative than conventional MRI.
-Conventional MRI is \emph{qualitative}:
+Conventional MRI is qualitative:
 it produces images comprised of voxels
 (\ie, three-dimensional pixels)
-that are \emph{informative only relative to each other},
+that are informative only relative to each other,
 not individually.
 Conventional MRI voxels are qualitative
 because they directly localize the MR signal,
@@ -63,7 +57,7 @@ QMRI can therefore provide localized biomarker measurements
 (\eg, myelin water content)
 related to a specific physiological process
 (\eg, demyelination)
-that can, through longitudinal study,
+that can through longitudinal study
 be used to monitor the onset and progression of disease
 (\eg, multiple sclerosis).
 
@@ -87,13 +81,13 @@ have previously been unavailable.
 Addressing these challenges is essential
 for widespread clinical adoption of QMRI.
 
-\section{Thesis Overview}
+\section{Overview}
 \label{s,intro,over}
 
 This thesis seeks
 to address the above challenges
-by building an automated workflow for QMRI.
-We borrow tools
+by developing an automated workflow for QMRI.
+We exploit tools
 from optimization, statistics, and machine learning
 to develop fast algorithms
 for quantifying biomarkers
@@ -114,7 +108,7 @@ that yield data
 rich in information 
 about physical processes of interest.
 Questions in \emph{parameter estimation}
-(Chapters~\ref{c,relax}, \ref{c,krr})
+(Chapters~\ref{c,relax}, \ref{c,perk})
 ask how to quickly and reliably quantify biomarkers 
 associated with these relevant physical processes.
 The overall workflow seeks to
@@ -123,95 +117,111 @@ based on the application,
 and to then accurately and precisely estimate 
 clinically relevant biomarkers.
  
-\section{Thesis Proposal Organization}
+\section{Organization}
 \label{s,intro,org}
 
-The main body of this thesis proposal is organized as follows:
+The main body of this thesis is organized as follows:
 \begin{itemize}
-\item 
-	Chapter~\ref{c,bkgrd} reviews 
-	relevant background material
-	on MRI and optimization.
-\item 
-	Chapter~\ref{c,relax} discusses methods 
-	for MRI parameter estimation 
-	from likelihood models 
-	and applies these methods 
-	to model-based MR relaxometry, 
-	(\ie, estimation of relaxation parameters $\To,\Tt$),
-	of interest for many neurological applications.
-	It derives some content 
-	(especially regarding applications)
-	from conference papers 
-	\cite{nataraj:14:rje,nataraj:14:mbe}.
-\item
-	Chapter~\ref{c,scn-dsgn} introduces
-	a minimax optimization approach
-	to aid robust and application-specific 
-	MR scan selection and optimization 
-	for precise latent parameter estimation.
-	It optimizes several practical acquisitions 
-	and uses the likelihood-based estimation techniques 
-	introduced in Chapter~\ref{c,relax}
-	to assess the utility
-	of scan optimization
-	through simulations, 
-	phantom studies, 
-	and \invivo experiments.
-	It derives content
-	mainly from journal paper
-	\cite{nataraj:17:oms},
-	which substantially extends conference paper
-	\cite{nataraj:15:amm}.
-\item 
-	Chapter~\ref{c,krr} describes 
-	scalable MRI parameter estimation
-	using kernel ridge regression.
-	It derives some content 
-	from conference paper
-	\cite{nataraj:17:dfm}.
-\item
-	Chapter~\ref{c,mwf} studies multi-compartmental models
-	for relevant MR pulse sequences
-	and proposes a new acquisition 
-	useful for myelin water fraction estimation,
-	of interest in white matter disorders.
-	It applies kernel-based MR parameter estimation
-	to estimate myelin water fraction,
-	in simulations and preliminary \invivo experiments.
-	It derives some content from conference paper
-	\cite{nataraj:17:mwf}.
-\begin{comment}
-\item
-	Chapter~\ref{c,ss-rf} presents
-	some relatively immature ideas
-	on steady-state radiofrequency (RF) pulse design
-	as well as associated challenges.
-	This work is presently unpublished
-	and may offer avenues for further research.
-\end{comment}
-\item 
-	Chapter~\ref{c,future} summarizes several items 
-	of possible future work
-	(on both short- and long-term timescales) 
-	and presents a timeline
-	for completion of this thesis.
+\setlength\itemsep{0.5em}
+	\item{% 
+		Chapter~\ref{c,bkgrd} reviews 
+		relevant background material
+		on MRI and optimization.
+	}%
+	\item{% 
+		Chapter~\ref{c,relax} discusses methods 
+		for QMRI parameter estimation 
+		from likelihood models 
+		and applies these methods 
+		for model-based MR relaxometry,
+		a simple and popular application.
+		It partially derives content
+		from conference papers 
+		\cite{nataraj:14:rje,nataraj:14:mbe}.
+	}%
+	\item{%
+		Chapter~\ref{c,scn-dsgn} introduces
+		a minimax optimization algorithm
+		to aid robust and application-specific 
+		MR scan selection and optimization 
+		for precise latent parameter estimation.
+		It optimizes several practical acquisitions 
+		and uses the likelihood-based estimation techniques 
+		introduced in Chapter~\ref{c,relax}
+		to assess the utility
+		of scan optimization
+		through simulations 
+		as well as phantom and \invivo experiments.
+		It mainly derives content
+		from published journal paper
+		\cite{nataraj:17:oms}
+		that extends conference paper
+		\cite{nataraj:15:amm}.
+	}%
+	\item{% 
+		Chapter~\ref{c,perk} introduces
+		a fast, general algorithm
+		for dictionary-free QMRI parameter estimation
+		via regression with kernels (PERK).
+		It demonstrates orders-of-magnitude acceleration 
+		over likelihood-based estimators
+		through simulations
+		as well as phantom and \invivo experiments.
+		It also characterizes PERK performance
+		through bias-covariance analysis 
+		and several robustness studies.
+		It mainly derives content 
+		from submitted journal paper
+		\cite{nataraj:17:dfm-arxiv} 
+		that extends two conference papers
+		\cite{nataraj:17:dfm,nataraj:17:slw}.
+	}%
+	\item{%
+		Chapter~\ref{c,mwf} introduces a new method 
+		for imaging an MR biomarker of clinical interest. 
+		In particular,
+		Chapter~\ref{c,mwf} adapts ideas developed in earlier chapters
+		to develop a new fast QMRI workflow
+		that may be specific to healthy myelin,
+		whose degradation is known to be linked
+		to certain white matter disorders.
+		It demonstrates this new method of myelin-specific imaging
+		in simulations and \invivo experiments.
+		It partially derives content 
+		from in-preparation journal paper \cite{nataraj::fmw}
+		that extends conference paper \cite{nataraj:17:mwf}.
+	}%
+	\item{% 
+		Chapter~\ref{c,conc} presents concluding remarks
+		and discusses future work.
+	}%
 \end{itemize}
 
-In the thesis, the appendices will be organized as follows:
+\vspace{0.5em}
+The appendices contain unpublished and less mature work
+and are organized as follows:
 \begin{itemize}
-\item
-	Appendix~\ref{a,cc-multi} will propose an algorithm
-	for combining multiple MRI datasets
-	(as is necessary for many parameter estimation problems),
-	when each dataset is acquired 
-	using multiple receiver coils.
-\item
-	Appendix~\ref{a,dess-diff} will present an analysis
-	of model mismatch due to the presence of diffusion,
-	will show that neglecting diffusive effects
-	during $\Tt$ estimation 
-	can cause significant bias,
-	and will suggest acquisition modifications
-	for mitigating this bias.
+	\setlength\itemsep{0.5em}
+	\item{%
+		Appendix~\ref{a,cc-multi} proposes an algorithm
+		for combining multiple MRI datasets
+		when each dataset is acquired 
+		using multiple receiver coils.
+		Several chapters in the main body 
+		used this algorithm for coil data combination.
+	}%
+	\item{%
+		Appendix~\ref{a,ss-rf} proposes two algorithms
+		for designing radiofrequency (RF) excitation pulses
+		specifically tailored for unspoiled steady-state imaging.
+	}%
+	\item{%
+		Appendix~\ref{a,dess-diff} presents an analysis
+		of model mismatch due to the presence of diffusion,
+		demonstrates that neglecting diffusive effects
+		during $\Tt$ estimation 
+		can cause significant bias,
+		and suggests acquisition modifications
+		for mitigating this bias.
+	}%
 \end{itemize}

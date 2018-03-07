@@ -11,11 +11,6 @@ S.~Ahn and J.~A. Fessler, ``Standard errors of mean, variance, and standard
   deviation estimators,'' Tech. Rep. 413, Comm. and Sign. Proc. Lab., Dept. of
   EECS, Univ. of Michigan, Ann Arbor, MI, 48109-2122, July 2003.
 
-\bibitem{nataraj:17:oms}
-G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Optimizing {MR} scan design for
-  model-based {T1,} {T2} estimation from steady-state sequences,'' {\em {IEEE
-  Trans. Med. Imag.}}, vol.~36, pp.~{467--77}, Feb. 2017.
-
 \bibitem{nataraj:14:rje}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Regularized, joint estimation
   of {T1} and {M0} maps,'' in {\em {Proc. Intl. Soc. Mag. Res. Med.}}, p.~3128,
@@ -26,15 +21,35 @@ G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Model-based estimation of {T2}
   maps with dual-echo steady-state {MR} imaging,'' in {\em {Proc. IEEE Intl.
   Conf. on Image Processing}}, pp.~{1877--81}, 2014.
 
+\bibitem{nataraj:17:oms}
+G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Optimizing {MR} scan design for
+  model-based {T1,} {T2} estimation from steady-state sequences,'' {\em {IEEE
+  Trans. Med. Imag.}}, vol.~36, pp.~{467--77}, Feb. 2017.
+
 \bibitem{nataraj:15:amm}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``A min-max {CRLB} optimization
   approach to scan selection for relaxometry,'' in {\em {Proc. Intl. Soc. Mag.
   Res. Med.}}, p.~1672, 2015.
 
+\bibitem{nataraj:17:dfm-arxiv}
+G.~Nataraj, J.-F. Nielsen, C.~Scott, and J.~A. Fessler, ``Dictionary-free {MRI}
+  {PERK:} {Parameter} estimation via regression with kernels,'' 2017.
+\newblock arxiv 1710.02441.
+
 \bibitem{nataraj:17:dfm}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Dictionary-free {MRI} parameter
   estimation via kernel ridge regression,'' in {\em {Proc. IEEE Intl. Symp.
   Biomed. Imag.}}, pp.~{5--9}, 2017.
+
+\bibitem{nataraj:17:slw}
+G.~Nataraj, M.~Gao, J.~{\Asslander}, C.~Scott, and J.~A. Fessler, ``Shallow
+  learning with kernels for dictionary-free magnetic resonance
+  fingerprinting,'' in {\em {ISMRM Workshop on MR Fingerprinting}}, 2017.
+
+\bibitem{nataraj::fmw}
+G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Fast myelin water imaging via
+  {Bayesian} experimental design and {PERK},'' 2018.
+\newblock In preparation.
 
 \bibitem{nataraj:17:mwf}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Myelin water fraction
@@ -699,11 +714,6 @@ J.~He, Q.~Liu, A.~G. Christodoulou, C.~Ma, F.~Lam, and Z.-P. Liang,
   low-rank tensors,'' {\em {IEEE Trans. Med. Imag.}}, vol.~35, pp.~{2119--29},
   Sept. 2016.
 
-\bibitem{nataraj:17:slw}
-G.~Nataraj, M.~Gao, J.~{\Asslander}, C.~Scott, and J.~A. Fessler, ``Shallow
-  learning with kernels for dictionary-free magnetic resonance
-  fingerprinting,'' in {\em {ISMRM Workshop on MR Fingerprinting}}, 2017.
-
 \bibitem{alvarez:11:kfv}
 M.~A. Alvarez, L.~Rosasco, and N.~D. Lawrence, ``Kernels for vector-valued
   functions: {A} review,'' Tech. Rep. MIT-CSAIL-TR-2011-033, MIT, CSAIL, June
@@ -847,11 +857,6 @@ J.~Hennig, ``Multiecho imaging sequences with low refocusing flip angles,''
 E.~Alonso-Ortiz, I.~R. Levesque, and G.~B. Pike, ``{MRI-based} myelin water
   imaging: {A} technical review,'' {\em {Mag. Res. Med.}}, vol.~73,
   pp.~{70--81}, Jan. 2015.
-
-\bibitem{nataraj:17:dfm-arxiv}
-G.~Nataraj, J.-F. Nielsen, C.~Scott, and J.~A. Fessler, ``Dictionary-free {MRI}
-  {PERK:} {Parameter} estimation via regression with kernels,'' 2017.
-\newblock arxiv 1710.02441.
 
 \bibitem{varma:15:mtf}
 G.~Varma, G.~Duhamel, C.~{de Bazelaire}, and D.~C. Alsop, ``Magnetization

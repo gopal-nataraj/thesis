@@ -4,8 +4,8 @@
 \BOOKMARK [0][-]{section*.4}{List of Appendices}{}% 4
 \BOOKMARK [0][-]{section*.6}{Abstract}{}% 5
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 6
-\BOOKMARK [1][-]{section.1.1}{Thesis Overview}{chapter.1}% 7
-\BOOKMARK [1][-]{section.1.2}{Thesis Proposal Organization}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.1}{Overview}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.2}{Organization}{chapter.1}% 8
 \BOOKMARK [0][-]{chapter.2}{Background}{}% 9
 \BOOKMARK [1][-]{section.2.1}{Relevant MR Physics}{chapter.2}% 10
 \BOOKMARK [1][-]{section.2.2}{Optimization in QMRI}{chapter.2}% 11
@@ -33,14 +33,15 @@
 \BOOKMARK [1][-]{section.5.8}{Robustness Studies}{chapter.5}% 33
 \BOOKMARK [1][-]{section.5.9}{Discussion}{chapter.5}% 34
 \BOOKMARK [1][-]{section.5.10}{Conclusion}{chapter.5}% 35
-\BOOKMARK [0][-]{chapter.6}{Fast Myelin Water Fraction Imaging via Acquisition Design and PERK}{}% 36
+\BOOKMARK [0][-]{chapter.6}{Fast Myelin Water Imaging via Acquisition Design and PERK}{}% 36
 \BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 37
 \BOOKMARK [1][-]{section.6.2}{Multi-Compartmental Models for SS Sequences}{chapter.6}% 38
 \BOOKMARK [1][-]{section.6.3}{A Fast SS Acquisition for Precise Myelin Imaging}{chapter.6}% 39
 \BOOKMARK [1][-]{section.6.4}{Experimentation}{chapter.6}% 40
 \BOOKMARK [1][-]{section.6.5}{Discussion}{chapter.6}% 41
 \BOOKMARK [1][-]{section.6.6}{Conclusion}{chapter.6}% 42
-\BOOKMARK [0][-]{section*.9}{Appendices}{}% 43
-\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 44
-\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 45
-\BOOKMARK [0][-]{section*.12}{Bibliography}{}% 46
+\BOOKMARK [0][-]{chapter.7}{Concluding Remarks}{}% 43
+\BOOKMARK [0][-]{section*.9}{Appendices}{}% 44
+\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 45
+\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 46
+\BOOKMARK [0][-]{section*.12}{Bibliography}{}% 47

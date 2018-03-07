@@ -23,7 +23,6 @@
 \citation{keenan:16:msm}
 \citation{ahn:03:seo}
 \citation{keenan:16:msm}
-\citation{nataraj:17:oms}
 \citation{ahn:03:seo}
 \citation{ahn:03:seo}
 \citation{ahn:03:seo}
@@ -46,11 +45,14 @@
 \citation{nataraj:14:mbe}
 \citation{nataraj:17:oms}
 \citation{nataraj:15:amm}
+\citation{nataraj:17:dfm-arxiv}
 \citation{nataraj:17:dfm}
-\@writefile{toc}{\contentsline {section}{\numberline {1.1}Thesis Overview}{2}{section.1.1}}
-\newlabel{s,intro,over}{{1.1}{2}{Thesis Overview\relax }{section.1.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.2}Thesis Proposal Organization}{2}{section.1.2}}
-\newlabel{s,intro,org}{{1.2}{2}{Thesis Proposal Organization\relax }{section.1.2}{}}
+\citation{nataraj:17:slw}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Overview}{2}{section.1.1}}
+\newlabel{s,intro,over}{{1.1}{2}{Overview\relax }{section.1.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Organization}{2}{section.1.2}}
+\newlabel{s,intro,org}{{1.2}{2}{Organization\relax }{section.1.2}{}}
+\citation{nataraj::fmw}
 \citation{nataraj:17:mwf}
 \citation{macovski:83}
 \citation{haacke:99}
@@ -744,10 +746,8 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Performance criterion $\Psi \mathopen {}\mathclose \bgroup \originalleft (\sigma \aftergroup \egroup \originalright )$ versus PERK training noise standard deviation $\sigma $, over two different scales. Similar to Fig.\nobreakspace  {}\ref  {fig:perk,holdout}, each point on the blue curve is the weighted normalized root mean squared error of a separately trained PERK estimator. In each subplot, a black star marks the performance criterion minimizer $\setbox \z@ \hbox {\frozen@everymath \@emptytoks \mathsurround \z@ $\textstyle \sigma $}\mathaccent "0362{\sigma } \gets 2^{-8.8}$ while a dashed red line marks the (latent) test data noise standard deviation $\sigma ^\star \gets 2^{-8.736}$. To within quantization error, PERK performs best when trained with training data whose noise statistics match test data noise statistics. Performance degradation as measured by $\Psi $ does not exceed $10\%$ for $\sigma $ values within a factor of two of $\sigma ^\star $. This result suggests that PERK is somewhat robust to moderate misspecification of the noise level. }}{79}{figure.5.9}}
 \newlabel{fig:perk,robust}{{5.9}{79}{Performance criterion $\costa {\sigma }$ versus PERK training noise standard deviation $\sigma $, over two different scales. Similar to Fig.~\ref {fig:perk,holdout}, each point on the blue curve is the weighted normalized root mean squared error of a separately trained PERK estimator. In each subplot, a black star marks the performance criterion minimizer $\est {\sigma } \gets 2^{-8.8}$ while a dashed red line marks the (latent) test data noise standard deviation $\sigma ^\star \gets 2^{-8.736}$. To within quantization error, PERK performs best when trained with training data whose noise statistics match test data noise statistics. Performance degradation as measured by $\cost $ does not exceed $10\%$ for $\sigma $ values within a factor of two of $\sigma ^\star $. This result suggests that PERK is somewhat robust to moderate misspecification of the noise level}{figure.5.9}{}}
 \citation{keenan:16:msm}
-\citation{nataraj:17:oms}
 \citation{ahn:03:seo}
 \citation{keenan:16:msm}
-\citation{nataraj:17:oms}
 \citation{ahn:03:seo}
 \citation{nataraj:17:dfm}
 \citation{mcgivney:14:scf}
@@ -762,8 +762,8 @@
 \newlabel{sub@fig:perk,hpd-broad,t1,plot}{{(a)}{81}{Subfigure 5 5.10(a)\relax }{subfigure.5.10.1}{}}
 \newlabel{fig:perk,hpd-broad,t2,plot}{{5.10(b)}{81}{Subfigure 5 5.10(b)\relax }{subfigure.5.10.2}{}}
 \newlabel{sub@fig:perk,hpd-broad,t2,plot}{{(b)}{81}{Subfigure 5 5.10(b)\relax }{subfigure.5.10.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Phantom sample statistics of more aggressively trained VPM, PGPM, and PERK $T_1,T_2$ estimates and NIST NMR reference measurements \cite  {keenan:16:msm}. Unlike analogous results in Fig.\nobreakspace  {}\ref  {fig:perk,hpd-tight,plot}, here the PERK estimator was trained with a sampling distribution whose support extended well beyond the range of $T_1,T_2$ values for which the acquisition was optimized in \cite  {nataraj:17:oms}. Comparing to Fig.\nobreakspace  {}\ref  {fig:perk,hpd-tight,plot}, we find that PERK estimator performance degrades within the highlighted $T_1,T_2$ range of interest. Plot markers and error bars indicate sample means and sample standard deviations computed over ROIs within the 14 vials labeled and color-coded in Fig.\nobreakspace  {}\ref  {fig:perk,hpd-broad}. Corresponding tables replicate sample means $\pm $ sample standard deviations for vials within the highlighted range. Each value is rounded off to the highest place value of its (unreported) standard error, computed via formulas in \cite  {ahn:03:seo}. All values are in milliseconds. }}{81}{figure.5.10}}
-\newlabel{fig:perk,hpd-broad,plot}{{5.10}{81}{Phantom sample statistics of more aggressively trained VPM, PGPM, and PERK $\To ,\Tt $ estimates and NIST NMR reference measurements \cite {keenan:16:msm}. Unlike analogous results in Fig.~\ref {fig:perk,hpd-tight,plot}, here the PERK estimator was trained with a sampling distribution whose support extended well beyond the range of $\To ,\Tt $ values for which the acquisition was optimized in \cite {nataraj:17:oms}. Comparing to Fig.~\ref {fig:perk,hpd-tight,plot}, we find that PERK estimator performance degrades within the highlighted $\To ,\Tt $ range of interest. Plot markers and error bars indicate sample means and sample standard deviations computed over ROIs within the 14 vials labeled and color-coded in Fig.~\ref {fig:perk,hpd-broad}. Corresponding tables replicate sample means $\pm $ sample standard deviations for vials within the highlighted range. Each value is rounded off to the highest place value of its (unreported) standard error, computed via formulas in \cite {ahn:03:seo}. All values are in milliseconds}{figure.5.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Phantom sample statistics of more aggressively trained VPM, PGPM, and PERK $T_1,T_2$ estimates and NIST NMR reference measurements \cite  {keenan:16:msm}. Unlike analogous results in Fig.\nobreakspace  {}\ref  {fig:perk,hpd-tight,plot}, here the PERK estimator was trained with a sampling distribution whose support extended well beyond the range of $T_1,T_2$ values for which the acquisition was optimized. Comparing to Fig.\nobreakspace  {}\ref  {fig:perk,hpd-tight,plot}, we find that PERK estimator performance degrades within the highlighted $T_1,T_2$ range of interest. Plot markers and error bars indicate sample means and sample standard deviations computed over ROIs within the 14 vials labeled and color-coded in Fig.\nobreakspace  {}\ref  {fig:perk,hpd-broad}. Corresponding tables replicate sample means $\pm $ sample standard deviations for vials within the highlighted range. Each value is rounded off to the highest place value of its (unreported) standard error, computed via formulas in \cite  {ahn:03:seo}. All values are in milliseconds. }}{81}{figure.5.10}}
+\newlabel{fig:perk,hpd-broad,plot}{{5.10}{81}{Phantom sample statistics of more aggressively trained VPM, PGPM, and PERK $\To ,\Tt $ estimates and NIST NMR reference measurements \cite {keenan:16:msm}. Unlike analogous results in Fig.~\ref {fig:perk,hpd-tight,plot}, here the PERK estimator was trained with a sampling distribution whose support extended well beyond the range of $\To ,\Tt $ values for which the acquisition was optimized. Comparing to Fig.~\ref {fig:perk,hpd-tight,plot}, we find that PERK estimator performance degrades within the highlighted $\To ,\Tt $ range of interest. Plot markers and error bars indicate sample means and sample standard deviations computed over ROIs within the 14 vials labeled and color-coded in Fig.~\ref {fig:perk,hpd-broad}. Corresponding tables replicate sample means $\pm $ sample standard deviations for vials within the highlighted range. Each value is rounded off to the highest place value of its (unreported) standard error, computed via formulas in \cite {ahn:03:seo}. All values are in milliseconds}{figure.5.10}{}}
 \citation{sutherland:15:ote}
 \newlabel{fig:perk,hpd-broad,m0,im-gray}{{5.11(a)}{82}{Subfigure 5 5.11(a)\relax }{subfigure.5.11.1}{}}
 \newlabel{sub@fig:perk,hpd-broad,m0,im-gray}{{(a)}{82}{Subfigure 5 5.11(a)\relax }{subfigure.5.11.1}{}}
@@ -800,10 +800,10 @@
 \citation{laule:04:wca}
 \citation{laule:06:mwi}
 \citation{mackay:94:ivv}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Fast\nobreakspace  {}Myelin\nobreakspace  {}Water\nobreakspace  {}Fraction\nobreakspace  {}Imaging via\nobreakspace  {}Acquisition\nobreakspace  {}Design\nobreakspace  {}and\nobreakspace  {}PERK}{87}{chapter.6}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Fast\nobreakspace  {}Myelin\nobreakspace  {}Water\nobreakspace  {}Imaging via\nobreakspace  {}Acquisition\nobreakspace  {}Design\nobreakspace  {}and\nobreakspace  {}PERK}{87}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{c,mwf}{{6}{87}{Fast~Myelin~Water~Fraction~Imaging via~Acquisition~Design~and~PERK\relax }{chapter.6}{}}
+\newlabel{c,mwf}{{6}{87}{Fast~Myelin~Water~Imaging via~Acquisition~Design~and~PERK\relax }{chapter.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6.1}Introduction}{87}{section.6.1}}
 \newlabel{s,mwf,intro}{{6.1}{87}{Introduction\relax }{section.6.1}{}}
 \citation{carr:54:eod}
@@ -1004,196 +1004,201 @@
 \citation{gareau:00:mta}
 \citation{webb:03:imt}
 \@writefile{toc}{\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{119}{section*.8}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Concluding\nobreakspace  {}Remarks}{120}{chapter.7}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{c,conc}{{7}{120}{Concluding~Remarks\relax }{chapter.7}{}}
 \citation{ying:07:jir}
-\@writefile{toc}{\contentsline {chapter}{Appendices}{120}{section*.9}}
+\@writefile{toc}{\contentsline {chapter}{Appendices}{121}{section*.9}}
 \@writefile{toc}{\global \c@tocdepth 1\relax }
-\@writefile{loa}{\contentsline {chapter}{\numberline {A}Coil Data Combination from Multiple Datasets}{120}{section*.10}}
+\@writefile{loa}{\contentsline {chapter}{\numberline {A}Coil Data Combination from Multiple Datasets}{121}{section*.10}}
 \@writefile{lof}{\addvspace {8pt}}
 \@writefile{lot}{\addvspace {8pt}}
 \@writefile{lom}{\addvspace {8pt}}
 \@writefile{lop}{\addvspace {8pt}}
 \@writefile{loi}{\addvspace {8pt}}
-\newlabel{a,cc-multi}{{A}{120}{Comparisons with Different Myelin Biomarkers\relax }{section*.10}{}}
+\newlabel{a,cc-multi}{{A}{121}{Concluding~Remarks\relax }{section*.10}{}}
 \bibstyle{ieeetr}
-\@writefile{loa}{\contentsline {chapter}{\numberline {B}DESS in the Presence of Diffusion}{121}{section*.11}}
+\@writefile{loa}{\contentsline {chapter}{\numberline {B}DESS in the Presence of Diffusion}{122}{section*.11}}
 \@writefile{lof}{\addvspace {8pt}}
 \@writefile{lot}{\addvspace {8pt}}
 \@writefile{lom}{\addvspace {8pt}}
 \@writefile{lop}{\addvspace {8pt}}
 \@writefile{loi}{\addvspace {8pt}}
-\newlabel{a,dess-diff}{{B}{121}{Comparisons with Different Myelin Biomarkers\relax }{section*.11}{}}
+\newlabel{a,dess-diff}{{B}{122}{Concluding~Remarks\relax }{section*.11}{}}
 \bibdata{../bib/master.bib,../bib/new.bib}
 \bibcite{keenan:16:msm}{1}
 \bibcite{ahn:03:seo}{2}
-\bibcite{nataraj:17:oms}{3}
-\bibcite{nataraj:14:rje}{4}
-\bibcite{nataraj:14:mbe}{5}
+\bibcite{nataraj:14:rje}{3}
+\bibcite{nataraj:14:mbe}{4}
+\bibcite{nataraj:17:oms}{5}
 \bibcite{nataraj:15:amm}{6}
-\bibcite{nataraj:17:dfm}{7}
-\bibcite{nataraj:17:mwf}{8}
-\bibcite{macovski:83}{9}
-\bibcite{haacke:99}{10}
-\bibcite{nishimura:96:pom}{11}
-\bibcite{bloch:1946:ni-paper}{12}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{122}{section*.12}}
-\bibcite{hinshaw:76:ifb}{13}
-\bibcite{scheffler:99:apd}{14}
-\bibcite{hargreaves:01:car}{15}
-\bibcite{zur:91:sot}{16}
-\bibcite{denolin:05:nii}{17}
-\bibcite{redpath:88:fan}{18}
-\bibcite{bruder:88:ans}{19}
-\bibcite{rosen:60:tgp}{20}
-\bibcite{byrne:04:aut}{21}
-\bibcite{golub:03:snl}{22}
-\bibcite{fessler:03:nff}{23}
-\bibcite{muckley:15:fpm}{24}
-\bibcite{macovski:96:nim}{25}
-\bibcite{lei:07:som}{26}
-\bibcite{gudbjartsson:95:trd}{27}
-\bibcite{wansapura:99:nrt}{28}
-\bibcite{stanisz:05:ttr}{29}
-\bibcite{kwan:99:msb}{30}
-\bibcite{collins:98:dac}{31}
-\bibcite{gupta:77:anl}{32}
-\bibcite{deoni:03:rct}{33}
-\bibcite{bertsekas:82:pnm}{34}
-\bibcite{fessler:16:irt}{35}
-\bibcite{heule:14:reo}{36}
-\bibcite{cheng:12:pma}{37}
-\bibcite{larsson:88:ivd}{38}
-\bibcite{kurki:96:tco}{39}
-\bibcite{englund:86:rti}{40}
-\bibcite{siemonsen:09:qtv}{41}
-\bibcite{dewitt:87:nnc}{42}
-\bibcite{matzat:13:qmt}{43}
-\bibcite{mosher:04:cmt}{44}
-\bibcite{guo:09:mtq}{45}
-\bibcite{giri:09:tqf}{46}
-\bibcite{look:70:tsi}{47}
-\bibcite{carr:54:eod}{48}
-\bibcite{stehling:91:epi}{49}
-\bibcite{ahn:86:hss}{50}
-\bibcite{meyer:92:fsc}{51}
-\bibcite{kay:91:pia}{52}
-\bibcite{gowland:92:faa}{53}
-\bibcite{messroghli:04:mll}{54}
-\bibcite{stehling:90:ire}{55}
-\bibcite{bonny:96:tml}{56}
-\bibcite{kumar:12:bau}{57}
-\bibcite{beneliezer:15:raa}{58}
-\bibcite{nguyen:12:ttd}{59}
-\bibcite{majumdar:86:eit-1}{60}
-\bibcite{majumdar:86:eit-2}{61}
-\bibcite{farzaneh:90:aot}{62}
-\bibcite{chang:08:lls}{63}
-\bibcite{fram:87:rco}{64}
-\bibcite{wang:12:srt}{65}
-\bibcite{deoni:04:rte}{66}
-\bibcite{deoni:09:trt}{67}
-\bibcite{welsch:09:reo}{68}
-\bibcite{stocker:14:mpq}{69}
-\bibcite{heule:14:tes-mrm}{70}
-\bibcite{gyngell:89:tss}{71}
-\bibcite{hanicke:03:aas}{72}
-\bibcite{weiss:80:tco}{73}
-\bibcite{zhang:98:dos}{74}
-\bibcite{wang:87:otp}{75}
-\bibcite{jones:96:oss}{76}
-\bibcite{imran:99:tpm}{77}
-\bibcite{deoni:04:doo}{78}
-\bibcite{fleysher:07:otp}{79}
-\bibcite{akcakaya:15:ots}{80}
-\bibcite{lewis:16:ddo}{81}
-\bibcite{liu:17:gmm}{82}
-\bibcite{fisher:1925:tos}{83}
-\bibcite{cramer:46}{84}
-\bibcite{chernoff:53:lod}{85}
-\bibcite{pauly:91:prf}{86}
-\bibcite{sacolick:10:bmb}{87}
-\bibcite{sun:14:reo}{88}
-\bibcite{ying:07:jir}{89}
-\bibcite{arthur:07:kmt}{90}
-\bibcite{frank:97:spe}{91}
-\bibcite{barral:10:arm}{92}
-\bibcite{carney:91:asa}{93}
-\bibcite{wu:90:eod}{94}
-\bibcite{kaiser:74:daf}{95}
-\bibcite{heule:14:tes-nib}{96}
-\bibcite{mackay:94:ivv}{97}
-\bibcite{gill:95:aot}{98}
-\bibcite{ma:13:mrf}{99}
-\bibcite{zhao:16:oed}{100}
-\bibcite{torrey:56:bew}{101}
-\bibcite{mcconnell:58:rrb}{102}
-\bibcite{bloembergen:1948:rei}{103}
-\bibcite{bihan:01:dti}{104}
-\bibcite{haldar:07:mle}{105}
-\bibcite{hernando:08:jeo}{106}
-\bibcite{staroswiecki:12:seo}{107}
-\bibcite{trzasko:13:etf}{108}
-\bibcite{mcgivney:14:scf}{109}
-\bibcite{zhao:14:mbm}{110}
-\bibcite{zhao:15:amp}{111}
-\bibcite{cauley:15:fgm}{112}
-\bibcite{zhao:16:mlr}{113}
-\bibcite{asslander::lra}{114}
-\bibcite{yang::lra}{115}
-\bibcite{feinberg:85:mri}{116}
-\bibcite{tuch:01:ctm}{117}
-\bibcite{sekihara:85:nif}{118}
-\bibcite{morrell:08:aps}{119}
-\bibcite{deoni:08:gmt}{120}
-\bibcite{deoni:13:oct}{121}
-\bibcite{kimeldorf:70:acb}{122}
-\bibcite{aronszajn:50:tor}{123}
-\bibcite{cortes:95:svn}{124}
-\bibcite{saunders:98:rrl}{125}
-\bibcite{huang:12:tmf}{126}
-\bibcite{huang:13:trw}{127}
-\bibcite{zhao:16:daa}{128}
-\bibcite{scholkopf:01:agr}{129}
-\bibcite{hoerl:70:rrb}{130}
-\bibcite{steinwart:08:svm}{131}
-\bibcite{rahimi:07:rff}{132}
-\bibcite{sutherland:15:ote}{133}
-\bibcite{wu:97:gbt}{134}
-\bibcite{woodbury:50:imm}{135}
-\bibcite{vapnik:98:slt}{136}
-\bibcite{siddiqui:64:sif}{137}
-\bibcite{gong:92:aft}{138}
-\bibcite{he:16:ahd}{139}
-\bibcite{nataraj:17:slw}{140}
-\bibcite{alvarez:11:kfv}{141}
-\bibcite{ajafernandez:16:sao}{142}
-\bibcite{cohen:17:dlf-arxiv}{143}
-\bibcite{virtue:17:btr}{144}
-\bibcite{morell:84}{145}
-\bibcite{goldenberg:12:msr}{146}
-\bibcite{vasilescu:78:wci}{147}
-\bibcite{menon:91:aoc}{148}
-\bibcite{stewart:93:ssr}{149}
-\bibcite{gareau:00:mta}{150}
-\bibcite{webb:03:imt}{151}
-\bibcite{laule:04:wca}{152}
-\bibcite{laule:06:mwi}{153}
-\bibcite{does:00:rat}{154}
-\bibcite{prasloski:12:rwc}{155}
-\bibcite{feinberg:91:gga}{156}
-\bibcite{deoni:11:com}{157}
-\bibcite{zhang:15:com}{158}
-\bibcite{lankford:13:oti}{159}
-\bibcite{spencer:00:mos}{160}
-\bibcite{miller:10:aot-1}{161}
-\bibcite{miller:10:aot-2}{162}
-\bibcite{magnus:54:ote}{163}
-\bibcite{lawson:74}{164}
-\bibcite{kroeker:86:aob}{165}
-\bibcite{whittall:89:qio}{166}
-\bibcite{prasloski:12:aos}{167}
-\bibcite{hennig:88:mis}{168}
-\bibcite{alonsoortiz:15:mbm}{169}
-\bibcite{nataraj:17:dfm-arxiv}{170}
-\bibcite{varma:15:mtf}{171}
-\bibcite{varma:15:iom}{172}
-\bibcite{swanson:17:mda}{173}
+\bibcite{nataraj:17:dfm-arxiv}{7}
+\bibcite{nataraj:17:dfm}{8}
+\bibcite{nataraj:17:slw}{9}
+\bibcite{nataraj::fmw}{10}
+\bibcite{nataraj:17:mwf}{11}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{123}{section*.12}}
+\bibcite{macovski:83}{12}
+\bibcite{haacke:99}{13}
+\bibcite{nishimura:96:pom}{14}
+\bibcite{bloch:1946:ni-paper}{15}
+\bibcite{hinshaw:76:ifb}{16}
+\bibcite{scheffler:99:apd}{17}
+\bibcite{hargreaves:01:car}{18}
+\bibcite{zur:91:sot}{19}
+\bibcite{denolin:05:nii}{20}
+\bibcite{redpath:88:fan}{21}
+\bibcite{bruder:88:ans}{22}
+\bibcite{rosen:60:tgp}{23}
+\bibcite{byrne:04:aut}{24}
+\bibcite{golub:03:snl}{25}
+\bibcite{fessler:03:nff}{26}
+\bibcite{muckley:15:fpm}{27}
+\bibcite{macovski:96:nim}{28}
+\bibcite{lei:07:som}{29}
+\bibcite{gudbjartsson:95:trd}{30}
+\bibcite{wansapura:99:nrt}{31}
+\bibcite{stanisz:05:ttr}{32}
+\bibcite{kwan:99:msb}{33}
+\bibcite{collins:98:dac}{34}
+\bibcite{gupta:77:anl}{35}
+\bibcite{deoni:03:rct}{36}
+\bibcite{bertsekas:82:pnm}{37}
+\bibcite{fessler:16:irt}{38}
+\bibcite{heule:14:reo}{39}
+\bibcite{cheng:12:pma}{40}
+\bibcite{larsson:88:ivd}{41}
+\bibcite{kurki:96:tco}{42}
+\bibcite{englund:86:rti}{43}
+\bibcite{siemonsen:09:qtv}{44}
+\bibcite{dewitt:87:nnc}{45}
+\bibcite{matzat:13:qmt}{46}
+\bibcite{mosher:04:cmt}{47}
+\bibcite{guo:09:mtq}{48}
+\bibcite{giri:09:tqf}{49}
+\bibcite{look:70:tsi}{50}
+\bibcite{carr:54:eod}{51}
+\bibcite{stehling:91:epi}{52}
+\bibcite{ahn:86:hss}{53}
+\bibcite{meyer:92:fsc}{54}
+\bibcite{kay:91:pia}{55}
+\bibcite{gowland:92:faa}{56}
+\bibcite{messroghli:04:mll}{57}
+\bibcite{stehling:90:ire}{58}
+\bibcite{bonny:96:tml}{59}
+\bibcite{kumar:12:bau}{60}
+\bibcite{beneliezer:15:raa}{61}
+\bibcite{nguyen:12:ttd}{62}
+\bibcite{majumdar:86:eit-1}{63}
+\bibcite{majumdar:86:eit-2}{64}
+\bibcite{farzaneh:90:aot}{65}
+\bibcite{chang:08:lls}{66}
+\bibcite{fram:87:rco}{67}
+\bibcite{wang:12:srt}{68}
+\bibcite{deoni:04:rte}{69}
+\bibcite{deoni:09:trt}{70}
+\bibcite{welsch:09:reo}{71}
+\bibcite{stocker:14:mpq}{72}
+\bibcite{heule:14:tes-mrm}{73}
+\bibcite{gyngell:89:tss}{74}
+\bibcite{hanicke:03:aas}{75}
+\bibcite{weiss:80:tco}{76}
+\bibcite{zhang:98:dos}{77}
+\bibcite{wang:87:otp}{78}
+\bibcite{jones:96:oss}{79}
+\bibcite{imran:99:tpm}{80}
+\bibcite{deoni:04:doo}{81}
+\bibcite{fleysher:07:otp}{82}
+\bibcite{akcakaya:15:ots}{83}
+\bibcite{lewis:16:ddo}{84}
+\bibcite{liu:17:gmm}{85}
+\bibcite{fisher:1925:tos}{86}
+\bibcite{cramer:46}{87}
+\bibcite{chernoff:53:lod}{88}
+\bibcite{pauly:91:prf}{89}
+\bibcite{sacolick:10:bmb}{90}
+\bibcite{sun:14:reo}{91}
+\bibcite{ying:07:jir}{92}
+\bibcite{arthur:07:kmt}{93}
+\bibcite{frank:97:spe}{94}
+\bibcite{barral:10:arm}{95}
+\bibcite{carney:91:asa}{96}
+\bibcite{wu:90:eod}{97}
+\bibcite{kaiser:74:daf}{98}
+\bibcite{heule:14:tes-nib}{99}
+\bibcite{mackay:94:ivv}{100}
+\bibcite{gill:95:aot}{101}
+\bibcite{ma:13:mrf}{102}
+\bibcite{zhao:16:oed}{103}
+\bibcite{torrey:56:bew}{104}
+\bibcite{mcconnell:58:rrb}{105}
+\bibcite{bloembergen:1948:rei}{106}
+\bibcite{bihan:01:dti}{107}
+\bibcite{haldar:07:mle}{108}
+\bibcite{hernando:08:jeo}{109}
+\bibcite{staroswiecki:12:seo}{110}
+\bibcite{trzasko:13:etf}{111}
+\bibcite{mcgivney:14:scf}{112}
+\bibcite{zhao:14:mbm}{113}
+\bibcite{zhao:15:amp}{114}
+\bibcite{cauley:15:fgm}{115}
+\bibcite{zhao:16:mlr}{116}
+\bibcite{asslander::lra}{117}
+\bibcite{yang::lra}{118}
+\bibcite{feinberg:85:mri}{119}
+\bibcite{tuch:01:ctm}{120}
+\bibcite{sekihara:85:nif}{121}
+\bibcite{morrell:08:aps}{122}
+\bibcite{deoni:08:gmt}{123}
+\bibcite{deoni:13:oct}{124}
+\bibcite{kimeldorf:70:acb}{125}
+\bibcite{aronszajn:50:tor}{126}
+\bibcite{cortes:95:svn}{127}
+\bibcite{saunders:98:rrl}{128}
+\bibcite{huang:12:tmf}{129}
+\bibcite{huang:13:trw}{130}
+\bibcite{zhao:16:daa}{131}
+\bibcite{scholkopf:01:agr}{132}
+\bibcite{hoerl:70:rrb}{133}
+\bibcite{steinwart:08:svm}{134}
+\bibcite{rahimi:07:rff}{135}
+\bibcite{sutherland:15:ote}{136}
+\bibcite{wu:97:gbt}{137}
+\bibcite{woodbury:50:imm}{138}
+\bibcite{vapnik:98:slt}{139}
+\bibcite{siddiqui:64:sif}{140}
+\bibcite{gong:92:aft}{141}
+\bibcite{he:16:ahd}{142}
+\bibcite{alvarez:11:kfv}{143}
+\bibcite{ajafernandez:16:sao}{144}
+\bibcite{cohen:17:dlf-arxiv}{145}
+\bibcite{virtue:17:btr}{146}
+\bibcite{morell:84}{147}
+\bibcite{goldenberg:12:msr}{148}
+\bibcite{vasilescu:78:wci}{149}
+\bibcite{menon:91:aoc}{150}
+\bibcite{stewart:93:ssr}{151}
+\bibcite{gareau:00:mta}{152}
+\bibcite{webb:03:imt}{153}
+\bibcite{laule:04:wca}{154}
+\bibcite{laule:06:mwi}{155}
+\bibcite{does:00:rat}{156}
+\bibcite{prasloski:12:rwc}{157}
+\bibcite{feinberg:91:gga}{158}
+\bibcite{deoni:11:com}{159}
+\bibcite{zhang:15:com}{160}
+\bibcite{lankford:13:oti}{161}
+\bibcite{spencer:00:mos}{162}
+\bibcite{miller:10:aot-1}{163}
+\bibcite{miller:10:aot-2}{164}
+\bibcite{magnus:54:ote}{165}
+\bibcite{lawson:74}{166}
+\bibcite{kroeker:86:aob}{167}
+\bibcite{whittall:89:qio}{168}
+\bibcite{prasloski:12:aos}{169}
+\bibcite{hennig:88:mis}{170}
+\bibcite{alonsoortiz:15:mbm}{171}
+\bibcite{varma:15:mtf}{172}
+\bibcite{varma:15:iom}{173}
+\bibcite{swanson:17:mda}{174}
