@@ -1254,7 +1254,8 @@
   \insertauthor
  \end{center} %
  % Vertical rubber space
- \vspace*{\stretch{2}} %
+ \vspace*{0.5in}
+ % \vspace*{\stretch{2}} %
  % Insert the chair info
  \ifthenelse{\equal{\@cochair}{}}{
   % No co-chairs; insert the chair.
@@ -1263,16 +1264,22 @@
   % Use co-chairs.
   {\bf Co-Chairs: \insertcochairs}} %
  % Vertical rubber space
- \vspace*{\stretch{2}} %
- % Insert the text in a centered minipage.
- \begin{center} %
-  \begin{minipage}{0.9\textwidth} %
-   % Double-spaced lines required by Rackham
-   \doublespacing %
-   % Insert the text.
-   \insertabstract %
-  \end{minipage} %
- \end{center} %
+ \vspace*{0.5in}
+ % \vspace*{\stretch{0.5}} %
+ % Insert the text with adjusted width (requires changepage)
+ \begin{adjustwidth}{0.25in}{0.25in}
+  \doublespacing
+  \insertabstract
+ \end{adjustwidth}
+% % Insert the text in a centered minipage.
+% \begin{center} %
+%  \begin{minipage}{0.9\textwidth} %
+%   % Double-spaced lines required by Rackham
+%   \doublespacing %
+%   % Insert the text.
+%   \insertabstract %
+%  \end{minipage} %
+% \end{center} %
  % Vertical rubber space
  \vspace*{\stretch{1}} %
 }

@@ -1,0 +1,87 @@
+% abstract
+\setlength{\parindent}{0ex}
+Quantitative magnetic resonance imaging (QMRI)
+produces images of MR biomarkers,
+or measurable tissue properties
+related to physiological processes
+that characterize the onset and progression
+of specific disorders.
+Though QMRI has potential 
+to be more informative 
+than conventional qualitative MRI,
+QMRI poses challenges 
+beyond those of conventional MRI
+that currently limit its feasibility 
+for routine clinical use.
+This thesis first seeks to address 
+two of these challenges.
+It then applies these solutions
+to develop a new method
+for myelin water imaging,
+a challenging application 
+that may be specifically indicative
+of certain white matter disorders. 
+
+\setlength{\parindent}{4ex}
+One challenge 
+that presently precludes widespread clinical adoption of QMRI
+involves relatively long scan durations:
+to disentangle biomarkers
+from numerous nuisance MR contrast mechanisms,
+QMRI typically requires more data than conventional MRI
+and thus longer scans. 
+Even allowing for long scans,
+it has previously been unclear 
+how to systematically tune the ``knobs'' 
+of highly flexible MR acquisitions
+so as to reliably enable precise biomarker estimation.
+Chapter~\ref{c,scn-dsgn} formalizes these challenges
+as an optimal acquisition design problem
+and solves this problem for MR relaxometry,
+a simple and popular application.
+The resulting optimized acquisition designs
+enable MR relaxometry
+in much less time 
+than conventional relaxometry acquisitions, 
+but perhaps more importantly illustrate
+that acquisition design can enable 
+new biomarker estimation techniques
+from established MR pulse sequences,
+a fact that subsequent chapters exploit.
+
+Another QMRI challenge
+involves the typically nonlinear dependence 
+of MR signal models
+on the underlying biomarkers of interest:
+these nonlinearities 
+cause conventional biomarker estimators
+to either scale very poorly 
+with the number of unknowns
+or risk producing suboptimal estimates.
+Chapter~\ref{c,perk} instead formulates
+this challenging parameter estimation problem
+as supervised learning problem
+that admits a very efficient solution.
+With proper training,
+simulations and experiments 
+demonstrate orders-of-magnitude acceleration
+over conventional estimators,
+with comparable accuracy and precision.
+
+Chapter~\ref{c,mwf} applies ideas 
+developed in previous chapters
+to design a new fast method
+for imaging myelin water content,
+a biomarker for healthy myelin.
+Since myelin degeneration characterizes
+certain white matter disorders
+(\ie, multiple sclerosis),
+myelin water quantification
+could improve MRI specificity
+for monitoring the onset and progression
+of such demyelinating conditions.
+The tools developed in this thesis enable 
+whole-brain high-resolution myelin water imaging 
+in about 10 minutes of scan time,
+whereas state-of-the-art methods
+require 30 minutes or more.

@@ -1,12 +1,13 @@
 % !TEX TS-program = latex
 % gopal nataraj thesis proposal
-\documentclass[thesis]{../cls/thesis-umich}
-%\documentclass[draft]{../cls/thesis-umich}
+%\documentclass[thesis]{../cls/thesis-umich}
+\documentclass[draft]{../cls/thesis-umich}
 
 % doc
 \usepackage{subfiles} 				% partial compilation
 \usepackage{xspace}						% good spacing
 \usepackage[left]{showlabels}	% show labels
+\usepackage{changepage} 			% adjustwidth for margin changes with page wrap
 
 % math
 \usepackage{IEEEtrantools} 		% IEEEeqnarray for nice multiline math
@@ -21,13 +22,13 @@
 \usepackage{varwidth}
 
 % fig location
-\graphicspath{
+\graphicspath{%
 	{../fig/c,relax/},
 	{../fig/c,scn-dsgn/},
 	{../fig/c,krr/},
 	{../fig/c,perk/},
 	{../fig/c,mwf/}
-}
+}%
 
 % macros
 \input{../macro/doc}
@@ -36,22 +37,26 @@
 \input{../macro/tikz}
 
 % title
-\title{
+\title{%
 	Advances in Quantitative MRI: \\
 	Acquisition,
 	Estimation,
 	and 
-	Application
-}
+	Application%
+}%
 
 % author
-\author{Gopal Nataraj}
+\author{%
+	Gopal Nataraj%
+}%
 
 % dept
-\department{Electrical Engineering and Computer Science}
+\department{%
+	Electrical Engineering and Computer Science%
+}%
 
 % year
-\year=2018
+\year=2018%
 
 % front piece
 %\frontispiece{\includegraphics[width=4in]{./pics/frontispiece.pdf}}
@@ -70,7 +75,7 @@
 %\acknowledgmentswidth{0.8}
 
 % preface
-%\preface[2]{ %
+%\preface[2]{%
 %}
 
 % committee
@@ -79,12 +84,12 @@
 	Assistant Research Scientist Jon-Fredrik Nielsen, Co-Chair \\
 	Professor Douglas C. Noll \\
 	Associate Professor Clayton Scott \\
-	Associate Research Scientist Scott Swanson
+	Associate Research Scientist Scott Swanson%
 }%
 
 % chair entered separately for formatting
 \cochair{%
-	Jeffrey A. Fessler and Jon-Fredrik Nielsen
+	Jeffrey A. Fessler and Jon-Fredrik Nielsen%
 }%
 
 % hide/show lists of figures, tables, etc.
@@ -95,18 +100,15 @@
 \hidelistofacronyms
 
 % abbreviations
-\begin{comment}
-\abbreviations{%
- \acro{CFD}{Computational Fluid Dynamics}
- \acro{MSRSF}{Monotonic, Single-Root Scalar Function}
-}%
-\end{comment}
+%\abbreviations{%
+%	\acro{QMRI}{Quantitative Magnetic Resonance Imaging}
+%}%
 
 % abstract
 \abstract{%
-	todo
+	\label{f,abs}	
+	\input{f,abs}
 }%
-\hideabstractpagenumber
 
 % document
 \begin{document}
