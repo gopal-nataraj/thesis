@@ -102,7 +102,6 @@
 % Declare an option for bibliography backrefs.
 \DeclareOption{backref}{\@umich@backreftrue}
 
-
 % This passes any other options on to the 'report' class.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}%
  \typeout{Unknown option: passing ``\CurrentOption"
@@ -389,14 +388,25 @@
  \ttlpg %
  % Center the page.
  \begin{center} %
-  % Vertical rubber space
-  \ \vfill %
-  % Insert the frontispiece.
-  \copyright \insertcopyrightholder \\[1ex] %
-  % Horizontal line
-  \rule[0.5ex]{5in}{1pt} \\[1ex] %
-  % The year of publication
-  \number\year %
+ 	% Vertical rubber space
+	\ \vfill
+	% author
+	\insertauthor \\[1ex] %
+	% email
+	\href{mailto:gnataraj@umich.edu}{gnataraj@umich.edu} \\[1ex]%
+	% orcid id
+	ORCiD\regis ID: 
+		\href{https://orcid.org/0000-0002-2847-115X}{0000-0002-2847-115X} \\[1ex] %
+	% horizontal line
+	\rule[0.5ex]{5in}{1pt} \\[1ex] %
+	% copyright info
+	\copyright\xspace\insertcopyrightholder\xspace\insertyear
+%  % Insert the frontispiece.
+%  \copyright \insertcopyrightholder \\[1ex] %
+%  % Horizontal line
+%  \rule[0.5ex]{5in}{1pt} \\[1ex] %
+%  % The year of publication
+%  \number\year %
   % Vertical rubber space
   \vfill %
  \end{center} %
@@ -1244,27 +1254,28 @@
   % Formatting
   \large \bfseries
   % Add the heading.
-  ABSTRACT \\[5ex] %
-  % Add the title of the dissertation.
-  \normalsize %
-  \inserttitle \\[2ex] %
-  % Add the word 'by'
-  by \\[2ex]
-  % Add the author.
-  \insertauthor
+  ABSTRACT
+%  ABSTRACT \\[5ex] %
+%  % Add the title of the dissertation.
+%  \normalsize %
+%  \inserttitle \\[2ex] %
+%  % Add the word 'by'
+%  by \\[2ex]
+%  % Add the author.
+%  \insertauthor
  \end{center} %
- % Vertical rubber space
- \vspace*{0.5in}
- % \vspace*{\stretch{2}} %
- % Insert the chair info
- \ifthenelse{\equal{\@cochair}{}}{
-  % No co-chairs; insert the chair.
-  {\bf Chair: \insertchair} %
- }{ %
-  % Use co-chairs.
-  {\bf Co-Chairs: \insertcochairs}} %
- % Vertical rubber space
- \vspace*{0.5in}
+% Vertical rubber space
+ \vspace*{0.3in}
+% % \vspace*{\stretch{2}} %
+% % Insert the chair info
+% \ifthenelse{\equal{\@cochair}{}}{
+%  % No co-chairs; insert the chair.
+%  {\bf Chair: \insertchair} %
+% }{ %
+%  % Use co-chairs.
+%  {\bf Co-Chairs: \insertcochairs}} %
+% % Vertical rubber space
+% \vspace*{0.5in}
  % \vspace*{\stretch{0.5}} %
  % Insert the text with adjusted width (requires changepage)
  \begin{adjustwidth}{0.25in}{0.25in}
@@ -1373,10 +1384,12 @@
 % This will make labels and references hyperlinks.
 \if@umich@backref
  % Use references in the bibliography.
- \RequirePackage[pagebackref=true]{hyperref}
+ % gn 2018-03-09
+% \RequirePackage[pagebackref=true]{hyperref}
+ \RequirePackage[pagebackref=true,breaklinks]{hyperref}
 \else
  % Do not use back references.
-% gn 2016-01-11
+ % gn 2016-01-11
 % \RequirePackage{hyperref}
  \RequirePackage[breaklinks]{hyperref}
 \fi
@@ -1412,15 +1425,15 @@
  \hypersetup{pdftitle=\inserttitle} %
  % Insert the frontispiece if there is one.
  \if@umich@frontispiece\frontispiecepage\fi %
-% \ifthenelse{\equal{\@frontispiece}{}}{}{\frontispiecepage} %
+ % Insert the copyright page if there is one.
+ % gn 2018-03-09: moved from after renewing frontmatter \thepage to start from ii
+ \if@umich@copyright\copyrightpage\fi
  % Initialize page numbers.
  \setcounter{page}{1} %
  % Page numbers at the bottom
  \pagestyle{plain} %
  % Use lower-case roman numerals.
  \renewcommand{\thepage}{\roman{page}} %
- % Insert the copyright page if there is one.
- \if@umich@copyright\copyrightpage\fi
  % Insert a dedication if there is one.
  \if@umich@dedication\dedicationpage\fi %
  % Insert the acknowledgments if there are any.

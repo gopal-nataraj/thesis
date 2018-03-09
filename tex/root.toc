@@ -1,6 +1,8 @@
-\contentsline {chapter}{List of Figures}{iv}{section*.2}
-\contentsline {chapter}{List of Tables}{viii}{section*.3}
-\contentsline {chapter}{Abstract}{xi}{section*.4}
+\contentsline {chapter}{Dedication}{ii}{section*.1}
+\contentsline {chapter}{List of Figures}{vi}{section*.3}
+\contentsline {chapter}{List of Tables}{x}{section*.4}
+\contentsline {chapter}{List of Appendices}{xiii}{section*.5}
+\contentsline {chapter}{Abstract}{xiv}{section*.7}
 \vspace {1.3ex}\noindent {\bf Chapter}\vspace {1.3ex}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Overview}{2}{section.1.1}
@@ -93,4 +95,6 @@
 \contentsline {section}{\numberline {7.1}Combining PERK with Image Reconstruction}{118}{section.7.1}
 \contentsline {section}{\numberline {7.2}Exploiting Off-Resonance for Myelin Water Imaging}{119}{section.7.2}
 \contentsline {section}{\numberline {7.3}Correlating with Other Myelin Biomarkers}{120}{section.7.3}
-\contentsline {chapter}{Bibliography}{121}{section*.5}
+\contentsline {chapter}{Appendices}{121}{section*.8}
+\global \c@tocdepth 1\relax 
+\contentsline {chapter}{Bibliography}{124}{section*.12}

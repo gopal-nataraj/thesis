@@ -4,36 +4,36 @@ The top-level auxiliary file: root.aux
 The style file: ieeetr.bst
 Database file #1: ../bib/master.bib.bib
 Database file #2: ../bib/new.bib.bib
-You've used 176 entries,
+You've used 175 entries,
             1876 wiz_defined-function locations,
-            1349 strings with 30830 characters,
-and the built_in function-call counts, 60855 in all, are:
-= -- 6503
-> -- 2157
+            1347 strings with 30794 characters,
+and the built_in function-call counts, 60679 in all, are:
+= -- 6489
+> -- 2143
 < -- 2
-+ -- 788
-- -- 612
-* -- 4392
-:= -- 8024
-add.period$ -- 193
-call.type$ -- 176
-change.case$ -- 168
++ -- 783
+- -- 608
+* -- 4381
+:= -- 7996
+add.period$ -- 191
+call.type$ -- 175
+change.case$ -- 167
 chr.to.int$ -- 0
-cite$ -- 176
-duplicate$ -- 3035
-empty$ -- 5121
-format.name$ -- 612
-if$ -- 14886
+cite$ -- 175
+duplicate$ -- 3031
+empty$ -- 5103
+format.name$ -- 608
+if$ -- 14844
 int.to.chr$ -- 0
-int.to.str$ -- 176
+int.to.str$ -- 175
 missing$ -- 176
-newline$ -- 548
-num.names$ -- 176
-pop$ -- 372
+newline$ -- 544
+num.names$ -- 175
+pop$ -- 365
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2819
+skip$ -- 2816
 stack$ -- 0
 substring$ -- 5487
 swap$ -- 1712
@@ -42,6 +42,6 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 621
-width$ -- 179
-write$ -- 1741
+while$ -- 620
+width$ -- 178
+write$ -- 1732

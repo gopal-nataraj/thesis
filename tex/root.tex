@@ -1,12 +1,12 @@
 % !TEX TS-program = latex
 % gopal nataraj thesis proposal
-\documentclass[thesis]{../cls/thesis-umich}
-%\documentclass[draft]{../cls/thesis-umich}
+\documentclass[thesis,backref]{../cls/thesis-umich}
+%\documentclass[draft,backref]{../cls/thesis-umich}
 
 % doc
 \usepackage{subfiles} 				% partial compilation
 \usepackage{xspace}						% good spacing
-%\usepackage[left]{showlabels}	% show labels
+\usepackage[left]{showlabels}	% show labels
 \usepackage{changepage} 			% adjustwidth for margin changes with page wrap
 
 % math
@@ -58,15 +58,19 @@
 % year
 \year=2018%
 
-% front piece
-%\frontispiece{\includegraphics[width=4in]{./pics/frontispiece.pdf}}
+% set front matter page number
+%\setcounter{page}{2}
+%\renewcommand{\thepage}{\roman{page}}
 
-% front page style
+% front piece and style
+%\frontispiece{\includegraphics[width=4in]{./pics/frontispiece.pdf}}
 %\frontpagestyle{1}
 
-% Dedication
-%\dedication{%
-%}
+% dedication
+\dedication[4]{%
+	to Amma and Appa,
+	who have supported me since day one%
+}%
 
 % acknowledgments
 % set width of acknowledgments as fraction of total \textwidth
@@ -81,7 +85,7 @@
 % committee
 \committee{%
 	Professor Jeffrey A. Fessler, Co-Chair \\
-	Assistant Research Scientist Jon-Fredrik Nielsen, Co-Chair \\
+	Associate Research Scientist Jon-Fredrik Nielsen, Co-Chair \\
 	Professor Douglas C. Noll \\
 	Associate Professor Clayton Scott \\
 	Associate Research Scientist Scott Swanson%
@@ -95,7 +99,7 @@
 % hide/show lists of figures, tables, etc.
 \showlistoftables
 \hidelistofprograms
-\hidelistofappendices
+\showlistofappendices
 \hidelistofabbreviations
 \hidelistofacronyms
 
@@ -142,15 +146,20 @@
 \label{c,future}
 \input{c,future}
 
-%% appendix
-%\appendix
-%\chapter{Coil Data Combination from Multiple Datasets}
-%\label{a,cc-multi}
-%\input{a,cc-multi}
-%
-%\chapter{DESS in the Presence of Diffusion}
-%\label{a,dess-diff}
-%\input{a,dess-diff}
+% appendix
+\appendix
+
+\chapter{Multiple-Dataset Complex Coil Combination}
+\label{a,cc-multi}
+\input{a,cc-multi}
+
+\chapter{Steady-State RF Pulse Design}
+\label{a,ss-rf}
+\input{a,ss-rf}
+
+\chapter{Diffusive Signal Loss in DESS}
+\label{a,dess-diff}
+\input{a,dess-diff}
 
 % bibliography
 \bibliographystyle{ieeetr}
