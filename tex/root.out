@@ -1,47 +1,96 @@
 \BOOKMARK [0][-]{i.0}{Table of Contents}{}% 1
 \BOOKMARK [0][-]{section*.2}{List of Figures}{}% 2
 \BOOKMARK [0][-]{section*.3}{List of Tables}{}% 3
-\BOOKMARK [0][-]{section*.4}{List of Appendices}{}% 4
-\BOOKMARK [0][-]{section*.6}{Abstract}{}% 5
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 6
-\BOOKMARK [1][-]{section.1.1}{Overview}{chapter.1}% 7
-\BOOKMARK [1][-]{section.1.2}{Organization}{chapter.1}% 8
-\BOOKMARK [0][-]{chapter.2}{Background}{}% 9
-\BOOKMARK [1][-]{section.2.1}{Relevant MR Physics}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.2}{Optimization in QMRI}{chapter.2}% 11
-\BOOKMARK [0][-]{chapter.3}{QMRI Parameter Estimation using Likelihood Models}{}% 12
-\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.2}{Likelihood-Based Estimation in QMRI}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.3}{Experimentation}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.4}{Discussion}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.5}{Conclusion}{chapter.3}% 17
-\BOOKMARK [0][-]{chapter.4}{QMRI Acquisition Design via Min-Max Optimization}{}% 18
-\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 19
-\BOOKMARK [1][-]{section.4.2}{A CRB-Inspired Scan Selection Method}{chapter.4}% 20
-\BOOKMARK [1][-]{section.4.3}{Optimizing SS Sequences for Relaxometry in the Brain}{chapter.4}% 21
-\BOOKMARK [1][-]{section.4.4}{Experimentation}{chapter.4}% 22
-\BOOKMARK [1][-]{section.4.5}{Discussion}{chapter.4}% 23
-\BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 24
-\BOOKMARK [0][-]{chapter.5}{QMRI Parameter Estimation via Regression with Kernels \(PERK\)}{}% 25
-\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 26
-\BOOKMARK [1][-]{section.5.2}{Preliminaries}{chapter.5}% 27
-\BOOKMARK [1][-]{section.5.3}{A Function Optimization Problem \046 Kernel Solution}{chapter.5}% 28
-\BOOKMARK [1][-]{section.5.4}{Bias and Covariance Analysis}{chapter.5}% 29
-\BOOKMARK [1][-]{section.5.5}{Implementation Considerations}{chapter.5}% 30
-\BOOKMARK [1][-]{section.5.6}{PERK Demonstration in a 1-D Toy Problem}{chapter.5}% 31
-\BOOKMARK [1][-]{section.5.7}{Experimentation}{chapter.5}% 32
-\BOOKMARK [1][-]{section.5.8}{Robustness Studies}{chapter.5}% 33
-\BOOKMARK [1][-]{section.5.9}{Discussion}{chapter.5}% 34
-\BOOKMARK [1][-]{section.5.10}{Conclusion}{chapter.5}% 35
-\BOOKMARK [0][-]{chapter.6}{Fast Myelin Water Imaging via Acquisition Design and PERK}{}% 36
-\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 37
-\BOOKMARK [1][-]{section.6.2}{Multi-Compartmental Models for SS Sequences}{chapter.6}% 38
-\BOOKMARK [1][-]{section.6.3}{A Fast SS Acquisition for Precise Myelin Imaging}{chapter.6}% 39
-\BOOKMARK [1][-]{section.6.4}{Experimentation}{chapter.6}% 40
-\BOOKMARK [1][-]{section.6.5}{Discussion}{chapter.6}% 41
-\BOOKMARK [1][-]{section.6.6}{Conclusion}{chapter.6}% 42
-\BOOKMARK [0][-]{chapter.7}{Concluding Remarks}{}% 43
-\BOOKMARK [0][-]{section*.9}{Appendices}{}% 44
-\BOOKMARK [0][-]{Coil Data Combination from Multiple Datasets.0}{Coil Data Combination from Multiple Datasets}{}% 45
-\BOOKMARK [0][-]{DESS in the Presence of Diffusion.0}{DESS in the Presence of Diffusion}{}% 46
-\BOOKMARK [0][-]{section*.12}{Bibliography}{}% 47
+\BOOKMARK [0][-]{section*.4}{Abstract}{}% 4
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 5
+\BOOKMARK [1][-]{section.1.1}{Overview}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.2}{Organization}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Relevant MR Physics}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.1.1}{Bloch Equations}{section.2.1}% 10
+\BOOKMARK [3][-]{subsubsection.2.1.1.1}{Non-Selective Excitation}{subsection.2.1.1}% 11
+\BOOKMARK [3][-]{subsubsection.2.1.1.2}{Free Precession and Relaxation}{subsection.2.1.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.2}{Steady-State Sequences}{section.2.1}% 13
+\BOOKMARK [3][-]{subsubsection.2.1.2.1}{Spoiled Gradient-Recalled Echo \(SPGR\) Sequence}{subsection.2.1.2}% 14
+\BOOKMARK [3][-]{subsubsection.2.1.2.2}{Dual-Echo Steady-State \(DESS\) Sequence}{subsection.2.1.2}% 15
+\BOOKMARK [1][-]{section.2.2}{Optimization in QMRI}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.1}{Iterative Local Optimization with Constraints}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.2}{Partially Linear Models and the Variable Projection Method}{section.2.2}% 18
+\BOOKMARK [0][-]{chapter.3}{QMRI Parameter Estimation using Likelihood Models}{}% 19
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.2}{Likelihood-Based Estimation in QMRI}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.2.1}{The QMRI Scan Profile}{section.3.2}% 22
+\BOOKMARK [3][-]{subsubsection.3.2.1.1}{Example: An SPGR Scan Profile for T1 estimation}{subsection.3.2.1}% 23
+\BOOKMARK [3][-]{subsubsection.3.2.1.2}{Example: A DESS Scan Profile for T2 estimation}{subsection.3.2.1}% 24
+\BOOKMARK [2][-]{subsection.3.2.2}{Latent Object Parameter Estimation}{section.3.2}% 25
+\BOOKMARK [3][-]{subsubsection.3.2.2.1}{Signal Model and Problem Statement}{subsection.3.2.2}% 26
+\BOOKMARK [3][-]{subsubsection.3.2.2.2}{Maximum Likelihood Methods}{subsection.3.2.2}% 27
+\BOOKMARK [3][-]{subsubsection.3.2.2.3}{Regularized Likelihood Methods}{subsection.3.2.2}% 28
+\BOOKMARK [1][-]{section.3.3}{Experimentation}{chapter.3}% 29
+\BOOKMARK [2][-]{subsection.3.3.1}{T1 estimation from two SPGR scans}{section.3.3}% 30
+\BOOKMARK [2][-]{subsection.3.3.2}{T2 estimation from one DESS scan}{section.3.3}% 31
+\BOOKMARK [1][-]{section.3.4}{Discussion}{chapter.3}% 32
+\BOOKMARK [1][-]{section.3.5}{Conclusion}{chapter.3}% 33
+\BOOKMARK [0][-]{chapter.4}{QMRI Acquisition Design via Min-Max Optimization}{}% 34
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.2}{A CRB-Inspired Scan Selection Method}{chapter.4}% 36
+\BOOKMARK [2][-]{subsection.4.2.1}{The CRB and its Relevance to QMRI}{section.4.2}% 37
+\BOOKMARK [2][-]{subsection.4.2.2}{Min-max Optimization Problem for Scan Design}{section.4.2}% 38
+\BOOKMARK [1][-]{section.4.3}{Optimizing SS Sequences for Relaxometry in the Brain}{chapter.4}% 39
+\BOOKMARK [2][-]{subsection.4.3.1}{Scan Design Details}{section.4.3}% 40
+\BOOKMARK [2][-]{subsection.4.3.2}{Scan Profile Comparisons}{section.4.3}% 41
+\BOOKMARK [1][-]{section.4.4}{Experimentation}{chapter.4}% 42
+\BOOKMARK [2][-]{subsection.4.4.1}{Numerical Simulations}{section.4.4}% 43
+\BOOKMARK [2][-]{subsection.4.4.2}{Phantom Experiments}{section.4.4}% 44
+\BOOKMARK [3][-]{subsubsection.4.4.2.1}{Within-ROI Statistics}{subsection.4.4.2}% 45
+\BOOKMARK [3][-]{subsubsection.4.4.2.2}{Across-Repetition Statistics}{subsection.4.4.2}% 46
+\BOOKMARK [2][-]{subsection.4.4.3}{In vivo Experiments}{section.4.4}% 47
+\BOOKMARK [1][-]{section.4.5}{Discussion}{chapter.4}% 48
+\BOOKMARK [1][-]{section.4.6}{Conclusion}{chapter.4}% 49
+\BOOKMARK [0][-]{chapter.5}{QMRI Parameter Estimation via Regression with Kernels \(PERK\)}{}% 50
+\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 51
+\BOOKMARK [1][-]{section.5.2}{Preliminaries}{chapter.5}% 52
+\BOOKMARK [1][-]{section.5.3}{A Function Optimization Problem \046 Kernel Solution}{chapter.5}% 53
+\BOOKMARK [1][-]{section.5.4}{Bias and Covariance Analysis}{chapter.5}% 54
+\BOOKMARK [2][-]{subsection.5.4.1}{Conditional Bias}{section.5.4}% 55
+\BOOKMARK [2][-]{subsection.5.4.2}{Conditional Covariance}{section.5.4}% 56
+\BOOKMARK [1][-]{section.5.5}{Implementation Considerations}{chapter.5}% 57
+\BOOKMARK [2][-]{subsection.5.5.1}{A Kernel Approximation}{section.5.5}% 58
+\BOOKMARK [2][-]{subsection.5.5.2}{Tuning Parameter Selection}{section.5.5}% 59
+\BOOKMARK [3][-]{subsubsection.5.5.2.1}{Choosing Sampling Distribution}{subsection.5.5.2}% 60
+\BOOKMARK [3][-]{subsubsection.5.5.2.2}{Choosing Regularization Parameters}{subsection.5.5.2}% 61
+\BOOKMARK [3][-]{subsubsection.5.5.2.3}{Choosing Kernel Bandwidth}{subsection.5.5.2}% 62
+\BOOKMARK [1][-]{section.5.6}{PERK Demonstration in a 1-D Toy Problem}{chapter.5}% 63
+\BOOKMARK [1][-]{section.5.7}{Experimentation}{chapter.5}% 64
+\BOOKMARK [2][-]{subsection.5.7.1}{Methods}{section.5.7}% 65
+\BOOKMARK [3][-]{subsubsection.5.7.1.1}{Model Selection via Holdout}{subsection.5.7.1}% 66
+\BOOKMARK [3][-]{subsubsection.5.7.1.2}{Evaluation}{subsection.5.7.1}% 67
+\BOOKMARK [2][-]{subsection.5.7.2}{Numerical Simulations}{section.5.7}% 68
+\BOOKMARK [2][-]{subsection.5.7.3}{Phantom Experiments}{section.5.7}% 69
+\BOOKMARK [2][-]{subsection.5.7.4}{In vivo Experiments}{section.5.7}% 70
+\BOOKMARK [1][-]{section.5.8}{Robustness Studies}{chapter.5}% 71
+\BOOKMARK [2][-]{subsection.5.8.1}{Mismatch in Training vs. Testing Noise Statistics}{section.5.8}% 72
+\BOOKMARK [2][-]{subsection.5.8.2}{Mismatch in Scan Design vs. Sampling Distribution Support}{section.5.8}% 73
+\BOOKMARK [1][-]{section.5.9}{Discussion}{chapter.5}% 74
+\BOOKMARK [1][-]{section.5.10}{Conclusion}{chapter.5}% 75
+\BOOKMARK [0][-]{chapter.6}{Fast Myelin Water Imaging via Acquisition Design and PERK}{}% 76
+\BOOKMARK [1][-]{section.6.1}{Introduction}{chapter.6}% 77
+\BOOKMARK [1][-]{section.6.2}{Multi-Compartmental Models for SS Sequences}{chapter.6}% 78
+\BOOKMARK [2][-]{subsection.6.2.1}{A Two-Compartment SPGR Signal Model}{section.6.2}% 79
+\BOOKMARK [2][-]{subsection.6.2.2}{A Two-Compartment DESS Signal Model}{section.6.2}% 80
+\BOOKMARK [1][-]{section.6.3}{A Fast SS Acquisition for Precise Myelin Imaging}{chapter.6}% 81
+\BOOKMARK [2][-]{subsection.6.3.1}{Scalable Acquisition Design}{section.6.3}% 82
+\BOOKMARK [2][-]{subsection.6.3.2}{SPGR/DESS Scan Design Implementation Details}{section.6.3}% 83
+\BOOKMARK [1][-]{section.6.4}{Experimentation}{chapter.6}% 84
+\BOOKMARK [2][-]{subsection.6.4.1}{Methods}{section.6.4}% 85
+\BOOKMARK [2][-]{subsection.6.4.2}{Numerical Simulations}{section.6.4}% 86
+\BOOKMARK [3][-]{subsubsection.6.4.2.1}{Two-Compartment Simulation without Model Mismatch}{subsection.6.4.2}% 87
+\BOOKMARK [3][-]{subsubsection.6.4.2.2}{Three-Compartment Simulation with Model Mismatch}{subsection.6.4.2}% 88
+\BOOKMARK [2][-]{subsection.6.4.3}{In vivo Experiments}{section.6.4}% 89
+\BOOKMARK [1][-]{section.6.5}{Discussion}{chapter.6}% 90
+\BOOKMARK [1][-]{section.6.6}{Conclusion}{chapter.6}% 91
+\BOOKMARK [0][-]{chapter.7}{Future Work}{}% 92
+\BOOKMARK [1][-]{section.7.1}{Combining PERK with Image Reconstruction}{chapter.7}% 93
+\BOOKMARK [1][-]{section.7.2}{Exploiting Off-Resonance for Myelin Water Imaging}{chapter.7}% 94
+\BOOKMARK [1][-]{section.7.3}{Correlating with Other Myelin Biomarkers}{chapter.7}% 95
+\BOOKMARK [0][-]{section*.5}{Bibliography}{}% 96

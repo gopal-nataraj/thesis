@@ -31,10 +31,11 @@ G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``A min-max {CRLB} optimization
   approach to scan selection for relaxometry,'' in {\em {Proc. Intl. Soc. Mag.
   Res. Med.}}, p.~1672, 2015.
 
-\bibitem{nataraj:17:dfm-arxiv}
+\bibitem{nataraj::dfm}
 G.~Nataraj, J.-F. Nielsen, C.~Scott, and J.~A. Fessler, ``Dictionary-free {MRI}
-  {PERK:} {Parameter} estimation via regression with kernels,'' 2017.
-\newblock arxiv 1710.02441.
+  {PERK:} {Parameter} estimation via regression with kernels,'' {\em {IEEE
+  Trans. Med. Imag.}}, 2017.
+\newblock Submitted.
 
 \bibitem{nataraj:17:dfm}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Dictionary-free {MRI} parameter
@@ -857,6 +858,16 @@ J.~Hennig, ``Multiecho imaging sequences with low refocusing flip angles,''
 E.~Alonso-Ortiz, I.~R. Levesque, and G.~B. Pike, ``{MRI-based} myelin water
   imaging: {A} technical review,'' {\em {Mag. Res. Med.}}, vol.~73,
   pp.~{70--81}, Jan. 2015.
+
+\bibitem{nataraj:17:dfm-arxiv}
+G.~Nataraj, J.-F. Nielsen, C.~Scott, and J.~A. Fessler, ``Dictionary-free {MRI}
+  {PERK:} {Parameter} estimation via regression with kernels,'' 2017.
+\newblock arxiv 1710.02441.
+
+\bibitem{nielsen:13:stf}
+J.-F. Nielsen, D.~Yoon, and D.~C. Noll, ``Small-tip fast recovery imaging using
+  non-slice-selective tailored tip-up pulses and radiofrequency-spoiling,''
+  {\em {Mag. Res. Med.}}, vol.~69, pp.~{657--66}, Mar. 2013.
 
 \bibitem{varma:15:mtf}
 G.~Varma, G.~Duhamel, C.~{de Bazelaire}, and D.~C. Alsop, ``Magnetization

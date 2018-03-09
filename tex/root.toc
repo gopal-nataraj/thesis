@@ -1,7 +1,6 @@
 \contentsline {chapter}{List of Figures}{iv}{section*.2}
 \contentsline {chapter}{List of Tables}{viii}{section*.3}
-\contentsline {chapter}{List of Appendices}{xi}{section*.4}
-\contentsline {chapter}{Abstract}{xii}{section*.6}
+\contentsline {chapter}{Abstract}{xi}{section*.4}
 \vspace {1.3ex}\noindent {\bf Chapter}\vspace {1.3ex}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Overview}{2}{section.1.1}
@@ -90,9 +89,8 @@
 \contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{112}{subsection.6.4.3}
 \contentsline {section}{\numberline {6.5}Discussion}{116}{section.6.5}
 \contentsline {section}{\numberline {6.6}Conclusion}{117}{section.6.6}
-\contentsline {paragraph}{Comparisons with MESE MWF Estimates}{118}{section*.7}
-\contentsline {paragraph}{Comparisons with Different Myelin Biomarkers}{119}{section*.8}
-\contentsline {chapter}{\numberline {7}Concluding\nobreakspace {}Remarks}{120}{chapter.7}
-\contentsline {chapter}{Appendices}{121}{section*.9}
-\global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{123}{section*.12}
+\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{118}{chapter.7}
+\contentsline {section}{\numberline {7.1}Combining PERK with Image Reconstruction}{118}{section.7.1}
+\contentsline {section}{\numberline {7.2}Exploiting Off-Resonance for Myelin Water Imaging}{119}{section.7.2}
+\contentsline {section}{\numberline {7.3}Correlating with Other Myelin Biomarkers}{120}{section.7.3}
+\contentsline {chapter}{Bibliography}{121}{section*.5}

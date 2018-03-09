@@ -1,12 +1,12 @@
 % !TEX TS-program = latex
 % gopal nataraj thesis proposal
-%\documentclass[thesis]{../cls/thesis-umich}
-\documentclass[draft]{../cls/thesis-umich}
+\documentclass[thesis]{../cls/thesis-umich}
+%\documentclass[draft]{../cls/thesis-umich}
 
 % doc
 \usepackage{subfiles} 				% partial compilation
 \usepackage{xspace}						% good spacing
-\usepackage[left]{showlabels}	% show labels
+%\usepackage[left]{showlabels}	% show labels
 \usepackage{changepage} 			% adjustwidth for margin changes with page wrap
 
 % math
@@ -95,7 +95,7 @@
 % hide/show lists of figures, tables, etc.
 \showlistoftables
 \hidelistofprograms
-\showlistofappendices
+\hidelistofappendices
 \hidelistofabbreviations
 \hidelistofacronyms
 
@@ -138,19 +138,19 @@
 \label{c,mwf}
 \input{c,mwf}
 
-\chapter{Concluding~Remarks}
-\label{c,conc}
-\input{c,conc}
+\chapter{Future~Work}
+\label{c,future}
+\input{c,future}
 
-% appendix
-\appendix
-\chapter{Coil Data Combination from Multiple Datasets}
-\label{a,cc-multi}
-\input{a,cc-multi}
-
-\chapter{DESS in the Presence of Diffusion}
-\label{a,dess-diff}
-\input{a,dess-diff}
+%% appendix
+%\appendix
+%\chapter{Coil Data Combination from Multiple Datasets}
+%\label{a,cc-multi}
+%\input{a,cc-multi}
+%
+%\chapter{DESS in the Presence of Diffusion}
+%\label{a,dess-diff}
+%\input{a,dess-diff}
 
 % bibliography
 \bibliographystyle{ieeetr}

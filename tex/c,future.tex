@@ -1,107 +1,209 @@
-% future work
+% concluding remarks
 
-This chapter organizes the numerous avenues 
-of future work itemized 
-in Sections~\ref{s,krr,summ} and \ref{s,mwf,summ}
-into a timeline for completion 
-of this dissertation.
-For the short term,
-we place emphasis
-on future work items
-that are likely 
-to lead 
-to journal publications
-that expand 
-on Chapters~\ref{c,krr}-\ref{c,mwf}.
-Other opportunities
-are realistically listed 
-as longer-term research goals.
+This chapter suggests avenues
+for further QMRI research,
+focusing on relatively broad future directions
+that this thesis has not explored.
+Discussion sections
+within main body chapters
+offer more focused ideas 
+for topic-specific extensions,
+whereas the appendices organize 
+partially investigated but still immature topics
+that are less related to QMRI.
 
-\begin{table}[!ht]
-	\centering
-	\begin{tabular}{l | p{12cm}}
-		\hline 
-		\hline
-		2017-04 & prepare for and travel to conferences
-			\begin{itemize}
-				\setlength\topsep{0em}
-				\setlength\itemsep{0em}
-				\item{
-					partially validate KRR estimates 
-					from SPGR/DESS acquisition 
-					given in \ref{tab:mwf,acq}
-					via exhaustive grid search
-				}
-				\item{present \cite{nataraj:17:dfm} at ISBI}
-				\item{present \cite{nataraj:17:mwf} at ISMRM annual meeting}
-			\end{itemize} \\
-		2017-05 & propose dissertation \\
-		2017-05 & experimentally validate KRR estimation
-			\begin{itemize}
-				\setlength\topsep{0em}
-				\setlength\itemsep{0em}
-				\item{implement and test MESE acquisition}
-				\item{research MESE forward model; implement NNLS estimation}
-				\item{
-					replicate \invivo MESE MWF maps in \cite{zhang:15:com},
-					using KRR versus gold-standard NNLS
-				}
-				\item{
-					repeat above while jointly estimating transmit field sensitivity,
-					using KRR versus exhaustive grid search
-				}
-			\end{itemize} \\
-		2017-08 & prepare journal paper on scalable MRI parameter estimation via KRR
-			\begin{itemize}
-				\setlength\topsep{0em}
-				\setlength\itemsep{0em}
-				\item{analyze performance through theory and simulations}
-				\item{seek to exploit partially linear structure}
-				\item{
-					present simulation and experimental results,
-					first showing that KRR can replicate 
-					classical MWF maps \invivo,
-					and then showing that KRR has flexibility
-					to handle more complicated nonlinear models
-					of faster (precision-optimized) SPGR/DESS acquisitions
-				}
-			\end{itemize} \\
-		2017-10 & experimentally validate $\ff$ estimates from SPGR/DESS acquisition
-			\begin{itemize}
-				\setlength\topsep{0em}
-				\setlength\itemsep{0em}
-				\item{
-					design SPGR/DESS acquisition 
-					under MESE model assumptions
-				}
-				\item{
-					compare \invivo MWF estimates 
-					from optimized SPGR/DESS 
-					vs. classical MESE acquisitions
-				}
-				\item{
-					repeat scan design/comparison
-					using increasingly complex model assumptions
-					until MWF estimates
-					from SPGR/DESS and MESE agree reasonably
-				}
-			\end{itemize} \\
-		2018-01 & prepare journal paper on MWF imaging from SPGR/DESS acquisitions \\
-		2018-03 & defend dissertation \\
-		\hline
-		& longer-term research directions
-			\begin{itemize}
-				\setlength\topsep{0em}
-				\setlength\itemsep{0em}
-				\item{combine image reconstruction and KRR parameter estimation}
-				\item{correlate our MWF estimates with other myelin biomarkers}
-				\item{apply KRR to other MRI parameter estimation problems}
-			\end{itemize} \\
-		\hline
-		\hline
-	\end{tabular}
-\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Combining PERK with Image Reconstruction}
+\label{s,future,recon}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+This thesis has considered parameter estimation
+to be separate from image reconstruction.
+This separation affords fast data processing
+but may leave room for improved estimation performance,
+especially when raw data is undersampled.
+One could instead seek 
+to estimate parameters 
+directly from raw data.
+One simple approach 
+to combining image reconstruction
+with PERK-based estimation
+might seek to solve
+the joint optimization problem
+\begin{align}
+	\paren{\est{\bmX},\est{\bmY},\est{\bmh},\est{\bmb}} &\in \set{%
+		\argmin{%
+			\substack{%
+				\bmX \in \complexes{L \times V} \\
+				\bmY \in \complexes{D \times V} \\
+				\bmh \in \hilb^L \\
+				\bmb \in \complexes{L}
+			}%
+		}%
+		\costa{\bmh,\bmb} 
+			+ \beta_1 \frob{\bmD-\bmY\bmA}^2 
+			+ \beta_2 \sum_{v=1}^V \norm{\bmh\paren{\bmy_v,\bmnu_v}+\bmb-\bmx_v}^2_2
+	},
+	\label{eq:future,recon}
+\end{align}
+where 
+$\bmX := \brac{\bmx_1,\dots,\bmx_V} \in \complexes{L \times V}$
+and
+$\bmY := \brac{\bmy_1,\dots,\bmy_V} \in \complexes{D \times V}$
+respectively collect $L$ latent parameters 
+and $D$ image datasets 
+at $V$ voxels;
+$\bmh : \complexes{D+N} \mapsto \complexes{L}$ 
+and $\bmb \in \complexes{L}$ 
+together denote a PERK-like regression function with offset;
+$\Psi$ is the PERK cost function \eqref{eq:perk,cost};
+$\bmD \in \complexes{D \times K}$
+collects $D$ raw datasets 
+each acquired with $K$ samples;
+$\bmA \in \complexes{V \times K}$ 
+denotes the MRI system model;
+$\bmnu_v$ denotes a known parameter at the $v$th voxel;
+and $\beta_1,\beta_2$ are free parameters
+that balance cost function terms.
+Here, 
+estimator fidelity to training points
+and image fidelity to raw data
+are respectively enforced 
+by the first and second cost function terms,
+while the third term entangles image reconstruction
+and parameter estimation.
 
+For continuously differentiable kernels,
+\eqref{eq:future,recon} is amenable 
+to iterative local optimization 
+via alternating minimization.
+One simple algorithm iterates
+the following updates:
+\begin{align}
+	\paren{\iter{\bmh}{t},\iter{\bmb}{t}} &\gets
+		\argmin{%
+			\substack{%
+				\bmh \in \hilb^L \\
+				\bmb \in \complexes{L}
+			}%
+		}%
+		\costa{\bmh,\bmb}	+ \beta_2 \sum_{v=1}^V \norm{%
+			\bmh\paren{\iter{\bmy}{t-1}_v,\bmnu_v}+\bmb-\iter{\bmx}{t-1}_v
+		}^2_2%
+		\label{eq:future,hb-update} 
+		\\
+	\iter{\bmY}{t} &\gets
+		\argmin{%
+			\bmY \in \complexes{D \times V}
+		}%
+		\frob{\bmD-\bmY\bmA}^2 + 
+			\frac{\beta_2}{\beta_1} \sum_{v=1}^V \norm{%
+				\iter{\bmh}{t}\paren{\bmy_v,\bmnu_v}+\iter{\bmb}{t}-\iter{\bmx}{t-1}_v
+			}^2_2%
+		\label{eq:future,Y-update}		
+		\\
+	\iter{\bmX}{t} &\gets
+		\brac{%
+			\iter{\bmh}{t}\paren{\iter{\bmy}{t}_1,\bmnu_1}+\iter{\bmb}{t},
+			\dots,
+			\iter{\bmh}{t}\paren{\iter{\bmy}{t}_V,\bmnu_V}+\iter{\bmb}{t}
+		}%
+		\label{eq:future,X-update}			
+\end{align}
+where $\iter{\paren{\cdot}}{t}$ denotes the $t$th iterate.
+Regression function update \eqref{eq:future,hb-update}
+adaptively retrains 
+using prior iterate per-voxel triples
+$\paren{\iter{\bmx}{t-1}_v,\bmnu_v,\iter{\bmy}{t-1}_v}$
+for $v \in \set{1,\dots,V}$
+as additional training points.
+Image update \eqref{eq:future,Y-update}
+enforces consistency 
+not only with data
+but also with latent parameter iterates
+(via regression function iterates).
+Latent parameter update \eqref{eq:future,X-update}
+evaluates the current regression function iterate
+at the current image iterate.
+Though it does require kernel gradients,
+observe that solving \eqref{eq:future,recon}
+does not require signal model gradients
+and thus \eqref{eq:future,recon} or similar variations 
+may be useful even when analytical signal models
+are cumbersome or altogether unavailable.
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exploiting Off-Resonance for Myelin Water Imaging}
+\label{s,future,off-res}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Though early sections in Chapter~\ref{c,mwf} 
+provided a simple model  
+of off-resonance distribution variation 
+across intravoxel compartments,
+experiments therein 
+ultimately used simpler magnitude signal models
+that neglected off-resonance effects.
+However,
+off-resonance distributions
+do often differ significantly 
+across compartments
+in cerebral tissue \cite{miller:10:aot-1,miller:10:aot-2},
+so accounting for compartment-specific off-resonance effects
+could aid in better distinguishing compartments
+and could thereby enable further-improved myelin water imaging.
+For designing off-resonance-informed myelin water imaging acquisitions,
+it is reasonable
+to consider pulse sequences
+whose acquisition parameters
+can strongly influence signal sensitivity 
+to off-resonance effects.
+In this respect,
+the small-tip fast recovery (STFR) sequence \cite{nielsen:13:stf}
+may be well-suited for off-resonance-informed myelin water imaging
+because its tip-up pulse magnitude and phase
+provide additional degrees of freedom
+by which to sensitize acquisitions
+to compartmental off-resonance effects.
+Off-resonance-informed myelin water imaging
+using (spoiled) STFR sequences
+is an active area of research 
+in our group.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Correlating with Other Myelin Biomarkers}
+\label{s,future,myelin}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+As discussed in Section~\ref{s,mwf,disc},
+fundamental differences 
+between DESS $\ff$ and MESE MWF imaging
+may limit their quantitative comparability.
+To build evidence 
+that DESS $\ff$ imaging
+is nevertheless a specific biomarker
+for intact myelin content,
+we are also interested 
+in how $\ff$ correlates 
+with other myelin biomarkers.
+One contending noninvasive marker arises
+from MR pulse sequences sensitized
+to the inhomogeneous magnetization transfer (ihMT) effect
+\cite{varma:15:mtf},
+which has recently been shown
+to be specific
+to the large membrane lipids
+that comprise much of myelin
+\cite{varma:15:iom, swanson:17:mda}.
+Multi-compartmental and ihHT MRI markers 
+could be successively compared 
+through \exvivo, healthy volunteer, and patient studies.
+Outside MRI,
+invasive measurements
+from histology
+have been used to study myelin 
+(as in \eg, \cite{gareau:00:mta, webb:03:imt})
+and could serve as a gold-standard \insitu marker.
+MRI and histological markers
+could be compared 
+by correlating respective \exvivo and \insitu studies.
