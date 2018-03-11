@@ -1,0 +1,41 @@
+Quantitative magnetic resonance imaging (QMRI)
+produces images of MR biomarkers,
+or measurable tissue properties
+that are indicative 
+of physiological processes
+that characterize the onset and progression
+of specific disorders.
+(For example,
+MR elasticity imaging is indicative 
+of the abnormal tissue hardening
+that characterizes sclerosis.)
+QMRI has potential 
+to be more informative
+than conventional qualitative MRI
+but poses challenges beyond those of conventional MRI
+that currently limit its feasibility 
+for routine clinical use.
+
+This thesis develops tools 
+to address two key QMRI challenges
+and applies these tools
+to develop a new method 
+for myelin water imaging,
+a challenging application
+that may be indicative 
+of certain demyelinating conditions
+such as multiple sclerosis.
+To address long QMRI scan times,
+this thesis first develops a method
+to assemble fast, statistically informative acquisitions
+that enable min-max optimally precise biomarker estimation.
+To address the challenges of estimating biomarkers
+from highly nonlinear and possibly unavailable MR signal models,
+this thesis next develops a method
+to "learn" a very efficient biomarker estimator
+purely from simulated training data.
+The tools developed in this thesis enable
+whole-brain high-resolution in vivo myelin water imaging
+in about 10 minutes of scan time,
+whereas state-of-the-art methods
+require 30 minutes or more.
