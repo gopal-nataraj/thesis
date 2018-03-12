@@ -97,4 +97,7 @@
 \contentsline {section}{\numberline {7.3}Correlating with Other Myelin Biomarkers}{120}{section.7.3}
 \contentsline {chapter}{Appendices}{121}{section*.8}
 \global \c@tocdepth 1\relax 
-\contentsline {chapter}{Bibliography}{124}{section*.12}
+\contentsline {section}{\numberline {A.1}Introduction}{121}{section.A.1}
+\contentsline {section}{\numberline {A.2}Problem Formulation}{121}{section.A.2}
+\contentsline {section}{\numberline {A.3}Alternating Minimization Algorithm}{122}{section.A.3}
+\contentsline {chapter}{Bibliography}{126}{section*.12}

@@ -1,22 +1,246 @@
 % multiple-data complex coil combination
 
-In the completed thesis,
-this appendix will describe 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{s,cc-multi,intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This appendix introduces
 an unpublished algorithm
-for combining multiple MRI datasets
-when each dataset is acquired 
-using multiple receiver coils
-with fixed coil geometry.
-Such sequences of coil datasets arise naturally
-in many quantitative MRI applications,
-including the ones studied
-in Chapters~\ref{c,scn-dsgn}-\ref{c,krr}.
-The algorithm extends \cite{ying:07:jir}
-(which considers joint image reconstruction
-and coil sensitivity estimation
-in the case of a single dataset)
-to exploit the fixed coil sensitivity 
-across several datasets,
-thereby improving estimation conditionality
-as compared to separate coil combination
-across datasets. 
+for simultaneously coil-combining 
+a collection of MR coil image datasets
+without prior knowledge 
+of coil sensitivity maps.
+The algorithm expects
+that MR coil datasets arise
+from a single acquisition
+with little inter-scan motion
+but allows for variable MR contrasts
+across datasets.
+Such multiple contrast, multiple receive coil acquisitions
+arise naturally
+in many QMRI applications,
+including the ones studied in Chapters~\ref{c,scn-dsgn}-\ref{c,mwf}.
+The algorithm extends 
+a similar sensitivity-blind method
+for coil-combining a single dataset
+\cite{ying:07:jir}
+to exploit coil sensitivity redundancy
+across datasets
+and thereby improve problem conditioning
+over coil-combining multiple datasets separately.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Problem Formulation}
+\label{s,cc-multi,prob}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Suppose that we are presented image-domain coil data
+from $C$ receive coils,
+$D$ contrasts,
+and $V$ voxel locations.
+A simple model
+for each single-coil, single-contrast image reads
+\begin{align}
+	\bmy_{c,d} = \diag{\bmsrx_{c}} \bmx_d + \bmeps_{c,d},
+	\label{eq:cc-multi,model}
+\end{align}
+where $\bmy_{c,d} \in \complexes{V}$ 
+denotes a noisy image dataset
+at the $c$th coil and $d$th contrast;
+$\bmsrx_{c} \in \complexes{V}$ 
+denotes the unknown sensitivity 
+of the $c$th receive coil;
+$\bmx_d \in \complexes{V}$ 
+denotes the unknown magnetization
+of the $d$th contrast;
+$\bmeps_{c,d} \in \cgauss{\zeros{V}}{\bmSig}$ 
+is complex Gaussian noise;
+$c \in \set{1,\dots,C}$;
+and $d \in \set{1,\dots,D}$.
+This model allows for spatial correlations
+but for ease of exposition
+ignores correlations across coils
+and correlations across contrasts.
+
+We seek to estimate $\bmx_1,\dots,\bmx_D$
+from $\bmy_{1,1},\dots,\bmy_{C,D}$ 
+without knowledge
+of $\bmsrx_1,\dots,\bmsrx_C$.
+We utilize a cost function
+that not only penalizes data inconsistency 
+but also encourages spatially smooth sensitivity profiles
+through quadratic regularization:
+\begin{align}
+	\cost\paren{\bmsrx_1,\dots,\bmsrx_C,\bmx_1,\dots,\bmx_D} :=
+		\sum_{c=1}^C \paren{%
+			\sum_{d=1}^D \norm{\bmy_{c,d}-\diag{\bmsrx_c}\bmx_d}^2_{\bmSig^{-1}}
+			+ \beta_c \norm{\bmD\bmsrx_c}^2_2,
+		}%
+	\label{eq:cc-multi,cost}
+\end{align}
+where $\bmD$ is a pure-real first-order finite differencing matrix 
+and $\beta_c$ is a regularization parameter.
+Observe that $\Psi$ is not coercive 
+in $\bmx_1,\dots,\bmx_D$:
+scaling each $\bmx_1,\dots,\bmx_D$ 
+by $\alpha$
+while scaling each $\bmsrx_1,\dots,\bmsrx_C$ 
+by $\frac{1}{\alpha}$
+only reduces $\Psi$
+for arbitrarily large scale factor $\alpha$.
+To resolve this scale ambiguity,
+we seek to minimize \eqref{eq:cc-multi,cost}
+under constraints: 
+\begin{align}
+	\paren{\bmsrxest_1,\dots,\bmsrxest_C,\est{\bmx}_1,\dots,\est{\bmx}_D} 
+		&\in \set{%
+			\argmin{%
+				\substack{%
+					\bmsrx_1,\dots,\bmsrx_C \in \complexes{V} \\
+					\bmx_1,\dots,\bmx_D \in \complexes{V}
+				}%
+			}%
+			\cost\paren{\bmsrx_1,\dots,\bmsrx_C,\bmx_1,\dots,\bmx_D}
+		} 
+		\nonumber
+		\\
+	\mathrm{such\,\,that} \qquad
+	\ones{V}\tpose\bmx_d 
+		&= \const{d} \qquad \forall d \in \set{1,\dots,D},
+	\label{eq:cc-multi,prob}
+\end{align}
+where $\ones{V}$ is length-$V$ vector of ones
+and $c_d \in \complex$ is a fixed constant.	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Alternating Minimization Algorithm}
+\label{s,cc-multi,alg}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We solve \eqref{eq:cc-multi,prob}
+by alternating between
+updating coil sensitivity variables 
+while holding contrast variables fixed
+and
+updating contrast variables
+while holding coil sensitivity variables fixed.
+We next describe each of these updates in turn.
+
+Because we assumed for simplicity
+that noise is uncorrelated across receive coils,
+each of the $C$ coil updates
+can be updated in parallel.
+We update the $c$th coil variable
+by minimizing a quadratic cost function:
+\begin{align}
+	\iter{\bmsrx_c}{i+1} \gets
+		\argmin{\bmsrx_c\in\complexes{V}}
+		\sum_{d=1}^D \norm{\bmy_{c,d}-\diag{\iter{\bmx_d}{i}}\bmsrx_c}^2_{\bmSig^{-1}}
+		+ \beta_c \norm{\bmD\bmsrx_c}^2_2.
+	\label{eq:cc-multi,srx-prob}
+\end{align}
+where $\iter{\paren{\cdot}}{i}$ 
+denotes the $i$th iterate.
+For moderate $V$,
+\eqref{eq:cc-multi,srx-prob} can be solved directly:
+\begin{align}
+	\iter{\bmsrx_c}{i+1} \gets \pinv{%
+		\diag{\iter{\bmx_d}{i}}\ctpose \bmSig^{-1} \diag{\iter{\bmx_d}{i}}
+		+ \beta_c \bmD\ctpose \bmD
+	}%
+	\diag{\iter{\bmx_d}{i}}\ctpose \bmSig^{-1} \bmy_{c,d}.
+	\label{eq:cc-multi,srx-update}
+\end{align}
+For larger $V$ with non-diagonal $\bmSig$,
+more sophisticated inner updates may be necessary.
+
+Because we assumed 
+that noise is also uncorrelated across contrasts,
+each of the $D$ contrast variables
+can be updated in parallel.
+We update the $d$th contrast variable
+at the $\paren{i+1}$th iteration
+by solving a constrained problem:
+\begin{align}
+	\iter{\bmx}{i+1}_d &\gets
+		\argmin{\bmx_d\in\complexes{V}}
+		\sum_{c=1}^C \norm{\bmy_{c,d}-\diag{\iter{\bmsrx_c}{i}}\bmx_d}^2_{\bmSig^{-1}} \,\,\,
+		\mathrm{such\,\,that} \,\,\,
+		\ones{V}\tpose\bmx_d = \const{d}.
+	\label{eq:cc-multi,x-prob}
+\end{align}
+We solve \eqref{eq:cc-multi,x-prob}
+using the method of Lagrange multipliers.
+The Lagrangian is
+\begin{align}
+	\Lambda\paren{\bmx_d,\lambda_d} :=
+		\sum_{c=1}^C \norm{\bmy_{c,d}-\diag{\iter{\bmsrx_c}{i}}\bmx_d}^2_{\bmSig^{-1}}
+		+ 4 \re{\bar{\lambda}_d \paren{\ones{V}\tpose\bmx_d-\const{d}}},
+	\label{eq:cc-multi,x-lagrangian}
+\end{align}
+where $\lambda_d\in\complex$ is a Lagrange multiplier;
+$\re{\cdot}$ extracts the real component of its argument;
+and $\bar{\paren{\cdot}}$ denotes complex conjugate.
+Setting $\grada{\bmx_d}{\Lambda\paren{\bmx_d,\lambda_d}} = \zeros{V}$
+yields the update
+\begin{align}
+	\iter{\bmx}{i+1}_d \gets
+		\pinv{%
+			\sum_{c=1}^C \diag{\iter{\bmsrx_c}{i}}\ctpose 
+				\bmSig^{-1} \diag{\iter{\bmsrx_c}{i}}
+		}%
+		\paren{%
+			\sum_{c=1}^C \diag{\iter{\bmsrx_c}{i}}\ctpose \bmSig^{-1} \bmy_{c,d}
+			- \lambda_d \ones{V}
+		}%
+	\label{eq:cc-multi,x-update}
+\end{align}
+where $\pinv{\cdot}$ denotes pseudoinverse
+and $\lambda_d$ is at each iteration updated
+such that the constraint remains satisfied: 
+\begin{align}
+	\iter{\lambda}{i+1}_d \gets \frac{%
+		\ones{V}\tpose \pinv{%
+			\sum_{c=1}^C \diag{\iter{\bmsrx_c}{i}}\ctpose \bmSig^{-1} \diag{\iter{\bmsrx_c}{i}}
+		}%
+		\paren{%
+			\sum_{c=1}^C \diag{\iter{\bmsrx_c}{i}}\ctpose \bmSig^{-1} \bmy_{c,d}
+		}%
+		- \const{d}
+	}{%
+		\ones{V}\tpose \pinv{%
+			\sum_{c=1}^C \diag{\iter{\bmsrx_c}{i}}\ctpose 
+				\bmSig^{-1} \diag{\iter{\bmsrx_c}{i}}
+		}%
+		\ones{V}
+	}.
+	\label{eq:cc-multi,x-lam}
+\end{align}
+Observe that matrix divisions 
+required to implement \eqref{eq:cc-multi,x-lam}
+need not depend on contrast index $d$.
+Thus $D$ contrast updates 
+require $D+1$ matrix division subproblems per iteration,
+of which $D$ divisions are amenable to parallelization.
+
+Since \eqref{eq:cc-multi,prob} is non-convex,
+solutions will depend on initialization.
+We initialize each contrast separately
+using the square root of the sum 
+over that contrast's magnitude coil images squared,
+a popular conventional estimator:
+\begin{align}
+	\iter{\bmx}{0}_d \gets
+		\diag{\sqrt{\sum_{c=1}^C \abs{\bmy_{c,d}}^2}}
+		e^{j \angle{\bmy_{1,d}}},
+	\label{eq:cc-multi,x-init}
+\end{align}
+where $\sqrt{\cdot}$, $\abs{\cdot}$, and $\angle{\paren{\cdot}}$
+respectively denote 
+element-wise square root, absolute value, and phase angle operators.
+Here, assigning phase to $\iter{\bmx_d}{0}$
+using the phase of the first coil's data
+causes the phase 
+of coil sensitivity estimates
+to be relative to the first coil's phase.
