@@ -47,6 +47,11 @@
 \BOOKMARK [1][-]{section.7.3}{Correlating with Other Myelin Biomarkers}{chapter.7}% 47
 \BOOKMARK [0][-]{section*.8}{Appendices}{}% 48
 \BOOKMARK [0][-]{Multiple-Dataset Complex Coil Combination.0}{Multiple-Dataset Complex Coil Combination}{}% 49
-\BOOKMARK [0][-]{Steady-State RF Pulse Design.0}{Steady-State RF Pulse Design}{}% 50
-\BOOKMARK [0][-]{Diffusive Signal Loss in DESS.0}{Diffusive Signal Loss in DESS}{}% 51
-\BOOKMARK [0][-]{section*.12}{Bibliography}{}% 52
+\BOOKMARK [1][-]{section.A.1}{Introduction}{Multiple-Dataset Complex Coil Combination.0}% 50
+\BOOKMARK [1][-]{section.A.2}{Problem Formulation}{Multiple-Dataset Complex Coil Combination.0}% 51
+\BOOKMARK [1][-]{section.A.3}{Alternating Minimization Algorithm}{Multiple-Dataset Complex Coil Combination.0}% 52
+\BOOKMARK [0][-]{SS-Informed RF Pulse Design.0}{SS-Informed RF Pulse Design}{}% 53
+\BOOKMARK [1][-]{section.B.1}{Introduction}{SS-Informed RF Pulse Design.0}% 54
+\BOOKMARK [1][-]{section.B.2}{Signal Model}{SS-Informed RF Pulse Design.0}% 55
+\BOOKMARK [1][-]{section.B.3}{Two Iterative Algorithms}{SS-Informed RF Pulse Design.0}% 56
+\BOOKMARK [0][-]{section*.11}{Bibliography}{}% 57

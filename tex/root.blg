@@ -5,7 +5,7 @@ The style file: ieeetr.bst
 Database file #1: ../bib/master.bib.bib
 You've used 184 entries,
             1876 wiz_defined-function locations,
-            1384 strings with 32276 characters,
+            1384 strings with 32277 characters,
 and the built_in function-call counts, 64043 in all, are:
 = -- 6855
 > -- 2263
