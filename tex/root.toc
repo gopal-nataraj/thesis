@@ -100,4 +100,9 @@
 \contentsline {section}{\numberline {A.1}Introduction}{121}{section.A.1}
 \contentsline {section}{\numberline {A.2}Problem Formulation}{121}{section.A.2}
 \contentsline {section}{\numberline {A.3}Alternating Minimization Algorithm}{122}{section.A.3}
-\contentsline {chapter}{Bibliography}{126}{section*.12}
+\contentsline {section}{\numberline {B.1}Introduction}{124}{section.B.1}
+\contentsline {section}{\numberline {B.2}Signal Model}{124}{section.B.2}
+\contentsline {section}{\numberline {B.3}Two Iterative Algorithms}{131}{section.B.3}
+\contentsline {subsection}{\numberline {B.3.1}Perturbative Expansions}{131}{subsection.B.3.1}
+\contentsline {subsection}{\numberline {B.3.2}Variable Splitting and ADMM}{132}{subsection.B.3.2}
+\contentsline {chapter}{Bibliography}{134}{section*.11}

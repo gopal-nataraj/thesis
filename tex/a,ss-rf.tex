@@ -1,2 +1,826 @@
 % steady-state rf pulse design
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{s,ss-rf,intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Modern radiofrequency (RF) pulse design methods 
+often relate a desired magnetization pattern 
+to the underlying RF pulse and excitation gradients. 
+Conventional techniques assume
+negligible residual transverse magnetization 
+immediately prior to excitation 
+to show that under the small-excitation approximation, 
+this relation is linear with respect to the RF pulse \cite{pauly:89:aks}. 
+For fixed gradients, 
+this facilitates rapid pulse design algorithms 
+using linear filter design principles \cite{shinnar:89:tuo, pauly:91:prf} 
+or iterative algorithms \cite{yip:05:irp, setsompop:08:mls}. 
+In practice, 
+pulse designers can realize 
+near-complete transverse relaxation 
+prior to excitation with long repetition times, 
+large unbalanced spoiler gradients, 
+or tip-up pulses \cite{nielsen:13:stf}. 
+However, all of these methods require additional scan time 
+beyond excitation and data acquisition. 
+
+This appendix investigates 
+the small-excitation RF pulse design problem 
+when the usual assumption of near-complete decay 
+of residual transverse magnetization is not taken.
+Omitting this assumption
+reveals the influence of RF pulses
+on the steady-state (SS) transverse magnetization
+rather than on the conventionally modeled 
+single-repetition transverse magnetization.
+Because the former is more directly related
+to the received signal,
+such SS-informed RF pulse design
+might allow for more accurate excitation patterns.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Signal Model}
+\label{s,ss-rf,model}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We begin with the Bloch equations
+in a non-inertial reference frame 
+rotating clockwise about the $z$-axis 
+at the Larmor frequency:
+\begin{align}
+	\dela{t} \mxyp\prt &= i\gam\paren{\mzp\prt \bxyp\prt - \mxyp\prt \bzp\prt} -
+		\frac{\mxyp\prt}{\Tt\pr} ;
+		\label{eq:ss-rf,bloch-mxyp} \\
+	\dela{t} \mzp\prt &= \gam\paren{\mxp\prt \byp\prt - \myp\prt \bxp\prt} - 
+		\frac{\mzp\prt - \mzero\pr}{\To\pr}.
+		\label{eq:ss-rf,bloch-mzp}
+\end{align}
+Here,
+$\mxyp\prt \equiv \mxp\prt + i\myp\prt$ 
+and 
+$\mzp\prt$ 
+are respectively the rotating-frame transverse and longitudinal magnetization
+at position $\bmr \in \reals{3}$ and time $t\geq0$;
+$\bxyp\prt \equiv \bxp\prt + i\byp\prt$
+and 
+$\bzp\prt$
+are respectively the apparent transverse and apparent longitudinal magnetic field;
+$\To\pr$ and $\Tt\pr$ 
+are spin-lattice and spin-spin relaxation time constants;
+$\mzero\pr$ is the equilibrium magnetization;
+$\gam$ is the gyromagnetic ratio;
+and $i:=\sqrt{-1}$.
+These coupled differential equations
+are challenging to solve outright.
+To proceed, 
+we take two simplifying assumptions:
+\begin{itemize}
+	\item{%
+		We assume that RF pulses 
+		do not strongly perturb the longitudinal magnetization
+		from its initial state 
+		at time $t \gets t_0$,
+		\ie $\mzp\prt\bxyp\prt \approx \mzp\prtz\bxyp\prt$
+		for all $t~\in~\brac{t_0,t_0+\TP}$
+		where $\TP \geq 0$ denotes RF pulse duration.
+		This small-excitation assumption
+		differs from the conventional small-excitation assumption \cite{pauly:89:aks}
+		(that instead approximates 
+		$\mzp\prt \approx \mzero\pr$ 
+		for all $t~\in~\brac{t_0,t_0+\TP}$)
+		in that it allows 
+		for memory of the longitudinal magnetization
+		prior to excitation.
+	}%
+	\item{%
+		We assume that the apparent transverse magnetic field 
+		separates in position and time,
+		\ie $\bxyp\prt \approx \stx\pr\bone\pt$
+		where $\stx\pr \in \complex$ 
+		is the RF coil spatial variation
+		and $\bone\pt \equiv \bonex\pt + i\boney\pt$ 
+		is the RF excitation envelope.
+	}%
+\end{itemize}
+With these assumptions, 
+the rotating-frame Bloch equations read
+\begin{align}
+	\dela{t}{\mxyp}\prt &= 
+		i\gam \paren{\mzp\prtz\stx\pr\bone\pt - \mxyp\prt \bzp\prt} 
+			- \frac{\mxyp\prt}{\Tt\pr}; 
+		\label{eq:ss-rf,mxyp} \\
+	\dela{t}{\mzp}\prt &= 
+		\gam \paren{\re{\bar{\stx}\pr\mxyp\prt}\boney\pt-\im{\bar{\stx}\pr\mxyp\prt} \bonex\pt} 
+			- \frac{\mzp\prt-\mzero\pr}{\To\pr}, 
+		\label{eq:ss-rf,mzp}
+\end{align} 
+where $\re{\cdot}$ and $\im{\cdot}$ 
+respectively extract real and imaginary components
+and $\bar{\paren{\cdot}}$ denotes complex conjugation.
+Expressing \eqref{eq:ss-rf,mxyp}-\eqref{eq:ss-rf,mzp}
+in terms of $\mxytp\prt \equiv \mxtp\prt + i\mytp\prt := \bar{\stx}\pr\mxyp\prt$
+allows further simplification:
+\begin{align}
+	\dela{t} \mxytp\prt &= 
+		i\gam \paren{\mzp\prtz \abs{\stx\pr}^2 \bone\pt - \mxytp\prt \bzp\prt}
+			- \frac{\mxytp\prt}{\Tt\pr} ; 
+		\label{eq:ss-rf,mxytp} \\
+	\dela{t}{m}'_{z}\prt &= 
+	\gam \paren{\mxtp\prt \boney\pt - \mytp\prt \bonex\pt} 
+			- \frac{\mzp\prt - \mzero\pr}{\To\pr}. 
+		\label{eq:ss-rf,mztp}
+\end{align}
+The small-excitation assumption above 
+decouples \eqref{eq:ss-rf,mxytp} 
+from \eqref{eq:ss-rf,mztp}.
+Thus we can solve directly
+for $\mxytp\prt$
+and then obtain an expression for $\mzp\prt$
+via substitution into \eqref{eq:ss-rf,mztp}.
+We solve \eqref{eq:ss-rf,mxytp}
+using the method of integrating factors.
+The solution for times $t \geq t_0$ is
+\begin{align}
+		\mxytp\prt &= 
+			\mxytp\prtz e^{i \phi\prtzt{t}} e^{-(t-t_0)/\Tt\pr} 
+			\nonumber 
+			\\
+		&+ i \gam \mzp\prtz \abs{\stx\pr}^2 \int_{t_0}^t b_{xy}'(t') 
+				e^{i \phi(\bmr, t; t')} e^{-(t-t')/\Tt\pr} \der t',
+		\label{eq:ss-rf,mxyp-sol}
+\end{align}
+where $\phi(\bmr, t; t') := -\gam \int_{t'}^t \bzp(\bmr, \tau) \der \tau$
+denotes the phase accumulation 
+from $t'$ to $t$ 
+due to off-resonance effects.
+Note that if one assumes negligible transverse magnetization
+from prior excitations
+(\ie, $\mxytp\prtz \approx 0$)
+and complete longitudinal recovery
+(\ie, $\mzp\prtz \approx \mzero\pr$),
+one recovers the conventional linear relation
+between magnetization and RF field
+for small excitations \cite{pauly:89:aks}.
+Without these assumptions,
+the longitudinal magnetization 
+must also be considered.
+The solution to \eqref{eq:ss-rf,mztp}
+expressed in terms of \eqref{eq:ss-rf,mxyp-sol}
+for $t \geq t_0$ is
+\begin{align}
+	\mzp\prt &= 
+		\mzp\prtz e^{-(t-t_0)/\To\pr} + \mzero\pr \paren{1 - e^{-(t-t_0)/\To\pr}}
+		\nonumber \\
+	&+ 
+		\gam \int_{t_0}^t e^{-(t-t')/\To\pr} \paren{\tilde{m}_x'(\bmr, t') b_y'(t') - \tilde{m}_y'(\bmr, t') b_x'(t')} \der t'.
+		\label{eq:ss-rf,mzp-sol}
+\end{align}
+
+We next impose a steady-state condition 
+to solve for the magnetization
+at an initial time $t_0$	
+selected well into the steady-state.
+After many periodic repetition cycles,
+the magnetization following one full repetition will equilibrate
+under certain mild assumptions \cite{scheffler:99:apd}
+to the initial magnetization.
+We specifically assume 
+that $t_0$ marks the beginning
+of a steady-state repetition interval of length $\TR\geq\TP$
+during which RF excitation may be nonzero
+for $t \in \brac{t_0,t_0+\TP}$ 
+but $\bxyp\prt=0$ 
+for free precession period $t \in \paren{t_0+\TP,t_0+\TR}$.
+Under these assumptions,
+the steady-state relations
+\begin{align}
+	\mxytp(\bmr, t_0+\TR) &= 
+		\mxytp\prtz 
+		\label{eq:ss-rf,mxyp-ss}
+		\\
+	\mzp(\bmr, t_0+\TR) &= 
+		\mzp\prtz
+		\label{eq:ss-rf,mzp-ss}
+\end{align} 
+provide an algebraic system of equations
+for the initial magnetization components.
+With some algebra
+and after reversion from intermediate variable $\mxytp\prtz$
+to apparent transverse magnetization $\mxyp\prtz$,
+we find that steady-state initial magnetization is
+\begin{align}
+	\mxyp\prtz &= 
+		\frac{%
+			i \gam \mzero\pr \stx\pr (1-\EoR) \int_{t_0}^{t_0+\TP} \bone(t') 
+				e^{i \phi(\bmr, t_0+\TR; t')} e^{-(t_0+\TR-t')/\Tt\pr} \der t'
+		}{%
+			\paren{1-\EtR e^{i \phi(\bmr, t_0 + \TR; t_0)}} \paren{(1-\EoR) + q\pr}
+		};%
+		\label{eq:ss-rf,mxyp-t0} 
+		\\
+	\mzp\prtz &= 
+		\frac{%
+			\mzero\pr \paren{1 - \EoR}
+		}{%
+			\paren{1-\EoR} + q\pr
+		},% 
+	\label{eq:ss-rf,mzp-t0}
+\end{align}
+where $\Eo\prt := e^{-t/\To\pr}$;
+$\Et\prt := e^{-t/\Tt\pr}$; 
+and 
+\begin{alignat}{3}
+	&q\pr&
+		&= \gam^2 \abs{\stx\pr}^2 
+			&&\int_{t_0}^{t_0+\TP} \int_{t_0}^{t'} 
+				e^{-(\TR + t_0 - t')/\To\pr} e^{-(t'-\tau)/\Tt\pr} 
+				\re{\bone(t') b'^*_{xy}(\tau) e^{-i \phi(\bmr, t'; \tau)}} \der \tau \der t' 
+				\nonumber \\
+	& &
+		&= \frac{\gam^2 \abs{\stx\pr}^2 }{2} 
+			&&\int_{t_0}^{t_0+\TP} \int_{t_0}^{t_0+\TP} \bone(t') 
+				b'^*_{xy}(\tau) e^{-(\TR + t_0 - \max{(\tau, t'))}/\To\pr} 
+				e^{-\abs{t'-\tau}/\Tt\pr} e^{-i \phi(\bmr, t'; \tau)} \der \tau \der t'.
+				\label{eq:ss-rf,q}
+\end{alignat}
+It is intuitive 
+to design RF excitations 
+that achieve a desired magnetization pattern 
+at echo time $\TE\geq\TP$ 
+following the start of excitation. 
+We obtain the magnetization
+at echo time
+by substituting \eqref{eq:ss-rf,mxyp-t0}-\eqref{eq:ss-rf,mzp-t0} 
+into \eqref{eq:ss-rf,mxyp-sol} 
+and evaluating at time $t \gets t_0+\TE$:
+\begin{align}
+	\mxyp(\bmr, t_0 + \TE) &= 
+		\frac{%
+			i \gam \mzero\pr \stx\pr (1-\EoR) 
+			\int_{t_0}^{t_0+\TP} \bone(t') e^{i \phi(\bmr, t_0+\TE; t')} 
+			e^{-(t_0+\TE-t')/\Tt\pr} \der t'
+			}{%
+				\paren{1-\EtR e^{i \phi(\bmr, t_0 + \TR; t_0)}} \paren{(1-\EoR) + q\pr}
+			}.%
+	\label{eq:ss-rf,mxyp-te}
+\end{align}
+Comparing with \eqref{eq:ss-rf,mxyp-t0}, 
+we reassuringly recover the SS condition
+as $\TE$ approaches $\TR$: 
+\begin{align}
+	\lim_{\TE \rightarrow \TR} \mxyp(\bmr, t_0 + \TE) 
+		= \mxyp(\bmr, t_0 + \TR) 
+		= \mxyp\prtz.
+	\label{eq:ss-rf,mxyp-te,sanity}
+\end{align}
+
+The received signal is approximately proportional
+to the integrated transverse magnetization 
+over a voxel volume $\setV$. 
+Further approximating the received signal
+as directly proportional 
+to the steady-state magnetization
+(as is typical in RF pulse design)
+requires both standard and nonstandard additional assumptions:
+\begin{itemize}
+	\item{%
+		We first assume 
+		that the signal is localized
+		to a scale over which 
+		there is minimal variation
+		of $\mzero\pr$, $\To\pr$, and $\Tt\pr$,
+		a common assumption
+		in RF pulse design.
+	}%
+	\item{%
+		We next assume 
+		that $\phi(\bmr, t'; \tau)$ 
+		is a slowly-varying function with $\bmr$
+		over the voxel volume
+		for all fixed time point pairs 
+		$(\tau, t') \in \set{(\tau, t') | t_0 \le \tau \le t' \le t_0 + \TP}$. 
+		In regions where through-voxel field-inhomogeneity gradients are reasonably small, 
+		this can be accomplished by restricting excitation gradient amplitudes 
+		from being too large 
+		and by balancing the excitation gradients 
+		to have zero net area.
+	}%
+	\item{%
+		We last assume
+		that $\phi(\bmr, t_0 + \TE; t_0 + \TP)$ 
+		and $\phi(\bmr, t_0 + \TR; t_0)$ 
+		also exhibit slow spatial variation. 
+		If excitation gradients are balanced, 
+		the former condition only further requires imaging gradients 
+		to balance at the echo time
+		as is typical. 
+		However,
+		the latter condition 
+		requires \emph{all} gradients to be balanced, 
+		and thus restricts the analysis hereafter 
+		to unspoiled or weakly spoiled sequences.
+	}%
+\end{itemize}
+With these additional assumptions,
+the received steady-state signal
+for a typically sized voxel
+centered at position $\bmr$
+is (to within constants):
+\begin{align}
+	s(\bmr,t_0+\TE) 
+		&\propto 
+			\int_{\setV\pr} \mxyp(\bmr, t_0+\TE) \dercubed \bmr'
+			\label{eq:ss-rf,s}
+			\\
+		&\approx
+			\abs{\setV\pr} \mxyp(\bmr, t_0+\TE),
+			\label{eq:ss-rf,s-apprx}
+\end{align}
+where $\abs{\cdot}$ here denotes the volume of a set.
+By including the contributions of previous (unspoiled) excitations, 
+we have derived a \emph{nonlinear} dependence
+of SS signal on small-excitation RF fields.
+Exploiting this nonlinear dependence
+will require specialized algorithms
+to efficiently design SS-informed RF pulses 
+and/or excitation gradients.
+
+Conventional small-excitation RF pulse design
+utilizes an assumption
+that off-resonance phase
+grows linearly in time
+to develop convenient Fourier-type relations
+between the excited magnetization
+and the excitation $\bmk$-space trajectory.
+Because the SS magnetization's dependence
+on off-resonance phase is nonlinear,
+a direct Fourier-type relation no longer applies.
+However,
+the integrals within 
+SS magnetization \eqref{eq:ss-rf,mxyp-te}
+may \emph{individually} be expressed 
+as Fourier-type relations,
+so the possibility remains
+for signal model implementation
+using multiple Fourier transforms.
+With the affine off-resonance assumption
+$\bzp\prt \approx \frac{\omp\pr}{\gam} + \bmr \cdot \bmg\pt$
+the integral in the numerator 
+of \eqref{eq:ss-rf,mxyp-te}
+describes the conventional Fourier-type relation \cite{pauly:89:aks},
+where $\omp\pr$ denotes off-resonance frequency
+and $\bmg\pt$ denotes a linear excitation gradient trajectory.
+We next focus on developing a Fourier-type relation
+for the integral in the denominator 
+of \eqref{eq:ss-rf,mxyp-te},
+contained within $q\pr$.
+Defining \emph{k}-space trajectory 
+$\bmk\pt := -\frac{\gam}{2\pi} \int_{t_0}^t \bmg(t') \der t'$, 
+phase accrual $\phi(\bmr, t'; \tau)$ 
+can be approximated as 
+\begin{align}
+	\phi(\bmr, t'; \tau) &\approx 
+		-\omp\pr \paren{t' - \tau} 
+		+ 2\pi \bmr \cdot \paren{\bmk(t') - \bmk(\tau)}.
+	\label{eq:ss-rf,phi-apprx}
+\end{align}
+Substituting \eqref{eq:ss-rf,phi-apprx} 
+into \eqref{eq:ss-rf,q} and simplifying yields
+\begin{align}
+	q\pr &\approx 
+		\frac{\gam^2 \abs{\stx\pr}^2 }{2} \int_{t_0}^{t_0+\TP} \int_{t_0}^{t_0+\TP} 
+		\bone(t') b'^*_{xy}(\tau) \zeta(\bmr, t'; \tau) e^{-2\pi i \bmr \cdot
+		\paren{\bmk(t') - \bmk(\tau)}} \der \tau \der t' 
+		\label{eq:ss-rf,q-zeta} 
+		\\
+	&= 
+		\frac{\gam^2 \abs{\stx\pr}^2 }{2} \int_{\real^3} \int_{\real^3} 
+		p(\bmr, \mathbf{k_1}, \mathbf{k_2}) e^{2\pi i \bmr \cdot (\bmk_1 + \bmk_2)} 
+		\der \bmk_1 \der \bmk_2,
+		\label{eq:ss-rf,q-fourier}
+\end{align}
+where $\zeta(\bmr, t', \tau)$ abbreviates 
+relaxation and constant off-resonance effects as
+\begin{align}
+	\zeta(\bmr, t'; \tau) := 
+		e^{-(\TR + t_0 - \max{(\tau, t'))}/\To\pr} e^{-\abs{t'-\tau}/\Tt\pr} 
+		e^{+i\omp\pr \paren{t'-\tau}}
+	\label{eq:ss-rf,zeta}
+\end{align}
+and $p(\bmr, \bmk_1, \bmk_2)$ defines a path in a six-dimensional $k$-space:
+\begin{align}
+	p(\bmr, \bmk_1, \bmk_2) := 
+		\int_{t_0}^{t_0+\TP} \int_{t_0}^{t_0+\TP} \bone(t') 
+		b'^*_{xy}(\tau) \zeta(\bmr, t'; \tau) \delta_3(\bmk(t') + \bmk_1) 
+		\delta_3(\bmk(\tau) - \bmk_2) \der \tau \der t',
+	\label{eq:ss-rf,path}
+\end{align}
+where $\delta_n\paren{\cdot}$ denotes 
+an $n$-dimensional Dirac delta function. 
+Eq.~\eqref{eq:ss-rf,q-fourier} is not a true Fourier relation 
+because $p(\bmr, \bmk_1, \bmk_2)$ 
+depends on $\bmr$. 
+In the special case where relaxation and spatial variation 
+in $\omp\pr$ are neglected,
+$\zeta(\bmr, t'; \tau)$ separates in $t',\tau$
+and \eqref{eq:ss-rf,q-fourier} simplifies 
+to a true Fourier transform 
+for which fast methods (\eg, \cite{yip:05:irp}) 
+to separately evaluate integrals 
+over $\bmk_1,\bmk_2$ are available. 
+In the general case, 
+a similar Fourier relation could be constructed 
+if $\zeta(\bmr, t'; \tau)$ were approximated 
+with a ``rank''-$L$ tensor-product expansion 
+of the form
+\begin{align}
+	\zeta(\bmr, t'; \tau) &\approx \sum_{l=1}^L u_l\pr v_l(t') \bar{v}_l(\tau), 
+	\label{eq:ss-rf,zeta-apprx}
+\end{align}
+where $u_l\pr \in \real$ 
+and $v_l\pt \in \complex$ 
+are the $l$th spatial and temporal basis functions. 
+Inserting \eqref{eq:ss-rf,zeta-apprx} 
+into \eqref{eq:ss-rf,q-zeta} 
+would then yield a true Fourier relation 
+similar to the one in \cite{fessler:05:tbi}:
+\begin{align}
+	q\pr &\approx 
+		\frac{\gam^2 \abs{\stx\pr}^2 }{2} \sum_{l=1}^L u_l\pr 
+		\abs{ \int_{t_0}^{t_0+\TP} v_l(t') \bone(t') e^{-2\pi i \bmr \cdot \bmk(t')} 
+		\der t'}^2 
+		\nonumber \\
+	&= 
+		\frac{\gam^2 \abs{\stx\pr}^2 }{2} \sum_{l=1}^L u_l\pr 
+		\abs{ \mathcal{F}^{-1}_{3,\bmk} \brac{\int_{t_0}^{t_0+\TP} v_l(t') 
+		\bone(t') \delta_3(\bmk(t') + \bmk) \der t'} \paren{\bmr}}^2,
+		\label{eq:ss-rf,q-apprx}
+\end{align}
+where $\mathcal{F}^{-1}_{3,\bmk}\brac{\cdot}\pr$ denotes
+an $3$-dimensional inverse Fourier transform
+with respect to $\bmk$
+and whose output is a function of $\bmr$.
+Unfortunately, 
+\eqref{eq:ss-rf,zeta-apprx} is a \emph{partially-complex} tensor-product expansion, 
+and would require a tailored decomposition algorithm. 
+Alternately,
+we could expand 
+the pure-real relaxation and complex off-resonance terms 
+of $\zeta(\bmr, t'; \tau)$ separately:
+\begin{align}
+	\zeta(\bmr, t'; \tau) &=: 
+		\xi(\bmr, t'; \tau) e^{+i\omp\pr t'} e^{-i\omp\pr \tau} 
+		\label{eq:ss-rf,xi} \\
+	&\approx 
+		\paren{\sum_{l=1}^L u_l\pr v_l(t') v_l(\tau)} 
+		\paren{\sum_{k=1}^{K} u'_k\pr v'_k(t')} 
+		\paren{\sum_{k'=1}^{K} \bar{u}'_{k'}\pr \bar{v}'_{k'}(\tau)},
+		\label{eq:ss-rf,xi-apprx}
+	\end{align}	
+where now $u_l\pr, v_l\pt \in \real$ 
+and $u'_k\pr, v'_k\pt \in \complex$. 
+Inserting \eqref{eq:ss-rf,xi-apprx}
+into \eqref{eq:ss-rf,q-zeta} would yield
+	\begin{align}
+		q\pr &\approx 
+			\frac{\gam^2 \abs{\stx\pr}^2 }{2} 
+			\sum_{l=1}^L u_l\pr \abs{\sum_{k=1}^K u'_k\pr 
+			\int_{t_0}^{t_0+\TP} v_l(t') v'_k(t') \bone(t') 
+			e^{-2\pi i \bmr \cdot \bmk(t')} \der t'}^2 
+			\nonumber 
+			\\
+		&= 
+			\frac{\gam^2 \abs{\stx\pr}^2 }{2} 
+			\sum_{l=1}^L u_l\pr \abs{\sum_{k=1}^K u'_k\pr 
+			\mathcal{F}^{-1}_{3,\bmk} \brac{\int_{t_0}^{t_0+\TP} v_l(t') v'_k(t') 
+			\bone(t') \delta_3(\bmk(t') + \bmk) \der t'} \paren{\bmr}}^2. 
+			\label{eq:ss-rf,q-apprx,alt}
+	\end{align}
+Though \eqref{eq:ss-rf,xi} simplifies the tensor product to work over $\real$ only, 
+its tensor decomposition of $\xi(\bmr, t'; \tau)$
+may still be challenging in practice.
+For ease of exposition 
+in this early work, 
+we revert to partially-complex expansion \eqref{eq:ss-rf,zeta-apprx} 
+and choose convenient (complex) temporal basis functions 
+$v_l\pt$ for $l = 1, \dots, L$, 
+as in prior works \cite{noll:91:ahc,sutton:03:fii}. 
+We then propose to estimate pure-real spatial basis functions 
+$u_l\pt$ for $l = 1, \dots, L$ 
+via linear least-squares.
+
+We next discretize SS signal model \eqref{eq:ss-rf,mxyp-te}
+for computer-aided SS-informed RF pulse design.
+Let $\bmb := \brac{\bone(\To), \dots, \bone(t_J)}\tpose \in \complexes{J}$
+discretize the excitation waveform into $J$ timepoints
+from $t\gets t_0$ 
+to $t \gets t_0 + \TP$.
+Let 
+\begin{align}
+	\mathbf{m} &:= 
+		\brac{\frac{s(\bmr_1, t_0+\TE)}{\mzero(\bmr_1)\abs{\setV\paren{\bmr_1}}}, 
+		\dots, 
+		\frac{s(\bmr_N, t_0+\TE)}{\mzero(\bmr_N)\abs{\setV\paren{\bmr_1}}}}\tpose 
+		\in \complexes{N}
+	\label{eq:ss-rf,m}
+\end{align}
+discretize the (unitless) relative magnetization
+into $N$ voxels, respectively. 
+Let 
+\begin{align}
+	a_{nj} &:=
+		\frac{i (\gam \stx(\bmr_n) \Delta t)  
+		(1-\Eo(\bmr_n)) e^{i \phi(\bmr_n, t_0 + \TE; t_j)} e^{-(t_0+\TE-t_j)/\Tt(\bmr_n)}}
+		{\paren{1 - \Et(\bmr_n) e^{i \phi(t_0 + \TR; t_0)}}}; 
+		\label{eq:ss-rf,anj} 
+		\\
+	d_{n{n'}} &:=
+		\delta[n - n'] \paren{1 - \Eo(\bmr_n)}; 
+		\label{eq:ss-rf,dnn} \\
+	s_{j{j'}n} &:=	
+		\frac{\abs{\gam \stx(\bmr_n) \Delta t}^2}{2} 
+		\zeta(\bmr_n, t_j, t_{j'}) e^{-2\pi i \bmr_n \cdot 
+		(\bmk(t_{j'}) - \bmk(t_j))} 
+		\nonumber 
+		\\
+	&\approx
+		\frac{\abs{\gam \stx(\bmr_n) \Delta t}^2}{2} 
+		\sum_{l=1}^L u_l(\bmr_n) v_l(t_{j'}) v_l^*(t_j) 
+		e^{-2\pi i\bmr_n \cdot (\bmk(t_{j'}) - \bmk(t_j))},
+		\label{eq:ss-rf,sjjn}
+\end{align}
+respectively denote scalar elements 
+of the matrices 
+$\bmA \in \complexes{N \times J}$;
+$\bmD \in \reals{N \times N}$;
+and tensor $\mathcal{S} \in \complexes{J \times J \times N}$.
+Here $\Delta t := \TP/J$ denotes the RF pulse sampling interval
+and $\delta\brac{\cdot}$ denotes the Kronecker delta function.
+Then the noiseless discretized signal model reads
+\begin{align}
+	\mathbf{m} &= 
+		\inv{\bmD + \diag{\brac{\bmb\ctpose\bmS_1\bmb,\dots,\bmb\ctpose\bmS_N\bmb}\tpose}}
+		\bmA \bmb,
+	\label{eq:ss-rf,discrete}
+\end{align}
+where $\bmS_n \in \complexes{J \times J}$
+denotes the $n$th layer of $\mathcal{S}$
+for each $n \in \set{1,\dots,N}$.
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Two Iterative Algorithms}
+\label{s,ss-rf,alg}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+This section develops two iterative algorithms
+for designing SS-informed RF pulses.
+Subsection~\ref{ss,ss-rf,alg,pert}
+employs a perturbative expansion approach
+that takes inspiration 
+from a similar algorithm 
+for large-tip angle RF pulse design \cite{grissom:09:flt}.
+Subsection~\ref{ss,ss-rf,alg,admm}
+employs an optimization approach
+that uses variable splitting 
+and the alternating direction 
+method of multipliers (ADMM) algorithm \cite{gabay:76:ada}.
+Both subsections focus 
+on designing the RF pulse only
+and assume the excitation gradient trajectory is fixed. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\subsection{Perturbative Expansions}
+\label{ss,ss-rf,alg,pert}
+
+Given an RF pulse design 
+at the $i$th iteration $\iter{\bmb}{i}$, 
+one can predict the magnetization $\iter{\bmm}{i}$ 
+via either \eqref{eq:ss-rf,discrete} or Bloch simulations. 
+If the deviation $\Delta \iter{\bmm}{i+1} := \mathbf{m} - \iter{\bmm}{i}$ 
+from the desired pattern is small, 
+it should be possible 
+to reduce the subsequent deviation 
+with small perturbation $\Delta \iter{\bmb}{i+1}$ to $\iter{\bmb}{i}$. 
+We can then iteratively improve the RF pulse 
+by accumulating small perturbations, \ie  
+$\iter{\bmb}{i+1} \gets \iter{\bmb}{i} + \Delta \iter{\bmb}{i+1} 
+	\equiv \iter{\bmb}{0} + \sum_{\iota=1}^{i+1} \Delta \iter{\bmb}{\iota}$.
+
+Here we apply a first-order perturbative expansion 
+to approximate how the $(i+1)$th incremental excitation 
+$\Delta \iter{\bmb}{i+1}$ 
+relates to the $(i+1)$th pattern deviation 
+$\Delta \iter{\bmm}{i+1}$: 
+	\begin{align}
+		\mathbf{A} \paren{\iter{\bmb}{i} + \Delta \iter{\bmb}{i+1}} &= 
+			\paren{\bmD + \diagn{\paren{\iter{\bmb}{i} 
+			+ \Delta \iter{\bmb}{i+1}}\ctpose \bmS_n \paren{\iter{\bmb}{i} 
+			+ \Delta \iter{\bmb}{i+1}}}}
+			\paren{\iter{\bmm}{i} + \Delta \iter{\bmm}{i+1}} 
+			\label{eq:ss-rf,pert-ex} 
+			\\
+		&\approx 
+			\paren{\bmD + \diagn{(\iter{\bmb}{i})\ctpose \bmS_n \iter{\bmb}{i}}}
+			\paren{\iter{\bmm}{i} + \Delta \iter{\bmm}{i+1}} 
+			\nonumber 
+			\\
+		&+ 
+			2 \diagn{\re{(\iter{\bmb}{i})\ctpose 
+			\bmS_n \Delta \iter{\bmb}{i+1}}} \iter{\bmm}{i}, 
+			\label{eq:ss-rf,pert-apprx}
+	\end{align}
+where $\diagn{\bmb\ctpose\bmS_n\bmb'} :=
+	\diag{\brac{\bmb\ctpose\bmS_1\bmb',\dots,\bmb\ctpose\bmS_n\bmb'}\tpose}$
+and the approximation drops all higher-order terms.
+Canceling out zeroth-order terms 
+\begin{align}
+	\bmA \iter{\bmb}{i} \approx
+		\paren{\bmD + \diagn{(\iter{\bmb}{i})\ctpose\bmS_n\iter{\bmb}{i}}} \iter{\bmm}{i}
+\end{align}
+that either are exactly equal 
+(if $\iter{\bmm}{i}$ is computed via \eqref{eq:ss-rf,discrete})
+or nearly equal
+(if $\iter{\bmm}{i}$ is computed via Bloch simulations)
+and rearranging yields the update
+\begin{align}
+	\re{\Delta\iter{\bmb}{i+1}} &\gets
+		\pinv{\bmA-2\diag{\iter{\bmm}{i}}\re{\iter{\bmG}{i}}}
+		\paren{\bmD + \diagn{(\iter{\bmb}{i})\ctpose\bmS_n\iter{\bmb}{i}}}
+		\Delta \iter{\bmm}{i+1};
+		\nonumber
+		\\
+	\im{\Delta\iter{\bmb}{i+1}} &\gets
+		\pinv{i\bmA+2\diag{\iter{\bmm}{i}}\im{\iter{\bmG}{i}}}
+		\paren{\bmD + \diagn{(\iter{\bmb}{i})\ctpose\bmS_n\iter{\bmb}{i}}}
+		\Delta \iter{\bmm}{i+1},
+	\label{eq:ss-rf,pert-update}
+\end{align}
+where $\iter{\bmG}{i} := 
+	\brac{\bmS_1\iter{\bmb}{i},\dots,\bmS_n\iter{\bmb}{i}}\ctpose 
+	\in \complexes{N \times J}$.
+Each perturbative correction update
+requires solving two size-$J$ linear least-squares problems.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\subsection{Variable Splitting and ADMM}
+\label{ss,ss-rf,alg,admm}
+	
+Alternately,
+we can approach SS-informed RF pulse design
+by solving a suitable optimization problem.
+We would like to solve
+the non-convex optimization problem
+\begin{align}
+	\est{\bmb} &\in \set{%
+		\argmin{\bmb \in \complexes{J}}
+		\norm{\inv{\bmD + \diagn{\bmb\ctpose\bmS_n\bmb}}\bmA\bmb-\bmm}^2_{\bmW}
+		+ \beta\norm{\bmC\bmb}^2_2
+	}%
+	\label{eq:ss-rf,prob-orig}
+\end{align}
+where $\bmW \in \reals{N \times N}$ denotes a spatial weighting matrix;
+$\bmC$ is a pure-real first-order finite differencing matrix;
+and $\beta \in \real$ is a regularization parameter.
+Since solving \eqref{eq:ss-rf,prob-orig} is challenging,
+we instead study a related constrained problem:
+\begin{alignat}{3}
+	&\paren{\est{\bmb},\est{\bmz}_1,\est{\bmz}_2} 
+		&&\in
+			\set{\argmin{\bmb,\bmz_1,\bmz_2\in\complexes{J}} \costa{\bmb,\bmz_1,\bmz_2}}
+		&&\text{subject to}
+		\label{eq:ss-rf,prob} \\
+	&\bmz_1
+		&&= \bmf(\bmb,\bmz_2)+\bmd
+		&&\text{and}
+		\nonumber \\
+	&\bmz_2
+		&&= \bmb,
+		&&\text{where}
+		\nonumber \\
+	&\costa{\bmb,\bmz_1,\bmz_2}
+		&&:= \norm{\bmA\bmb-\diag{\bmm}\bmz_1}^2_{\bmW}+\beta\norm{\bmC\bmb}^2_2;
+		\label{eq:ss-rf,cost}
+\end{alignat}
+$\bmf(\bmb,\bmb') := \brac{\bmb\ctpose\bmS_1\bmb',\dots,\bmb\ctpose\bmS_N\bmb'}$
+evaluates $\bmf : \complexes{J}\times\complexes{J}\mapsto\complexes{N}$
+for arbitrary $\bmb,\bmb'$;
+and $\bmd := \bmD \ones{N} \in \reals{N}$.
+We solve \eqref{eq:ss-rf,prob} via ADMM \cite{gabay:76:ada}.
+The augmented Lagrangian is
+\begin{alignat}{2}
+	&\Lambda(\bmb,\bmz_1,\bmz_2,\bmnu_1,\bmnu_2) := \Psi(\bmb, \bmz_1, \bmz_2) 
+		&&+ \re{\bmnu_1\ctpose \paren{\bmf(\bmb,\bmz_2) + \mathbf{d}-\bmz_1}} 
+			+ \frac{\rho_1}{2} \norm{\bmf(\bmb,\bmz_2) + \mathbf{d} - \bmz_1}^2_2
+		\nonumber 
+		\\
+	& 
+		&&+ \re{\bmnu_2\ctpose \paren{\bmb - \bmz_2}} 
+			+ \frac{\rho_2}{2} \norm{\bmb - \bmz_2}^2_2,
+		\label{eq:ss-rf,lagrangian-nu}
+\end{alignat}
+where $\bmnu_1\in\complexes{N}$ and $\bmnu_2\in\complexes{J}$ 
+are dual variables
+and $\rho_1,\rho_2>0$ are constraint penalty parameters.
+Rescaling the dual variables 
+as $\bmu_1 := \frac{\bmnu_1}{\rho_1}$ 
+and $\bmu_2 := \frac{\bmnu_2}{\rho_2}$, 
+completing the square,
+and dropping constants reveals 
+an alternate but equivalent form 
+of the augmented Lagrangian 
+that leads to simpler variable updates:
+\begin{alignat}{2}
+	&\Lambda'(\bmb, \bmz_1,\bmz_2,\bmu_1,\bmu_2) := \Psi(\bmb,\bmz_1,\bmz_2) 
+		&&+ \frac{\rho_1}{2}\norm{\bmf(\bmb, \bmz_2) + \mathbf{d}-\bmz_1+\bmu_1}^2_2 			
+		- \frac{\rho_1}{2} \norm{\bmu_1}^2_2 
+		\nonumber 
+		\\
+	& 
+		&&+ \frac{\rho_2}{2} \norm{\bmb - \bmz_2 + \bmu_2}^2_2 
+		- \frac{\rho_2}{2} \norm{\bmu_2}^2_2. \label{eq:ss-rf,lagrangian-u}
+\end{alignat}
+ADMM cycles through updating the primal variables $\bmb,\bmz_1,\bmz_2$
+followed by gradient ascent on the scaled dual variables $\bmu_1,\bmu_2$, 
+holding other variables fixed from previous iterations. 
+Though $\rho_1$ and $\rho_2$ influence (local) convergence rates, 
+they do not affect the solution. 
+We next describe each of these updates.
+\begin{enumerate}
+	\item{%
+		The $\bmb$ update involves a size-$J$ linear least-squares subproblem:
+		\begin{alignat}{2}
+			\iter{\bmb}{i+1} 
+				&\gets \argmin{\bmb\in\complexes{J}}
+					\Lambda'(\bmb,\iter{\bmz}{i}_1,\iter{\bmz}{i}_2,
+						\iter{\bmu}{i}_1,\iter{\bmu}{i}_2)
+						\nonumber \\
+				&= \argmin{\bmb\in\complexes{J}}
+					\costa{\bmb,\iter{\bmz}{i}_1,\iter{\bmz}{i}_2}
+					&&+ \frac{\rho_1}{2}\norm{%
+							\bmf(\bmb,\iter{\bmz}{i}_2)-\paren{\iter{\bmz}{i}_1
+							-\bmd-\iter{\bmu}{i}_1}^2_2
+						}%
+						\nonumber \\
+				&
+					&&+ \frac{\rho_2}{2}\norm{\bmb-
+						\paren{\iter{\bmz}{i}_2-\iter{\bmu}{i}_2}}^2_2.
+						\label{eq:ss-rf,b-update}
+		\end{alignat}
+	}%
+	\item{%
+		The $\bmz_1$ update involves a trivial linear least-squares subproblem:
+		\begin{align}
+			\iter{\bmz}{i+1}_1 
+				&\gets \argmin{\bmz_1\in\complexes{N}}
+					\Lambda'(\iter{\bmb}{i+1},\bmz_1,\iter{\bmz}{i}_2,
+						\iter{\bmu}{i}_1,\iter{\bmu}{i}_2)
+						\nonumber \\
+				&= \argmin{\bmz_1\in\complexes{N}}
+					\norm{\diag{\bmm}\bmz_1-\bmA\iter{\bmb}{i+1}}^2_\bmW
+					+ \frac{\rho_1}{2}\norm{%
+						\bmz_1-\paren{\bmf(\iter{\bmb}{i+1},\iter{\bmz}{i}_2)
+							+ \bmd + \iter{\bmu}{i}_1}
+						}^2_2.
+						\label{eq:ss-rf,z1-update}
+		\end{align}
+	}%
+	\item{%
+		The $\bmz_2$ update involves another size-$J$ linear least-squares subproblem:
+		\begin{align}
+			\iter{\bmz}{i+1}_2
+				&\gets \argmin{\bmz_2\in\complexes{J}}
+					\Lambda'(\iter{\bmb}{i+1},\iter{\bmz}{i+1}_1,\bmz_2,
+						\iter{\bmu}{i}_1,\iter{\bmu}{i}_2)
+						\nonumber \\
+				&= \argmin{\bmz_2\in\complexes{J}}
+					\frac{\rho_1}{2}\norm{%
+						\bmf(\iter{\bmb}{i+1},\bmz_2)
+						-\paren{\iter{\bmz}{i+1}_1-\bmd-\iter{\bmu}{i}_1}
+					}^2_2
+					+\frac{\rho_2}{2}\norm{\bmz_2-\paren{\iter{\bmb}{i+1}+\iter{\bmu}{i}_2}}^2_2.
+					\label{eq:ss-rf,z2-update}
+		\end{align}	
+	}%
+	\item{%
+		The scaled dual variables $\bmu_1,\bmu_2$ 
+		are updated via one gradient ascent iteration:
+		\begin{align}
+			\iter{\bmu}{i+1}_1 
+				&\gets \iter{\bmu}{i}_1 + \rho_1 
+					\paren{\bmf(\iter{\bmb}{i+1},\iter{\bmz}{i+1}_2)+\bmd-\iter{\bmz}{i+1}_1};
+					\label{eq:ss-rf,u1-update}
+					\\
+			\iter{\bmu}{i+1}_2 
+				&\gets \iter{\bmu}{i}_2 + \rho_2
+					\paren{\iter{\bmb}{i+1}-\iter{\bmz}{i+1}_2}.
+					\label{eq:ss-rf,u2-update}
+		\end{align}
+	}%
+\end{enumerate}
+If a saddle point local to the initialization exists,
+ADMM will converge to that saddle point
+and the solution will correspond
+to a local solution 
+to constrained problem \eqref{eq:ss-rf,prob}.

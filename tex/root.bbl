@@ -779,8 +779,8 @@ C.~Laule, I.~M. Vavasour, G.~R.~W. Moore, J.~Oger, D.~K.~B. Li, D.~W. Paty, and
 \bibitem{laule:06:mwi}
 C.~Laule, E.~Leung, D.~K.~B. Li, A.~L. Traboulsee, D.~W. Paty, A.~L. MacKay,
   and G.~R.~W. Moore, ``Myelin water imaging in multiple sclerosis:
-  quantitative correlations with histopathology,'' {\em {Multiple Sclerosis}},
-  vol.~12, pp.~{747--53}, Nov. 2006.
+  quantitative correlations with histopathology,'' {\em {Multiple Sclerosis
+  J.}}, vol.~12, pp.~{747--53}, Nov. 2006.
 
 \bibitem{does:00:rat}
 M.~D. Does and J.~C. Gore, ``Rapid acquisition transverse relaxometric
@@ -880,5 +880,53 @@ S.~D. Swanson, D.~I. Malyarenko, M.~L. Fabiilli, R.~C. Welsh, J.-F. Nielsen,
   and A.~Srinivasan, ``Molecular, dynamic, and structural origin of
   inhomogeneous magnetization transfer in lipid membranes,'' {\em {Mag. Res.
   Med.}}, vol.~77, pp.~{1318--28}, Mar. 2017.
+
+\bibitem{pauly:89:aks}
+J.~Pauly, D.~Nishimura, and A.~Macovski, ``A k-space analysis of
+  small-tip-angle excitation,'' {\em {J. Mag. Res.}}, vol.~81, pp.~{43--56},
+  Jan. 1989.
+
+\bibitem{shinnar:89:tuo}
+M.~Shinnar, L.~Bolinger, and J.~S. Leigh, ``The use of finite impulse response
+  filters in pulse design,'' {\em {Mag. Res. Med.}}, vol.~12, pp.~{81--7}, Oct.
+  1989.
+
+\bibitem{yip:05:irp}
+C.~Yip, J.~A. Fessler, and D.~C. Noll, ``Iterative {RF} pulse design for
+  multidimensional, small-tip-angle selective excitation,'' {\em {Mag. Res.
+  Med.}}, vol.~54, pp.~{908--17}, Oct. 2005.
+
+\bibitem{setsompop:08:mls}
+K.~Setsompop, L.~L. Wald, V.~Alagappan, B.~A. Gagoski, and E.~Adalsteinsson,
+  ``Magnitude least squares optimization for parallel radio frequency
+  excitation design demonstrated at 7 {Tesla} with eight channels,'' {\em {Mag.
+  Res. Med.}}, vol.~59, pp.~{908--15}, Apr. 2008.
+
+\bibitem{fessler:05:tbi}
+J.~A. Fessler, S.~Lee, V.~T. Olafsson, H.~R. Shi, and D.~C. Noll,
+  ``Toeplitz-based iterative image reconstruction for {MRI} with correction for
+  magnetic field inhomogeneity,'' {\em {IEEE Trans. Sig. Proc.}}, vol.~53,
+  pp.~{3393--402}, Sept. 2005.
+
+\bibitem{noll:91:ahc}
+D.~C. Noll, C.~H. Meyer, J.~M. Pauly, D.~G. Nishimura, and A.~Macovski, ``A
+  homogeneity correction method for magnetic resonance imaging with
+  time-varying gradients,'' {\em {IEEE Trans. Med. Imag.}}, vol.~10,
+  pp.~{629--37}, Dec. 1991.
+
+\bibitem{sutton:03:fii}
+B.~P. Sutton, D.~C. Noll, and J.~A. Fessler, ``Fast, iterative image
+  reconstruction for {MRI} in the presence of field inhomogeneities,'' {\em
+  {IEEE Trans. Med. Imag.}}, vol.~22, pp.~{178--88}, Feb. 2003.
+
+\bibitem{grissom:09:flt}
+W.~A. Grissom, D.~Xu, A.~B. Kerr, J.~A. Fessler, and D.~C. Noll, ``Fast
+  large-tip-angle multidimensional and parallel {RF} pulse design in {MRI},''
+  {\em {IEEE Trans. Med. Imag.}}, vol.~28, pp.~{1548--59}, Oct. 2009.
+
+\bibitem{gabay:76:ada}
+D.~Gabay and B.~Mercier, ``A dual algorithm for the solution of nonlinear
+  variational problems via finite-element approximations,'' {\em {Comput. Math.
+  Appl.}}, vol.~2, no.~1, pp.~{17--40}, 1976.
 
 \end{thebibliography}

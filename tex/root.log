@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  12 MAR 2018 14:10
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  15 MAR 2018 11:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1282,7 +1282,11 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 
 ] [2]) [3]
 CHAPTER 2.
-(./c,bkgrd.tex [4
+(./c,bkgrd.tex
+
+LaTeX Warning: Reference `a,dess-diff' on page 4 undefined on input line 92.
+
+[4
 
 ] [5] [6]
 Overfull \hbox (1.73587pt too wide) in paragraph at lines 290--304
@@ -1321,7 +1325,14 @@ Overfull \hbox (43.6091pt too wide) in paragraph at lines 789--789
 [] |
  []
 
-[12] [13] [14] [15] [16]) [17]
+[12]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 925.
+
+
+LaTeX Warning: Reference `a,dess-diff' on page 13 undefined on input line 925.
+
+[13] [14] [15] [16]) [17]
 CHAPTER 3.
 (./c,relax.tex [18
 
@@ -1386,6 +1397,10 @@ Overfull \hbox (10.55226pt too wide) in paragraph at lines 1227--1244
 Overfull \hbox (4.8618pt too wide) in paragraph at lines 1227--1244
  [] |
  []
+
+
+LaTeX Warning: Reference `a,dess-diff' on page 43 undefined on input line 1384.
+
 
 [43] [44]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <14.4> not available
@@ -1575,31 +1590,76 @@ APPENDIX A.
 
 ] [122]) [123]
 APPENDIX B.
-(./a,ss-rf.tex) [124
+(./a,ss-rf.tex [124
 
 ]
-APPENDIX C.
-(./a,dess-diff.tex) [125
+Overfull \hbox (25.23056pt too wide) in paragraph at lines 118--118
+[] |
+ []
 
-] (./root.bbl (./root.brf)
+[125]
+Overfull \hbox (1.17065pt too wide) in paragraph at lines 230--230
+[] |
+ []
+
+
+Overfull \hbox (45.84563pt too wide) in paragraph at lines 247--247
+[] |
+ []
+
+[126]
+Overfull \hbox (28.03227pt too wide) in paragraph at lines 268--268
+[] |
+ []
+
+[127]
+Overfull \hbox (1.34749pt too wide) in paragraph at lines 350--383
+[]\OT1/ptm/m/n/12 Conventional small-excitation RF pulse de-sign uti-lizes an a
+s-sump-tion that off-resonance|
+ []
+
+[128]
+Overfull \hbox (9.369pt too wide) in paragraph at lines 500--500
+[] |
+ []
+
+[129] [130]
+Overfull \hbox (24.92648pt too wide) in paragraph at lines 633--633
+[] |
+ []
+
+[131]
+Overfull \hbox (13.55821pt too wide) in paragraph at lines 722--722
+[] |
+ []
+
+[132]
+Overfull \hbox (8.15315pt too wide) in paragraph at lines 804--804
+[] |
+ []
+
+) [133] (./root.bbl (./root.brf)
 \tf@brf=\write8
 \openout8 = `root.brf'.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
- [126
+ [134
 
 
-] [127] [128] [129]
-[130] [131] [132] [133] [134] [135] [136] [137] [138])
+] [135] [136] [137] [138] [139] [140]
+[141] [142] [143] [144] [145] [146] [147])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 167.
- [139]
+ [148]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 167.
  (./root.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 167.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 167.
 Package rerunfilecheck Info: File `root.brf' has not changed.
-(rerunfilecheck)             Checksum: D22E297D869EA9410BA1F3B9DD016380;16379.
+(rerunfilecheck)             Checksum: DD8B80A591F4147087F9C7B10D8A50A0;17163.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1607,12 +1667,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 167.
  ) 
 Here is how much of TeX's memory you used:
- 24922 strings out of 493489
- 461114 string characters out of 3141349
- 648223 words of memory out of 3000000
- 27467 multiletter control sequences out of 15000+200000
- 32839 words of font info for 105 fonts, out of 3000000 for 9000
+ 25073 strings out of 493489
+ 463611 string characters out of 3141349
+ 651105 words of memory out of 3000000
+ 27621 multiletter control sequences out of 15000+200000
+ 33358 words of font info for 106 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,21n,61p,1922b,654s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,21n,61p,1922b,712s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (155 pages, 716764 bytes).
+Output written on root.dvi (164 pages, 776000 bytes).
