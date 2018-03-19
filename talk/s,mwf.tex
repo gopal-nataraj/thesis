@@ -46,7 +46,7 @@
   	\end{itemize}
 	}
 	\uncover<3->{%
-		\textbf{Goal}: fast, precise MWF quantification in WM
+		\textbf{Goal}: fast, accurate MWF quantification in WM
 	}
 \end{frame}
 
@@ -80,31 +80,31 @@
 
 \begin{frame}{Multi-compartmental MR signal models}
 	\uncover<1-3>{%
-		2-compartment SPGR model \hfill \citec{spencer:00:mos} \\
+		Two-compartment SPGR model \hfill \citec{spencer:00:mos}
 	}
 	\begin{itemize}
 		\item<1>{included first-order physical exchange}
-		\item<2,5>{neglected relaxation, precession, exchange during excitation}
-		\item<3,5>{%
+		\item<1,4>{neglected relaxation, precession, exchange during excitation}
+		\item<2,4>{%
 			absorbing off-resonance effects into $\mzero$ 
 			\emph{implies} neglecting exchange between excitation and readout
 		}
 	\end{itemize}
-	\uncover<4->{%
-		Two-compartment DESS model \hfill \textcolor{arch-ivy}{[\S6.2.2]}%
+	\uncover<3->{%
+		Two-compartment DESS model \hfill \citec{nataraj:17:mwf}
 	}
 	\begin{itemize}
-		\item<4-5>{%
+		\item<3-4>{%
 			additional approximations required 
 			unless we assume time-independent diff 
 			in compartmental off-resonance freq
 		}
-		\item<5>{%
+		\item<4>{%
 			including exchange, closed-form solutions still elusive
 		}
 	\end{itemize}
-	\uncover<6>{%
-		\textbf{For simplicity, we neglect exchange.}
+	\uncover<5>{%
+		\textbf{For simplicity, we use short echo times and neglect exchange.}
 	}
 \end{frame}
 
@@ -181,7 +181,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{MWF Estimation via KRR}
+\begin{frame}{MWF Estimation via PERK}
 	\uncover<1>{%
 		\textbf{Simulation Setup}
 		\begin{itemize}
@@ -193,7 +193,7 @@
 		\end{itemize}
 	}
 	\uncover<2>{%
-		\textbf{Use KRR to estimate just $\hlg{\ff}$}
+		\textbf{Use PERK to estimate just $\hlg{\ff}$}
 		\begin{itemize}
 			\item{Separable prior on $\bmx$: $\hlg{\ff},\mzero$ uniform; others log-uniform}
 			\item{$N \gets 10^6$ training points}
@@ -214,7 +214,7 @@
 	\uncover<+->{%
 		\begin{figure}[t]
 			\centering
-			\includegraphics[width=\textwidth]{c,krr/sim-talk}%
+			\includegraphics[width=\textwidth]{s,mwf/sim}%
 		\end{figure}
 	}
 	\uncover<+->{%
@@ -231,15 +231,14 @@
 			\item{Required \textbf{11m48s} total (including BS scan)} 
 		\end{itemize} 
 	}
-	\uncover<2-4>{%
+	\uncover<2-3>{%
 		Rapidly estimated $\hlg{\ff}$ as proxy for MWF
 		\begin{itemize}
-			\item<2>{Full-scale grid search intractable on typical desktop}
-			\item<3-4>{KRR training and testing took \textbf{35s} and \textbf{5s/slice}}
-			\item<4>{Iterative ML refinement took \textbf{29s/slice}}
+			\item<2->{Full-scale grid search intractable on typical desktop}
+			\item<3->{KRR training and testing took \textbf{35s} and \textbf{5s/slice}}
 		\end{itemize}
 	}
-	\uncover<5->{%
+	\uncover<4>{%
 		Compared (qualitatively) with results in \hfill \citec{zhang:15:com}%
 		\begin{itemize}
 			\item{GRASE: accelerated MESE acq \hfill \citec{prasloski:12:rwc}}
@@ -250,35 +249,47 @@
 
 \begin{frame}{MWF Proof-of-concept In Vivo Result}
 	\vspace{-0.3cm}
-	\begin{figure}
-    \centering
-    \begin{minipage}[b]{0.7\textwidth}
-        \centering
-        \includegraphics [height=4cm, clip] {c,mwf/ff,log2c-0,krr-ml}
-    \end{minipage}
-
-    \begin{minipage}[b]{0.96\textwidth}
-        \centering
-        \includegraphics [height=3.8cm] {c,mwf/mwf,grase}
-        \includegraphics [height=3.8cm] {c,mwf/mwf,mcdespot}
-    \end{minipage}
- 	\end{figure}
+  \begin{figure}
+  	\centering
+  	\begin{minipage}[b]{0.64\textwidth}
+  		\centering
+  		\includegraphics [height=3.4cm, trim= 30 24 10 5, clip] {s,mwf/grase-mcdespot}
+  	\end{minipage}
+  	\begin{minipage}[b]{0.32\textwidth}
+  		\centering
+  		\includegraphics [height=3.4cm] {s,mwf/proposed}
+  	\end{minipage}
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Summary}
-	\uncover<1->{%
+	\uncover<1-2>{%
   	\textbf{Contributions}
   	\begin{itemize}
-  		\item{Two-compartment DESS signal model}
-  		\item{Fast acquisition for precise WM MWF estimation}
-			\item{Proof-of-concept \invivo MWF images via KRR}
+  		\item<1>{Fast acquisition for precise MWF estimation in WM}
+			\item<1-2>{Proof-of-concept \invivo MWF images via PERK}
   	\end{itemize}
 	}
-	\uncover<2->{%
-  	\textbf{Ongoing work}
+	\uncover<2>{%
+  	\textbf{Ongoing thesis work}
   	\begin{itemize}
   		\item<2>{Systematic validation}
-  		\item<3>{Further-optimized MWF acquisition}
   	\end{itemize}
+	}
+	\uncover<3->{%
+		\textbf{Longer-term research directions}
+		\begin{itemize}
+			\item<3>{%
+				apply scan design and PERK to other QMRI applications,\\
+				\eg MR fingerprinting \hfill \citec{nataraj:17:slw}
+			}%
+			\item<4>{%
+				correlate our MWF estimates with other myelin biomarkers,\\
+				\eg inhomogeneous mag transfer \hfill \citec{varma:15:mtf}
+			}%
+			\item<5>{%
+				combine PERK and image reconstruction
+			}%
+		\end{itemize}
 	}
 \end{frame}

@@ -1,20 +1,23 @@
 % scan design
 \begin{frame}{Signal Model}
 	\alt<1>{%
-		After reconstruction, single voxel $y_d$ in $d$th image modeled as
+		After reconstruction, 
+			single voxel $y_d$ in $d$th image modeled as \\
 		\begin{align}
 			y_d = s_d\paren{\bmx; \bmnu, \bmp_d} + \epsilon_d
 		\end{align}
 	}{%
-		A \emph{scan profile} contains $D$ voxels $\bmy := \brac{y_1,\dots,y_D}\tpose$, 
+		A \emph{scan profile} is a set of $D$ scans
+			that produces at each voxel \\
+			a measurement vector $\bmy := \brac{y_1,\dots,y_D}\tpose$ 
 			modeled as
 			\begin{align}
 				\bmy = \bms\paren{\bmx; \bmnu, \bmP} + \bmeps
 			\end{align}
 	}
 	\begin{itemize}
-		\item<1>{\makebox[3.5cm][l]{$\bmx \in \reals{L}$} latent free parameters}
-		\item<1>{\makebox[3.5cm][l]{$\bmnu \in \reals{K}$} known parameters}
+		\item<1>{\makebox[3.5cm][l]{$\bmx \in \reals{L}$} unknown parameters}
+		\item<1>{\makebox[3.5cm][l]{$\bmnu \in \reals{K}$} ``known'' parameters}
 		\alt<1>{%
 			\item<1>{\makebox[3.5cm][l]{$\bmp_d \in \reals{A}$} acquisition parameters}
 			\item<1>{\makebox[3.5cm][l]{$s_d : \reals{L+K+A} \mapsto \complex$} 
@@ -87,7 +90,7 @@
   				\breve{\bmP} &\in \set{
   					\argmin{\bmP \in \setP}
   					\max_{\substack{\bmx \in \setXt \\ \bmnu \in \setNt}}
-  					\costa{\bmx; \bmnu, \bmP},
+  					\costa{\bmx; \bmnu, \bmP}
   				}
   			\end{align}
   		}%
@@ -97,7 +100,7 @@
 				and $\setP$ is defined by acquisition/timing constraints \\
 			}%
   		\item<4>{%
-  			Bayesian scan design \hfill \textcolor{arch-ivy}{[\S6.3]}
+  			Bayesian scan design
   			\begin{align}
   				\breve{\bmP} &\in \set{
   					\argmin{\bmP \in \setP}
@@ -153,7 +156,7 @@
          SPGR rep. times (ms) & (12.2, 12.2) & 13.9 & -- \\
          DESS rep. times (ms) & 17.5 & 28.0 & (24.4, 17.5) \\
          \hline
-         Optimized Cost & 4.0 & 4.9 & \textbf{3.5} \\
+         \textbf{optimal max cost} & 4.0 & 4.9 & \textbf{3.5} \\
          \hline \hline
   		\end{tabu}}
 			\label{table:profile}
@@ -168,6 +171,7 @@
 	}%
 \end{frame}
 
+\begin{comment}
 \begin{frame}{Numerical Simulation}
 	\uncover<+->{%
 		\begin{itemize}
@@ -195,6 +199,7 @@
   	\end{table}
 	}
 \end{frame}
+\end{comment}
 
 \begin{frame}{Experimental Setup}
 	\uncover<1>{%
@@ -218,7 +223,7 @@
 	\uncover<3>{%
 		Bloch-Siegert (BS) acquisition for separate flip angle calibration
 		\begin{itemize}
-			\item{Acquired 2 BS-shifted SPGR scans in 1m40s total}
+			\item{Acquired 2 BS-shifted 3D SPGR scans in 1m40s total}
 			\item{Used for $\To,\Tt$ est from both candidate and reference profiles}
 		\end{itemize}
 	}
@@ -230,14 +235,15 @@
 		\subfloat [$\ToML$ Estimates] {
         \includegraphics [width = 0.45\textwidth] 
         	{c,scn-dsgn/2016-06-20,hpd,t1-ml-compare.eps}
-        \label{fig:t1,hpd,ml}
+        \label{fig:scn-dsgn,hpd,t1}
     }
     \hspace{0.3cm}
     \subfloat [$\TtML$ Estimates] {
         \includegraphics [width = 0.45\textwidth] 
         	{c,scn-dsgn/2016-06-20,hpd,t2-ml-compare.eps}
-        \label{fig:t2,hpd,ml}
+        \label{fig:scn-dsgn,hpd,t2}
     }
+    \label{fig:scn-dsgn,hpd}
  	\end{figure}
 	Compared against NIST NMR measurements \hfill \citec{keenan:16:msm}
 \end{frame}
@@ -257,12 +263,15 @@
         						    & (2, 1)         		& (1, 1)         		& (0, 2) \\
         \hline
         V5 $\sigToML$   & $50 \pm 12$       & $40 \pm 10.$    	& $39 \pm 9.4$ \\
-        V6 $\sigToML$   & $70 \pm 18$       & $60 \pm 15$       & $70 \pm 16$ \\
+        V6 $\sigToML$   & $70 \pm 18$       & $60 \pm 15$       & $60 \pm 16$ \\
         V7 $\sigToML$   & $60 \pm 13$       & $50 \pm 13$       & $50 \pm 13$ \\
-        \hline \hline
+        \hline 
         V5 $\sigTtML$   & $2.6 \pm 0.63$    & $6 \pm 1.4$       & $3.5 \pm 0.84$ \\
         V6 $\sigTtML$   & $1.9 \pm 0.46$    & $5 \pm 1.1$       & $2.3 \pm 0.54$ \\
         V7 $\sigTtML$   & $1.4 \pm 0.34$    & $3.4 \pm 0.80$    & $1.5 \pm 0.35$ \\
+        \hline 
+        $\sqrt{\textrm{opt max cost}}$ estimate
+        								& $8.9 \pm 1.8$ 		& $11 \pm 2.6$ 			& $\mathbf{8.3 \pm 2.1}$ \\
         \hline \hline
       \end{tabu}
       \caption{
@@ -278,52 +287,53 @@
 	}
 \end{frame}
 
-\begin{frame}{\emph{In vivo} Results}
-	\vspace{-1cm}
-	\begin{figure}
-		\centering
-		\subfloat{
-			\includegraphics [width=\textwidth, trim=0 0 0 10, clip] 
-				{c,scn-dsgn/2016-05-31,brain,t1-ml,jet.eps}
-			\label{fig:brain,t1,jet}
-		}
-		\vspace{0cm}
-		\subfloat{
-			\includegraphics [width=\textwidth-1mm, trim=0 0 0 25, clip]
-				{c,scn-dsgn/2016-05-31,brain,t2-ml,jet.eps}
-			\label{fig:brain,t2,jet}
-		}
-		\caption{
-			Colorbar ranges in ms.
-		}
-		\label{fig:brain,jet}
-	\end{figure}
-\end{frame}
-
 \begin{frame}{Summary}
-	\uncover<1-3>{%
-		\textbf{Contributions}
-			\begin{itemize}
-				\item<1->{MR scan design method for precise parameter estimation}
-				\item<1->{Fast SPGR/DESS scan profile for $\To,\Tt$ estimation in brain}
-				\begin{itemize}
-					\item<2->{%
-						Simulation and phantom results validate method \\
-						as a predictor of unbiased estimation precision.
-					}
-					\item<3->{
-						\emph{In vivo} results reveal discrepancies 
-						(especially in $\Tt$ estimates),
-						suggesting sensitivity to model mismatch.
-					}
-				\end{itemize}
-			\end{itemize}
+	\only<3>{%
+		\vspace{-1cm}
+  	\begin{figure}
+  		\centering
+  		\subfloat{
+  			\includegraphics [width=\textwidth, trim=0 0 0 10, clip] 
+  				{c,scn-dsgn/2016-05-31,brain,t1-ml,jet.eps}
+  			\label{fig:scn-dsgn,brain,t1}
+  		}
+  		\vspace{0cm}
+  		\subfloat{
+  			\includegraphics [width=\textwidth-1mm, trim=0 0 0 25, clip]
+  				{c,scn-dsgn/2016-05-31,brain,t2-ml,jet.eps}
+  			\label{fig:scn-dsgn,brain,t2}
+  		}
+  		\caption{
+  			Colorbar ranges in ms.
+  		}
+  		\label{fig:scn-dsgn,brain}
+  	\end{figure}
 	}
-	\uncover<4>{%
-		\textbf{How to address model mismatch?}
-		\begin{itemize}	
-			\item{More complete \invivo signal models}
-			\item{More scalable parameter estimation}
-		\end{itemize}
+	\only<1-2,4-5>{%
+  	\uncover<1->{%
+  		\textbf{Contributions}
+  			\begin{itemize}
+  				\item<1->{MR scan design method for precise parameter estimation}
+  				\item<1->{Fast SPGR/DESS scan profile for $\To,\Tt$ estimation in brain}
+  				\begin{itemize}
+  					\item<2->{%
+  						Phantom (and omitted simulation) results validate method \\
+  						as a predictor of unbiased estimation precision.
+  					}
+  					\item<4->{
+  						\emph{In vivo} results reveal discrepancies 
+  						(especially in $\Tt$ estimates),
+  						suggesting $\To,\Tt$ estimates sensitive to model mismatch.
+  					}
+  				\end{itemize}
+  			\end{itemize}
+  	}
+  	\uncover<5>{%
+  		\textbf{How to address \invivo model mismatch?}
+  		\begin{itemize}	
+  			\item{More accurate \invivo signal models}
+  			\item{More scalable parameter estimation}
+  		\end{itemize}
+  	}
 	}
 \end{frame}

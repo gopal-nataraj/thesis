@@ -1,5 +1,5 @@
 % !TEX TS-program = latex
-% thesis proposal talk
+% thesis defense talk
 
 % beamer
 \documentclass{beamer}
@@ -24,9 +24,12 @@
 \usepackage{float}							% improved interface for floating objects
 \usepackage{subfig}							% generates subfigures
 \usepackage{subfloat}						% enables sub-numbering of floats
+\usepackage[export]{adjustbox}
 \usepackage{tabu}								% better tabular environment
 \usepackage{multimedia}					% beamer video
-\graphicspath{{../fig/}}
+\graphicspath{%
+	{../fig/}
+}
 
 % bib
 \bibliographystyle{apalike}			% note: natbib doesn't work with beamer metropolis
@@ -38,21 +41,21 @@
 \input{../macro/math.tex}
 \input{../macro/tikz.tex}
 
-\title{
+\title{%
 	Advances in Quantitative MRI: \\
-	Acquisition, Estimation, and Applications
+	Acquisition, Estimation, and Application
 }
-\author{
+\author{%
 	Gopal Nataraj
 }
 \date{
 }
 \institute{
-	Dissertation Proposal \\
-	May 15, 2017 \\
-	\\
+	Dissertation Defense \\
+	March 23, 2018 \\
+
 	Dept. of Electrical Engineering and Computer Science \\
-	University of Michigan
+	University of Michigan \\
 }
 
 \begin{document}
@@ -62,96 +65,25 @@
 	\titlepage
 \end{frame}
 
-% intro
-\begin{frame}{Quantitative MRI (QMRI)}
-	\uncover<1->{
-		\textbf{Goal}: 
-		\hlb{rapidly} and \hlg{reliably} \hlo{localize} \hlm{biomarkers} from MR data
-	}
-	\begin{itemize}
-		\item<2>{
-			\makebox[1.8cm][l]{\hlm{biomarker}} measurable tissue property (\eg, elasticity) that \\
-			\makebox[1.8cm][l]{} characterizes a biological process (\eg, sclerosis) \\
-		}
-		\item<3>{\makebox[1.8cm][l]{\hlo{localize}} produce quantitative MR images}
-		\item<4>{\makebox[1.8cm][l]{\hlb{rapidly}} fast acquisition, fast estimation}
-		\item<5>{\makebox[1.8cm][l]{\hlg{reliably}} accurate signal models, precise estimation}
-	\end{itemize}
-	
-	\uncover<6->{
-		\textbf{Challenges} (beyond conventional MRI):
-		\begin{itemize}
-			\item{complicated, nonlinear signal models}
-			\item{more data required, so longer scan times}
-		\end{itemize}
-	}
-\end{frame}
-
-% overview
-\begin{frame}{Overview}
-	Advances in Quantitative MRI: 
-	\begin{itemize}
-		\item<1>{
-			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch. 4]} \\
-			How can we assemble fast, informative collections of scans \\
-			to enable precise biomarker quantification? 
-		}
-		
-		\item<2>{
-			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch. 5]} \\
-			Given data from an informative acquisition, \\
-			how can we rapidly and accurately quantify these biomarkers?
-		}
-		\item<3>{
-			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch. 6]} \\
-			Using these tools,
-			can we design a state-of-the-art biomarker?
-		}
-	\end{itemize}
-\end{frame}
+% introduction
+\input{s,intro.tex}
 
 % overview-acquisition
 \begin{frame}{Overview}
 	Advances in Quantitative MRI: 
 	\begin{itemize}
-		\item<1>{
-			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch. 4]} \\
+		\item<1,4>{
+			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch.~4]} \\
 			How can we assemble fast, informative collections of scans \\
 			to enable precise biomarker quantification? 
 		}
-		
-		\item<0>{
-			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch. 5]} \\
-			Given data from an informative acquisition, \\
-			how can we rapidly and accurately quantify these biomarkers?
+		\item<2>{
+			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch.~5]} \\
+			Given accurate models and informative data, \\
+			how can we rapidly quantify these biomarkers?
 		}
-		\item<0>{
-			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch. 6]} \\
-			Using these tools,
-			can we design a state-of-the-art biomarker?
-		}
-	\end{itemize}
-\end{frame}
-
-% acquisition
-\input{s,scn-dsgn.tex}
-
-% overview-estimation
-\begin{frame}{Overview}
-	Advances in Quantitative MRI: 
-	\begin{itemize}
-		\item<0>{
-			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch. 4]} \\
-			How can we assemble fast, informative collections of scans \\
-			to enable precise biomarker quantification? 
-		}
-		\item<1>{
-			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch. 5]} \\
-			Given data from an informative acquisition, \\
-			how can we rapidly and accurately quantify these biomarkers?
-		}
-		\item<0>{
-			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch. 6]} \\
+		\item<3>{
+			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch.~6]} \\
 			Using these tools,
 			can we design a state-of-the-art biomarker?
 		}
@@ -159,24 +91,49 @@
 \end{frame}
 
 % estimation
-\input{s,krr.tex}
+% \input{s,scn-dsgn.tex}
+
+% overview-estimation
+\begin{frame}{Overview}
+	Advances in Quantitative MRI: 
+	\begin{itemize}
+		\item<0>{
+			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch.~4]} \\
+			How can we assemble fast, informative collections of scans \\
+			to enable precise biomarker quantification? 
+		}
+		\item<1>{
+			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch.~5]} \\
+			Given accurate models and informative data, \\
+			how can we rapidly quantify these biomarkers?
+		}
+		\item<0>{
+			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch.~6]} \\
+			Using these tools,
+			can we design a state-of-the-art biomarker?
+		}
+	\end{itemize}
+\end{frame}
+
+% estimation
+% \input{s,perk.tex}
 
 % overview-application
 \begin{frame}{Overview}
 	Advances in Quantitative MRI: 
 	\begin{itemize}
 		\item<0>{
-			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch. 4]} \\
+			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch.~4]} \\
 			How can we assemble fast, informative collections of scans \\
 			to enable precise biomarker quantification? 
 		}
 		\item<0>{
-			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch. 5]} \\
-			Given data from an informative acquisition, \\
-			how can we rapidly and accurately quantify these biomarkers?
+			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch.~5]} \\
+			Given accurate models and informative data, \\
+			how can we rapidly quantify these biomarkers?
 		}
 		\item<1>{
-			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch. 6]} \\
+			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch.~6]} \\
 			Using these tools,
 			can we design a state-of-the-art biomarker?
 		}
@@ -184,44 +141,41 @@
 \end{frame}
 
 % application
-\input{s,mwf.tex}
+% \input{s,mwf.tex}
 
-% timeline
-\begin{frame}{Future Work}
-	\uncover<1>{%
-  	\begin{table}[!ht] 
-      \centering
-      \caption{Timeline to Defense}
-      \vspace{-0.5cm}
-      \begin{tabular}{r | p{9cm}}
-        \hline
-        \hline
-        start date & task \\
-        \hline
-        2017-05 & validate KRR estimation \\
-        2017-08 & prepare KRR journal paper \\
-        2017-10 & validate $\ff$ estimates from SPGR/DESS acquisition \\
-        2018-01 & prepare fast MWF imaging journal paper \\
-        2018-03 & defend dissertation \\
-        \hline
-        \hline
-      \end{tabular}
-      \label{tab:timeline}
-   	\end{table}
-	}
-	\uncover<2->{%
-		Longer-term research directions
-		\begin{itemize}
-			\item{combine image reconstruction and KRR estimation}
-			\item{correlate our MWF estimates with other myelin biomarkers}
-			\item{apply KRR to other problems}
-		\end{itemize}
-	}
+% acknowledgment
+\begin{comment}
+\begin{frame}{Acknowledgments}
+	\textbf{Collaborators} 
+	\begin{figure}
+		\centering
+		\begin{minipage}[b]{0.32\textwidth}
+			\centering
+			\includegraphics [width=\textwidth, trim=80 40 80 30, clip] {s,ack/jeff}%
+		\end{minipage}
+		\begin{minipage}[b]{0.32\textwidth}
+			\centering
+			\includegraphics [width=\textwidth, trim=80 40 80 30, clip] {s,ack/jon}%
+		\end{minipage}
+		\begin{minipage}[b]{0.32\textwidth}
+			\centering
+			\includegraphics [width=\textwidth, trim=80 40 80 30, clip] {s,ack/clay}%
+		\end{minipage}
+	\end{figure}
+	\textbf{Funding}
+	\begin{itemize}
+		\item{NIH P01 CA87634}
+		\item{UM ``M-Cubed'' seed grant}
+		\item{UM pre-doctoral fellowship}
+	\end{itemize}
 \end{frame}
+\end{comment}
 
 % bib
 \begin{frame}[allowframebreaks]{References}
-	\bibliography{../bib/master,../bib/tmp-v2}
+	\bibliography{%
+		../bib/master,../bib/talk%
+	}%
 \end{frame}
 
 \end{document}

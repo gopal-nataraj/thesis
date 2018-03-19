@@ -5,42 +5,42 @@ The style file: ieeetr.bst
 Database file #1: ../bib/master.bib.bib
 You've used 184 entries,
             1876 wiz_defined-function locations,
-            1384 strings with 32277 characters,
-and the built_in function-call counts, 64043 in all, are:
-= -- 6855
+            1387 strings with 32302 characters,
+and the built_in function-call counts, 64671 in all, are:
+= -- 6942
 > -- 2263
 < -- 2
 + -- 826
 - -- 642
-* -- 4636
-:= -- 8439
-add.period$ -- 200
+* -- 4678
+:= -- 8495
+add.period$ -- 199
 call.type$ -- 184
 change.case$ -- 176
 chr.to.int$ -- 0
 cite$ -- 184
-duplicate$ -- 3192
-empty$ -- 5373
+duplicate$ -- 3222
+empty$ -- 5416
 format.name$ -- 642
-if$ -- 15663
+if$ -- 15828
 int.to.chr$ -- 0
 int.to.str$ -- 184
 missing$ -- 185
-newline$ -- 571
+newline$ -- 570
 num.names$ -- 184
-pop$ -- 374
+pop$ -- 368
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2975
+skip$ -- 3028
 stack$ -- 0
-substring$ -- 5815
-swap$ -- 1809
+substring$ -- 5931
+swap$ -- 1841
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 656
+while$ -- 665
 width$ -- 187
-write$ -- 1823
+write$ -- 1826

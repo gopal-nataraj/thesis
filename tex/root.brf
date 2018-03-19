@@ -116,8 +116,8 @@
 \backcite {bloembergen:1948:rei}{{54}{5.1}{section.5.1}}
 \backcite {bihan:01:dti}{{54}{5.1}{section.5.1}}
 \backcite {mackay:94:ivv}{{54}{5.1}{section.5.1}}
-\backcite {haldar:07:mle,hernando:08:jeo,barral:10:arm,staroswiecki:12:seo,ma:13:mrf,trzasko:13:etf,mcgivney:14:scf,zhao:14:mbm,beneliezer:15:raa,zhao:15:amp,cauley:15:fgm,zhao:16:mlr,nataraj:17:oms,asslander::lra,yang::lra}{{54}{5.1}{section.5.1}}
-\backcite {mcgivney:14:scf,cauley:15:fgm,asslander::lra,yang::lra}{{54}{5.1}{section.5.1}}
+\backcite {haldar:07:mle,hernando:08:jeo,barral:10:arm,staroswiecki:12:seo,ma:13:mrf,trzasko:13:etf,mcgivney:14:scf,zhao:14:mbm,beneliezer:15:raa,zhao:15:amp,cauley:15:fgm,zhao:16:mlr,nataraj:17:oms,asslander:18:lra,yang:18:lra}{{54}{5.1}{section.5.1}}
+\backcite {mcgivney:14:scf,cauley:15:fgm,asslander:18:lra,yang:18:lra}{{54}{5.1}{section.5.1}}
 \backcite {feinberg:85:mri}{{54}{5.1}{section.5.1}}
 \backcite {bihan:01:dti}{{54}{5.1}{section.5.1}}
 \backcite {tuch:01:ctm}{{54}{5.1}{section.5.1}}
@@ -189,11 +189,11 @@
 \backcite {keenan:16:msm}{{81}{5.10}{figure.5.10}}
 \backcite {ahn:03:seo}{{81}{5.10}{figure.5.10}}
 \backcite {nataraj:17:dfm}{{81}{5.9}{section.5.9}}
-\backcite {mcgivney:14:scf,cauley:15:fgm,asslander::lra,yang::lra}{{81}{5.9}{section.5.9}}
+\backcite {mcgivney:14:scf,cauley:15:fgm,asslander:18:lra,yang:18:lra}{{81}{5.9}{section.5.9}}
 \backcite {sutherland:15:ote}{{83}{5.9}{section.5.9}}
 \backcite {ma:13:mrf}{{83}{5.9}{section.5.9}}
 \backcite {mcgivney:14:scf}{{83}{5.9}{section.5.9}}
-\backcite {asslander::lra}{{83}{5.9}{section.5.9}}
+\backcite {asslander:18:lra}{{83}{5.9}{section.5.9}}
 \backcite {nataraj:17:slw}{{83}{5.9}{section.5.9}}
 \backcite {wu:90:eod,carney:91:asa}{{83}{5.9}{section.5.9}}
 \backcite {alvarez:11:kfv}{{84}{5.9}{section.5.9}}

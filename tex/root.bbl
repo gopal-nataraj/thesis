@@ -589,15 +589,17 @@ B.~Zhao, K.~Setsompop, H.~Ye, S.~Cauley, and L.~L. Wald, ``Maximum likelihood
   reconstruction for magnetic resonance fingerprinting,'' {\em {IEEE Trans.
   Med. Imag.}}, vol.~35, pp.~{1812--23}, Aug. 2016.
 
-\bibitem{asslander::lra}
+\bibitem{asslander:18:lra}
 J.~{\Asslander}, M.~A. Cloos, F.~Knoll, D.~K. Sodickson, {\Juergen}.~Hennig,
   and R.~Lattanzi, ``Low rank alternating direction method of multipliers
-  reconstruction for {MR} fingerprinting,'' {\em {Mag. Res. Med.}}, 2017.
+  reconstruction for {MR} fingerprinting,'' {\em {Mag. Res. Med.}}, vol.~79,
+  pp.~{83--96}, Jan. 2018.
 
-\bibitem{yang::lra}
+\bibitem{yang:18:lra}
 M.~Yang, D.~Ma, Y.~Jiang, J.~Hamilton, N.~Seiberlich, M.~A. Griswold, and
   D.~McGivney, ``Low rank approximation methods for {MR} fingerprinting with
-  large scale dictionaries,'' {\em {Mag. Res. Med.}}, 2017.
+  large scale dictionaries,'' {\em {Mag. Res. Med.}}, vol.~79, pp.~{2392--400},
+  Apr. 2018.
 
 \bibitem{feinberg:85:mri}
 D.~A. Feinberg, L.~E. Crooks, P.~Sheldon, J.~H. Iii, J.~Watts, and M.~Arakawa,
@@ -733,8 +735,7 @@ O.~Cohen, B.~Zhu, and M.~S. Rosen, ``Deep learning for rapid sparse {MR}
 \bibitem{virtue:17:btr}
 P.~Virtue, S.~X. Yu, and M.~Lustig, ``Better than real: {Complex-valued} neural
   nets for {MRI} fingerprinting,'' in {\em {Proc. IEEE Intl. Conf. on Image
-  Processing}}, 2017.
-\newblock To appear.
+  Processing}}, pp.~{3953--7}, 2017.
 
 \bibitem{morell:84}
 P.~Morell, {\em Myelin}.

@@ -36,12 +36,12 @@ for fast MRI parameter estimation.
 % beneliezer:15:raa 		fit m0,t2,b1 from mse im per-voxel
 % zhao:16:mlr						recon m0,t1,t2 maps from mrf data via admm/varpro
 % nataraj:17:oms				fit m0,t1,t2 from spgr/dess per-voxel
-% asslander::lra 				similar to zhao:16:mlr, but claims better-conditioned initialization?
+% asslander:18:lra 				similar to zhao:16:mlr, but claims better-conditioned initialization?
 % cauley:15:fgm 				cluster full dict elements; use dict means to fit m0,t1,t2,b0 per-voxel
 % doneva:17:mcb					est subspace of mrf k-t data from fully-sampled k-space center
 % 											use subspace est for low-rank matrix completion of mrf data
 % 											then recon matrix-completed mrf data and fit m0,t1,t2 per-voxel
-% yang::lra 						fit m0,t1,t2,b0 from low-rank mrf im using coarse low-rank dict per-voxel
+% yang:18:lra 						fit m0,t1,t2,b0 from low-rank mrf im using coarse low-rank dict per-voxel
 %												and then apply bilinear interpolation: x100 acceleration
 Chapter~\ref{c,relax} applied
 a common parameter estimation strategy to QMRI
@@ -69,8 +69,8 @@ as well as many other works
 	cauley:15:fgm,%
 	zhao:16:mlr,%
 	nataraj:17:oms,%
-	asslander::lra,%
-	yang::lra%
+	asslander:18:lra,%
+	yang:18:lra%
 })
 approach estimation
 with algorithms
@@ -91,8 +91,8 @@ Though several recent works
 \cite{%
 	mcgivney:14:scf,%
 	cauley:15:fgm,%
-	asslander::lra,%
-	yang::lra%
+	asslander:18:lra,%
+	yang:18:lra%
 }
 focus on reducing dictionary storage requirements,
 all of these methods ultimately rely 
@@ -2533,8 +2533,8 @@ Even with recent low-rank dictionary approximations
 \cite{%
 	mcgivney:14:scf,%
 	cauley:15:fgm,%
-	asslander::lra,%
-	yang::lra%
+	asslander:18:lra,%
+	yang:18:lra%
 }
 dictionary-based methods are unlikely 
 to achieve the large-scale speed 
@@ -2592,7 +2592,7 @@ the number of measurements far exceeds $L$
 (\eg, MR fingerprinting \cite{ma:13:mrf}),
 PERK may still provide performance gains
 if images are projected \cite{mcgivney:14:scf}
-or directly reconstructed \cite{asslander::lra}
+or directly reconstructed \cite{asslander:18:lra}
 into a low-dimensional measurement subspace
 prior to per-voxel processing.
 Using this idea,
