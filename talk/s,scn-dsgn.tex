@@ -53,18 +53,18 @@
   			\bmSig^{-1} \grada{\bmx} \bms\paren{\bmx; \bmnu, \bmP}.
   	\end{align}
   }%
-  \uncover<2-4>{%
+  \uncover<2-3>{%
   	When $\bmF$ is invertible, \Cramer-Rao Bound (CRB) \hfill \citec{cramer:46} \\
   	ensures covariance of unbiased estimates $\est{\bmx}$ of $\bmx$ satisfy
   	\begin{align}
   		\cov{\est{\bmx}; \bmnu, \bmP} \succeq \bmF^{-1}\paren{\bmx; \bmnu, \bmP}.
   	\end{align}
 	}%
-	\uncover<3>{%
+	\uncover<2>{%
   	Maximum-likelihood (ML) estimates achieve CRB asymptotically \\
-  	or equivalently (for Gaussian data) at sufficiently high SNR. \\
+  	or (equivalently for Gaussian data) at sufficiently high SNR. \\
 	}%
-	\uncover<4>{%
+	\uncover<3>{%
 		\textbf{Idea}: choose $\bmP$ such that imprecision matrix $\bmF^{-1}$ ``small''
 	}
 \end{frame}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  19 MAR 2018 18:17
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  20 MAR 2018 11:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1513,19 +1513,165 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 
 ] [13
 
-] [14
+] (./s,scn-dsgn.tex [14
 
 ] [15
 
+] [16
+
+]
+[17
+
+] [18
+
+] [19
+
+]
+Overfull \vbox (7.04915pt too high) detected at line 113
+ []
+
+[20
+
+]
+Overfull \vbox (7.04915pt too high) detected at line 113
+ []
+
+[21
+
+]
+Overfull \vbox (40.25406pt too high) detected at line 113
+ []
+
+[22
+
+]
+Overfull \vbox (7.04915pt too high) detected at line 113
+ []
+
+[23
+
+]
+Overfull \vbox (7.04915pt too high) detected at line 113
+ []
+
+[24
+
+] [25
+
+] [26
+
+] [27
+
+] [28
+
+] [29
+
+]
+Overfull \vbox (7.43736pt too high) detected at line 230
+ []
+
+[30
+
+]
+Overfull \vbox (7.43736pt too high) detected at line 230
+ []
+
+[31
+
+]
+Overfull \vbox (7.43736pt too high) detected at line 230
+ []
+
+[32
+
+]
+File: ../fig/c,scn-dsgn/2016-06-20,hpd,t1-ml-compare.eps Graphic file (type eps
+)
+ <../fig/c,scn-dsgn/2016-06-20,hpd,t1-ml-compare.eps>
+File: ../fig/c,scn-dsgn/2016-06-20,hpd,t2-ml-compare.eps Graphic file (type eps
+)
+
+<../fig/c,scn-dsgn/2016-06-20,hpd,t2-ml-compare.eps> [33
+
+]
+Overfull \vbox (53.18434pt too high) detected at line 288
+ []
+
+[34
+
+]
+Overfull \vbox (9.30032pt too high) detected at line 288
+ []
+
+[35
+
+]
+Overfull \vbox (9.30032pt too high) detected at line 288
+ []
+
+[36
+
+]
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
+(Font)              using `OT1/cmss/bx/n' instead on input line 339.
+
+[37
+
+] [38
+
+]
+File: ../fig/c,scn-dsgn/2016-05-31,brain,t1-ml,jet.eps Graphic file (type eps)
+ <../fig/c,scn-dsgn/2016-05-31,brain,t1-ml,jet.eps>
+File: ../fig/c,scn-dsgn/2016-05-31,brain,t2-ml,jet.eps Graphic file (type eps)
+
+<../fig/c,scn-dsgn/2016-05-31,brain,t2-ml,jet.eps>
+Overfull \hbox (7.29999pt too wide) in paragraph at lines 339--339
+ [] 
+ []
+
+
+Overfull \hbox (4.45473pt too wide) in paragraph at lines 339--339
+ [] 
+ []
+
+
+Overfull \vbox (17.07924pt too high) detected at line 339
+ []
+
+[39
+
+] [40
+
+] [41
+
+]) [42
+
+] [43
+
 ] (./root.bbl
+File: beamericonarticle.eps Graphic file (type eps)
+ <beamericonarticle.eps>
 File: beamericonarticle.eps Graphic file (type eps)
 
 <beamericonarticle.eps>
 File: beamericonarticle.eps Graphic file (type eps)
  <beamericonarticle.eps>
 File: beamericonarticle.eps Graphic file (type eps)
- <beamericonarticle.eps>)
-[16
+ <beamericonarticle.eps>
+File: beamericonarticle.eps Graphic file (type eps)
+
+<beamericonarticle.eps>
+File: beamericonarticle.eps Graphic file (type eps)
+ <beamericonarticle.eps>
+File: beamericonarticle.eps Graphic file (type eps)
+ <beamericonarticle.eps>
+File: beamericonarticle.eps Graphic file (type eps)
+
+<beamericonarticle.eps>) [44
+
+] [45
+
 
 ]
 \tf@nav=\write7
@@ -1555,12 +1701,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 181.
  ) 
 Here is how much of TeX's memory you used:
- 26596 strings out of 493489
- 522657 string characters out of 3141349
- 691467 words of memory out of 3000000
- 29153 multiletter control sequences out of 15000+200000
- 20491 words of font info for 72 fonts, out of 3000000 for 9000
+ 26822 strings out of 493489
+ 527568 string characters out of 3141349
+ 696467 words of memory out of 3000000
+ 29364 multiletter control sequences out of 15000+200000
+ 27206 words of font info for 95 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 61i,13n,70p,1735b,612s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 61i,18n,86p,1735b,633s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (16 pages, 74680 bytes).
+Output written on root.dvi (45 pages, 214940 bytes).
