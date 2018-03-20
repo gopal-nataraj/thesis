@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  18 MAR 2018 11:18
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  20 MAR 2018 18:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2921,65 +2921,65 @@ Package xcolor Warning: Incompatible color definition on input line 626.
 Package xcolor Warning: Incompatible color definition on input line 631.
 
 [35]
-File: ../fig/c,scn-dsgn/sigw_t1_vs_s1s2_21_41p90ms_0p1_1.eps Graphic file (type
- eps)
- <../fig/c,scn-dsgn/sigw_t1_vs_s1s2_21_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/sigw_t1_vs_s1d1_21_41p90ms_0p1_1.eps Graphic file (type
- eps)
+File: ../fig/c,scn-dsgn/dsgn/sigw_t1_vs_s1s2_21_41p90ms_0p1_1.eps Graphic file 
+(type eps)
+ <../fig/c,scn-dsgn/dsgn/sigw_t1_vs_s1s2_21_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/sigw_t1_vs_s1d1_21_41p90ms_0p1_1.eps Graphic file 
+(type eps)
 
-<../fig/c,scn-dsgn/sigw_t1_vs_s1d1_21_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/sigw_t1_vs_s2d1_21_41p90ms_0p1_1.eps Graphic file (type
- eps)
+<../fig/c,scn-dsgn/dsgn/sigw_t1_vs_s1d1_21_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/sigw_t1_vs_s2d1_21_41p90ms_0p1_1.eps Graphic file 
+(type eps)
 
-<../fig/c,scn-dsgn/sigw_t1_vs_s2d1_21_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/sigw_t2_vs_s1s2_21_41p90ms_0p1_1.eps Graphic file (type
- eps)
+<../fig/c,scn-dsgn/dsgn/sigw_t1_vs_s2d1_21_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/sigw_t2_vs_s1s2_21_41p90ms_0p1_1.eps Graphic file 
+(type eps)
 
-<../fig/c,scn-dsgn/sigw_t2_vs_s1s2_21_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/sigw_t2_vs_s1d1_21_41p90ms_0p1_1.eps Graphic file (type
- eps)
+<../fig/c,scn-dsgn/dsgn/sigw_t2_vs_s1s2_21_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/sigw_t2_vs_s1d1_21_41p90ms_0p1_1.eps Graphic file 
+(type eps)
 
-<../fig/c,scn-dsgn/sigw_t2_vs_s1d1_21_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/sigw_t2_vs_s2d1_21_41p90ms_0p1_1.eps Graphic file (type
- eps)
+<../fig/c,scn-dsgn/dsgn/sigw_t2_vs_s1d1_21_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/sigw_t2_vs_s2d1_21_41p90ms_0p1_1.eps Graphic file 
+(type eps)
 
-<../fig/c,scn-dsgn/sigw_t2_vs_s2d1_21_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/Psiw_vs_s1s2_21_41p90ms_0p1_1.eps Graphic file (type ep
-s)
+<../fig/c,scn-dsgn/dsgn/sigw_t2_vs_s2d1_21_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/Psiw_vs_s1s2_21_41p90ms_0p1_1.eps Graphic file (ty
+pe eps)
 
-<../fig/c,scn-dsgn/Psiw_vs_s1s2_21_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/Psiw_vs_s1d1_21_41p90ms_0p1_1.eps Graphic file (type ep
-s)
+<../fig/c,scn-dsgn/dsgn/Psiw_vs_s1s2_21_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/Psiw_vs_s1d1_21_41p90ms_0p1_1.eps Graphic file (ty
+pe eps)
 
-<../fig/c,scn-dsgn/Psiw_vs_s1d1_21_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/Psiw_vs_s2d1_21_41p90ms_0p1_1.eps Graphic file (type ep
-s)
+<../fig/c,scn-dsgn/dsgn/Psiw_vs_s1d1_21_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/Psiw_vs_s2d1_21_41p90ms_0p1_1.eps Graphic file (ty
+pe eps)
 
-<../fig/c,scn-dsgn/Psiw_vs_s2d1_21_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/sigw_t1_vs_s1d1_11_41p90ms_0p1_1.eps Graphic file (type
- eps)
+<../fig/c,scn-dsgn/dsgn/Psiw_vs_s2d1_21_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/sigw_t1_vs_s1d1_11_41p90ms_0p1_1.eps Graphic file 
+(type eps)
 
-<../fig/c,scn-dsgn/sigw_t1_vs_s1d1_11_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/sigw_t2_vs_s1d1_11_41p90ms_0p1_1.eps Graphic file (type
- eps)
+<../fig/c,scn-dsgn/dsgn/sigw_t1_vs_s1d1_11_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/sigw_t2_vs_s1d1_11_41p90ms_0p1_1.eps Graphic file 
+(type eps)
 
-<../fig/c,scn-dsgn/sigw_t2_vs_s1d1_11_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/Psiw_vs_s1d1_11_41p90ms_0p1_1.eps Graphic file (type ep
-s)
+<../fig/c,scn-dsgn/dsgn/sigw_t2_vs_s1d1_11_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/Psiw_vs_s1d1_11_41p90ms_0p1_1.eps Graphic file (ty
+pe eps)
 
-<../fig/c,scn-dsgn/Psiw_vs_s1d1_11_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/sigw_t1_vs_d1d2_02_41p90ms_0p1_1.eps Graphic file (type
- eps)
+<../fig/c,scn-dsgn/dsgn/Psiw_vs_s1d1_11_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/sigw_t1_vs_d1d2_02_41p90ms_0p1_1.eps Graphic file 
+(type eps)
 
-<../fig/c,scn-dsgn/sigw_t1_vs_d1d2_02_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/sigw_t2_vs_d1d2_02_41p90ms_0p1_1.eps Graphic file (type
- eps)
+<../fig/c,scn-dsgn/dsgn/sigw_t1_vs_d1d2_02_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/sigw_t2_vs_d1d2_02_41p90ms_0p1_1.eps Graphic file 
+(type eps)
 
-<../fig/c,scn-dsgn/sigw_t2_vs_d1d2_02_41p90ms_0p1_1.eps>
-File: ../fig/c,scn-dsgn/Psiw_vs_d1d2_02_41p90ms_0p1_1.eps Graphic file (type ep
-s)
+<../fig/c,scn-dsgn/dsgn/sigw_t2_vs_d1d2_02_41p90ms_0p1_1.eps>
+File: ../fig/c,scn-dsgn/dsgn/Psiw_vs_d1d2_02_41p90ms_0p1_1.eps Graphic file (ty
+pe eps)
 
-<../fig/c,scn-dsgn/Psiw_vs_d1d2_02_41p90ms_0p1_1.eps>
+<../fig/c,scn-dsgn/dsgn/Psiw_vs_d1d2_02_41p90ms_0p1_1.eps>
 
 Package xcolor Warning: Incompatible color definition on input line 740.
 
@@ -3060,380 +3060,383 @@ Package xcolor Warning: Incompatible color definition on input line 907.
 
 Package xcolor Warning: Incompatible color definition on input line 919.
 
-File: ../fig/c,scn-dsgn/T1_hist_ml_wm_3parm_0SPGR2DESS.eps Graphic file (type e
-ps)
-<../fig/c,scn-dsgn/T1_hist_ml_wm_3parm_0SPGR2DESS.eps>
-File: ../fig/c,scn-dsgn/T1_hist_ml_gm_3parm_0SPGR2DESS.eps Graphic file (type e
-ps)
+File: ../fig/c,scn-dsgn/sim/T1_hist_ml_wm_3parm_0SPGR2DESS.eps Graphic file (ty
+pe eps)
+<../fig/c,scn-dsgn/sim/T1_hist_ml_wm_3parm_0SPGR2DESS.eps>
+File: ../fig/c,scn-dsgn/sim/T1_hist_ml_gm_3parm_0SPGR2DESS.eps Graphic file (ty
+pe eps)
 
-<../fig/c,scn-dsgn/T1_hist_ml_gm_3parm_0SPGR2DESS.eps>
-File: ../fig/c,scn-dsgn/T2_hist_ml_wm_3parm_0SPGR2DESS.eps Graphic file (type e
-ps)
+<../fig/c,scn-dsgn/sim/T1_hist_ml_gm_3parm_0SPGR2DESS.eps>
+File: ../fig/c,scn-dsgn/sim/T2_hist_ml_wm_3parm_0SPGR2DESS.eps Graphic file (ty
+pe eps)
 
-<../fig/c,scn-dsgn/T2_hist_ml_wm_3parm_0SPGR2DESS.eps>
-File: ../fig/c,scn-dsgn/T2_hist_ml_gm_3parm_0SPGR2DESS.eps Graphic file (type e
-ps)
+<../fig/c,scn-dsgn/sim/T2_hist_ml_wm_3parm_0SPGR2DESS.eps>
+File: ../fig/c,scn-dsgn/sim/T2_hist_ml_gm_3parm_0SPGR2DESS.eps Graphic file (ty
+pe eps)
 
-<../fig/c,scn-dsgn/T2_hist_ml_gm_3parm_0SPGR2DESS.eps>
+<../fig/c,scn-dsgn/sim/T2_hist_ml_gm_3parm_0SPGR2DESS.eps>
 
-Package xcolor Warning: Incompatible color definition on input line 978.
-
-
-Package xcolor Warning: Incompatible color definition on input line 984.
+Package xcolor Warning: Incompatible color definition on input line 986.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1000.
+Package xcolor Warning: Incompatible color definition on input line 992.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1008.
 
 [39] [40]
 
-Package xcolor Warning: Incompatible color definition on input line 1022.
+Package xcolor Warning: Incompatible color definition on input line 1030.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1026.
+Package xcolor Warning: Incompatible color definition on input line 1034.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1029.
+Package xcolor Warning: Incompatible color definition on input line 1037.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1038.
+Package xcolor Warning: Incompatible color definition on input line 1046.
 
 
-Overfull \hbox (6.94366pt too wide) in paragraph at lines 1019--1040
+Overfull \hbox (6.94366pt too wide) in paragraph at lines 1027--1048
 \OT1/ptm/m/n/12 This sub-sec-tion de-scribes two ex-per-i-ments. In the first e
 x-per-i-ment, we com-pare SPGR/DESS
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 1051.
+Package xcolor Warning: Incompatible color definition on input line 1059.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1054.
+Package xcolor Warning: Incompatible color definition on input line 1062.
 
 [41]
 
-Package xcolor Warning: Incompatible color definition on input line 1092.
+Package xcolor Warning: Incompatible color definition on input line 1100.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1096.
+Package xcolor Warning: Incompatible color definition on input line 1104.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1116.
+Package xcolor Warning: Incompatible color definition on input line 1124.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1119.
+Package xcolor Warning: Incompatible color definition on input line 1127.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1130.
+Package xcolor Warning: Incompatible color definition on input line 1138.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1134.
+Package xcolor Warning: Incompatible color definition on input line 1142.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1159.
+Package xcolor Warning: Incompatible color definition on input line 1167.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1169.
+Package xcolor Warning: Incompatible color definition on input line 1177.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1178.
+Package xcolor Warning: Incompatible color definition on input line 1186.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1178.
+Package xcolor Warning: Incompatible color definition on input line 1186.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1183.
+Package xcolor Warning: Incompatible color definition on input line 1191.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1190.
+Package xcolor Warning: Incompatible color definition on input line 1198.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1190.
+Package xcolor Warning: Incompatible color definition on input line 1198.
 
 [42]
-File: ../fig/c,scn-dsgn/2016-06-20,hpd,t1,jet.eps Graphic file (type eps)
- <../fig/c,scn-dsgn/2016-06-20,hpd,t1,jet.eps>
-File: ../fig/c,scn-dsgn/2016-06-20,hpd,t2,jet.eps Graphic file (type eps)
+File: ../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t1,jet.eps Graphic file (type eps)
+ <../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t1,jet.eps>
+File: ../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t2,jet.eps Graphic file (type eps)
 
-<../fig/c,scn-dsgn/2016-06-20,hpd,t2,jet.eps>
-Overfull \hbox (10.55225pt too wide) in paragraph at lines 1201--1217
+<../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t2,jet.eps>
+Overfull \hbox (10.55225pt too wide) in paragraph at lines 1209--1225
  [][] 
  []
 
 
-Overfull \hbox (4.86179pt too wide) in paragraph at lines 1201--1217
+Overfull \hbox (4.86179pt too wide) in paragraph at lines 1209--1225
  [][][][] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 1217.
+Package xcolor Warning: Incompatible color definition on input line 1225.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1217.
+Package xcolor Warning: Incompatible color definition on input line 1225.
 
-File: ../fig/c,scn-dsgn/2016-06-20,hpd,t1,gray.eps Graphic file (type eps)
-<../fig/c,scn-dsgn/2016-06-20,hpd,t1,gray.eps>
-File: ../fig/c,scn-dsgn/2016-06-20,hpd,t2,gray.eps Graphic file (type eps)
+File: ../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t1,gray.eps Graphic file (type eps)
+<../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t1,gray.eps>
+File: ../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t2,gray.eps Graphic file (type eps)
 
-<../fig/c,scn-dsgn/2016-06-20,hpd,t2,gray.eps>
-Overfull \hbox (10.55225pt too wide) in paragraph at lines 1227--1244
+<../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t2,gray.eps>
+Overfull \hbox (10.55225pt too wide) in paragraph at lines 1235--1252
  [][] 
  []
 
 
-Overfull \hbox (4.86179pt too wide) in paragraph at lines 1227--1244
+Overfull \hbox (4.86179pt too wide) in paragraph at lines 1235--1252
  [][][][] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 1244.
+Package xcolor Warning: Incompatible color definition on input line 1252.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1244.
+Package xcolor Warning: Incompatible color definition on input line 1252.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1244.
+Package xcolor Warning: Incompatible color definition on input line 1252.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1244.
+Package xcolor Warning: Incompatible color definition on input line 1252.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1248.
+Package xcolor Warning: Incompatible color definition on input line 1256.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1248.
+Package xcolor Warning: Incompatible color definition on input line 1256.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1253.
+Package xcolor Warning: Incompatible color definition on input line 1261.
 
-File: ../fig/c,scn-dsgn/2016-06-20,hpd,t1-ml-compare.eps Graphic file (type eps
-)
-<../fig/c,scn-dsgn/2016-06-20,hpd,t1-ml-compare.eps>
-File: ../fig/c,scn-dsgn/2016-06-20,hpd,t2-ml-compare.eps Graphic file (type eps
-)
+File: ../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t1-ml-compare.eps Graphic file (type
+ eps)
+<../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t1-ml-compare.eps>
+File: ../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t2-ml-compare.eps Graphic file (type
+ eps)
 
-<../fig/c,scn-dsgn/2016-06-20,hpd,t2-ml-compare.eps>
-File: ../fig/c,scn-dsgn/2016-06-20,hpd,t1-rls-compare.eps Graphic file (type ep
-s)
+<../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t2-ml-compare.eps>
+File: ../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t1-rls-compare.eps Graphic file (typ
+e eps)
 
-<../fig/c,scn-dsgn/2016-06-20,hpd,t1-rls-compare.eps>
-File: ../fig/c,scn-dsgn/2016-06-20,hpd,t2-rls-compare.eps Graphic file (type ep
-s)
+<../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t1-rls-compare.eps>
+File: ../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t2-rls-compare.eps Graphic file (typ
+e eps)
 
-<../fig/c,scn-dsgn/2016-06-20,hpd,t2-rls-compare.eps>
+<../fig/c,scn-dsgn/hpd/2016-06-20,hpd,t2-rls-compare.eps>
 
-Package xcolor Warning: Incompatible color definition on input line 1313.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1313.
+Package xcolor Warning: Incompatible color definition on input line 1321.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1313.
+Package xcolor Warning: Incompatible color definition on input line 1321.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1313.
+Package xcolor Warning: Incompatible color definition on input line 1321.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1313.
+Package xcolor Warning: Incompatible color definition on input line 1321.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1313.
+Package xcolor Warning: Incompatible color definition on input line 1321.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1362.
+Package xcolor Warning: Incompatible color definition on input line 1321.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1362.
+Package xcolor Warning: Incompatible color definition on input line 1370.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1362.
+Package xcolor Warning: Incompatible color definition on input line 1370.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1362.
+Package xcolor Warning: Incompatible color definition on input line 1370.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1362.
+Package xcolor Warning: Incompatible color definition on input line 1370.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1362.
+Package xcolor Warning: Incompatible color definition on input line 1370.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1366.
+Package xcolor Warning: Incompatible color definition on input line 1370.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1376.
+Package xcolor Warning: Incompatible color definition on input line 1374.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1383.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1383.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1383.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1390.
+Package xcolor Warning: Incompatible color definition on input line 1384.
 
 
 Package xcolor Warning: Incompatible color definition on input line 1391.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1433.
+Package xcolor Warning: Incompatible color definition on input line 1391.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1433.
+Package xcolor Warning: Incompatible color definition on input line 1391.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1398.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1399.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1441.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1441.
 
 [43]
 
-Package xcolor Warning: Incompatible color definition on input line 1459.
+Package xcolor Warning: Incompatible color definition on input line 1467.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1462.
+Package xcolor Warning: Incompatible color definition on input line 1470.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1465.
+Package xcolor Warning: Incompatible color definition on input line 1473.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1471.
+Package xcolor Warning: Incompatible color definition on input line 1479.
 
 [44]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1487.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1495.
 
-
-
-Package xcolor Warning: Incompatible color definition on input line 1493.
 
 
 Package xcolor Warning: Incompatible color definition on input line 1501.
 
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 1515
+
+Package xcolor Warning: Incompatible color definition on input line 1509.
+
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 1523
 .
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 
-Package xcolor Warning: Incompatible color definition on input line 1520.
+Package xcolor Warning: Incompatible color definition on input line 1528.
 
 [45] [46]
-File: ../fig/c,scn-dsgn/2016-05-31,brain,t1,jet.eps Graphic file (type eps)
- <../fig/c,scn-dsgn/2016-05-31,brain,t1,jet.eps>
-File: ../fig/c,scn-dsgn/2016-05-31,brain,t2,jet.eps Graphic file (type eps)
+File: ../fig/c,scn-dsgn/brain/2016-05-31,brain,t1,jet.eps Graphic file (type ep
+s)
+ <../fig/c,scn-dsgn/brain/2016-05-31,brain,t1,jet.eps>
+File: ../fig/c,scn-dsgn/brain/2016-05-31,brain,t2,jet.eps Graphic file (type ep
+s)
 
-<../fig/c,scn-dsgn/2016-05-31,brain,t2,jet.eps>
-Overfull \hbox (10.55225pt too wide) in paragraph at lines 1531--1547
+<../fig/c,scn-dsgn/brain/2016-05-31,brain,t2,jet.eps>
+Overfull \hbox (10.55225pt too wide) in paragraph at lines 1539--1555
  [][] 
  []
 
 
-Overfull \hbox (4.86179pt too wide) in paragraph at lines 1531--1547
+Overfull \hbox (4.86179pt too wide) in paragraph at lines 1539--1555
  [][][][] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 1547.
+Package xcolor Warning: Incompatible color definition on input line 1555.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1547.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1551.
+Package xcolor Warning: Incompatible color definition on input line 1555.
 
 
 Package xcolor Warning: Incompatible color definition on input line 1559.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1561.
+Package xcolor Warning: Incompatible color definition on input line 1567.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1569.
 
 [47] [48]
-Overfull \hbox (5.11899pt too wide) in paragraph at lines 1563--1579
+Overfull \hbox (5.11899pt too wide) in paragraph at lines 1571--1587
 []\OT1/ptm/m/n/12 Visually, $[]$ maps from steady-state pro-files ex-hibit sim-
 i-lar lev-els of con-trast in WM/GM
  []
 
-File: ../fig/c,scn-dsgn/2016-05-31,brain,roi,gray.eps Graphic file (type eps)
-<../fig/c,scn-dsgn/2016-05-31,brain,roi,gray.eps>
-Overfull \hbox (1.61938pt too wide) in paragraph at lines 1585--1587
+File: ../fig/c,scn-dsgn/brain/2016-05-31,brain,roi,gray.eps Graphic file (type 
+eps)
+<../fig/c,scn-dsgn/brain/2016-05-31,brain,roi,gray.eps>
+Overfull \hbox (1.61938pt too wide) in paragraph at lines 1593--1595
 [][]
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 1645.
+Package xcolor Warning: Incompatible color definition on input line 1653.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1645.
+Package xcolor Warning: Incompatible color definition on input line 1653.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1649.
+Package xcolor Warning: Incompatible color definition on input line 1657.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1651.
+Package xcolor Warning: Incompatible color definition on input line 1659.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1663.
+Package xcolor Warning: Incompatible color definition on input line 1671.
 
 [49]
 
-Package xcolor Warning: Incompatible color definition on input line 1696.
+Package xcolor Warning: Incompatible color definition on input line 1704.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1698.
+Package xcolor Warning: Incompatible color definition on input line 1706.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1705.
+Package xcolor Warning: Incompatible color definition on input line 1713.
 
 [50]
 
-Package xcolor Warning: Incompatible color definition on input line 1744.
+Package xcolor Warning: Incompatible color definition on input line 1752.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1744.
+Package xcolor Warning: Incompatible color definition on input line 1752.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1744.
+Package xcolor Warning: Incompatible color definition on input line 1752.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1744.
+Package xcolor Warning: Incompatible color definition on input line 1752.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1746.
+Package xcolor Warning: Incompatible color definition on input line 1754.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1750.
+Package xcolor Warning: Incompatible color definition on input line 1758.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1750.
+Package xcolor Warning: Incompatible color definition on input line 1758.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1753.
+Package xcolor Warning: Incompatible color definition on input line 1761.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1760.
+Package xcolor Warning: Incompatible color definition on input line 1768.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1763.
+Package xcolor Warning: Incompatible color definition on input line 1771.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1787.
+Package xcolor Warning: Incompatible color definition on input line 1795.
 
 [51]
-
-Package xcolor Warning: Incompatible color definition on input line 1806.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1810.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1810.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1812.
-
 
 Package xcolor Warning: Incompatible color definition on input line 1814.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1850.
+Package xcolor Warning: Incompatible color definition on input line 1818.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1818.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1820.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1822.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1858.
 
 ) [52] [53]
 CHAPTER 5.
@@ -6830,12 +6833,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 167.
  ) 
 Here is how much of TeX's memory you used:
- 25119 strings out of 493489
- 466451 string characters out of 3141349
+ 25096 strings out of 493489
+ 465792 string characters out of 3141349
  657210 words of memory out of 3000000
  27669 multiletter control sequences out of 15000+200000
  32623 words of font info for 104 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,21n,61p,1918b,712s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (164 pages, 1253480 bytes).
+Output written on root.dvi (164 pages, 1253632 bytes).

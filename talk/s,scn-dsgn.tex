@@ -171,36 +171,6 @@
 	}%
 \end{frame}
 
-\begin{comment}
-\begin{frame}{Numerical Simulation}
-	\uncover<+->{%
-		\begin{itemize}
-			\item{Simulated many WM-like, GM-like voxel realizations}
-			\item{Studied sample statistics of $\To,\Tt$ ML estimates $\ToML,\TtML$}
-		\end{itemize}
-	}
-	\uncover<+->{%
-  	\begin{table} [!tb]
-      \centering
-      {\tabulinesep = 0.2mm
-      \begin{tabu} {c | r r r | r}
-          \hline \hline
-          Profile     & $(2,1)$           & $(1,1)$           & $(0,2)$           & Truth \\
-          \hline
-          WM $\ToML$  & $830 \pm 17$      & $830 \pm 15$      & $830 \pm 14$      & $832$ \\
-          GM $\ToML$  & $1330 \pm 30.$    & $1330 \pm 24$     & $1330 \pm 24$     & $1331$ \\
-          \hline
-          WM $\TtML$  & $80. \pm 1.0$     & $80. \pm 2.1$     & $79.6 \pm 0.94$   & $79.6$ \\
-          GM $\TtML$  & $110. \pm 1.4$    & $110. \pm 3.0$    & $110. \pm 1.6$    & $110$ \\
-          \hline \hline
-      \end{tabu}}
-      \caption{$\ToML,\TtML$ sample means $\pm$ sample standard deviations}
-      \label{table:numerical}
-  	\end{table}
-	}
-\end{frame}
-\end{comment}
-
 \begin{frame}{Experimental Setup}
 	\uncover<1>{%
 		Candidate $(2,1)$, $(1,1)$, $(0,2)$ SPGR/DESS scan profiles
@@ -230,20 +200,46 @@
 \end{frame}
 
 \begin{frame}{Phantom Accuracy Results}
+	\vspace{-0.2cm}
 	\begin{figure}
 		\centering
-		\subfloat [$\ToML$ Estimates] {
-        \includegraphics [width = 0.45\textwidth] 
-        	{c,scn-dsgn/2016-06-20,hpd,t1-ml-compare.eps}
-        \label{fig:scn-dsgn,hpd,t1}
+		\begin{minipage}{0.7\textwidth}
+			\subfloat{%
+				\includegraphics [width=0.982\textwidth,clip] {%
+					c,scn-dsgn/hpd/2016-06-20,hpd,t1,jet.eps%
+				}%
+				\label{fig:scn-dsgn,hpd,im,t1}
+			}%
+			\hspace{0cm}
+  		\subfloat{%
+				\includegraphics [width=0.97\textwidth,trim=0 0 0 25,clip] {%
+					c,scn-dsgn/hpd/2016-06-20,hpd,t2,jet.eps%
+				}%
+				\label{fig:scn-dsgn,hpd,im,t2}
+			}%
+		\end{minipage}
+		\caption{%
+			Colorbar ranges in ms.
+		}%
+		\label{fig:scn-dsgn,hpd,im}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Phantom Accuracy Results}
+	\begin{figure}
+		\centering
+		\subfloat [$\ToML$ Estimates] {%
+    	\includegraphics [width = 0.45\textwidth] 
+      	{c,scn-dsgn/hpd/2016-06-20,hpd,t1-ml-compare.eps}
+     	\label{fig:scn-dsgn,hpd,plot,t1}
     }
     \hspace{0.3cm}
-    \subfloat [$\TtML$ Estimates] {
-        \includegraphics [width = 0.45\textwidth] 
-        	{c,scn-dsgn/2016-06-20,hpd,t2-ml-compare.eps}
-        \label{fig:scn-dsgn,hpd,t2}
-    }
-    \label{fig:scn-dsgn,hpd}
+    \subfloat [$\TtML$ Estimates] {%
+    	\includegraphics [width = 0.45\textwidth] 
+      	{c,scn-dsgn/hpd/2016-06-20,hpd,t2-ml-compare.eps}
+     	\label{fig:scn-dsgn,hpd,plot,t2}
+    }%
+    \label{fig:scn-dsgn,hpd,plot}
  	\end{figure}
 	Compared against NIST NMR measurements \hfill \citec{keenan:16:msm}
 \end{frame}
@@ -274,17 +270,17 @@
         								& $8.9 \pm 1.8$ 		& $11 \pm 2.6$ 			& $\mathbf{8.3 \pm 2.1}$ \\
         \hline \hline
       \end{tabu}
-      \caption{
-          Pooled sample standard deviations
-          $\pm$ pooled standard errors of sample standard deviations (ms),
-          from optimized SPGR/DESS profiles.
-      }
+      \caption{%
+        Pooled sample standard deviations
+        $\pm$ pooled standard errors of sample standard deviations (ms),
+        from optimized SPGR/DESS profiles.
+      }%
       \label{table:hpd,sample-std-dev}
   	\end{table}
 	}%
 	\uncover<3>{%
 		Similar trends across profiles of empirical vs. theoretical std dev!
-	}
+	}%
 \end{frame}
 
 \begin{frame}{Summary}
@@ -292,20 +288,20 @@
 		\vspace{-1cm}
   	\begin{figure}
   		\centering
-  		\subfloat{
+  		\subfloat{%
   			\includegraphics [width=\textwidth, trim=0 0 0 10, clip] 
-  				{c,scn-dsgn/2016-05-31,brain,t1-ml,jet.eps}
+  				{c,scn-dsgn/brain/2016-05-31,brain,t1-ml,jet.eps}
   			\label{fig:scn-dsgn,brain,t1}
-  		}
+  		}%
   		\vspace{0cm}
-  		\subfloat{
+  		\subfloat{%
   			\includegraphics [width=\textwidth-1mm, trim=0 0 0 25, clip]
-  				{c,scn-dsgn/2016-05-31,brain,t2-ml,jet.eps}
+  				{c,scn-dsgn/brain/2016-05-31,brain,t2-ml,jet.eps}
   			\label{fig:scn-dsgn,brain,t2}
-  		}
-  		\caption{
+  		}%
+  		\caption{%
   			Colorbar ranges in ms.
-  		}
+  		}%
   		\label{fig:scn-dsgn,brain}
   	\end{figure}
 	}

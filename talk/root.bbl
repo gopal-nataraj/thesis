@@ -5,6 +5,22 @@
 \newblock {\em Mathematical methods of statistics}.
 \newblock Princeton Univ. Press, Princeton.
 
+\bibitem[Aronszajn, 1950]{aronszajn:50:tor}
+Aronszajn, N. (1950).
+\newblock Theory of reproducing kernels.
+\newblock {\em {Trans. Amer. Math. Soc.}}, 68(3):{337--404}.
+
+\bibitem[Bertsimas and Tsitsiklis, 1993]{bertsimas:93:sa}
+Bertsimas, D. and Tsitsiklis, J. (1993).
+\newblock Simulated annealing.
+\newblock {\em Statistical Science}, 8(1):{10--15}.
+
+\bibitem[Golub and Pereyra, 2003]{golub:03:snl}
+Golub, G. and Pereyra, V. (2003).
+\newblock Separable nonlinear least squares: the variable projection method and
+  its applications.
+\newblock {\em {Inverse Prob.}}, 19(2):{R1--26}.
+
 \bibitem[Hope et~al., 2013]{hope:13:cao}
 Hope, M.~D., Wrenn, S.~J., and Dyverfeldt, P. (2013).
 \newblock Clinical applications of aortic 4d flow imaging.
@@ -30,10 +46,35 @@ Nataraj, G., Nielsen, J.-F., and Fessler, J.~A. (2017b).
   from steady-state sequences.
 \newblock {\em {IEEE Trans. Med. Imag.}}, 36(2):{467--77}.
 
+\bibitem[Nataraj et~al., 2018]{nataraj::dfm}
+Nataraj, G., Nielsen, J.-F., Scott, C., and Fessler, J.~A. (2018).
+\newblock Dictionary-free {MRI} {PERK:} {Parameter} estimation via regression
+  with kernels.
+\newblock {\em {IEEE Trans. Med. Imag.}}
+\newblock To appear.
+
+\bibitem[Rahimi and Recht, 2007]{rahimi:07:rff}
+Rahimi, A. and Recht, B. (2007).
+\newblock Random features for large-scale kernel machines.
+\newblock In {\em {NIPS}}.
+
 \bibitem[Redpath and Jones, 1988]{redpath:88:fan}
 Redpath, T.~W. and Jones, R.~A. (1988).
 \newblock {FADE-A} new fast imaging sequence.
 \newblock {\em {Mag. Res. Med.}}, 6(2):{224--34}.
+
+\bibitem[Rosen, 1960]{rosen:60:tgp}
+Rosen, J.~B. (1960).
+\newblock The gradient projection method for nonlinear programming, {Part} {I:}
+  {Linear} constraints.
+\newblock {\em {SIAM J. Appl. Math.}}, 8(1):{181--217}.
+
+\bibitem[{Sch\"olkopf} et~al., 2001]{scholkopf:01:agr}
+{Sch\"olkopf}, B., Herbrich, R., and Smola, A.~J. (2001).
+\newblock A generalized representer theorem.
+\newblock In {\em {Proc. Computational Learning Theory (COLT)}}, pages
+  {416--426}.
+\newblock LNCS 2111.
 
 \bibitem[Zur et~al., 1991]{zur:91:sot}
 Zur, Y., Wood, M.~L., and Neuringer, L.~J. (1991).
