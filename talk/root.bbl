@@ -15,6 +15,12 @@ Bertsimas, D. and Tsitsiklis, J. (1993).
 \newblock Simulated annealing.
 \newblock {\em Statistical Science}, 8(1):{10--15}.
 
+\bibitem[Deoni et~al., 2008]{deoni:08:gmt}
+Deoni, S. C.~L., Rutt, B.~K., Arun, T., Pierpaoli, C., and Jones, D.~K. (2008).
+\newblock Gleaning multicomponent {T1} and {T2} information from steady-state
+  imaging data.
+\newblock {\em {Mag. Res. Med.}}, 60(6):{1372--87}.
+
 \bibitem[Golub and Pereyra, 2003]{golub:03:snl}
 Golub, G. and Pereyra, V. (2003).
 \newblock Separable nonlinear least squares: the variable projection method and
@@ -33,6 +39,16 @@ Keenan, K.~E., Stupic, K.~F., Boss, M.~A., Russek, S.~E., Chenevert, T.~L.,
 \newblock Multi-site, multi-vendor comparison of {T1} measurement using
   {ISMRM/NIST} system phantom.
 \newblock In {\em {Proc. Intl. Soc. Mag. Res. Med.}}, page 3290.
+
+\bibitem[Lankford and Does, 2013]{lankford:13:oti}
+Lankford, C.~L. and Does, M.~D. (2013).
+\newblock On the inherent precision of {mcDESPOT}.
+\newblock {\em {Mag. Res. Med.}}, 69(1):{127--36}.
+
+\bibitem[Mackay et~al., 1994]{mackay:94:ivv}
+Mackay, A., Whittall, K., Adler, J., Li, D., Paty, D., and Graeb, D. (1994).
+\newblock In vivo visualization of myelin water in brain by magnetic resonance.
+\newblock {\em {Mag. Res. Med.}}, 31(6):{673--7}.
 
 \bibitem[Nataraj et~al., 2017a]{nataraj:17:mwf}
 Nataraj, G., Nielsen, J.-F., and Fessler, J.~A. (2017a).
@@ -75,6 +91,20 @@ Rosen, J.~B. (1960).
 \newblock In {\em {Proc. Computational Learning Theory (COLT)}}, pages
   {416--426}.
 \newblock LNCS 2111.
+
+\bibitem[Spencer and Fishbein, 2000]{spencer:00:mos}
+Spencer, R.~G. and Fishbein, K.~W. (2000).
+\newblock Measurement of spin-lattice relaxation times and concentrations in
+  systems with chemical exchange using the one-pulse sequence: breakdown of the
+  {Ernst} model for partial saturation in nuclear magnetic resonance
+  spectroscopy.
+\newblock {\em {J. Mag. Res.}}, 142(1):{120--35}.
+
+\bibitem[Zhang et~al., 2015]{zhang:15:com}
+Zhang, J., Kolind, S.~H., Laule, C., and MacKay, A.~L. (2015).
+\newblock Comparison of myelin water fraction from multiecho {T2} decay curve
+  and steady-state methods.
+\newblock {\em {Mag. Res. Med.}}, 73(1):{223--32}.
 
 \bibitem[Zur et~al., 1991]{zur:91:sot}
 Zur, Y., Wood, M.~L., and Neuringer, L.~J. (1991).

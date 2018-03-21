@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  20 MAR 2018 19:01
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  21 MAR 2018 18:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1286,6 +1286,24 @@ LaTeX Warning: Label `sub@fig:perk,hpd,plot,t1' multiply defined.
 LaTeX Warning: Label `sub@fig:perk,hpd,plot,t2' multiply defined.
 
 
+LaTeX Warning: Label `sub@fig:mwf,2comp,im' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:mwf,2comp,err' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:mwf,2comp,im' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:mwf,2comp,err' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:mwf,3comp,im' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:mwf,3comp,err' multiply defined.
+
+
 LaTeX Warning: Label `eq:krr,cost' multiply defined.
 
 )
@@ -1926,24 +1944,225 @@ Overfull \vbox (22.92017pt too high) detected at line 379
 
 ]) [82
 
-] (./s,backup.tex [83
+] (./s,mwf.tex [83
 
 ] [84
+
+] [85
+
+] [86
+
+] [87
+
+] [88
+
+] [89
+
+]
+[90
+
+] [91
+
+] [92
+
+] [93
+
+] [94
+
+] [95
+
+] [96
+
+] [97
+
+] [98
+
+]
+Overfull \hbox (3.64067pt too wide) in paragraph at lines 200--200
+ [] 
+ []
+
+[99
+
+] [100
+
+] [101
+
+] [102
+
+] [103
+
+] [104
+
+] [105
+
+]
+File: ../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,im.eps Graphic file (type eps)
+
+<../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,im.eps>
+File: ../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,err.eps Graphic file (type eps)
+
+<../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,err.eps>
+Overfull \hbox (3.65pt too wide) in paragraph at lines 296--296
+[][]
+ []
+
+
+Overfull \hbox (3.65pt too wide) in paragraph at lines 296--296
+[] 
+ []
+
+[106
+
+]
+File: ../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,im.eps Graphic file (type eps)
+ <../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,im.eps>
+File: ../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,err.eps Graphic file (type eps)
+
+<../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,err.eps>
+Overfull \hbox (3.65pt too wide) in paragraph at lines 296--296
+[][]
+ []
+
+
+Overfull \hbox (3.65pt too wide) in paragraph at lines 296--296
+[] 
+ []
+
+[107
+
+]
+File: ../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,im.eps Graphic file (type eps)
+ <../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,im.eps>
+File: ../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,err.eps Graphic file (type eps)
+
+<../fig/c,mwf/2comp/mese-mw,dess-ff,sl-81,err.eps>
+Overfull \hbox (3.65pt too wide) in paragraph at lines 296--296
+[][]
+ []
+
+
+Overfull \hbox (3.65pt too wide) in paragraph at lines 296--296
+[] 
+ []
+
+[108
+
+] [109
+
+] [110
+
+]
+File: ../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,im.eps Graphic file (type eps)
+ <../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,im.eps>
+File: ../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,err.eps Graphic file (type eps)
+
+<../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,err.eps>
+Overfull \hbox (3.65pt too wide) in paragraph at lines 358--358
+[][]
+ []
+
+
+Overfull \hbox (3.65pt too wide) in paragraph at lines 358--358
+[] 
+ []
+
+[111
+
+]
+File: ../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,im.eps Graphic file (type eps)
+ <../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,im.eps>
+File: ../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,err.eps Graphic file (type eps)
+
+<../fig/c,mwf/3comp/mese-mw,dess-ff,sl-81,err.eps>
+Overfull \hbox (3.65pt too wide) in paragraph at lines 358--358
+[][]
+ []
+
+
+Overfull \hbox (3.65pt too wide) in paragraph at lines 358--358
+[] 
+ []
+
+[112
+
+] [113
+
+] [114
+
+] [115
+
+] [116
+
+]
+File: ../fig/c,mwf/brain/mese-mw,dess-ff,sl-5.eps Graphic file (type eps)
+ <../fig/c,mwf/brain/mese-mw,dess-ff,sl-5.eps>
+[117
+
+]
+File: ../fig/c,mwf/brain/mese-mw,dess-ff,sl-5.eps Graphic file (type eps)
+ <../fig/c,mwf/brain/mese-mw,dess-ff,sl-5.eps> [118
+
+]
+Overfull \vbox (12.04723pt too high) detected at line 460
+ []
+
+[119
+
+]
+Overfull \vbox (12.04723pt too high) detected at line 460
+ []
+
+[120
+
+]
+Overfull \vbox (12.04723pt too high) detected at line 460
+ []
+
+[121
+
+]
+Overfull \vbox (12.04723pt too high) detected at line 460
+ []
+
+[122
+
+]
+Overfull \vbox (12.04723pt too high) detected at line 460
+ []
+
+[123
+
+]
+Overfull \vbox (12.04723pt too high) detected at line 460
+ []
+
+[124
+
+]
+Overfull \vbox (12.04723pt too high) detected at line 460
+ []
+
+[125
+
+]) (./s,backup.tex [126
+
+] [127
 
 ]
 Overfull \vbox (28.36362pt too high) detected at line 86
  []
 
-[85
+[128
 
-] [86
+] [129
 
 ]
 File: ../fig/c,perk/hpd-broad/sp2de1,sl-6,t1,plot.eps Graphic file (type eps)
  <../fig/c,perk/hpd-broad/sp2de1,sl-6,t1,plot.eps>
 File: ../fig/c,perk/hpd-broad/sp2de1,sl-6,t2,plot.eps Graphic file (type eps)
 
-<../fig/c,perk/hpd-broad/sp2de1,sl-6,t2,plot.eps> [87
+<../fig/c,perk/hpd-broad/sp2de1,sl-6,t2,plot.eps> [130
 
 ]) (./root.bbl
 File: beamericonarticle.eps Graphic file (type eps)
@@ -1980,16 +2199,34 @@ File: beamericonarticle.eps Graphic file (type eps)
 File: beamericonarticle.eps Graphic file (type eps)
  <beamericonarticle.eps>
 File: beamericonarticle.eps Graphic file (type eps)
- <beamericonarticle.eps>)
-[88
+ <beamericonarticle.eps>
+File: beamericonarticle.eps Graphic file (type eps)
 
-] [89
+<beamericonarticle.eps>
+File: beamericonarticle.eps Graphic file (type eps)
+ <beamericonarticle.eps>
+File: beamericonarticle.eps Graphic file (type eps)
+ <beamericonarticle.eps>
+File: beamericonarticle.eps Graphic file (type eps)
+
+<beamericonarticle.eps>
+File: beamericonarticle.eps Graphic file (type eps)
+ <beamericonarticle.eps>) [131
+
+] [132
 
 
-] [90
+] [133
 
 
-] [91
+] [134
+
+
+]
+[135
+
+
+] [136
 
 
 ]
@@ -2023,12 +2260,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 184.
  ) 
 Here is how much of TeX's memory you used:
- 26958 strings out of 493489
- 530308 string characters out of 3141349
- 700327 words of memory out of 3000000
- 29471 multiletter control sequences out of 15000+200000
+ 27044 strings out of 493489
+ 531727 string characters out of 3141349
+ 705475 words of memory out of 3000000
+ 29545 multiletter control sequences out of 15000+200000
  27206 words of font info for 95 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 61i,20n,87p,1731b,668s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 61i,20n,87p,1731b,688s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (91 pages, 451032 bytes).
+Output written on root.dvi (136 pages, 668896 bytes).
