@@ -29,7 +29,7 @@
 \usepackage{multimedia}					% beamer video
 \graphicspath{%
 	{../fig/}
-}
+}%
 
 % bib
 \bibliographystyle{apalike}			% note: natbib doesn't work with beamer metropolis
@@ -97,21 +97,21 @@
 \begin{frame}{Overview}
 	Advances in Quantitative MRI: 
 	\begin{itemize}
-		\item<0>{
+		\item<0>{%
 			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch.~4]} \\
 			How can we assemble fast, informative collections of scans \\
 			to enable precise biomarker quantification? 
-		}
-		\item<1>{
+		}%
+		\item<1>{%
 			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch.~5]} \\
 			Given accurate models and informative data, \\
 			how can we rapidly quantify these biomarkers?
-		}
-		\item<0>{
+		}%
+		\item<0>{%
 			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch.~6]} \\
 			Using these tools,
 			can we design a state-of-the-art biomarker?
-		}
+		}%
 	\end{itemize}
 \end{frame}
 
@@ -122,54 +122,80 @@
 \begin{frame}{Overview}
 	Advances in Quantitative MRI: 
 	\begin{itemize}
-		\item<0>{
+		\item<0>{%
 			\textbf{Acquisition} \hfill \textcolor{arch-ivy}{[Ch.~4]} \\
 			How can we assemble fast, informative collections of scans \\
 			to enable precise biomarker quantification? 
-		}
-		\item<0>{
+		}%
+		\item<0>{%
 			\textbf{Estimation} \hfill \textcolor{arch-ivy}{[Ch.~5]} \\
 			Given accurate models and informative data, \\
 			how can we rapidly quantify these biomarkers?
-		}
-		\item<1>{
+		}%
+		\item<1>{%
 			\textbf{Application} \hfill \textcolor{arch-ivy}{[Ch.~6]} \\
 			Using these tools,
 			can we design a state-of-the-art biomarker?
-		}
+		}%
 	\end{itemize}
 \end{frame}
 
 % application
 \input{s,mwf.tex}
 
-% acknowledgment
-\begin{comment}
-\begin{frame}{Acknowledgments}
-	\textbf{Collaborators} 
-	\begin{figure}
-		\centering
-		\begin{minipage}[b]{0.32\textwidth}
-			\centering
-			\includegraphics [width=\textwidth, trim=80 40 80 30, clip] {s,ack/jeff}%
-		\end{minipage}
-		\begin{minipage}[b]{0.32\textwidth}
-			\centering
-			\includegraphics [width=\textwidth, trim=80 40 80 30, clip] {s,ack/jon}%
-		\end{minipage}
-		\begin{minipage}[b]{0.32\textwidth}
-			\centering
-			\includegraphics [width=\textwidth, trim=80 40 80 30, clip] {s,ack/clay}%
-		\end{minipage}
-	\end{figure}
-	\textbf{Funding}
+\begin{frame}{Overview}
+	\uncover<1>{%
+		Advances in Quantitative MRI:
+	}%
 	\begin{itemize}
-		\item{NIH P01 CA87634}
-		\item{UM ``M-Cubed'' seed grant}
-		\item{UM pre-doctoral fellowship}
+		\item<2>{%
+			Estimation using Likelihood Models 
+			\hfill \textcolor{arch-ivy}{[Ch.~3]}
+		}%
+		\item<1>{%
+			\textbf{Acquisition} Design via Min-Max Optimization
+			\hfill \textcolor{arch-ivy}{[Ch.~4]}
+		}%
+		\item<1>{%
+			\textbf{Estimation} via Regression with Kernels
+			\hfill \textcolor{arch-ivy}{[Ch.~5]}
+		}%
+		\item<1>{%
+			\textbf{Application} to Myelin Water Imaging
+			\hfill \textcolor{arch-ivy}{[Ch.~6]}
+		}%
+		\item<2>{%
+			Multiple-Dataset Complex Coil Combination 
+			\hfill \textcolor{arch-ivy}{[Appx.~A]}
+		}%
+		\item<2>{%
+			SS-Informed RF Pulse Design
+			\hfill \textcolor{arch-ivy}{[Appx.~B]}
+		}%
 	\end{itemize}
 \end{frame}
-\end{comment}
+
+% acknowledgment
+\begin{frame}{Acknowledgments}
+	\begin{itemize}[label{}]
+		\item<2>{\makebox[3cm][l]{advisors} Jeff and Jon}
+		\item<3>{\makebox[3cm][l]{committee} Doug, Clay, and Scott}
+		\item<4>{\makebox[3cm][l]{collaborators} Mingjie, Steven}
+		\item<5>{%
+			\makebox[3cm][l]{funding} NIH P01 CA87634 \\
+			\makebox[3cm][l]{} UM ``M-Cubed'' seed grant \\
+			\makebox[3cm][l]{} UM pre-doctoral fellowship
+		}%
+		\item<6>{%
+			\makebox[3cm][l]{friends} ``lab of Jeff'' (LOJ) \\
+			\makebox[3cm][l]{} fMRI lab \\
+			\makebox[3cm][l]{} so many others, old and new...
+		}%
+		\item<7>{\makebox[3cm][l]{roommates} Adam and Trey}
+		\item<8>{\makebox[3cm][l]{family} three generations here today!}
+		\item<9>{\makebox[3cm][l]{wife-to-be} Manisha}
+	\end{itemize}
+\end{frame}
 
 % back-up
 \input{s,backup}

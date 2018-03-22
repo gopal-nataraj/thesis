@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  21 MAR 2018 18:34
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  21 MAR 2018 20:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2145,24 +2145,47 @@ Overfull \vbox (12.04723pt too high) detected at line 460
 
 [125
 
-]) (./s,backup.tex [126
+]) [126
 
 ] [127
+
+] [128
+
+] [129
+
+] [130
+
+] [131
+
+] [132
+
+] [133
+
+] [134
+
+] [135
+
+] [136
+
+]
+(./s,backup.tex [137
+
+] [138
 
 ]
 Overfull \vbox (28.36362pt too high) detected at line 86
  []
 
-[128
+[139
 
-] [129
+] [140
 
 ]
 File: ../fig/c,perk/hpd-broad/sp2de1,sl-6,t1,plot.eps Graphic file (type eps)
  <../fig/c,perk/hpd-broad/sp2de1,sl-6,t1,plot.eps>
 File: ../fig/c,perk/hpd-broad/sp2de1,sl-6,t2,plot.eps Graphic file (type eps)
 
-<../fig/c,perk/hpd-broad/sp2de1,sl-6,t2,plot.eps> [130
+<../fig/c,perk/hpd-broad/sp2de1,sl-6,t2,plot.eps> [141
 
 ]) (./root.bbl
 File: beamericonarticle.eps Graphic file (type eps)
@@ -2211,22 +2234,22 @@ File: beamericonarticle.eps Graphic file (type eps)
 
 <beamericonarticle.eps>
 File: beamericonarticle.eps Graphic file (type eps)
- <beamericonarticle.eps>) [131
+ <beamericonarticle.eps>) [142
 
-] [132
-
-
-] [133
+] [143
 
 
-] [134
+] [144
+
+
+] [145
 
 
 ]
-[135
+[146
 
 
-] [136
+] [147
 
 
 ]
@@ -2239,11 +2262,11 @@ File: beamericonarticle.eps Graphic file (type eps)
 \tf@snm=\write9
 \openout9 = `root.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 184.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 184.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 210.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 210.
  (./root.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 184.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 184.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 210.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 210.
 Package rerunfilecheck Info: File `root.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2257,15 +2280,15 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 184.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 210.
  ) 
 Here is how much of TeX's memory you used:
- 27044 strings out of 493489
- 531727 string characters out of 3141349
- 705475 words of memory out of 3000000
- 29545 multiletter control sequences out of 15000+200000
+ 27048 strings out of 493489
+ 531763 string characters out of 3141349
+ 705579 words of memory out of 3000000
+ 29549 multiletter control sequences out of 15000+200000
  27206 words of font info for 95 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  61i,20n,87p,1731b,688s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (136 pages, 668896 bytes).
+Output written on root.dvi (147 pages, 719476 bytes).
