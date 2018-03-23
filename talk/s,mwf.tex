@@ -1,5 +1,4 @@
 % myelin water imaging
-\begin{comment}
 \begin{frame}{%
 	Background
 	\footnote{%
@@ -39,7 +38,6 @@
 		}%
 	\end{minipage}
 \end{frame}
-\end{comment}
 
 \begin{frame}{Previous MW imaging acquisitions}
 	\uncover<1>{%
@@ -178,7 +176,13 @@
       \hline
       \hline
     \end{tabular}
-    \caption{Optimized Scan Parameters, $\breve{\bmP}$}
+    \caption{%
+    	Optimized
+    	\footnote{%
+				acquisition design reported by Mingjie Gao, UM
+			} 
+			Scan Parameters, $\breve{\bmP}$%
+		}%
 		\label{tab:mwf,acq}
 	\end{table}
 	\vspace{-0.5cm}
@@ -226,10 +230,12 @@
 			(via VPM and unrealistically narrow grid search around truth)
 		}%
 		\item<4->{%
-			MESE nonnegative least-squares (NNLS) MWF $\hlm{\mwf}$ estimates
+			MESE nonnegative least-squares (NNLS) MWF $\hlm{\mwf}$ estimates \\
+			\hfill \citec{mackay:94:ivv}
 		}%
 		\item<4->{%
-			MESE regularized NNLS (RNNLS) $\hlm{\mwf}$ estimates
+			MESE regularized NNLS (RNNLS) $\hlm{\mwf}$ estimates \\
+			\hfill \citec{whittall:89:qio}
 		}%
 	\end{itemize}
 \end{frame}
@@ -358,48 +364,48 @@
 \end{frame}
 
 \begin{frame}{\Invivo Experiment}
-	\uncover<1-3>{%
+	\uncover<1,3>{%
 		In a single long study of a healthy volunteer:
 	}%
 	\begin{itemize}
-		\item<1-3>{%
+		\item<1,3>{%
 			Precision-optimized DESS acquisition
 		}%
-		\item<2-3>{%
+		\item<1-3>{%
 			32-echo MESE acquisition
 			\begin{itemize}
-				\item{%
+				\item<2>{%
 					Used shaped refocusing pulses \\
 					to suppress out-of-slab signal
 					due to imperfect refocusing
 				}%	
-				\item{%
+				\item<2>{%
 					Used shorter $\TR\gets600$ms 
 					to limit scan time \\
 					(compensated for incomplete recovery 
 					w/ separate bulk-$\To$ est)
 				}%
-				\item{%
+				\item<2>{%
 					Repeated acquisition twice
 					to increase SNR through averaging
 				}%
 			\end{itemize}
 		}%
-		\item<3>{%
+		\item<1>{%
 			BS acquisition for separate $\stx$ estimation
 		}%
-		\item<3>{%
+		\item<1>{%
 			Variable-flip SPGR acquisition for separate bulk $\To$ estimation
 		}%
 	\end{itemize}
-	\uncover<4>{%
+	\uncover<3>{%
 		Compared DESS PERK $\hlg{\ff}$ estimates to:
 	}%
 	\begin{itemize}
-		\item<4>{%
+		\item<3>{%
 			MESE NNLS $\hlm{\mwf}$ estimates
 		}%
-		\item<4>{%
+		\item<3>{%
 			MESE RNNLS $\hlm{\mwf}$ estimates
 		}%
 	\end{itemize}

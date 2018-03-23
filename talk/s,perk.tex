@@ -133,7 +133,9 @@
 \begin{frame}{PERK in a 1-D Toy Problem}
 	\uncover<1->{%
 		\textbf{Task}: 
-			estimate $\Tt$, given samples from $y = \exp\paren{-\TE/\Tt} + \epsilon$
+			estimate $\Tt$, given samples 
+			$\paren{{\Tt}_1,\epsilon_1,y_1},\dots,\paren{{\Tt}_N,\epsilon_N,y_N}$ \\
+			simulated via model $y = \exp\paren{-\TE/\Tt} + \epsilon$ with fixed $\TE$
 		\vspace{-0.5cm}
 		\begin{figure}
 			\subfloat[$N\gets10$]{%
@@ -337,7 +339,7 @@
 	}%
 	\uncover<2->{%
 		Within support of $\dist{\bmx,\bmnu}$, \\
-		\textbf{PERK and grid search estimates agree excellently}.
+		\textbf{PERK and ML estimates agree excellently}.
 	}%
 \end{frame}
 

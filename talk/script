@@ -1,21 +1,67 @@
 script for talk
 
-I'm sure many of you are quite familiar 
-with quantitative mri,
-but I figured I'd give a one-line overview
-for the uninitiated. 
-Broadly,
-the goal of quantitative mri
+Thanks for the introduction,
+and thank you all
+for coming to my thesis defense.
+
+
+If your doctor ordered an MRI today,
+chances are that it would look something like
+the grayscale image on the left.
+Such qualitative MR images 
+localize the MR signal,
+a complicated function
+of both interesting and uninteresting contrast mechanisms.
+The types of MR images I'll focus on
+will be quantitative 
+like this flow speed image on the right.
+Quantitative MRI (QMRI) seeks 
+to be more informative than qualitative MRI
+by imaging interesting contrast mechanisms more directly.
+For instance,
+this flow image very clearly delineates 
+the aorta from the pulmonary artery
+and very clearly shows elevated flow speed
+due to narrowing of the aorta.
+
+
+Because MRI is a flexible imaging modality,
+there are many types of QMRI applications,
+such as diffusion imaging shown here.
+On the left is a conventional t2-weighted image,
+while the right two images quantify
+the degree of diffusive anisotropy,
+which for example is useful 
+for assessing the health
+of white matter tracts.
+
+
+And as a quick teaser for what is to come later,
+we used qualitative images 
+like the one on the left
+to create an image of fast-relaxing MR signal fraction,
+which may correspond to intact myelin content
+that is important in assessing demyelinating conditions
+like multiple sclerosis.
+
+
+In the and other QMRI applications,
+the broad goal
 is to rapidly and accurately localize biomarkers
+(specifically, MR-imageable biomarkers)
 from MR data.
 
-Here,
-a biomarker is a measurable tissue property
-like elasticity
-that characterizes some biological process
-of interest
-like sclerosis,
-or the abnormal hardening of tissue.
+For the purposes of this talk,
+by biomarker
+we mean some measurable tissue property
+that indicates a biological process of interest
+that is characteristic 
+to the onset and development of one or more specific disorders.
+So for example,
+flow rate could be indicative
+of the development of a blockage,
+which is characteristic to the onset and development 
+of an ischemic stroke.
 
 By localize,
 we mean that seek to quantify these biomarkers
@@ -45,7 +91,7 @@ that help address these challenges.
 
 Specifically,
 I will be describing new answers
-to two questions in this talk.
+to three questions in this talk.
 First,
 how can we systematically assemble
 fast, informative collections of scans
@@ -89,8 +135,8 @@ P might denote the echo times.
 
 In acquisition design,
 the task is to design acquisition parameter matrix P
-to enable precise unbiased esitmation
-of biomarkers of interest,
+to enable precise unbiased estimation
+of parameters of interest,
 which are some subset
 of the elements of x.
 
@@ -222,17 +268,28 @@ we collected 2 Bloch-Siegert SPGR scans
 for separate flip angle calibration.
 
 
-We first report phantom accuracy results.
+Here are results in a quantitative MR phantom
+consisting of 14 vials with different t1,t2 values.
+Columns denote the three optimized profiles
+and the reference profile.
+The top images are t1 estimates
+while the bottom images are t2 estimates.
+Each pair of rows denotes two estimators,
+but we will focus on the just the ML estimator for now.
+Many of the candidate and reference estimates
+appear visually similar,
+
+but it is easier to assess accuracy with plots.
 Here,
 we plot sample means and sample standard deviations
 pooled over 100s of voxels
-within 14 regions of interest.
+within the 14 vials of interest.
 We compare t1/t2 ml estimates
 from the three candidate and one reference profile,
 versus nist nmr measurements.
 The orange region highlights
 vials within the 'tight' parameter range.
-Within this regions,
+Within this region,
 t1,t2 estimates from all profiles
 exhibit minimal bias.
 
@@ -268,9 +325,9 @@ as predictive of unbiased estimation precision.
 We did not attempt 
 to replicate these precision experiments in vivo
 because of motion considerations,
-but we did assess accuracy.
 
-Here, 
+but we did assess accuracy.
+Again,
 columns denote the three candidate profiles
 and the slow reference profile;
 rows denote t1 vs t2 estimates.
@@ -289,8 +346,8 @@ there are significant discrepencies across the profiles
 which is suggestive of multi-compartmental relaxation.
 
 To address this type of model mismatch,
-we will need to develop more complete in vivo signal models
-and will need scalably estimate more parameters,
+we need to develop more complete in vivo signal models
+and need to scalably estimate more parameters,
 
 
 which brings me to the second portion of this talk.
@@ -344,7 +401,6 @@ in the first section.
 but let's take a look
 at the computational cost of grid search.
 In simple t1,t2 estimation
-(like in fingerprinting)
 there are 3 latent parameters.
 discretizing over the 2 nonlinear parameters,
 we need about 100 squared or 10,000 dictionary atoms,
@@ -375,7 +431,7 @@ and simulate corresponding image data vectors.
 
 We would like to then construct
 nonlinear functions h_l and offsets b_l
-that in some sense ''inverts'' the signal model
+that in some sense ''invert'' the signal model
 by mapping image data vectors and known parameters
 back to the lth latent parameter
 
@@ -403,8 +459,27 @@ which is a standard convex optimization problem
 that we can solve exactly.
 
 
+Before delving into details,
+here is a demonstration of PERK
+in a simple 1-dimensional toy problem.
+The task is to estimate t2,
+given N samples simulated 
+via simple monoexponential signal model.
+The plots denote these samples as black circles
+and evaluate the PERK estimator in red
+at many test points denoted by blue dots.
+PERK balances fitting the training points
+and smoothly varying between training points.
+Note that even with more training points,
+PERK performance begins to degrade
+near the edges of the sampling interval,
+where poorer problem conditioning
+causes for PERK to regress towards the sample mean.
+
+
 When the dust settles,
-the solution can be written in one line.
+the solution to the PERK training problem
+can be written in one line.
 Here bold x_l collects the training point regressands,
 
 bold uppercase K is the NxN Gram matrix,
@@ -417,21 +492,21 @@ and bold lowercase k is a nonlinear kernel embedding operator.
 
 So let us return to the original goal:
 does this PERK estimator scale better with L?
-Apparently it does,
-since by construction the estimators
+Perhaps, since by construction the estimators
 are constructed separably!
 
 However,
 in practice more complex problems
-will likely require more training samples N,
-for which it is undesirable
+could require more training samples N
+for good accuracy,
+in which case it is undesirable
 to explicitly compute, store, and/or invert
 NxN Gram matrix K.
 Fortunately,
 for many useful kernels
 there exist very accurate kernel approximations,
 which as a plus can provide us
-some intuition about the PERK solution.
+some further intuition about the PERK solution.
 
 
 Suppose there exists a function z-tilde
@@ -472,30 +547,46 @@ from a prior distribution on object parameters x, nu
 whose support was chosen to coincide
 with the support over which we performed min-max scan design.
 
-We then compared PERK estimates 
-to grid search estimates.
+We then compared PERK estimates
+to two well-suited ML estimators: 
+dictionary-based grid search estimates
+via the variable projection method
+as well as 
+preconditioned gradient projection method estimates
+that were initialized 
+with a strongly biased method-of-moments estimate.
 
 
-Here we compare PERK and grid search estimates in phantom.
+Here we compare vpm, pgpm, and perk estimates
+of m0, t1, and t2.
+This m0 image also indicates 
+which vials are within the training range.
+The images appear visually similar,
+
+but PERK is more than two orders of magnitude faster
+including training time.
+Here I've indicated training and testing time separately
+because only the latter scales with the number of voxels,
+so the acceleration factor would be closer 
+to three orders of magnitude
+for a full 3D volume.
+
+Here are t1 and t2 accuracy plots for the phantom.
 The yellow boxes denote projections 
 of the sampling distribution's support
-over which PERK was trained.
+over which PERK was trained
+and correspond to the yellow vials just shown.
 
 We observe that within this support,
-PERK and grid search agree excellently.
+PERK and ML estimates agree excellently.
 
 
-We then compared PERK and grid search 
-for in vivo t1 and t2 estimation
-in a single slice of the optimized acquisition.
-The estimates agree reasonably in WM and GM,
+We then compared VPM, PGPM, and PERK in vivo.
+The estimatoes agree reasonably 
+within the highlighted WM and GM ROIs,
 
-but PERK is about 23x faster, 
+but PERK is again more than two orders of magnitude faster,
 including training time.
-Note that only PERK testing time 
-scales with the number of voxels,
-so this acceleration factor would increase
-for a typical 3D problem at this resolution.
 
 
 In summary,
@@ -504,18 +595,19 @@ a fast, dictionary-free machine-learning inspired method
 for QMRI parameter estimation.
 
 We demonstrated PERK in a simple, easily-validated problem
-in which it was consistently 23x faster 
+in which it was consistently at least 140x faster
 than dictionary-based grid search.
 
 Recently however,
 we have been interested
 in whether we can exploit PERK's speed
-for harder problems,
+for more challenging problems,
 
 
 which brings me
-to our ongoing work to use these tools
-for myelin water fraction imaging.
+to the final topic,
+where we use acquisition design and PERK
+for myelin water imaging.
 
 
 Myelin is a lipid-rich substance
@@ -534,18 +626,17 @@ that arises from water trapped within the myelin layers
 relative to the total water signal,
 
 and has been shown
-to correlate well with myelin content.
+to correlate well with intact myelin content.
 
 
-The gold-standard MWF imaging acquisition remains
+The gold-standard MW imaging acquisition remains
 a multi-echo spin-echo sequence,
-from which MWF is characterized 
-using a multi-exponential model
-of the echo train decay.
-However,
-these experiments typically use long repetition times,
-likely at least in part
-to limit multi-compartmental t1 recovery effects.
+from which MWF is characterized
+using multi-exponential or more complicated models
+of the echo train decay. 
+Even with more recent MESE acceleration methods,
+these experiments are typically speed-limited
+by long repetition times.
 
 More recently,
 combinations of fast steady-state scans
@@ -558,9 +649,8 @@ myelin water fraction estimates
 from mcDESPOT were shown to disagree with MESE estimates,
 likely due to insufficient estimation precision.
 
-So our ongoing goal here 
-is to design an imaging workflow
-that enables fast, accurate MWF quantification in WM.
+So our goal here is to design an imaging workflow
+that enables fast, accurate MW content quantification in WM.
 
 
 Here is a simple voxel-scale model
@@ -575,17 +665,14 @@ can be described with six free parameters.
 
 Of these,
 we are interested in estimating the fast-relaxing fraction ff,
-a proxy for myelin water fraction
-and a potential biomarker
-for certain wm diseases.
+as a simple measure of myelin water content.
 
 
 Since our previous single-compartment t1,t2 estimates
 from spgr/dess scan profiles
 demonstrated sensitivity to multi-compartmental relaxation,
-we found it natural to use
+we found it natural to study
 2-compartment spgr/dess models.
-
 We studied the assumptions 
 of a previously developed 2-compartment spgr model
 
@@ -605,8 +692,7 @@ which interestingly required additional approximations
 when including exchange
 unlese we assumed that the difference
 of compartmental off-resonance frequencies
-remained constant over time,
-which might be a mild assumption.
+remained constant over time.
 
 Even with all the highlighted assumptions,
 closed-form signal models still remain elusive,
@@ -652,116 +738,304 @@ from a separable prior,
 and the constraint space ensures
 reasonable flip angles
 and enforces a total scan time constraint.
-
+that is competitive with that of mcDESPOT.
 
 Here are the optimized flip angles
 and repetition times
 of a scan profile
 designed under a total time constraint
 comparable to that of mcDESPOT.
-We see that the predicted mwf relative std dev
-is less than 30%,
+We see that the predicted ff relative standard deviation
+is 42.5 percent,
 which is a significant improvement
 over similar calculations
 performed for the mcDESPOT acquisition.
+Interestingly, 
+the optimized acquisition
+consists entirely of DESS scans
+with variable repetition times.
+We observed this behavior 
+in other optimization instances
+with different scan time constraints as well,
+suggesting that DESS with variable flip angle and repetition times
+can be sensitized to two-compartment relaxation.
 
 
-We first studied mwf estimation in simulation.
-At each voxel position,
-we simulated ground-truth x,nu
-and used the optimized scan design
-to generate single-voxel measurement vector y.
+We applied PERK for fast-fraction estimation
+from the optimized DESS acquisition.
+We trained PERK using a million samples
+drawn from a prior distribution on parameters
+that is similar to the Bayesian scan design distribution
+but with finite support.
 
-We then used PERK to estimate just the fast-fraction estimate,
-and list here are the only parameters
-that we had to choose manually,
-with the exception of the Gaussian kernel shape.
+We compared PERK fast-fraction estimates in simulation
+to ML fast-fraction estimates,
+implemented via an unrealistically narrow grid search
+around the ground truth.
 
-We then compared PERK estimates against grid search estimates.
-To limit computation,
-we implemented the grid search
-on a search space
-that we artificially constrained
-to extend only 20% beyond the ground truth.
-
-
-Here are the fast-fraction estimates.
-From left to right are the ground truth,
-grid search estimate,
-and the PERK estimate.
-The estimates exhibit similar levels
-of estimation accuracy and precision,
-
-but PERK is more than 300 times faster.
+We also compared PERK fast-fraction estimates
+to unregularized and l2-norm regularized nnls estimates
+that arise from two conventional estimators 
+from mese data.
 
 
-Most recently,
-we tried our proposed MWF protocol in vivo.
-Over this matrix size,
-the acquisition took about 12 minutes,
-including time for separate flip angle calibration.
+We first studied these four estimators
+in a simulation without any model mismatch.
+We simulated data to arise 
+from two water compartments,
+each with different t2 values
+but the same t1 value.
 
-Now, full-scale grid search would be required for comparison
-and at least in matlab 
-would require months of computation time
-on a typical desktop computer.
-
-On the other hand,
-PERK required about 35s for training
-and 5s/slice for testing.
-
-For qualitative comparison,
-I'll also show mwf estimates
-from a recent comparison study 
-of GRASE, an accelerated MESE acquisition
-and mcDESPOT.
+Since there is no model mismatch,
+ff and fm estimates are comparable.
 
 
-Here are proof-of-concept in vivo MWF estimates.
-The left two estimates are from the comparison study
-while the righthand estimate 
-is from scan optimization and PERK estimation.
-The proposed MWF acquisition
-is as fast as mcDESPOT
-and produces MWF estimates
-comparable to those of GRASE.
+Here is the two-compartment simulation result.
+Along with ff and fm estimates 
+from the four estimators,
+we also plot magnitude difference images
+with respect to the ground truth.
 
 
-In summary,
-we introduced a fast acquisition
-for precise MWF estimation in WM
-and so far have shown
-what appear to be reasonable in vivo MWF estimates.
+We first observe
+that PERK not only achieves lower WM RMSE than ML,
 
-As ongoing work,
-we will need to systematically validate
-our acquisition and estimation 
-through a comparison study
-with MESE MWF estimates.
+but does so in about 500x less time
+including training time
+for a single-slice experiment.
 
-Longer term,
-I am interested in applying scan design and PERK
-to other QMRI applications
-such as MR fingerprinting,
-and we have some preliminary work
-in this direction
-in collaboration with Jakob.
-
-I am also interested in correlating our MWF estimates
-with other myelin biomarkers
-such as a marker related 
-to the inhomogeneous magnetization transfer effect.
-
-Lastly,
-I am interested in combining PERK
-with image reconstruction
-so as to better handle 
-for example undersampled QMRI.
+We next observe 
+that though NNLS and RNNLS RMSE are lower
+than PERK RMSE in WM,
+there is clear spatial variation in the MESE error maps
+due to flip angle variation,
+despite knowledge and compensation 
+for this flip angle variation.
 
 
-With that,
-I'd like to acknowledge my collaborators
-Jeff Fessler, Jon Nielsen, and Clay Scott
-as well as our funding sources.
-Thank you for your attention.
+We next repeated the previous study
+in a simulation with model mismatch.
+Here, 
+we simulated data 
+to perhaps more realistically arise 
+from three water compartments
+each with different t2 and t1 values.
+Now,
+both DESS ff and MESE fm estimators incur bias,
+
+and so ff and fm estimates need not be comparable.
+
+
+Here are corresponding results.
+PERK is again more than 500x faster than ML.
+As expected,
+the error maps are generally worse than before,
+
+though PERK WM RMSE is the lowest.
+Note that with model mismatch,
+the spatial variation of MESE errors
+is now apparent even in the fm maps.
+
+
+We lastly report results from an in vivo experiment.
+In a single long study,
+we collected the optimized dess acquisition,
+a conventional 32-echo mese acquisition,
+a bloch-siegert acquisition
+for separate flip angle calibration
+(used for both DESS ff and MESE fm estimation)
+and a variable-flip spgr acquisition
+for separate bulk-t1 estimation
+(used for MESE fm estimation only).
+
+The mese acquisition was largely conventional,
+except we repeated the acquisition twice 
+to increase effective snr through averaging
+and used a somewhat short repetition time
+to keep scan times reasonable.
+
+We compared PERK ff estimates
+to MESE NNLS and RNNLS fm estimates.
+In previous studies,
+we tried running a full-scale grid search 
+on a computing cluster
+that ran for about 68 cpu-days
+and still did not give reasonable results,
+probably because the ML estimation problem
+has multiple global minima here.
+In any case,
+since we acquired the data used here
+in late january
+and we didn't renew our cluster account,
+I don't think I'd be defending today
+if we had waited for similar ML results here! 
+
+
+Here are the associated in vivo results.
+The elevated MESE fm estimates in medial wm
+have been reported in several other MESE studies,
+and have been attributed 
+to overlap of the myelin- and cellular water peaks
+in internal capsule t2 distributions.
+We also observe
+that these patterns are visually similar
+to those observed in simulation
+due to flip angle variation.
+The DESS PERK ff estimates are more homogeneous
+across medial and lateral WM ROIs
+and distinguish myelinated wm tracts
+at least as well as mese fm estimates,
+
+but the DESS ff estimates required 5x less scan time.
+
+
+In summary
+we have introduced a fast ss acquisition
+for precise myelin water imaging.
+
+Idealized simulations demonstrated
+that PERK and ML ff estimates are comparable
+but PERK is more than 500x faster.
+
+More realistic simulations demonstrated
+that the accuracy of both MESE fm and DESS ff estimates
+may be sensitive to in vivo model mismatch.
+
+Nevertheless,
+in vivo experiments are the first
+to demonstrate lateral wm myelin water content estimates
+from a SS acquisition
+that are at all similar
+to conventional MESE MWF estimates.
+
+As future work,
+it will be interesting 
+to investigate DESS ff accuracy further
+through ex vivo studies 
+and correlations with other myelin biomarkers.
+
+It will also be interesting
+to investigate whether MW imaging can be further improved
+by exploiting compartmental off-resonance differences,
+a topic that is an active area of research in our group.
+
+More broadly,
+it will be interesting to see
+whether combining PERK with image reconstruction
+can provide performance benefits,
+particularly in cases of undersampling.
+
+
+This concludes the main portion of my talk,
+
+though there are few less mature but still novel topics
+discussed in other parts of the thesis.
+
+
+Finally, 
+I'd like to say thank you 
+to a small sample of the many people 
+who have made this work possible.
+For this part,
+I've prepared some words in advance,
+for fear that I might get emotional.
+
+First,
+I thank my co-advisors Jeff and Jon.
+Jeff realized that I might like research
+before I even realized I might like research
+all the way back in 2010
+during an undergraduate UM visitation day,
+when I was a sophomore at Cornell.
+Jeff has since then helped me develop
+my intuition and yet also rigor,
+my persistence and yet also humility.
+I hope to be half as productive as he is one day.
+Asking Jon to be my co-advisor in 2014,
+also per Jeff's recommendation by the way,
+was perhaps the best decision I made during grad school.
+Since our very first scan together,
+Jon has treated me as a professional researcher
+which was key to building my research confidence
+in those early days.
+Most practical things that I know about MRI today
+are due to him.
+
+Next,
+I thank my thesis committee.
+Clay was a key contributor and coauthor on the PERK paper.
+Doug's medical imaging systems lectures are so good
+that I visited his class two years ago,
+even though I had already taken the class.
+He has since then also contributed several times
+in helping me get perhaps esoteric algorithms
+working on real MR data with real MR nonidealities,
+and understanding why things break when they do.
+Scott was actually the first person who let me touch
+an MR scanner back in 2013
+during a medical imaging lab.
+He has since then had several discussions with me
+about myelin imaging.
+
+Next,
+I thank my collaborators at UM.
+Mingjie adapted PERK to work on MR fingerprinting data
+and ran the fast-fraction scan optimizations.
+Steven has been 
+and I hope plans to continue working
+on off-resonance-sensitive myelin imaging.
+
+Next,
+I thank the funding that made this work possible.
+In particular,
+the University of Michigan funded a large portion
+of this proof-of-concept work
+and deserves recognition 
+for supporting exploratory research.
+
+Next,
+I thank my many friends and colleagues here at UM,
+old and new.
+You have made what is ultimately a solitary journey
+much more fun and fulfilling.
+I am aware that I didn't work too often 
+in the LOJ, or lab of Jeff,
+but that's only because I often found myself
+socializing too much and working too little while there.
+
+Next,
+I thank my roommates, Adam and Trey.
+All three of us moved here together 
+from Cornell back in 2012.
+None of us had much facial hair back then.
+Adam in particular has lived with me 
+in the same apartment
+for the entire duration of our PhDs.
+He has been with me
+through every single one of the highs and lows.
+
+Next,
+I thank my family.
+I don't think too many people can say 
+that three generations of family 
+attended their PhD defense.
+I am humbled and am grateful 
+for their unconditional love and support.
+
+And finally,
+I thank Manisha.
+Simply put,
+she is the light of my life.
+If you enjoyed the upma,
+you have her to thank.
+If you didn't enjoy it, 
+we'll say that I made it.
+Manisha, I can't wait to get married
+and start the next chapter of our lives together.
+
+I hope that covers everyone here today,
+but just in case I'll say again
+thank you the audience 
+for attending my defense,
+and I'd be happy to take questions.
 
