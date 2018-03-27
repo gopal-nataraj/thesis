@@ -1,0 +1,67 @@
+2018-03-23
+notes during defense talk
+taken by jeff fessler
+
+s9: perhaps preview the two scan design methods in thesis intro?
+(min-max, bayes)
+
+dh: how bad is the worst case?
+todo: comment on that in ch. 4
+
+todo: where is supplement of ch. 4?
+specifically, exploration of multicompartment effects?
+
+s22 importance sampling for efficiency?
+
+s25: jf: why 2,1 instead of 0,2
+
+jf: train not scaling with # of slices - kappas?
+
+cs: s27 train/test
+
+dh: use perk to start GD?
+
+"cutely named" - takes one to know one, mr. perk !
+
+34 "implies neglecting exchange"
+
+ss: T2 assumed?
+dn: short TE to neglect exchange - longitudinal exchange?  T1?
+
+40: show flip-angle map in ch6 for both simulation and in vivo data
+
+dad: path to commercialization?
+todo: spell it out in thesis (last chapter)
+ex vivo, patients
+
+dh: why descending ML makes it worse?
+go: why KRR not NN?
+
+jn: exchange - how to convince others
+
+"can't design without gradients?"
+
+ss: GRASE - how much acceleration?
+todo: mention it
+
+ss: laplace transforms / T2 histograms
+todo: show one (from ROI?)
+
+ss: workflow in clinic?
+
+ss: myelin in muscle ?
+dn: other two compartment models
+
+jn: vessels / flow effects
+
+ss: compare to mcDESPOT?
+
+cs: importance of prior?
+
+jn: training based on noise measurement - sensitivity
+todo: mention possibility of
+
+dn: what parameters do you need, just B1+?
+todo: revisit scan design
+
+lots of future work items to list!
