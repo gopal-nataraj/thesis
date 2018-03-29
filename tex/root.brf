@@ -115,21 +115,15 @@
 \backcite {beneliezer:15:raa, ma:13:mrf}{{55}{4.6}{section.4.6}}
 \backcite {zhao:16:oed}{{55}{4.6}{section.4.6}}
 \backcite {nataraj:14:mbe}{{55}{4.7}{section.4.7}}
-\backcite {bloch:1946:ni-paper}{{56}{5.1}{section.5.1}}
-\backcite {torrey:56:bew}{{56}{5.1}{section.5.1}}
-\backcite {mcconnell:58:rrb}{{56}{5.1}{section.5.1}}
-\backcite {bloembergen:1948:rei}{{56}{5.1}{section.5.1}}
-\backcite {bihan:01:dti}{{56}{5.1}{section.5.1}}
-\backcite {mackay:94:ivv}{{56}{5.1}{section.5.1}}
 \backcite {haldar:07:mle,hernando:08:jeo,barral:10:arm,staroswiecki:12:seo,ma:13:mrf,trzasko:13:etf,mcgivney:14:scf,zhao:14:mbm,beneliezer:15:raa,zhao:15:amp,cauley:15:fgm,zhao:16:mlr,nataraj:17:oms,asslander:18:lra,yang:18:lra}{{56}{5.1}{section.5.1}}
 \backcite {mcgivney:14:scf,cauley:15:fgm,asslander:18:lra,yang:18:lra}{{56}{5.1}{section.5.1}}
+\backcite {feinberg:85:mri}{{56}{5.1}{section.5.1}}
+\backcite {bihan:01:dti}{{56}{5.1}{section.5.1}}
+\backcite {tuch:01:ctm}{{56}{5.1}{section.5.1}}
+\backcite {sekihara:85:nif}{{56}{5.1}{section.5.1}}
+\backcite {morrell:08:aps,sacolick:10:bmb}{{56}{5.1}{section.5.1}}
 \backcite {nataraj::dfm}{{56}{1}{Hfootnote.20}}
 \backcite {nataraj:17:dfm,nataraj:17:slw}{{56}{1}{Hfootnote.20}}
-\backcite {feinberg:85:mri}{{57}{5.1}{section.5.1}}
-\backcite {bihan:01:dti}{{57}{5.1}{section.5.1}}
-\backcite {tuch:01:ctm}{{57}{5.1}{section.5.1}}
-\backcite {sekihara:85:nif}{{57}{5.1}{section.5.1}}
-\backcite {morrell:08:aps,sacolick:10:bmb}{{57}{5.1}{section.5.1}}
 \backcite {mackay:94:ivv,nataraj:17:mwf}{{57}{5.1}{section.5.1}}
 \backcite {deoni:08:gmt}{{57}{5.1}{section.5.1}}
 \backcite {deoni:13:oct}{{57}{5.1}{section.5.1}}
@@ -143,7 +137,7 @@
 \backcite {scholkopf:01:agr}{{60}{5.3}{equation.5.3.6}}
 \backcite {scholkopf:01:agr}{{60}{1}{thm.1}}
 \backcite {hoerl:70:rrb}{{61}{5.3}{equation.5.3.11}}
-\backcite {steinwart:08:svm}{{62}{5.3}{equation.5.3.12}}
+\backcite {steinwart:08:svm}{{61}{5.3}{equation.5.3.12}}
 \backcite {gudbjartsson:95:trd}{{62}{5.4.1}{equation.5.4.13}}
 \backcite {rahimi:07:rff}{{64}{5.5.1}{subsection.5.5.1}}
 \backcite {rahimi:07:rff}{{64}{5.5.1}{subsection.5.5.1}}
@@ -152,7 +146,7 @@
 \backcite {rahimi:07:rff}{{65}{5.5.1}{equation.5.5.21}}
 \backcite {wu:97:gbt}{{65}{5.5.1}{equation.5.5.22}}
 \backcite {woodbury:50:imm}{{65}{5.5.1}{equation.5.5.22}}
-\backcite {vapnik:98:slt}{{66}{5.5.2}{subsection.5.5.2}}
+\backcite {vapnik:98:slt}{{65}{5.5.2}{subsection.5.5.2}}
 \backcite {gudbjartsson:95:trd}{{66}{5.5.2.1}{subsubsection.5.5.2.1}}
 \backcite {cramer:46}{{66}{5.5.2.1}{subsubsection.5.5.2.1}}
 \backcite {nataraj:17:oms}{{66}{5.5.2.1}{subsubsection.5.5.2.1}}
@@ -225,6 +219,7 @@
 \backcite {does:00:rat,prasloski:12:rwc}{{90}{6.1}{section.6.1}}
 \backcite {feinberg:91:gga}{{90}{6.1}{section.6.1}}
 \backcite {prasloski:12:rwc}{{90}{6.1}{section.6.1}}
+\backcite {alonsoortiz:15:mbm,does::ibt}{{90}{6.1}{section.6.1}}
 \backcite {deoni:08:gmt}{{90}{6.1}{section.6.1}}
 \backcite {deoni:11:com, deoni:13:oct}{{90}{6.1}{section.6.1}}
 \backcite {zhang:15:com}{{90}{6.1}{section.6.1}}
@@ -243,63 +238,63 @@
 \backcite {spencer:00:mos}{{95}{6.2.1}{equation.6.2.17}}
 \backcite {miller:10:aot-1, miller:10:aot-2}{{97}{6.2.1}{equation.6.2.22}}
 \backcite {magnus:54:ote}{{98}{6.2.2}{equation.6.2.24}}
-\backcite {deoni:08:gmt, deoni:11:com, deoni:13:oct}{{105}{6.3.2}{subsection.6.3.2}}
-\backcite {deoni:11:com, deoni:13:oct}{{105}{6.3.2}{subsection.6.3.2}}
-\backcite {gudbjartsson:95:trd}{{105}{6.3.2}{subsection.6.3.2}}
-\backcite {sacolick:10:bmb}{{105}{6.3.2}{subsection.6.3.2}}
-\backcite {zhang:15:com}{{105}{6.3.2}{subsection.6.3.2}}
-\backcite {mackay:94:ivv, deoni:11:com}{{106}{6.3.2}{subsection.6.3.2}}
-\backcite {zur:91:sot}{{106}{6.3.2}{subsection.6.3.2}}
-\backcite {deoni:11:com}{{106}{6.3.2}{subsection.6.3.2}}
-\backcite {deoni:08:gmt,deoni:11:com}{{107}{6.3.2}{table.6.1}}
-\backcite {lankford:13:oti}{{107}{6.3.2}{table.6.1}}
-\backcite {siddiqui:64:sif}{{108}{6.4.1}{subsection.6.4.1}}
-\backcite {mackay:94:ivv}{{108}{6.4.1}{subsection.6.4.1}}
-\backcite {lawson:74}{{108}{6.4.1}{subsection.6.4.1}}
-\backcite {kroeker:86:aob}{{108}{6.4.1}{equation.6.4.51}}
-\backcite {whittall:89:qio}{{109}{6.4.1}{equation.6.4.51}}
-\backcite {mackay:94:ivv}{{109}{6.4.1}{equation.6.4.52}}
-\backcite {whittall:89:qio}{{109}{6.4.1}{equation.6.4.52}}
-\backcite {prasloski:12:aos}{{109}{6.4.1}{equation.6.4.52}}
-\backcite {hennig:88:mis}{{109}{6.4.1}{equation.6.4.52}}
-\backcite {arthur:07:kmt}{{109}{6.4.1}{equation.6.4.52}}
-\backcite {mackay:94:ivv,deoni:11:com}{{110}{6.4.2.1}{subsubsection.6.4.2.1}}
-\backcite {wansapura:99:nrt}{{110}{6.4.2.1}{subsubsection.6.4.2.1}}
-\backcite {collins:98:dac}{{110}{6.4.2.1}{subsubsection.6.4.2.1}}
-\backcite {golub:03:snl}{{110}{6.4.2.1}{equation.6.4.53}}
-\backcite {ahn:03:seo}{{112}{6.2}{table.6.2}}
-\backcite {mackay:94:ivv,deoni:11:com}{{112}{6.4.2.2}{subsubsection.6.4.2.2}}
-\backcite {ahn:03:seo}{{113}{6.3}{table.6.3}}
-\backcite {pauly:91:prf}{{114}{6.4.3}{subsection.6.4.3}}
-\backcite {prasloski:12:rwc,zhang:15:com}{{115}{6.4.3}{subsection.6.4.3}}
-\backcite {zur:91:sot}{{115}{6.4.3}{subsection.6.4.3}}
-\backcite {sacolick:10:bmb}{{115}{6.4.3}{subsection.6.4.3}}
-\backcite {ying:07:jir}{{115}{6.4.3}{subsection.6.4.3}}
-\backcite {sun:14:reo}{{116}{6.4.3}{subsection.6.4.3}}
-\backcite {golub:03:snl}{{116}{6.4.3}{subsection.6.4.3}}
-\backcite {ahn:03:seo}{{117}{6.4}{table.6.4}}
-\backcite {zhang:15:com}{{117}{6.4.3}{figure.6.3}}
-\backcite {alonsoortiz:15:mbm}{{117}{6.4.3}{table.6.4}}
-\backcite {nataraj::dfm}{{118}{6.5}{section.6.5}}
-\backcite {does::ibt}{{119}{6.5}{section.6.5}}
-\backcite {mackay:94:ivv,whittall:89:qio}{{119}{6.5}{section.6.5}}
-\backcite {miller:10:aot-1,miller:10:aot-2}{{122}{7.2}{section.7.2}}
-\backcite {nielsen:13:stf}{{122}{7.2}{section.7.2}}
-\backcite {varma:15:mtf}{{123}{7.3}{section.7.3}}
-\backcite {varma:15:iom, swanson:17:mda}{{123}{7.3}{section.7.3}}
-\backcite {gareau:00:mta, webb:03:imt}{{123}{7.3}{section.7.3}}
-\backcite {ying:07:jir}{{124}{A.1}{section.A.1}}
-\backcite {pauly:89:aks}{{127}{B.1}{section.B.1}}
-\backcite {shinnar:89:tuo, pauly:91:prf}{{127}{B.1}{section.B.1}}
-\backcite {yip:05:irp, setsompop:08:mls}{{127}{B.1}{section.B.1}}
-\backcite {nielsen:13:stf}{{127}{B.1}{section.B.1}}
-\backcite {pauly:89:aks}{{128}{B.2}{equation.B.2.2}}
-\backcite {pauly:89:aks}{{129}{B.2}{equation.B.2.7}}
-\backcite {scheffler:99:apd}{{129}{B.2}{equation.B.2.8}}
-\backcite {pauly:89:aks}{{131}{B.2}{equation.B.2.17}}
-\backcite {yip:05:irp}{{132}{B.2}{equation.B.2.22}}
-\backcite {fessler:05:tbi}{{132}{B.2}{equation.B.2.23}}
-\backcite {noll:91:ahc,sutton:03:fii}{{133}{B.2}{equation.B.2.27}}
-\backcite {grissom:09:flt}{{134}{B.3}{section.B.3}}
-\backcite {gabay:76:ada}{{134}{B.3}{section.B.3}}
-\backcite {gabay:76:ada}{{135}{B.3.2}{equation.B.3.39}}
+\backcite {deoni:08:gmt, deoni:11:com, deoni:13:oct}{{106}{6.3.2}{subsection.6.3.2}}
+\backcite {deoni:11:com, deoni:13:oct}{{106}{6.3.2}{subsection.6.3.2}}
+\backcite {gudbjartsson:95:trd}{{106}{6.3.2}{subsection.6.3.2}}
+\backcite {sacolick:10:bmb}{{106}{6.3.2}{subsection.6.3.2}}
+\backcite {zhang:15:com}{{106}{6.3.2}{subsection.6.3.2}}
+\backcite {mackay:94:ivv, deoni:11:com}{{107}{6.3.2}{subsection.6.3.2}}
+\backcite {zur:91:sot}{{107}{6.3.2}{subsection.6.3.2}}
+\backcite {deoni:11:com}{{107}{6.3.2}{subsection.6.3.2}}
+\backcite {deoni:08:gmt,deoni:11:com}{{108}{6.3.2}{table.6.1}}
+\backcite {lankford:13:oti}{{108}{6.3.2}{table.6.1}}
+\backcite {siddiqui:64:sif}{{109}{6.4.1}{subsection.6.4.1}}
+\backcite {mackay:94:ivv}{{109}{6.4.1}{subsection.6.4.1}}
+\backcite {lawson:74}{{109}{6.4.1}{subsection.6.4.1}}
+\backcite {kroeker:86:aob}{{109}{6.4.1}{equation.6.4.51}}
+\backcite {whittall:89:qio}{{110}{6.4.1}{equation.6.4.51}}
+\backcite {mackay:94:ivv}{{110}{6.4.1}{equation.6.4.52}}
+\backcite {whittall:89:qio}{{110}{6.4.1}{equation.6.4.52}}
+\backcite {prasloski:12:aos}{{110}{6.4.1}{equation.6.4.52}}
+\backcite {hennig:88:mis}{{110}{6.4.1}{equation.6.4.52}}
+\backcite {arthur:07:kmt}{{110}{6.4.1}{equation.6.4.52}}
+\backcite {mackay:94:ivv,deoni:11:com}{{111}{6.4.2.1}{subsubsection.6.4.2.1}}
+\backcite {wansapura:99:nrt}{{111}{6.4.2.1}{subsubsection.6.4.2.1}}
+\backcite {collins:98:dac}{{111}{6.4.2.1}{subsubsection.6.4.2.1}}
+\backcite {golub:03:snl}{{111}{6.4.2.1}{equation.6.4.53}}
+\backcite {ahn:03:seo}{{113}{6.2}{table.6.2}}
+\backcite {mackay:94:ivv,deoni:11:com}{{113}{6.4.2.2}{subsubsection.6.4.2.2}}
+\backcite {ahn:03:seo}{{114}{6.3}{table.6.3}}
+\backcite {pauly:91:prf}{{115}{6.4.3}{subsection.6.4.3}}
+\backcite {prasloski:12:rwc,zhang:15:com}{{116}{6.4.3}{subsection.6.4.3}}
+\backcite {zur:91:sot}{{116}{6.4.3}{subsection.6.4.3}}
+\backcite {sacolick:10:bmb}{{116}{6.4.3}{subsection.6.4.3}}
+\backcite {ying:07:jir}{{116}{6.4.3}{subsection.6.4.3}}
+\backcite {sun:14:reo}{{117}{6.4.3}{subsection.6.4.3}}
+\backcite {golub:03:snl}{{117}{6.4.3}{subsection.6.4.3}}
+\backcite {ahn:03:seo}{{118}{6.4}{table.6.4}}
+\backcite {zhang:15:com}{{118}{6.4.3}{figure.6.3}}
+\backcite {alonsoortiz:15:mbm}{{118}{6.4.3}{table.6.4}}
+\backcite {nataraj::dfm}{{119}{6.5}{section.6.5}}
+\backcite {does::ibt}{{120}{6.5}{section.6.5}}
+\backcite {mackay:94:ivv,whittall:89:qio}{{120}{6.5}{section.6.5}}
+\backcite {miller:10:aot-1,miller:10:aot-2}{{123}{7.2}{section.7.2}}
+\backcite {nielsen:13:stf}{{123}{7.2}{section.7.2}}
+\backcite {varma:15:mtf}{{124}{7.3}{section.7.3}}
+\backcite {varma:15:iom, swanson:17:mda}{{124}{7.3}{section.7.3}}
+\backcite {gareau:00:mta, webb:03:imt}{{124}{7.3}{section.7.3}}
+\backcite {ying:07:jir}{{125}{A.1}{section.A.1}}
+\backcite {pauly:89:aks}{{128}{B.1}{section.B.1}}
+\backcite {shinnar:89:tuo, pauly:91:prf}{{128}{B.1}{section.B.1}}
+\backcite {yip:05:irp, setsompop:08:mls}{{128}{B.1}{section.B.1}}
+\backcite {nielsen:13:stf}{{128}{B.1}{section.B.1}}
+\backcite {pauly:89:aks}{{129}{B.2}{equation.B.2.2}}
+\backcite {pauly:89:aks}{{130}{B.2}{equation.B.2.7}}
+\backcite {scheffler:99:apd}{{130}{B.2}{equation.B.2.8}}
+\backcite {pauly:89:aks}{{132}{B.2}{equation.B.2.17}}
+\backcite {yip:05:irp}{{133}{B.2}{equation.B.2.22}}
+\backcite {fessler:05:tbi}{{133}{B.2}{equation.B.2.23}}
+\backcite {noll:91:ahc,sutton:03:fii}{{134}{B.2}{equation.B.2.27}}
+\backcite {grissom:09:flt}{{135}{B.3}{section.B.3}}
+\backcite {gabay:76:ada}{{135}{B.3}{section.B.3}}
+\backcite {gabay:76:ada}{{136}{B.3.2}{equation.B.3.39}}

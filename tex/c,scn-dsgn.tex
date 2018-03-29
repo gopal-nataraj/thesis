@@ -94,8 +94,8 @@ The dual-echo steady-state (DESS) sequence \cite{bruder:88:ans}
 was recently proposed as a promising SS imaging technique 
 for $\Tt$ estimation \cite{welsch:09:reo}. 
 Because it produces two distinct signals per excitation, 
-the DESS sequence can reduce scan repetition requirements 
-by recording twice as much data per scan. 
+the DESS sequence can reduce scan repetition requirements
+by recording close to twice as much data per scan. 
 As with other SS methods, 
 the resulting signals 
 \cite{gyngell:89:tss, hanicke:03:aas} 
@@ -548,7 +548,7 @@ as $\setXt \gets \setTot \times \setTtt \times 1$.
 Here, 
 $\setTot \gets [800, 1400]$ms
 and $\setTtt \gets [50, 120]$ms
-correspond with WM and GM regions of interest (ROIs)
+correspond to WM and GM regions of interest (ROIs)
 at 3T \cite{wansapura:99:nrt, stanisz:05:ttr}.
 We take $\setNt \gets \brac{0.9, 1.1}$ 
 to account for 10\% transmit field spatial variation. 
@@ -1978,18 +1978,25 @@ collecting additional SPGR, DESS,
 and/or other data for joint estimation.
 
 By working with closed-form signal expressions, 
-we neglect to model several higher-order effects.
+we neglect to model several higher-order effects
+\edit{%
+	(\eg, 
+	interactions between 
+	multiple intravoxel water compartments).
+}%
 However, it is apparent 
 that the nonlinear estimation procedures required 
-for many mapping problems can amplify the influence 
-of these secondary effects, 
-often inducing substantial bias. 
+for many mapping problems 
+can amplify the influence 
+of these secondary effects,
+often inducing significant estimation bias.
 Since the CRB (as described) 
 applies only to unbiased estimators, 
 it is thus desirable to use signal models 
 that are as complete as possible 
 for CRB-based scan design.
-In theory, scan optimization approach \eqref{eq:scn-dsgn,P-star} 
+In theory, 
+scan optimization approach \eqref{eq:scn-dsgn,P-star} 
 is even compatible with acquisitions 
 where a closed-form model relating data 
 to latent and scan parameters is unknown, 
@@ -2040,9 +2047,13 @@ within and near the CSF
 and do not agree with IR measurements 
 in WM as consistently as the $(2,1)$ profile.
 This and other disagreements across profiles \emph{in vivo} 
-may be attributable to differences in signal model sensitivities 
-to neglected higher-order effects. 
-Nevertheless, the example application 
+may be attributable 
+to differences in signal model sensitivities 
+\edit{%
+	to multi-compartmental relaxation.
+}%
+Nevertheless, 
+the example application 
 studied in this chapter illustrates 
 that scan optimization can enable new parameter mapping techniques 
 from established pulse sequences.

@@ -529,24 +529,6 @@ D.~Ma, V.~Gulani, N.~Seiberlich, K.~Liu, J.~L. Sunshine, J.~L. Duerk, and M.~A.
 B.~Zhao, J.~Haldar, K.~Setsompop, and L.~L. Wald, ``Optimal experiment design
   for magnetic resonance fingerprinting,'' in {\em {embc}}, pp.~{453--6}, 2016.
 
-\bibitem{torrey:56:bew}
-H.~C. Torrey, ``Bloch equations with diffusion terms,'' {\em {Phys. Rev.}},
-  vol.~104, pp.~{563--5}, 1956.
-
-\bibitem{mcconnell:58:rrb}
-H.~M. McConnell, ``Reaction rates by nuclear magnetic resonance,'' {\em {J. of
-  Chemical Phys.}}, vol.~28, pp.~{430--31}, Mar. 1958.
-
-\bibitem{bloembergen:1948:rei}
-N.~Bloembergen, E.~M. Purcell, and R.~V. Pound, ``Relaxation effects in nuclear
-  magnetic resonance absorption,'' {\em {Phys. Rev.}}, vol.~73, pp.~{679--712},
-  Apr. 1948.
-
-\bibitem{bihan:01:dti}
-D.~L. Bihan, J.-F. Mangin, C.~Poupon, C.~A. Clark, S.~Pappata, N.~Molko, and
-  H.~Chabriat, ``Diffusion tensor imaging: {Concepts} and applications,'' {\em
-  {J. Mag. Res. Im.}}, vol.~13, pp.~{534--546}, Apr. 2001.
-
 \bibitem{haldar:07:mle}
 J.~P. Haldar, J.~Anderson, and S.~W. Sun, ``Maximum likelihood estimation of
   {T1} relaxation parameters using {VARPRO},'' in {\em {Proc. Intl. Soc. Mag.
@@ -611,6 +593,11 @@ M.~Yang, D.~Ma, Y.~Jiang, J.~Hamilton, N.~Seiberlich, M.~A. Griswold, and
 D.~A. Feinberg, L.~E. Crooks, P.~Sheldon, J.~H. Iii, J.~Watts, and M.~Arakawa,
   ``Magnetic resonance imaging the velocity vector components of fluid flow,''
   {\em {Mag. Res. Med.}}, vol.~2, pp.~{555--66}, Dec. 1985.
+
+\bibitem{bihan:01:dti}
+D.~L. Bihan, J.-F. Mangin, C.~Poupon, C.~A. Clark, S.~Pappata, N.~Molko, and
+  H.~Chabriat, ``Diffusion tensor imaging: {Concepts} and applications,'' {\em
+  {J. Mag. Res. Im.}}, vol.~13, pp.~{534--546}, Apr. 2001.
 
 \bibitem{tuch:01:ctm}
 D.~S. Tuch, V.~J. Wedeen, A.~M. Dale, J.~S. George, and J.~W. Belliveau,
@@ -797,6 +784,16 @@ D.~A. Feinberg and K.~Oshio, ``{GRASE} (gradient- and spin-echo) {MR} imaging:
   a new fast clinical imaging technique,'' {\em {Radiology}}, vol.~181,
   pp.~{597--602}, Nov. 1991.
 
+\bibitem{alonsoortiz:15:mbm}
+E.~Alonso-Ortiz, I.~R. Levesque, and G.~B. Pike, ``{MRI-based} myelin water
+  imaging: {A} technical review,'' {\em {Mag. Res. Med.}}, vol.~73,
+  pp.~{70--81}, Jan. 2015.
+
+\bibitem{does::ibt}
+M.~D. Does, ``Inferring brain tissue composition and microstructure via {MR}
+  relaxometry,'' {\em {J. Neuroimag.}}, 2018.
+\newblock To appear.
+
 \bibitem{deoni:11:com}
 S.~C.~L. Deoni, ``Correction of main and transmit magnetic field {(B0} and
   {B1)} inhomogeneity effects in multicomponent-driven equilibrium single-pulse
@@ -818,6 +815,10 @@ R.~G. Spencer and K.~W. Fishbein, ``Measurement of spin-lattice relaxation
   one-pulse sequence: breakdown of the {Ernst} model for partial saturation in
   nuclear magnetic resonance spectroscopy,'' {\em {J. Mag. Res.}}, vol.~142,
   pp.~{120--35}, Jan. 2000.
+
+\bibitem{mcconnell:58:rrb}
+H.~M. McConnell, ``Reaction rates by nuclear magnetic resonance,'' {\em {J. of
+  Chemical Phys.}}, vol.~28, pp.~{430--31}, Mar. 1958.
 
 \bibitem{miller:10:aot-1}
 K.~L. Miller, ``Asymmetries of the balanced {SSFP} profile. {Part} {I:}
@@ -854,16 +855,6 @@ T.~Prasloski, B.~{M\"adler}, Q.-S. Xiang, A.~MacKay, and C.~Jones,
 \bibitem{hennig:88:mis}
 J.~Hennig, ``Multiecho imaging sequences with low refocusing flip angles,''
   {\em {J. Mag. Res.}}, vol.~88, pp.~{397--407}, July 1988.
-
-\bibitem{alonsoortiz:15:mbm}
-E.~Alonso-Ortiz, I.~R. Levesque, and G.~B. Pike, ``{MRI-based} myelin water
-  imaging: {A} technical review,'' {\em {Mag. Res. Med.}}, vol.~73,
-  pp.~{70--81}, Jan. 2015.
-
-\bibitem{does::ibt}
-M.~D. Does, ``Inferring brain tissue composition and microstructure via {MR}
-  relaxometry,'' {\em {J. Neuroimag.}}, 2018.
-\newblock To appear.
 
 \bibitem{nielsen:13:stf}
 J.-F. Nielsen, D.~Yoon, and D.~C. Noll, ``Small-tip fast recovery imaging using

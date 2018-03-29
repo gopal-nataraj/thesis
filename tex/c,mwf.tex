@@ -158,6 +158,17 @@ of MESE acquisitions
 and thus would still require long scan times
 for whole-brain MWF imaging
 at millimeter-scale resolution.
+\edit{%
+	Furthermore,
+	estimating a $\Tt$ distribution
+	from MESE data
+	constitutes a poorly-conditioned estimation problem
+	that continues to demand high SNR 
+	\cite{alonsoortiz:15:mbm,does::ibt},
+	so the need remains 
+	for a more SNR-efficient acquisition
+	for myelin water imaging.
+}%
 As an alternative to MESE acquisitions,
 scan profiles consisting of short-$\TR$ steady-state (SS) sequences
 were proposed 
@@ -224,9 +235,10 @@ in unbiased $\ff$ estimates.
 	(Similar calculations for \cite{deoni:08:gmt,deoni:11:com}
 	found that $\ff$ coefficients of variation
 	frequently exceeded $100$\% \cite{lankford:13:oti}.)
+	To our knowledge,
 }%
-\Invivo experiments are the first to demonstrate
-lateral WM myelin water content estimates
+\invivo experiments are the first to demonstrate
+(lateral) WM myelin water content estimates
 from a fast SS acquisition
 that are similar
 to conventional MWF estimates
@@ -2357,8 +2369,8 @@ at least for the nominal values selected here.
 We acquired \invivo data 
 using a GE Discovery\tmark MR750 3.0T scanner
 with a 32-channel Nova Medical\regis receive head array.
-In a single long study 
-of a healthy volunteer,
+In a single scan session 
+involving a healthy volunteer,
 we collected the DESS acquisition
 described in Subsection~\ref{ss,mwf,acq,detail};
 a MESE acquisition for validation;

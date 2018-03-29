@@ -85,28 +85,29 @@ obtained from the $d$th dataset
 using \emph{acquisition} parameter $\bmp_d \in \reals{A}$;
 and $\epsilon_d \sim \cgauss{0}{\sigma_d^2}$ 
 is assumed for simplicity 
-\footnote{Though the noise distribution 
-of $\bmk$-space raw data 
-is usually well-modeled
-as complex white Gaussian, 
-the noise distribution 
-of the $d$th reconstructed image $y_d$ depends both
-on the acquisition and reconstruction.
-If single receive channel $\bmk$-space data
-is fully-sampled
-on a Cartesian grid,
-each dataset $y_d$ is recoverable
-via separate Fourier transform,
-and is thus complex Gaussian
-and independent across datasets.
-However if $\bmk$-space data
-is multi-channel, undersampled, and/or Cartesian,
-it may be preferable
-that $y_d$ be estimated by more sophisticated techniques,
-\eg \cite{fessler:03:nff, muckley:15:fpm}.
-In such cases,
-reconstructed image noise is unlikely
-to be Gaussian-distributed.
+\footnote{%
+	Though the noise distribution 
+	of $\bmk$-space raw data 
+	is usually well-modeled
+	as complex white Gaussian, 
+	the noise distribution 
+	of the $d$th reconstructed image $y_d$ depends both
+	on the acquisition and reconstruction.
+	If single receive channel $\bmk$-space data
+	is fully-sampled
+	on a Cartesian grid,
+	each dataset $y_d$ is recoverable
+	via separate Fourier transform,
+	and is thus complex Gaussian
+	and independent across datasets.
+	However if $\bmk$-space data
+	is multi-channel, undersampled, and/or non-Cartesian,
+	it may be preferable
+	that $y_d$ be estimated by more sophisticated techniques,
+	\eg \cite{fessler:03:nff, muckley:15:fpm}.
+	In such cases,
+	reconstructed image noise is unlikely
+	to be Gaussian-distributed.
 }
 to be (circularly-symmetric) complex Gaussian noise
 \cite{macovski:96:nim, lei:07:som}
@@ -124,7 +125,7 @@ which we refer to hereafter as a \emph{scan profile}.
 A scan profile consists 
 of $D$ datasets
 from up to $D$ pulse sequences
-(some sequences yield more than one dataset, \eg DESS).
+(some sequences yield more than one dataset, \eg, DESS).
 Let 
 $\bmy\pr := \brac{y_1\pr, \dots, y_D\pr}\tpose \in \complexes{D}$
 collect noisy voxel values centered at $\bmr$
@@ -137,7 +138,7 @@ Then the vector signal model
 helps define the noiseless signal 
 $\bms := \brac{s_1, \dots, s_D}\tpose
 : \complexes{L} \times \complexes{K} \times \reals{A \times D} \mapsto \complexes{D}$
-and acquisition parameter
+and acquisition parameters
 $\bmP := \brac{\bmp_1,\dots,\bmp_D} \in \reals{A \times D}$
 associated with that scan profile.
 Here, noise
@@ -887,8 +888,8 @@ over MOM $\Tt,\const{2}$ estimation,
 primarily because likelihood-based estimators
 here required fewer bias-inducing signal model approximations.
 In general,
-such accuracy gains 
-will be more substantial
+such accuracy gains
+may be more substantial
 in more complicated QMRI estimation problems
 that for MOM estimation 
 will require stronger model approximations.

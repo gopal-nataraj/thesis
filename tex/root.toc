@@ -81,29 +81,29 @@
 \contentsline {section}{\numberline {6.2}Multi-Compartmental Models for SS Sequences}{91}{section.6.2}
 \contentsline {subsection}{\numberline {6.2.1}A Two-Compartment SPGR Signal Model}{91}{subsection.6.2.1}
 \contentsline {subsection}{\numberline {6.2.2}A Two-Compartment DESS Signal Model}{97}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}A Fast SS Acquisition for Precise Myelin Imaging}{103}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Scalable Acquisition Design}{103}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}SPGR/DESS Scan Design Implementation Details}{105}{subsection.6.3.2}
-\contentsline {section}{\numberline {6.4}Experimentation}{107}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}Methods}{107}{subsection.6.4.1}
-\contentsline {subsection}{\numberline {6.4.2}Numerical Simulations}{109}{subsection.6.4.2}
-\contentsline {subsubsection}{\numberline {6.4.2.1}Two-Compartment Simulation without Model Mismatch}{110}{subsubsection.6.4.2.1}
-\contentsline {subsubsection}{\numberline {6.4.2.2}Three-Compartment Simulation with Model Mismatch}{112}{subsubsection.6.4.2.2}
-\contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{114}{subsection.6.4.3}
-\contentsline {section}{\numberline {6.5}Discussion}{118}{section.6.5}
-\contentsline {section}{\numberline {6.6}Conclusion}{119}{section.6.6}
-\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{121}{chapter.7}
-\contentsline {section}{\numberline {7.1}{\color {blue}Combining PERK with Image Reconstruction}}{121}{section.7.1}
-\contentsline {section}{\numberline {7.2}Exploiting Off-Resonance for Myelin Water Imaging}{122}{section.7.2}
-\contentsline {section}{\numberline {7.3}Correlating with Other Myelin Biomarkers}{122}{section.7.3}
-\contentsline {chapter}{Appendices}{124}{section*.8}
+\contentsline {section}{\numberline {6.3}A Fast SS Acquisition for Precise Myelin Imaging}{104}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Scalable Acquisition Design}{104}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}SPGR/DESS Scan Design Implementation Details}{106}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}Experimentation}{108}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Methods}{108}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Numerical Simulations}{110}{subsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.2.1}Two-Compartment Simulation without Model Mismatch}{111}{subsubsection.6.4.2.1}
+\contentsline {subsubsection}{\numberline {6.4.2.2}Three-Compartment Simulation with Model Mismatch}{113}{subsubsection.6.4.2.2}
+\contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{115}{subsection.6.4.3}
+\contentsline {section}{\numberline {6.5}Discussion}{119}{section.6.5}
+\contentsline {section}{\numberline {6.6}Conclusion}{120}{section.6.6}
+\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{122}{chapter.7}
+\contentsline {section}{\numberline {7.1}{\color {blue}Combining PERK with Image Reconstruction}}{122}{section.7.1}
+\contentsline {section}{\numberline {7.2}Exploiting Off-Resonance for Myelin Water Imaging}{123}{section.7.2}
+\contentsline {section}{\numberline {7.3}Correlating with Other Myelin Biomarkers}{123}{section.7.3}
+\contentsline {chapter}{Appendices}{125}{section*.8}
 \global \c@tocdepth 1\relax 
-\contentsline {section}{\numberline {A.1}Introduction}{124}{section.A.1}
-\contentsline {section}{\numberline {A.2}Problem Formulation}{124}{section.A.2}
-\contentsline {section}{\numberline {A.3}Alternating Minimization Algorithm}{125}{section.A.3}
-\contentsline {section}{\numberline {B.1}Introduction}{127}{section.B.1}
-\contentsline {section}{\numberline {B.2}Signal Model}{127}{section.B.2}
-\contentsline {section}{\numberline {B.3}Two Iterative Algorithms}{134}{section.B.3}
-\contentsline {subsection}{\numberline {B.3.1}Perturbative Expansions}{134}{subsection.B.3.1}
-\contentsline {subsection}{\numberline {B.3.2}Variable Splitting and ADMM}{135}{subsection.B.3.2}
-\contentsline {chapter}{Bibliography}{137}{section*.11}
+\contentsline {section}{\numberline {A.1}Introduction}{125}{section.A.1}
+\contentsline {section}{\numberline {A.2}Problem Formulation}{125}{section.A.2}
+\contentsline {section}{\numberline {A.3}Alternating Minimization Algorithm}{126}{section.A.3}
+\contentsline {section}{\numberline {B.1}Introduction}{128}{section.B.1}
+\contentsline {section}{\numberline {B.2}Signal Model}{128}{section.B.2}
+\contentsline {section}{\numberline {B.3}Two Iterative Algorithms}{135}{section.B.3}
+\contentsline {subsection}{\numberline {B.3.1}Perturbative Expansions}{135}{subsection.B.3.1}
+\contentsline {subsection}{\numberline {B.3.2}Variable Splitting and ADMM}{136}{subsection.B.3.2}
+\contentsline {chapter}{Bibliography}{138}{section*.11}

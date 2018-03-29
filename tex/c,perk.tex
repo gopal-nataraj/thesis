@@ -5,21 +5,8 @@
 \label{s,perk,intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In quantitative magnetic resonance imaging (QMRI),
-one seeks to estimate latent parameter images 
-from suitably informative data.
-Since MR acquisitions are tunably sensitive 
-to many physical processes
-(\eg, relaxation \cite{bloch:1946:ni-paper}, 
-diffusion \cite{torrey:56:bew},
-and chemical exchange \cite{mcconnell:58:rrb}),
-MRI parameter estimation is important
-for many QMRI applications
-(\eg, relaxometry \cite{bloembergen:1948:rei}, 
-diffusion tensor imaging \cite{bihan:01:dti}, 
-and multi-compartmental imaging \cite{mackay:94:ivv}). 
-Motivated by widespread applications,
-this chapter
+
+This chapter
 \footnote{%
 \edit{%
 	This chapter mainly derives content
@@ -27,31 +14,14 @@ this chapter
 	that extends two conference papers
 	\cite{nataraj:17:dfm,nataraj:17:slw}.
 }%
-}
-introduces a general method
-for fast MRI parameter estimation.
-
-% signal models nonlinear
-% so parameter estimation requires nonconvex optimization
-% previous chapter described likelihood models
-% several works [cite] have had success with this
-% however these work for simple problems like single t1/t2 estimation
-% for larger problems, undesirable or even intractable
-% staroswiecki:12:seo 	fit m0,t1,t2,adc from dess im per-voxel
-% ma:13:mrf		 					fit m0,t1,t2,b0 from mrf im per-voxel
-% mcgivney:14:scf 	 		fit m0,t1,t2,b0 from low-rank mrf im using low-rank dict per-voxel
-% zhao:14:mbm						recon m0,t2 from sse data via sparsity-constrained recon
-% zhao:15:amp 					low-rank plus sparse recon w varpro for t1,t2 mapping
-% beneliezer:15:raa 		fit m0,t2,b1 from mse im per-voxel
-% zhao:16:mlr						recon m0,t1,t2 maps from mrf data via admm/varpro
-% nataraj:17:oms				fit m0,t1,t2 from spgr/dess per-voxel
-% asslander:18:lra 				similar to zhao:16:mlr, but claims better-conditioned initialization?
-% cauley:15:fgm 				cluster full dict elements; use dict means to fit m0,t1,t2,b0 per-voxel
-% doneva:17:mcb					est subspace of mrf k-t data from fully-sampled k-space center
-% 											use subspace est for low-rank matrix completion of mrf data
-% 											then recon matrix-completed mrf data and fit m0,t1,t2 per-voxel
-% yang:18:lra 						fit m0,t1,t2,b0 from low-rank mrf im using coarse low-rank dict per-voxel
-%												and then apply bilinear interpolation: x100 acceleration
+} 
+\edit{%
+	reconsiders the problem
+	of QMRI parameter estimation
+	(first introduced in Chapter~\ref{c,relax}),
+}%
+where one seeks to estimate latent parameter images 
+from suitably informative data.
 Chapter~\ref{c,relax} applied
 a common parameter estimation strategy to QMRI
 that involves minimizing a cost function
@@ -382,7 +352,7 @@ with zero mean $\zeros{D} \in \reals{D}$
 and known covariance $\bmSig \in \reals{D \times D}$.
 (As a concrete example,
 for $\Tt$ estimation
-from single spin echo measurements,
+from spin echo measurements,
 $\bmx$ could collect spin density and $\Tt$;
 $\bmnu$ could collect known longitudinal and transverse field inhomogeneities;
 and 
