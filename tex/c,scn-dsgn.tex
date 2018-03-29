@@ -31,7 +31,15 @@ due to iron overload \cite{guo:09:mtq}
 or edema \cite{giri:09:tqf}. 
 Motivated by this broad interest 
 in $\To, \Tt$ mapping, 
-this chapter describes a systematic method 
+this chapter
+\footnote{%
+\edit{%
+	This chapter mainly derives content
+	from published journal paper \cite{nataraj:17:oms}
+	that extends conference paper \cite{nataraj:15:amm}.
+}%
+}
+describes a systematic method 
 to guide QMRI scan design.
 
 Classical pulse sequences 
@@ -168,17 +176,22 @@ can find use in new estimation problems.
 This chapter is organized as follows. 
 Section~\ref{s,scn-dsgn,crb} describes 
 a CRB-inspired min-max optimization problem 
-for robust, application-specific scan optimization. 
+for robust, application-specific scan design. 
 Section~\ref{s,scn-dsgn,opt} optimizes 
 three practical DESS/SPGR combinations 
 to show that, 
 even in the presence of radiofrequency (RF) field inhomogeneity, 
-DESS is a promising option for $\To, \Tt$ relaxometry.  
+DESS is a promising option for $\To,\Tt$ relaxometry.  
 Section~\ref{s,scn-dsgn,exp} describes 
 simulation, phantom, and \invivo experiments 
 and discusses corresponding results.
-Section~\ref{s,scn-dsgn,disc} discusses practical challenges 
-and suggests future directions.
+\edit{%
+	Section~\ref{s,scn-dsgn,multi} investigates
+	the sensitivity of single-compartment $\Tt$ estimates
+	to model mismatch due to multi-compartment relaxation.
+}%
+Section~\ref{s,scn-dsgn,disc} discusses 
+advantages, challenges, and extensions.
 Section~\ref{s,scn-dsgn,conc} summarizes key contributions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -727,12 +740,26 @@ due to its robustness to a wide range of object parameters.
 		\end{minipage}	
 	}
 	\caption{
-		Worst-case standard deviations $\sigwot$ (top), $\sigwtt$ (middle), and cost $\costwt$ (bottom), versus pairs of nominal flip angles, holding other scan parameters fixed at selected profile $\bmPs$. 
-		Subfigures (a)-(i), (j)-(l), and (m)-(o) correspond to scan profiles containing $(\Ss, \Sd) = (2,1), (1,1), \text{and}\,(0,2)$ SPGR and DESS scans, respectively. 
-		Selected scan parameters (starred) are within $\delta = 1$\% of global minimizers and retain as much estimator precision as possible over a wide range of latent object parameters. 		
+		Worst-case standard deviations 
+		$\sigwot$ (top), $\sigwtt$ (middle), 
+		and cost $\costwt$ (bottom), 
+		versus pairs of nominal flip angles, 
+		holding other scan parameters fixed at selected profile $\bmPs$. 
+		Subfigures (a)-(i), (j)-(l), and (m)-(o) 
+		correspond to scan profiles containing 
+		$(\Ss, \Sd) = (2,1), (1,1), 
+		\text{and}\,(0,2)$ SPGR and DESS scans, 
+		respectively. 
+		Selected scan parameters (starred) 
+		are within $\delta = 1$\% of global minimizers 
+		and retain as much estimator precision as possible 
+		over a wide range of latent object parameters. 		
 		All axes range from 5 to 90 degrees, in 5-degree increments. 
-		Colorbar ranges are $[0,100]$, $[0,10]$, and $[0,20]$ milliseconds for rows of $\sigwot$, $\sigwtt$, and $\costwt$ subfigures, respectively. 
-		The optimized $(0,2)$ profile appears most robust to transmit field spatial variation.
+		Colorbar ranges are $[0,100]$, $[0,10]$, and $[0,20]$ milliseconds
+		for rows of $\sigwot$, $\sigwtt$, and $\costwt$ subfigures,
+		respectively. 
+		The optimized $(0,2)$ profile 
+		appears most robust to transmit field spatial variation.
 	}
 	\label{fig:scn-dsgn,heat-map}
 \end{sidewaysfigure}
@@ -780,7 +807,7 @@ DESS can be used to simultaneously estimate $\To$ as well.
 In fact, for certain choices of parameter ranges, 
 a second DESS scan is predicted 
 to afford $\widehat{T}_1$ precision 
-comparable to two SPGR scans. 
+comparable to two SPGR scans.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimentation}
@@ -1165,18 +1192,18 @@ of phantom datasets require less than
 
 We next describe sequential
 \footnote{%
-We initially attempted 
-to circumvent sequential $\bmTo$, then $\bmTt$ estimation 
-by instead jointly estimating $\bmMz$, $\bmTo$, $\bmTt$, and inversion efficiency 
-from the IR and SE datasets together.
-Even using magnitude data and signal models, 
-this resulted in heavily biased parameter maps, 
-possibly due to the dependence 
-of adiabatic inversion efficiency 
-on relaxation parameters \cite{frank:97:spe}.
+	We initially attempted 
+	to circumvent sequential $\bmTo$, then $\bmTt$ estimation 
+	by instead jointly estimating 
+	$\bmMz$, $\bmTo$, $\bmTt$, and 	inversion efficiency 
+	from the IR and SE datasets together.
+	Even using magnitude data and signal models, 
+	this resulted in heavily biased parameter maps, 
+	possibly due to the dependence 
+	of adiabatic inversion efficiency 
+	on relaxation parameters \cite{frank:97:spe}.
 }
-$\bmTo$,
-then $\bmTt$ estimation
+$\bmTo$, then $\bmTt$ estimation
 from IR and SE reference scans.
 We first jointly coil-combine
 all 8-channel IR and SE phantom datasets 
@@ -1266,8 +1293,6 @@ with orange and yellow labels, respectively.
 Within these vials of interest, 
 parameter maps from different scans appear visually similar.
 
-% outside range of interest, most severe bias in T1 ML (0,2) 
-% appears that pure-DESS tends to have significantly greater systematic errors in regions of high T1 
 In higher-$\To$ vials (and the surrounding water),
 more bias is apparent 
 in $\bmToest$ ML and RL estimates 
@@ -1281,26 +1306,26 @@ against $\To$ estimation bias.
 % t1/t2 ml/rls hpd accuracy
 \begin{figure*} [!tbp]
 	\centering
-	\subfigure [$\ToML$ Estimates] {
+	\subfigure [$\ToML$ Estimates] {%
 		\includegraphics [width = 0.45\textwidth] {hpd/2016-06-20,hpd,t1-ml-compare.eps}
 		\label{fig:t1,hpd,ml}
 	}
 	\hspace{0.3cm}
-	\subfigure [$\TtML$ Estimates] {
+	\subfigure [$\TtML$ Estimates] {%
 		\includegraphics [width = 0.45\textwidth] {hpd/2016-06-20,hpd,t2-ml-compare.eps}
 		\label{fig:t2,hpd,ml}
 	}
 	\vspace{-0.3cm}
-	\subfigure [$\ToRL$ Estimates] {
+	\subfigure [$\ToRL$ Estimates] {%
 		\includegraphics [width = 0.45\textwidth] {hpd/2016-06-20,hpd,t1-rls-compare.eps}
 		\label{fig:t1,hpd,rls}
 	}
 	\hspace{0.3cm}
-	\subfigure [$\TtRL$ Estimates] {
+	\subfigure [$\TtRL$ Estimates] {%
 		\includegraphics [width = 0.45\textwidth] {hpd/2016-06-20,hpd,t2-rls-compare.eps}
 		\label{fig:t2,hpd,rls}
 	}
-	\caption{
+	\caption{%
 		Phantom within-ROI sample statistics 
 		of $\bmTo$ and $\bmTt$ ML and RL estimates 
 		from optimized SPGR/DESS and reference IR/SE scan profiles, 
@@ -1354,7 +1379,7 @@ against $\To$ estimation bias.
 		V8 $\TtRL$	& $46 \pm 1.5$ 		& $50. \pm 2.3$ 	& $46 \pm 1.0$ 		& $47.5 \pm 0.85$ 	& \\	
 		\hline \hline	 
 	\end{tabu}
-	\caption{
+	\caption{%
 		Phantom within-ROI sample means $\pm$ sample standard deviations 
 		of $\mathbf{T}_1$ and $\mathbf{T}_2$ estimates 
 		from optimized SPGR/DESS and reference IR/SE scan profiles, 
@@ -1533,16 +1558,20 @@ of brain datasets require less than 3m30s and 9s, respectively.
 % brain t1/t2 maps, jet
 \begin{figure*} [!tbp]
 	\centering
-	\subfigure{
-		\includegraphics [width=15.4cm] {brain/2016-05-31,brain,t1,jet.eps}
+	\subfigure{%
+		\includegraphics [width=15.4cm] {%
+			brain/2016-05-31,brain,t1,jet.eps%
+		}%
 		\label{fig:brain,t1,jet}
-	}
+	}%
 	\vspace{0cm}
-	\subfigure{
-		\includegraphics [width=15.2cm, trim=0 0 0 25, clip] {brain/2016-05-31,brain,t2,jet.eps}
+	\subfigure{%
+		\includegraphics [width=15.2cm, trim=0 0 0 25, clip] {%
+			brain/2016-05-31,brain,t2,jet.eps%
+		}%
 		\label{fig:brain,t2,jet}
-	}
-	\caption{
+	}%
+	\caption{%
 		Colorized $\bmTo$ and $\bmTt$ ML and RL estimates 
 		from the brain of a healthy volunteer.
 		Columns correspond to profiles consisting 
@@ -1629,7 +1658,7 @@ against estimation bias in high-$\To$ regions.
 		\end{tabu}
 	\end{minipage}
 	\vspace{1mm}
-	\caption{
+	\caption{%
 		\emph{Left}:
 		WM/GM ROIs,
 		overlaid on a representative anatomical
@@ -1655,14 +1684,15 @@ against estimation bias in high-$\To$ regions.
 \end{table*} 
 
 Table~\ref{tab:scn-dsgn,brain} summarizes 
-within-ROI sample means and sample standard deviations 
-computed\footnote{We have taken effort 
-to select ROIs that reflect expected anatomy 
-in all coil-combined and registered images, 
-including adjacent slices in images from 3D acquisitions. 
-However, we acknowledge the possibility 
-of some contamination across tissue boundaries, 
-especially WM and/or CSF contamination into cortical GM.
+within-ROI sample means and sample standard deviations compute
+\footnote{%
+	We have taken effort 
+	to select ROIs that reflect expected anatomy 
+	in all coil-combined and registered images, 
+	including adjacent slices in images from 3D acquisitions. 
+	However, we acknowledge the possibility 
+	of some contamination across tissue boundaries, 
+	especially WM and/or CSF contamination into cortical GM.
 }
 over four separate WM ROIs containing 96, 69, 224, and 148 voxels 
 and one pooled cortical GM ROI containing 156 voxels.	
@@ -1710,8 +1740,156 @@ might be more or less sensitive
 to the model mismatch incurred 
 by neglecting to distinguish 
 the multiple $\Tt$ components within each voxel.
-Chapter~\ref{c,mwf} studies multi-compartmental relaxation 
-in much greater detail.
+\edit{%
+	Section~\ref{s,scn-dsgn,multi} 
+	studies $\bmTt$ estimation bias
+	due to multi-compartmental relaxation
+	in more detail.
+}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{%
+	\edit{%
+		Sensitivity to Multiple-Compartment Relaxation
+	}%
+}%
+\label{s,scn-dsgn,multi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This section investigates 
+through simulations and \invivo experiments
+the sensitivity of single-compartment $\bmTt$ estimates 
+to model mismatch
+due to multi-compartment relaxation.
+The exploratory study 
+in SE data discussed here
+inspired other similar unreported studies 
+in SPGR/DESS data
+that contributed 
+to the development of Ch.~\ref{c,mwf}.
+
+We simulate multi-exponential data 
+to arise from three non-exchanging pools 
+of myelinated water 
+$(T_1,T_2) \leftarrow (500,20)$ms, 
+intracellular and extracellular water 
+$(T_1,T_2) \leftarrow (1000,80)$ms, 
+and free water 
+$(T_1,T_2) \leftarrow (3500,250)$ms 
+\cite{mackay:94:ivv, deoni:13:oct}. 
+We assign pool fractions of $(0.15, 0.80, 0.05)$ in WM 
+and $(0, 0.95, 0.05)$ in GM 
+to the 81st slice 
+of the BrainWeb digital phantom 
+\cite{kwan:99:msb, collins:98:dac} 
+to create ground truth 
+$\mathbf{M}_0$, $\mathbf{T}_1$, and $\mathbf{T}_2$ 
+compartment-wise maps.
+We simulate component-wise IR signals 
+(acquisition parameters 
+in Subsection~\ref{sss,scn-dsgn,exp,phant,roi}) 
+and add them to yield noiseless multi-component IR data. 
+We likewise simulate and then add component-wise SE signals 
+to construct three scan profiles 
+consisting of pairs of multi-component SE datasets 
+with variable 
+$\mathbf{T}_\mathrm{E} \in \set{[10,30]^\mathsf{T}, 
+	[10,60]^\mathsf{T}, [10,150]^\mathsf{T}}$.
+To avoid confounding sources of bias, 
+we assume knowledge of a uniform transmit field 
+and a uniform sensitivity profile 
+of a single-channel receive coil.
+We estimate a single-component $\widehat{\mathbf{T}}_1$ ML map 
+from multi-component IR data, 
+which we then use 
+to estimate a single-component $\widehat{\mathbf{T}}_2$ ML map 
+from each multi-exponential SE scan profile.
+	
+\begin{figure*} [!tb]
+	\centering
+	\subfigure{%
+		\includegraphics [width=\textwidth, clip] {%
+			multi-t2/2016-07-17,syn,multi-t2,jet.eps%
+		}%
+		\label{fig:scn-dsgn,syn,multi-t2,jet}
+	}
+	\vspace{0cm}
+	\subfigure{%
+		\includegraphics [width=\textwidth, trim=0 0 0 10, clip] {%
+			multi-t2/2016-05-31,brain,multi-t2,jet.eps%
+		}%
+		\label{fig:scn-dsgn,brain,multi-t2,jet}
+	}%
+	\caption{%
+		Colorized monoexponential $\mathbf{T}_2$ ML estimates 
+		from pairs of (top) multi-exponential simulated 
+		and (bottom) \emph{in vivo} SE datasets. 
+		Columns denote SE dataset echo times. 
+		Colorbar ranges are in milliseconds.
+	}%
+	\label{fig:scn-dsgn,multi-t2,jet}
+\end{figure*}
+
+The upper row of Fig.~\ref{fig:scn-dsgn,multi-t2,jet} 
+compares $\widehat{\mathbf{T}}_2$ maps 
+from simulated multi-exponential SE data.
+The lower row of Fig.~\ref{fig:scn-dsgn,multi-t2,jet} 
+compares \emph{in vivo} $\widehat{\mathbf{T}}_2$ maps 
+from corresponding subsets 
+of the SE reference profile 
+discussed in Section~\ref{ss,scn-dsgn,exp,invivo}.
+As echo times are further separated, 
+$\widehat{T}_2$ in WM 
+approaches $\widehat{T}_2$ in GM, 
+creating an apparent reduction 
+in $\widehat{T}_2$ WM/GM contrast.
+
+\begin{table*} [t]
+	\centering
+	\begin{tabu} {c | c | r r r}
+		\hline 
+		\hline
+			& ROI  		& $(10,30)$ 		& $(10,60)$			& $(10,150)$ \\
+		\hline
+		\multirow{5}{*}{$\TtML$}
+			& \AR WM  & $54 \pm 3.0$ 	& $ 56 \pm 1.9$	& $54 \pm 2.4$ \\
+			& \AL WM 	& $50. \pm 2.2$	& $ 54 \pm 1.8$	& $54 \pm 2.4$ \\
+			& \PR WM  & $55 \pm 2.6$ 	& $58 \pm 2.2$	& $61 \pm 2.6$ \\
+			& \PL WM  & $50 \pm 2.2$ 	& $57 \pm 2.0$	& $61 \pm 2.1$ \\
+			& \A  GM  & $58 \pm 6.5$ 	& $61 \pm 6.8$ 	& $57 \pm 7.3$ \\
+		\hline 
+		\hline
+	\end{tabu}
+	\caption{%
+		Within-ROI sample means $\pm$ 
+		within-ROI sample standard deviations 
+		of monoexponential $\mathbf{T}_2$ ML estimates, 
+		from pairs of \emph{in vivo} SE datasets.
+		Column headers indicate echo times $\mathbf{T}_\mathrm{E}$ (ms) 
+		of SE datasets.
+		Sample statistics are computed 
+		within ROIs indicated in Table~\ref{tab:scn-dsgn,brain}.
+		Single-component $\TtML$ estimates 
+		in WM depend on SE echo times.
+	}
+	\label{tab:scn-dsgn,multi-t2}
+\end{table*}
+
+Table~\ref{tab:scn-dsgn,multi-t2} summarizes 
+$\TtML$ sample means and sample standard deviations 
+(computed within WM/GM ROIs 
+depicted in Table~\ref{tab:scn-dsgn,brain}) 
+from \emph{in vivo} SE scan profiles.
+Single-component $\TtML$ estimates 
+depend on SE echo times 
+more significantly in WM than in GM.
+Comparing with Table~\ref{tab:scn-dsgn,brain}, 
+trends suggest that disagreement 
+in $\TtML$ estimates across scan profiles 
+may in part be attributable 
+to the substantial differences 
+of acquisition parameters (\eg, echo times) 
+used in different pulse sequences. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}

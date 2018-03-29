@@ -19,7 +19,16 @@ for many QMRI applications
 diffusion tensor imaging \cite{bihan:01:dti}, 
 and multi-compartmental imaging \cite{mackay:94:ivv}). 
 Motivated by widespread applications,
-this chapter introduces a general method
+this chapter
+\footnote{%
+\edit{%
+	This chapter mainly derives content
+	from accepted journal paper \cite{nataraj::dfm}
+	that extends two conference papers
+	\cite{nataraj:17:dfm,nataraj:17:slw}.
+}%
+}
+introduces a general method
 for fast MRI parameter estimation.
 
 % signal models nonlinear
@@ -2389,9 +2398,13 @@ All other training and testing details are unchanged from before.
 	\end{tabular}
 	\caption{%
 		Phantom sample statistics
-		of more aggressively trained 
-		VPM, PGPM, and PERK $\To,\Tt$ estimates
-		and NIST NMR reference measurements \cite{keenan:16:msm}.
+		of VPM, PGPM, and PERK $\To,\Tt$ estimates
+		and NIST NMR reference measurements \cite{keenan:16:msm}
+		\edit{%
+			in the case of strong mismatch
+			between acquisition design 
+			versus PERK training distribution support.
+		}%
 		Unlike analogous results in Fig.~\ref{fig:perk,hpd-tight,plot},
 		here the PERK estimator was trained
 		with a sampling distribution

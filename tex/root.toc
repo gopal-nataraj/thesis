@@ -33,76 +33,77 @@
 \contentsline {subsection}{\numberline {3.3.2}$T_2$ estimation from one DESS scan}{25}{subsection.3.3.2}
 \contentsline {section}{\numberline {3.4}Discussion}{27}{section.3.4}
 \contentsline {section}{\numberline {3.5}Conclusion}{28}{section.3.5}
-\contentsline {chapter}{\numberline {4}QMRI\nobreakspace {}Acquisition\nobreakspace {}Design via Min-Max\nobreakspace {}Optimization}{29}{chapter.4}
-\contentsline {section}{\numberline {4.1}Introduction}{29}{section.4.1}
-\contentsline {section}{\numberline {4.2}A CRB-Inspired Scan Selection Method}{31}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}The CRB and its Relevance to QMRI}{31}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Min-max Optimization Problem for Scan Design}{32}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Optimizing SS Sequences for Relaxometry in the Brain}{33}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Scan Design Details}{34}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Scan Profile Comparisons}{35}{subsection.4.3.2}
-\contentsline {section}{\numberline {4.4}Experimentation}{38}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Numerical Simulations}{38}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Phantom Experiments}{41}{subsection.4.4.2}
-\contentsline {subsubsection}{\numberline {4.4.2.1}Within-ROI Statistics}{41}{subsubsection.4.4.2.1}
-\contentsline {subsubsection}{\numberline {4.4.2.2}Across-Repetition Statistics}{43}{subsubsection.4.4.2.2}
-\contentsline {subsection}{\numberline {4.4.3}\emph {In vivo}\xspace Experiments}{47}{subsection.4.4.3}
-\contentsline {section}{\numberline {4.5}Discussion}{51}{section.4.5}
-\contentsline {section}{\numberline {4.6}Conclusion}{52}{section.4.6}
-\contentsline {chapter}{\numberline {5}QMRI Parameter\nobreakspace {}Estimation via\nobreakspace {}Regression\nobreakspace {}with\nobreakspace {}Kernels (PERK)}{54}{chapter.5}
-\contentsline {section}{\numberline {5.1}Introduction}{54}{section.5.1}
-\contentsline {section}{\numberline {5.2}Preliminaries}{56}{section.5.2}
-\contentsline {section}{\numberline {5.3}A Function Optimization Problem \& Kernel Solution}{57}{section.5.3}
-\contentsline {section}{\numberline {5.4}Bias and Covariance Analysis}{60}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Conditional Bias}{60}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Conditional Covariance}{61}{subsection.5.4.2}
-\contentsline {section}{\numberline {5.5}Implementation Considerations}{62}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}A Kernel Approximation}{62}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.5.2}Tuning Parameter Selection}{63}{subsection.5.5.2}
-\contentsline {subsubsection}{\numberline {5.5.2.1}Choosing Sampling Distribution}{64}{subsubsection.5.5.2.1}
-\contentsline {subsubsection}{\numberline {5.5.2.2}Choosing Regularization Parameters}{65}{subsubsection.5.5.2.2}
-\contentsline {subsubsection}{\numberline {5.5.2.3}Choosing Kernel Bandwidth}{65}{subsubsection.5.5.2.3}
-\contentsline {section}{\numberline {5.6}PERK Demonstration in a 1-D Toy Problem}{65}{section.5.6}
-\contentsline {section}{\numberline {5.7}Experimentation}{67}{section.5.7}
-\contentsline {subsection}{\numberline {5.7.1}Methods}{67}{subsection.5.7.1}
-\contentsline {subsubsection}{\numberline {5.7.1.1}Model Selection via Holdout}{68}{subsubsection.5.7.1.1}
-\contentsline {subsubsection}{\numberline {5.7.1.2}Evaluation}{70}{subsubsection.5.7.1.2}
-\contentsline {subsection}{\numberline {5.7.2}Numerical Simulations}{71}{subsection.5.7.2}
-\contentsline {subsection}{\numberline {5.7.3}Phantom Experiments}{72}{subsection.5.7.3}
-\contentsline {subsection}{\numberline {5.7.4}\emph {In vivo}\xspace Experiments}{75}{subsection.5.7.4}
-\contentsline {section}{\numberline {5.8}Robustness Studies}{78}{section.5.8}
-\contentsline {subsection}{\numberline {5.8.1}Mismatch in Training vs. Testing Noise Statistics}{78}{subsection.5.8.1}
-\contentsline {subsection}{\numberline {5.8.2}Mismatch in Scan Design vs. Sampling Distribution Support}{80}{subsection.5.8.2}
-\contentsline {section}{\numberline {5.9}Discussion}{80}{section.5.9}
-\contentsline {section}{\numberline {5.10}Conclusion}{85}{section.5.10}
-\contentsline {chapter}{\numberline {6}Fast\nobreakspace {}Myelin\nobreakspace {}Water\nobreakspace {}Imaging via\nobreakspace {}Acquisition\nobreakspace {}Design\nobreakspace {}and\nobreakspace {}PERK}{87}{chapter.6}
-\contentsline {section}{\numberline {6.1}Introduction}{87}{section.6.1}
-\contentsline {section}{\numberline {6.2}Multi-Compartmental Models for SS Sequences}{89}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}A Two-Compartment SPGR Signal Model}{89}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}A Two-Compartment DESS Signal Model}{95}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}A Fast SS Acquisition for Precise Myelin Imaging}{101}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Scalable Acquisition Design}{101}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}SPGR/DESS Scan Design Implementation Details}{103}{subsection.6.3.2}
-\contentsline {section}{\numberline {6.4}Experimentation}{105}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}Methods}{105}{subsection.6.4.1}
-\contentsline {subsection}{\numberline {6.4.2}Numerical Simulations}{107}{subsection.6.4.2}
-\contentsline {subsubsection}{\numberline {6.4.2.1}Two-Compartment Simulation without Model Mismatch}{108}{subsubsection.6.4.2.1}
-\contentsline {subsubsection}{\numberline {6.4.2.2}Three-Compartment Simulation with Model Mismatch}{110}{subsubsection.6.4.2.2}
-\contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{112}{subsection.6.4.3}
-\contentsline {section}{\numberline {6.5}Discussion}{116}{section.6.5}
-\contentsline {section}{\numberline {6.6}Conclusion}{117}{section.6.6}
-\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{118}{chapter.7}
-\contentsline {section}{\numberline {7.1}Combining PERK with Image Reconstruction}{118}{section.7.1}
-\contentsline {section}{\numberline {7.2}Exploiting Off-Resonance for Myelin Water Imaging}{119}{section.7.2}
-\contentsline {section}{\numberline {7.3}Correlating with Other Myelin Biomarkers}{120}{section.7.3}
-\contentsline {chapter}{Appendices}{121}{section*.8}
+\contentsline {chapter}{\numberline {4}QMRI\nobreakspace {}Acquisition\nobreakspace {}Design via Min-Max\nobreakspace {}Optimization}{30}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{30}{section.4.1}
+\contentsline {section}{\numberline {4.2}A CRB-Inspired Scan Selection Method}{32}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}The CRB and its Relevance to QMRI}{32}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Min-max Optimization Problem for Scan Design}{33}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Optimizing SS Sequences for Relaxometry in the Brain}{34}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Scan Design Details}{35}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Scan Profile Comparisons}{36}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Experimentation}{39}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Numerical Simulations}{39}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Phantom Experiments}{42}{subsection.4.4.2}
+\contentsline {subsubsection}{\numberline {4.4.2.1}Within-ROI Statistics}{42}{subsubsection.4.4.2.1}
+\contentsline {subsubsection}{\numberline {4.4.2.2}Across-Repetition Statistics}{44}{subsubsection.4.4.2.2}
+\contentsline {subsection}{\numberline {4.4.3}\emph {In vivo}\xspace Experiments}{48}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}{\color {blue}Sensitivity to Multiple-Compartment Relaxation }}{52}{section.4.5}
+\contentsline {section}{\numberline {4.6}Discussion}{53}{section.4.6}
+\contentsline {section}{\numberline {4.7}Conclusion}{55}{section.4.7}
+\contentsline {chapter}{\numberline {5}QMRI Parameter\nobreakspace {}Estimation via\nobreakspace {}Regression\nobreakspace {}with\nobreakspace {}Kernels (PERK)}{56}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{56}{section.5.1}
+\contentsline {section}{\numberline {5.2}Preliminaries}{58}{section.5.2}
+\contentsline {section}{\numberline {5.3}A Function Optimization Problem \& Kernel Solution}{59}{section.5.3}
+\contentsline {section}{\numberline {5.4}Bias and Covariance Analysis}{62}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Conditional Bias}{62}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Conditional Covariance}{63}{subsection.5.4.2}
+\contentsline {section}{\numberline {5.5}Implementation Considerations}{64}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}A Kernel Approximation}{64}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Tuning Parameter Selection}{65}{subsection.5.5.2}
+\contentsline {subsubsection}{\numberline {5.5.2.1}Choosing Sampling Distribution}{66}{subsubsection.5.5.2.1}
+\contentsline {subsubsection}{\numberline {5.5.2.2}Choosing Regularization Parameters}{67}{subsubsection.5.5.2.2}
+\contentsline {subsubsection}{\numberline {5.5.2.3}Choosing Kernel Bandwidth}{67}{subsubsection.5.5.2.3}
+\contentsline {section}{\numberline {5.6}PERK Demonstration in a 1-D Toy Problem}{67}{section.5.6}
+\contentsline {section}{\numberline {5.7}Experimentation}{69}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}Methods}{69}{subsection.5.7.1}
+\contentsline {subsubsection}{\numberline {5.7.1.1}Model Selection via Holdout}{70}{subsubsection.5.7.1.1}
+\contentsline {subsubsection}{\numberline {5.7.1.2}Evaluation}{72}{subsubsection.5.7.1.2}
+\contentsline {subsection}{\numberline {5.7.2}Numerical Simulations}{73}{subsection.5.7.2}
+\contentsline {subsection}{\numberline {5.7.3}Phantom Experiments}{74}{subsection.5.7.3}
+\contentsline {subsection}{\numberline {5.7.4}\emph {In vivo}\xspace Experiments}{77}{subsection.5.7.4}
+\contentsline {section}{\numberline {5.8}Robustness Studies}{80}{section.5.8}
+\contentsline {subsection}{\numberline {5.8.1}Mismatch in Training vs. Testing Noise Statistics}{80}{subsection.5.8.1}
+\contentsline {subsection}{\numberline {5.8.2}Mismatch in Scan Design vs. Sampling Distribution Support}{82}{subsection.5.8.2}
+\contentsline {section}{\numberline {5.9}Discussion}{82}{section.5.9}
+\contentsline {section}{\numberline {5.10}Conclusion}{87}{section.5.10}
+\contentsline {chapter}{\numberline {6}Fast\nobreakspace {}Myelin\nobreakspace {}Water\nobreakspace {}Imaging via\nobreakspace {}Acquisition\nobreakspace {}Design\nobreakspace {}and\nobreakspace {}PERK}{89}{chapter.6}
+\contentsline {section}{\numberline {6.1}Introduction}{89}{section.6.1}
+\contentsline {section}{\numberline {6.2}Multi-Compartmental Models for SS Sequences}{91}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}A Two-Compartment SPGR Signal Model}{91}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}A Two-Compartment DESS Signal Model}{97}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}A Fast SS Acquisition for Precise Myelin Imaging}{103}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Scalable Acquisition Design}{103}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}SPGR/DESS Scan Design Implementation Details}{105}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}Experimentation}{107}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Methods}{107}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Numerical Simulations}{109}{subsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.2.1}Two-Compartment Simulation without Model Mismatch}{110}{subsubsection.6.4.2.1}
+\contentsline {subsubsection}{\numberline {6.4.2.2}Three-Compartment Simulation with Model Mismatch}{112}{subsubsection.6.4.2.2}
+\contentsline {subsection}{\numberline {6.4.3}\emph {In vivo}\xspace Experiments}{114}{subsection.6.4.3}
+\contentsline {section}{\numberline {6.5}Discussion}{118}{section.6.5}
+\contentsline {section}{\numberline {6.6}Conclusion}{119}{section.6.6}
+\contentsline {chapter}{\numberline {7}Future\nobreakspace {}Work}{121}{chapter.7}
+\contentsline {section}{\numberline {7.1}{\color {blue}Combining PERK with Image Reconstruction}}{121}{section.7.1}
+\contentsline {section}{\numberline {7.2}Exploiting Off-Resonance for Myelin Water Imaging}{122}{section.7.2}
+\contentsline {section}{\numberline {7.3}Correlating with Other Myelin Biomarkers}{122}{section.7.3}
+\contentsline {chapter}{Appendices}{124}{section*.8}
 \global \c@tocdepth 1\relax 
-\contentsline {section}{\numberline {A.1}Introduction}{121}{section.A.1}
-\contentsline {section}{\numberline {A.2}Problem Formulation}{121}{section.A.2}
-\contentsline {section}{\numberline {A.3}Alternating Minimization Algorithm}{122}{section.A.3}
-\contentsline {section}{\numberline {B.1}Introduction}{124}{section.B.1}
-\contentsline {section}{\numberline {B.2}Signal Model}{124}{section.B.2}
-\contentsline {section}{\numberline {B.3}Two Iterative Algorithms}{131}{section.B.3}
-\contentsline {subsection}{\numberline {B.3.1}Perturbative Expansions}{131}{subsection.B.3.1}
-\contentsline {subsection}{\numberline {B.3.2}Variable Splitting and ADMM}{132}{subsection.B.3.2}
-\contentsline {chapter}{Bibliography}{134}{section*.11}
+\contentsline {section}{\numberline {A.1}Introduction}{124}{section.A.1}
+\contentsline {section}{\numberline {A.2}Problem Formulation}{124}{section.A.2}
+\contentsline {section}{\numberline {A.3}Alternating Minimization Algorithm}{125}{section.A.3}
+\contentsline {section}{\numberline {B.1}Introduction}{127}{section.B.1}
+\contentsline {section}{\numberline {B.2}Signal Model}{127}{section.B.2}
+\contentsline {section}{\numberline {B.3}Two Iterative Algorithms}{134}{section.B.3}
+\contentsline {subsection}{\numberline {B.3.1}Perturbative Expansions}{134}{subsection.B.3.1}
+\contentsline {subsection}{\numberline {B.3.2}Variable Splitting and ADMM}{135}{subsection.B.3.2}
+\contentsline {chapter}{Bibliography}{137}{section*.11}

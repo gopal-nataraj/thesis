@@ -13,7 +13,11 @@ partially investigated but still immature topics
 that are less related to QMRI.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Combining PERK with Image Reconstruction}
+\section{%
+	\edit{%
+		Combining PERK with Image Reconstruction%
+	}%
+}%
 \label{s,future,recon}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -25,24 +29,22 @@ especially when raw data is undersampled.
 One could instead seek 
 to estimate parameters 
 directly from raw data.
-One simple approach 
+One approach 
 to combining image reconstruction
 with PERK-based estimation
 might seek to solve
 the joint optimization problem
 \begin{align}
-	\paren{\est{\bmX},\est{\bmY},\est{\bmh},\est{\bmb}} &\in \set{%
+	\paren{\est{\bmX},\est{\bmY}} &\in \set{%
 		\argmin{%
 			\substack{%
 				\bmX \in \complexes{L \times V} \\
 				\bmY \in \complexes{D \times V} \\
-				\bmh \in \hilb^L \\
-				\bmb \in \complexes{L}
 			}%
 		}%
-		\costa{\bmh,\bmb} 
-			+ \beta_1 \frob{\bmD-\bmY\bmA}^2 
-			+ \beta_2 \sum_{v=1}^V \norm{\bmh\paren{\bmy_v,\bmnu_v}+\bmb-\bmx_v}^2_2
+		\frob{\bmD-\bmY\bmA}^2 
+			+ \beta \sum_{v=1}^V 
+				\norm{\bmh\paren{\bmy_v,\bmnu_v}+\bmb-\bmx_v}^2_2
 	},
 	\label{eq:future,recon}
 \end{align}
@@ -55,23 +57,22 @@ and $D$ image datasets
 at $V$ voxels;
 $\bmh : \complexes{D+N} \mapsto \complexes{L}$ 
 and $\bmb \in \complexes{L}$ 
-together denote a PERK-like regression function with offset;
-$\Psi$ is the PERK cost function \eqref{eq:perk,cost};
+together denote a pre-trained PERK regression function with offset;
 $\bmD \in \complexes{D \times K}$
-collects $D$ raw datasets 
+collects $D$ raw $\bmk$-space datasets 
 each acquired with $K$ samples;
 $\bmA \in \complexes{V \times K}$ 
-denotes the MRI system model;
+denotes the MRI system matrix
+(that models receive coil sensitivity spatial variation 
+and $\bmk$-space sampling);
 $\bmnu_v$ denotes a known parameter at the $v$th voxel;
-and $\beta_1,\beta_2$ are free parameters
-that balance cost function terms.
+and $\beta$ is a free parameter
+that balances cost function terms.
 Here, 
-estimator fidelity to training points
-and image fidelity to raw data
-are respectively enforced 
-by the first and second cost function terms,
-while the third term entangles image reconstruction
-and parameter estimation.
+the first term enforces 
+image fidelity to raw data
+and the second term entangles 
+image reconstruction and parameter estimation.
 
 For continuously differentiable kernels,
 \eqref{eq:future,recon} is amenable 
@@ -80,55 +81,39 @@ via alternating minimization.
 One simple algorithm iterates
 the following updates:
 \begin{align}
-	\paren{\iter{\bmh}{t},\iter{\bmb}{t}} &\gets
-		\argmin{%
-			\substack{%
-				\bmh \in \hilb^L \\
-				\bmb \in \complexes{L}
-			}%
+	\iter{\bmX}{i+1} &\gets
+		\brac{%
+			\bmh\paren{\iter{\bmy}{i}_1,\bmnu_1}+\bmb,
+			\dots,
+			\bmh\paren{\iter{\bmy}{i}_V,\bmnu_1}+\bmb
 		}%
-		\costa{\bmh,\bmb}	+ \beta_2 \sum_{v=1}^V \norm{%
-			\bmh\paren{\iter{\bmy}{t-1}_v,\bmnu_v}+\bmb-\iter{\bmx}{t-1}_v
-		}^2_2%
-		\label{eq:future,hb-update} 
+		\label{eq:future,X-update}
 		\\
-	\iter{\bmY}{t} &\gets
+	\iter{\bmY}{i+1} &\gets
 		\argmin{%
 			\bmY \in \complexes{D \times V}
 		}%
 		\frob{\bmD-\bmY\bmA}^2 + 
-			\frac{\beta_2}{\beta_1} \sum_{v=1}^V \norm{%
-				\iter{\bmh}{t}\paren{\bmy_v,\bmnu_v}+\iter{\bmb}{t}-\iter{\bmx}{t-1}_v
+			\beta \sum_{v=1}^V \norm{%
+				\bmh\paren{\bmy_v,\bmnu_v}+\bmb-\iter{\bmx}{i+1}_v
 			}^2_2%
 		\label{eq:future,Y-update}		
-		\\
-	\iter{\bmX}{t} &\gets
-		\brac{%
-			\iter{\bmh}{t}\paren{\iter{\bmy}{t}_1,\bmnu_1}+\iter{\bmb}{t},
-			\dots,
-			\iter{\bmh}{t}\paren{\iter{\bmy}{t}_V,\bmnu_V}+\iter{\bmb}{t}
-		}%
-		\label{eq:future,X-update}			
 \end{align}
-where $\iter{\paren{\cdot}}{t}$ denotes the $t$th iterate.
-Regression function update \eqref{eq:future,hb-update}
-adaptively retrains 
-using prior iterate per-voxel triples
-$\paren{\iter{\bmx}{t-1}_v,\bmnu_v,\iter{\bmy}{t-1}_v}$
-for $v \in \set{1,\dots,V}$
-as additional training points.
+where $\iter{\paren{\cdot}}{i}$ denotes the $i$th iterate.
+Latent parameter update \eqref{eq:future,X-update}
+applies PERK voxel-wise
+at the current image iterate.
 Image update \eqref{eq:future,Y-update}
 enforces consistency 
 not only with data
-but also with latent parameter iterates
-(via regression function iterates).
-Latent parameter update \eqref{eq:future,X-update}
-evaluates the current regression function iterate
-at the current image iterate.
-Though it does require kernel gradients,
-observe that solving \eqref{eq:future,recon}
-does not require signal model gradients
-and thus \eqref{eq:future,recon} or similar variations 
+but also with latent parameter iterates.
+Locally solving the inner problem 
+within \eqref{eq:future,Y-update}
+via gradient-based optimization
+requires (often simple) kernel gradients
+but does not require signal model gradients.
+Thus, 
+\eqref{eq:future,recon} or similar variations
 may be useful even when analytical signal models
 are cumbersome or altogether unavailable.
  

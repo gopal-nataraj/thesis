@@ -509,6 +509,12 @@ A.~Mackay, K.~Whittall, J.~Adler, D.~Li, D.~Paty, and D.~Graeb, ``In vivo
   visualization of myelin water in brain by magnetic resonance,'' {\em {Mag.
   Res. Med.}}, vol.~31, pp.~{673--7}, June 1994.
 
+\bibitem{deoni:13:oct}
+S.~C.~L. Deoni, L.~Matthews, and S.~H. Kolind, ``One component? {Two}
+  components? {Three?} {The} effect of including a nonexchanging "free" water
+  component in multicomponent driven equilibrium single pulse observation of
+  {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~70, pp.~{147--54}, July 2013.
+
 \bibitem{gill:95:aot}
 R.~D. Gill and B.~Y. Levit, ``Applications of the van {Trees} inequality: {A}
   {Bayesian} {\Cramer-rao} bound,'' {\em {Bernoulli}}, vol.~1, no.~1/2,
@@ -625,12 +631,6 @@ G.~R. Morrell, ``A phase-sensitive method of flip angle mapping,'' {\em {Mag.
 S.~C.~L. Deoni, B.~K. Rutt, T.~Arun, C.~Pierpaoli, and D.~K. Jones, ``Gleaning
   multicomponent {T1} and {T2} information from steady-state imaging data,''
   {\em {Mag. Res. Med.}}, vol.~60, pp.~{1372--87}, Dec. 2008.
-
-\bibitem{deoni:13:oct}
-S.~C.~L. Deoni, L.~Matthews, and S.~H. Kolind, ``One component? {Two}
-  components? {Three?} {The} effect of including a nonexchanging "free" water
-  component in multicomponent driven equilibrium single pulse observation of
-  {T1} and {T2},'' {\em {Mag. Res. Med.}}, vol.~70, pp.~{147--54}, July 2013.
 
 \bibitem{kimeldorf:70:acb}
 G.~S. Kimeldorf and G.~A. Wahba, ``A correspondence between {Bayesian}
@@ -859,6 +859,11 @@ J.~Hennig, ``Multiecho imaging sequences with low refocusing flip angles,''
 E.~Alonso-Ortiz, I.~R. Levesque, and G.~B. Pike, ``{MRI-based} myelin water
   imaging: {A} technical review,'' {\em {Mag. Res. Med.}}, vol.~73,
   pp.~{70--81}, Jan. 2015.
+
+\bibitem{does::ibt}
+M.~D. Does, ``Inferring brain tissue composition and microstructure via {MR}
+  relaxometry,'' {\em {J. Neuroimag.}}, 2018.
+\newblock To appear.
 
 \bibitem{nielsen:13:stf}
 J.-F. Nielsen, D.~Yoon, and D.~C. Noll, ``Small-tip fast recovery imaging using

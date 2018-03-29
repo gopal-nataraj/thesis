@@ -5,7 +5,15 @@
 \label{s,mwf,intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter adapts acquisition design 
+This chapter
+\footnote{%
+\edit{%
+	This chapter partially derives content
+	from in-preparation journal paper \cite{nataraj::fmw}
+	that extends conference paper \cite{nataraj:17:mwf}.
+}%
+} 
+adapts acquisition design 
 (developed in Ch.~\ref{c,scn-dsgn})
 and applies parameter estimation 
 (developed in Ch.~\ref{c,perk})
@@ -157,7 +165,7 @@ for whole-brain myelin water imaging in about 30m scan time
 \cite{deoni:08:gmt}.
 Despite recent further refinements
 \cite{deoni:11:com, deoni:13:oct},
-Myelin water images from SS pulse sequences 
+myelin water images from SS pulse sequences 
 have thus far been shown
 to be incomparable with MWF images
 from MESE pulse sequences
@@ -185,12 +193,15 @@ for single-compartment $\To,\Tt$ estimation
 and found that different optimized scan combinations
 gave rise to significantly different \invivo $\Tt$ estimates
 (but comparable phantom $\Tt$ estimates),
-indicating \invivo sensitivity to model nonidealities.
-Further simulation studies suggested
-that these inconsistencies could be explained
+indicating \invivo sensitivity to model nonidealities
+\edit{%
+	(see Ch.~\ref{c,scn-dsgn}).
+}%
+Further simulation studies 
+suggested that these inconsistencies may be explained
 by multi-compartmental relaxation.
-We investigate here 
-whether this apparent SPGR/DESS sensitivity
+This chapter shows that
+this apparent SPGR/DESS sensitivity
 to multi-compartmental relaxation
 can be exploited 
 for fast myelin water imaging. 
@@ -203,12 +214,17 @@ of a combination of SPGR and DESS scans
 that enables maximally precise estimation
 of the faster-relaxing signal fraction $\ff$
 from two-compartment SPGR/DESS signal models,
-subject to a time constraint.
+subject to a scan time constraint.
 The precision-optimized acquisition 
 is as fast as the SS acquisition 
-proposed in \cite{deoni:11:com},
-but enables $\sim$40\% expected coefficient of variation
+proposed in \cite{deoni:11:com}
+but enables $\sim$$40$\% expected coefficient of variation
 in unbiased $\ff$ estimates.
+\edit{%
+	(Similar calculations for \cite{deoni:08:gmt,deoni:11:com}
+	found that $\ff$ coefficients of variation
+	frequently exceeded $100$\% \cite{lankford:13:oti}.)
+}%
 \Invivo experiments are the first to demonstrate
 lateral WM myelin water content estimates
 from a fast SS acquisition
@@ -321,8 +337,8 @@ $\rfs$ (from fast to slow compartment)
 and $\rsf$ (vice-versa).
 During periods when no RF excitation is present,
 these magnetization dynamics
-decouple in transverse and longitudinal components;
-the two-compartment transverse equations 
+separate in transverse and longitudinal components.
+The two-compartment transverse equations 
 extend \eqref{eq:bloch-free-mxyp} to read
 \begin{align}
 	\dela{t} \mxypf\prt &= 
@@ -389,7 +405,7 @@ Here,
 system matrix $\bmA\pr \in \reals{6 \times 6}$ 
 admits a block diagonal form
 \footnote{%
-	For conciseness we introduce here 
+	For conciseness we use here 
 	the \matlab-like shorthand 
 	$$\brac{\bmM_{1,1}, \bmM_{1,2}; \bmM_{2,1}, \bmM_{2,2}} 
 		\equiv
@@ -451,10 +467,8 @@ in which case \eqref{eq:mwf,epr} simplifies to
 		\qquad \forall t \geq t_0,
 		\label{eq:mwf,epr-eq}
 \end{align}
-a form
-that bears much resemblance  
-to the matrix operator solution
-\eqref{eq:mtx-pr}
+a form that resembles 
+the matrix operator solution \eqref{eq:mtx-pr}
 to the single-compartment Bloch equations
 in the presence
 of only free precession and relaxation.
@@ -628,8 +642,8 @@ via standard solvers
 }. 
 Note that
 if RF pulses are assumed instantaneous
-(\ie, $\TP \gets 0$)
-the longitudinal components
+(\ie, $\TP \gets 0$),
+then the longitudinal components
 of \eqref{eq:mwf,spgr-m-t0}
 are equivalent to \cite[Eq.~34]{spencer:00:mos}.
 Another instructive (and much simpler) special case
@@ -660,8 +674,8 @@ The received signal
 is approximately proportional
 to the integrated transverse magnetization
 arising from both compartments.
-To derive expressions,
-we take further assumptions,
+We take further assumptions
+to derive expressions,
 the first two of which are two-compartment extensions 
 of assumptions used 
 in \S\ref{sss,bkgrd,mri,ss,spgr}: 
@@ -698,10 +712,9 @@ in \S\ref{sss,bkgrd,mri,ss,spgr}:
 		for short echo time $\TE$
 		that minimal exchange occurs
 		between excitation and signal reception.
-		This strong assumption 
-		is only used 
-		to facilitate first-order expansion
-		of the matrix exponential 
+		We use this strong assumption
+		only to facilitate first-order expansion
+		of the matrix exponential
 		in \eqref{eq:mwf,spgr,int-freq},
 		thereby separating broadening integrals 
 		by compartment.
@@ -768,19 +781,22 @@ if exchange between excitation and signal reception is neglected.
 % on ompmed for compartments in general 
 Though the manipulations leading
 to \eqref{eq:mwf,spgr,mod-exchg0} require strong assumptions,
-they serve to minimally demonstrate 
+they serve to demonstrate 
 the nontrivial two-compartment SPGR signal dependence
 on off-resonance distributions.
 Unlike in the single-compartment case,
 the signal decay and dephasing terms
 due to off-resonance effects
 $e^{-\paren{\Rtpf+i\ompfmed}\TE}$ and $e^{-\paren{\Rtps+i\ompsmed}\TE}$
-may \emph{not} be considered
-to simply modify spin density $\mzero$
-(in fact,
-to first order
-they modify compartmental fractions $\ff$ and $\fs$
-of usual interest).
+\edit{%
+	may \emph{not} be absorbed
+	into an apparent spin density 
+	(in fact,
+	to first order
+	these terms would affect 
+	the apparent compartmental fractions
+	of typical interest).
+}%
 Since off-resonance distributions
 do often differ significantly in cerebral tissue
 \cite{miller:10:aot-1, miller:10:aot-2}, 
@@ -1541,7 +1557,7 @@ that enable precise $\ff$ estimation.
 Specifically,
 we set weight matrix 
 $\bmW \gets \diag{\inv{\expect{\bmx,\bmnu}{\ff}}, \zeros{5}}$
-to only penalize $\ff$ imprecision,
+to penalize only $\ff$ imprecision,
 thereby ignoring nuisance parameter imprecision.
 Here, 
 fast-fraction variance weight 
@@ -1563,17 +1579,15 @@ in asymptotically unbiased estimates of $\ff$.
 We approximated expectations 
 of form $\expect{\bmx,\bmnu}{\cdot}$
 by taking empirical averages
-using samples of $\bmx,\bmnu$ drawn 
-from the prior distribution defined as follows.
-We assumed for simplicity
-that all components of $\bmx,\bmnu$ are independent.
-We modeled 
-$\ff \sim \unif{0.03, 0.21}$
+using samples of $\bmx,\bmnu$ 
+drawn from a prior distribution.
+We used a coordinate-wise separable prior distribution,
+modeling $\ff \sim \unif{0.03, 0.21}$
 to conservatively contain
 state-of-the-art MESE MWF measurements in WM
-\cite{zhang:15:com}.
-We assumed $\tf{1}$, $\tf{2}$, $\ts{1}$, and $\ts{2}$
-are Gaussian distributed,
+\cite{zhang:15:com}
+and modeling $\tf{1}$, $\tf{2}$, $\ts{1}$, and $\ts{2}$
+to be Gaussian distributed
 with means $400$ms, $20$ms, $1000$ms, and $80$ms
 selected from literature measurements 
 \cite{mackay:94:ivv, deoni:11:com}
@@ -1614,7 +1628,7 @@ To comply with other fixed pulse sequence timing requirements,
 we required DESS and SPGR repetition times
 to be no less
 than $17.5$ms and $11.8$ms respectively.
-We of course insisted each pair
+We constrained each pair
 of DESS defocusing- and refocusing-echo datasets
 be assigned the same flip angle and repetition time.
 Lastly, 
@@ -1625,7 +1639,7 @@ at least as fast
 as the state-of-the-art fast steady-state acquisition
 proposed in \cite{deoni:11:com}.
 These constraints together defined a convex search space
-over which $\expcost$ was optimized.
+over which we optimized $\expcost$.
 
 We separately optimized \eqref{eq:mwf,expcost}
 for each of the 36
@@ -1693,6 +1707,13 @@ the acquisition defined by $\est{\bmP}$
 is expected to yield $42.5$\% relative standard deviation
 in asymptotically unbiased $\ff$ estimates
 from non-exchanging two-compartment signal models.
+\edit{%
+	Similar calculations 
+	for previous SS myelin water imaging acquisitions
+	\cite{deoni:08:gmt,deoni:11:com}
+	found that $\ff$ relative standard deviations
+	frequently exceeded $100$\% \cite{lankford:13:oti}.
+}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimentation}
@@ -1761,7 +1782,7 @@ We set fast-relaxing fraction marginal distribution
 $\dist{\ff} \gets \unif{-0.1,0.4}$ 
 and note that we sample negative values
 \footnote{%
-	Observe that our two-compartment signal models
+	Our two-compartment signal models
 	are linear in $\ff$
 	and are therefore well-defined
 	for zero or even negative $\ff$ values.
@@ -1932,16 +1953,15 @@ NNLS and RNNLS $\mwf$ estimator statistics
 in two increasingly realistic simulations.
 Simulation~\ref{sss,mwf,exp,sim,2comp}
 investigates estimator performance
-when voxel data is simulated to arise 
-from two water compartments
+when voxel data is simulated 
+to arise from two water compartments
 that recover with the same bulk $\To$ time constant,
 in which case none of the above estimators
 incur bias due to model mismatch.
 Simulation~\ref{sss,mwf,exp,sim,3comp}
 investigates estimator performance
-when voxel data is simulated 
-to more realistically arise
-from three water compartments
+when voxel data is more realistically simulated
+as arising from three water compartments
 that recover with compartment-specific $\To$ time constants,
 in which case any of the above estimators
 could incur bias due to model mismatch.
@@ -1973,7 +1993,7 @@ We prescribed these parameter values
 to the $81$st slice
 of the BrainWeb digital phantom \cite{collins:98:dac}
 to produce $217 \times 181$ ground truth parameter maps.
-We allowed $\stx$ to model $20$\% flip angle spatial variation.
+We generated $\stx$ to model $20$\% flip angle spatial variation.
 Using extended phase graphs 
 to model stimulated echo signal contributions
 due to non-ideal refocusing,
@@ -2238,7 +2258,7 @@ with respect to the ground truth MWF.
 The PERK $\ff$ estimator achieves the lowest errors in WM
 but overestimates in GM
 (as does the ML $\ff$ estimator),
-causing for reduced WM/GM contrast
+causing reduced WM/GM contrast
 relative to other estimators.
 Unlike both $\ff$ estimates,
 both $\mwf$ estimates visibly exhibit systematic error
@@ -2355,7 +2375,7 @@ and holding all other scan parameters fixed
 across DESS scans.
 We achieved desired nominal flip angles
 by scaling a 9.0mm slab-selective Shinnar-Le Roux (SLR) pulse \cite{pauly:91:prf}
-of duration 3.0ms and time-bandwidth product 6.
+of duration~3.0ms and time-bandwidth product~6.
 We interleaved RF excitations 
 with 2 gradient dephasing phase cycles
 over a 3mm slice thickness
@@ -2392,7 +2412,7 @@ by echo spacing $\TE \gets 9.2$ms.
 We designed each refocusing pulse
 as a $21.0$mm slab-selective SLR pulse
 of duration $2.0$ms 
-and time-bandwidth product 2.
+and time-bandwidth product~2.
 We elected to use shaped refocusing pulses
 instead of shorter hard pulses
 to suppress unwanted signal outside the excitation slab
@@ -2789,6 +2809,36 @@ suggesting that $\TR$ variation
 is important for designing acquisitions
 that enable precise $\ff$ estimation.
 
+% though we modeled exchange, didn't use it
+% but mese doesn't use it either
+% influence of exchange depends on myelin thickness and temperature
+% so in vitro, ex vivo studies won't help 
+% there is growing evidence that some significant exchange likely persists in cerebral wm 
+% unclear how sensitive ss signals and more importantly ff estimates are to exchange
+% thorough investigation is future work
+\edit{%
+	Though Subsection~\ref{s,mwf,model} modeled
+	the effects of first-order physical exchange
+	in two-compartment SPGR and DESS models,
+	experiments thereafter
+	used non-exchanging models
+	to work with closed-form signal models
+	and signal gradients
+	during acquisition design
+	and to keep consistent 
+	with standard MESE model assumptions.
+	There is growing evidence however
+	that some significant physical exchange
+	across the myelin bilayers
+	likely persists in cerebral WM
+	(see \cite{does::ibt} for a very recent review).
+	A thorough investigation 
+	of the sensitivity of $\ff$ estimates 
+	from non-exchanging two-compartment SPGR/DESS models
+	to realistic physical exchange rates 
+	is a topic for further research.
+}%
+
 % mese mwf and dess ff use different model assumptions, objective functions, and algorithms that may limit their comparability even with high snr
 % omit: mese mwf allows for arbitrary numbers of compartments but assumes bulk t1 known
 % omit: dess ff allows for compartmental t1 variation but fixes to two compartments
@@ -2861,7 +2911,7 @@ suggesting limited quantitative comparability
 of MESE $\mwf$ and DESS $\ff$ WM estimates. 
 \Invivo experiments are nevertheless the first to demonstrate
 lateral WM myelin water content estimates
-from a fast SS acquisition
+from a fast (3m15s) SS acquisition
 that are similar 
 to conventional MWF estimates
-from a slower MESE MR acquisition.
+from a slower (32m4s) MESE acquisition.
