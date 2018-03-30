@@ -1,8 +1,9 @@
 \contentsline {chapter}{Dedication}{ii}{section*.1}
-\contentsline {chapter}{List of Figures}{vi}{section*.3}
-\contentsline {chapter}{List of Tables}{x}{section*.4}
-\contentsline {chapter}{List of Appendices}{xiii}{section*.5}
-\contentsline {chapter}{Abstract}{xiv}{section*.7}
+\contentsline {chapter}{Acknowledgments}{iii}{section*.2}
+\contentsline {chapter}{List of Figures}{viii}{section*.4}
+\contentsline {chapter}{List of Tables}{xii}{section*.5}
+\contentsline {chapter}{List of Appendices}{xv}{section*.6}
+\contentsline {chapter}{Abstract}{xvi}{section*.8}
 \vspace {1.3ex}\noindent {\bf Chapter}\vspace {1.3ex}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Overview}{2}{section.1.1}
@@ -96,7 +97,7 @@
 \contentsline {section}{\numberline {7.1}{\color {blue}Combining PERK with Image Reconstruction}}{122}{section.7.1}
 \contentsline {section}{\numberline {7.2}Exploiting Off-Resonance for Myelin Water Imaging}{123}{section.7.2}
 \contentsline {section}{\numberline {7.3}Correlating with Other Myelin Biomarkers}{123}{section.7.3}
-\contentsline {chapter}{Appendices}{125}{section*.8}
+\contentsline {chapter}{Appendices}{125}{section*.9}
 \global \c@tocdepth 1\relax 
 \contentsline {section}{\numberline {A.1}Introduction}{125}{section.A.1}
 \contentsline {section}{\numberline {A.2}Problem Formulation}{125}{section.A.2}
@@ -106,4 +107,4 @@
 \contentsline {section}{\numberline {B.3}Two Iterative Algorithms}{135}{section.B.3}
 \contentsline {subsection}{\numberline {B.3.1}Perturbative Expansions}{135}{subsection.B.3.1}
 \contentsline {subsection}{\numberline {B.3.2}Variable Splitting and ADMM}{136}{subsection.B.3.2}
-\contentsline {chapter}{Bibliography}{138}{section*.11}
+\contentsline {chapter}{Bibliography}{138}{section*.12}

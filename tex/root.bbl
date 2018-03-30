@@ -1,5 +1,10 @@
 \begin{thebibliography}{100}
 
+\bibitem{nataraj:17:slw}
+G.~Nataraj, M.~Gao, J.~{\Asslander}, C.~Scott, and J.~A. Fessler, ``Shallow
+  learning with kernels for dictionary-free magnetic resonance
+  fingerprinting,'' in {\em {ISMRM Workshop on MR Fingerprinting}}, 2017.
+
 \bibitem{keenan:16:msm}
 K.~E. Keenan, K.~F. Stupic, M.~A. Boss, S.~E. Russek, T.~L. Chenevert, P.~V.
   Prasad, W.~E. Reddick, K.~M. Cecil, J.~Zheng, P.~Hu, and E.~F. Jackson,
@@ -41,11 +46,6 @@ G.~Nataraj, J.-F. Nielsen, C.~Scott, and J.~A. Fessler, ``Dictionary-free {MRI}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Dictionary-free {MRI} parameter
   estimation via kernel ridge regression,'' in {\em {Proc. IEEE Intl. Symp.
   Biomed. Imag.}}, pp.~{5--9}, 2017.
-
-\bibitem{nataraj:17:slw}
-G.~Nataraj, M.~Gao, J.~{\Asslander}, C.~Scott, and J.~A. Fessler, ``Shallow
-  learning with kernels for dictionary-free magnetic resonance
-  fingerprinting,'' in {\em {ISMRM Workshop on MR Fingerprinting}}, 2017.
 
 \bibitem{nataraj::fmw}
 G.~Nataraj, J.-F. Nielsen, and J.~A. Fessler, ``Fast myelin water imaging via

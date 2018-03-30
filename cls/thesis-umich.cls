@@ -669,8 +669,21 @@
  % Add this page to the table of contents.
  \phantomsection\addcontentsline{toc}{chapter}{Acknowledgments}
  % Insert the text and formatting.
- \insertfront{\@acknowledgments %
-  }{\@acknowledgmentsstyle}{Acknowledgments}{\@acknowledgments@width}
+ \begin{adjustwidth}{0.3in}{0.3in}
+ 	\vspace*{1in}
+	\begin{center} 
+		\textbf{\uppercase{\an{Acknowledgments}}} 
+	\end{center}
+	\ \\[-3ex]
+	\rule[1.4ex]{5.4in}{1pt}%
+	\onehalfspacing%
+	\\ \xspace
+  \insertacknowledgments
+  \\%
+  \rule[1.4ex]{5.4in}{1pt} %
+ \end{adjustwidth}
+ %\insertfront{\@acknowledgments %
+ % }{\@acknowledgmentsstyle}{Acknowledgments}{\@acknowledgments@width}
 }
 
 
