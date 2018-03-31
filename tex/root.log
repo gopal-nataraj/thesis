@@ -1,9 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  30 MAR 2018 14:56
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  30 MAR 2018 20:20
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**root.tex
+**root
 (./root.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
@@ -1266,13 +1265,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 119--119
 
  []
 
-(./f,abs.tex
-Overfull \hbox (2.48164pt too wide) in paragraph at lines 3--24
-[]\OT1/ptm/m/n/12 Quantitative mag-netic res-o-nance imag-ing (QMRI) pro-duces 
-im-ages of MR biomark-|
+(./f,abs.tex [16]
+Overfull \hbox (3.53818pt too wide) in paragraph at lines 74--119
+\OT1/ptm/m/n/12 measurement pairs. In-spired by ma-chine learn-ing, PERK then t
+akes these parameter-|
  []
 
-[16]) [17] ABD: EveryShipout initializing macros
+) [17] [18] ABD: EveryShipout initializing macros
 CHAPTER 1.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 122.
@@ -1585,7 +1584,7 @@ Overfull \hbox (3.00002pt too wide) in paragraph at lines 2240--2257
 CHAPTER 7.
 (./c,future.tex [122
 
-]) [123] [124]
+] [123]) [124]
 APPENDIX A.
 (./a,cc-multi.tex [125
 
@@ -1666,12 +1665,12 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 169.
  ) 
 Here is how much of TeX's memory you used:
- 25065 strings out of 493489
- 463184 string characters out of 3141349
- 651442 words of memory out of 3000000
- 27627 multiletter control sequences out of 15000+200000
+ 25067 strings out of 493489
+ 463218 string characters out of 3141349
+ 651473 words of memory out of 3000000
+ 27629 multiletter control sequences out of 15000+200000
  32839 words of font info for 105 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,21n,61p,1922b,718s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,21n,61p,1918b,719s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (170 pages, 792800 bytes).
+Output written on root.dvi (171 pages, 799272 bytes).

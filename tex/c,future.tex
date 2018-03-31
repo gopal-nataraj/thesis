@@ -13,14 +13,11 @@ partially investigated but still immature topics
 that are less related to QMRI.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{%
-	\edit{%
-		Combining PERK with Image Reconstruction%
-	}%
-}%
+\section{Combine PERK with Image Reconstruction}
 \label{s,future,recon}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\edit{%
 This thesis has considered parameter estimation
 to be separate from image reconstruction.
 This separation affords fast data processing
@@ -116,9 +113,10 @@ Thus,
 \eqref{eq:future,recon} or similar variations
 may be useful even when analytical signal models
 are cumbersome or altogether unavailable.
- 
+}%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Exploiting Off-Resonance for Myelin Water Imaging}
+\section{Exploit Off-Resonance for Myelin Water Imaging}
 \label{s,future,off-res}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -156,7 +154,7 @@ is an active area of research
 in our group.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Correlating with Other Myelin Biomarkers}
+\section{Correlate with Other Myelin Biomarkers}
 \label{s,future,myelin}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -192,3 +190,49 @@ and could serve as a gold-standard \insitu marker.
 MRI and histological markers
 could be compared 
 by correlating respective \exvivo and \insitu studies.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Translate into a Clinical Setting}
+\label{s,future,clinic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\edit{%
+Moving towards clinical translation
+of PERK-based DESS myelin water imaging
+would first require building greater evidence
+that $\ff$ is a specific biomarker 
+for intact myelin content.
+This would require \insitu studies
+to more definitively establish
+whether or not $\ff$ estimates
+correlate with gold-standard histological markers.
+Repetition studies in one or more healthy volunteers 
+would provide evidence of $\ff$ reproducibility.
+Longitudinal research studies in infants or patients
+would respectively provide evidence of whether 
+DESS $\ff$ images are specifically indicative
+of myelination or demyelination. 
+
+% assume we did ex vivo, correlations with histology etc., larger volunteer studies, patient studies, etc. and are reasonably convinced that ff imaging is truly indicative of intact myelin content
+% then we are at the point of clinical translation
+% at this point acq design is slow so assume this is offline and focus on perk estimation
+% since perk after recon, simply inputs reconstructed images and outputs desired parameter images
+% as presented in ch.5, can be trained offline, but need not be if...
+% in undersampled cases e.g. fingerprinting, may be preferable to project into lower dimensional image space before processing
+Enabling clinical studies
+would require packaging PERK
+into a streamlined and automatic workflow.
+At least with fully sampled acquisitions,
+PERK could be implemented 
+to separately follow image reconstruction
+and transmit field mapping,
+taking coil-combined images and flip angle maps as inputs
+and giving $\ff$ (and possibly other parameter) estimates as outputs.
+Though the experiments herein
+used fast (less than 1m) online training,
+PERK could be trained offline 
+with minor implementation modifications
+detailed in Section~\ref{s,perk,disc},
+so long as approximate prior knowledge 
+of noise statistics is available.
+}%
