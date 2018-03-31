@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  30 MAR 2018 22:19
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  30 MAR 2018 23:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1219,19 +1219,19 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 119.
  (./f,ack.tex
 
-Package xcolor Warning: Incompatible color definition on input line 134.
+Package xcolor Warning: Incompatible color definition on input line 135.
 
 
-Package xcolor Warning: Incompatible color definition on input line 134.
+Package xcolor Warning: Incompatible color definition on input line 135.
 
 
-Package xcolor Warning: Incompatible color definition on input line 134.
+Package xcolor Warning: Incompatible color definition on input line 135.
 
 
-Package xcolor Warning: Incompatible color definition on input line 134.
+Package xcolor Warning: Incompatible color definition on input line 135.
 
 
-Package xcolor Warning: Incompatible color definition on input line 134.
+Package xcolor Warning: Incompatible color definition on input line 135.
 
 [3]) [4]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
@@ -7068,10 +7068,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 169.
 Here is how much of TeX's memory you used:
  25122 strings out of 493489
  466398 string characters out of 3141349
- 661008 words of memory out of 3000000
+ 661014 words of memory out of 3000000
  27686 multiletter control sequences out of 15000+200000
  32623 words of font info for 104 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,21n,61p,1918b,719s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (171 pages, 1296196 bytes).
+Output written on root.dvi (171 pages, 1296244 bytes).

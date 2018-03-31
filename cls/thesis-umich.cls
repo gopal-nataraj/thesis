@@ -679,7 +679,7 @@
 	\onehalfspacing%
 	\\ \xspace
   \insertacknowledgments
-  \\%
+  \\[-2ex]%
   \rule[1.4ex]{5.4in}{1pt} %
  \end{adjustwidth}
  %\insertfront{\@acknowledgments %
