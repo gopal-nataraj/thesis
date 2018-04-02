@@ -1,13 +1,13 @@
 % abstract
 \setlength{\parindent}{0ex}
 Quantitative magnetic resonance imaging (QMRI)
-produces images of \edit{potential} MR biomarkers: 
+produces images of potential MR biomarkers: 
 measurable tissue properties
 related to physiological processes
 that characterize the onset and progression
 of specific disorders.
 Though QMRI has potential 
-to be more \edit{diagnostic} 
+to be more diagnostic
 than conventional qualitative MRI,
 QMRI poses challenges 
 beyond those of conventional MRI
@@ -26,7 +26,7 @@ of certain white matter disorders.
 One challenge 
 that presently precludes widespread clinical adoption of QMRI
 involves relatively long scan durations:
-to disentangle \edit{potential} biomarkers
+to disentangle potential biomarkers
 from numerous nuisance MR contrast mechanisms,
 QMRI typically requires more data than conventional MRI
 and thus longer scans. 
@@ -37,91 +37,86 @@ of highly flexible MR acquisitions
 so as to reliably enable precise biomarker estimation.
 Chapter~\ref{c,scn-dsgn} formalizes these challenges
 as a min-max optimal acquisition design problem
-\edit{%
-	that seeks scan parameter combinations
-	that robustly enable precise object parameter estimation.
-	It applies this technique
-	to optimize combinations
-	of spoiled gradient-recalled echo (SPGR) 
-	and dual-echo steady-state (DESS) scans
-	for $\To,\Tt$ relaxometry
-	in white matter (WM) and grey matter (GM) regions
-	of the human brain at 3T field strength.
-	Phantom accuracy experiments showed
-	that SPGR/DESS scan combinations
-	are in excellent agreement 
-	with reference measurements.
-	Phantom precision experiments showed
-	that trends in $\To,\Tt$ pooled sample standard deviations
-	reflect theoretical predictions.
-	\Invivo experiments showed
-	that in WM and GM,
-	$\To,\Tt$ estimates
-	from a pair of optimized DESS scans
-	exhibit precision comparable 
-	to that of optimized combinations 
-	of SPGR and DESS scans.
-	To our knowledge,
-	$\To$ maps from DESS acquisitions
-	are new.
-	This example application illustrates
-	that acquisition design can enable 
-	new biomarker estimation techniques
-	from established MR pulse sequences,
-	a fact that subsequent chapters exploit.
-}%
+that seeks scan parameter combinations
+that robustly enable precise object parameter estimation.
+It applies this technique
+to optimize combinations
+of spoiled gradient-recalled echo (SPGR) 
+and dual-echo steady-state (DESS) scans
+for $\To,\Tt$ relaxometry
+in white matter (WM) and grey matter (GM) regions
+of the human brain at 3T field strength.
+Phantom accuracy experiments showed
+that SPGR/DESS scan combinations
+are in excellent agreement 
+with reference measurements.
+Phantom precision experiments showed
+that trends in $\To,\Tt$ pooled sample standard deviations
+reflect theoretical predictions.
+\Invivo experiments showed
+that in WM and GM,
+$\To,\Tt$ estimates
+from a pair of optimized DESS scans
+exhibit precision comparable 
+to that of optimized combinations 
+of SPGR and DESS scans.
+To our knowledge,
+$\To$ maps from DESS acquisitions are new.
+This example application illustrates
+that acquisition design can enable 
+new biomarker estimation techniques
+from established MR pulse sequences,
+a fact that subsequent chapters exploit.
 
 Another QMRI challenge
 involves the typically nonlinear dependence 
 of MR signal models
-on the underlying \edit{potential} biomarkers of interest:
+on the underlying potential biomarkers of interest:
 these nonlinearities 
 cause conventional likelihood-based estimators
 to either scale very poorly 
 with the number of unknowns
 or risk producing suboptimal estimates
-\edit{%
-	due to spurious local minima.
-	Chapter~\ref{c,perk} instead introduces
-	a fast, general method 
-	for dictionary-free QMRI parameter estimation
-	via regression with kernels (PERK).
-	PERK first uses prior distributions 
-	and the nonlinear MR signal model 
-	to simulate many parameter-measurement pairs.
-	Inspired by machine learning,
-	PERK then takes these parameter-measurement pairs
-	as labeled training points
-	and learns from them a nonlinear regression function
-	using kernel functions and convex optimization.
-	PERK admits a simple implementation
-	as per-voxel nonlinear lifting
-	of MRI measurements 
-	followed by linear minimum mean-squared error regression.
-	Chapter~\ref{c,perk} demonstrates PERK
-	for $\To,\Tt$ estimation
-	using one of the SPGR/DESS acquisitions
-	optimized in Chapter~\ref{c,scn-dsgn}.
-	Numerical simulations 
-	as well as single-slice phantom and \invivo experiments
-	demonstrated that PERK 
-	and two well-suited maximum-likelihood (ML) estimators
-	produce comparable $\To,\Tt$ estimates in WM and GM,
-	but PERK is consistently at least $140\times$ faster.
-	Similar comparisons to an ML estimator  
-	in a more challenging QMRI estimation problem
-	(described in Chapter~\ref{c,mwf})
-	suggest that this $140\times$ acceleration factor
-	will increase by several orders of magnitude
-	for full-volume QMRI estimation problems
-	involving more latent parameters per voxel.
-}%
+due to spurious local minima.
+Chapter~\ref{c,perk} instead introduces
+a fast, general method 
+for dictionary-free QMRI parameter estimation
+via regression with kernels (PERK).
+PERK first uses prior distributions 
+and the nonlinear MR signal model 
+to simulate many parameter-measurement pairs.
+Inspired by machine learning,
+PERK then takes these parameter-measurement pairs
+as labeled training points
+and learns from them a nonlinear regression function
+using kernel functions and convex optimization.
+PERK admits a simple implementation
+as per-voxel nonlinear lifting
+of MRI measurements 
+followed by linear minimum mean-squared error regression.
+Chapter~\ref{c,perk} demonstrates PERK
+for $\To,\Tt$ estimation
+using one of the SPGR/DESS acquisitions
+optimized in Chapter~\ref{c,scn-dsgn}.
+Numerical simulations 
+as well as single-slice phantom and \invivo experiments
+demonstrated that PERK 
+and two well-suited maximum-likelihood (ML) estimators
+produce comparable $\To,\Tt$ estimates in WM and GM,
+but PERK is consistently at least $140\times$ faster.
+Similar comparisons to an ML estimator  
+in a more challenging QMRI estimation problem
+(described in Chapter~\ref{c,mwf})
+suggest that this $140\times$ acceleration factor
+will increase by several orders of magnitude
+for full-volume QMRI estimation problems
+involving more latent parameters per voxel.
 
 Chapter~\ref{c,mwf} applies ideas 
 developed in previous chapters
 to design a new fast method
 for imaging myelin water content,
-a \edit{potential} biomarker for healthy myelin.
+a potential biomarker for healthy myelin.
 Since myelin degeneration characterizes
 certain white matter disorders
 (\eg, multiple sclerosis),
@@ -129,40 +124,38 @@ myelin water quantification
 could improve MRI specificity
 for monitoring the onset and progression
 of such demyelinating conditions.
-\edit{%
-	Specifically,
-	Chapter~\ref{c,mwf} first develops 
-	a two-compartment DESS signal model
-	and then uses a Bayesian variation 
-	of acquisition design (Chapter~\ref{c,scn-dsgn})
-	to optimize a new DESS acquisition
-	for precise myelin water imaging.
-	The precision-optimized acquisition
-	is as fast as conventional SS myelin water imaging acquisitions,
-	but enables $\sim$2-3$\times$ better
-	expected coefficients of variation
-	in fast-relaxing fraction $\ff$ estimates.
-	Simulations without model mismatch demonstrate
-	that PERK (Chapter~\ref{c,perk}) and ML $\ff$ estimates
-	from the proposed DESS acquisition
-	exhibit comparable root mean-squared errors,
-	but PERK is more than $500\times$ faster.
-	Simulations with modest levels of model mismatch suggest
-	that \invivo differences between DESS 
-	and conventional multi-echo spin-echo (MESE) 
-	myelin water images 
-	may be attributable 
-	to either unaccounted bulk-$\To$ modeling errors
-	and accounted flip angle variation 
-	in MESE estimates 
-	and/or 
-	the two-compartment assumption 
-	in DESS estimates.
-	Nevertheless,
-	\invivo experiments are to our knowledge the first
-	to demonstrate lateral WM myelin water content estimates
-	from a fast (3m15s) SS acquisition
-	that are similar 
-	to conventional estimates 
-	from a slower (32m4s) MESE acquisition.
-}%
+Specifically,
+Chapter~\ref{c,mwf} first develops 
+a two-compartment DESS signal model
+and then uses a Bayesian variation 
+of acquisition design (Chapter~\ref{c,scn-dsgn})
+to optimize a new DESS acquisition
+for precise myelin water imaging.
+The precision-optimized acquisition
+is as fast as conventional SS myelin water imaging acquisitions,
+but enables $\sim$2-3$\times$ better
+expected coefficients of variation
+in fast-relaxing fraction $\ff$ estimates.
+Simulations without model mismatch demonstrate
+that PERK (Chapter~\ref{c,perk}) and ML $\ff$ estimates
+from the proposed DESS acquisition
+exhibit comparable root mean-squared errors,
+but PERK is more than $500\times$ faster.
+Simulations with modest levels of model mismatch suggest
+that \invivo differences between DESS 
+and conventional multi-echo spin-echo (MESE) 
+myelin water images 
+may be attributable 
+to either unaccounted bulk-$\To$ modeling errors
+and accounted flip angle variation 
+in MESE estimates 
+and/or 
+the two-compartment assumption 
+in DESS estimates.
+Nevertheless,
+\invivo experiments are to our knowledge the first
+to demonstrate lateral WM myelin water content estimates
+from a fast (3m15s) SS acquisition
+that are similar 
+to conventional estimates 
+from a slower (32m4s) MESE acquisition.

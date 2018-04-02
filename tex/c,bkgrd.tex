@@ -88,8 +88,6 @@ or collection of macroscopically similar spins;
 later chapters consider higher-order effects
 such as multiple (possibly interacting) isochromat compartments
 (Chapter~\ref{c,mwf}).
-%and diffusion
-%(Appendix~\ref{a,dess-diff}).
 
 It is often convenient 
 to study Bloch dynamics in a non-inertial reference frame
@@ -397,7 +395,8 @@ SS sequences produce
 (under certain assumptions \cite{scheffler:99:apd})
 long-time magnetization responses
 that eventually
-\footnote{The progression to steady state takes 
+\footnote{%
+	The progression to steady state takes 
 	on the order of 
 	$5\Tt/\TR$ RF cycles \cite{scheffler:99:apd},
 	typically a small but not insignificant period 
@@ -474,7 +473,8 @@ after the (midpoint of) RF excitation:
 	\label{eq:spgr-daq}
 \end{align}
 The remaining transverse magnetization is spoiled
-\footnote{Transverse signal spoiling 
+\footnote{%
+	Transverse signal spoiling 
 	is often (nearly) achieved in practice
 	using \emph{gradient fields}, 
 	or strong induced field inhomogeneities 
@@ -495,7 +495,8 @@ The remaining transverse magnetization is spoiled
 	\label{foot:spoil}
 }
 following signal reception
-\footnote{MRI signal reception 
+\footnote{%
+	MRI signal reception 
 	also uses gradient fields
 	to spatially localize signal;
 	thus signal reception
@@ -615,7 +616,8 @@ we take a few more usual assumptions:
 	but minimal variation
 	of $\mzero\pr$, $\To\pr$, $\Tt\pr$, and $\flip\pr$.
 	This assumption is reasonable
-	\footnote{Model mismatch due
+	\footnote{%
+		Model mismatch due
 		to within-voxel spatial variation 
 		of relaxation parameters
 		can be significant,
@@ -688,22 +690,23 @@ The excited transverse magnetization
 contributes to a first acquired signal;
 dephases (but does not spoil completely) 
 due to gradient dephasing
-\footnote{It is worth distinguishing 
-gradient dephasing
-(commonly 
-but somewhat misleadingly 
-referred to as gradient spoiling)
-from RF spoiling.
-Gradient dephasing
-(used in DESS)
-primarily affects magnetization phase
-and is modeled simply as precession.
-RF spoiling
-(used in SPGR)
-combines gradient dephasing 
-with nonlinear RF phase cycling
-and suppresses magnetization magnitude 
-in steady-state.
+\footnote{%
+	It is worth distinguishing 
+	gradient dephasing
+	(commonly 
+	but somewhat misleadingly 
+	referred to as gradient spoiling)
+	from RF spoiling.
+	Gradient dephasing
+	(used in DESS)
+	primarily affects magnetization phase
+	and is modeled simply as precession.
+	RF spoiling
+	(used in SPGR)
+	combines gradient dephasing 
+	with nonlinear RF phase cycling
+	and suppresses magnetization magnitude 
+	in steady-state.
 }
 and contributes again to a second 
 (smaller, but nonzero) acquired signal.
@@ -831,15 +834,16 @@ at the acquisition time
 before excitation,
 we consider the free precession and relaxation
 that occurs between 
-\footnote{Observe that we do not attempt
-to express the magnetization 
-prior to (the next) RF excitation
-by simply operating on the magnetization after (the current) RF excitation
-with further precession and relaxation.
-The reason is due to the intermediate dephasing gradient,
-which causes phase accrual
-in excess of off-resonance effects
-and thus forbids an approximation akin to \eqref{eq:dess-mxyp-te1}.
+\footnote{%
+	Observe that we do not attempt
+	to express the magnetization 
+	prior to (the next) RF excitation
+	by simply operating on the magnetization after (the current) RF excitation
+	with further precession and relaxation.
+	The reason is due to the intermediate dephasing gradient,
+	which causes phase accrual
+	in excess of off-resonance effects
+	and thus forbids an approximation akin to \eqref{eq:dess-mxyp-te1}.
 }
 signal reception and excitation:
 \begin{align}
@@ -878,7 +882,8 @@ on the full-repetition phase accrual $\php\pr$:
 		but minimal variation
 		of $\mzero\pr$, $\To\pr$, $\Tt\pr$, and $\flip\pr$.
 		This assumption is reasonable
-		\footnote{Model mismatch due
+		\footnote{%
+			Model mismatch due
 			to within-voxel spatial variation 
 			of relaxation parameters
 			can be significant,
@@ -898,7 +903,8 @@ on the full-repetition phase accrual $\php\pr$:
 	\item We assume that 
 		the dephasing gradient imparts 
 		an integral number $\cyc$ of across-voxel phase cycles
-		\footnote{In theory,
+		\footnote{%
+			In theory,
 			it suffices to design dephasing gradients
 			to impart as little as one cycle
 			of net phase variation across a voxel.
@@ -917,11 +923,6 @@ on the full-repetition phase accrual $\php\pr$:
 			larger dephasing gradients
 			cause greater DESS signal loss
 			due to unaccounted diffusive effects.
-			%Appendix~\ref{a,dess-diff} 
-			%studies diffusion in DESS
-			%and discusses regimes of dephasing gradient moments
-			%that balance partial-spoiling versus diffusive
-			%sources of model mismatch.
 		}
 		such that full-repetition phase accrual $\php\pr$ 
 		is distributed essentially uniformly
@@ -1117,21 +1118,22 @@ that is a constrained global minimum
 If instead $\cost$ is non-convex 
 (but $\setX$ is still convex),
 statements regarding convergence
-\footnote{For example, 
-it suffices to assume
-that $\bmxi{0}$ lies
-in the \emph{attraction basin} $\setB{\bmxt}$
-of a given unconstrained local minimum $\bmxt$, 
-where attraction basin 
-is defined here as the largest convex set
-containing $\bmxt$ 
-over which $\cost$ is convex.
-If $\setB{\bmxt} \cap \setX$ is nonempty 
-and step sizes within $\bmPi$ are small enough 
-to contain iterates
-within $\setB{\bmxt}$,
-then iterates converge
-to the limit point $\proja{\setX}{\bmxt}$.
+\footnote{%
+	For example, 
+	it suffices to assume
+	that $\bmxi{0}$ lies
+	in the \emph{attraction basin} $\setB{\bmxt}$
+	of a given unconstrained local minimum $\bmxt$, 
+	where attraction basin 
+	is defined here as the largest convex set
+	containing $\bmxt$ 
+	over which $\cost$ is convex.
+	If $\setB{\bmxt} \cap \setX$ is nonempty 
+	and step sizes within $\bmPi$ are small enough 
+	to contain iterates
+	within $\setB{\bmxt}$,
+	then iterates converge
+	to the limit point $\proja{\setX}{\bmxt}$.
 }
 to a particular constrained local minimizer
 require additional (strong) assumptions

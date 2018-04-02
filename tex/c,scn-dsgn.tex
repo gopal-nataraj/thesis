@@ -33,11 +33,9 @@ Motivated by this broad interest
 in $\To, \Tt$ mapping, 
 this chapter
 \footnote{%
-\edit{%
 	This chapter mainly derives content
 	from published journal paper \cite{nataraj:17:oms}
 	that extends conference paper \cite{nataraj:15:amm}.
-}%
 }
 describes a systematic method 
 to guide QMRI scan design.
@@ -185,11 +183,9 @@ DESS is a promising option for $\To,\Tt$ relaxometry.
 Section~\ref{s,scn-dsgn,exp} describes 
 simulation, phantom, and \invivo experiments 
 and discusses corresponding results.
-\edit{%
-	Section~\ref{s,scn-dsgn,multi} investigates
-	the sensitivity of single-compartment $\Tt$ estimates
-	to model mismatch due to multi-compartment relaxation.
-}%
+Section~\ref{s,scn-dsgn,multi} investigates
+the sensitivity of single-compartment $\Tt$ estimates
+to model mismatch due to multi-compartment relaxation.
 Section~\ref{s,scn-dsgn,disc} discusses 
 advantages, challenges, and extensions.
 Section~\ref{s,scn-dsgn,conc} summarizes key contributions.
@@ -490,7 +486,8 @@ $\setAs^{\Ss} \times \setAd^{\Sd} \times \setTRs^{\Ss} \times \setTRd^{\Sd}$
 We assign flip angle ranges 
 $\setAs \gets \brac{5, 90}^\circ$ 
 and $\setAd \gets \brac{5, 90}^\circ$
-to restrict RF energy deposition. 
+to restrict RF energy deposition
+within the orifice of the main magnet.
 We set feasible $\TR$ solution sets 
 $\setTRs \gets [12.2, +\infty)$ms 
 and $\setTRd \gets [17.5, +\infty)$ms 
@@ -1740,23 +1737,16 @@ might be more or less sensitive
 to the model mismatch incurred 
 by neglecting to distinguish 
 the multiple $\Tt$ components within each voxel.
-\edit{%
-	Section~\ref{s,scn-dsgn,multi} 
-	studies $\bmTt$ estimation bias
-	due to multi-compartmental relaxation
-	in more detail.
-}%
+Section~\ref{s,scn-dsgn,multi} 
+studies $\bmTt$ estimation bias
+due to multi-compartmental relaxation
+in more detail.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{%
-	\edit{%
-		Sensitivity to Multiple-Compartment Relaxation
-	}%
-}%
+\section{Sensitivity to Multiple-Compartment Relaxation}
 \label{s,scn-dsgn,multi}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\edit{%
 This section investigates 
 through simulations and \invivo experiments
 the sensitivity of single-compartment $\bmTt$ estimates 
@@ -1805,7 +1795,6 @@ from multi-component IR data,
 which we then use 
 to estimate a single-component $\widehat{\mathbf{T}}_2$ ML map 
 from each multi-exponential SE scan profile.
-}
 	
 \begin{figure*} [!tb]
 	\centering
@@ -1823,18 +1812,15 @@ from each multi-exponential SE scan profile.
 		\label{fig:scn-dsgn,brain,multi-t2,jet}
 	}%
 	\caption{%
-		\edit{%
 		Colorized monoexponential $\mathbf{T}_2$ ML estimates 
 		from pairs of (top) multi-exponential simulated 
 		and (bottom) \emph{in vivo} SE datasets. 
 		Columns denote SE dataset echo times. 
 		Colorbar ranges are in milliseconds.
-		}%
 	}%
 	\label{fig:scn-dsgn,multi-t2,jet}
 \end{figure*}
 
-\edit{%
 The upper row of Fig.~\ref{fig:scn-dsgn,multi-t2,jet} 
 compares $\widehat{\mathbf{T}}_2$ maps 
 from simulated multi-exponential SE data.
@@ -1848,7 +1834,6 @@ $\widehat{T}_2$ in WM
 approaches $\widehat{T}_2$ in GM, 
 creating an apparent reduction 
 in $\widehat{T}_2$ WM/GM contrast.
-}%
 
 \begin{table*} [t]
 	\centering
@@ -1867,7 +1852,6 @@ in $\widehat{T}_2$ WM/GM contrast.
 		\hline
 	\end{tabu}
 	\caption{%
-		\edit{%
 		Within-ROI sample means $\pm$ 
 		within-ROI sample standard deviations 
 		of monoexponential $\mathbf{T}_2$ ML estimates, 
@@ -1878,12 +1862,10 @@ in $\widehat{T}_2$ WM/GM contrast.
 		within ROIs indicated in Table~\ref{tab:scn-dsgn,brain}.
 		Single-component $\TtML$ estimates 
 		in WM depend on SE echo times.
-		}%
-	}
+	}%
 	\label{tab:scn-dsgn,multi-t2}
 \end{table*}
 
-\edit{%
 Table~\ref{tab:scn-dsgn,multi-t2} summarizes 
 $\TtML$ sample means and sample standard deviations 
 (computed within WM/GM ROIs 
@@ -1899,7 +1881,6 @@ may in part be attributable
 to the substantial differences 
 of acquisition parameters (\eg, echo times) 
 used in different pulse sequences. 
-}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
@@ -1989,11 +1970,9 @@ and/or other data for joint estimation.
 
 By working with closed-form signal expressions, 
 we neglect to model several higher-order effects
-\edit{%
-	(\eg, 
-	interactions between 
-	multiple intravoxel water compartments).
-}%
+(\eg, 
+interactions between 
+multiple intravoxel water compartments).
 However, it is apparent 
 that the nonlinear estimation procedures required 
 for many mapping problems 
@@ -2059,9 +2038,7 @@ in WM as consistently as the $(2,1)$ profile.
 This and other disagreements across profiles \emph{in vivo} 
 may be attributable 
 to differences in signal model sensitivities 
-\edit{%
-	to multi-compartmental relaxation.
-}%
+to multi-compartmental relaxation.
 Nevertheless, 
 the example application 
 studied in this chapter illustrates 

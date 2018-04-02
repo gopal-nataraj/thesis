@@ -7,11 +7,9 @@
 
 This chapter
 \footnote{%
-\edit{%
 	This chapter partially derives content
 	from in-preparation journal paper \cite{nataraj::fmw}
 	that extends conference paper \cite{nataraj:17:mwf}.
-}%
 } 
 adapts acquisition design 
 (developed in Ch.~\ref{c,scn-dsgn})
@@ -41,11 +39,6 @@ is thus desirable
 for monitoring the onset and progression
 of neurodegenerative disease.
 
-% MR relaxation rates (esp t2) depend on water environment
-% local water environment changes on sub-millimeter scale
-% MR sensitive only on millimeter scale
-% need to assign a macroscopic t2 to each pool or compartment
-% thus multiple water compartments contribute to each voxel at typical resolutions
 MR relaxation time constants
 (especially spin-spin time constant $\Tt$)
 depend on the macromolecular environment
@@ -61,12 +54,6 @@ of relaxation times
 within a typical imaging voxel 
 containing nerve tissue.
 
-% natural to try to separate t2 components in mri
-% several groups measured first in vitro short t2 pool in white matter
-% assigned to water in myelin (trapped in bilayers?)
-% later measured in vivo, who termed mwf (mackay)
-% mwf found to correlate well in vivo with histology (laule)
-% mwf thus noninvasive MR-based biomarker for myelin content
 Many researchers have attempted 
 to characterize tissue microstructure
 by estimating the distribution
@@ -124,12 +111,6 @@ that MWF as defined in \cite{mackay:94:ivv}
 is a specific biomarker
 for WM myelin content.
 
-% all aforementioned studies used MESE 
-% MESE typically uses long tr to ensure full recovery between excitations
-% thus MESE acquisitions take long time
-% mcdespot based on ss techniques (specifically spgr and bssfp) 
-% shown to disagree significantly with ss 
-% maybe due to insufficient precision
 All of the aforementioned studies
 estimate MWF images
 from a multi-echo spin echo (MESE) MRI pulse sequence
@@ -158,17 +139,15 @@ of MESE acquisitions
 and thus would still require long scan times
 for whole-brain MWF imaging
 at millimeter-scale resolution.
-\edit{%
-	Furthermore,
-	estimating a $\Tt$ distribution
-	from MESE data
-	constitutes a poorly-conditioned estimation problem
-	that continues to demand high SNR 
-	\cite{alonsoortiz:15:mbm,does::ibt},
-	so the need remains 
-	for a more SNR-efficient acquisition
-	for myelin water imaging.
-}%
+Furthermore,
+estimating a $\Tt$ distribution
+from MESE data
+constitutes a poorly-conditioned estimation problem
+that continues to demand high SNR 
+\cite{alonsoortiz:15:mbm,does::ibt},
+so the need remains 
+for a more SNR-efficient acquisition
+for myelin water imaging.
 As an alternative to MESE acquisitions,
 scan profiles consisting of short-$\TR$ steady-state (SS) sequences
 were proposed 
@@ -184,13 +163,6 @@ from MESE pulse sequences
 likely due at least in part
 to insufficient precision \cite{lankford:13:oti}.
 
-% motivation for switching to dess
-% inspired by nataraj:17:oms, we reconsidered mwf imaging from ss sequences from perspective of statistical scan design
-% there, we optimized spgr/dess combos for single-component t1/t2 but found that different scan parameter combos gave different t2 values in vivo
-% t2 value differences were attributed to multicompartmental relaxation
-% served as initial evidence that spgr/dess scans can be sensitive to multicompartment
-% in particular, dess signals long known to be sensitive to single-component t2
-% here, we explore dess sensitivity to multi-compartmental relaxation
 Inspired by \cite{nataraj:17:oms},
 we reconsidered myelin water imaging from SS pulse sequences
 from the perspective of statistical experiment design.
@@ -205,9 +177,7 @@ and found that different optimized scan combinations
 gave rise to significantly different \invivo $\Tt$ estimates
 (but comparable phantom $\Tt$ estimates),
 indicating \invivo sensitivity to model nonidealities
-\edit{%
-	(see Ch.~\ref{c,scn-dsgn}).
-}%
+(see Ch.~\ref{c,scn-dsgn}).
 Further simulation studies 
 suggested that these inconsistencies may be explained
 by multi-compartmental relaxation.
@@ -231,12 +201,10 @@ is as fast as the SS acquisition
 proposed in \cite{deoni:11:com}
 but enables $\sim$$40$\% expected coefficient of variation
 in unbiased $\ff$ estimates.
-\edit{%
-	(Similar calculations for \cite{deoni:08:gmt,deoni:11:com}
-	found that $\ff$ coefficients of variation
-	frequently exceeded $100$\% \cite{lankford:13:oti}.)
-	To our knowledge,
-}%
+(Similar calculations for \cite{deoni:08:gmt,deoni:11:com}
+found that $\ff$ coefficients of variation
+frequently exceeded $100$\% \cite{lankford:13:oti}.)
+To our knowledge,
 \invivo experiments are the first to demonstrate
 (lateral) WM myelin water content estimates
 from a fast SS acquisition
@@ -788,9 +756,6 @@ and shows clearly
 that compartmental signals simply add
 if exchange between excitation and signal reception is neglected. 
 
-% here very simple model
-% but already shows nontrivial phase dependence
-% on ompmed for compartments in general 
 Though the manipulations leading
 to \eqref{eq:mwf,spgr,mod-exchg0} require strong assumptions,
 they serve to demonstrate 
@@ -800,15 +765,13 @@ Unlike in the single-compartment case,
 the signal decay and dephasing terms
 due to off-resonance effects
 $e^{-\paren{\Rtpf+i\ompfmed}\TE}$ and $e^{-\paren{\Rtps+i\ompsmed}\TE}$
-\edit{%
-	may \emph{not} be absorbed
-	into an apparent spin density 
-	(in fact,
-	to first order
-	these terms would affect 
-	the apparent compartmental fractions
-	of typical interest).
-}%
+may \emph{not} be absorbed
+into an apparent spin density 
+(in fact,
+to first order
+these terms would affect 
+the apparent compartmental fractions
+of typical interest).
 Since off-resonance distributions
 do often differ significantly in cerebral tissue
 \cite{miller:10:aot-1, miller:10:aot-2}, 
@@ -1555,11 +1518,6 @@ from separate fast acquisitions, \eg \cite{sacolick:10:bmb})
 and collected the remaining $L \gets 6$ latent parameters
 as $\bmx \gets \brac{\ff, \tf{1}, \tf{2}, \ts{1}, \ts{2}, \const{3}}$.
 
-% take ff as proxy for mwf
-% focus on estimating ff and take rest as nuisance
-% suffices to design W as zero everywhere but for ff
-% actually design W as inv of mean^2 
-% then for symmetric distribution, sqrt(cost) interpretable as rstd
 We took fast-relaxing compartmental fraction $\ff$ 
 to be a quantitative measure 
 of myelin water content 
@@ -1581,13 +1539,6 @@ of the expected relative standard deviation
 afforded by $\bmP$ 
 in asymptotically unbiased estimates of $\ff$. 
 
-% take simple distributional assumptions for expectations
-% all components of x,nu independent 
-% ff unif dist on [0.03, 0.21]
-% t1f,t2f,t1s,t2s gauss dist with means 400,20,1000,80 and std 20% of means
-% since W places no weight on c3, suffices to fix it to 1
-% nu dist as unif on [0.9,1.1] to account for 10% var in flip
-% constant noise variance 1.49 times 10^-7 matches norm measurements from before
 We approximated expectations 
 of form $\expect{\bmx,\bmnu}{\cdot}$
 by taking empirical averages
@@ -1618,14 +1569,6 @@ Lastly,
 we modeled $\stx \sim \unif{0.9,1.1}$ 
 to account for 10\% flip angle spatial variation.
 
-% constrain search space based on hardware limitations, safety limitations, where model expected to be accurate, and to encourage fast scan
-% dess flips and trs of course must be equal for each dess scan
-% dess flip between 1 and 60 deg 
-% spgr flip between 1 and 40 deg (beyond which partial spoiling causes issues)
-% dess tr geq 17.5 ms
-% spgr tr geq 12.2 ms
-% total time leq 263.7ms selected to allow equal data with our hardware restrictions as in Deoni, at minimal TR for each scan
-% all constraints define a convex search space, so eq:mwf,P-iter converges
 We constrained our search space $\setP$
 to reflect hardware, safety, and model-accuracy limitations
 and to avoid undesirably long acquisitions.
@@ -1719,13 +1662,11 @@ the acquisition defined by $\est{\bmP}$
 is expected to yield $42.5$\% relative standard deviation
 in asymptotically unbiased $\ff$ estimates
 from non-exchanging two-compartment signal models.
-\edit{%
-	Similar calculations 
-	for previous SS myelin water imaging acquisitions
-	\cite{deoni:08:gmt,deoni:11:com}
-	found that $\ff$ relative standard deviations
-	frequently exceeded $100$\% \cite{lankford:13:oti}.
-}%
+Similar calculations 
+for previous SS myelin water imaging acquisitions
+\cite{deoni:08:gmt,deoni:11:com}
+found that $\ff$ relative standard deviations
+frequently exceeded $100$\% \cite{lankford:13:oti}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimentation}
@@ -1779,7 +1720,6 @@ to be nuisance parameters
 and thus did not evaluate the performance 
 of their (possibly imprecise) estimators.
 
-% perk training/testing 
 We estimated $\ff$ 
 using the PERK estimator
 developed in Ch.~\ref{c,perk}.
@@ -2100,9 +2040,6 @@ while ML estimation took $17726$s (nearly $5$h).
 	\label{fig:mwf,2comp}
 \end{figure}
 
-% nnls and rnnls exhibit bias due to flip angle variation, even though perfectly known
-% rnnls underestimates due to regularization
-% perk clearly gives smaller wm error over ml
 Fig.~\ref{fig:mwf,2comp} compares NNLS and RNNLS $\mwf$ estimates
 as well as ML and PERK $\ff$ estimates 
 alongside magnitude difference images
@@ -2157,12 +2094,6 @@ for estimating WM-like $\ff$ values.
 	\label{tab:mwf,2comp}
 \end{table}
 
-% with exception of mese-rnnls in gm, all estimates agree with truth to within one std
-% nnls more accurate but less precise than rnnls
-% nnls has least error overall, perhaps due to discrete compartments
-% perk more precise but less accurate than ml
-% perk provides better wm rmse than ml 
-% perk provides slightly worse gm rmse than ml
 Table~\ref{tab:mwf,2comp} compares samples statistics 
 of NNLS and RNNLS $\mwf$ estimates
 as well as ML and PERK $\ff$ estimates,
@@ -2258,11 +2189,6 @@ while ML estimation took $17681$s (nearly 5h).
 	\label{fig:mwf,3comp}
 \end{figure}
 
-% all estimates are systematically higher than fig. 2, 
-% 	indicating varying levels of sensitivity to model mismatch
-% still see mese errors due to spatial variation
-% all estimators except mese rnnls have greater error in gm
-% all estimators except dess perk have visibly greater error in wm
 Fig.~\ref{fig:mwf,3comp} compares NNLS and RNNLS $\mwf$ estimates
 as well as ML and PERK $\ff$ estimates
 alongside magnitude difference images
@@ -2324,15 +2250,6 @@ model mismatch is detrimental to estimation performance.
 	\label{tab:mwf,3comp}
 \end{table}
 
-% now, several estimates >1sd higher than truth
-% dess-perk most accurate and least rmse in wm (but highest rmse in gm)
-% mese-nnls most accurate and least rmse in gm (but highest rmse in wm)
-% mese-rnnls now both more accurate and more precise than mese-nnls in wm
-% dess-perk now both more accurate and more precise than dess-ml in wm
-% fortunately, mese-rnnls mwf and dess-perk ff estimates do not differ significantly in wm
-% 	though they do in gm
-% 	suggesting that these may be comparable even when characterizing 3-compartment systems,
-% 	at least for the parameters selected here
 Table~\ref{tab:mwf,3comp} compares sample statistics
 of NNLS and RNNLS $\mwf$ estimates
 as well as ML and PERK $\ff$ estimates,
@@ -2403,15 +2320,6 @@ we sampled $\bmk$-space over a 3D Cartesian grid.
 Including time to reach steady-state,
 the DESS acquisition took 3m15s scan time.
 
-% same excitation but 90deg
-% 32 nominal 180 ref pulses, 21.0mm slab thickness (centered over excitation slab), 2.0ms duration, tbw2, sep by min te, first at te/2
-% refocusing pulses surrounded by symmetric gradient crusher pairs that impart 14cycles phase across 21.0mm slab thickness (2cycles per slice)
-% acquired 32 echoes te/2 after each refocusing pulse
-% 8 cycles spoiling after last echo to suppress residual transverse mag
-% short tr of 600ms (but account for bulk t1 in recon)
-% repeat twice for better snr
-% acquired mese data over same volume, readout bandwidth, k-space trajectory as above
-% total time including 3 empty repetitions to reach steady state, each MESE scan took 961.8s (16m1.8s) for total MESE acquisition time of 32m3.6s
 We acquired MESE data
 with nominally $90^\circ$ excitation flip angles,
 achieved by scaling the same SLR pulse shape as above.
@@ -2455,13 +2363,6 @@ Including three prepended repetitions to approach steady-state,
 each MESE scan took $16$m$2$s
 for a total MESE acquisition time of $32$m$4$s.
 
-% spgr
-% 117 deg quad phase increment
-% te 5.09ms
-% tr 13.08ms
-% flips 5:5:45
-% same readout 
-% 8cyc spoiling
 We acquired SPGR data
 for separate bulk $\To$ estimation.
 We varied across nine scans nominal flip angles 
@@ -2487,10 +2388,6 @@ each $\TR \gets 13.1$ms-long repetition \cite{zur:91:sot}.
 Including time to reach steady-state,
 the SPGR acquisition took $3$m$32$s scan time.
 
-% 4khz fermi pulse
-% cautiously long 300ms tr to prevent excess rf heating
-% 50 phase encodes
-% including time for steady state, 4m30s total for both scans
 We acquired a pair 
 of BS-shifted SPGR scans \cite{sacolick:10:bmb}
 for separate flip angle scaling $\stx$ estimation.
@@ -2512,14 +2409,6 @@ All other scan parameters were the same as for the SPGR acquisition.
 Including time to reach steady-state,
 the BS acquisition took $4$m$30$s scan time.
 
-% 3d fft all raw coil data
-% upsampled bs data in phase encoding direction
-% separately normalized and coil-combined all data
-% estimated kap via regularized bs mapping
-% used kap to estimate bulk t1 from spgr via vpm
-% registered kap, t1, dess, both mese scans to first mese scan
-% used kap to estimate ff from dess as described before
-% used kap and bulk-t1 to estimate mwf from mese as described before
 We reconstructed all raw coil images
 via 3D Fourier transform
 and subsequently processed only one image slice
@@ -2589,11 +2478,6 @@ PERK training and testing respectively took $37.1$s and $1.0$s.
 	\label{fig:mwf,invivo}
 \end{figure}
 
-% mese-rnnls and dess-perk lateral wm values appear visually similar
-% rnnls values appear lower but show less variation than nnls maps, due to regularization
-% mese estimates higher in medial regions
-% 	similar spatial pattern to simulations, perhaps due to b1 errors
-% 	lower values in internal capsules may be due to overlap between mw and iew peaks zhang:15:com
 Fig.~\ref{fig:mwf,invivo} compares 
 NNLS and RNNLS $\mwf$ estimates from MESE scans
 as well as PERK $\ff$ estimates from optimized DESS scans.
@@ -2676,12 +2560,6 @@ despite compensation for transmit field inhomogeneity.
 	\label{tab:mwf,invivo}
 \end{table}
 
-% dess-perk has lower within-roi variation in wm (higher in gm)
-% dess-perk has more similar estimates across wm rois
-% rnnls has lower estimates, less wm variation than nnls (said above)
-% nnls and rnnls sig higher in ic wm than in lateral wm rois
-% dess perk significantly different estimates than mese fm in several wm rois, though comparable to other studies (see alonso-ortiz) for a review)
-% no methods measure significant myelin water content in ac gm
 Table~\ref{tab:mwf,invivo} summarizes sample statistics
 of NNLS/RNNLS $\mwf$ estimates from MESE scans
 and PERK $\ff$ estimates from optimized DESS scans,
@@ -2710,10 +2588,6 @@ measured significant myelin water content in AC GM.
 \label{s,mwf,disc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% first work to demonstrate wm myelin imaging from ss scans similar to mese mwf estimates
-% mese-rnnls mwf and dess-perk estimates may be comparable in some regions of lateral wm
-% higher-snr mese-rnnls studies (perhaps ex vivo) required to ascertain strength of similarity
-% nevertheless, this feasibility study demonstrates myelin content quantification 
 Simulations and experiments demonstrate the feasibility
 of myelin water content quantification
 from a fast precision-optimized DESS MR acquisition.
@@ -2739,15 +2613,6 @@ that are at all similar
 to conventional MWF estimates
 from a slower MESE MR acquisition.
 
-% experiments also provide evidence that perk scales well while maintaining accuracy
-% in 2d simulations with unrealistically narrow grid searches, 
-% 	perk consistently at least 500x faster including training time 
-% 	and in both simulations achieves lower rmses
-% omitted ml estimation in vivo because ml estimates suffered strong wm overestimation 
-%		in 3-compartment simulation with modest model mismatch 
-%		(despite grid search constraints that distinguish compartments to reduce chance of errors due to multiple global minima)
-% more realistic grid searches on other optimized in vivo datasets took 68 cpu days and were still unable to reliably distinguish compartments due possibly to multiple global minima
-% taking results together, we have evidence that perk scales considerably better than grid search and may be more appropriate than grid search for challenging problems with multiple minima.
 Taken together with the results presented
 in Ch.~\ref{c,perk},
 experiments herein also provide evidence
@@ -2785,12 +2650,6 @@ with the number of latent parameters per voxel
 and that PERK may be more robust than grid search
 to multi-compartmental modeling errors.
 
-% both here and in other runs, optimized profiles consist of mostly dess scans
-% since for fixed te and no exchange, spgr only provides multicompartment t1 contrast,
-%		this suggests that multi-compartment t2 sensitivity mostly arises from dess
-% both here and in other runs, optimized scan profile has tr diversity, even at the expense of fewer scan than possible under time budget
-% in unreported studies, tried optimizing with implicit min tr restrictions; saw substantial degradation in optimized ff precision
-% suggests dess tr (in add. to flip) variation important for ff estimation
 Despite freedom to design arbitrary combinations
 of SPGR and DESS scans,
 the optimized acquisition used here
@@ -2821,44 +2680,27 @@ suggesting that $\TR$ variation
 is important for designing acquisitions
 that enable precise $\ff$ estimation.
 
-% though we modeled exchange, didn't use it
-% but mese doesn't use it either
-% influence of exchange depends on myelin thickness and temperature
-% so in vitro, ex vivo studies won't help 
-% there is growing evidence that some significant exchange likely persists in cerebral wm 
-% unclear how sensitive ss signals and more importantly ff estimates are to exchange
-% thorough investigation is future work
-\edit{%
-	Though Subsection~\ref{s,mwf,model} modeled
-	the effects of first-order physical exchange
-	in two-compartment SPGR and DESS models,
-	experiments thereafter
-	used non-exchanging models
-	to work with closed-form signal models
-	and signal gradients
-	during acquisition design
-	and to keep consistent 
-	with standard MESE model assumptions.
-	There is growing evidence however
-	that some significant physical exchange
-	across the myelin bilayers
-	likely persists in cerebral WM
-	(see \cite{does::ibt} for a very recent review).
-	A thorough investigation 
-	of the sensitivity of $\ff$ estimates 
-	from non-exchanging two-compartment SPGR/DESS models
-	to realistic physical exchange rates 
-	is a topic for further research.
-}%
+Though Subsection~\ref{s,mwf,model} modeled
+the effects of first-order physical exchange
+in two-compartment SPGR and DESS models,
+experiments thereafter
+used non-exchanging models
+to work with closed-form signal models
+and signal gradients
+during acquisition design
+and to keep consistent 
+with standard MESE model assumptions.
+There is growing evidence however
+that some significant physical exchange
+across the myelin bilayers
+likely persists in cerebral WM
+(see \cite{does::ibt} for a very recent review).
+A thorough investigation 
+of the sensitivity of $\ff$ estimates 
+from non-exchanging two-compartment SPGR/DESS models
+to realistic physical exchange rates 
+is a topic for further research.
 
-% mese mwf and dess ff use different model assumptions, objective functions, and algorithms that may limit their comparability even with high snr
-% omit: mese mwf allows for arbitrary numbers of compartments but assumes bulk t1 known
-% omit: dess ff allows for compartmental t1 variation but fixes to two compartments
-% omit: both neglect exchange, compartmental off-resonance effects
-% for more similar model assumptions, could attempt to optimize dess for estimating three or more compartments (or use mese to estimate fewer compartments)
-% with bulk t1,kappa assumption, both mese and dess could be solved with (r)nnls objectives
-% perhaps without bulk t1, kap could solve both mese and dess with perk
-% in general, estimating more parameters constitutes more challenging problems that will likely require more (MESE or DESS) data
 Even with high SNR,
 differences in model assumptions, objective functions, and estimation algorithms
 may limit the quantitative comparability 
@@ -2889,8 +2731,6 @@ estimating more unknowns
 from more complicated (MESE or DESS) models
 will at least necessitate more scans
 and may still prove challenging in practice.
-
-% omit: b1 sensitivity
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}

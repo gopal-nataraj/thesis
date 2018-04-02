@@ -3,19 +3,18 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: root.aux
 The style file: ieeetr.bst
 Database file #1: ../bib/master.bib.bib
-Database file #2: ../bib/new.bib.bib
 You've used 183 entries,
             1876 wiz_defined-function locations,
-            1381 strings with 32207 characters,
-and the built_in function-call counts, 64109 in all, are:
-= -- 6875
+            1380 strings with 32193 characters,
+and the built_in function-call counts, 64098 in all, are:
+= -- 6872
 > -- 2252
 < -- 2
 + -- 822
 - -- 639
 * -- 4638
-:= -- 8431
-add.period$ -- 199
+:= -- 8429
+add.period$ -- 198
 call.type$ -- 183
 change.case$ -- 175
 chr.to.int$ -- 0
@@ -23,13 +22,13 @@ cite$ -- 183
 duplicate$ -- 3194
 empty$ -- 5371
 format.name$ -- 639
-if$ -- 15686
+if$ -- 15683
 int.to.chr$ -- 0
 int.to.str$ -- 183
 missing$ -- 184
-newline$ -- 568
+newline$ -- 567
 num.names$ -- 183
-pop$ -- 368
+pop$ -- 369
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
@@ -44,4 +43,4 @@ type$ -- 0
 warning$ -- 0
 while$ -- 658
 width$ -- 186
-write$ -- 1816
+write$ -- 1814
