@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  2 APR 2018 11:49
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2012.6.30)  2 APR 2018 14:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -459,7 +459,7 @@ Package hyperref Warning: You have enabled option `breaklinks'.
 \c@bookmark@seq@number=\count120
 \Hy@SectionHShift=\skip62
 ))
-Package hyperref Info: Option `colorlinks' set `true' on input line 1419.
+Package hyperref Info: Option `colorlinks' set `true' on input line 1418.
 ) (/usr/local/texlive/2012/texmf-dist/tex/latex/subfiles/subfiles.sty
 Package: subfiles 2012/05/23 Federico Garcia
 )
@@ -1215,9 +1215,13 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 Package xcolor Warning: Incompatible color definition on input line 115.
 
 [1] [2]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 115.
  (./f,ack.tex
+Underfull \hbox (badness 10000) in paragraph at lines 115--40
+
+ []
+
 
 Package xcolor Warning: Incompatible color definition on input line 53.
 
@@ -1233,10 +1237,15 @@ Package xcolor Warning: Incompatible color definition on input line 66.
 
 Package xcolor Warning: Incompatible color definition on input line 73.
 
-[3]) [4]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 115.
- (./root.toc
+[3])
+Underfull \hbox (badness 10000) in paragraph at lines 125--115
+
+ []
+
+[4] (./root.toc
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
+
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
@@ -7064,10 +7073,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 161.
 Here is how much of TeX's memory you used:
  25119 strings out of 493489
  466375 string characters out of 3141349
- 660970 words of memory out of 3000000
+ 660912 words of memory out of 3000000
  27683 multiletter control sequences out of 15000+200000
  32623 words of font info for 104 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,21n,61p,1918b,719s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on root.dvi (171 pages, 1294908 bytes).
+Output written on root.dvi (171 pages, 1294844 bytes).

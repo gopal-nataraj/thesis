@@ -672,15 +672,14 @@
  \begin{adjustwidth}{0.3in}{0.3in}
  	\vspace*{1in}
 	\begin{center} 
-		\textbf{\uppercase{\an{Acknowledgments}}} 
+		\large 
+		\textbf{\uppercase{Acknowledgments}} 
 	\end{center}
 	\ \\[-3ex]
-	\rule[1.4ex]{5.4in}{1pt}%
 	\onehalfspacing%
 	\\ \xspace
   \insertacknowledgments
   \\[-2ex]%
-  \rule[1.4ex]{5.4in}{1pt} %
  \end{adjustwidth}
  %\insertfront{\@acknowledgments %
  % }{\@acknowledgmentsstyle}{Acknowledgments}{\@acknowledgments@width}
